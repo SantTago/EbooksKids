@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login com Símbolos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden; /* Prevent scrollbar from confetti */
+        }
+        .symbol-btn {
+            transition: all 0.3s ease;
+            transform: scale(1);
+        }
+        .symbol-btn:hover {
+            transform: scale(1.1);
+        }
+        .symbol-btn.selected {
+            transform: scale(0.9);
+            box-shadow: inset 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .pattern-display {
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        /* Responsive error message styling */
+        .error-message {
+            text-align: center;
+            width: calc(100% - 2rem); /* Full width minus padding on small screens */
+            max-width: 400px; /* Max width for larger screens */
+            left: 1rem; /* Left padding */
+            right: 1rem; /* Right padding */
+            transform: translateX(0); /* Remove transform for center alignment */
+            margin-left: auto; /* Center horizontally */
+            margin-right: auto; /* Center horizontally */
+        }
+        @media (min-width: 640px) { /* Tailwind's 'sm' breakpoint */
+            .error-message {
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+                width: auto; /* Let content dictate width up to max-width */
+                padding: 0.75rem 1.5rem; /* Increase padding for larger screens */
+            }
+        }
+
+        /* Countdown display styling */
+        #countdownDisplay {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ef4444; /* Red-500 */
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* Confetti styles */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: var(--confetti-color);
+            top: -10px;
+            border-radius: 50%;
+            opacity: 0;
+            animation: fall var(--fall-duration) linear forwards;
+            z-index: 1000;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translate(var(--start-x), var(--start-y)) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--end-x), calc(100vh + 20px)) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-teal-500 flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
+    <div class="text-center mb-6 sm:mb-8">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-2 drop-shadow-lg">
+            EBOOK INFANTIL
+        </h1>
+        <div class="w-24 sm:w-32 h-1 bg-white mx-auto rounded-full opacity-80"></div>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8 w-full max-w-sm sm:max-w-md">
+        <div class="text-center mb-6 sm:mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">Bem-vindo!</h2>
+            <p class="text-sm sm:text-base text-gray-600">Entre usando seu padrão de símbolos</p>
+        </div>
+
+        <form id="symbolForm" class="space-y-4 sm:space-y-6">
+            <div>
+                <label class="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+                    Seu padrão de símbolos
+                </label>
+                <div id="patternDisplay" class="pattern-display bg-gray-50 border-2 border-gray-200 rounded-lg p-3 sm:p-4 min-h-[50px] sm:min-h-[60px]">
+                    <span class="text-gray-400 text-xs sm:text-sm">Clique nos símbolos abaixo</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 sm:gap-4 mb-4 sm:mb-6">
+                <button
+                    type="button"
+                    class="symbol-btn bg-red-500 hover:bg-red-600 text-white font-bold py-3 sm:py-4 px-3 sm:px-4 rounded-xl text-xl sm:text-2xl"
+                    data-symbol="■"
+                    onclick="addSymbol('■', 'bg-red-500')"
+                >
+                    ■
+                </button>
+                <button
+                    type="button"
+                    class="symbol-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 sm:py-4 px-3 sm:px-4 rounded-xl text-xl sm:text-2xl"
+                    data-symbol="●"
+                    onclick="addSymbol('●', 'bg-blue-500')"
+                >
+                    ●
+                </button>
+                <button
+                    type="button"
+                    class="symbol-btn bg-green-500 hover:bg-green-600 text-white font-bold py-3 sm:py-4 px-3 sm:px-4 rounded-xl text-xl sm:text-2xl"
+                    data-symbol="✕"
+                    onclick="addSymbol('✕', 'bg-green-500')"
+                >
+                    ✕
+                </button>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button
+                    type="button"
+                    onclick="clearPattern()"
+                    class="w-full sm:flex-1 bg-gray-500 hover:bg-gray-600 text-white font-medium py-3 px-4 rounded-lg transition-colors text-sm sm:text-base"
+                >
+                    Limpar
+                </button>
+                <button
+                    type="submit"
+                    class="w-full sm:flex-1 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-all transform hover:scale-105 text-sm sm:text-base"
+                >
+                    Entrar
+                </button>
+            </div>
+        </form>
+
+        <div id="countdownDisplay" class="hidden"></div>
+
+        <div class="mt-4 sm:mt-6 p-3 sm:p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <p class="text-sm sm:text-base text-blue-800 text-center font-bold">
+                Seja assinante e tenha acesso livre!
+            </p>
+            <p class="text-xs text-blue-600 text-center mt-1">
+                Descubra mais conteúdo exclusivo.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        let symbolPattern = [];
+        let attemptsLeft = 3;
+        let lockoutEndTime = 0; // Timestamp when lockout ends
+        let currentLockoutLevel = 0; // 0: no lockout, 1: 5min, 2: 30min, 3: 10h
+        let countdownInterval;
+
+        // Define lockout durations in milliseconds
+        const LOCKOUT_DURATIONS_MS = [
+            5 * 60 * 1000,   // Level 1: 5 minutes
+            30 * 60 * 1000,  // Level 2: 30 minutes
+            10 * 60 * 60 * 1000 // Level 3: 10 hours
+        ];
+
+        // --- Múltiplas Senhas ---
+        // Você pode adicionar quantas senhas quiser aqui.
+        // O sistema verificará se o padrão inserido corresponde a QUALQUER uma delas.
+        const correctPasswords = [
+            ['●', '●', '■'], // Senha 1: X Círculo X Quadrado
+            ['■', '■', '✕'] // Senha 2: Quadrado Quadrado Círculo X
+           
+        ];
+
+        // Função para verificar se o padrão inserido corresponde a alguma das senhas corretas
+        function checkPassword(enteredPattern) {
+            return correctPasswords.some(correctPass => {
+                return enteredPattern.length === correctPass.length &&
+                       enteredPattern.every((symbol, index) => symbol === correctPass[index]);
+            });
+        }
+
+        // --- Funções de UI existentes ---
+        function addSymbol(symbol, colorClass) {
+            if (isFormLocked()) return; // Prevent adding symbols if locked
+
+            const btn = event.target;
+            btn.classList.add('selected');
+            setTimeout(() => btn.classList.remove('selected'), 200);
+
+            symbolPattern.push({symbol, colorClass});
+            updatePatternDisplay();
+        }
+
+        function updatePatternDisplay() {
+            const display = document.getElementById('patternDisplay');
+            if (symbolPattern.length === 0) {
+                display.innerHTML = '<span class="text-gray-400 text-xs sm:text-sm">Clique nos símbolos abaixo</span>';
+                return;
+            }
+            display.innerHTML = symbolPattern.map(item =>
+                `<span class="inline-block w-8 h-8 ${item.colorClass} text-white rounded-lg flex items-center justify-center text-lg font-bold">${item.symbol}</span>`
+            ).join('');
+        }
+
+        function clearPattern() {
+            if (isFormLocked()) return; // Prevent clearing if locked
+            symbolPattern = [];
+            updatePatternDisplay();
+        }
+
+        // --- Lógica de Submissão ---
+        document.getElementById('symbolForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (isFormLocked()) {
+                showError('Login bloqueado. Tente novamente após o tempo de espera.');
+                return;
+            }
+
+            if (symbolPattern.length === 0) {
+                showError('Por favor, crie um padrão com os símbolos!');
+                return;
+            }
+
+            const enteredPattern = symbolPattern.map(p => p.symbol);
+            const isCorrect = checkPassword(enteredPattern); // Usando a nova função checkPassword
+
+            if (isCorrect) {
+                showSuccess();
+                resetLockout(); // Reset attempts and lockout level on successful login
+            } else {
+                attemptsLeft--;
+                if (attemptsLeft > 0) {
+                    showError(`Senha incorreta! Você tem ${attemptsLeft} tentativa${attemptsLeft > 1 ? 's' : ''} restante${attemptsLeft > 1 ? 's' : ''}.`);
+                } else {
+                    // Attempts ran out, trigger next lockout level
+                    currentLockoutLevel++;
+                    if (currentLockoutLevel > LOCKOUT_DURATIONS_MS.length) {
+                        currentLockoutLevel = LOCKOUT_DURATIONS_MS.length; // Cap at max level
+                    }
+                    startLockout(); // Start lockout based on current level
+                }
+                clearPattern();
+            }
+        });
+
+        // --- Funções de Bloqueio por Tempo ---
+        function startLockout() {
+            const duration = LOCKOUT_DURATIONS_MS[currentLockoutLevel - 1]; // currentLockoutLevel is 1-indexed
+            lockoutEndTime = Date.now() + duration;
+            localStorage.setItem('lockoutEndTime', lockoutEndTime);
+            localStorage.setItem('attemptsLeft', 0); // Reset attempts for this lockout period
+            localStorage.setItem('currentLockoutLevel', currentLockoutLevel); // Store lockout level
+
+            disableForm();
+            startCountdown();
+
+            let message = '';
+            if (currentLockoutLevel === 1) {
+                message = 'Número máximo de tentativas excedido. Login bloqueado por 5 minutos.';
+            } else if (currentLockoutLevel === 2) {
+                message = 'Atenção! Muitas tentativas. Login bloqueado por 30 minutos.';
+            } else if (currentLockoutLevel === 3) {
+                message = 'Excesso de tentativas. Login bloqueado por 10 horas.';
+            }
+            showError(message);
+        }
+
+        function resetLockout() {
+            attemptsLeft = 3;
+            lockoutEndTime = 0;
+            currentLockoutLevel = 0; // Reset lockout level
+            localStorage.removeItem('lockoutEndTime');
+            localStorage.removeItem('attemptsLeft');
+            localStorage.removeItem('currentLockoutLevel');
+            enableForm();
+            stopCountdown();
+        }
+
+        function isFormLocked() {
+            return Date.now() < lockoutEndTime;
+        }
+
+        function disableForm() {
+            const form = document.getElementById('symbolForm');
+            const buttons = form.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.disabled = true;
+                button.classList.add('opacity-50', 'cursor-not-allowed');
+            });
+        }
+
+        function enableForm() {
+            const form = document.getElementById('symbolForm');
+            const buttons = form.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.disabled = false;
+                button.classList.remove('opacity-50', 'cursor-not-allowed');
+            });
+            // Remove any existing disabled message
+            const disabledMessage = form.parentNode.querySelector('.disabled-message');
+            if (disabledMessage) {
+                disabledMessage.remove();
+            }
+        }
+
+        // --- Contagem Regressiva ---
+        function startCountdown() {
+            const countdownDisplay = document.getElementById('countdownDisplay');
+            countdownDisplay.classList.remove('hidden');
+
+            // Clear any existing interval to prevent multiple timers
+            stopCountdown();
+
+            countdownInterval = setInterval(() => {
+                const now = Date.now();
+                const timeLeft = lockoutEndTime - now;
+
+                if (timeLeft <= 0) {
+                    stopCountdown();
+                    resetLockout();
+                    showError('Seu login foi desbloqueado! Tente novamente.');
+                } else {
+                    const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                    countdownDisplay.textContent = `Login bloqueado. Tente em: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }
+            }, 1000);
+        }
+
+        function stopCountdown() {
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+                countdownInterval = null;
+                const countdownDisplay = document.getElementById('countdownDisplay');
+                countdownDisplay.classList.add('hidden');
+            }
+        }
+
+        // --- Funções de Notificação e Sucesso ---
+        function showError(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message fixed top-4 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate-bounce';
+            errorDiv.textContent = message;
+            document.body.appendChild(errorDiv);
+
+            setTimeout(() => {
+                errorDiv.remove();
+            }, 3000);
+        }
+
+        function showSuccess() {
+            const form = document.getElementById('symbolForm');
+            form.style.transform = 'scale(0.95)';
+            form.style.opacity = '0.8';
+
+            // Start confetti animation
+            confettiAnimation(3000); // 3 seconds of confetti
+
+            setTimeout(() => {
+                // Criar página de sucesso
+                document.body.innerHTML = `
+                    <div class="min-h-screen bg-gradient-to-br from-green-400 via-blue-500 to-purple-600 flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
+                        <div class="text-center mb-6 sm:mb-8">
+                            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-2 drop-shadow-lg">
+                                EBOOK INFANTIL
+                            </h1>
+                            <div class="w-24 sm:w-32 h-1 bg-white mx-auto rounded-full opacity-80"></div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8 w-full max-w-sm sm:max-w-md text-center">
+                            <div class="text-4xl sm:text-5xl md:text-6xl mb-4 sm:mb-6">🎉</div>
+                            <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-3 sm:mb-4">Acesso Liberado!</h2>
+                            <p class="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">Bem-vindo ao sistema!</p>
+                            <div class="bg-green-50 border border-green-200 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
+                                <p class="text-green-800 font-medium text-sm sm:text-base">Login realizado com sucesso</p>
+                                <p class="text-green-600 text-xs sm:text-sm mt-1">Você está logado no sistema</p>
+                            </div>
+                            <a href="Terapia ABA.html" target="_blank" class="w-full sm:w-auto bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white font-medium py-3 px-6 rounded-lg transition-all transform hover:scale-105 text-sm sm:text-base inline-block">
+                                Acessar Ebook
+                            </a>
+                            <button
+                                onclick="location.reload()"
+                                class="w-full sm:w-auto bg-gray-500 hover:bg-gray-600 text-white font-medium py-3 px-6 rounded-lg transition-all transform hover:scale-105 text-sm sm:text-base mt-3 sm:mt-0 sm:ml-3"
+                            >
+                                Voltar ao Login
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }, 3000); // Change page after 3 seconds (confetti duration)
+        }
+
+        // --- Confetti Animation Function ---
+        function confettiAnimation(duration) {
+            const colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4CAF50', '#8BC34A', '#CDDC39', '#FFEB3B', '#FFC107', '#FF9800', '#FF5722', '#795548', '#9E9E9E', '#607D8B'];
+            const numConfetti = 100; // Number of confetti pieces
+            const intervalTime = 50; // How often to launch new confetti bursts (ms)
+            let confettiLaunched = 0;
+            const startTime = Date.now();
+
+            const launchConfetti = setInterval(() => {
+                if (Date.now() - startTime > duration) {
+                    clearInterval(launchConfetti);
+                    // Remove confetti elements after animation
+                    document.querySelectorAll('.confetti').forEach(el => el.remove());
+                    return;
+                }
+
+                for (let i = 0; i < numConfetti / (duration / intervalTime); i++) { // Adjust burst size
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    const startX = Math.random() * window.innerWidth;
+                    const startY = Math.random() * -window.innerHeight; // Start above viewport
+                    const endX = Math.random() * window.innerWidth * 2 - window.innerWidth; // Spread horizontally
+
+                    confetti.style.setProperty('--confetti-color', color);
+                    confetti.style.setProperty('--start-x', `${startX}px`);
+                    confetti.style.setProperty('--start-y', `${startY}px`);
+                    confetti.style.setProperty('--end-x', `${endX}px`);
+                    confetti.style.setProperty('--fall-duration', `${2 + Math.random() * 2}s`); // Random fall duration
+
+                    document.body.appendChild(confetti);
+
+                    // Remove confetti after its animation completes to prevent DOM bloat
+                    confetti.addEventListener('animationend', () => {
+                        confetti.remove();
+                    });
+                }
+                confettiLaunched++;
+            }, intervalTime);
+        }
+
+
+        // --- Inicialização ao Carregar a Página ---
+        // Verifica se há um bloqueio ativo do localStorage
+        window.onload = function() {
+            const storedLockoutEndTime = localStorage.getItem('lockoutEndTime');
+            const storedAttemptsLeft = localStorage.getItem('attemptsLeft');
+            const storedLockoutLevel = localStorage.getItem('currentLockoutLevel');
+
+            if (storedLockoutEndTime && Date.now() < parseInt(storedLockoutEndTime)) {
+                lockoutEndTime = parseInt(storedLockoutEndTime);
+                attemptsLeft = 0; // Ensure attempts are zero if locked
+                currentLockoutLevel = parseInt(storedLockoutLevel || 0); // Load current level
+                disableForm();
+                startCountdown();
+            } else if (storedAttemptsLeft !== null) {
+                attemptsLeft = parseInt(storedAttemptsLeft);
+                // If attempts were 0 but lockout expired, reset everything
+                if (attemptsLeft === 0 && storedLockoutLevel !== null && Date.now() >= parseInt(storedLockoutEndTime || 0)) {
+                    resetLockout();
+                } else if (attemptsLeft === 0) { // If attempts are 0 and lockout is still active, make sure level is loaded
+                    currentLockoutLevel = parseInt(storedLockoutLevel || 0);
+                }
+            } else {
+                attemptsLeft = 3; // Default if nothing in localStorage
+                currentLockoutLevel = 0; // Default lockout level
+            }
+        };
+    </script>
+</body>
+</html>
