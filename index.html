@@ -1,0 +1,424 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EbooksKids - Transforme o Futuro do Seu Filho</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Poppins', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .pulse-animation { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+        .floating { animation: floating 3s ease-in-out infinite; }
+        @keyframes floating { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-4 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="text-2xl font-bold">📚 EbooksKids</div>
+            <button class="bg-yellow-400 text-purple-800 px-6 py-2 rounded-full font-semibold hover:bg-yellow-300 transition-colors">
+                🎁 OFERTA ESPECIAL
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <div class="floating mb-8">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    Transforme o Futuro do Seu Filho com 
+                    <span class="text-yellow-400">Conhecimento Especializado</span>
+                </h1>
+            </div>
+            <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto">
+                Mais de <strong>800+ Ebooks Especializados</strong> para resolver TODOS os desafios do desenvolvimento infantil. 
+                Do autismo à nutrição, temos a solução que seu filho precisa!
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center items-center mb-12">
+                <button class="bg-yellow-400 text-purple-800 px-8 py-4 rounded-full text-xl font-bold hover:bg-yellow-300 transition-colors pulse-animation">
+                    🚀 ACESSO IMEDIATO - R$ 97,00
+                </button>
+                <div class="text-lg">
+                    <span class="line-through text-gray-300">R$ 497,00</span>
+                    <span class="text-yellow-400 font-bold ml-2">80% OFF HOJE!</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto text-sm">
+                <div class="bg-white/20 p-3 rounded-lg">✅ Acesso Vitalício</div>
+                <div class="bg-white/20 p-3 rounded-lg">✅ 800+ Ebooks</div>
+                <div class="bg-white/20 p-3 rounded-lg">✅ Atualizações Grátis</div>
+                <div class="bg-white/20 p-3 rounded-lg">✅ Suporte 24h</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Urgency Banner -->
+    <div class="bg-red-600 text-white py-3 text-center">
+        <div class="pulse-animation">
+            ⏰ <strong>ATENÇÃO:</strong> Oferta válida apenas por <span id="countdown" class="font-bold">23:59:47</span> - Não perca!
+        </div>
+    </div>
+
+    <!-- Categories Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-4">Especialidades Disponíveis</h2>
+            <p class="text-xl text-gray-600 text-center mb-16">Cada área com dezenas de ebooks especializados</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Autismo -->
+                <div class="card-hover bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl border-2 border-blue-200">
+                    <div class="text-6xl mb-4">🧩</div>
+                    <h3 class="text-2xl font-bold mb-4 text-blue-800">Autismo & TEA</h3>
+                    <p class="text-gray-700 mb-6">Guias completos para desenvolvimento, comunicação e integração social. Métodos comprovados por especialistas.</p>
+                    <div class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block">
+                      <a href="Autismo & TEA/Autismo & TEA.html">Ver Ebooks</a> 
+                </div>
+
+                <!-- Nutrição -->
+                <div class="card-hover bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl border-2 border-green-200">
+                    <div class="text-6xl mb-4">🥗</div>
+                    <h3 class="text-2xl font-bold mb-4 text-green-800">Nutrição Infantil</h3>
+                    <p class="text-gray-700 mb-6">Receitas saudáveis, cardápios balanceados e soluções para seletividade alimentar. Crescimento saudável garantido!</p>
+                    <div class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block">
+                         <a href="Nutrição Infantil/Nutrição Infantil.html">Ver Ebooks</a> 
+                    </div>
+                </div>
+
+                <!-- Desenvolvimento Motor -->
+                <div class="card-hover bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl border-2 border-purple-200">
+                    <div class="text-6xl mb-4">🏃‍♂️</div>
+                    <h3 class="text-2xl font-bold mb-4 text-purple-800">Desenvolvimento Motor</h3>
+                    <p class="text-gray-700 mb-6">Exercícios para coordenação, equilíbrio e fortalecimento. Solução para andar na ponta dos pés e muito mais!</p>
+                    <div class="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block">
+                        <a href="Desenvolvimento Motor/Desenvolvimento Motor.html">Ver Ebooks</a> 
+                    </div>
+                </div>
+
+                <!-- Fala e Linguagem -->
+                <div class="card-hover bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl border-2 border-orange-200">
+                    <div class="text-6xl mb-4">🗣️</div>
+                    <h3 class="text-2xl font-bold mb-4 text-orange-800">Fala & Linguagem</h3>
+                    <p class="text-gray-700 mb-6">Estimule a comunicação do seu filho com técnicas profissionais. Do primeiro som às frases completas!</p>
+                    <div class="bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block">
+                     <a href="Fala & Linguagem/Fala & Linguagem.html">Ver Ebooks</a> 
+                    </div>
+                </div>
+
+                <!-- Comportamento -->
+                <div class="card-hover bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-2xl border-2 border-red-200">
+                    <div class="text-6xl mb-4">🎭</div>
+                    <h3 class="text-2xl font-bold mb-4 text-red-800">Comportamento</h3>
+                    <p class="text-gray-700 mb-6">Estratégias para birras, agressividade e desafios comportamentais. Transforme conflitos em aprendizado!</p>
+                    <div class="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block">
+                        <a href="Comportamento/Comportamento.html">Ver Ebooks</a> 
+                    </div>
+                </div>
+
+                <!-- Aprendizagem -->
+                <div class="card-hover bg-gradient-to-br from-indigo-50 to-indigo-100 p-8 rounded-2xl border-2 border-indigo-200">
+                    <div class="text-6xl mb-4">📖</div>
+                    <h3 class="text-2xl font-bold mb-4 text-indigo-800">Aprendizagem</h3>
+                    <p class="text-gray-700 mb-6">Métodos inovadores para alfabetização, matemática e desenvolvimento cognitivo. Seu filho vai amar aprender!</p>
+                    <div class="bg-indigo-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block">
+                        <a href="Aprendizagem/Aprendizagem.html">Ver Ebooks</a> 
+                    </div>
+                </div>
+
+                <!-- Sono -->
+                <div class="card-hover bg-gradient-to-br from-teal-50 to-teal-100 p-8 rounded-2xl border-2 border-teal-200">
+                    <div class="text-6xl mb-4">😴</div>
+                    <h3 class="text-2xl font-bold mb-4 text-teal-800">Sono & Rotina</h3>
+                    <p class="text-gray-700 mb-6">Estabeleça rotinas saudáveis de sono. Noites tranquilas para toda a família com métodos gentis e eficazes.</p>
+                    <div class="bg-teal-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block">
+                         <a href="Sono & Rotina/Sono & Rotina.html">Ver Ebooks</a> 
+                    </div>
+                </div>
+
+                <!-- Socialização -->
+                <div class="card-hover bg-gradient-to-br from-pink-50 to-pink-100 p-8 rounded-2xl border-2 border-pink-200">
+                    <div class="text-6xl mb-4">👫</div>
+                    <h3 class="text-2xl font-bold mb-4 text-pink-800">Socialização</h3>
+                    <p class="text-gray-700 mb-6">Desenvolva habilidades sociais e amizades saudáveis. Seu filho vai se conectar com o mundo ao redor!</p>
+                    <div class="bg-pink-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block">
+                       <a href="Socialização/Socialização.html">Ver Ebooks</a> 
+                    </div>
+                </div>
+
+                <!-- Necessidades Especiais -->
+                <div class="card-hover bg-gradient-to-br from-yellow-50 to-yellow-100 p-8 rounded-2xl border-2 border-yellow-200">
+                    <div class="text-6xl mb-4">⭐</div>
+                    <h3 class="text-2xl font-bold mb-4 text-yellow-800">Necessidades Especiais</h3>
+                    <p class="text-gray-700 mb-6">Suporte completo para TDAH, dislexia, síndrome de Down e outras condições. Cada criança é única e especial!</p>
+                    <div class="bg-yellow-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block">
+                       <a href="Necessidades Especiais/Necessidades Especiais.html">Ver Ebooks</a> 
+                    </div>
+                </div>
+
+                <!-- Ansiedade Infantil -->
+                <div class="card-hover bg-gradient-to-br from-cyan-50 to-cyan-100 p-8 rounded-2xl border-2 border-cyan-200">
+                    <div class="text-6xl mb-4">😰</div>
+                    <h3 class="text-2xl font-bold mb-4 text-cyan-800">Ansiedade Infantil</h3>
+                    <p class="text-gray-700 mb-6">Técnicas para acalmar, relaxar e fortalecer a confiança. Ajude seu filho a superar medos e inseguranças!</p>
+                    <div class="bg-cyan-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block">
+                        <a href="Ansiedade Infantil/Ansiedade Infantil.html">Ver Ebooks</a> 
+                    </div>
+                </div>
+
+                <!-- Coordenação Motora Fina -->
+                <div class="card-hover bg-gradient-to-br from-amber-50 to-amber-100 p-8 rounded-2xl border-2 border-amber-200">
+                    <div class="text-6xl mb-4">✋</div>
+                    <h3 class="text-2xl font-bold mb-4 text-amber-800">Coordenação Motora Fina</h3>
+                    <p class="text-gray-700 mb-6">Exercícios para escrita, desenho e habilidades manuais. Prepare seu filho para a escola e vida independente!</p>
+                    <div class="bg-amber-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block">
+                        <a href="Coordenação Motora Fina/Coordenação Motora Fina.html">Ver Ebooks</a> 
+                    </div>
+                </div>
+
+                <!-- Estimulação Sensorial -->
+                <div class="card-hover bg-gradient-to-br from-lime-50 to-lime-100 p-8 rounded-2xl border-2 border-lime-200">
+                    <div class="text-6xl mb-4">🌈</div>
+                    <h3 class="text-2xl font-bold mb-4 text-lime-800">Estimulação Sensorial</h3>
+                    <p class="text-gray-700 mb-6">Atividades para desenvolver todos os sentidos. Ideal para hipersensibilidade e integração sensorial!</p>
+                    <div class="bg-lime-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block">
+                        <a href="Estimulação Sensorial/Estimulação Sensorial.html">Ver Ebooks</a> 
+                    </div>
+                </div>
+
+                <!-- Disciplina Positiva -->
+                <div class="card-hover bg-gradient-to-br from-rose-50 to-rose-100 p-8 rounded-2xl border-2 border-rose-200">
+                    <div class="text-6xl mb-4">💝</div>
+                    <h3 class="text-2xl font-bold mb-4 text-rose-800">Disciplina Positiva</h3>
+                    <p class="text-gray-700 mb-6">Eduque com amor e firmeza. Métodos gentis que funcionam sem gritos, castigos ou chantagens!</p>
+                    <div class="bg-rose-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block">
+                        <a href="Disciplina Positiva/Disciplina Positiva.html">Ver Ebooks</a> 
+                    </div>
+                </div>
+
+                <!-- Desenvolvimento Emocional -->
+                <div class="card-hover bg-gradient-to-br from-violet-50 to-violet-100 p-8 rounded-2xl border-2 border-violet-200">
+                    <div class="text-6xl mb-4">💖</div>
+                    <h3 class="text-2xl font-bold mb-4 text-violet-800">Inteligência Emocional</h3>
+                    <p class="text-gray-700 mb-6">Ensine seu filho a reconhecer e expressar emoções. Base fundamental para relacionamentos saudáveis!</p>
+                    <div class="bg-violet-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block">
+                        <a href="Inteligência Emocional/Inteligência Emocional.html">Ver Ebooks</a> 
+                    </div>
+                </div>
+
+                <!-- Brincadeiras Terapêuticas -->
+                <div class="card-hover bg-gradient-to-br from-emerald-50 to-emerald-100 p-8 rounded-2xl border-2 border-emerald-200">
+                    <div class="text-6xl mb-4">🎲</div>
+                    <h3 class="text-2xl font-bold mb-4 text-emerald-800">Brincadeiras Terapêuticas</h3>
+                    <p class="text-gray-700 mb-6">Jogos e atividades que desenvolvem enquanto divertem. Aprendizado natural através da brincadeira!</p>
+                    <div class="bg-emerald-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block">
+                        <a href="Brincadeiras Terapêuticas/Brincadeiras Terapêuticas.html">Ver Ebooks</a> 
+                    </div>
+                </div>
+
+                <!-- Preparação Escolar -->
+                <div class="card-hover bg-gradient-to-br from-sky-50 to-sky-100 p-8 rounded-2xl border-2 border-sky-200">
+                    <div class="text-6xl mb-4">🎒</div>
+                    <h3 class="text-2xl font-bold mb-4 text-sky-800">Preparação Escolar</h3>
+                    <p class="text-gray-700 mb-6">Prepare seu filho para o sucesso na escola. Adaptação, rotinas e habilidades acadêmicas essenciais!</p>
+                    <div class="bg-sky-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block">
+                      <a href="Preparação Escolar/Preparação Escolar.html">Ver Ebooks</a> 
+                    </div>
+                </div>
+
+                <!-- Tecnologia e Telas -->
+                <div class="card-hover bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-2xl border-2 border-slate-200">
+                    <div class="text-6xl mb-4">📱</div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-800">Tecnologia Saudável</h3>
+                    <p class="text-gray-700 mb-6">Uso equilibrado de telas e tecnologia. Proteja seu filho do vício digital e promova atividades offline!</p>
+                    <div class="bg-slate-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block">
+                        <a href="Tecnologia Saudável/Tecnologia Saudável.html">Ver Ebooks</a> 
+                    </div>
+                </div>
+
+                <!-- Autoestima e Confiança -->
+                <div class="card-hover bg-gradient-to-br from-fuchsia-50 to-fuchsia-100 p-8 rounded-2xl border-2 border-fuchsia-200">
+                    <div class="text-6xl mb-4">🌟</div>
+                    <h3 class="text-2xl font-bold mb-4 text-fuchsia-800">Autoestima & Confiança</h3>
+                    <p class="text-gray-700 mb-6">Fortaleça a autoconfiança do seu filho. Crianças seguras se tornam adultos realizados e felizes!</p>
+                    <div class="bg-fuchsia-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-block">
+                        <a href="Autoestima & Confiança/Autoestima & Confiança.html">Ver Ebooks</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">Mais de 50.000 Famílias Transformadas</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">M</div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Maria Santos</h4>
+                            <div class="text-yellow-500">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Meu filho autista começou a se comunicar melhor em apenas 2 semanas! Os ebooks são incríveis e muito práticos."</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">J</div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">João Silva</h4>
+                            <div class="text-yellow-500">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"As receitas de nutrição salvaram nossa família! Minha filha finalmente come de tudo e está crescendo saudável."</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold">A</div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Ana Costa</h4>
+                            <div class="text-yellow-500">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Os exercícios motores funcionaram! Meu filho parou de andar na ponta dos pés em 1 mês. Recomendo muito!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bonus Section -->
+    <section class="py-20 bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-8">🎁 BÔNUS EXCLUSIVOS (Valor: R$ 297)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white/20 p-6 rounded-2xl">
+                    <div class="text-4xl mb-4">📱</div>
+                    <h3 class="text-xl font-bold mb-2">App Mobile Exclusivo</h3>
+                    <p>Acesse todos os ebooks no seu celular, offline!</p>
+                </div>
+                <div class="bg-white/20 p-6 rounded-2xl">
+                    <div class="text-4xl mb-4">👥</div>
+                    <h3 class="text-xl font-bold mb-2">Grupo VIP no WhatsApp</h3>
+                    <p>Suporte direto com especialistas e outros pais!</p>
+                </div>
+                <div class="bg-white/20 p-6 rounded-2xl">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="text-xl font-bold mb-2">Plano Personalizado</h3>
+                    <p>Roteiro específico para o seu filho!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-8xl mb-8">🛡️</div>
+                <h2 class="text-4xl font-bold mb-8">Garantia Incondicional de 30 Dias</h2>
+                <p class="text-xl text-gray-700 mb-8">
+                    Se você não ver resultados positivos no desenvolvimento do seu filho em 30 dias, 
+                    devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia!
+                </p>
+                <div class="bg-green-100 border-2 border-green-300 p-8 rounded-2xl">
+                    <h3 class="text-2xl font-bold text-green-800 mb-4">Risco ZERO para você!</h3>
+                    <p class="text-green-700">Teste por 30 dias completos. Se não funcionar, você recebe seu dinheiro de volta!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8">
+                Não Deixe Seu Filho Esperando!
+            </h2>
+            <p class="text-xl mb-12 max-w-3xl mx-auto">
+                Cada dia que passa é uma oportunidade perdida de desenvolvimento. 
+                Dê ao seu filho as ferramentas que ele precisa HOJE!
+            </p>
+            
+            <div class="bg-white/20 p-8 rounded-2xl max-w-2xl mx-auto mb-12">
+                <div class="text-6xl mb-4">💰</div>
+                <div class="text-3xl font-bold mb-2">OFERTA ESPECIAL</div>
+                <div class="text-5xl font-bold text-yellow-400 mb-2">R$ 97,00</div>
+                <div class="text-lg line-through text-gray-300 mb-4">De R$ 497,00</div>
+                <div class="text-sm">12x de apenas R$ 8,08 no cartão</div>
+            </div>
+
+            <button class="bg-yellow-400 text-purple-800 px-12 py-6 rounded-full text-2xl font-bold hover:bg-yellow-300 transition-colors pulse-animation mb-8">
+                🚀 QUERO TRANSFORMAR MEU FILHO AGORA!
+            </button>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto text-sm">
+                <div class="bg-white/20 p-3 rounded-lg">🔒 Pagamento Seguro</div>
+                <div class="bg-white/20 p-3 rounded-lg">⚡ Acesso Imediato</div>
+                <div class="bg-white/20 p-3 rounded-lg">📱 Funciona no Celular</div>
+                <div class="bg-white/20 p-3 rounded-lg">🛡️ Garantia 30 dias</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="text-2xl font-bold mb-4">📚 EbooksKids</div>
+            <p class="text-gray-400 mb-8">Transformando o futuro das crianças, uma família por vez.</p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 text-sm">
+                <a href="#" class="hover:text-yellow-400">Política de Privacidade</a>
+                <a href="#" class="hover:text-yellow-400">Termos de Uso</a>
+                <a href="#" class="hover:text-yellow-400">Contato</a>
+                <a href="#" class="hover:text-yellow-400">Suporte</a>
+            </div>
+            <div class="mt-8 text-gray-500 text-sm">
+                © 2024 EbooksKids. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            const distance = tomorrow - now;
+
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerHTML = 
+                String(hours).padStart(2, '0') + ':' + 
+                String(minutes).padStart(2, '0') + ':' + 
+                String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Smooth scrolling for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Simulate purchase action
+                alert('Redirecionando para o pagamento seguro...');
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'956f77268503ba11',t:'MTc1MTEzNzYyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
