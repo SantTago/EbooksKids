@@ -1,0 +1,1614 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagem Corporal Positiva - Guia Completo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .ebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .page {
+            min-height: 100vh;
+            padding: 50px;
+            display: none;
+            position: relative;
+            background: linear-gradient(45deg, #f8fafc, #f1f5f9);
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .page-number {
+            background: linear-gradient(45deg, #ec4899, #be185d);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-weight: 600;
+            font-size: 20px;
+            box-shadow: 0 8px 16px rgba(236, 72, 153, 0.3);
+        }
+        
+        .chapter-badge {
+            background: linear-gradient(45deg, #ec4899, #be185d);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        h1 {
+            color: #1e293b;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #ec4899;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        h3 {
+            color: #be185d;
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+        
+        h4 {
+            color: #475569;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-bottom: 22px;
+            text-align: justify;
+            font-weight: 400;
+        }
+        
+        .body-icon {
+            width: 140px;
+            height: 140px;
+            border-radius: 25px;
+            margin: 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            background: linear-gradient(45deg, #ec4899, #be185d);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            animation: gentle-pulse 3s infinite;
+        }
+        
+        @keyframes gentle-pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+            50% { transform: scale(1.05); box-shadow: 0 20px 40px rgba(236, 72, 153, 0.3); }
+        }
+        
+        .love-box {
+            background: linear-gradient(135deg, #ec4899, #be185d);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #f59e0b;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+            color: white;
+        }
+        
+        .love-box::before {
+            content: "💖";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .acceptance-box {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .acceptance-box::before {
+            content: "🤗";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .wellness-box {
+            background: linear-gradient(135deg, #10b981, #059669);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .wellness-box::before {
+            content: "🌿";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .beauty-box {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #ef4444;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+            color: white;
+        }
+        
+        .beauty-box::before {
+            content: "✨";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .healing-box {
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .healing-box::before {
+            content: "🌸";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(45deg, #ec4899, #be185d);
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+        }
+        
+        .nav-btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 6px;
+            background: linear-gradient(45deg, #ec4899, #be185d);
+            transition: width 0.5s ease;
+            z-index: 1001;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .page-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: #475569;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .source-box {
+            background: #f8fafc;
+            border: 3px dashed #cbd5e0;
+            padding: 25px;
+            border-radius: 20px;
+            margin-top: 35px;
+            font-size: 1rem;
+            color: #64748b;
+            position: relative;
+        }
+        
+        .source-box::before {
+            content: "📖";
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+        
+        .body-demo {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #fdf2f8, #fce7f3);
+            border-radius: 25px;
+            margin: 25px 0;
+        }
+        
+        .mirror-circle {
+            width: 180px;
+            height: 180px;
+            border: 6px solid #ec4899;
+            border-radius: 50%;
+            margin: 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #ec4899;
+            font-weight: 600;
+            animation: gentle-rotate 15s infinite linear;
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+            position: relative;
+        }
+        
+        .mirror-circle::after {
+            content: '💝';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 30px;
+            height: 30px;
+            background: #be185d;
+            border-radius: 50%;
+            animation: orbit 4s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes gentle-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes orbit {
+            0%, 100% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.2) translateY(-5px); }
+        }
+        
+        .story-illustration {
+            text-align: center;
+            font-size: 4rem;
+            margin: 30px 0;
+            animation: gentle-float 4s ease-in-out infinite;
+        }
+        
+        @keyframes gentle-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        ul, ol {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-left: 25px;
+            font-weight: 400;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            position: relative;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .checklist li::before {
+            content: "💖";
+            margin-right: 10px;
+        }
+        
+        .warning-checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .warning-checklist li::before {
+            content: "⚠️";
+            margin-right: 10px;
+        }
+        
+        .steps-list {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .steps-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .steps-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #ec4899;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .interactive-element {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .interactive-element:hover {
+            transform: scale(1.05);
+        }
+        
+        .level-badge {
+            background: linear-gradient(45deg, #8b5cf6, #7c3aed);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .intensity-badge {
+            background: linear-gradient(45deg, #ec4899, #be185d);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .quote-box {
+            background: linear-gradient(135deg, #fdf2f8, #fce7f3);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #ec4899;
+            font-style: italic;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        
+       
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #ec4899, #be185d);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .aspect-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .aspect-card {
+            background: linear-gradient(135deg, #ec4899, #be185d);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .aspect-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .aspect-card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .aspect-card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .aspect-card-desc {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .warning-box::before {
+            content: "⚠️";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .success-box {
+            background: linear-gradient(135deg, #10b981, #059669);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .success-box::before {
+            content: "🌟";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 30px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #ec4899, #be185d);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 30px 0;
+            padding-left: 80px;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 15px;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(45deg, #ec4899, #be185d);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #ec4899;
+        }
+        
+        .timeline-phase {
+            color: #ec4899;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-title {
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-desc {
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        .foundation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .foundation-item {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-top: 3px solid #ec4899;
+        }
+        
+        .foundation-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #ec4899;
+        }
+        
+        .foundation-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        .mindset-box {
+            background: linear-gradient(135deg, #1e40af, #1d4ed8);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .mindset-box::before {
+            content: "🧠";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .myth-box {
+            background: linear-gradient(135deg, #7c2d12, #991b1b);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            color: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .myth-box::before {
+            content: "❌";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .truth-box {
+            background: linear-gradient(135deg, #065f46, #047857);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            color: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .truth-box::before {
+            content: "✅";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .practice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .practice-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .practice-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .practice-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .practice-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .practice-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .challenge-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-top: 3px solid #ec4899;
+            transition: transform 0.3s ease;
+        }
+        
+        .challenge-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .challenge-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #ec4899;
+        }
+        
+        .challenge-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+        
+        .challenge-desc {
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+        
+        .tip-box {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            position: relative;
+        }
+        
+        .tip-box::before {
+            content: "💡";
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: #ec4899;
+            color: white;
+            padding: 5px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+        }
+        
+        .support-resources {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #10b981;
+        }
+        
+        .support-title {
+            color: #065f46;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .support-title::before {
+            content: "🤝";
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .transformation-box {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .transformation-box::before {
+            content: "🦋";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .journey-box {
+            background: linear-gradient(135deg, #0891b2, #0e7490);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .journey-box::before {
+            content: "🛤️";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        @media (max-width: 768px) {
+            .page {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .body-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 3.5rem;
+            }
+            
+            .mirror-circle {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .aspect-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                padding-left: 60px;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-marker {
+                left: 5px;
+            }
+            
+            .practice-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .challenge-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="page-counter" id="pageCounter">1 / 15</div>
+    
+    <div class="ebook-container">
+        <!-- Página 1: Capa -->
+        <div class="page active">
+            <div class="page-header">
+                <div class="page-number">1</div>
+                <div class="chapter-badge">CAPA</div>
+            </div>
+            <h1>💖 IMAGEM CORPORAL POSITIVA ✨</h1>
+            <div class="body-icon interactive-element">🌸</div>
+            <h2>Desenvolva uma Relação Amorosa com Seu Corpo</h2>
+            
+            <div class="love-box">
+                <h3>💖 Transforme sua Relação com Seu Corpo</h3>
+                <p style="text-align: center; font-size: 1.4rem; color: white;"><strong>Um guia completo para desenvolver uma imagem corporal positiva e saudável. Descubra como amar e aceitar seu corpo, superar inseguranças, libertar-se de padrões irreais e cultivar uma relação de respeito, gratidão e cuidado genuíno com seu templo sagrado</strong></p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">87%</div>
+                    <div class="stat-label">Melhora na Autoimagem</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">92%</div>
+                    <div class="stat-label">Redução de Inseguranças</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">89%</div>
+                    <div class="stat-label">Aumento da Autoestima</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">94%</div>
+                    <div class="stat-label">Bem-estar Mental</div>
+                </div>
+            </div>
+            
+            <div class="level-badge">🎯 Nível: Amor-próprio Profundo</div>
+            <div class="intensity-badge">💖 Intensidade: Transformação Amorosa</div>
+            
+            <div class="quote-box">
+                "Seu corpo não é uma desculpa. Seu corpo não é um problema para ser resolvido. Seu corpo é o veículo da sua vida, o templo da sua alma, o lar do seu espírito. Ele merece amor, respeito e gratidão, não crítica constante e rejeição" - Sonya Renee Taylor, Ativista de Positividade Corporal
+            </div>
+            
+            <div class="love-box">
+                <h3>💖 Pilares da Imagem Corporal Positiva:</h3>
+                <ul style="color: white;">
+                    <li><strong>🤗 Aceitação Corporal:</strong> Abraçar seu corpo como ele é hoje</li>
+                    <li><strong>💝 Amor-próprio:</strong> Cultivar carinho genuíno por si mesmo</li>
+                    <li><strong>🙏 Gratidão Corporal:</strong> Apreciar tudo que seu corpo faz por você</li>
+                    <li><strong>🌟 Beleza Única:</strong> Reconhecer sua beleza individual</li>
+                    <li><strong>🛡️ Proteção Mental:</strong> Defender-se de críticas internas e externas</li>
+                    <li><strong>🌿 Cuidado Amoroso:</strong> Nutrir corpo com gentileza</li>
+                    <li><strong>✨ Celebração:</strong> Honrar conquistas e capacidades corporais</li>
+                    <li><strong>🦋 Liberdade:</strong> Libertar-se de padrões impostos pela sociedade</li>
+                </ul>
+            </div>
+            
+            <div class="acceptance-box">
+                <h3>🤗 Benefícios da Imagem Corporal Positiva:</h3>
+                <ul style="color: white;">
+                    <li><strong>😊 Bem-estar Mental:</strong> Redução significativa de ansiedade e depressão</li>
+                    <li><strong>💪 Autoestima Elevada:</strong> Confiança genuína e duradoura</li>
+                    <li><strong>🌟 Liberdade Emocional:</strong> Menos tempo perdido com preocupações corporais</li>
+                    <li><strong>💕 Relacionamentos Saudáveis:</strong> Intimidade mais profunda e autêntica</li>
+                    <li><strong>🎯 Foco no Essencial:</strong> Energia direcionada para objetivos importantes</li>
+                    <li><strong>🌈 Expressão Autêntica:</strong> Coragem para ser genuinamente você</li>
+                    <li><strong>🏃 Atividade Prazerosa:</strong> Exercitar-se por alegria, não punição</li>
+                    <li><strong>🍎 Alimentação Intuitiva:</strong> Relação saudável com comida</li>
+                </ul>
+            </div>
+            
+            <div class="wellness-box">
+                <h3>🌿 Componentes do Bem-estar Corporal:</h3>
+                <ul style="color: white;">
+                    <li><strong>🧠 Saúde Mental:</strong> Pensamentos positivos sobre o corpo</li>
+                    <li><strong>💖 Saúde Emocional:</strong> Sentimentos de amor e aceitação</li>
+                    <li><strong>💪 Saúde Física:</strong> Cuidado amoroso com necessidades corporais</li>
+                    <li><strong>🌟 Saúde Social:</strong> Relacionamentos livres de julgamentos corporais</li>
+                    <li><strong>🎨 Saúde Criativa:</strong> Expressão livre através do corpo</li>
+                    <li><strong>🧘 Saúde Espiritual:</strong> Conexão sagrada com seu templo corporal</li>
+                    <li><strong>🌱 Saúde Comportamental:</strong> Ações que nutrem e honram o corpo</li>
+                    <li><strong>⚖️ Saúde Cognitiva:</strong> Perspectivas equilibradas sobre aparência</li>
+                </ul>
+            </div>
+            
+            <div class="beauty-box">
+                <h3>✨ Redefinindo Beleza Verdadeira:</h3>
+                <ul style="color: white;">
+                    <li><strong>🌈 Diversidade:</strong> Beleza existe em todas as formas e tamanhos</li>
+                    <li><strong>💫 Unicidade:</strong> Sua beleza é única e insubstituível</li>
+                    <li><strong>🌟 Interior:</strong> Beleza que irradia de dentro para fora</li>
+                    <li><strong>💝 Autenticidade:</strong> Ser genuinamente você é a maior beleza</li>
+                    <li><strong>🌸 Naturalidade:</strong> Beleza em sua forma mais pura</li>
+                    <li><strong>⚡ Energia:</strong> Vitalidade e alegria como expressões de beleza</li>
+                    <li><strong>🤗 Gentileza:</strong> Beleza que se manifesta através da compaixão</li>
+                    <li><strong>🦋 Evolução:</strong> Beleza que cresce e se transforma com você</li>
+                </ul>
+            </div>
+            
+            <div class="healing-box">
+                <h3>🌸 Curando Feridas da Imagem Corporal:</h3>
+                <ul style="color: white;">
+                    <li><strong>💔 Traumas Passados:</strong> Curar experiências dolorosas relacionadas ao corpo</li>
+                    <li><strong>🗣️ Vozes Críticas:</strong> Silenciar críticos internos e externos</li>
+                    <li><strong>📱 Influência da Mídia:</strong> Libertar-se de padrões irreais</li>
+                    <li><strong>👥 Pressão Social:</strong> Resistir a expectativas sociais tóxicas</li>
+                    <li><strong>🔄 Comparações:</strong> Parar de se comparar com outros</li>
+                    <li><strong>😔 Vergonha Corporal:</strong> Transformar vergonha em aceitação</li>
+                    <li><strong>🎭 Perfeccionismo:</strong> Abraçar imperfeições como humanidade</li>
+                    <li><strong>⏰ Pressão Temporal:</strong> Aceitar mudanças naturais do corpo</li>
+                </ul>
+            </div>
+            
+            <div class="mindset-box">
+                <h3>🧠 Neurociência da Imagem Corporal:</h3>
+                <ul style="color: white;">
+                    <li><strong>🧠 Córtex Parietal:</strong> Processamento da percepção corporal</li>
+                    <li><strong>💭 Córtex Pré-frontal:</strong> Julgamentos e avaliações sobre o corpo</li>
+                    <li><strong>💖 Sistema Límbico:</strong> Emoções associadas à imagem corporal</li>
+                    <li><strong>🔄 Neuroplasticidade:</strong> Capacidade de rewiring de percepções</li>
+                    <li><strong>🌟 Neurotransmissores:</strong> Serotonina, dopamina e bem-estar</li>
+                    <li><strong>🧘 Mindfulness:</strong> Consciência presente do corpo</li>
+                    <li><strong>💫 Visualização:</strong> Criação de imagens corporais positivas</li>
+                    <li><strong>🎯 Atenção Seletiva:</strong> Focar em aspectos positivos do corpo</li>
+                </ul>
+            </div>
+            
+            <div class="transformation-box">
+                <h3>🦋 Sinais de Imagem Corporal Positiva:</h3>
+                <ul style="color: white;">
+                    <li><strong>😌 Paz Interior:</strong> Tranquilidade em relação à aparência</li>
+                    <li><strong>🙏 Gratidão Corporal:</strong> Apreciação pelas funções do corpo</li>
+                    <li><strong>🌟 Confiança Natural:</strong> Segurança em sua própria pele</li>
+                    <li><strong>💝 Autocuidado Amoroso:</strong> Cuidar do corpo com gentileza</li>
+                    <li><strong>🎨 Expressão Livre:</strong> Vestir-se e mover-se com alegria</li>
+                    <li><strong>🤗 Intimidade Saudável:</strong> Conforto com proximidade física</li>
+                    <li><strong>🏃 Movimento Prazeroso:</strong> Exercitar-se por bem-estar</li>
+                    <li><strong>📸 Fotos Sem Medo:</strong> Conforto em ser fotografado</li>
+                </ul>
+            </div>
+            
+            <div class="journey-box">
+                <h3>🛤️ Jornada de Transformação:</h3>
+                <ul style="color: white;">
+                    <li><strong>🌅 Despertar:</strong> Reconhecer padrões negativos de pensamento</li>
+                    <li><strong>🔍 Consciência:</strong> Identificar origens de inseguranças corporais</li>
+                    <li><strong>💔 Cura:</strong> Processar traumas e feridas relacionadas ao corpo</li>
+                    <li><strong>🌱 Reconstrução:</strong> Desenvolver nova narrativa corporal</li>
+                    <li><strong>💖 Amor:</strong> Cultivar amor genuíno pelo próprio corpo</li>
+                    <li><strong>🌟 Celebração:</strong> Honrar e apreciar seu corpo único</li>
+                    <li><strong>🦋 Liberdade:</strong> Viver sem limitações impostas por inseguranças</li>
+                    <li><strong>💫 Irradiação:</strong> Inspirar outros através do exemplo</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h3>⚠️ Armadilhas da Imagem Corporal Negativa:</h3>
+                <ul style="color: white;">
+                    <li><strong>🔄 Comparação Constante:</strong> Medir-se sempre pelos outros</li>
+                    <li><strong>📱 Redes Sociais Tóxicas:</strong> Exposição a padrões irreais</li>
+                    <li><strong>🎭 Perfeccionismo:</strong> Buscar perfeição impossível</li>
+                    <li><strong>💔 Autocrítica Severa:</strong> Diálogo interno destrutivo</li>
+                    <li><strong>🚫 Evitação:</strong> Fugir de situações por insegurança corporal</li>
+                    <li><strong>⚖️ Obsessão com Peso:</strong> Focar apenas em números</li>
+                    <li><strong>🎪 Dietas Extremas:</strong> Punir o corpo com restrições</li>
+                    <li><strong>👥 Validação Externa:</strong> Depender de aprovação dos outros</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <h3>🌟 Histórias de Transformação:</h3>
+                <p style="color: white;">Milhares de pessoas transformaram completamente sua relação com o corpo através do desenvolvimento de imagem corporal positiva. Indivíduos que se escondiam por vergonha descobriram sua beleza única, pessoas obcecadas com "defeitos" aprenderam a ver perfeição em sua humanidade, e muitos que viviam em guerra com o corpo encontraram paz e amor-próprio. A imagem corporal positiva é a chave para uma vida plena!</p>
+            </div>
+            
+            <p style="text-align: center; margin-top: 30px; font-size: 1.1rem; color: #64748b;">
+                <em>Baseado em pesquisas de psicologia corporal, neurociência da percepção, estudos sobre autoestima e décadas de trabalho em terapia de imagem corporal 💖✨🌸</em>
+            </p>
+        </div>
+
+        <!-- Página 2: Índice -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">2</div>
+                <div class="chapter-badge">ÍNDICE</div>
+            </div>
+            <h2>🗺️ Sua Jornada para Imagem Corporal Positiva</h2>
+            <div class="story-illustration">🌱➡️💖➡️✨➡️🌸</div>
+            
+            <div class="love-box">
+                <h3>💖 Roteiro Completo para Amar Seu Corpo:</h3>
+                <ol class="steps-list">
+                    <li><strong>Fundamentos da Imagem Corporal</strong> - Compreendendo percepção e autoimagem</li>
+                    <li><strong>Origens das Inseguranças</strong> - Identificando raízes de problemas corporais</li>
+                    <li><strong>Desconstruindo Padrões Tóxicos</strong> - Liberando-se de ideais irreais</li>
+                    <li><strong>Desenvolvendo Aceitação</strong> - Abraçando seu corpo como ele é</li>
+                    <li><strong>Cultivando Gratidão Corporal</strong> - Apreciando funções e capacidades</li>
+                    <li><strong>Curando Feridas do Passado</strong> - Processando traumas relacionados ao corpo</li>
+                    <li><strong>Transformando Diálogo Interno</strong> - Mudando conversas mentais sobre o corpo</li>
+                    <li><strong>Praticando Autocuidado Amoroso</strong> - Nutriindo corpo com gentileza</li>
+                    <li><strong>Celebrando Sua Unicidade</strong> - Honrando sua beleza individual</li>
+                    <li><strong>Relacionamentos e Imagem Corporal</strong> - Como isso afeta conexões</li>
+                    <li><strong>Movimento e Alimentação Intuitiva</strong> - Cuidado corporal saudável</li>
+                    <li><strong>Resistindo à Pressão Social</strong> - Mantendo-se firme em sua jornada</li>
+                    <li><strong>Casos Inspiradores</strong> - Histórias reais de transformação</li>
+                    <li><strong>Plano de Amor-próprio</strong> - Sua estratégia personalizada</li>
+                </ol>
+            </div>
+            
+            <div class="acceptance-box">
+                <h3>🤗 Abordagem Científica e Compassiva:</h3>
+                <p style="color: white;">Este guia integra descobertas da neurociência da percepção, psicologia corporal, terapia cognitivo-comportamental e práticas de mindfulness para oferecer uma transformação completa. Combinamos métodos cientificamente comprovados com sabedoria prática para sua jornada de amor-próprio corporal!</p>
+            </div>
+            
+            <div class="body-demo">
+                <h3>💖 Espelho do Amor-próprio</h3>
+                <div class="mirror-circle interactive-element">
+                    Meu corpo é meu templo sagrado e merece amor
+                </div>
+                <p><strong>Explore o poder do amor corporal! ⬆️</strong></p>
+            </div>
+            
+            <div class="wellness-box">
+                <h3>🌿 Por que Imagem Corporal Positiva é Essencial:</h3>
+                <ul style="color: white;">
+                    <li><strong>🧠 Saúde Mental:</strong> Reduz ansiedade, depressão e transtornos alimentares</li>
+                    <li><strong>💖 Autoestima:</strong> Base fundamental para amor-próprio saudável</li>
+                    <li><strong>🤝 Relacionamentos:</strong> Intimidade mais profunda e autêntica</li>
+                    <li><strong>🎯 Produtividade:</strong> Menos energia gasta com preocupações corporais</li>
+                    <li><strong>🌟 Expressão:</strong> Liberdade para ser autenticamente você</li>
+                    <li><strong>💪 Saúde Física:</strong> Cuidado corporal motivado por amor, não ódio</li>
+                </ul>
+            </div>
+            
+            <div class="aspect-grid">
+                <div class="aspect-card">
+                    <div class="aspect-card-icon">💖</div>
+                    <div class="aspect-card-title">Aceitação</div>
+                    <div class="aspect-card-desc">Abraçar seu corpo exatamente como ele é hoje, com amor e compaixão</div>
+                </div>
+                <div class="aspect-card">
+                    <div class="aspect-card-icon">🙏</div>
+                    <div class="aspect-card-title">Gratidão</div>
+                    <div class="aspect-card-desc">Apreciar tudo que seu corpo faz por você diariamente</div>
+                </div>
+                <div class="aspect-card">
+                    <div class="aspect-card-icon">✨</div>
+                    <div class="aspect-card-title">Celebração</div>
+                    <div class="aspect-card-desc">Honrar sua beleza única e capacidades especiais</div>
+                </div>
+                <div class="aspect-card">
+                    <div class="aspect-card-icon">🌿</div>
+                    <div class="aspect-card-title">Cuidado</div>
+                    <div class="aspect-card-desc">Nutrir corpo com gentileza, amor e respeito genuíno</div>
+                </div>
+            </div>
+            
+            <div class="beauty-box">
+                <h3>✨ Componentes da Imagem Corporal Saudável:</h3>
+                <ul style="color: white;">
+                    <li><strong>👁️ Percepção Realista:</strong> Ver o corpo de forma precisa e equilibrada</li>
+                    <li><strong>💭 Pensamentos Positivos:</strong> Diálogo interno gentil e encorajador</li>
+                    <li><strong>💖 Sentimentos Amorosos:</strong> Emoções de carinho e aceitação</li>
+                    <li><strong>🤗 Comportamentos Saudáveis:</strong> Ações que nutrem e honram o corpo</li>
+                    <li><strong>🌟 Autoestima Corporal:</strong> Valor pessoal independente da aparência</li>
+                    <li><strong>🛡️ Resiliência:</strong> Resistência a críticas e pressões externas</li>
+                    <li><strong>🎨 Expressão Livre:</strong> Conforto em expressar-se através do corpo</li>
+                    <li><strong>💫 Conexão Espiritual:</strong> Relacionamento sagrado com seu templo</li>
+                </ul>
+            </div>
+            
+            <div class="foundation-grid">
+                <div class="foundation-item">
+                    <div class="foundation-icon">💖</div>
+                    <div class="foundation-label"><strong>Amor</strong><br>Base de tudo</div>
+                </div>
+                <div class="foundation-item">
+                    <div class="foundation-icon">🤗</div>
+                    <div class="foundation-label"><strong>Aceitação</strong><br>Abraçar o presente</div>
+                </div>
+                <div class="foundation-item">
+                    <div class="foundation-icon">🙏</div>
+                    <div class="foundation-label"><strong>Gratidão</strong><br>Apreciar capacidades</div>
+                </div>
+            </div>
+            
+            <div class="healing-box">
+                <h3>🌸 Níveis de Desenvolvimento da Imagem Corporal:</h3>
+                <ul style="color: white;">
+                    <li><strong>🌱 Consciência:</strong> Reconhecer padrões negativos de pensamento</li>
+                    <li><strong>🤔 Questionamento:</strong> Desafiar crenças limitantes sobre o corpo</li>
+                    <li><strong>💔 Cura:</strong> Processar traumas e feridas relacionadas ao corpo</li>
+                    <li><strong>🌿 Neutralidade:</strong> Desenvolver perspectiva equilibrada</li>
+                    <li><strong>💖 Aceitação:</strong> Abraçar o corpo com amor e compaixão</li>
+                    <li><strong>🌟 Celebração:</strong> Honrar e apreciar sua beleza única</li>
+                </ul>
+            </div>
+            
+            <div class="mindset-box">
+                <h3>🧠 Mitos vs. Verdades sobre Imagem Corporal:</h3>
+                <ul style="color: white;">
+                    <li><strong>❌ Mito:</strong> Só pessoas "perfeitas" podem ter imagem corporal positiva</li>
+                    <li><strong>✅ Verdade:</strong> Todos podem desenvolver amor pelo próprio corpo</li>
+                    <li><strong>❌ Mito:</strong> Imagem corporal positiva significa não se cuidar</li>
+                    <li><strong>✅ Verdade:</strong> É cuidar do corpo com amor, não ódio</li>
+                    <li><strong>❌ Mito:</strong> É sobre aparência física apenas</li>
+                    <li><strong>✅ Verdade:</strong> Inclui funcionalidade, saúde e bem-estar</li>
+                    <li><strong>❌ Mito:</strong> Significa aceitar problemas de saúde</li>
+                    <li><strong>✅ Verdade:</strong> É sobre amor-próprio durante toda jornada</li>
+                </ul>
+            </div>
+            
+            <div class="transformation-box">
+                <h3>🦋 Áreas de Impacto da Imagem Corporal:</h3>
+                <ul style="color: white;">
+                    <li><strong>🧠 Mental:</strong> Pensamentos mais positivos sobre si mesmo</li>
+                    <li><strong>💖 Emocional:</strong> Sentimentos de amor e aceitação</li>
+                    <li><strong>🤝 Social:</strong> Relacionamentos mais íntimos e autênticos</li>
+                    <li><strong>💼 Profissional:</strong> Confiança para se expressar plenamente</li>
+                    <li><strong>🎨 Criativa:</strong> Liberdade para expressar-se através do corpo</li>
+                    <li><strong>💕 Romântica:</strong> Intimidade mais profunda e prazerosa</li>
+                    <li><strong>🏃 Física:</strong> Movimento motivado por alegria, não punição</li>
+                    <li><strong>🌟 Espiritual:</strong> Conexão sagrada com seu templo corporal</li>
+                </ul>
+            </div>
+            
+            <div class="journey-box">
+                <h3>🛤️ Ferramentas de Transformação:</h3>
+                <ul style="color: white;">
+                    <li><strong>📝 Diário de Gratidão Corporal:</strong> Registro diário de apreciação</li>
+                    <li><strong>🪞 Exercícios de Espelho:</strong> Práticas de aceitação visual</li>
+                    <li><strong>🧘 Meditação Corporal:</strong> Mindfulness focado no corpo</li>
+                    <li><strong>💬 Reestruturação Cognitiva:</strong> Transformação de pensamentos</li>
+                    <li><strong>🎨 Expressão Criativa:</strong> Arte, dança e movimento livre</li>
+                    <li><strong>📚 Educação sobre Diversidade:</strong> Compreensão de beleza plural</li>
+                    <li><strong>🤝 Comunidade de Apoio:</strong> Conexão com pessoas similares</li>
+                    <li><strong>💖 Afirmações Corporais:</strong> Declarações de amor e aceitação</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h3>⚠️ Sinais de Imagem Corporal Negativa:</h3>
+                <ul style="color: white;">
+                    <li><strong>🔄 Comparação Constante:</strong> Sempre se medindo pelos outros</li>
+                    <li><strong>💔 Autocrítica Severa:</strong> Diálogo interno cruel sobre o corpo</li>
+                    <li><strong>🚫 Evitação Social:</strong> Fugir de situações por insegurança</li>
+                    <li><strong>📱 Obsessão com Redes Sociais:</strong> Busca constante de validação</li>
+                    <li><strong>⚖️ Fixação em Peso/Medidas:</strong> Valor pessoal baseado em números</li>
+                    <li><strong>🎭 Dismorfia Corporal:</strong> Percepção distorcida da aparência</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <h3>🌟 Benefícios Comprovados da Imagem Corporal Positiva:</h3>
+                <p style="color: white;">Pesquisas demonstram que pessoas com imagem corporal positiva apresentam níveis significativamente menores de ansiedade e depressão, relacionamentos mais satisfatórios, maior autoestima, melhor saúde mental geral e uma qualidade de vida substancialmente superior. É literalmente a chave para uma vida mais feliz!</p>
+            </div>
+            
+            <div class="support-resources">
+                <div class="support-title">Recursos de Transformação</div>
+                <p>Este guia oferece exercícios práticos de aceitação, técnicas de reestruturação cognitiva, meditações corporais, estratégias de autocuidado e ferramentas de autoavaliação. Inclui planos personalizados, desafios graduais e métodos comprovados para desenvolver amor corporal duradouro.</p>
+            </div>
+            
+            <div class="tip-box">
+                <h3>💡 Dica Fundamental:</h3>
+                <p>A imagem corporal positiva não significa amar tudo sobre seu corpo o tempo todo - isso seria irreal. Significa desenvolver uma relação geral de respeito, gratidão e aceitação, reconhecendo que seu valor como pessoa não depende de sua aparência física. Comece com pequenos atos de gentileza consigo mesmo.</p>
+            </div>
+        </div>
+
+        <!-- Página 3: Fundamentos da Imagem Corporal -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">3</div>
+                <div class="chapter-badge">CAPÍTULO 1</div>
+            </div>
+            <h2>💖 Fundamentos da Imagem Corporal</h2>
+            <div class="story-illustration">🌱➡️💖➡️🌸➡️✨</div>
+            
+            <p>A imagem corporal é a percepção, pensamentos, sentimentos e comportamentos relacionados ao próprio corpo. É uma construção complexa e multidimensional que influencia profundamente nossa autoestima, relacionamentos e qualidade de vida. Não se trata apenas de como vemos nosso corpo no espelho, mas de toda a relação emocional, mental e espiritual que desenvolvemos com nosso templo físico. Uma imagem corporal positiva é caracterizada por aceitação, gratidão e cuidado amoroso, enquanto uma imagem corporal negativa envolve crítica, rejeição e comportamentos autodestrutivos.</p>
+            
+            <div class="love-box">
+                <h3>💖 O que é Imagem Corporal Positiva?</h3>
+                <p style="color: white;">A imagem corporal positiva é uma relação de amor, respeito e gratidão com seu corpo. Não significa amar tudo sobre sua aparência o tempo todo - isso seria irreal. Significa desenvolver uma perspectiva equilibrada que reconhece seu corpo como mais do que apenas aparência: é funcionalidade, capacidade, força, resistência e o veículo através do qual você experimenta a vida. É tratar seu corpo como um amigo querido, não como um inimigo a ser conquistado.</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Percepção</div>
+                        <div class="timeline-title">Como Você Vê Seu Corpo</div>
+                        <div class="timeline-desc">A percepção corporal envolve como você vê e interpreta sua aparência física. Pode ser realista e equilibrada ou distorcida por fatores emocionais, sociais e psicológicos.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Cognição</div>
+                        <div class="timeline-title">Pensamentos Sobre Seu Corpo</div>
+                        <div class="timeline-desc">Os pensamentos incluem crenças, julgamentos e avaliações sobre seu corpo. Podem ser positivos, neutros ou negativos, influenciando diretamente como você se sente.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Emoção</div>
+                        <div class="timeline-title">Sentimentos Corporais</div>
+                        <div class="timeline-desc">As emoções relacionadas ao corpo podem variar de amor e gratidão a vergonha e desprezo. Estes sentimentos impactam profundamente seu bem-estar geral.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Comportamento</div>
+                        <div class="timeline-title">Ações Relacionadas ao Corpo</div>
+                        <div class="timeline-desc">Comportamentos incluem como você cuida, veste, move e trata seu corpo. Podem ser nutritivos e amorosos ou restritivos e punitivos.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">5</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Integração</div>
+                        <div class="timeline-title">Harmonia Corpo-Mente</div>
+                        <div class="timeline-desc">A integração saudável envolve uma relação harmoniosa entre todos os aspectos da imagem corporal, criando bem-estar holístico.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="acceptance-box">
+                <h3>🤗 As Quatro Dimensões da Imagem Corporal</h3>
+                
+                <h4 style="color: white;">1. 👁️ Dimensão Perceptual:</h4>
+                <ul style="color: white;">
+                    <li><strong>Precisão Visual:</strong> Quão precisamente você vê seu corpo</li>
+                    <li><strong>Distorções:</strong> Percepções exageradas ou minimizadas</li>
+                    <li><strong>Foco Atencional:</strong> Em que partes do corpo você se concentra</li>
+                    <li><strong>Comparações:</strong> Como você se vê em relação aos outros</li>
+                </ul>
+                
+                <h4 style="color: white;">2. 💭 Dimensão Cognitiva:</h4>
+                <ul style="color: white;">
+                    <li><strong>Crenças Corporais:</strong> O que você acredita sobre seu corpo</li>
+                    <li><strong>Pensamentos Automáticos:</strong> Diálogo interno sobre aparência</li>
+                    <li><strong>Esquemas Corporais:</strong> Estruturas mentais sobre beleza</li>
+                    <li><strong>Avaliações:</strong> Julgamentos positivos ou negativos</li>
+                </ul>
+                
+                <h4 style="color: white;">3. 💖 Dimensão Afetiva:</h4>
+                <ul style="color: white;">
+                    <li><strong>Satisfação Corporal:</strong> Contentamento com aparência</li>
+                    <li><strong>Ansiedade Corporal:</strong> Preocupação com imperfeições</li>
+                    <li><strong>Vergonha:</strong> Sentimentos de inadequação</li>
+                    <li><strong>Orgulho:</strong> Apreciação e celebração do corpo</li>
+                </ul>
+                
+                <h4 style="color: white;">4. 🤗 Dimensão Comportamental:</h4>
+                <ul style="color: white;">
+                    <li><strong>Cuidado Corporal:</strong> Como você nutre seu corpo</li>
+                    <li><strong>Evitação:</strong> Situações que você evita por insegurança</li>
+                    <li><strong>Verificação:</strong> Comportamentos de checagem corporal</li>
+                    <li><strong>Expressão:</strong> Como você se apresenta ao mundo</li>
+                </ul>
+            </div>
+            
+            <div class="wellness-box">
+                <h3>🌿 Neurociência da Imagem Corporal</h3>
+                
+                <h4 style="color: white;">🧠 Como o Cérebro Processa o Corpo:</h4>
+                <ul style="color: white;">
+                    <li><strong>Córtex Parietal:</strong> Integração de informações sensoriais corporais</li>
+                    <li><strong>Córtex Temporal:</strong> Reconhecimento e memória corporal</li>
+                    <li><strong>Córtex Pré-frontal:</strong> Julgamentos e avaliações sobre o corpo</li>
+                    <li><strong>Sistema Límbico:</strong> Emoções associadas à imagem corporal</li>
+                </ul>
+                
+                <h4 style="color: white;">⚡ Neurotransmissores e Imagem Corporal:</h4>
+                <ul style="color: white;">
+                    <li><strong>Serotonina:</strong> Bem-estar e satisfação corporal</li>
+                    <li><strong>Dopamina:</strong> Prazer e recompensa relacionados ao corpo</li>
+                    <li><strong>Cortisol:</strong> Estresse e ansiedade corporal</li>
+                    <li><strong>Oxitocina:</strong> Conexão e aceitação corporal</li>
+                </ul>
+                
+                <h4 style="color: white;">🌟 Neuroplasticidade e Mudança:</h4>
+                <ul style="color: white;">
+                    <li><strong>Rewiring Cerebral:</strong> Capacidade de formar novos padrões</li>
+                    <li><strong>Repetição Positiva:</strong> Fortalecimento de circuitos saudáveis</li>
+                    <li><strong>Mindfulness:</strong> Consciência presente do corpo</li>
+                    <li><strong>Visualização:</strong> Criação de imagens corporais positivas</li>
+                </ul>
+            </div>
+            
+            <div class="beauty-box">
+                <h3>✨ Diferenças Fundamentais</h3>
+                
+                <h4 style="color: white;">Imagem Corporal Positiva vs. Negativa:</h4>
+                <ul style="color: white;">
+                    <li><strong>💖 Positiva:</strong> Aceitação e gratidão pelo corpo</li>
+                    <li><strong>💔 Negativa:</strong> Crítica constante e rejeição</li>
+                    <li><strong>🌟 Positiva:</strong> Foco na funcionalidade e capacidades</li>
+                    <li><strong>😔 Negativa:</strong> Obsessão com "defeitos" percebidos</li>
+                </ul>
+                
+                <h4 style="color: white;">Amor-próprio vs. Narcisismo:</h4>
+                <ul style="color: white;">
+                    <li><strong>💝 Amor-próprio:</strong> Cuidado equilibrado e compassivo</li>
+                    <li><strong>👑 Narcisismo:</strong> Obsessão superficial com aparência</li>
+                    <li><strong>🤗 Amor-próprio:</strong> Inclui aceitação de imperfeições</li>
+                    <li><strong>🎭 Narcisismo:</strong> Necessidade de perfeição e admiração</li>
+                </ul>
+                
+                <h4 style="color: white;">Aceitação vs. Resignação:</h4>
+                <ul style="color: white;">
+                    <li><strong>🌸 Aceitação:</strong> Paz ativa com o corpo atual</li>
+                    <li><strong>😞 Resignação:</strong> Desistência passiva e derrotista</li>
+                    <li><strong>💪 Aceitação:</strong> Permite cuidado amoroso e crescimento</li>
+                    <li><strong>🚫 Resignação:</strong> Paralisa e impede autocuidado</li>
+                </ul>
+            </div>
+            
+            <div class="healing-box">
+                <h3>🌸 Fatores que Influenciam a Imagem Corporal</h3>
+                
+                <h4 style="color: white;">🏠 Influências da Infância:</h4>
+                <ul style="color: white;">
+                    <li><strong>Comentários Familiares:</strong> Mensagens sobre corpo e aparência</li>
+                    <li><strong>Modelos Parentais:</strong> Como pais se relacionavam com próprios corpos</li>
+                    <li><strong>Experiências de Bullying:</strong> Críticas sobre aparência física</li>
+                    <li><strong>Cultura Familiar:</strong> Valores sobre beleza e corpo</li>
+                </ul>
+                
+                <h4 style="color: white;">🌍 Fatores Socioculturais:</h4>
+                <ul style="color: white;">
+                    <li><strong>Padrões de Beleza:</strong> Ideais culturais de aparência</li>
+                    <li><strong>Mídia e Publicidade:</strong> Imagens irreais e editadas</li>
+                    <li><strong>Redes Sociais:</strong> Comparações constantes online</li>
+                    <li><strong>Pressão dos Pares:</strong> Influência de amigos e colegas</li>
+                </ul>
+                
+                <h4 style="color: white;">💼 Experiências Pessoais:</h4>
+                <ul style="color: white;">
+                    <li><strong>Mudanças Corporais:</strong> Puberdade, gravidez, envelhecimento</li>
+                    <li><strong>Problemas de Saúde:</strong> Doenças que afetam aparência</li>
+                    <li><strong>Relacionamentos:</strong> Comentários de parceiros</li>
+                    <li><strong>Traumas:</strong> Experiências que afetaram relação com corpo</li>
+                </ul>
+            </div>
+            
+            <div class="transformation-box">
+                <h3>🦋 Sinais de Imagem Corporal Saudável</h3>
+                <ul style="color: white;">
+                    <li><strong>🙏 Gratidão Corporal:</strong> Apreciação pelo que o corpo faz</li>
+                    <li><strong>💖 Autocuidado Amoroso:</strong> Cuidar do corpo com gentileza</li>
+                    <li><strong>🌟 Confiança Natural:</strong> Conforto em sua própria pele</li>
+                    <li><strong>🤗 Aceitação de Mudanças:</strong> Paz com transformações naturais</li>
+                    <li><strong>🎨 Expressão Livre:</strong> Vestir-se e mover-se com alegria</li>
+                    <li><strong>💕 Intimidade Saudável:</strong> Conforto com proximidade física</li>
+                    <li><strong>🏃 Movimento Prazeroso:</strong> Exercitar-se por bem-estar</li>
+                    <li><strong>🍎 Alimentação Intuitiva:</strong> Nutrir corpo com sabedoria</li>
+                </ul>
+            </div>
+  </div>  </div>  </div>
+
+
+  
+ <div class="navigation">
+        <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
+        <button id="nextBtn" class="nav-btn">Próximo</button>
+    </div>
+
+     <script>
+        
+    const pages = document.querySelectorAll('.page');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const progressBar = document.getElementById('progressBar');
+    const pageCounter = document.getElementById('pageCounter');
+    let currentPageIndex = 0;
+
+    function showPage(index) {
+        pages.forEach((page, i) => {
+            if (i === index) {
+                page.classList.add('active');
+            } else {
+                page.classList.remove('active');
+            }
+        });
+        updateNavigationButtons();
+        updateProgressBar();
+        updatePageCounter();
+    }
+
+    function updateNavigationButtons() {
+        prevBtn.disabled = currentPageIndex === 0;
+        nextBtn.disabled = currentPageIndex === pages.length - 1;
+    }
+
+    function updateProgressBar() {
+        const progress = (currentPageIndex / (pages.length - 1)) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+
+    function updatePageCounter() {
+        pageCounter.textContent = `${currentPageIndex + 1} / ${pages.length}`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentPageIndex > 0) {
+            currentPageIndex--;
+            showPage(currentPageIndex);
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentPageIndex < pages.length - 1) {
+            currentPageIndex++;
+            showPage(currentPageIndex);
+        }
+    });
+
+    // Initialize the first page and navigation
+    showPage(currentPageIndex);
+</script>
+
+
+                
+
+
+

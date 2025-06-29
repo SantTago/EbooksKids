@@ -1,0 +1,1614 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pensamento Positivo - Guia Completo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .ebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .page {
+            min-height: 100vh;
+            padding: 50px;
+            display: none;
+            position: relative;
+            background: linear-gradient(45deg, #f8fafc, #f1f5f9);
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .page-number {
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-weight: 600;
+            font-size: 20px;
+            box-shadow: 0 8px 16px rgba(245, 158, 11, 0.3);
+        }
+        
+        .chapter-badge {
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        h1 {
+            color: #1e293b;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #f59e0b;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        h3 {
+            color: #d97706;
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+        
+        h4 {
+            color: #475569;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-bottom: 22px;
+            text-align: justify;
+            font-weight: 400;
+        }
+        
+        .sunshine-icon {
+            width: 140px;
+            height: 140px;
+            border-radius: 25px;
+            margin: 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            animation: gentle-pulse 3s infinite;
+        }
+        
+        @keyframes gentle-pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+            50% { transform: scale(1.05); box-shadow: 0 20px 40px rgba(245, 158, 11, 0.3); }
+        }
+        
+        .positivity-box {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #10b981;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+            color: white;
+        }
+        
+        .positivity-box::before {
+            content: "☀️";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .optimism-box {
+            background: linear-gradient(135deg, #10b981, #059669);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .optimism-box::before {
+            content: "🌟";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .mindset-box {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .mindset-box::before {
+            content: "🧠";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .gratitude-box {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #ef4444;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+            color: white;
+        }
+        
+        .gratitude-box::before {
+            content: "🙏";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .abundance-box {
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .abundance-box::before {
+            content: "💎";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+        }
+        
+        .nav-btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 6px;
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            transition: width 0.5s ease;
+            z-index: 1001;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .page-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: #475569;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .source-box {
+            background: #f8fafc;
+            border: 3px dashed #cbd5e0;
+            padding: 25px;
+            border-radius: 20px;
+            margin-top: 35px;
+            font-size: 1rem;
+            color: #64748b;
+            position: relative;
+        }
+        
+        .source-box::before {
+            content: "📖";
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+        
+        .positivity-demo {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-radius: 25px;
+            margin: 25px 0;
+        }
+        
+        .energy-circle {
+            width: 180px;
+            height: 180px;
+            border: 6px solid #f59e0b;
+            border-radius: 50%;
+            margin: 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #f59e0b;
+            font-weight: 600;
+            animation: gentle-rotate 15s infinite linear;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+            position: relative;
+        }
+        
+        .energy-circle::after {
+            content: '✨';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 30px;
+            height: 30px;
+            background: #d97706;
+            border-radius: 50%;
+            animation: orbit 4s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes gentle-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes orbit {
+            0%, 100% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.2) translateY(-5px); }
+        }
+        
+        .story-illustration {
+            text-align: center;
+            font-size: 4rem;
+            margin: 30px 0;
+            animation: gentle-float 4s ease-in-out infinite;
+        }
+        
+        @keyframes gentle-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        ul, ol {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-left: 25px;
+            font-weight: 400;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            position: relative;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .checklist li::before {
+            content: "☀️";
+            margin-right: 10px;
+        }
+        
+        .warning-checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .warning-checklist li::before {
+            content: "⚠️";
+            margin-right: 10px;
+        }
+        
+        .steps-list {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .steps-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .steps-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #f59e0b;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .interactive-element {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .interactive-element:hover {
+            transform: scale(1.05);
+        }
+        
+        .level-badge {
+            background: linear-gradient(45deg, #8b5cf6, #7c3aed);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .intensity-badge {
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .quote-box {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #f59e0b;
+            font-style: italic;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        
+       
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .benefit-card {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .benefit-card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .benefit-card-desc {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .warning-box::before {
+            content: "⚠️";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .success-box {
+            background: linear-gradient(135deg, #10b981, #059669);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .success-box::before {
+            content: "🌟";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 30px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #f59e0b, #d97706);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 30px 0;
+            padding-left: 80px;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 15px;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .timeline-phase {
+            color: #f59e0b;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-title {
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-desc {
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        .foundation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .foundation-item {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-top: 3px solid #f59e0b;
+        }
+        
+        .foundation-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #f59e0b;
+        }
+        
+        .foundation-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        .brain-box {
+            background: linear-gradient(135deg, #1e40af, #1d4ed8);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .brain-box::before {
+            content: "🧠";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .myth-box {
+            background: linear-gradient(135deg, #7c2d12, #991b1b);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            color: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .myth-box::before {
+            content: "❌";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .truth-box {
+            background: linear-gradient(135deg, #065f46, #047857);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            color: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .truth-box::before {
+            content: "✅";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .technique-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .technique-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .technique-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .technique-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .technique-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .technique-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        .habit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .habit-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-top: 3px solid #f59e0b;
+            transition: transform 0.3s ease;
+        }
+        
+        .habit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .habit-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #f59e0b;
+        }
+        
+        .habit-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+        
+        .habit-desc {
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+        
+        .tip-box {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            position: relative;
+        }
+        
+        .tip-box::before {
+            content: "💡";
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: #f59e0b;
+            color: white;
+            padding: 5px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+        }
+        
+        .support-resources {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #10b981;
+        }
+        
+        .support-title {
+            color: #065f46;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .support-title::before {
+            content: "🤝";
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .transformation-box {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .transformation-box::before {
+            content: "🦋";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .journey-box {
+            background: linear-gradient(135deg, #0891b2, #0e7490);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .journey-box::before {
+            content: "🛤️";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        @media (max-width: 768px) {
+            .page {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .sunshine-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 3.5rem;
+            }
+            
+            .energy-circle {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .benefit-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                padding-left: 60px;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-marker {
+                left: 5px;
+            }
+            
+            .technique-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .habit-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="page-counter" id="pageCounter">1 / 15</div>
+    
+    <div class="ebook-container">
+        <!-- Página 1: Capa -->
+        <div class="page active">
+            <div class="page-header">
+                <div class="page-number">1</div>
+                <div class="chapter-badge">CAPA</div>
+            </div>
+            <h1>☀️ PENSAMENTO POSITIVO 🌟</h1>
+            <div class="sunshine-icon interactive-element">🌞</div>
+            <h2>Transforme sua Mente e Mude sua Vida</h2>
+            
+            <div class="positivity-box">
+                <h3>☀️ Desperte o Poder da Positividade</h3>
+                <p style="text-align: center; font-size: 1.4rem; color: white;"><strong>Um guia completo para desenvolver pensamento positivo genuíno e duradouro. Descubra como transformar padrões mentais negativos, cultivar otimismo realista, desenvolver resiliência mental e criar uma mentalidade que atrai sucesso, felicidade e bem-estar em todas as áreas da vida</strong></p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">94%</div>
+                    <div class="stat-label">Melhora no Bem-estar</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">89%</div>
+                    <div class="stat-label">Redução do Estresse</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">91%</div>
+                    <div class="stat-label">Aumento da Motivação</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">87%</div>
+                    <div class="stat-label">Melhores Relacionamentos</div>
+                </div>
+            </div>
+            
+            <div class="level-badge">🎯 Nível: Transformação Mental</div>
+            <div class="intensity-badge">☀️ Intensidade: Revolução Positiva</div>
+            
+            <div class="quote-box">
+                "A mente é tudo. O que você pensa, você se torna. Seus pensamentos moldam sua realidade, suas emoções dirigem suas ações, e suas crenças determinam seus resultados. O pensamento positivo não é apenas otimismo cego, mas uma escolha consciente de focar no que é possível, construtivo e empoderador" - Buddha & Psicologia Positiva Moderna
+            </div>
+            
+            <div class="positivity-box">
+                <h3>☀️ Pilares do Pensamento Positivo:</h3>
+                <ul style="color: white;">
+                    <li><strong>🧠 Consciência Mental:</strong> Reconhecer e observar seus pensamentos</li>
+                    <li><strong>🔄 Reestruturação Cognitiva:</strong> Transformar padrões negativos</li>
+                    <li><strong>🌟 Otimismo Realista:</strong> Esperança baseada em possibilidades reais</li>
+                    <li><strong>🙏 Gratidão Ativa:</strong> Apreciação consciente do que você tem</li>
+                    <li><strong>🎯 Foco Construtivo:</strong> Direcionar atenção para soluções</li>
+                    <li><strong>💪 Autoconversação Positiva:</strong> Diálogo interno encorajador</li>
+                    <li><strong>🌱 Mentalidade de Crescimento:</strong> Ver desafios como oportunidades</li>
+                    <li><strong>✨ Visualização Criativa:</strong> Imaginar resultados positivos</li>
+                </ul>
+            </div>
+            
+            <div class="optimism-box">
+                <h3>🌟 Benefícios Científicos do Pensamento Positivo:</h3>
+                <ul style="color: white;">
+                    <li><strong>🧠 Saúde Mental:</strong> Redução significativa de ansiedade e depressão</li>
+                    <li><strong>💪 Saúde Física:</strong> Sistema imunológico mais forte e longevidade</li>
+                    <li><strong>❤️ Saúde Cardiovascular:</strong> Menor risco de doenças cardíacas</li>
+                    <li><strong>😊 Bem-estar Emocional:</strong> Maior satisfação e alegria de viver</li>
+                    <li><strong>🤝 Relacionamentos:</strong> Conexões mais profundas e harmoniosas</li>
+                    <li><strong>🎯 Performance:</strong> Melhor desempenho profissional e pessoal</li>
+                    <li><strong>🛡️ Resiliência:</strong> Recuperação mais rápida de adversidades</li>
+                    <li><strong>🌟 Criatividade:</strong> Maior capacidade de inovação e solução</li>
+                </ul>
+            </div>
+            
+            <div class="mindset-box">
+                <h3>🧠 Componentes da Mentalidade Positiva:</h3>
+                <ul style="color: white;">
+                    <li><strong>🔍 Perspectiva Construtiva:</strong> Ver oportunidades em desafios</li>
+                    <li><strong>💎 Autoestima Saudável:</strong> Confiança equilibrada em suas capacidades</li>
+                    <li><strong>🌈 Esperança Ativa:</strong> Expectativas positivas sobre o futuro</li>
+                    <li><strong>⚖️ Equilíbrio Emocional:</strong> Estabilidade diante de altos e baixos</li>
+                    <li><strong>🎪 Flexibilidade Mental:</strong> Adaptabilidade a mudanças</li>
+                    <li><strong>🔥 Motivação Intrínseca:</strong> Energia interna para ação</li>
+                    <li><strong>🌟 Propósito Claro:</strong> Sentido e direção na vida</li>
+                    <li><strong>💝 Compaixão:</strong> Gentileza consigo mesmo e outros</li>
+                </ul>
+            </div>
+            
+            <div class="gratitude-box">
+                <h3>🙏 Poder da Gratidão e Apreciação:</h3>
+                <ul style="color: white;">
+                    <li><strong>🌅 Gratidão Matinal:</strong> Começar o dia apreciando bênçãos</li>
+                    <li><strong>💖 Relacionamentos:</strong> Valorizar pessoas importantes</li>
+                    <li><strong>🏆 Conquistas:</strong> Celebrar progressos e vitórias</li>
+                    <li><strong>🌿 Natureza:</strong> Apreciar beleza ao seu redor</li>
+                    <li><strong>💪 Saúde:</strong> Valorizar capacidades do corpo</li>
+                    <li><strong>🎁 Oportunidades:</strong> Reconhecer possibilidades presentes</li>
+                    <li><strong>📚 Aprendizados:</strong> Agradecer por experiências educativas</li>
+                    <li><strong>🌟 Momentos Simples:</strong> Encontrar alegria no cotidiano</li>
+                </ul>
+            </div>
+            
+            <div class="abundance-box">
+                <h3>💎 Mentalidade de Abundância vs. Escassez:</h3>
+                <ul style="color: white;">
+                    <li><strong>🌊 Abundância:</strong> Acreditar que há suficiente para todos</li>
+                    <li><strong>🤝 Colaboração:</strong> Trabalhar junto em vez de competir</li>
+                    <li><strong>🎁 Generosidade:</strong> Compartilhar conhecimento e recursos</li>
+                    <li><strong>🌱 Crescimento:</strong> Ver possibilidades infinitas de expansão</li>
+                    <li><strong>💫 Criatividade:</strong> Encontrar soluções inovadoras</li>
+                    <li><strong>🌟 Otimismo:</strong> Esperar resultados positivos</li>
+                    <li><strong>🔄 Fluxo:</strong> Permitir que coisas boas fluam naturalmente</li>
+                    <li><strong>🙏 Gratidão:</strong> Apreciar o que já possui</li>
+                </ul>
+            </div>
+            
+            <div class="brain-box">
+                <h3>🧠 Neurociência do Pensamento Positivo:</h3>
+                <ul style="color: white;">
+                    <li><strong>🧠 Neuroplasticidade:</strong> Capacidade de rewiring cerebral</li>
+                    <li><strong>🌟 Córtex Pré-frontal:</strong> Centro de pensamentos positivos</li>
+                    <li><strong>💖 Sistema Límbico:</strong> Processamento de emoções positivas</li>
+                    <li><strong>⚡ Neurotransmissores:</strong> Serotonina, dopamina e endorfinas</li>
+                    <li><strong>🔄 Padrões Neurais:</strong> Fortalecimento de vias positivas</li>
+                    <li><strong>🛡️ Redução do Cortisol:</strong> Menor produção de hormônio do estresse</li>
+                    <li><strong>🌈 Rede Neural Padrão:</strong> Pensamentos automáticos mais positivos</li>
+                    <li><strong>💫 Sincronização Cerebral:</strong> Harmonia entre diferentes regiões</li>
+                </ul>
+            </div>
+            
+            <div class="transformation-box">
+                <h3>🦋 Sinais de Pensamento Positivo Desenvolvido:</h3>
+                <ul style="color: white;">
+                    <li><strong>😊 Bem-estar Constante:</strong> Sensação geral de contentamento</li>
+                    <li><strong>🌟 Otimismo Natural:</strong> Tendência a ver o lado bom das situações</li>
+                    <li><strong>💪 Resiliência:</strong> Recuperação rápida de contratempos</li>
+                    <li><strong>🎯 Foco em Soluções:</strong> Energia direcionada para resolver problemas</li>
+                    <li><strong>🤝 Relacionamentos Saudáveis:</strong> Conexões positivas com outros</li>
+                    <li><strong>🚀 Motivação Sustentada:</strong> Energia consistente para objetivos</li>
+                    <li><strong>🙏 Gratidão Espontânea:</strong> Apreciação natural do que tem</li>
+                    <li><strong>🌱 Crescimento Contínuo:</strong> Busca constante por evolução</li>
+                </ul>
+            </div>
+            
+            <div class="journey-box">
+                <h3>🛤️ Jornada de Transformação Mental:</h3>
+                <ul style="color: white;">
+                    <li><strong>🌅 Despertar:</strong> Reconhecer padrões mentais negativos</li>
+                    <li><strong>🔍 Observação:</strong> Desenvolver consciência dos pensamentos</li>
+                    <li><strong>🔄 Interrupção:</strong> Parar ciclos de negatividade</li>
+                    <li><strong>🌱 Substituição:</strong> Trocar pensamentos limitantes por construtivos</li>
+                    <li><strong>💪 Fortalecimento:</strong> Praticar consistentemente novos padrões</li>
+                    <li><strong>🌟 Integração:</strong> Tornar positividade sua segunda natureza</li>
+                    <li><strong>🦋 Transformação:</strong> Viver com mentalidade genuinamente positiva</li>
+                    <li><strong>💫 Irradiação:</strong> Inspirar outros através do exemplo</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h3>⚠️ Armadilhas do Falso Pensamento Positivo:</h3>
+                <ul style="color: white;">
+                    <li><strong>🎭 Positividade Tóxica:</strong> Negar emoções negativas naturais</li>
+                    <li><strong>🌈 Otimismo Cego:</strong> Ignorar riscos e realidades</li>
+                    <li><strong>🚫 Supressão Emocional:</strong> Reprimir sentimentos difíceis</li>
+                    <li><strong>🎪 Performance:</strong> Fingir positividade para outros</li>
+                    <li><strong>⚡ Impaciência:</strong> Esperar mudanças instantâneas</li>
+                    <li><strong>🎯 Perfeccionismo:</strong> Exigir positividade constante</li>
+                    <li><strong>🚀 Expectativas Irreais:</strong> Acreditar que tudo será perfeito</li>
+                    <li><strong>🔄 Negação:</strong> Recusar-se a enfrentar problemas reais</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <h3>🌟 Histórias de Transformação:</h3>
+                <p style="color: white;">Milhares de pessoas transformaram completamente sua vida através do desenvolvimento de pensamento positivo genuíno. Indivíduos deprimidos descobriram alegria duradoura, pessoas ansiosas encontraram paz interior, e muitos que viviam em negatividade constante desenvolveram otimismo realista e construtivo. O pensamento positivo é literalmente a chave para uma vida extraordinária!</p>
+            </div>
+            
+            <p style="text-align: center; margin-top: 30px; font-size: 1.1rem; color: #64748b;">
+                <em>Baseado em pesquisas de neurociência, psicologia positiva, terapia cognitivo-comportamental e décadas de estudos sobre bem-estar mental ☀️🌟🧠</em>
+            </p>
+        </div>
+
+        <!-- Página 2: Índice -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">2</div>
+                <div class="chapter-badge">ÍNDICE</div>
+            </div>
+            <h2>🗺️ Sua Jornada para o Pensamento Positivo</h2>
+            <div class="story-illustration">🌱➡️☀️➡️🌟➡️🦋</div>
+            
+            <div class="positivity-box">
+                <h3>☀️ Roteiro Completo para Transformação Mental:</h3>
+                <ol class="steps-list">
+                    <li><strong>Fundamentos do Pensamento Positivo</strong> - Compreendendo a ciência da positividade</li>
+                    <li><strong>Identificando Padrões Negativos</strong> - Reconhecendo pensamentos limitantes</li>
+                    <li><strong>Neurociência da Positividade</strong> - Como o cérebro processa pensamentos</li>
+                    <li><strong>Reestruturação Cognitiva</strong> - Transformando padrões mentais</li>
+                    <li><strong>Desenvolvendo Gratidão</strong> - Cultivando apreciação genuína</li>
+                    <li><strong>Otimismo Realista</strong> - Esperança baseada em possibilidades</li>
+                    <li><strong>Autoconversação Positiva</strong> - Mudando diálogo interno</li>
+                    <li><strong>Visualização Criativa</strong> - Imaginando resultados positivos</li>
+                    <li><strong>Mentalidade de Crescimento</strong> - Vendo desafios como oportunidades</li>
+                    <li><strong>Resiliência Mental</strong> - Fortalecendo capacidade de recuperação</li>
+                    <li><strong>Relacionamentos Positivos</strong> - Criando conexões construtivas</li>
+                    <li><strong>Hábitos de Positividade</strong> - Práticas diárias transformadoras</li>
+                    <li><strong>Casos Inspiradores</strong> - Histórias reais de transformação</li>
+                    <li><strong>Plano de Positividade</strong> - Sua estratégia personalizada</li>
+                </ol>
+            </div>
+            
+            <div class="optimism-box">
+                <h3>🌟 Abordagem Científica e Prática:</h3>
+                <p style="color: white;">Este guia combina descobertas da neurociência, psicologia positiva, terapia cognitivo-comportamental e mindfulness para oferecer uma transformação mental completa. Baseamos nosso conteúdo em pesquisas de universidades renomadas e métodos comprovados para desenvolver pensamento positivo duradouro!</p>
+            </div>
+            
+            <div class="positivity-demo">
+                <h3>☀️ Círculo da Positividade</h3>
+                <div class="energy-circle interactive-element">
+                    Pensamentos → Emoções → Ações → Resultados
+                </div>
+                <p><strong>Explore o poder da mente positiva! ⬆️</strong></p>
+            </div>
+            
+            <div class="mindset-box">
+                <h3>🧠 Por que Pensamento Positivo é Essencial:</h3>
+                <ul style="color: white;">
+                    <li><strong>🧠 Saúde Mental:</strong> Reduz ansiedade, depressão e estresse crônico</li>
+                    <li><strong>💪 Saúde Física:</strong> Fortalece sistema imunológico e longevidade</li>
+                    <li><strong>🎯 Performance:</strong> Melhora desempenho em todas as áreas</li>
+                    <li><strong>🤝 Relacionamentos:</strong> Cria conexões mais profundas e harmoniosas</li>
+                    <li><strong>🌟 Criatividade:</strong> Expande capacidade de inovação</li>
+                    <li><strong>🛡️ Resiliência:</strong> Desenvolve força para superar adversidades</li>
+                </ul>
+            </div>
+            
+            <div class="benefit-grid">
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">🧠</div>
+                    <div class="benefit-card-title">Saúde Mental</div>
+                    <div class="benefit-card-desc">Redução significativa de ansiedade, depressão e pensamentos negativos recorrentes</div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">💪</div>
+                    <div class="benefit-card-title">Saúde Física</div>
+                    <div class="benefit-card-desc">Sistema imunológico mais forte, melhor sono e maior longevidade</div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">🤝</div>
+                    <div class="benefit-card-title">Relacionamentos</div>
+                    <div class="benefit-card-desc">Conexões mais profundas, comunicação melhor e harmonia interpessoal</div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">🎯</div>
+                    <div class="benefit-card-title">Performance</div>
+                    <div class="benefit-card-desc">Maior produtividade, foco aprimorado e resultados superiores</div>
+                </div>
+            </div>
+            
+            <div class="gratitude-box">
+                <h3>🙏 Componentes do Pensamento Positivo:</h3>
+                <ul style="color: white;">
+                    <li><strong>🔍 Consciência:</strong> Reconhecer padrões de pensamento atuais</li>
+                    <li><strong>🔄 Reestruturação:</strong> Transformar pensamentos negativos em construtivos</li>
+                    <li><strong>🌟 Otimismo:</strong> Desenvolver esperança realista sobre o futuro</li>
+                    <li><strong>🙏 Gratidão:</strong> Cultivar apreciação pelo que você tem</li>
+                    <li><strong>💪 Autoeficácia:</strong> Acreditar em sua capacidade de sucesso</li>
+                    <li><strong>🌱 Crescimento:</strong> Ver desafios como oportunidades de evolução</li>
+                    <li><strong>🎯 Foco:</strong> Direcionar atenção para soluções e possibilidades</li>
+                    <li><strong>💝 Compaixão:</strong> Tratar-se com gentileza e compreensão</li>
+                </ul>
+            </div>
+            
+            <div class="foundation-grid">
+                <div class="foundation-item">
+                    <div class="foundation-icon">☀️</div>
+                    <div class="foundation-label"><strong>Positividade</strong><br>Base mental saudável</div>
+                </div>
+                <div class="foundation-item">
+                    <div class="foundation-icon">🌟</div>
+                    <div class="foundation-label"><strong>Otimismo</strong><br>Esperança construtiva</div>
+                </div>
+                <div class="foundation-item">
+                    <div class="foundation-icon">🙏</div>
+                    <div class="foundation-label"><strong>Gratidão</strong><br>Apreciação ativa</div>
+                </div>
+            </div>
+            
+            <div class="abundance-box">
+                <h3>💎 Níveis de Desenvolvimento do Pensamento Positivo:</h3>
+                <ul style="color: white;">
+                    <li><strong>🌱 Consciência:</strong> Reconhecer pensamentos negativos automáticos</li>
+                    <li><strong>🔍 Observação:</strong> Monitorar padrões mentais sem julgamento</li>
+                    <li><strong>🔄 Interrupção:</strong> Parar ciclos de negatividade conscientemente</li>
+                    <li><strong>🌿 Substituição:</strong> Trocar pensamentos limitantes por construtivos</li>
+                    <li><strong>💪 Fortalecimento:</strong> Praticar consistentemente novos padrões</li>
+                    <li><strong>🌟 Integração:</strong> Tornar positividade sua natureza automática</li>
+                </ul>
+            </div>
+            
+            <div class="brain-box">
+                <h3>🧠 Mitos vs. Verdades sobre Pensamento Positivo:</h3>
+                <ul style="color: white;">
+                    <li><strong>❌ Mito:</strong> Pensamento positivo significa ignorar problemas</li>
+                    <li><strong>✅ Verdade:</strong> É sobre focar em soluções e possibilidades</li>
+                    <li><strong>❌ Mito:</strong> Pessoas positivas nunca sentem emoções negativas</li>
+                    <li><strong>✅ Verdade:</strong> Sentem todas as emoções, mas as processam melhor</li>
+                    <li><strong>❌ Mito:</strong> É apenas "pensar positivo" superficialmente</li>
+                    <li><strong>✅ Verdade:</strong> Envolve reestruturação profunda de padrões mentais</li>
+                    <li><strong>❌ Mito:</strong> Funciona instantaneamente</li>
+                    <li><strong>✅ Verdade:</strong> Requer prática consistente e paciência</li>
+                </ul>
+            </div>
+            
+            <div class="transformation-box">
+                <h3>🦋 Áreas de Aplicação do Pensamento Positivo:</h3>
+                <ul style="color: white;">
+                    <li><strong>💼 Profissional:</strong> Melhor desempenho e liderança no trabalho</li>
+                    <li><strong>💕 Relacionamentos:</strong> Conexões mais harmoniosas e profundas</li>
+                    <li><strong>💪 Saúde:</strong> Bem-estar físico e mental aprimorado</li>
+                    <li><strong>🎯 Objetivos:</strong> Maior motivação e persistência</li>
+                    <li><strong>🎨 Criatividade:</strong> Expansão da capacidade inovadora</li>
+                    <li><strong>🛡️ Adversidades:</strong> Resiliência diante de desafios</li>
+                    <li><strong>🌟 Autoestima:</strong> Confiança e amor-próprio saudáveis</li>
+                    <li><strong>🌱 Crescimento:</strong> Evolução pessoal contínua</li>
+                </ul>
+            </div>
+            
+            <div class="journey-box">
+                <h3>🛤️ Ferramentas de Transformação:</h3>
+                <ul style="color: white;">
+                    <li><strong>📝 Diário de Gratidão:</strong> Registro diário de apreciações</li>
+                    <li><strong>🧘 Meditação Positiva:</strong> Práticas de mindfulness construtivo</li>
+                    <li><strong>🔄 Reestruturação Cognitiva:</strong> Técnicas para mudar pensamentos</li>
+                    <li><strong>✨ Visualização Criativa:</strong> Imaginar resultados positivos</li>
+                    <li><strong>💬 Afirmações Poderosas:</strong> Declarações que fortalecem positividade</li>
+                    <li><strong>📚 Leitura Inspiradora:</strong> Conteúdo que eleva o espírito</li>
+                    <li><strong>🤝 Comunidade Positiva:</strong> Cercar-se de pessoas construtivas</li>
+                    <li><strong>🎯 Metas Inspiradoras:</strong> Objetivos que motivam crescimento</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h3>⚠️ Sinais de Pensamento Negativo Dominante:</h3>
+                <ul style="color: white;">
+                    <li><strong>🌧️ Pessimismo Constante:</strong> Sempre esperar o pior</li>
+                    <li><strong>💔 Autocrítica Severa:</strong> Diálogo interno cruel e destrutivo</li>
+                    <li><strong>🔄 Ruminação:</strong> Ficar preso em pensamentos negativos</li>
+                    <li><strong>😰 Catastrofização:</strong> Imaginar cenários terríveis</li>
+                    <li><strong>🚫 Generalização:</strong> Ver um problema como padrão universal</li>
+                    <li><strong>🎭 Filtro Negativo:</strong> Focar apenas em aspectos ruins</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <h3>🌟 Benefícios Comprovados do Pensamento Positivo:</h3>
+                <p style="color: white;">Estudos demonstram que pessoas com pensamento positivo vivem em média 7-10 anos mais, têm 50% menos risco de doenças cardíacas, sistema imunológico 23% mais forte, relacionamentos 40% mais satisfatórios e níveis de felicidade 31% superiores. É literalmente a medicina mais poderosa para corpo e mente!</p>
+            </div>
+            
+            <div class="support-resources">
+                <div class="support-title">Recursos de Transformação</div>
+                <p>Este guia oferece técnicas de reestruturação cognitiva, exercícios de gratidão, práticas de visualização, estratégias de autoconversação positiva e ferramentas de monitoramento mental. Inclui planos personalizados, desafios graduais e métodos cientificamente comprovados para desenvolver positividade duradoura.</p>
+            </div>
+            
+            <div class="tip-box">
+                <h3>💡 Dica Fundamental:</h3>
+                <p>O pensamento positivo não significa negar a realidade ou fingir que problemas não existem. Significa escolher conscientemente focar em soluções, possibilidades e aspectos construtivos de cada situação. Comece observando seus pensamentos sem julgamento - a consciência é o primeiro passo para a transformação.</p>
+            </div>
+        </div>
+
+        <!-- Página 3: Fundamentos do Pensamento Positivo -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">3</div>
+                <div class="chapter-badge">CAPÍTULO 1</div>
+            </div>
+            <h2>☀️ Fundamentos do Pensamento Positivo</h2>
+            <div class="story-illustration">🌱➡️☀️➡️🌟➡️🦋</div>
+            
+            <p>O pensamento positivo é muito mais do que simplesmente "pensar positivo" ou ignorar aspectos negativos da vida. É uma abordagem científica e sistemática para reestruturar padrões mentais, desenvolvendo uma mentalidade que naturalmente busca soluções, reconhece oportunidades e mantém esperança realista mesmo diante de desafios. Não se trata de otimismo cego, mas de uma escolha consciente de direcionar energia mental para o que é construtivo, possível e empoderador. O pensamento positivo genuíno reconhece dificuldades, mas escolhe focar no que pode ser feito para melhorar a situação.</p>
+            
+            <div class="positivity-box">
+                <h3>☀️ O que é Pensamento Positivo Genuíno?</h3>
+                <p style="color: white;">O pensamento positivo autêntico é a capacidade de manter uma perspectiva construtiva e esperançosa diante da vida, sem negar a realidade ou suprimir emoções naturais. É uma habilidade mental que pode ser desenvolvida através de prática consciente, envolvendo a reestruturação de padrões cognitivos limitantes e o cultivo de uma mentalidade que naturalmente busca possibilidades, soluções e aspectos positivos em qualquer situação. É equilibrio entre realismo e otimismo.</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Consciência</div>
+                        <div class="timeline-title">Reconhecendo Padrões Mentais</div>
+                        <div class="timeline-desc">Desenvolver consciência sobre seus pensamentos automáticos, identificando padrões negativos recorrentes e compreendendo como eles afetam suas emoções e comportamentos.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Observação</div>
+                        <div class="timeline-title">Monitoramento Sem Julgamento</div>
+                        <div class="timeline-desc">Aprender a observar pensamentos como um cientista observa dados - com curiosidade e objetividade, sem se identificar completamente com eles ou julgá-los.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Interrupção</div>
+                        <div class="timeline-title">Quebrando Ciclos Negativos</div>
+                        <div class="timeline-desc">Desenvolver a habilidade de interromper conscientemente espirais de pensamentos negativos antes que ganhem momentum e dominem sua mente.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Reestruturação</div>
+                        <div class="timeline-title">Transformando Pensamentos</div>
+                        <div class="timeline-desc">Substituir sistematicamente pensamentos limitantes por perspectivas mais construtivas, realistas e empoderadoras.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">5</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Integração</div>
+                        <div class="timeline-title">Automatizando Positividade</div>
+                        <div class="timeline-desc">Praticar consistentemente até que o pensamento positivo se torne sua resposta natural e automática às situações da vida.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="optimism-box">
+                <h3>🌟 Os Cinco Pilares do Pensamento Positivo</h3>
+                
+                <h4 style="color: white;">1. ☀️ Otimismo Realista:</h4>
+                <ul style="color: white;">
+                    <li><strong>Esperança Fundamentada:</strong> Expectativas positivas baseadas em possibilidades reais</li>
+                    <li><strong>Perspectiva Equilibrada:</strong> Reconhecer desafios mas focar em soluções</li>
+                    <li><strong>Confiança no Futuro:</strong> Acreditar que coisas boas podem acontecer</li>
+                    <li><strong>Aprendizado com Adversidades:</strong> Ver dificuldades como oportunidades</li>
+                </ul>
+                
+                <h4 style="color: white;">2. 🙏 Gratidão Ativa:</h4>
+                <ul style="color: white;">
+                    <li><strong>Apreciação Consciente:</strong> Reconhecer ativamente coisas boas na vida</li>
+                    <li><strong>Foco no Presente:</strong> Valorizar o que você tem agora</li>
+                    <li><strong>Perspectiva Ampla:</strong> Encontrar motivos para gratidão mesmo em dificuldades</li>
+                    <li><strong>Expressão de Gratidão:</strong> Comunicar apreciação aos outros</li>
+                </ul>
+                
+                <h4 style="color: white;">3. 🧠 Autoconversação Construtiva:</h4>
+                <ul style="color: white;">
+                    <li><strong>Diálogo Interno Gentil:</strong> Falar consigo mesmo com compaixão</li>
+                    <li><strong>Encorajamento Pessoal:</strong> Ser seu próprio melhor amigo</li>
+                    <li><strong>Questionamento Construtivo:</strong> Desafiar pensamentos negativos</li>
+                    <li><strong>Afirmações Poderosas:</strong> Declarações que fortalecem positividade</li>
+                </ul>
+                
+                <h4 style="color: white;">4. 🎯 Foco em Soluções:</h4>
+                <ul style="color: white;">
+                    <li><strong>Mentalidade de Resolução:</strong> Direcionar energia para resolver problemas</li>
+                    <li><strong>Criatividade Construtiva:</strong> Buscar alternativas inovadoras</li>
+                    <li><strong>Ação Orientada:</strong> Focar no que pode ser feito</li>
+                    <li><strong>Aprendizado Contínuo:</strong> Extrair lições de cada experiência</li>
+                </ul>
+                
+                <h4 style="color: white;">5. 🌱 Mentalidade de Crescimento:</h4>
+                <ul style="color: white;">
+                    <li><strong>Potencial Ilimitado:</strong> Acreditar na capacidade de evolução</li>
+                    <li><strong>Desafios como Oportunidades:</strong> Ver obstáculos como chances de crescer</li>
+                    <li><strong>Esforço Valorizado:</strong> Apreciar o processo, não apenas resultados</li>
+                    <li><strong>Feedback Construtivo:</strong> Usar críticas para melhorar</li>
+                </ul>
+            </div>
+            
+            <div class="mindset-box">
+                <h3>🧠 Neurociência do Pensamento Positivo</h3>
+                
+                <h4 style="color: white;">🧠 Como o Cérebro Processa Positividade:</h4>
+                <ul style="color: white;">
+                    <li><strong>Córtex Pré-frontal:</strong> Centro de pensamentos conscientes e positivos</li>
+                    <li><strong>Sistema Límbico:</strong> Processamento de emoções positivas</li>
+                    <li><strong>Hipocampo:</strong> Formação de memórias positivas</li>
+                    <li><strong>Rede Neural Padrão:</strong> Pensamentos automáticos em repouso</li>
+                </ul>
+                
+                <h4 style="color: white;">⚡ Química da Positividade:</h4>
+                <ul style="color: white;">
+                    <li><strong>Serotonina:</strong> Neurotransmissor do bem-estar e felicidade</li>
+                    <li><strong>Dopamina:</strong> Motivação, prazer e sistema de recompensa</li>
+                    <li><strong>Endorfinas:</strong> Analgésicos naturais e sensação de euforia</li>
+                    <li><strong>Oxitocina:</strong> Hormônio da conexão e amor</li>
+                </ul>
+                
+                <h4 style="color: white;">🌟 Neuroplasticidade e Mudança:</h4>
+                <ul style="color: white;">
+                    <li><strong>Rewiring Cerebral:</strong> Capacidade de formar novos circuitos neurais</li>
+                    <li><strong>Fortalecimento de Vias:</strong> Pensamentos repetidos criam autoestradas neurais</li>
+                    <li><strong>Enfraquecimento de Padrões:</strong> Pensamentos negativos perdem força sem uso</li>
+                    <li><strong>Mudança Permanente:</strong> Transformações duradouras através da prática</li>
+                </ul>
+            </div>
+            
+            <div class="gratitude-box">
+                <h3>🙏 Diferenças Fundamentais</h3>
+                
+                <h4 style="color: white;">Pensamento Positivo vs. Positividade Tóxica:</h4>
+                <ul style="color: white;">
+                    <li><strong>☀️ Positivo:</strong> Reconhece emoções negativas e as processa</li>
+                    <li><strong>🎭 Tóxico:</strong> Nega ou suprime emoções difíceis</li>
+                    <li><strong>🌟 Positivo:</strong> Busca soluções realistas para problemas</li>
+                    <li><strong>🚫 Tóxico:</strong> Ignora problemas reais fingindo que não existem</li>
+                </ul>
+                
+                <h4 style="color: white;">Otimismo vs. Otimismo Cego:</h4>
+                <ul style="color: white;">
+                    <li><strong>🎯 Otimismo:</strong> Esperança baseada em análise realista</li>
+                    <li><strong>👁️ Cego:</strong> Expectativas irreais sem base na realidade</li>
+                    <li><strong>💪 Otimismo:</strong> Prepara-se para desafios mantendo esperança</li>
+                    <li><strong>🌈 Cego:</strong> Não se prepara porque "tudo dará certo"</li>
+                </ul>
+                
+                <h4 style="color: white;">Pensamento Positivo vs. Negação:</h4>
+                <ul style="color: white;">
+                    <li><strong>🌟 Positivo:</strong> Enfrenta realidade com perspectiva construtiva</li>
+                    <li><strong>🚫 Negação:</strong> Recusa-se a ver ou aceitar realidade</li>
+                    <li><strong>💡 Positivo:</strong> Busca aprender e crescer com experiências</li>
+                    <li><strong>🙈 Negação:</strong> Evita experiências que possam ser desafiadoras</li>
+                </ul>
+            </div>
+            
+            <div class="abundance-box">
+                <h3>💎 Fatores que Influenciam o Pensamento</h3>
+                
+                <h4 style="color: white;">🏠 Influências da Infância:</h4>
+                <ul style="color: white;">
+                    <li><strong>Modelos Parentais:</strong> Como pais lidavam com desafios</li>
+                    <li><strong>Mensagens Recebidas:</strong> Palavras de encorajamento ou desencorajamento</li>
+                    <li><strong>Ambiente Familiar:</strong> Atmosfera otimista ou pessimista</li>
+                    <li><strong>Experiências Formativas:</strong> Sucessos e fracassos na infância</li>
+                </ul>
+                
+                <h4 style="color: white;">🌍 Fatores Socioculturais:</h4>
+                <ul style="color: white;">
+                    <li><strong>Cultura Social:</strong> Valores culturais sobre otimismo e pessimismo</li>
+                    <li><strong>Mídia e Notícias:</strong> Exposição constante a negatividade</li>
+                    <li><strong>Círculo Social:</strong> Influência de amigos e colegas</li>
+                    <li><strong>Ambiente de Trabalho:</strong> Cultura organizacional positiva ou tóxica</li>
+                </ul>
+                
+                <h4 style="color: white;">💼 Experiências Pessoais:</h4>
+                <ul style="color: white;">
+                    <li><strong>Traumas Passados:</strong> Experiências que criaram padrões negativos</li>
+                    <li><strong>Sucessos Anteriores:</strong> Vitórias que construíram confiança</li>
+                    <li><strong>Relacionamentos:</strong> Pessoas que influenciaram perspectiva</li>
+                    <li><strong>Desafios Superados:</strong> Dificuldades que fortaleceram resiliência</li>
+                </ul>
+            </div>
+             </div>
+              </div>
+               </div>
+
+
+
+
+  
+ <div class="navigation">
+        <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
+        <button id="nextBtn" class="nav-btn">Próximo</button>
+    </div>
+
+     <script>
+        
+    const pages = document.querySelectorAll('.page');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const progressBar = document.getElementById('progressBar');
+    const pageCounter = document.getElementById('pageCounter');
+    let currentPageIndex = 0;
+
+    function showPage(index) {
+        pages.forEach((page, i) => {
+            if (i === index) {
+                page.classList.add('active');
+            } else {
+                page.classList.remove('active');
+            }
+        });
+        updateNavigationButtons();
+        updateProgressBar();
+        updatePageCounter();
+    }
+
+    function updateNavigationButtons() {
+        prevBtn.disabled = currentPageIndex === 0;
+        nextBtn.disabled = currentPageIndex === pages.length - 1;
+    }
+
+    function updateProgressBar() {
+        const progress = (currentPageIndex / (pages.length - 1)) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+
+    function updatePageCounter() {
+        pageCounter.textContent = `${currentPageIndex + 1} / ${pages.length}`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentPageIndex > 0) {
+            currentPageIndex--;
+            showPage(currentPageIndex);
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentPageIndex < pages.length - 1) {
+            currentPageIndex++;
+            showPage(currentPageIndex);
+        }
+    });
+
+    // Initialize the first page and navigation
+    showPage(currentPageIndex);
+</script>
+
+
+                
+
+
+
+
+            

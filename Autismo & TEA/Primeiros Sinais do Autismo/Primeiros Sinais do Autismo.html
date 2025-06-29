@@ -1,0 +1,1622 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeiros Sinais do Autismo - Guia Completo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .ebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .page {
+            min-height: 100vh;
+            padding: 50px;
+            display: none;
+            position: relative;
+            background: linear-gradient(45deg, #f8fafc, #f1f5f9);
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .page-number {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-weight: 600;
+            font-size: 20px;
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+        }
+        
+        .chapter-badge {
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        h1 {
+            color: #1e293b;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #4f46e5;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        h3 {
+            color: #7c3aed;
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+        
+        h4 {
+            color: #475569;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-bottom: 22px;
+            text-align: justify;
+            font-weight: 400;
+        }
+        
+        .autism-icon {
+            width: 140px;
+            height: 140px;
+            border-radius: 25px;
+            margin: 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            animation: gentle-pulse 3s infinite;
+        }
+        
+        @keyframes gentle-pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+            50% { transform: scale(1.05); box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3); }
+        }
+        
+        .early-signs-box {
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #10b981;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+            color: white;
+        }
+        
+        .early-signs-box::before {
+            content: "👶";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .development-box {
+            background: linear-gradient(135deg, #ec4899, #f97316);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .development-box::before {
+            content: "🧠";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .communication-box {
+            background: linear-gradient(135deg, #8b5cf6, #a855f7);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .communication-box::before {
+            content: "💬";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .behavior-box {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #ef4444;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+            color: white;
+        }
+        
+        .behavior-box::before {
+            content: "🎭";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .social-box {
+            background: linear-gradient(135deg, #10b981, #059669);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .social-box::before {
+            content: "👥";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+        }
+        
+        .nav-btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 6px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            transition: width 0.5s ease;
+            z-index: 1001;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .page-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: #475569;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .source-box {
+            background: #f8fafc;
+            border: 3px dashed #cbd5e0;
+            padding: 25px;
+            border-radius: 20px;
+            margin-top: 35px;
+            font-size: 1rem;
+            color: #64748b;
+            position: relative;
+        }
+        
+        .source-box::before {
+            content: "📖";
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+        
+        .autism-demo {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #e0f2fe, #f3e8ff);
+            border-radius: 25px;
+            margin: 25px 0;
+        }
+        
+        .puzzle-circle {
+            width: 180px;
+            height: 180px;
+            border: 6px solid #4f46e5;
+            border-radius: 50%;
+            margin: 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #4f46e5;
+            font-weight: 600;
+            animation: gentle-rotate 15s infinite linear;
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+            position: relative;
+        }
+        
+        .puzzle-circle::after {
+            content: '🧩';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 30px;
+            height: 30px;
+            background: #7c3aed;
+            border-radius: 50%;
+            animation: orbit 4s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes gentle-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes orbit {
+            0%, 100% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.2) translateY(-5px); }
+        }
+        
+        .story-illustration {
+            text-align: center;
+            font-size: 4rem;
+            margin: 30px 0;
+            animation: gentle-float 4s ease-in-out infinite;
+        }
+        
+        @keyframes gentle-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        ul, ol {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-left: 25px;
+            font-weight: 400;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            position: relative;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .checklist li::before {
+            content: "✅";
+            margin-right: 10px;
+        }
+        
+        .warning-checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .warning-checklist li::before {
+            content: "⚠️";
+            margin-right: 10px;
+        }
+        
+        .steps-list {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .steps-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .steps-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #4f46e5;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .interactive-element {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .interactive-element:hover {
+            transform: scale(1.05);
+        }
+        
+        .age-badge {
+            background: linear-gradient(45deg, #7c3aed, #a855f7);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .severity-badge {
+            background: linear-gradient(45deg, #f59e0b, #f97316);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .quote-box {
+            background: linear-gradient(135deg, #fef3c7, #fed7aa);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #f59e0b;
+            font-style: italic;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        
+       
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .milestone-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .milestone-card {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .milestone-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .milestone-card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .milestone-card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .milestone-card-desc {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .red-flag-box {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .red-flag-box::before {
+            content: "🚩";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .warning-box::before {
+            content: "⚠️";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .success-box {
+            background: linear-gradient(135deg, #10b981, #059669);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .success-box::before {
+            content: "🌟";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 30px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #4f46e5, #7c3aed);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 30px 0;
+            padding-left: 80px;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 15px;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #4f46e5;
+        }
+        
+        .timeline-age {
+            color: #4f46e5;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-title {
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-desc {
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .assessment-item {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-top: 3px solid #4f46e5;
+        }
+        
+        .assessment-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #4f46e5;
+        }
+        
+        .assessment-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        .intervention-box {
+            background: linear-gradient(135deg, #1e40af, #3730a3);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .intervention-box::before {
+            content: "🎯";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .myth-box {
+            background: linear-gradient(135deg, #7c2d12, #991b1b);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            color: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .myth-box::before {
+            content: "❌";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .fact-box {
+            background: linear-gradient(135deg, #065f46, #047857);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            color: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .fact-box::before {
+            content: "✅";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .sensory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .sensory-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .sensory-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .sensory-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .sensory-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .sensory-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        .professional-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .professional-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-top: 3px solid #10b981;
+            transition: transform 0.3s ease;
+        }
+        
+        .professional-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .professional-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #10b981;
+        }
+        
+        .professional-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+        
+        .professional-desc {
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+        
+        .tip-box {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            position: relative;
+        }
+        
+        .tip-box::before {
+            content: "💡";
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: #4f46e5;
+            color: white;
+            padding: 5px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+        }
+        
+        .support-resources {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #10b981;
+        }
+        
+        .support-title {
+            color: #065f46;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .support-title::before {
+            content: "🤝";
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .page {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .autism-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 3.5rem;
+            }
+            
+            .puzzle-circle {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .milestone-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                padding-left: 60px;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-marker {
+                left: 5px;
+            }
+            
+            .sensory-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .professional-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="page-counter" id="pageCounter">1 / 15</div>
+    
+    <div class="ebook-container">
+        <!-- Página 1: Capa -->
+        <div class="page active">
+            <div class="page-header">
+                <div class="page-number">1</div>
+                <div class="chapter-badge">CAPA</div>
+            </div>
+            <h1>🧩 PRIMEIROS SINAIS DO AUTISMO 👶</h1>
+            <div class="autism-icon interactive-element">🌈</div>
+            <h2>Guia Completo para Identificação Precoce</h2>
+            
+            <div class="early-signs-box">
+                <h3>👶 Detecção Precoce Salva Vidas</h3>
+                <p style="text-align: center; font-size: 1.4rem; color: white;"><strong>Um guia essencial para pais, cuidadores e profissionais identificarem os primeiros sinais do Transtorno do Espectro Autista (TEA), promovendo intervenção precoce e desenvolvimento pleno da criança</strong></p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">1:36</div>
+                    <div class="stat-label">Prevalência do Autismo</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">18M</div>
+                    <div class="stat-label">Meses - Primeiros Sinais</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4x</div>
+                    <div class="stat-label">Mais Comum em Meninos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Melhora com Intervenção Precoce</div>
+                </div>
+            </div>
+            
+            <div class="age-badge">🎯 Foco: 0-5 anos</div>
+            <div class="severity-badge">📈 Importância: Crítica</div>
+            
+            <div class="quote-box">
+                "A identificação precoce dos sinais do autismo é a chave para desbloquear o potencial de cada criança. Quanto mais cedo identificamos, mais cedo podemos intervir e mais significativo será o impacto positivo no desenvolvimento" - Dr. Catherine Lord, Especialista em Autismo
+            </div>
+            
+            <div class="early-signs-box">
+                <h3>👶 Principais Áreas de Observação:</h3>
+                <ul style="color: white;">
+                    <li><strong>💬 Comunicação:</strong> Desenvolvimento da linguagem e comunicação não-verbal</li>
+                    <li><strong>👥 Interação Social:</strong> Habilidades sociais e conexão com outros</li>
+                    <li><strong>🎭 Comportamento:</strong> Padrões repetitivos e interesses restritos</li>
+                    <li><strong>🧠 Desenvolvimento:</strong> Marcos do desenvolvimento neuromotor</li>
+                    <li><strong>👁️ Atenção:</strong> Foco, atenção compartilhada e resposta ao nome</li>
+                    <li><strong>🎨 Brincadeiras:</strong> Imaginação, imitação e brincadeira simbólica</li>
+                    <li><strong>🌟 Sensorial:</strong> Processamento sensorial e reações a estímulos</li>
+                    <li><strong>😊 Emocional:</strong> Expressão e regulação emocional</li>
+                </ul>
+            </div>
+            
+            <div class="development-box">
+                <h3>🧠 Marcos do Desenvolvimento por Idade:</h3>
+                <ul style="color: white;">
+                    <li><strong>👶 6 meses:</strong> Sorrisos sociais, contato visual, resposta ao nome</li>
+                    <li><strong>🍼 12 meses:</strong> Gestos (acenar, apontar), primeiras palavras</li>
+                    <li><strong>🚶 18 meses:</strong> Imitação, brincadeira funcional, 10-20 palavras</li>
+                    <li><strong>🧸 24 meses:</strong> Frases de 2 palavras, brincadeira simbólica</li>
+                    <li><strong>🎨 36 meses:</strong> Conversação simples, brincadeira imaginativa</li>
+                    <li><strong>📚 48 meses:</strong> Narrativas, amizades, jogos cooperativos</li>
+                    <li><strong>🎓 60 meses:</strong> Conversas complexas, compreensão social</li>
+                </ul>
+            </div>
+            
+            <div class="communication-box">
+                <h3>💬 Sinais de Alerta na Comunicação:</h3>
+                <ul style="color: white;">
+                    <li><strong>🔇 Ausência de Resposta:</strong> Não responde ao nome aos 12 meses</li>
+                    <li><strong>👋 Gestos Limitados:</strong> Não aponta ou acena aos 14 meses</li>
+                    <li><strong>🗣️ Atraso na Fala:</strong> Não fala palavras aos 16 meses</li>
+                    <li><strong>📞 Ecolalia:</strong> Repetição de palavras sem contexto</li>
+                    <li><strong>👁️ Contato Visual:</strong> Evita ou tem dificuldade com contato visual</li>
+                    <li><strong>🎭 Expressão Facial:</strong> Expressões limitadas ou inadequadas</li>
+                    <li><strong>📢 Tom de Voz:</strong> Voz monótona ou entonação incomum</li>
+                    <li><strong>🔄 Perda de Habilidades:</strong> Regressão em habilidades já adquiridas</li>
+                </ul>
+            </div>
+            
+            <div class="behavior-box">
+                <h3>🎭 Padrões Comportamentais Típicos:</h3>
+                <ul style="color: white;">
+                    <li><strong>🔄 Movimentos Repetitivos:</strong> Balançar, bater palmas, girar</li>
+                    <li><strong>🎯 Interesses Intensos:</strong> Foco excessivo em objetos específicos</li>
+                    <li><strong>📏 Necessidade de Rotina:</strong> Resistência a mudanças</li>
+                    <li><strong>🧸 Uso Incomum de Brinquedos:</strong> Alinhar, girar ao invés de brincar</li>
+                    <li><strong>👂 Sensibilidade Sensorial:</strong> Hiper ou hiposensibilidade</li>
+                    <li><strong>🚫 Comportamentos Autolesivos:</strong> Bater a cabeça, morder-se</li>
+                    <li><strong>😤 Crises Intensas:</strong> Meltdowns desproporcionais</li>
+                    <li><strong>🎪 Brincadeira Limitada:</strong> Falta de imaginação ou imitação</li>
+                </ul>
+            </div>
+            
+            <div class="social-box">
+                <h3>👥 Desafios na Interação Social:</h3>
+                <ul style="color: white;">
+                    <li><strong>👶 Apego Atípico:</strong> Não busca conforto quando machucado</li>
+                    <li><strong>👀 Atenção Compartilhada:</strong> Não compartilha interesse ou alegria</li>
+                    <li><strong>🤝 Reciprocidade Social:</strong> Dificuldade em jogos de ida e volta</li>
+                    <li><strong>😊 Sorriso Social:</strong> Sorrisos limitados ou inadequados</li>
+                    <li><strong>👫 Interesse em Pares:</strong> Preferência por brincar sozinho</li>
+                    <li><strong>🎭 Imitação:</strong> Não imita gestos ou expressões</li>
+                    <li><strong>💝 Empatia:</strong> Dificuldade em reconhecer emoções dos outros</li>
+                    <li><strong>🎪 Brincadeira Social:</strong> Não participa de jogos sociais simples</li>
+                </ul>
+            </div>
+            
+            <div class="red-flag-box">
+                <h3>🚩 Sinais de Alerta Críticos:</h3>
+                <ul style="color: white;">
+                    <li><strong>⚠️ Qualquer Idade:</strong> Perda de habilidades sociais ou de linguagem</li>
+                    <li><strong>👶 6 meses:</strong> Poucos ou nenhum sorriso ou expressão de alegria</li>
+                    <li><strong>🍼 9 meses:</strong> Pouco ou nenhum compartilhamento de sons, sorrisos</li>
+                    <li><strong>🚶 12 meses:</strong> Pouco ou nenhum balbucio, gestos (acenar, apontar)</li>
+                    <li><strong>🧸 16 meses:</strong> Nenhuma palavra falada</li>
+                    <li><strong>🎨 24 meses:</strong> Nenhuma frase de duas palavras com significado</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h3>⚠️ Quando Buscar Avaliação:</h3>
+                <ul style="color: white;">
+                    <li><strong>🔍 Múltiplos Sinais:</strong> Presença de vários sinais simultaneamente</li>
+                    <li><strong>📉 Regressão:</strong> Perda de habilidades já desenvolvidas</li>
+                    <li><strong>👨‍👩‍👧‍👦 Preocupação Familiar:</strong> Intuição dos pais sobre desenvolvimento</li>
+                    <li><strong>🏫 Observação Escolar:</strong> Professores notam diferenças</li>
+                    <li><strong>⏰ Persistência:</strong> Sinais que não melhoram com o tempo</li>
+                    <li><strong>🎯 Impacto Funcional:</strong> Interferência no dia a dia</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <h3>🌟 Benefícios da Identificação Precoce:</h3>
+                <ul style="color: white;">
+                    <li><strong>🚀 Intervenção Precoce:</strong> Máxima neuroplasticidade cerebral</li>
+                    <li><strong>📈 Melhor Prognóstico:</strong> Desenvolvimento mais significativo</li>
+                    <li><strong>👨‍👩‍👧‍👦 Apoio Familiar:</strong> Orientação e suporte adequados</li>
+                    <li><strong>🎓 Preparação Escolar:</strong> Adaptações educacionais apropriadas</li>
+                    <li><strong>🤝 Rede de Apoio:</strong> Conexão com recursos e comunidade</li>
+                    <li><strong>💪 Autonomia:</strong> Desenvolvimento de habilidades de vida</li>
+                    <li><strong>😊 Qualidade de Vida:</strong> Bem-estar da criança e família</li>
+                    <li><strong>🌈 Potencial Máximo:</strong> Realização das capacidades individuais</li>
+                </ul>
+            </div>
+            
+            <div class="intervention-box">
+                <h3>🎯 Tipos de Intervenção Precoce:</h3>
+                <ul style="color: white;">
+                    <li><strong>🗣️ Fonoaudiologia:</strong> Desenvolvimento da comunicação</li>
+                    <li><strong>🧠 Terapia Ocupacional:</strong> Habilidades motoras e sensoriais</li>
+                    <li><strong>🎭 Análise do Comportamento (ABA):</strong> Modificação comportamental</li>
+                    <li><strong>👥 Terapia Social:</strong> Habilidades de interação</li>
+                    <li><strong>🎨 Terapias Criativas:</strong> Arte, música, movimento</li>
+                    <li><strong>👨‍👩‍👧‍👦 Orientação Familiar:</strong> Capacitação dos pais</li>
+                    <li><strong>🏫 Suporte Educacional:</strong> Adaptações pedagógicas</li>
+                    <li><strong>💊 Suporte Médico:</strong> Acompanhamento multidisciplinar</li>
+                </ul>
+            </div>
+            
+            <p style="text-align: center; margin-top: 30px; font-size: 1.1rem; color: #64748b;">
+                <em>Baseado em diretrizes internacionais, pesquisas científicas e melhores práticas em detecção precoce do autismo 🧩👶🌈</em>
+            </p>
+        </div>
+
+        <!-- Página 2: Índice -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">2</div>
+                <div class="chapter-badge">ÍNDICE</div>
+            </div>
+            <h2>🗺️ Sua Jornada na Identificação Precoce</h2>
+            <div class="story-illustration">👶➡️🔍➡️🧩➡️🌟</div>
+            
+            <div class="early-signs-box">
+                <h3>🧭 Roteiro Completo para Detecção Precoce:</h3>
+                <ol class="steps-list">
+                    <li><strong>Entendendo o Autismo</strong> - Conceitos fundamentais e espectro</li>
+                    <li><strong>Desenvolvimento Típico vs Atípico</strong> - Marcos e comparações</li>
+                    <li><strong>Sinais por Faixa Etária</strong> - 0-6 meses até 5 anos</li>
+                    <li><strong>Comunicação e Linguagem</strong> - Desenvolvimento verbal e não-verbal</li>
+                    <li><strong>Interação Social</strong> - Habilidades sociais e vínculos</li>
+                    <li><strong>Comportamentos Repetitivos</strong> - Estereotipias e rituais</li>
+                    <li><strong>Processamento Sensorial</strong> - Hiper e hiposensibilidades</li>
+                    <li><strong>Ferramentas de Triagem</strong> - M-CHAT, CARS e outros</li>
+                    <li><strong>Quando Buscar Ajuda</strong> - Sinais de alerta críticos</li>
+                    <li><strong>Processo de Avaliação</strong> - Diagnóstico multidisciplinar</li>
+                    <li><strong>Intervenção Precoce</strong> - Terapias e abordagens</li>
+                    <li><strong>Apoio à Família</strong> - Recursos e orientações</li>
+                    <li><strong>Mitos e Verdades</strong> - Desmistificando o autismo</li>
+                    <li><strong>Recursos e Próximos Passos</strong> - Onde buscar ajuda</li>
+                </ol>
+            </div>
+            
+            <div class="development-box">
+                <h3>🧠 Abordagem Científica e Prática:</h3>
+                <p style="color: white;">Este guia combina as mais recentes descobertas científicas sobre o desenvolvimento infantil com orientações práticas para observação e identificação dos primeiros sinais do autismo. Baseamos nossas informações em pesquisas internacionais, diretrizes clínicas e experiências de famílias e profissionais especializados!</p>
+            </div>
+            
+            <div class="autism-demo">
+                <h3>🧩 Espectro do Autismo: Diversidade Única</h3>
+                <div class="puzzle-circle interactive-element">
+                    Cada Criança é Única no Espectro
+                </div>
+                <p><strong>Explore a diversidade do autismo! ⬆️</strong></p>
+            </div>
+            
+            <div class="communication-box">
+                <h3>💬 Por que a identificação precoce é crucial:</h3>
+                <ul style="color: white;">
+                    <li><strong>🧠 Neuroplasticidade:</strong> Cérebro mais adaptável nos primeiros anos</li>
+                    <li><strong>⏰ Janela Crítica:</strong> Período ideal para desenvolvimento</li>
+                    <li><strong>📈 Melhores Resultados:</strong> Intervenção precoce = maior progresso</li>
+                    <li><strong>👨‍👩‍👧‍👦 Qualidade Familiar:</strong> Reduz estresse e ansiedade</li>
+                    <li><strong>🎓 Preparação Escolar:</strong> Facilita inclusão educacional</li>
+                    <li><strong>🌟 Potencial Máximo:</strong> Desenvolve capacidades únicas</li>
+                </ul>
+            </div>
+            
+            <div class="milestone-grid">
+                <div class="milestone-card">
+                    <div class="milestone-card-icon">👶</div>
+                    <div class="milestone-card-title">0-12 Meses</div>
+                    <div class="milestone-card-desc">Primeiros sinais sociais, comunicação pré-verbal e marcos motores fundamentais</div>
+                </div>
+                <div class="milestone-card">
+                    <div class="milestone-card-icon">🚶</div>
+                    <div class="milestone-card-title">12-24 Meses</div>
+                    <div class="milestone-card-desc">Desenvolvimento da linguagem, gestos comunicativos e brincadeira funcional</div>
+                </div>
+                <div class="milestone-card">
+                    <div class="milestone-card-icon">🧸</div>
+                    <div class="milestone-card-title">2-3 Anos</div>
+                    <div class="milestone-card-desc">Brincadeira simbólica, interação social e comunicação mais complexa</div>
+                </div>
+                <div class="milestone-card">
+                    <div class="milestone-card-icon">🎨</div>
+                    <div class="milestone-card-title">3-5 Anos</div>
+                    <div class="milestone-card-desc">Habilidades sociais avançadas, narrativas e preparação escolar</div>
+                </div>
+            </div>
+            
+            <div class="behavior-box">
+                <h3>🎭 Áreas de Observação Detalhada:</h3>
+                <ul style="color: white;">
+                    <li><strong>👁️ Contato Visual:</strong> Qualidade, duração e contexto social</li>
+                    <li><strong>👋 Gestos:</strong> Apontar, acenar, mostrar objetos</li>
+                    <li><strong>🗣️ Comunicação:</strong> Verbal, não-verbal e funcional</li>
+                    <li><strong>🎪 Brincadeira:</strong> Funcional, simbólica e social</li>
+                    <li><strong>🔄 Comportamentos:</strong> Repetitivos, rituais e interesses</li>
+                    <li><strong>👂 Processamento:</strong> Sensorial e resposta a estímulos</li>
+                    <li><strong>😊 Regulação:</strong> Emocional e comportamental</li>
+                    <li><strong>🤝 Relacionamentos:</strong> Vínculos e interações sociais</li>
+                </ul>
+            </div>
+            
+            <div class="social-box">
+                <h3>👥 Ferramentas de Identificação:</h3>
+                <ul style="color: white;">
+                    <li><strong>📋 M-CHAT-R:</strong> Questionário para 16-30 meses</li>
+                    <li><strong>🎯 CARS:</strong> Escala de avaliação comportamental</li>
+                    <li><strong>👶 ADOS:</strong> Observação diagnóstica estruturada</li>
+                    <li><strong>📊 ADI-R:</strong> Entrevista diagnóstica revisada</li>
+                    <li><strong>🔍 STAT:</strong> Triagem para autismo em crianças pequenas</li>
+                    <li><strong>📝 Observação Clínica:</strong> Avaliação profissional especializada</li>
+                    <li><strong>👨‍👩‍👧‍👦 Relatos Familiares:</strong> Histórico e observações dos pais</li>
+                    <li><strong>🎥 Análise Comportamental:</strong> Registro e análise de comportamentos</li>
+                </ul>
+            </div>
+            
+            <div class="red-flag-box">
+                <h3>🚩 Sistema de Alerta por Cores:</h3>
+                <ul style="color: white;">
+                    <li><strong>🟢 Verde:</strong> Desenvolvimento típico - continue observando</li>
+                    <li><strong>🟡 Amarelo:</strong> Atenção - monitore mais de perto</li>
+                    <li><strong>🟠 Laranja:</strong> Preocupação - considere avaliação</li>
+                    <li><strong>🔴 Vermelho:</strong> Alerta - busque avaliação imediatamente</li>
+                    <li><strong>⚫ Preto:</strong> Emergência - intervenção urgente necessária</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h3>⚠️ Fatores de Risco e Proteção:</h3>
+                <ul style="color: white;">
+                    <li><strong>🧬 Genéticos:</strong> Histórico familiar, mutações genéticas</li>
+                    <li><strong>👶 Perinatais:</strong> Prematuridade, complicações no parto</li>
+                    <li><strong>🌍 Ambientais:</strong> Exposições durante gravidez</li>
+                    <li><strong>👨‍👩‍👧‍👦 Familiares:</strong> Idade parental, irmãos com TEA</li>
+                    <li><strong>🛡️ Proteção:</strong> Detecção precoce, intervenção adequada</li>
+                    <li><strong>💪 Resiliência:</strong> Apoio familiar e social forte</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <h3>🌟 Histórias de Esperança:</h3>
+                <p style="color: white;">Milhares de famílias ao redor do mundo descobriram que a identificação precoce dos sinais do autismo foi o primeiro passo para uma jornada de crescimento, descobertas e realizações. Cada criança no espectro tem potencial único para florescer quando recebe o apoio adequado no momento certo!</p>
+            </div>
+            
+            <div class="intervention-box">
+                <h3>🎯 Abordagens de Intervenção Precoce:</h3>
+                <ul style="color: white;">
+                    <li><strong>🎭 ABA (Applied Behavior Analysis):</strong> Análise aplicada do comportamento</li>
+                    <li><strong>🌟 TEACCH:</strong> Ensino estruturado e visual</li>
+                    <li><strong>🎪 DIR/Floortime:</strong> Desenvolvimento através do brincar</li>
+                    <li><strong>💬 PECS:</strong> Sistema de comunicação por troca de figuras</li>
+                    <li><strong>👥 Terapia Social:</strong> Habilidades de interação</li>
+                    <li><strong>🎨 Terapias Criativas:</strong> Arte, música, movimento</li>
+                    <li><strong>🏠 Intervenção Naturalística:</strong> No ambiente natural da criança</li>
+                    <li><strong>👨‍👩‍👧‍👦 Capacitação Familiar:</strong> Empoderamento dos cuidadores</li>
+                </ul>
+            </div>
+            
+            <div class="support-resources">
+                <div class="support-title">Recursos de Apoio Disponíveis</div>
+                <p>Este guia conecta você com uma rede abrangente de recursos, desde organizações especializadas até grupos de apoio familiar. Incluímos informações sobre profissionais qualificados, centros de diagnóstico, programas de intervenção precoce e recursos financeiros disponíveis para famílias.</p>
+            </div>
+            
+            <div class="tip-box">
+                <h3>💡 Dica Importante:</h3>
+                <p>Lembre-se: você conhece seu filho melhor que ninguém. Se algo não parece certo, confie em seus instintos e busque uma segunda opinião. A identificação precoce pode fazer toda a diferença na vida de uma criança no espectro do autismo.</p>
+            </div>
+        </div>
+
+        <!-- Página 3: Entendendo o Autismo -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">3</div>
+                <div class="chapter-badge">CAPÍTULO 1</div>
+            </div>
+            <h2>🧩 Entendendo o Transtorno do Espectro Autista</h2>
+            <div class="story-illustration">🧠➡️🌈➡️🧩➡️💫</div>
+            
+            <p>O Transtorno do Espectro Autista (TEA) é uma condição neurológica complexa que afeta o desenvolvimento da comunicação, interação social e comportamento. É chamado de "espectro" porque se manifesta de forma muito variada entre diferentes pessoas, desde aquelas que precisam de apoio substancial até outras que vivem de forma independente e podem ter talentos excepcionais em áreas específicas.</p>
+            
+            <div class="early-signs-box">
+                <h3>🧩 O que é o Transtorno do Espectro Autista?</h3>
+                <p style="color: white;">O TEA é um transtorno do neurodesenvolvimento caracterizado por diferenças persistentes na comunicação social, interação social e padrões restritos e repetitivos de comportamento, interesses ou atividades. Essas características estão presentes desde o início do desenvolvimento, embora possam não se manifestar completamente até que as demandas sociais excedam a capacidade da pessoa.</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">1:36</div>
+                    <div class="stat-label">Crianças com TEA nos EUA</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4:1</div>
+                    <div class="stat-label">Proporção Meninos:Meninas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2M</div>
+                    <div class="stat-label">Pessoas com TEA no Brasil</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Possibilidades Únicas</div>
+                </div>
+            </div>
+            
+            <div class="development-box">
+                <h3>🧠 Características Principais do TEA</h3>
+                
+                <h4 style="color: white;">💬 Comunicação Social:</h4>
+                <ul style="color: white;">
+                    <li><strong>Comunicação Não-Verbal:</strong> Dificuldades com contato visual, gestos, expressões faciais</li>
+                    <li><strong>Reciprocidade Social:</strong> Desafios em conversas de ida e volta</li>
+                    <li><strong>Relacionamentos:</strong> Dificuldade em desenvolver e manter relacionamentos apropriados</li>
+                    <li><strong>Atenção Compartilhada:</strong> Limitações em compartilhar interesses com outros</li>
+                </ul>
+                
+                <h4 style="color: white;">🔄 Comportamentos Repetitivos:</h4>
+                <ul style="color: white;">
+                    <li><strong>Movimentos Estereotipados:</strong> Balançar, bater palmas, girar</li>
+                    <li><strong>Rituais e Rotinas:</strong> Necessidade de sameness e previsibilidade</li>
+                    <li><strong>Interesses Restritos:</strong> Foco intenso em tópicos específicos</li>
+                    <li><strong>Sensibilidades Sensoriais:</strong> Hiper ou hiposensibilidade a estímulos</li>
+                </ul>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <div class="timeline-age">1943</div>
+                        <div class="timeline-title">Leo Kanner</div>
+                        <div class="timeline-desc">Primeira descrição do "autismo infantil precoce" baseada em 11 crianças com características similares de isolamento social e comportamentos repetitivos.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <div class="timeline-age">1944</div>
+                        <div class="timeline-title">Hans Asperger</div>
+                        <div class="timeline-desc">Descrição da "psicopatia autística" em crianças com inteligência preservada mas dificuldades sociais significativas.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <div class="timeline-age">1980</div>
+                        <div class="timeline-title">DSM-III</div>
+                        <div class="timeline-desc">Primeira inclusão do autismo como categoria diagnóstica separada no Manual Diagnóstico e Estatístico.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <div class="timeline-age">2013</div>
+                        <div class="timeline-title">DSM-5</div>
+                        <div class="timeline-desc">Introdução do conceito de "Transtorno do Espectro Autista" unificando diferentes condições em um único espectro.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="communication-box">
+                <h3>💬 Níveis de Apoio no TEA</h3>
+                
+                <h4 style="color: white;">🌟 Nível 1 - Requer Apoio:</h4>
+                <ul style="color: white;">
+                    <li><strong>Comunicação:</strong> Dificuldades sutis na comunicação social</li>
+                    <li><strong>Flexibilidade:</strong> Problemas com organização e planejamento</li>
+                    <li><strong>Independência:</strong> Pode viver de forma independente com apoio mínimo</li>
+                    <li><strong>Relacionamentos:</strong> Interesse em relacionamentos mas dificuldades práticas</li>
+                </ul>
+                
+                <h4 style="color: white;">🌈 Nível 2 - Requer Apoio Substancial:</h4>
+                <ul style="color: white;">
+                    <li><strong>Comunicação:</strong> Déficits marcantes mesmo com apoio</li>
+                    <li><strong>Comportamento:</strong> Inflexibilidade interfere no funcionamento</li>
+                    <li><strong>Mudanças:</strong> Dificuldade significativa com transições</li>
+                    <li><strong>Apoio:</strong> Necessita suporte diário estruturado</li>
+                </ul>
+                
+                <h4 style="color: white;">💙 Nível 3 - Requer Apoio Muito Substancial:</h4>
+                <ul style="color: white;">
+                    <li><strong>Comunicação:</strong> Déficits severos limitam funcionamento</li>
+                    <li><strong>Comportamento:</strong> Inflexibilidade extrema e comportamentos repetitivos</li>
+                    <li><strong>Funcionamento:</strong> Limitações significativas em todas as áreas</li>
+                    <li><strong>Cuidado:</strong> Necessita apoio intensivo e constante</li>
+                </ul>
+            </div>
+            
+            <div class="behavior-box">
+                <h3>🎭 Condições Frequentemente Associadas</h3>
+                <ul style="color: white;">
+                    <li><strong>🧠 Deficiência Intelectual:</strong> Presente em cerca de 30-40% dos casos</li>
+                    <li><strong>⚡ TDAH:</strong> Transtorno de Déficit de Atenção e Hiperatividade</li>
+                    <li><strong>😰 Ansiedade:</strong> Transtornos de ansiedade são comuns</li>
+                    <li><strong>😔 Depressão:</strong> Especialmente em adolescentes e adultos</li>
+                    <li><strong>🛌 Distúrbios do Sono:</strong> Dificuldades para adormecer e manter o sono</li>
+                    <li><strong>🍽️ Problemas Alimentares:</strong> Seletividade alimentar e sensibilidades</li>
+                    <li><strong>🚶 Problemas Motores:</strong> Coordenação e habilidades motoras finas</li>
+                    <li><strong>⚡ Epilepsia:</strong> Mais comum em pessoas com TEA</li>
+                </ul>
+            </div>
+            
+            <div class="social-box">
+                <h3>👥 Forças e Talentos Comuns no TEA</h3>
+                <ul style="color: white;">
+                    <li><strong>🎯 Atenção aos Detalhes:</strong> Capacidade excepcional de notar padrões</li>
+                    <li><strong>🧮 Habilidades Matemáticas:</strong> Talento para números e cálculos</li>
+                    <li><strong>🎨 Criatividade Única:</strong> Perspectivas originais e inovadoras</li>
+                    <li><strong>📚 Memória Excepcional:</strong> Capacidade de reter informações detalhadas</li>
+                    <li><strong>🎵 Habilidades Musicais:</strong> Talento para música e ritmo</li>
+                    <li><strong>💻 Tecnologia:</strong> Aptidão para programação e sistemas</li>
+                    <li><strong>🔍 Pensamento Sistemático:</strong> Compreensão de sistemas complexos</li>
+                    <li><strong>💎 Honestidade:</strong> Comunicação direta e autêntica</li>
+                </ul>
+            </div>
+            
+            <div class="myth-box">
+                <h3>❌ Mitos Sobre o Autismo</h3>
+                <ul style="color: white;">
+                    <li><strong>Mito:</strong> Vacinas causam autismo</li>
+                    <li><strong>Mito:</strong> Pessoas com autismo não sentem emoções</li>
+                    <li><strong>Mito:</strong> Autismo é causado por má parentalidade</li>
+                    <li><strong>Mito:</strong> Todas as pessoas com autismo são savants</li>
+                    <li><strong>Mito:</strong> Autismo pode ser "curado"</li>
+                    <li><strong>Mito:</strong> Pessoas com autismo não podem ter relacionamentos</li>
+                </ul>
+            </div>
+            
+            <div class="fact-box">
+                <h3>✅ Fatos Sobre o Autismo</h3>
+                <ul style="color: white;">
+                    <li><strong>Fato:</strong> Autismo tem base neurológica e genética</li>
+                    <li><strong>Fato:</strong> Pessoas com autismo têm emoções profundas</li>
+                    <li><strong>Fato:</strong> Intervenção precoce melhora significativamente os resultados</li>
+                    <li><strong>Fato:</strong> Cada pessoa no espectro é única</li>
+                    <li><strong>Fato:</strong> Muitas pessoas com autismo vivem vidas plenas e independentes</li>
+                    <li><strong>Fato:</strong> Apoio adequado permite máximo desenvolvimento</li>
+                </ul>
+            </div>
+            
+            <div class="sensory-grid">
+                <div class="sensory-card">
+                    <div class="sensory-icon">👁️</div>
+                    <div class="sensory-name">Visual</div>
+                    <div class="sensory-desc">Sensibilidade à luz, cores, padrões visuais</div>
+                </div>
+                <div class="sensory-card">
+                    <div class="sensory-icon">👂</div>
+                    <div class="sensory-name">Auditivo</div>
+                    <div class="sensory-desc">Hiper ou hiposensibilidade a sons</div>
+                </div>
+                <div class="sensory-card">
+                    <div class="sensory-icon">👃</div>
+                    <div class="sensory-name">Olfativo</div>
+                    <div class="sensory-desc">Reações intensas a cheiros</div>
+                </div>
+                <div class="sensory-card">
+                    <div class="sensory-icon">👅</div>
+                    <div class="sensory-name">Gustativo</div>
+                    <div class="sensory-desc">Seletividade alimentar por textura/sabor</div>
+                </div>
+                <div class="sensory-card">
+                    <div class="sensory-icon">✋</div>
+                    <div class="sensory-name">Tátil</div>
+                    <div class="sensory-desc">Sensibilidade ao toque e texturas</div>
+                </div>
+                <div class="sensory-card">
+                    <div class="sensory-icon">🏃</div>
+                    <div class="sensory-name">Proprioceptivo</div>
+                    <div class="sensory-desc">Consciência da posição corporal</div>
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <h3>⚠️ Sinais Precoces por Domínio</h3>
+                
+                <h4 style="color: white;">💬 Comunicação (0-24 meses):</h4>
+                <ul style="color: white;">
+                    <li>Não responde ao nome aos 12 meses</li>
+                    <li>Não aponta para mostrar interesse aos 14 meses</li>
+                    <li>Não fala palavras aos 16 meses</li>
+                    <li>Não faz frases de 2 palavras aos 24 meses</li>
+                </ul>
+                
+                <h4 style="color: white;">👥 Social (0-36 meses):</h4>
+                <ul style="color: white;">
+                    <li>Pouco contato visual ou sorriso social</li>
+                    <li>Não compartilha alegria ou interesse</li>
+                    <li>Não imita gestos ou expressões</li>
+                    <li>Prefere brincar sozinho consistentemente</li>
+                </ul>
+                
+                <h4 style="color: white;">🔄 Comportamental (12-48 meses):</h4>
+                <ul style="color: white;">
+                    <li>Movimentos repetitivos (balançar, girar)</li>
+                    <li>Uso incomum de brinquedos (alinhar, girar)</li>
+                    <li>Resistência extrema a mudanças</li>
+                    <li>Interesses muito restritos e intensos</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <h3>🌟 Perspectiva Positiva</h3>
+                <p style="color: white;">O autismo não é uma doença a ser curada, mas uma forma diferente de experimentar e interagir com o mundo. Com compreensão, apoio adequado e intervenções apropriadas, pessoas no espectro autista podem desenvolver suas habilidades únicas, formar relacionamentos significativos e contribuir de forma valiosa para a sociedade. A chave está na identificação precoce e no fornecimento de suporte personalizado que respeite a individualidade de cada pessoa.</p>
+            </div>
+        </div>
+
+        <!-- Página 4: Desenvolvimento Típico vs Atípico -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">4</div>
+                <div class="chapter-badge">CAPÍTULO 2</div>
+            </div>
+            <h2>📊 Desenvolvimento Típico vs Atípico</h2>
+            <div class="story-illustration">👶➡️📈➡️🔍➡️🎯</div>
+            
+            <p>Compreender as diferenças entre o desenvolvimento típico e atípico é fundamental para identificar precocemente os sinais do autismo. Cada criança se desenvolve em seu próprio ritmo, mas existem marcos gerais que a maioria das crianças atinge dentro de faixas etárias específicas. Quando esses marcos são significativamente atrasados ou ausentes, pode indicar a necessidade de uma avaliação mais detalhada.</p>
+            
+            <div class="early-signs-box">
+                <h3>📊 Marcos do Desenvolvimento: Guia Comparativo</h3>
+                <p style="color: white;">Os marcos do desenvolvimento são habilidades que a maioria das crianças desenvolve em idades específicas. Eles servem como pontos de referência para avaliar se uma criança está se desenvolvendo conforme esperado. É importante lembrar que existe variação normal, mas desvios significativos podem indicar necessidade de avaliação profissional.</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">6M</div>
+                    <div class="timeline-content">
+                        <div class="timeline-age">6 Meses</div>
+                        <div class="timeline-title">Marcos Sociais e Comunicativos</div>
+                        <div class="timeline-desc">
+                            <strong>✅ Típico:</strong> Sorri espontaneamente, especialmente para pessoas; gosta de brincar com outros; responde a emoções de outras pessoas<br>
+                            <strong>⚠️ Sinais de Alerta:</strong> Poucos ou nenhum sorriso; não responde ao próprio nome; expressões faciais limitadas
+                        </div>
+                    </div>
+                </div>
+ </div> </div> </div>
+
+
+ 
+ <div class="navigation">
+        <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
+        <button id="nextBtn" class="nav-btn">Próximo</button>
+    </div>
+
+     <script>
+        
+    const pages = document.querySelectorAll('.page');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const progressBar = document.getElementById('progressBar');
+    const pageCounter = document.getElementById('pageCounter');
+    let currentPageIndex = 0;
+
+    function showPage(index) {
+        pages.forEach((page, i) => {
+            if (i === index) {
+                page.classList.add('active');
+            } else {
+                page.classList.remove('active');
+            }
+        });
+        updateNavigationButtons();
+        updateProgressBar();
+        updatePageCounter();
+    }
+
+    function updateNavigationButtons() {
+        prevBtn.disabled = currentPageIndex === 0;
+        nextBtn.disabled = currentPageIndex === pages.length - 1;
+    }
+
+    function updateProgressBar() {
+        const progress = (currentPageIndex / (pages.length - 1)) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+
+    function updatePageCounter() {
+        pageCounter.textContent = `${currentPageIndex + 1} / ${pages.length}`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentPageIndex > 0) {
+            currentPageIndex--;
+            showPage(currentPageIndex);
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentPageIndex < pages.length - 1) {
+            currentPageIndex++;
+            showPage(currentPageIndex);
+        }
+    });
+
+    // Initialize the first page and navigation
+    showPage(currentPageIndex);
+</script>
+
+
+                

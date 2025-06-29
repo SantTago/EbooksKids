@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebooks - Necessidades Especiais</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .book-cover {
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .book-cover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Necessidades Especiais</h1>
+            <p class="text-xl md:text-2xl font-light mb-2">Guias completos para desenvolvimento inclusivo e especializado</p>
+            <p class="text-lg opacity-90">Métodos comprovados por terapeutas e especialistas em inclusão</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Nossa Coleção de Ebooks</h2>
+            <p class="text-gray-600 text-lg">Conhecimento especializado para pais, educadores e profissionais da saúde</p>
+        </div>
+
+        <!-- Books Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            
+            <!-- Book 1 -->
+            <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer">
+                <div class="h-80 bg-gradient-to-br from-blue-500 to-blue-700 flex flex-col justify-between p-6 text-white">
+                    <div>
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-2xl">🧩</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Transtorno do Espectro Autista</h3>
+                        <p class="text-sm opacity-90">Compreendendo e apoiando o autismo</p>
+                    </div>
+                    <div class="text-xs opacity-75">Dra. Ana Autismo</div>
+                </div>
+                <div class="p-4">
+                    <div class="mb-3">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-lg font-bold text-blue-600">R$ 45,90</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold">Para Assinantes</button>
+                        <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book 2 -->
+            <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer">
+                <div class="h-80 bg-gradient-to-br from-green-500 to-green-700 flex flex-col justify-between p-6 text-white">
+                    <div>
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-2xl">💙</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Síndrome de Down</h3>
+                        <p class="text-sm opacity-90">Desenvolvimento e potencialidades</p>
+                    </div>
+                    <div class="text-xs opacity-75">Dr. Pedro Síndrome</div>
+                </div>
+                <div class="p-4">
+                    <div class="mb-3">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-lg font-bold text-green-600">R$ 42,90</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold">Para Assinantes</button>
+                        <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book 3 -->
+            <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer">
+                <div class="h-80 bg-gradient-to-br from-purple-500 to-purple-700 flex flex-col justify-between p-6 text-white">
+                    <div>
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-2xl">🏫</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Inclusão Escolar</h3>
+                        <p class="text-sm opacity-90">Estratégias para educação inclusiva</p>
+                    </div>
+                    <div class="text-xs opacity-75">Pedagoga Carla Inclusão</div>
+                </div>
+                <div class="p-4">
+                    <div class="mb-3">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-lg font-bold text-purple-600">R$ 38,90</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold">Para Assinantes</button>
+                        <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book 4 -->
+            <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer">
+                <div class="h-80 bg-gradient-to-br from-orange-500 to-orange-700 flex flex-col justify-between p-6 text-white">
+                    <div>
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-2xl">👁️</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Deficiência Visual</h3>
+                        <p class="text-sm opacity-90">Adaptações e desenvolvimento sensorial</p>
+                    </div>
+                    <div class="text-xs opacity-75">Especialista João Visual</div>
+                </div>
+                <div class="p-4">
+                    <div class="mb-3">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-lg font-bold text-orange-600">R$ 40,90</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold">Para Assinantes</button>
+                        <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book 5 -->
+            <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer">
+                <div class="h-80 bg-gradient-to-br from-teal-500 to-teal-700 flex flex-col justify-between p-6 text-white">
+                    <div>
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-2xl">👂</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Deficiência Auditiva</h3>
+                        <p class="text-sm opacity-90">Comunicação e desenvolvimento linguístico</p>
+                    </div>
+                    <div class="text-xs opacity-75">Fono. Marina Auditiva</div>
+                </div>
+                <div class="p-4">
+                    <div class="mb-3">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-lg font-bold text-teal-600">R$ 37,90</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold">Para Assinantes</button>
+                        <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book 6 -->
+            <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer">
+                <div class="h-80 bg-gradient-to-br from-pink-500 to-pink-700 flex flex-col justify-between p-6 text-white">
+                    <div>
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-2xl">🎯</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Terapias Especializadas</h3>
+                        <p class="text-sm opacity-90">Intervenções terapêuticas eficazes</p>
+                    </div>
+                    <div class="text-xs opacity-75">Terapeuta Lucia Especializada</div>
+                </div>
+                <div class="p-4">
+                    <div class="mb-3">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-lg font-bold text-pink-600">R$ 43,90</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold">Para Assinantes</button>
+                        <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book 7 -->
+            <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer">
+                <div class="h-80 bg-gradient-to-br from-red-500 to-red-700 flex flex-col justify-between p-6 text-white">
+                    <div>
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-2xl">🦽</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Paralisia Cerebral</h3>
+                        <p class="text-sm opacity-90">Reabilitação e qualidade de vida</p>
+                    </div>
+                    <div class="text-xs opacity-75">Fisio. Carlos Paralisia</div>
+                </div>
+                <div class="p-4">
+                    <div class="mb-3">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-lg font-bold text-red-600">R$ 41,90</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold">Para Assinantes</button>
+                        <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book 8 -->
+            <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer">
+                <div class="h-80 bg-gradient-to-br from-indigo-500 to-indigo-700 flex flex-col justify-between p-6 text-white">
+                    <div>
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                            <span class="text-2xl">🌟</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Desenvolvimento Atípico</h3>
+                        <p class="text-sm opacity-90">Compreendendo diferentes trajetórias</p>
+                    </div>
+                    <div class="text-xs opacity-75">Dra. Patricia Desenvolvimento</div>
+                </div>
+                <div class="p-4">
+                    <div class="mb-3">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-lg font-bold text-indigo-600">R$ 39,90</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold">Para Assinantes</button>
+                        <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center mt-16">
+            <div class="bg-white rounded-2xl shadow-lg p-8 max-w-2xl mx-auto">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Transforme vidas com conhecimento especializado</h3>
+                <p class="text-gray-600 mb-6">Acesse nossa biblioteca completa de ebooks sobre Necessidades Especiais, desenvolvidos por especialistas renomados.</p>
+                <button class="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all">
+                    Ver Todos os Ebooks
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16">
+        <div class="container mx-auto px-6 text-center">
+            <h4 class="text-xl font-semibold mb-4">Necessidades Especiais - Ebooks Especializados</h4>
+            <p class="text-gray-400 mb-4">Conhecimento que promove inclusão e potencializa o desenvolvimento de cada criança</p>
+            <div class="flex justify-center space-x-6 text-sm text-gray-400">
+                <a href="#" class="hover:text-white transition-colors">Sobre</a>
+                <a href="#" class="hover:text-white transition-colors">Contato</a>
+                <a href="#" class="hover:text-white transition-colors">Suporte</a>
+                <a href="#" class="hover:text-white transition-colors">Política de Privacidade</a>
+            </div>
+        </div>
+    </footer>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'956ffabce188ba13',t:'MTc1MTE0MzAxOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

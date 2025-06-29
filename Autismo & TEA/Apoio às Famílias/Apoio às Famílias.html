@@ -1,0 +1,1645 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apoio às Famílias - Guia Completo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .ebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .page {
+            min-height: 100vh;
+            padding: 50px;
+            display: none;
+            position: relative;
+            background: linear-gradient(45deg, #f8fafc, #f1f5f9);
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .page-number {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-weight: 600;
+            font-size: 20px;
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+        }
+        
+        .chapter-badge {
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        h1 {
+            color: #1e293b;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #4f46e5;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        h3 {
+            color: #7c3aed;
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+        
+        h4 {
+            color: #475569;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-bottom: 22px;
+            text-align: justify;
+            font-weight: 400;
+        }
+        
+        .family-icon {
+            width: 140px;
+            height: 140px;
+            border-radius: 25px;
+            margin: 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            animation: gentle-pulse 3s infinite;
+        }
+        
+        @keyframes gentle-pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+            50% { transform: scale(1.05); box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3); }
+        }
+        
+        .support-box {
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #10b981;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+            color: white;
+        }
+        
+        .support-box::before {
+            content: "🤝";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .love-box {
+            background: linear-gradient(135deg, #ec4899, #f97316);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .love-box::before {
+            content: "💝";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .strength-box {
+            background: linear-gradient(135deg, #8b5cf6, #a855f7);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .strength-box::before {
+            content: "💪";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .challenge-box {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #ef4444;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+            color: white;
+        }
+        
+        .challenge-box::before {
+            content: "⚡";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .strategy-box {
+            background: linear-gradient(135deg, #10b981, #059669);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .strategy-box::before {
+            content: "💡";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+        }
+        
+        .nav-btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 6px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            transition: width 0.5s ease;
+            z-index: 1001;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .page-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: #475569;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .source-box {
+            background: #f8fafc;
+            border: 3px dashed #cbd5e0;
+            padding: 25px;
+            border-radius: 20px;
+            margin-top: 35px;
+            font-size: 1rem;
+            color: #64748b;
+            position: relative;
+        }
+        
+        .source-box::before {
+            content: "📚";
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+        
+        .family-demo {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #e0f2fe, #f3e8ff);
+            border-radius: 25px;
+            margin: 25px 0;
+        }
+        
+        .family-circle {
+            width: 180px;
+            height: 180px;
+            border: 6px solid #4f46e5;
+            border-radius: 50%;
+            margin: 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #4f46e5;
+            font-weight: 600;
+            animation: gentle-rotate 15s infinite linear;
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+            position: relative;
+        }
+        
+        .family-circle::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 30px;
+            height: 30px;
+            background: #7c3aed;
+            border-radius: 50%;
+            animation: orbit 4s infinite;
+        }
+        
+        @keyframes gentle-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes orbit {
+            0%, 100% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.2) translateY(-5px); }
+        }
+        
+        .story-illustration {
+            text-align: center;
+            font-size: 4rem;
+            margin: 30px 0;
+            animation: gentle-float 4s ease-in-out infinite;
+        }
+        
+        @keyframes gentle-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        ul, ol {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-left: 25px;
+            font-weight: 400;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            position: relative;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .checklist li::before {
+            content: "✅";
+            margin-right: 10px;
+        }
+        
+        .steps-list {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .steps-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .steps-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #4f46e5;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .interactive-element {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .interactive-element:hover {
+            transform: scale(1.05);
+        }
+        
+        .level-badge {
+            background: linear-gradient(45deg, #7c3aed, #a855f7);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .age-badge {
+            background: linear-gradient(45deg, #f59e0b, #f97316);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .quote-box {
+            background: linear-gradient(135deg, #fef3c7, #fed7aa);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #f59e0b;
+            font-style: italic;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        
+       
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .aspect-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .aspect-card {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .aspect-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .aspect-card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .aspect-card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .aspect-card-desc {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .milestone-box {
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .milestone-box::before {
+            content: "🎯";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .warning-box::before {
+            content: "⚠️";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .hope-box {
+            background: linear-gradient(135deg, #10b981, #059669);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .hope-box::before {
+            content: "🌟";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .resource-card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-top: 4px solid #4f46e5;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .resource-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .resource-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #1e293b;
+        }
+        
+        .resource-desc {
+            font-size: 1rem;
+            color: #64748b;
+            line-height: 1.5;
+            text-align: center;
+        }
+        
+        .benefit-list {
+            background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #10b981;
+        }
+        
+        .benefit-title {
+            color: #065f46;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #064e3b;
+        }
+        
+        .benefit-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .implementation-steps {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #3b82f6;
+        }
+        
+        .step-title {
+            color: #1e40af;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .step-item {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 3px solid #3b82f6;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .step-number {
+            background: #3b82f6;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        
+        .metric-box {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            text-align: center;
+            border: 2px solid #f59e0b;
+        }
+        
+        .metric-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            font-size: 1rem;
+            color: #78350f;
+            font-weight: 500;
+        }
+        
+        .care-box {
+            background: linear-gradient(135deg, #fce7f3, #fdf2f8);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #ec4899;
+        }
+        
+        .care-title {
+            color: #be185d;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .wellness-box {
+            background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #0284c7;
+        }
+        
+        .wellness-title {
+            color: #0c4a6e;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .community-box {
+            background: linear-gradient(135deg, #f3e8ff, #faf5ff);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #8b5cf6;
+        }
+        
+        .community-title {
+            color: #6b21a8;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .tip-box {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            position: relative;
+        }
+        
+        .tip-box::before {
+            content: "💡";
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: #4f46e5;
+            color: white;
+            padding: 5px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+        }
+        
+        .emergency-box {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border: 3px solid #ef4444;
+        }
+        
+        .emergency-title {
+            color: #dc2626;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .emergency-title::before {
+            content: "🚨";
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 30px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #4f46e5, #7c3aed);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 30px 0;
+            padding-left: 80px;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 15px;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #4f46e5;
+        }
+        
+        .timeline-phase {
+            color: #4f46e5;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-title {
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-desc {
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .page {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .family-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 3.5rem;
+            }
+            
+            .family-circle {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .aspect-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                padding-left: 60px;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-marker {
+                left: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="page-counter" id="pageCounter">1 / 15</div>
+    
+    <div class="ebook-container">
+        <!-- Página 1: Capa -->
+        <div class="page active">
+            <div class="page-header">
+                <div class="page-number">1</div>
+                <div class="chapter-badge">CAPA</div>
+            </div>
+            <h1>👨‍👩‍👧‍👦 APOIO ÀS FAMÍLIAS 💝</h1>
+            <div class="family-icon interactive-element">❤️</div>
+            <h2>Guia Completo de Suporte, Estratégias e Esperança</h2>
+            
+            <div class="love-box">
+                <h3>💝 Fortalecendo Vínculos e Construindo Resiliência</h3>
+                <p style="text-align: center; font-size: 1.4rem; color: white;"><strong>Um guia abrangente para famílias que buscam apoio, compreensão e estratégias práticas para enfrentar desafios e celebrar conquistas juntos</strong></p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Famílias Merecem Apoio</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Amor Incondicional</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Dedicação Familiar</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">💪</div>
+                    <div class="stat-label">Força Coletiva</div>
+                </div>
+            </div>
+            
+            <div class="level-badge">🎯 Público: Todas as Famílias</div>
+            <div class="age-badge">👥 Foco: Apoio Integral</div>
+            
+            <div class="quote-box">
+                "Uma família forte não é aquela que nunca enfrenta desafios, mas sim aquela que se une, se apoia mutuamente e cresce junta através de cada experiência" - Reflexão sobre resiliência familiar
+            </div>
+            
+            <div class="metric-box">
+                <div class="metric-number">🌈</div>
+                <div class="metric-label">Cada Família é Única e Especial</div>
+            </div>
+            
+            <div class="support-box">
+                <h3>🤝 O que você vai descobrir:</h3>
+                <ul style="color: white;">
+                    <li><strong>💝 Compreensão Familiar:</strong> Dinâmicas e necessidades únicas</li>
+                    <li><strong>💪 Fortalecimento de Vínculos:</strong> Estratégias para união familiar</li>
+                    <li><strong>🛡️ Enfrentamento de Desafios:</strong> Ferramentas práticas de apoio</li>
+                    <li><strong>🌱 Desenvolvimento de Resiliência:</strong> Crescimento através das dificuldades</li>
+                    <li><strong>🤝 Redes de Apoio:</strong> Construindo comunidades solidárias</li>
+                    <li><strong>💡 Estratégias de Comunicação:</strong> Diálogo efetivo e empático</li>
+                    <li><strong>🏠 Ambiente Familiar Saudável:</strong> Criando espaços de amor e segurança</li>
+                    <li><strong>🌟 Autocuidado:</strong> Cuidando de quem cuida</li>
+                </ul>
+            </div>
+            
+            <div class="strength-box">
+                <h3>💪 Pilares do Apoio Familiar:</h3>
+                <ul style="color: white;">
+                    <li><strong>❤️ Amor Incondicional:</strong> Base de toda família forte</li>
+                    <li><strong>🗣️ Comunicação Aberta:</strong> Diálogo honesto e respeitoso</li>
+                    <li><strong>🤝 Apoio Mútuo:</strong> Cada membro importa e contribui</li>
+                    <li><strong>🌱 Crescimento Conjunto:</strong> Aprendendo e evoluindo juntos</li>
+                    <li><strong>🛡️ Proteção e Segurança:</strong> Ambiente seguro para todos</li>
+                    <li><strong>🎉 Celebração:</strong> Reconhecendo conquistas e momentos especiais</li>
+                </ul>
+            </div>
+            
+            <div class="hope-box">
+                <h3>🌟 Nossa Missão:</h3>
+                <p style="color: white;">Acreditamos que toda família possui uma força única e capacidade de superação. Este guia não oferece soluções mágicas, mas sim ferramentas práticas, compreensão profunda e esperança renovada para que cada família possa florescer em sua jornada única.</p>
+            </div>
+            
+            <div class="care-box">
+                <div class="care-title">💝 Tipos de Apoio Abordados:</div>
+                <ul>
+                    <li><strong>🏥 Situações Médicas:</strong> Apoio durante tratamentos e cuidados especiais</li>
+                    <li><strong>🧩 Necessidades Especiais:</strong> Famílias com membros com deficiências</li>
+                    <li><strong>😢 Luto e Perdas:</strong> Enfrentamento de perdas significativas</li>
+                    <li><strong>💔 Crises Familiares:</strong> Separações, conflitos e reconciliações</li>
+                    <li><strong>💰 Dificuldades Financeiras:</strong> Estratégias para tempos difíceis</li>
+                    <li><strong>🌍 Mudanças Significativas:</strong> Adaptação a novas realidades</li>
+                    <li><strong>👶 Diferentes Fases da Vida:</strong> Apoio em cada etapa familiar</li>
+                    <li><strong>🌈 Diversidade Familiar:</strong> Celebrando diferentes configurações</li>
+                </ul>
+            </div>
+            
+            <div class="wellness-box">
+                <div class="wellness-title">🌿 Bem-estar Integral:</div>
+                <ul>
+                    <li><strong>🧠 Saúde Mental:</strong> Cuidando do emocional de todos</li>
+                    <li><strong>💪 Saúde Física:</strong> Hábitos saudáveis em família</li>
+                    <li><strong>🤝 Relacionamentos:</strong> Fortalecendo vínculos internos e externos</li>
+                    <li><strong>🎯 Propósito:</strong> Encontrando significado nas experiências</li>
+                    <li><strong>⚖️ Equilíbrio:</strong> Harmonizando diferentes aspectos da vida</li>
+                    <li><strong>🌱 Crescimento:</strong> Desenvolvimento contínuo de todos os membros</li>
+                </ul>
+            </div>
+            
+            <p style="text-align: center; margin-top: 30px; font-size: 1.1rem; color: #64748b;">
+                <em>Baseado em pesquisas sobre dinâmicas familiares, psicologia positiva, terapia familiar e histórias reais de superação e crescimento 💝👨‍👩‍👧‍👦</em>
+            </p>
+        </div>
+
+        <!-- Página 2: Índice -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">2</div>
+                <div class="chapter-badge">ÍNDICE</div>
+            </div>
+            <h2>🗺️ Sua Jornada de Apoio e Fortalecimento Familiar</h2>
+            <div class="story-illustration">👨‍👩‍👧‍👦💝🤝🌟</div>
+            
+            <div class="support-box">
+                <h3>🧭 Roteiro de Apoio e Crescimento:</h3>
+                <ol class="steps-list">
+                    <li><strong>Compreendendo Sua Família</strong> - Dinâmicas e necessidades únicas</li>
+                    <li><strong>Fortalecendo Vínculos</strong> - Estratégias para união e conexão</li>
+                    <li><strong>Comunicação Efetiva</strong> - Diálogo saudável e empático</li>
+                    <li><strong>Enfrentando Desafios</strong> - Ferramentas práticas de superação</li>
+                    <li><strong>Construindo Resiliência</strong> - Desenvolvendo força interior</li>
+                    <li><strong>Redes de Apoio</strong> - Criando comunidades solidárias</li>
+                    <li><strong>Cuidando de Quem Cuida</strong> - Autocuidado e bem-estar</li>
+                    <li><strong>Ambiente Familiar Saudável</strong> - Criando espaços de amor</li>
+                    <li><strong>Gestão de Crises</strong> - Navegando momentos difíceis</li>
+                    <li><strong>Celebrando Conquistas</strong> - Reconhecendo progressos e vitórias</li>
+                    <li><strong>Planejamento Familiar</strong> - Organizando o futuro juntos</li>
+                    <li><strong>Recursos e Ferramentas</strong> - Onde buscar ajuda especializada</li>
+                    <li><strong>Histórias Inspiradoras</strong> - Exemplos reais de superação</li>
+                    <li><strong>Mantendo a Esperança</strong> - Perspectivas positivas para o futuro</li>
+                </ol>
+            </div>
+            
+            <div class="strength-box">
+                <h3>💪 Abordagem do Guia:</h3>
+                <p style="color: white;">Este guia adota uma perspectiva holística e positiva, reconhecendo que cada família é única em suas forças, desafios e jornada. Combinamos conhecimento científico com sabedoria prática e histórias reais de famílias que encontraram caminhos de crescimento e superação!</p>
+            </div>
+            
+            <div class="family-demo">
+                <h3>💝 Família: Fonte de Força e Amor</h3>
+                <div class="family-circle interactive-element">
+                    Amor + Apoio + União = Família Forte
+                </div>
+                <p><strong>Visualize sua família crescendo e se fortalecendo! ⬆️</strong></p>
+            </div>
+            
+            <div class="milestone-box">
+                <h3>🎯 Por que este guia é essencial:</h3>
+                <ul style="color: white;">
+                    <li><strong>🌍 Realidade Atual:</strong> Famílias enfrentam desafios únicos hoje</li>
+                    <li><strong>💪 Necessidade de Apoio:</strong> Todos precisam de suporte em algum momento</li>
+                    <li><strong>🤝 Isolamento Social:</strong> Muitas famílias se sentem sozinhas</li>
+                    <li><strong>📚 Falta de Recursos:</strong> Poucos materiais práticos e acessíveis</li>
+                    <li><strong>🌱 Potencial de Crescimento:</strong> Famílias podem se fortalecer através dos desafios</li>
+                    <li><strong>❤️ Amor Transformador:</strong> O poder do apoio familiar é imenso</li>
+                </ul>
+            </div>
+            
+            <div class="love-box">
+                <h3>💝 Nossa Filosofia:</h3>
+                <p style="color: white;">Acreditamos que toda família possui recursos internos para superar desafios e crescer. Não se trata de ser uma família "perfeita", mas sim de ser uma família que se ama, se apoia e cresce junta. Cada dificuldade pode se tornar uma oportunidade de fortalecimento quando enfrentada com amor e estratégias adequadas.</p>
+            </div>
+            
+            <div class="community-box">
+                <div class="community-title">🤝 Construindo Comunidade:</div>
+                <p>Este guia também enfatiza a importância de não enfrentar desafios sozinho. Famílias fortes fazem parte de comunidades fortes, onde há apoio mútuo, compreensão e solidariedade. Juntos, podemos criar redes de apoio que beneficiam todas as famílias.</p>
+            </div>
+            
+            <div class="hope-box">
+                <h3>🌟 Mensagem de Esperança:</h3>
+                <p style="color: white;">Não importa quais desafios sua família esteja enfrentando agora, há sempre esperança. Cada dia é uma nova oportunidade para fortalecer vínculos, criar memórias positivas e construir um futuro melhor juntos. Sua família tem uma força única que pode superar qualquer obstáculo.</p>
+            </div>
+            
+            <div class="care-box">
+                <div class="care-title">💝 Compromisso com Você:</div>
+                <p>Este guia foi criado com amor e dedicação, pensando em cada família que busca apoio e orientação. Nosso compromisso é oferecer informações práticas, estratégias testadas e, acima de tudo, esperança renovada para sua jornada familiar.</p>
+            </div>
+        </div>
+
+        <!-- Página 3: Compreendendo Sua Família -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">3</div>
+                <div class="chapter-badge">CAPÍTULO 1</div>
+            </div>
+            <h2>👨‍👩‍👧‍👦 Compreendendo Sua Família</h2>
+            <div class="story-illustration">❤️➡️🏠➡️🤝➡️🌟</div>
+            
+            <p>Cada família é um universo único, com sua própria constelação de personalidades, histórias, tradições e dinâmicas. Compreender profundamente sua família - suas forças, desafios, padrões de comunicação e necessidades individuais - é o primeiro passo fundamental para construir um sistema de apoio efetivo e duradouro. Não existe uma família "padrão" ou "perfeita"; existe apenas sua família, com toda sua beleza e complexidade única.</p>
+            
+            <div class="love-box">
+                <h3>💝 O que Torna Sua Família Especial?</h3>
+                <p style="color: white;">Sua família é uma combinação única de histórias, valores, sonhos e experiências compartilhadas. É um sistema vivo que evolui constantemente, onde cada membro contribui com suas próprias qualidades especiais para criar algo maior que a soma de suas partes individuais.</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Configurações Familiares</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Famílias São Únicas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Amor Incondicional</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">💪</div>
+                    <div class="stat-label">Força Interior</div>
+                </div>
+            </div>
+            
+            <div class="aspect-grid">
+                <div class="aspect-card">
+                    <div class="aspect-card-icon">👥</div>
+                    <div class="aspect-card-title">Composição Familiar</div>
+                    <div class="aspect-card-desc">
+                        Famílias nucleares, monoparentais, reconstituídas, extensas, adotivas - cada configuração traz suas próprias forças e desafios únicos. O amor e o compromisso definem uma família, não sua estrutura.
+                    </div>
+                </div>
+                
+                <div class="aspect-card">
+                    <div class="aspect-card-icon">🗣️</div>
+                    <div class="aspect-card-title">Estilos de Comunicação</div>
+                    <div class="aspect-card-desc">
+                        Cada família desenvolve padrões únicos de comunicação - alguns são mais diretos, outros mais sutis. Compreender esses padrões ajuda a melhorar o diálogo e resolver conflitos.
+                    </div>
+                </div>
+                
+                <div class="aspect-card">
+                    <div class="aspect-card-icon">⚖️</div>
+                    <div class="aspect-card-title">Papéis e Responsabilidades</div>
+                    <div class="aspect-card-desc">
+                        Cada membro da família assume diferentes papéis - provedor, cuidador, mediador, animador. Esses papéis podem mudar ao longo do tempo e das circunstâncias.
+                    </div>
+                </div>
+                
+                <div class="aspect-card">
+                    <div class="aspect-card-icon">🎯</div>
+                    <div class="aspect-card-title">Valores e Tradições</div>
+                    <div class="aspect-card-desc">
+                        Os valores familiares orientam decisões e comportamentos. Tradições criam senso de identidade e pertencimento, conectando gerações e fortalecendo vínculos.
+                    </div>
+                </div>
+                
+                <div class="aspect-card">
+                    <div class="aspect-card-icon">🌱</div>
+                    <div class="aspect-card-title">Ciclo de Vida Familiar</div>
+                    <div class="aspect-card-desc">
+                        Famílias passam por diferentes fases - formação, expansão, consolidação, contração. Cada fase traz desafios e oportunidades específicas de crescimento.
+                    </div>
+                </div>
+                
+                <div class="aspect-card">
+                    <div class="aspect-card-icon">🛡️</div>
+                    <div class="aspect-card-title">Mecanismos de Enfrentamento</div>
+                    <div class="aspect-card-desc">
+                        Cada família desenvolve formas únicas de lidar com estresse e desafios. Identificar e fortalecer esses mecanismos é essencial para a resiliência familiar.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Formação</div>
+                        <div class="timeline-title">Início da Família</div>
+                        <div class="timeline-desc">Estabelecimento de vínculos, definição de papéis iniciais, criação de rotinas e tradições. Período de adaptação e descoberta mútua.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Expansão</div>
+                        <div class="timeline-title">Crescimento da Família</div>
+                        <div class="timeline-desc">Chegada de novos membros, redefinição de espaços e responsabilidades, desenvolvimento de novas dinâmicas e ajustes necessários.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Consolidação</div>
+                        <div class="timeline-title">Estabilização</div>
+                        <div class="timeline-desc">Estabelecimento de rotinas estáveis, fortalecimento de vínculos, desenvolvimento de identidade familiar sólida e tradições consolidadas.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Transformação</div>
+                        <div class="timeline-title">Mudanças e Adaptações</div>
+                        <div class="timeline-desc">Adolescência dos filhos, mudanças profissionais, novos desafios. Período de renegociação de papéis e expectativas.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">5</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Renovação</div>
+                        <div class="timeline-title">Nova Fase</div>
+                        <div class="timeline-desc">Filhos adultos, possível chegada de netos, redefinição de relacionamentos. Oportunidade para novos projetos e sonhos compartilhados.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="strength-box">
+                <h3>💪 Identificando as Forças da Sua Família</h3>
+                
+                <h4 style="color: white;">🌟 Forças Relacionais:</h4>
+                <ul style="color: white;">
+                    <li><strong>Amor Incondicional:</strong> Aceitação e apoio mútuos independente das circunstâncias</li>
+                    <li><strong>Lealdade:</strong> Compromisso duradouro uns com os outros</li>
+                    <li><strong>Confiança:</strong> Segurança emocional e abertura para vulnerabilidade</li>
+                    <li><strong>Respeito:</strong> Valorização das diferenças individuais</li>
+                </ul>
+                
+                <h4 style="color: white;">🛠️ Forças Funcionais:</h4>
+                <ul style="color: white;">
+                    <li><strong>Organização:</strong> Capacidade de estruturar rotinas e responsabilidades</li>
+                    <li><strong>Flexibilidade:</strong> Adaptação a mudanças e desafios</li>
+                    <li><strong>Resolução de Problemas:</strong> Habilidade para encontrar soluções juntos</li>
+                    <li><strong>Comunicação:</strong> Capacidade de expressar necessidades e sentimentos</li>
+                </ul>
+                
+                <h4 style="color: white;">🎯 Forças Individuais:</h4>
+                <ul style="color: white;">
+                    <li><strong>Talentos Únicos:</strong> Habilidades especiais de cada membro</li>
+                    <li><strong>Personalidades Complementares:</strong> Diferenças que se equilibram</li>
+                    <li><strong>Experiências Diversas:</strong> Conhecimentos e perspectivas variadas</li>
+                    <li><strong>Recursos Pessoais:</strong> Capacidades individuais que beneficiam o grupo</li>
+                </ul>
+            </div>
+            
+            <div class="challenge-box">
+                <h3>⚡ Compreendendo os Desafios Familiares</h3>
+                
+                <h4 style="color: white;">🌪️ Desafios Estruturais:</h4>
+                <ul style="color: white;">
+                    <li><strong>Mudanças de Configuração:</strong> Separações, novos casamentos, mudanças de cidade</li>
+                    <li><strong>Pressões Externas:</strong> Trabalho, escola, sociedade</li>
+                    <li><strong>Recursos Limitados:</strong> Tempo, dinheiro, energia</li>
+                    <li><strong>Diferenças Geracionais:</strong> Conflitos entre diferentes idades e perspectivas</li>
+                </ul>
+                
+                <h4 style="color: white;">💭 Desafios Emocionais:</h4>
+                <ul style="color: white;">
+                    <li><strong>Conflitos de Comunicação:</strong> Mal-entendidos e dificuldades de expressão</li>
+                    <li><strong>Expectativas Não Atendidas:</strong> Frustrações com comportamentos ou resultados</li>
+                    <li><strong>Estresse Acumulado:</strong> Pressões que se somam ao longo do tempo</li>
+                    <li><strong>Traumas ou Perdas:</strong> Experiências difíceis que afetam toda a família</li>
+                </ul>
+                
+                <h4 style="color: white;">🔄 Padrões Disfuncionais:</h4>
+                <ul style="color: white;">
+                    <li><strong>Comunicação Destrutiva:</strong> Críticas, culpabilização, silêncio</li>
+                    <li><strong>Papéis Rígidos:</strong> Expectativas inflexíveis sobre comportamentos</li>
+                    <li><strong>Evitação de Conflitos:</strong> Não enfrentar problemas importantes</li>
+                    <li><strong>Dependência Excessiva:</strong> Falta de autonomia individual saudável</li>
+                </ul>
+            </div>
+            
+            <div class="strategy-box">
+                <h3>💡 Ferramentas de Autoconhecimento Familiar</h3>
+                
+                <h4 style="color: white;">🔍 Mapeamento Familiar:</h4>
+                <ul style="color: white;">
+                    <li><strong>Genograma:</strong> Desenhe sua árvore genealógica incluindo relacionamentos e padrões</li>
+                    <li><strong>Linha do Tempo:</strong> Identifique eventos importantes na história familiar</li>
+                    <li><strong>Mapa de Recursos:</strong> Liste todas as forças e recursos disponíveis</li>
+                    <li><strong>Análise de Papéis:</strong> Identifique quem faz o quê na família</li>
+                </ul>
+                
+                <h4 style="color: white;">📊 Avaliação de Dinâmicas:</h4>
+                <ul style="color: white;">
+                    <li><strong>Padrões de Comunicação:</strong> Como vocês conversam e resolvem conflitos?</li>
+                    <li><strong>Rituais e Tradições:</strong> Que atividades fortalecem seus vínculos?</li>
+                    <li><strong>Gestão de Estresse:</strong> Como a família lida com pressões?</li>
+                    <li><strong>Tomada de Decisões:</strong> Quem decide o quê e como?</li>
+                </ul>
+                
+                <h4 style="color: white;">💬 Conversas Importantes:</h4>
+                <ul style="color: white;">
+                    <li><strong>Reuniões Familiares:</strong> Espaços regulares para diálogo aberto</li>
+                    <li><strong>Conversas Individuais:</strong> Tempo exclusivo com cada membro</li>
+                    <li><strong>Reflexões Conjuntas:</strong> Discussões sobre valores e objetivos</li>
+                    <li><strong>Feedback Construtivo:</strong> Compartilhamento honesto e respeitoso</li>
+                </ul>
+            </div>
+            
+            <div class="support-box">
+                <h3>🤝 Tipos de Família e Suas Características</h3>
+                
+                <h4 style="color: white;">👨‍👩‍👧‍👦 Família Nuclear:</h4>
+                <ul style="color: white;">
+                    <li><strong>Características:</strong> Pais e filhos vivendo juntos</li>
+                    <li><strong>Forças:</strong> Estrutura clara, papéis definidos, intimidade</li>
+                    <li><strong>Desafios:</strong> Pressão sobre poucos membros, isolamento potencial</li>
+                    <li><strong>Apoio Necessário:</strong> Redes externas, tempo para o casal</li>
+                </ul>
+                
+                <h4 style="color: white;">👩‍👧‍👦 Família Monoparental:</h4>
+                <ul style="color: white;">
+                    <li><strong>Características:</strong> Um dos pais criando os filhos</li>
+                    <li><strong>Forças:</strong> Vínculos estreitos, independência, flexibilidade</li>
+                    <li><strong>Desafios:</strong> Sobrecarga, recursos limitados, solidão</li>
+                    <li><strong>Apoio Necessário:</strong> Rede de apoio forte, recursos comunitários</li>
+                </ul>
+                
+                <h4 style="color: white;">👨‍👩‍👧‍👦👨‍👩‍👧‍👦 Família Reconstituída:</h4>
+                <ul style="color: white;">
+                    <li><strong>Características:</strong> Novos casamentos com filhos de relacionamentos anteriores</li>
+                    <li><strong>Forças:</strong> Diversidade, segundas chances, recursos ampliados</li>
+                    <li><strong>Desafios:</strong> Lealdades divididas, ajustes complexos</li>
+                    <li><strong>Apoio Necessário:</strong> Paciência, comunicação clara, terapia familiar</li>
+                </ul>
+                
+                <h4 style="color: white;">👴👵👨‍👩‍👧‍👦 Família Extensa:</h4>
+                <ul style="color: white;">
+                    <li><strong>Características:</strong> Múltiplas gerações vivendo juntas ou próximas</li>
+                    <li><strong>Forças:</strong> Sabedoria compartilhada, apoio amplo, tradições</li>
+                    <li><strong>Desafios:</strong> Conflitos geracionais, limites difusos</li>
+                    <li><strong>Apoio Necessário:</strong> Mediação, respeito às diferenças</li>
+                </ul>
+            </div>
+            
+            <div class="milestone-box">
+                <h3>🎯 Sinais de uma Família Saudável</h3>
+                
+                <h4 style="color: white;">💝 Relacionamentos Saudáveis:</h4>
+                <ul style="color: white;">
+                    <li><strong>Comunicação Aberta:</strong> Membros se sentem seguros para expressar sentimentos</li>
+                    <li><strong>Apoio Mútuo:</strong> Cada um sabe que pode contar com os outros</li>
+                    <li><strong>Respeito às Diferenças:</strong> Individualidade é valorizada</li>
+                    <li><strong>Resolução de Conflitos:</strong> Problemas são enfrentados construtivamente</li>
+                </ul>
+                
+                <h4 style="color: white;">🌱 Crescimento e Desenvolvimento:</h4>
+                <ul style="color: white;">
+                    <li><strong>Autonomia Apropriada:</strong> Membros desenvolvem independência saudável</li>
+                    <li><strong>Flexibilidade:</strong> Família se adapta a mudanças e desafios</li>
+                    <li><strong>Aprendizado Contínuo:</strong> Todos crescem e evoluem juntos</li>
+                    <li><strong>Celebração:</strong> Conquistas e momentos especiais são reconhecidos</li>
+                </ul>
+                
+                <h4 style="color: white;">🛡️ Estabilidade e Segurança:</h4>
+                <ul style="color: white;">
+                    <li><strong>Rotinas Previsíveis:</strong> Estrutura que oferece segurança</li>
+                    <li><strong>Limites Claros:</strong> Regras e expectativas bem definidas</li>
+                    <li><strong>Ambiente Seguro:</strong> Espaço físico e emocional protegido</li>
+                    <li><strong>Valores Consistentes:</strong> Princípios que orientam decisões</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <h3>💡 Exercícios Práticos de Autoconhecimento</h3>
+                
+                <h4 style="color: #e2e8f0;">🎯 Exercício 1: Mapa de Forças Familiares</h4>
+                <p style="color: #cbd5e0;">Reúna a família e peça para cada um listar 3 qualidades que vê em cada membro. Depois, identifiquem 5 forças que vocês têm como família. Criem um cartaz visual com essas descobertas.</p>
+                
+                <h4 style="color: #e2e8f0;">📝 Exercício 2: História da Nossa Família</h4>
+                <p style="color: #cbd5e0;">Criem juntos uma linha do tempo da família, incluindo momentos importantes, desafios superados e conquistas. Identifiquem padrões de resiliência e crescimento.</p>
+                
+                <h4 style="color: #e2e8f0;">🗣️ Exercício 3: Roda de Conversas</h4>
+                <p style="color: #cbd5e0;">Estabeleçam um momento semanal onde cada membro pode compartilhar: algo que foi bem na semana, um desafio enfrentado, e algo pelo qual é grato na família.</p>
+                
+                <h4 style="color: #e2e8f0;">🎨 Exercício 4: Visão de Futuro</h4>
+                <p style="color: #cbd5e0;">Cada membro desenha ou escreve como imagina a família daqui a 5 anos. Compartilhem as visões e identifiquem sonhos comuns para trabalhar juntos.</p>
+            </div>
+            
+            <div class="family-demo">
+                <h3>💝 Sua Família é Única e Especial</h3>
+                <div class="family-circle interactive-element">
+                    Compreensão + Aceitação + Amor = Família Forte
+                </div>
+                <p><strong>Celebre a singularidade da sua família! ⬆️</strong></p>
+            </div>
+            
+            <div class="hope-box">
+                <h3>🌟 Mensagem de Esperança</h3>
+                <p style="color: white;">Compreender sua família profundamente é um presente que você dá a todos os membros. Quando reconhecemos nossas forças únicas e aceitamos nossos desafios com compaixão, criamos um ambiente onde cada pessoa pode florescer. Sua família tem uma combinação especial de qualidades que nenhuma outra família possui - e isso é algo para ser celebrado!</p>
+            </div>
+            
+            <div class="source-box">
+                <strong>📚 Fontes:</strong> Terapia Familiar Sistêmica, Psicologia Positiva, pesquisas sobre dinâmicas familiares saudáveis, estudos sobre resiliência familiar, e experiências clínicas documentadas.
+            </div>
+        </div>
+
+        <!-- Página 4: Fortalecendo Vínculos -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">4</div>
+                <div class="chapter-badge">VÍNCULOS FAMILIARES</div>
+            </div>
+            <h2>🤝 Fortalecendo Vínculos</h2>
+            <div class="story-illustration">💝🔗❤️🌟</div>
+            
+            <p>Os vínculos familiares são os fios invisíveis que conectam corações, criando uma rede de amor, apoio e pertencimento que sustenta cada membro da família. Fortalecer esses vínculos não acontece por acaso - é um processo intencional que requer tempo, atenção e estratégias específicas. Quando os vínculos familiares são sólidos, eles se tornam uma fonte inesgotável de força, conforto e alegria para toda a vida.</p>
+            
+            <div class="love-box">
+                <h3>💝 O Poder dos Vínculos Familiares</h3>
+                <p style="color: white;">Vínculos familiares fortes são como raízes profundas de uma árvore - eles fornecem estabilidade, nutrição e suporte para que cada membro possa crescer e florescer. Esses vínculos criam um senso de identidade, segurança emocional e pertencimento que acompanha cada pessoa ao longo de toda a vida.</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Melhora na Autoestima</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">70%</div>
+                    <div class="stat-label">Redução do Estresse</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">90%</div>
+                    <div class="stat-label">Maior Resiliência</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Benefícios Duradouros</div>
+                </div>
+            </div>
+            
+            <div class="strength-box">
+                <h3>💪 Elementos dos Vínculos Fortes</h3>
+                
+                <h4 style="color: white;">❤️ Conexão Emocional:</h4>
+                <ul style="color: white;">
+                    <li><strong>Empatia:</strong> Capacidade de compreender e sentir com o outro</li>
+                    <li><strong>Aceitação:</strong> Amor incondicional independente de falhas ou diferenças</li>
+                    <li><strong>Intimidade:</strong> Compartilhamento de pensamentos e sentimentos profundos</li>
+                    <li><strong>Confiança:</strong> Segurança de que o outro estará presente quando necessário</li>
+                </ul>
+                
+                <h4 style="color: white;">🕰️ Tempo de Qualidade:</h4>
+                <ul style="color: white;">
+                    <li><strong>Presença Plena:</strong> Atenção total durante momentos juntos</li>
+                    <li><strong>Atividades Compartilhadas:</strong> Experiências que criam memórias positivas</li>
+                    <li><strong>Conversas Significativas:</strong> Diálogos que vão além do superficial</li>
+                    <li><strong>Rituais Familiares:</strong> Tradições que fortalecem a identidade do grupo</li>
+                </ul>
+                
+                <h4 style="color: white;">🗣️ Comunicação Autêntica:</h4>
+                <ul style="color: white;">
+                    <li><strong>Escuta Ativa:</strong> Ouvir verdadeiramente sem julgar ou interromper</li>
+                    <li><strong>Expressão Honesta:</strong> Compartilhar sentimentos de forma respeitosa</li>
+                    <li><strong>Validação:</strong> Reconhecer e valorizar os sentimentos dos outros</li>
+                    <li><strong>Resolução Colaborativa:</strong> Trabalhar juntos para resolver conflitos</li>
+                </ul>
+            </div>
+            
+            <div class="aspect-grid">
+                <div class="aspect-card">
+                    <div class="aspect-card-icon">👨‍👩‍👧‍👦</div>
+                    <div class="aspect-card-title">Vínculos Pais-Filhos</div>
+                    <div class="aspect-card-desc">
+                        A base de segurança emocional. Fortalecidos através de tempo individual, escuta ativa, apoio incondicional e orientação amorosa. Essenciais para o desenvolvimento saudável.
+                    </div>
+                </div>
+                
+                <div class="aspect-card">
+                    <div class="aspect-card-icon">💑</div>
+                    <div class="aspect-card-title">Vínculos Conjugais</div>
+                    <div class="aspect-card-desc">
+                        O alicerce da família. Fortalecidos através de comunicação íntima, tempo a sós, apoio mútuo e renovação constante do compromisso e amor.
+                    </div>
+                </div>
+                
+                <div class="aspect-card">
+                    <div class="aspect-card-icon">👫</div>
+                    <div class="aspect-card-title">Vínculos entre Irmãos</div>
+                    <div class="aspect-card-desc">
+                        Relacionamentos únicos e duradouros. Fortalecidos através de atividades conjuntas, resolução justa de conflitos e celebração das diferenças individuais.
+                    </div>
+                </div>
+                
+                <div class="aspect-card">
+                    <div class="aspect-card-icon">👴👵</div>
+                    <div class="aspect-card-title">Vínculos Intergeracionais</div>
+                    <div class="aspect-card-desc">
+                        Conexões com avós e família extensa. Fortalecidos através de histórias compartilhadas, tradições familiares e valorização da sabedoria dos mais velhos.
+                    </div>
+                </div>
+                
+                <div class="aspect-card">
+                    <div class="aspect-card-icon">🏠</div>
+                    <div class="aspect-card-title">Vínculos com o Lar</div>
+                    <div class="aspect-card-desc">
+                        Conexão com o espaço físico familiar. Fortalecidos através de criação de ambientes acolhedores, memórias positivas e senso de pertencimento ao lugar.
+                    </div>
+                </div>
+                
+                <div class="aspect-card">
+                    <div class="aspect-card-icon">🌳</div>
+                    <div class="aspect-card-title">Vínculos com Tradições</div>
+                    <div class="aspect-card-desc">
+                        Conexão com a história e valores familiares. Fortalecidos através de rituais, celebrações, histórias familiares e transmissão de valores.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="strategy-box">
+                <h3>💡 Estratégias para Fortalecer Vínculos</h3>
+                
+                <h4 style="color: white;">🎯 Atividades de Conexão Diária:</h4>
+                <ul style="color: white;">
+                    <li><strong>Refeições Juntos:</strong> Pelo menos uma refeição diária sem dispositivos eletrônicos</li>
+                    <li><strong>Ritual de Boa Noite:</strong> Momento especial antes de dormir com cada filho</li>
+                    <li><strong>Caminhadas Familiares:</strong> Exercício e conversa combinados</li>
+                    <li><strong>Tempo de Gratidão:</strong> Compartilhar diariamente algo pelo qual são gratos</li>
+                </ul>
+                
+                <h4 style="color: white;">📅 Atividades Semanais:</h4>
+                <ul style="color: white;">
+                    <li><strong>Noite da Família:</strong> Uma noite por semana dedicada exclusivamente à família</li>
+                    <li><strong>Projetos Conjuntos:</strong> Cozinhar, jardinagem, artesanato juntos</li>
+                    <li><strong>Aventuras Locais:</strong> Explorar novos lugares na cidade</li>
+                    <li><strong>Reunião Familiar:</strong> Espaço para planejar e resolver questões familiares</li>
+                </ul>
+                
+</div>
+</div>
+</div>
+
+
+
+ <div class="navigation">
+        <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
+        <button id="nextBtn" class="nav-btn">Próximo</button>
+    </div>
+
+     <script>
+        
+    const pages = document.querySelectorAll('.page');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const progressBar = document.getElementById('progressBar');
+    const pageCounter = document.getElementById('pageCounter');
+    let currentPageIndex = 0;
+
+    function showPage(index) {
+        pages.forEach((page, i) => {
+            if (i === index) {
+                page.classList.add('active');
+            } else {
+                page.classList.remove('active');
+            }
+        });
+        updateNavigationButtons();
+        updateProgressBar();
+        updatePageCounter();
+    }
+
+    function updateNavigationButtons() {
+        prevBtn.disabled = currentPageIndex === 0;
+        nextBtn.disabled = currentPageIndex === pages.length - 1;
+    }
+
+    function updateProgressBar() {
+        const progress = (currentPageIndex / (pages.length - 1)) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+
+    function updatePageCounter() {
+        pageCounter.textContent = `${currentPageIndex + 1} / ${pages.length}`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentPageIndex > 0) {
+            currentPageIndex--;
+            showPage(currentPageIndex);
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentPageIndex < pages.length - 1) {
+            currentPageIndex++;
+            showPage(currentPageIndex);
+        }
+    });
+
+    // Initialize the first page and navigation
+    showPage(currentPageIndex);
+</script>
+

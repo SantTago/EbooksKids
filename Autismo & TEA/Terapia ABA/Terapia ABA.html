@@ -1,0 +1,1635 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terapia ABA - Guia Completo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .ebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .page {
+            min-height: 100vh;
+            padding: 50px;
+            display: none;
+            position: relative;
+            background: linear-gradient(45deg, #f8fafc, #f1f5f9);
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .page-number {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-weight: 600;
+            font-size: 20px;
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+        }
+        
+        .chapter-badge {
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        h1 {
+            color: #1e293b;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #4f46e5;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        h3 {
+            color: #7c3aed;
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+        
+        h4 {
+            color: #475569;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-bottom: 22px;
+            text-align: justify;
+            font-weight: 400;
+        }
+        
+        .aba-icon {
+            width: 140px;
+            height: 140px;
+            border-radius: 25px;
+            margin: 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            animation: gentle-pulse 3s infinite;
+        }
+        
+        @keyframes gentle-pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+            50% { transform: scale(1.05); box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3); }
+        }
+        
+        .principles-box {
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #10b981;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+            color: white;
+        }
+        
+        .principles-box::before {
+            content: "🧠";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .techniques-box {
+            background: linear-gradient(135deg, #ec4899, #f97316);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .techniques-box::before {
+            content: "🎯";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .strategies-box {
+            background: linear-gradient(135deg, #8b5cf6, #a855f7);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .strategies-box::before {
+            content: "📋";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .implementation-box {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #ef4444;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+            color: white;
+        }
+        
+        .implementation-box::before {
+            content: "⚙️";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .benefits-box {
+            background: linear-gradient(135deg, #10b981, #059669);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .benefits-box::before {
+            content: "🌟";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+        }
+        
+        .nav-btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 6px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            transition: width 0.5s ease;
+            z-index: 1001;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .page-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: #475569;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .source-box {
+            background: #f8fafc;
+            border: 3px dashed #cbd5e0;
+            padding: 25px;
+            border-radius: 20px;
+            margin-top: 35px;
+            font-size: 1rem;
+            color: #64748b;
+            position: relative;
+        }
+        
+        .source-box::before {
+            content: "📖";
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+        
+        .aba-demo {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #e0f2fe, #f3e8ff);
+            border-radius: 25px;
+            margin: 25px 0;
+        }
+        
+        .behavior-circle {
+            width: 180px;
+            height: 180px;
+            border: 6px solid #4f46e5;
+            border-radius: 50%;
+            margin: 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #4f46e5;
+            font-weight: 600;
+            animation: gentle-rotate 15s infinite linear;
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+            position: relative;
+        }
+        
+        .behavior-circle::after {
+            content: '📊';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 30px;
+            height: 30px;
+            background: #7c3aed;
+            border-radius: 50%;
+            animation: orbit 4s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes gentle-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes orbit {
+            0%, 100% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.2) translateY(-5px); }
+        }
+        
+        .story-illustration {
+            text-align: center;
+            font-size: 4rem;
+            margin: 30px 0;
+            animation: gentle-float 4s ease-in-out infinite;
+        }
+        
+        @keyframes gentle-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        ul, ol {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-left: 25px;
+            font-weight: 400;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            position: relative;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .checklist li::before {
+            content: "✅";
+            margin-right: 10px;
+        }
+        
+        .warning-checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .warning-checklist li::before {
+            content: "⚠️";
+            margin-right: 10px;
+        }
+        
+        .steps-list {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .steps-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .steps-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #4f46e5;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .interactive-element {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .interactive-element:hover {
+            transform: scale(1.05);
+        }
+        
+        .age-badge {
+            background: linear-gradient(45deg, #7c3aed, #a855f7);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .intensity-badge {
+            background: linear-gradient(45deg, #f59e0b, #f97316);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .quote-box {
+            background: linear-gradient(135deg, #fef3c7, #fed7aa);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #f59e0b;
+            font-style: italic;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        
+    
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .technique-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .technique-card {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .technique-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .technique-card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .technique-card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .technique-card-desc {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .warning-box::before {
+            content: "⚠️";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .success-box {
+            background: linear-gradient(135deg, #10b981, #059669);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .success-box::before {
+            content: "🌟";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 30px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #4f46e5, #7c3aed);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 30px 0;
+            padding-left: 80px;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 15px;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #4f46e5;
+        }
+        
+        .timeline-phase {
+            color: #4f46e5;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-title {
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-desc {
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        .abc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .abc-item {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-top: 3px solid #4f46e5;
+        }
+        
+        .abc-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #4f46e5;
+        }
+        
+        .abc-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        .reinforcement-box {
+            background: linear-gradient(135deg, #1e40af, #3730a3);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .reinforcement-box::before {
+            content: "🎁";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .myth-box {
+            background: linear-gradient(135deg, #7c2d12, #991b1b);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            color: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .myth-box::before {
+            content: "❌";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .fact-box {
+            background: linear-gradient(135deg, #065f46, #047857);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            color: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .fact-box::before {
+            content: "✅";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .program-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .program-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .program-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .program-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        .professional-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .professional-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-top: 3px solid #10b981;
+            transition: transform 0.3s ease;
+        }
+        
+        .professional-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .professional-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #10b981;
+        }
+        
+        .professional-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+        
+        .professional-desc {
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+        
+        .tip-box {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            position: relative;
+        }
+        
+        .tip-box::before {
+            content: "💡";
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: #4f46e5;
+            color: white;
+            padding: 5px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+        }
+        
+        .support-resources {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #10b981;
+        }
+        
+        .support-title {
+            color: #065f46;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .support-title::before {
+            content: "🤝";
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .data-collection-box {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .data-collection-box::before {
+            content: "📊";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .generalization-box {
+            background: linear-gradient(135deg, #0891b2, #0e7490);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .generalization-box::before {
+            content: "🌐";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        @media (max-width: 768px) {
+            .page {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .aba-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 3.5rem;
+            }
+            
+            .behavior-circle {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .technique-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                padding-left: 60px;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-marker {
+                left: 5px;
+            }
+            
+            .program-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .professional-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="page-counter" id="pageCounter">1 / 15</div>
+    
+    <div class="ebook-container">
+        <!-- Página 1: Capa -->
+        <div class="page active">
+            <div class="page-header">
+                <div class="page-number">1</div>
+                <div class="chapter-badge">CAPA</div>
+            </div>
+            <h1>🎯 TERAPIA ABA 📊</h1>
+            <div class="aba-icon interactive-element">🧠</div>
+            <h2>Análise Aplicada do Comportamento - Guia Completo</h2>
+            
+            <div class="principles-box">
+                <h3>🧠 Transformando Vidas Através da Ciência</h3>
+                <p style="text-align: center; font-size: 1.4rem; color: white;"><strong>Um guia abrangente sobre a Terapia ABA (Applied Behavior Analysis), a abordagem científica mais eficaz para o desenvolvimento de habilidades e redução de comportamentos desafiadores em pessoas com autismo e outras condições</strong></p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Anos de Pesquisa</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">89%</div>
+                    <div class="stat-label">Taxa de Eficácia</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">25h</div>
+                    <div class="stat-label">Horas Semanais Recomendadas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1:1</div>
+                    <div class="stat-label">Atendimento Individualizado</div>
+                </div>
+            </div>
+            
+            <div class="age-badge">🎯 Foco: Todas as idades</div>
+            <div class="intensity-badge">📈 Intensidade: Personalizada</div>
+            
+            <div class="quote-box">
+                "A ABA não é apenas uma terapia, é uma ciência que nos permite entender o comportamento humano e criar estratégias eficazes para promover aprendizagem e desenvolvimento. Cada pequeno progresso é uma vitória significativa" - Dr. Ivar Lovaas, Pioneiro da ABA
+            </div>
+            
+            <div class="principles-box">
+                <h3>🧠 Princípios Fundamentais da ABA:</h3>
+                <ul style="color: white;">
+                    <li><strong>📊 Baseada em Evidências:</strong> Métodos cientificamente comprovados</li>
+                    <li><strong>🎯 Individualizada:</strong> Programas personalizados para cada pessoa</li>
+                    <li><strong>📈 Mensurável:</strong> Coleta contínua de dados e progresso</li>
+                    <li><strong>🔄 Sistemática:</strong> Abordagem estruturada e consistente</li>
+                    <li><strong>🌟 Positiva:</strong> Foco no reforço e motivação</li>
+                    <li><strong>🎪 Funcional:</strong> Ensino de habilidades práticas e úteis</li>
+                    <li><strong>🌐 Generalizável:</strong> Transferência para diferentes ambientes</li>
+                    <li><strong>👨‍👩‍👧‍👦 Colaborativa:</strong> Envolvimento da família e equipe</li>
+                </ul>
+            </div>
+            
+            <div class="techniques-box">
+                <h3>🎯 Técnicas Principais da ABA:</h3>
+                <ul style="color: white;">
+                    <li><strong>🎁 Reforço Positivo:</strong> Aumentar comportamentos desejados</li>
+                    <li><strong>🔗 Encadeamento:</strong> Ensinar sequências complexas</li>
+                    <li><strong>👁️ Modelagem:</strong> Demonstração e imitação</li>
+                    <li><strong>🎯 Prompt e Fading:</strong> Dicas graduais e retirada</li>
+                    <li><strong>🔄 Tentativas Discretas (DTT):</strong> Ensino estruturado</li>
+                    <li><strong>🌟 Ensino Incidental:</strong> Aprendizagem natural</li>
+                    <li><strong>📋 Análise de Tarefas:</strong> Quebra em passos menores</li>
+                    <li><strong>🎪 Análise Funcional:</strong> Identificar função dos comportamentos</li>
+                </ul>
+            </div>
+            
+            <div class="strategies-box">
+                <h3>📋 Áreas de Desenvolvimento:</h3>
+                <ul style="color: white;">
+                    <li><strong>💬 Comunicação:</strong> Linguagem verbal e não-verbal</li>
+                    <li><strong>👥 Habilidades Sociais:</strong> Interação e relacionamentos</li>
+                    <li><strong>🎓 Acadêmicas:</strong> Leitura, escrita, matemática</li>
+                    <li><strong>🏠 Vida Diária:</strong> Autocuidado e independência</li>
+                    <li><strong>🎨 Brincar e Lazer:</strong> Recreação e criatividade</li>
+                    <li><strong>🧠 Cognitivas:</strong> Atenção, memória, resolução de problemas</li>
+                    <li><strong>🏃 Motoras:</strong> Coordenação e habilidades físicas</li>
+                    <li><strong>😊 Regulação Emocional:</strong> Controle e expressão adequada</li>
+                </ul>
+            </div>
+            
+            <div class="implementation-box">
+                <h3>⚙️ Processo de Implementação:</h3>
+                <ul style="color: white;">
+                    <li><strong>🔍 Avaliação Inicial:</strong> Análise completa de habilidades e necessidades</li>
+                    <li><strong>🎯 Definição de Objetivos:</strong> Metas específicas e mensuráveis</li>
+                    <li><strong>📋 Plano de Intervenção:</strong> Estratégias detalhadas e cronograma</li>
+                    <li><strong>🎪 Implementação:</strong> Execução consistente do programa</li>
+                    <li><strong>📊 Coleta de Dados:</strong> Monitoramento contínuo do progresso</li>
+                    <li><strong>🔄 Análise e Ajustes:</strong> Modificações baseadas nos resultados</li>
+                    <li><strong>🌐 Generalização:</strong> Transferência para outros ambientes</li>
+                    <li><strong>📈 Manutenção:</strong> Preservação das habilidades adquiridas</li>
+                </ul>
+            </div>
+            
+            <div class="benefits-box">
+                <h3>🌟 Benefícios Comprovados da ABA:</h3>
+                <ul style="color: white;">
+                    <li><strong>📈 Desenvolvimento Acelerado:</strong> Progresso significativo em habilidades</li>
+                    <li><strong>🎯 Redução de Comportamentos Problema:</strong> Diminuição de estereotipias</li>
+                    <li><strong>💬 Melhora na Comunicação:</strong> Desenvolvimento da linguagem</li>
+                    <li><strong>👥 Habilidades Sociais:</strong> Melhor interação com outros</li>
+                    <li><strong>🎓 Preparação Escolar:</strong> Prontidão para ambiente educacional</li>
+                    <li><strong>🏠 Independência:</strong> Maior autonomia nas atividades diárias</li>
+                    <li><strong>👨‍👩‍👧‍👦 Qualidade Familiar:</strong> Redução do estresse familiar</li>
+                    <li><strong>🌈 Qualidade de Vida:</strong> Bem-estar geral melhorado</li>
+                </ul>
+            </div>
+            
+            <div class="reinforcement-box">
+                <h3>🎁 Tipos de Reforço na ABA:</h3>
+                <ul style="color: white;">
+                    <li><strong>🍭 Primário:</strong> Comida, bebida, conforto físico</li>
+                    <li><strong>🏆 Secundário:</strong> Elogios, tokens, privilégios</li>
+                    <li><strong>👥 Social:</strong> Atenção, aprovação, interação</li>
+                    <li><strong>🎮 Atividade:</strong> Jogos, brincadeiras preferidas</li>
+                    <li><strong>👁️ Sensorial:</strong> Estímulos visuais, táteis, auditivos</li>
+                    <li><strong>🎯 Tangível:</strong> Objetos, brinquedos, materiais</li>
+                    <li><strong>⏰ Imediato:</strong> Fornecido imediatamente após o comportamento</li>
+                    <li><strong>📅 Diferido:</strong> Recompensas a longo prazo</li>
+                </ul>
+            </div>
+            
+            <div class="data-collection-box">
+                <h3>📊 Coleta de Dados na ABA:</h3>
+                <ul style="color: white;">
+                    <li><strong>📈 Frequência:</strong> Quantas vezes o comportamento ocorre</li>
+                    <li><strong>⏱️ Duração:</strong> Quanto tempo o comportamento dura</li>
+                    <li><strong>📏 Intensidade:</strong> Força ou magnitude do comportamento</li>
+                    <li><strong>🎯 Acurácia:</strong> Precisão na execução da habilidade</li>
+                    <li><strong>⚡ Latência:</strong> Tempo entre instrução e resposta</li>
+                    <li><strong>🔄 Taxa:</strong> Frequência por unidade de tempo</li>
+                    <li><strong>📊 Porcentagem:</strong> Proporção de respostas corretas</li>
+                    <li><strong>📝 Observação Direta:</strong> Registro em tempo real</li>
+                </ul>
+            </div>
+            
+            <div class="generalization-box">
+                <h3>🌐 Generalização e Manutenção:</h3>
+                <ul style="color: white;">
+                    <li><strong>🏠 Ambientes:</strong> Casa, escola, comunidade</li>
+                    <li><strong>👥 Pessoas:</strong> Diferentes terapeutas e familiares</li>
+                    <li><strong>🧸 Materiais:</strong> Variação de objetos e recursos</li>
+                    <li><strong>⏰ Horários:</strong> Diferentes momentos do dia</li>
+                    <li><strong>🎯 Situações:</strong> Contextos variados de aplicação</li>
+                    <li><strong>🔄 Prática Distribuída:</strong> Revisão regular das habilidades</li>
+                    <li><strong>📈 Monitoramento:</strong> Acompanhamento a longo prazo</li>
+                    <li><strong>🎪 Ensino Natural:</strong> Oportunidades espontâneas</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h3>⚠️ Considerações Importantes:</h3>
+                <ul style="color: white;">
+                    <li><strong>👨‍⚕️ Profissional Qualificado:</strong> Supervisão de BCBA certificado</li>
+                    <li><strong>🎯 Individualização:</strong> Programa específico para cada pessoa</li>
+                    <li><strong>⏰ Intensidade Adequada:</strong> Horas suficientes para eficácia</li>
+                    <li><strong>👨‍👩‍👧‍👦 Envolvimento Familiar:</strong> Participação ativa dos pais</li>
+                    <li><strong>🔄 Consistência:</strong> Aplicação uniforme em todos os ambientes</li>
+                    <li><strong>📊 Monitoramento:</strong> Avaliação contínua do progresso</li>
+                    <li><strong>🌟 Ética:</strong> Respeito à dignidade e direitos da pessoa</li>
+                    <li><strong>🎪 Naturalidade:</strong> Integração com atividades cotidianas</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <h3>🌟 Histórias de Sucesso:</h3>
+                <p style="color: white;">Milhares de famílias ao redor do mundo testemunharam transformações extraordinárias através da Terapia ABA. Crianças que não falavam desenvolveram comunicação funcional, comportamentos desafiadores foram substituídos por habilidades adaptativas, e muitas pessoas no espectro autista alcançaram níveis de independência que antes pareciam impossíveis. A ABA não apenas ensina habilidades, mas constrói pontes para um futuro mais promissor!</p>
+            </div>
+            
+            <p style="text-align: center; margin-top: 30px; font-size: 1.1rem; color: #64748b;">
+                <em>Baseado em décadas de pesquisa científica, diretrizes internacionais e melhores práticas em Análise Aplicada do Comportamento 🎯📊🧠</em>
+            </p>
+        </div>
+
+        <!-- Página 2: Índice -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">2</div>
+                <div class="chapter-badge">ÍNDICE</div>
+            </div>
+            <h2>🗺️ Sua Jornada na Terapia ABA</h2>
+            <div class="story-illustration">🧠➡️📊➡️🎯➡️🌟</div>
+            
+            <div class="principles-box">
+                <h3>🧭 Roteiro Completo para Compreender a ABA:</h3>
+                <ol class="steps-list">
+                    <li><strong>Fundamentos da ABA</strong> - História, princípios e base científica</li>
+                    <li><strong>Princípios do Comportamento</strong> - Reforço, punição e extinção</li>
+                    <li><strong>Avaliação e Análise</strong> - FBA, VB-MAPP e outras ferramentas</li>
+                    <li><strong>Técnicas de Ensino</strong> - DTT, NET, modelagem e encadeamento</li>
+                    <li><strong>Programas de Intervenção</strong> - Estruturação e implementação</li>
+                    <li><strong>Coleta de Dados</strong> - Métodos de mensuração e análise</li>
+                    <li><strong>Manejo Comportamental</strong> - Redução de comportamentos problema</li>
+                    <li><strong>Desenvolvimento de Habilidades</strong> - Comunicação, social e acadêmica</li>
+                    <li><strong>Generalização</strong> - Transferência para ambientes naturais</li>
+                    <li><strong>Envolvimento Familiar</strong> - Treinamento e capacitação de pais</li>
+                    <li><strong>Supervisão e Ética</strong> - Padrões profissionais e éticos</li>
+                    <li><strong>Tecnologia na ABA</strong> - Ferramentas digitais e inovações</li>
+                    <li><strong>Casos Práticos</strong> - Exemplos reais de implementação</li>
+                    <li><strong>Recursos e Próximos Passos</strong> - Como iniciar a terapia ABA</li>
+                </ol>
+            </div>
+            
+            <div class="techniques-box">
+                <h3>🎯 Abordagem Científica e Prática:</h3>
+                <p style="color: white;">Este guia combina a rigorosa base científica da Análise Aplicada do Comportamento com orientações práticas para implementação eficaz. Baseamos nossas informações em pesquisas peer-reviewed, diretrizes do BACB (Behavior Analyst Certification Board) e experiências de profissionais certificados ao redor do mundo!</p>
+            </div>
+            
+            <div class="aba-demo">
+                <h3>🎯 ABA: Ciência do Comportamento</h3>
+                <div class="behavior-circle interactive-element">
+                    Antecedente → Comportamento → Consequência
+                </div>
+                <p><strong>Explore o modelo ABC da ABA! ⬆️</strong></p>
+            </div>
+            
+            <div class="strategies-box">
+                <h3>📋 Por que a ABA é considerada padrão-ouro:</h3>
+                <ul style="color: white;">
+                    <li><strong>🔬 Base Científica:</strong> Décadas de pesquisa rigorosa</li>
+                    <li><strong>📊 Evidências Empíricas:</strong> Resultados mensuráveis e replicáveis</li>
+                    <li><strong>🎯 Eficácia Comprovada:</strong> Taxa de sucesso superior a 89%</li>
+                    <li><strong>🌟 Reconhecimento Oficial:</strong> Endossada por organizações médicas</li>
+                    <li><strong>🎪 Flexibilidade:</strong> Adaptável a diferentes necessidades</li>
+                    <li><strong>📈 Progresso Mensurável:</strong> Dados objetivos de melhoria</li>
+                </ul>
+            </div>
+            
+            <div class="technique-grid">
+                <div class="technique-card">
+                    <div class="technique-card-icon">🎯</div>
+                    <div class="technique-card-title">DTT - Discrete Trial Training</div>
+                    <div class="technique-card-desc">Ensino estruturado através de tentativas discretas com instrução clara, resposta e consequência</div>
+                </div>
+                <div class="technique-card">
+                    <div class="technique-card-icon">🌟</div>
+                    <div class="technique-card-title">NET - Natural Environment Teaching</div>
+                    <div class="technique-card-desc">Ensino no ambiente natural aproveitando motivações e interesses da criança</div>
+                </div>
+                <div class="technique-card">
+                    <div class="technique-card-icon">🔗</div>
+                    <div class="technique-card-title">Encadeamento</div>
+                    <div class="technique-card-desc">Ensino de sequências complexas divididas em passos menores e conectados</div>
+                </div>
+                <div class="technique-card">
+                    <div class="technique-card-icon">👁️</div>
+                    <div class="technique-card-title">Modelagem</div>
+                    <div class="technique-card-desc">Demonstração e imitação para ensinar novos comportamentos e habilidades</div>
+                </div>
+            </div>
+            
+            <div class="implementation-box">
+                <h3>⚙️ Componentes Essenciais de um Programa ABA:</h3>
+                <ul style="color: white;">
+                    <li><strong>🔍 Avaliação Funcional:</strong> Análise detalhada de comportamentos</li>
+                    <li><strong>🎯 Objetivos SMART:</strong> Específicos, mensuráveis, alcançáveis</li>
+                    <li><strong>📋 Plano de Ensino:</strong> Estratégias estruturadas e sequenciais</li>
+                    <li><strong>📊 Sistema de Dados:</strong> Coleta e análise contínua</li>
+                    <li><strong>🎁 Programa de Reforço:</strong> Motivação e manutenção</li>
+                    <li><strong>🌐 Generalização:</strong> Transferência para vida real</li>
+                    <li><strong>👨‍👩‍👧‍👦 Treinamento Familiar:</strong> Capacitação dos cuidadores</li>
+                    <li><strong>🔄 Supervisão Clínica:</strong> Acompanhamento profissional</li>
+                </ul>
+            </div>
+            
+            <div class="abc-grid">
+                <div class="abc-item">
+                    <div class="abc-icon">🎬</div>
+                    <div class="abc-label"><strong>Antecedente</strong><br>O que acontece antes</div>
+                </div>
+                <div class="abc-item">
+                    <div class="abc-icon">🎭</div>
+                    <div class="abc-label"><strong>Comportamento</strong><br>A ação observável</div>
+                </div>
+                <div class="abc-item">
+                    <div class="abc-icon">🎁</div>
+                    <div class="abc-label"><strong>Consequência</strong><br>O que acontece depois</div>
+                </div>
+            </div>
+            
+            <div class="benefits-box">
+                <h3>🌟 Áreas de Desenvolvimento na ABA:</h3>
+                <ul style="color: white;">
+                    <li><strong>💬 Comunicação Verbal:</strong> Linguagem expressiva e receptiva</li>
+                    <li><strong>🤝 Comunicação Não-Verbal:</strong> Gestos, expressões, contato visual</li>
+                    <li><strong>👥 Habilidades Sociais:</strong> Interação, amizade, cooperação</li>
+                    <li><strong>🎓 Habilidades Acadêmicas:</strong> Leitura, escrita, matemática</li>
+                    <li><strong>🏠 Vida Diária:</strong> Autocuidado, tarefas domésticas</li>
+                    <li><strong>🎨 Brincar:</strong> Recreação, criatividade, imaginação</li>
+                    <li><strong>🧠 Cognitivas:</strong> Atenção, memória, resolução de problemas</li>
+                    <li><strong>😊 Regulação Emocional:</strong> Controle e expressão adequada</li>
+                </ul>
+            </div>
+            
+            <div class="reinforcement-box">
+                <h3>🎁 Esquemas de Reforço na ABA:</h3>
+                <ul style="color: white;">
+                    <li><strong>🔄 Contínuo (CRF):</strong> Reforço a cada resposta correta</li>
+                    <li><strong>📊 Razão Fixa (FR):</strong> Reforço após número fixo de respostas</li>
+                    <li><strong>🎲 Razão Variável (VR):</strong> Reforço após número variável de respostas</li>
+                    <li><strong>⏰ Intervalo Fixo (FI):</strong> Reforço após tempo fixo</li>
+                    <li><strong>🌊 Intervalo Variável (VI):</strong> Reforço após tempo variável</li>
+                    <li><strong>📈 Diferencial:</strong> Reforço para melhoria gradual</li>
+                </ul>
+            </div>
+            
+            <div class="data-collection-box">
+                <h3>📊 Métodos de Coleta de Dados:</h3>
+                <ul style="color: white;">
+                    <li><strong>📈 Frequência:</strong> Contagem de ocorrências</li>
+                    <li><strong>⏱️ Duração:</strong> Tempo de ocorrência do comportamento</li>
+                    <li><strong>📏 Intensidade:</strong> Magnitude ou força do comportamento</li>
+                    <li><strong>⚡ Latência:</strong> Tempo entre estímulo e resposta</li>
+                    <li><strong>🎯 Acurácia:</strong> Precisão na execução</li>
+                    <li><strong>📊 Porcentagem:</strong> Taxa de respostas corretas</li>
+                    <li><strong>🔄 Taxa:</strong> Frequência por unidade de tempo</li>
+                    <li><strong>📝 Observação Direta:</strong> Registro em tempo real</li>
+                </ul>
+            </div>
+            
+            <div class="generalization-box">
+                <h3>🌐 Estratégias de Generalização:</h3>
+                <ul style="color: white;">
+                    <li><strong>🏠 Múltiplos Ambientes:</strong> Casa, escola, comunidade</li>
+                    <li><strong>👥 Diferentes Pessoas:</strong> Vários instrutores e parceiros</li>
+                    <li><strong>🧸 Variação de Materiais:</strong> Diferentes objetos e recursos</li>
+                    <li><strong>⏰ Horários Diversos:</strong> Diferentes momentos do dia</li>
+                    <li><strong>🎯 Múltiplos Exemplos:</strong> Variações do mesmo conceito</li>
+                    <li><strong>🌟 Ensino Incidental:</strong> Oportunidades naturais</li>
+                    <li><strong>🔄 Prática Distribuída:</strong> Revisão espaçada</li>
+                    <li><strong>📈 Monitoramento Contínuo:</strong> Acompanhamento a longo prazo</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h3>⚠️ Fatores Críticos para o Sucesso:</h3>
+                <ul style="color: white;">
+                    <li><strong>👨‍⚕️ Supervisão BCBA:</strong> Analista comportamental certificado</li>
+                    <li><strong>⏰ Intensidade Adequada:</strong> 20-40 horas semanais recomendadas</li>
+                    <li><strong>🎯 Início Precoce:</strong> Melhores resultados antes dos 4 anos</li>
+                    <li><strong>👨‍👩‍👧‍👦 Envolvimento Familiar:</strong> Participação ativa dos pais</li>
+                    <li><strong>🔄 Consistência:</strong> Aplicação uniforme em todos os contextos</li>
+                    <li><strong>📊 Monitoramento:</strong> Avaliação contínua e ajustes</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <h3>🌟 Resultados Esperados com ABA:</h3>
+                <p style="color: white;">Estudos longitudinais demonstram que crianças que recebem intervenção ABA intensiva e precoce apresentam melhorias significativas em QI, linguagem, habilidades sociais e comportamento adaptativo. Muitas alcançam funcionamento típico ou próximo ao típico, com redução substancial na necessidade de serviços especializados na idade escolar!</p>
+            </div>
+            
+            <div class="support-resources">
+                <div class="support-title">Recursos de Implementação</div>
+                <p>Este guia fornece ferramentas práticas para implementar programas ABA eficazes, incluindo modelos de coleta de dados, exemplos de programas de ensino, estratégias de generalização e orientações para treinamento familiar. Conectamos você com profissionais qualificados e recursos de qualidade.</p>
+            </div>
+            
+            <div class="tip-box">
+                <h3>💡 Dica Fundamental:</h3>
+                <p>A ABA não é uma abordagem única para todos. Cada programa deve ser cuidadosamente individualizado baseado nas necessidades específicas, pontos fortes e preferências da pessoa. O sucesso depende da qualidade da implementação, não apenas da quantidade de horas de terapia.</p>
+            </div>
+        </div>
+
+        <!-- Página 3: Fundamentos da ABA -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">3</div>
+                <div class="chapter-badge">CAPÍTULO 1</div>
+            </div>
+            <h2>🧠 Fundamentos da Análise Aplicada do Comportamento</h2>
+            <div class="story-illustration">🔬➡️📊➡️🎯➡️💡</div>
+            
+            <p>A Análise Aplicada do Comportamento (ABA) é uma ciência que aplica princípios do comportamento para melhorar comportamentos socialmente significativos. Desenvolvida a partir dos trabalhos de B.F. Skinner sobre behaviorismo radical, a ABA se tornou a intervenção mais eficaz e cientificamente validada para pessoas com Transtorno do Espectro Autista e outras condições do desenvolvimento.</p>
+            
+            <div class="principles-box">
+                <h3>🧠 O que é Análise Aplicada do Comportamento?</h3>
+                <p style="color: white;">A ABA é uma disciplina científica que utiliza princípios de aprendizagem para aumentar comportamentos úteis e reduzir comportamentos problemáticos. É "aplicada" porque foca em comportamentos socialmente relevantes, "comportamental" porque examina comportamentos observáveis e mensuráveis, e "analítica" porque demonstra controle experimental sobre os comportamentos de interesse.</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">1913-1930</div>
+                        <div class="timeline-title">Behaviorismo Clássico</div>
+                        <div class="timeline-desc">John B. Watson estabelece os fundamentos do behaviorismo, focando no estudo científico do comportamento observável e rejeitando métodos introspectivos.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">1938-1950</div>
+                        <div class="timeline-title">Behaviorismo Radical</div>
+                        <div class="timeline-desc">B.F. Skinner desenvolve os princípios do condicionamento operante, estabelecendo as bases científicas para a modificação comportamental através de reforço e punição.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">1968</div>
+                        <div class="timeline-title">Nascimento da ABA</div>
+                        <div class="timeline-desc">Baer, Wolf e Risley publicam o artigo seminal "Some Current Dimensions of Applied Behavior Analysis", definindo as sete dimensões da ABA e estabelecendo-a como disciplina científica.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">1987</div>
+                        <div class="timeline-title">Estudo de Lovaas</div>
+                        <div class="timeline-desc">Ivar Lovaas publica estudo revolucionário demonstrando que 47% das crianças com autismo que receberam ABA intensiva alcançaram funcionamento intelectual normal.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">5</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">1998</div>
+                        <div class="timeline-title">Certificação BACB</div>
+                        <div class="timeline-desc">Criação do Behavior Analyst Certification Board (BACB), estabelecendo padrões profissionais e éticos para analistas comportamentais certificados.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="techniques-box">
+                <h3>🎯 As Sete Dimensões da ABA</h3>
+                
+                <h4 style="color: white;">1. 📊 Aplicada (Applied):</h4>
+                <ul style="color: white;">
+                    <li><strong>Relevância Social:</strong> Comportamentos importantes para a pessoa e sociedade</li>
+                    <li><strong>Significado Prático:</strong> Mudanças que fazem diferença real na vida</li>
+                    <li><strong>Validação Social:</strong> Aprovação da comunidade e família</li>
+                    <li><strong>Funcionalidade:</strong> Habilidades úteis no dia a dia</li>
+                </ul>
+                
+                <h4 style="color: white;">2. 🎭 Comportamental (Behavioral):</h4>
+                <ul style="color: white;">
+                    <li><strong>Observável:</strong> Comportamentos que podem ser vistos</li>
+                    <li><strong>Mensurável:</strong> Quantificável de forma objetiva</li>
+                    <li><strong>Definível:</strong> Descrição clara e precisa</li>
+                    <li><strong>Replicável:</strong> Outros podem observar o mesmo</li>
+                </ul>
+                
+                <h4 style="color: white;">3. 🔬 Analítica (Analytic):</h4>
+                <ul style="color: white;">
+                    <li><strong>Controle Experimental:</strong> Demonstração de causa e efeito</li>
+                    <li><strong>Análise Funcional:</strong> Identificação das variáveis controladoras</li>
+                    <li><strong>Replicação:</strong> Resultados consistentes e reproduzíveis</li>
+                    <li><strong>Validação:</strong> Evidência científica da eficácia</li>
+                </ul>
+            </div>
+            
+            <div class="strategies-box">
+                <h3>📋 Dimensões da ABA (continuação)</h3>
+                
+                <h4 style="color: white;">4. 🔧 Tecnológica (Technological):</h4>
+                <ul style="color: white;">
+                    <li><strong>Procedimentos Claros:</strong> Descrição detalhada das técnicas</li>
+                    <li><strong>Replicabilidade:</strong> Outros podem implementar igualmente</li>
+                    <li><strong>Precisão:</strong> Especificação exata dos métodos</li>
+                    <li><strong>Padronização:</strong> Consistência na aplicação</li>
+                </ul>
+                
+                <h4 style="color: white;">5. 🎯 Conceitual (Conceptually Systematic):</h4>
+                <ul style="color: white;">
+                    <li><strong>Base Teórica:</strong> Fundamentada em princípios científicos</li>
+                    <li><strong>Coerência:</strong> Alinhamento com teoria comportamental</li>
+                    <li><strong>Integração:</strong> Conexão entre técnicas e princípios</li>
+                    <li><strong>Consistência:</strong> Abordagem unificada e lógica</li>
+                </ul>
+                
+                <h4 style="color: white;">6. ⚡ Eficaz (Effective):</h4>
+                <ul style="color: white;">
+                    <li><strong>Mudança Significativa:</strong> Melhoria clinicamente relevante</li>
+                    <li><strong>Magnitude:</strong> Tamanho do efeito importante</li>
+                    <li><strong>Durabilidade:</strong> Mudanças que se mantêm no tempo</li>
+                    <li><strong>Generalização:</strong> Transferência para outros contextos</li>
+                </ul>
+                
+                <h4 style="color: white;">7. 🌐 Generalizada (Generality):</h4>
+                <ul style="color: white;">
+                    <li><strong>Ambientes:</strong> Múltiplos contextos e situações</li>
+                    <li><strong>Pessoas:</strong> Diferentes parceiros de interação</li>
+                    <li><strong>Comportamentos:</strong> Extensão para habilidades relacionadas</li>
+                    <li><strong>Tempo:</strong> Manutenção a longo prazo</li>
+                </ul>
+            </div>
+            
+            <div class="implementation-box">
+                <h3>⚙️ Princípios Fundamentais do Comportamento</h3>
+                
+                <h4 style="color: white;">🎁 Reforço Positivo:</h4>
+                <ul style="color: white;">
+                    <li><strong>Definição:</strong> Adicionar algo desejável após um comportamento</li>
+                    <li><strong>Efeito:</strong> Aumenta a probabilidade de repetição</li>
+                    <li><strong>Exemplos:</strong> Elogio, comida, atividade preferida</li>
+                    <li><strong>Timing:</strong> Imediato para máxima eficácia</li>
+                </ul>
+                
+                <h4 style="color: white;">➖ Reforço Negativo:</h4>
+                <ul style="color: white;">
+                    <li><strong>Definição:</strong> Remover algo indesejável após um comportamento</li>
+                    <li><strong>Efeito:</strong> Aumenta a probabilidade de repetição</li>
+                    <li><strong>Exemplos:</strong> Parar barulho alto, remover tarefa difícil</li>
+                    <li><strong>Cuidado:</strong> Não confundir com punição</li>
+                </ul>
+                
+                <h4 style="color: white;">⚠️ Punição Positiva:</h4>
+                <ul style="color: white;">
+                    <li><strong>Definição:</strong> Adicionar algo indesejável após um comportamento</li>
+                    <li><strong>Efeito:</strong> Diminui a probabilidade de repetição</li>
+                    <li><strong>Exemplos:</strong> Repreensão, consequência natural</li>
+                    <li><strong>Uso Limitado:</strong> Apenas quando necessário e ético</li>
+                </ul>
+                
+                <h4 style="color: white;">🚫 Punição Negativa:</h4>
+                <ul style="color: white;">
+                    <li><strong>Definição:</strong> Remover algo desejável após um comportamento</li>
+                    <li><strong>Efeito:</strong> Diminui a probabilidade de repetição</li>
+                    <li><strong>Exemplos:</strong> Time-out, perda de privilégios</li>
+                    <li><strong>Alternativa:</strong> Preferir reforço de comportamentos apropriados</li>
+                </ul>
+            </div>
+            
+            <div class="benefits-box">
+                <h3>🌟 Características Únicas da ABA</h3>
+                <ul style="color: white;">
+                    <li><strong>🔬 Base Científica:</strong> Fundamentada em pesquisa experimental rigorosa</li>
+                    <li><strong>📊 Orientada por Dados:</strong> Decisões baseadas em evidências objetivas</li>
+                    <li><strong>🎯 Individualizada:</strong> Programas personalizados para cada pessoa</li>
+                    <li><strong>📈 Mensurável:</strong> Progresso quantificável e verificável</li>
+                    <li><strong>🔄 Sistemática:</strong> Abordagem estruturada e consistente</li>
+                    <li><strong>🌟 Positiva:</strong> Foco no ensino e reforço de habilidades</li>
+                    <li><strong>🎪 Funcional:</strong> Ensino de comportamentos úteis e significativos</li>
+                    <li><strong>🌐 Generalizável:</strong> Transferência para ambientes naturais</li>
+                </ul>
+            </div>
+            
+            <div class="abc-grid">
+                <div class="abc-item">
+                    <div class="abc-icon">🎬</div>
+                    <div class="abc-label"><strong>Antecedente</strong><br>Estímulo discriminativo<br>Contexto ambiental</div>
+                </div>
+                <div class="abc-item">
+                    <div class="abc-icon">🎭</div>
+                    <div class="abc-label"><strong>Comportamento</strong><br>Resposta observável<br>Ação mensurável</div>
+                </div>
+                <div class="abc-item">
+                    <div class="abc-icon">🎁</div>
+                    <div class="abc-label"><strong>Consequência</strong><br>Reforço ou punição<br>Mudança ambiental</div>
+                </div>
+            </div>
+            
+            <div class="reinforcement-box">
+                <h3>🎁 Tipos de Reforçadores</h3>
+                
+                <h4 style="color: white;">🍭 Primários (Incondicionados):</h4>
+                <ul style="color: white;">
+                    <li><strong>Biológicos:</strong> Comida, água, sono, conforto</li>
+                    <li><strong>Sensoriais:</strong> Música, texturas, movimentos</li>
+                    <li><strong>Naturais:</strong> Não precisam ser aprendidos</li>
+                    <li><strong>Universais:</strong> Eficazes para a maioria das pessoas</li>
+                </ul>
+                
+                <h4 style="color: white;">🏆 Secundários (Condicionados):</h4>
+                <ul style="color: white;">
+                    <li><strong>Sociais:</strong> Elogios, atenção, aprovação</li>
+                    <li><strong>Tangíveis:</strong> Brinquedos, objetos, tokens</li>
+                    <li><strong>Atividades:</strong> Jogos, brincadeiras, privilégios</li>
+                    <li><strong>Aprendidos:</strong> Adquirem valor através de associação</li>
+                </ul>
+                
+                <h4 style="color: white;">🎯 Características do Reforço Eficaz:</h4>
+                <ul style="color: white;">
+                    <li><strong>⏰ Imediato:</strong> Fornecido logo após o comportamento</li>
+                    <li><strong>🎪 Contingente:</strong> Dependente do comportamento alvo</li>
+                    <li><strong>🌟 Motivador:</strong> Desejável para a pessoa específica</li>
+                    <li><strong>📏 Apropriado:</strong> Proporcional ao esforço/conquista</li>
+                </ul>
+            </div>
+  </div> </div> </div>
+
+
+  
+ <div class="navigation">
+        <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
+        <button id="nextBtn" class="nav-btn">Próximo</button>
+    </div>
+
+     <script>
+        
+    const pages = document.querySelectorAll('.page');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const progressBar = document.getElementById('progressBar');
+    const pageCounter = document.getElementById('pageCounter');
+    let currentPageIndex = 0;
+
+    function showPage(index) {
+        pages.forEach((page, i) => {
+            if (i === index) {
+                page.classList.add('active');
+            } else {
+                page.classList.remove('active');
+            }
+        });
+        updateNavigationButtons();
+        updateProgressBar();
+        updatePageCounter();
+    }
+
+    function updateNavigationButtons() {
+        prevBtn.disabled = currentPageIndex === 0;
+        nextBtn.disabled = currentPageIndex === pages.length - 1;
+    }
+
+    function updateProgressBar() {
+        const progress = (currentPageIndex / (pages.length - 1)) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+
+    function updatePageCounter() {
+        pageCounter.textContent = `${currentPageIndex + 1} / ${pages.length}`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentPageIndex > 0) {
+            currentPageIndex--;
+            showPage(currentPageIndex);
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentPageIndex < pages.length - 1) {
+            currentPageIndex++;
+            showPage(currentPageIndex);
+        }
+    });
+
+    // Initialize the first page and navigation
+    showPage(currentPageIndex);
+</script>
+
+
+                
+

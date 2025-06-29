@@ -1,0 +1,1496 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Coração Calmo - eBook Profissional Infantil</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Comic+Neue:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Fredoka', cursive;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .ebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .page {
+            min-height: 100vh;
+            padding: 50px;
+            display: none;
+            position: relative;
+            background: linear-gradient(45deg, #f0f8ff, #fff5ee);
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .page-number {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-weight: 600;
+            font-size: 20px;
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+        }
+        
+        .chapter-badge {
+            background: linear-gradient(45deg, #a8edea, #fed6e3);
+            color: #2d3748;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        h1 {
+            color: #2d3748;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #667eea;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        h3 {
+            color: #764ba2;
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+        
+        h4 {
+            color: #4a5568;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        p {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            color: #4a5568;
+            margin-bottom: 22px;
+            text-align: justify;
+            font-weight: 400;
+        }
+        
+        .character {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            background: linear-gradient(45deg, #a8edea, #fed6e3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .emotion-box {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #e17055;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .emotion-box::before {
+            content: "💗";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .tip-box {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #667eea;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .tip-box::before {
+            content: "🧠";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .activity-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .activity-box::before {
+            content: "🎯";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #fdcb6e, #e17055);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #d63031;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .warning-box::before {
+            content: "⚠️";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .success-box {
+            background: linear-gradient(135deg, #00b894, #00cec9);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .success-box::before {
+            content: "🌟";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Fredoka', cursive;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+        }
+        
+        .nav-btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 6px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transition: width 0.5s ease;
+            z-index: 1001;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .page-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: #4a5568;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .source-box {
+            background: #f7fafc;
+            border: 3px dashed #cbd5e0;
+            padding: 25px;
+            border-radius: 20px;
+            margin-top: 35px;
+            font-size: 1rem;
+            color: #718096;
+            position: relative;
+        }
+        
+        .source-box::before {
+            content: "📚";
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+        
+        .breathing-exercise {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-radius: 25px;
+            margin: 25px 0;
+        }
+        
+        .breathing-circle {
+            width: 180px;
+            height: 180px;
+            border: 6px solid #667eea;
+            border-radius: 50%;
+            margin: 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #667eea;
+            font-weight: 600;
+            animation: breathe 6s infinite;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(102, 126, 234, 0.3); }
+            50% { transform: scale(1.3); box-shadow: 0 0 40px rgba(102, 126, 234, 0.6); }
+        }
+        
+        .story-illustration {
+            text-align: center;
+            font-size: 4rem;
+            margin: 30px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        ul, ol {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: #4a5568;
+            margin-left: 25px;
+            font-weight: 400;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            position: relative;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .checklist li::before {
+            content: "✅";
+            margin-right: 10px;
+        }
+        
+        .steps-list {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .steps-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .steps-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #667eea;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .interactive-element {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .interactive-element:hover {
+            transform: scale(1.05);
+        }
+        
+        .age-badge {
+            background: linear-gradient(45ff, #a8edea, #fed6e3);
+            color: #4a5568;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .difficulty-badge {
+            background: linear-gradient(45deg, #ffeaa7, #fab1a0);
+            color: #4a5568;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .quote-box {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #ff8a80;
+            font-style: italic;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        
+      /*  .quote-box::before {
+            content: """;
+            font-size: 4rem;
+            color: #ff8a80;
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            line-height: 1;
+        } */
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .panic-scenario {
+            background: linear-gradient(135deg, #ff7675, #fd79a8);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .panic-scenario::before {
+            content: "🚨";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .calm-box {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .calm-box::before {
+            content: "🕊️";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        @media (max-width: 768px) {
+            .page {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .character {
+                width: 100px;
+                height: 100px;
+                font-size: 3.5rem;
+            }
+            
+            .breathing-circle {
+                width: 140px;
+                height: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="page-counter" id="pageCounter">1 / 15</div>
+    
+    <div class="ebook-container">
+        <!-- Página 1: Capa Profissional -->
+        <div class="page active">
+            <div class="page-header">
+                <div class="page-number">1</div>
+                <div class="chapter-badge">CAPA</div>
+            </div>
+            <h1>💗 MEU CORAÇÃO CALMO 💗</h1>
+            <div class="character interactive-element">🦋</div>
+            <h2>eBook Completo sobre Ataques de Pânico</h2>
+            
+            <div class="emotion-box">
+                <h3>🌟 Para Pequenos Guerreiros Corajosos</h3>
+                <p style="text-align: center; font-size: 1.4rem;"><strong>Um eBook especial para crianças que às vezes sentem o coração disparar e precisam aprender a se acalmar</strong></p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Páginas Interativas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Técnicas de Calma</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Baseado em Ciência</div>
+                </div>
+            </div>
+            
+            <div class="age-badge">👶 Idade: 6-14 anos</div>
+            <div class="difficulty-badge">📚 Nível: Iniciante</div>
+            
+            <p style="text-align: center; margin-top: 30px; font-size: 1.1rem; color: #718096;">
+                <em>Desenvolvido por especialistas em ansiedade infantil 🧠✨</em>
+            </p>
+        </div>
+
+        <!-- Página 2: Índice Interativo -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">2</div>
+                <div class="chapter-badge">ÍNDICE</div>
+            </div>
+            <h2>📚 Nossa Jornada de Calma</h2>
+            <div class="story-illustration">🗺️📖🎯</div>
+            
+            <div class="tip-box">
+                <h3>🧭 Nosso Mapa da Tranquilidade:</h3>
+                <ol class="steps-list">
+                    <li><strong>Entendendo os Ataques de Pânico</strong> - O que são e por que acontecem</li>
+                    <li><strong>Sinais do Corpo e da Mente</strong> - Como reconhecer os sintomas</li>
+                    <li><strong>A História do Davi Corajoso</strong> - Uma jornada de superação</li>
+                    <li><strong>Dados Científicos Importantes</strong> - Fatos que você precisa saber</li>
+                    <li><strong>Técnicas de Respiração Mágica</strong> - Seu superpoder pessoal</li>
+                    <li><strong>Kit de Emergência da Calma</strong> - Ferramentas práticas</li>
+                    <li><strong>Cenários e Situações</strong> - Como agir em diferentes momentos</li>
+                    <li><strong>Atividades Terapêuticas</strong> - Jogos e exercícios</li>
+                    <li><strong>Guia para Família</strong> - Como todos podem ajudar</li>
+                    <li><strong>Quando Buscar Ajuda</strong> - Sinais importantes</li>
+                    <li><strong>Histórias de Vitória</strong> - Crianças que venceram</li>
+                    <li><strong>Plano de Ação Pessoal</strong> - Seu roteiro de calma</li>
+                    <li><strong>Certificado de Guerreiro Calmo</strong> - Sua conquista</li>
+                </ol>
+            </div>
+            
+            <div class="activity-box">
+                <h3>🎯 Como usar este eBook:</h3>
+                <p style="color: white;">Leia com calma, pratique as técnicas e lembre-se: você é mais forte do que qualquer sensação assustadora. Cada página te deixará mais preparado!</p>
+            </div>
+        </div>
+
+        <!-- Página 3: O que são Ataques de Pânico -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">3</div>
+                <div class="chapter-badge">CAPÍTULO 1</div>
+            </div>
+            <h2>🤔 Entendendo os Ataques de Pânico</h2>
+            <div class="story-illustration">💗➡️⚡➡️🌊➡️🕊️</div>
+            
+            <p>Você já sentiu seu coração bater muito rápido de repente? Ou ficou com muito medo sem saber por quê? Às vezes nosso corpo reage de forma muito intensa, e isso tem um nome especial.</p>
+            
+            <div class="emotion-box">
+                <h3>🎭 O que é um Ataque de Pânico?</h3>
+                <p>É quando nosso corpo ativa um "alarme de emergência" muito forte, mesmo quando não há perigo real. É como se nosso sistema de proteção ficasse confuso e gritasse "PERIGO!" quando na verdade estamos seguros.</p>
+            </div>
+            
+            <div class="quote-box">
+                Um ataque de pânico é como uma tempestade: parece assustador, mas sempre passa. E depois da tempestade, o céu fica ainda mais bonito.
+            </div>
+            
+            <div class="tip-box">
+                <h3>🌟 Fatos Importantes sobre Ataques de Pânico:</h3>
+                <ul class="checklist">
+                    <li>Não são perigosos, mesmo parecendo assustadores</li>
+                    <li>Sempre passam, geralmente em poucos minutos</li>
+                    <li>Muitas crianças e adultos passam por isso</li>
+                    <li>Não significa que você é "fraco" ou "diferente"</li>
+                    <li>Podem ser controlados com as técnicas certas</li>
+                    <li>Seu corpo está tentando te "proteger"</li>
+                    <li>Com prática, ficam cada vez mais raros</li>
+                </ul>
+            </div>
+            
+            <div class="panic-scenario">
+                <h3>🚨 Como Pode Começar:</h3>
+                <ul style="color: white;">
+                    <li>De repente, sem aviso</li>
+                    <li>Depois de um susto ou estresse</li>
+                    <li>Em lugares com muita gente</li>
+                    <li>Quando estamos muito cansados</li>
+                    <li>Às vezes até durante o sono</li>
+                    <li>Em situações novas ou desafiadoras</li>
+                </ul>
+            </div>
+            
+            <div class="activity-box">
+                <h3>🎨 Atividade: Desenhe Seus Sentimentos</h3>
+                <p style="color: white;">Pegue papel e lápis de cor. Desenhe como você se sente quando está muito nervoso. Use cores e formas que representem essas sensações. Depois, desenhe como gostaria de se sentir!</p>
+            </div>
+            
+            <div class="source-box">
+                <strong>📚 Fonte Científica:</strong> Baseado em pesquisas da American Academy of Child and Adolescent Psychiatry e estudos sobre transtornos de ansiedade na infância (DSM-5-TR, 2022).
+            </div>
+        </div>
+
+        <!-- Página 4: Dados Científicos -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">4</div>
+                <div class="chapter-badge">DADOS CIENTÍFICOS</div>
+            </div>
+            <h2>📊 Números Importantes sobre Ataques de Pânico</h2>
+            <div class="story-illustration">📈🔬📋</div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">2-3%</div>
+                    <div class="stat-label">das crianças têm ataques de pânico</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10-15</div>
+                    <div class="stat-label">minutos é a duração média</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">90%</div>
+                    <div class="stat-label">melhoram com tratamento adequado</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12-17</div>
+                    <div class="stat-label">anos é a idade mais comum</div>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <h3>🧠 O que a Ciência Descobriu:</h3>
+                <ul>
+                    <li><strong>É uma resposta natural:</strong> Nosso cérebro tem um sistema de alarme</li>
+                    <li><strong>Não é culpa sua:</strong> Acontece por fatores biológicos e ambientais</li>
+                    <li><strong>É tratável:</strong> Existem técnicas muito eficazes</li>
+                    <li><strong>Pode ser hereditário:</strong> Às vezes "passa" na família</li>
+                    <li><strong>Afeta meninas e meninos:</strong> Mas é um pouco mais comum em meninas</li>
+                    <li><strong>Melhora com a idade:</strong> Muitas crianças superam naturalmente</li>
+                </ul>
+            </div>
+            
+            <div class="calm-box">
+                <h3>🕊️ Dados Tranquilizadores:</h3>
+                <ul style="color: white;">
+                    <li><strong>Duração:</strong> A maioria dura entre 5-20 minutos</li>
+                    <li><strong>Frequência:</strong> Tendem a diminuir com o tempo</li>
+                    <li><strong>Recuperação:</strong> 85% das crianças se recuperam completamente</li>
+                    <li><strong>Aprendizado:</strong> Cada episódio ensina algo novo sobre controle</li>
+                    <li><strong>Força:</strong> Crianças que passam por isso desenvolvem grande resiliência</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h3>⚠️ Mitos vs. Realidade:</h3>
+                <h4>❌ MITO:</h4>
+                <ul>
+                    <li>"Ataques de pânico são perigosos"</li>
+                    <li>"Você pode 'enlouquecer' durante um ataque"</li>
+                    <li>"Significa que você é fraco"</li>
+                    <li>"Nunca vão parar"</li>
+                </ul>
+                <h4>✅ REALIDADE:</h4>
+                <ul>
+                    <li>São desconfortáveis, mas não perigosos</li>
+                    <li>Você mantém o controle da sua mente</li>
+                    <li>Mostra que você é sensível e corajoso</li>
+                    <li>Podem ser controlados e superados</li>
+                </ul>
+            </div>
+            
+            <div class="source-box">
+                <strong>📚 Fontes:</strong> National Institute of Mental Health (2023), Anxiety and Depression Association of America, Journal of Child Psychology and Psychiatry.
+            </div>
+        </div>
+
+        <!-- Página 5: Sinais e Sintomas -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">5</div>
+                <div class="chapter-badge">CAPÍTULO 2</div>
+            </div>
+            <h2>🫀 Sinais do Corpo e da Mente</h2>
+            <div class="story-illustration">🧠➡️❤️➡️⚡➡️🕊️</div>
+            
+            <p>Durante um ataque de pânico, nosso corpo e nossa mente nos enviam muitos sinais. Conhecer esses sinais nos ajuda a entender o que está acontecendo e nos sentirmos menos assustados.</p>
+            
+            <div class="panic-scenario">
+                <h3>🚨 Sinais Físicos (no corpo):</h3>
+                <ul style="color: white;">
+                    <li><strong>❤️ Coração acelerado:</strong> Bate muito rápido e forte</li>
+                    <li><strong>🫁 Respiração rápida:</strong> Fica difícil respirar normalmente</li>
+                    <li><strong>😰 Suor excessivo:</strong> Especialmente nas mãos e testa</li>
+                    <li><strong>🥶 Tremores:</strong> Mãos ou corpo todo tremendo</li>
+                    <li><strong>🤢 Enjoo:</strong> Vontade de vomitar ou dor de barriga</li>
+                    <li><strong>😵 Tontura:</strong> Sensação de que vai desmaiar</li>
+                    <li><strong>🔥 Ondas de calor ou frio:</strong> Temperatura do corpo muda</li>
+                    <li><strong>⚡ Formigamento:</strong> Nas mãos, pés ou rosto</li>
+                </ul>
+            </div>
+            
+            <div class="emotion-box">
+                <h3>🧠 Sinais Mentais e Emocionais:</h3>
+                <ul>
+                    <li><strong>😱 Medo intenso:</strong> De que algo terrível vai acontecer</li>
+                    <li><strong>🌪️ Sensação de irrealidade:</strong> Como se fosse um sonho</li>
+                    <li><strong>💭 Pensamentos acelerados:</strong> Mente correndo muito rápido</li>
+                    <li><strong>🏃‍♀️ Vontade de fugir:</strong> Impulso de sair correndo</li>
+                    <li><strong>😵‍💫 Confusão:</strong> Dificuldade para pensar claramente</li>
+                    <li><strong>⚰️ Medo de morrer:</strong> Sensação de perigo extremo</li>
+                    <li><strong>🤯 Medo de perder o controle:</strong> De fazer algo embaraçoso</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <h3>🌟 Fases de um Ataque de Pânico:</h3>
+                <ol class="steps-list">
+                    <li><strong>Início:</strong> Primeiros sinais aparecem (0-2 minutos)</li>
+                    <li><strong>Pico:</strong> Sintomas ficam mais intensos (2-10 minutos)</li>
+                    <li><strong>Diminuição:</strong> Sintomas começam a passar (10-20 minutos)</li>
+                    <li><strong>Recuperação:</strong> Corpo volta ao normal (20-30 minutos)</li>
+                    <li><strong>Cansaço:</strong> Sensação de exaustão depois</li>
+                </ol>
+            </div>
+            
+            <div class="activity-box">
+                <h3>🎯 Atividade: Meu Termômetro de Pânico</h3>
+                <p style="color: white;">Desenhe um termômetro de 1 a 10. Quando sentir os primeiros sinais, marque onde está. Isso te ajuda a perceber que os sintomas têm intensidades diferentes e que você pode agir cedo!</p>
+            </div>
+            
+            <div class="success-box">
+                <h3>💡 Lembre-se Sempre:</h3>
+                <p style="color: white;">Esses sintomas são temporários e não podem te machucar! Seu corpo está fazendo exatamente o que foi programado para fazer - te proteger. Com as técnicas certas, você pode ensinar seu corpo a se acalmar mais rápido.</p>
+            </div>
+            
+            <div class="source-box">
+                <strong>📚 Fonte:</strong> Manual Diagnóstico e Estatístico de Transtornos Mentais (DSM-5-TR), literatura médica sobre sintomatologia de ataques de pânico em crianças.
+            </div>
+        </div>
+
+        <!-- Página 6: História do Davi Corajoso - Parte 1 -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">6</div>
+                <div class="chapter-badge">HISTÓRIA</div>
+            </div>
+            <h2>📖 A Jornada do Davi Corajoso - Parte 1</h2>
+            <div class="story-illustration">👦⚡💗</div>
+            
+            <p>Era uma vez um menino chamado Davi, de 11 anos, que adorava jogar futebol e desenhar super-heróis. Davi era corajoso em muitas coisas, mas havia algo que o deixava muito assustado: às vezes, do nada, seu coração disparava como um motor de corrida.</p>
+            
+            <div class="quote-box">
+                "Por que isso acontece comigo? Será que tem algo errado?" - pensava Davi, preocupado.
+            </div>
+            
+            <p>A primeira vez aconteceu durante uma aula de matemática. De repente, o coração do Davi começou a bater tão rápido que ele achou que todos na sala podiam ouvir. Suas mãos ficaram suadas, ele começou a tremer e teve uma vontade enorme de sair correndo da sala.</p>
+            
+            <div class="panic-scenario">
+                <h3>😰 O que Davi sentiu:</h3>
+                <ul style="color: white;">
+                    <li>"Meu coração vai explodir!"</li>
+                    <li>"Não consigo respirar direito!"</li>
+                    <li>"Todo mundo está olhando para mim!"</li>
+                    <li>"Preciso sair daqui agora!"</li>
+                    <li>"Algo terrível vai acontecer!"</li>
+                </ul>
+            </div>
+            
+            <p>Davi ficou tão assustado que pediu para ir ao banheiro e ligou para sua mãe, chorando. Ela veio buscá-lo na escola, e juntos foram ao médico. Foi lá que Davi descobriu que o que aconteceu com ele tinha um nome: ataque de pânico.</p>
+            
+            <div class="tip-box">
+                <h3>🤔 Você já se sentiu como o Davi?</h3>
+                <p>Muitas crianças passam por experiências similares! O Davi descobriu que não estava sozinho e que existem maneiras de lidar com essas sensações assustadoras.</p>
+            </div>
+            
+            <div class="activity-box">
+                <h3>🎨 Atividade: Desenhe o Davi</h3>
+                <p style="color: white;">Como você imagina o Davi durante seu primeiro ataque de pânico? Desenhe ele na sala de aula. Que expressão ele tem? Como está seu corpo? Agora desenhe como você gostaria que ele se sentisse.</p>
+            </div>
+        </div>
+
+        <!-- Página 7: História do Davi Corajoso - Parte 2 -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">7</div>
+                <div class="chapter-badge">HISTÓRIA</div>
+            </div>
+            <h2>📖 A Jornada do Davi Corajoso - Parte 2</h2>
+            <div class="story-illustration">👦👩‍⚕️✨</div>
+            
+            <p>A Dra. Marina, uma psicóloga muito gentil que tinha um consultório cheio de plantas e livros coloridos, explicou para Davi que seu corpo tinha um sistema de alarme super sensível - como um detector de fumaça que às vezes dispara mesmo quando alguém só está fazendo torrada!</p>
+            
+            <div class="quote-box">
+                "Davi, seu corpo está tentando te proteger. Ele não sabe que você está seguro na sala de aula, então ativa o modo 'emergência'. Mas podemos ensinar ele a ficar mais calmo!" - disse a Dra. Marina com um sorriso.
+            </div>
+            
+            <p>A doutora explicou que o cérebro do Davi tinha uma parte chamada "amígdala" - como uma pequena guardiã que fica sempre alerta. Às vezes, essa guardiã fica muito preocupada e grita "PERIGO!" mesmo quando não há nenhum perigo real.</p>
+            
+            <div class="success-box">
+                <h3>💎 O Segredo da Dra. Marina:</h3>
+                <p style="color: white;">"Davi, você pode se tornar o treinador da sua própria mente! Vou te ensinar técnicas especiais que são como superpoderes para acalmar seu corpo e sua mente. Você vai ver como é poderoso!"</p>
+            </div>
+            
+            <p>A Dra. Marina ensinou para Davi que os ataques de pânico são como ondas do mar - eles vêm, ficam fortes por um tempo, mas sempre, sempre passam. E o mais importante: eles não podem machucá-lo de verdade.</p>
+            
+            <div class="tip-box">
+                <h3>🌟 As Descobertas do Davi:</h3>
+                <ul>
+                    <li>Ataques de pânico não são perigosos</li>
+                    <li>Sempre passam, mesmo sem fazer nada</li>
+                    <li>Ele não estava "ficando louco"</li>
+                    <li>Muitas pessoas passam por isso</li>
+                    <li>Existem técnicas para se acalmar</li>
+                    <li>Ele era mais forte do que imaginava</li>
+                </ul>
+            </div>
+            
+            <div class="activity-box">
+                <h3>🎯 Atividade: Minha Conversa com um Especialista</h3>
+                <p style="color: white;">Se você pudesse conversar com a Dra. Marina, que perguntas faria sobre ataques de pânico? Escreva pelo menos 3 perguntas que gostaria de fazer a um profissional.</p>
+            </div>
+            
+            <p>A partir daquele dia, Davi começou a aprender técnicas especiais. Ele descobriu que tinha superpoderes escondidos dentro dele - só precisava aprender a usá-los!</p>
+        </div>
+
+        <!-- Página 8: Técnicas de Respiração Mágica -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">8</div>
+                <div class="chapter-badge">TÉCNICAS</div>
+            </div>
+            <h2>🌬️ Respiração Mágica - Seu Superpoder</h2>
+            
+            <p>A Dra. Marina ensinou para Davi que a respiração é como um controle remoto para o corpo. Quando respiramos de forma especial, podemos "desligar" o alarme do pânico. Vamos aprender essas técnicas mágicas!</p>
+            
+            <div class="breathing-exercise">
+                <h3>🫁 Respiração 4-7-8 (A Mais Poderosa)</h3>
+                <div class="breathing-circle interactive-element">
+                    4... 7... 8...
+                </div>
+                <p><strong>Acompanhe o círculo mágico acima! ⬆️</strong></p>
+            </div>
+            
+            <div class="activity-box">
+                <h3>🎈 Como fazer a Respiração 4-7-8:</h3>
+                <ol class="steps-list" style="color: white;">
+                    <li>Sente-se confortavelmente e feche os olhos</li>
+                    <li>Coloque uma mão no peito, outra na barriga</li>
+                    <li>Inspire pelo nariz contando até 4 (barriga sobe)</li>
+                    <li>Segure o ar contando até 7</li>
+                    <li>Expire pela boca contando até 8 (fazendo "shhh")</li>
+                    <li>Repita 4 vezes e sinta a magia acontecer!</li>
+                </ol>
+            </div>
+            
+            <div class="tip-box">
+                <h3>🌟 Outras Respirações Mágicas:</h3>
+                
+                <h4>🌊 Respiração da Onda:</h4>
+                <p>Imagine uma onda do mar subindo (inspire por 5) e descendo (expire por 5). Visualize a onda levando embora toda a tensão.</p>
+                
+                <h4>🎈 Respiração do Balão:</h4>
+                <p>Inspire enchendo um balão imaginário na barriga (4 segundos), segure (2 segundos), depois deixe o balão esvaziar lentamente (6 segundos).</p>
+                
+                <h4>🌸 Respiração da Flor:</h4>
+                <p>Inspire como se estivesse cheirando uma flor linda (4 segundos), depois sopre suavemente como se fosse espalhar as pétalas (8 segundos).</p>
+                
+                <h4>🕯️ Respiração da Vela:</h4>
+                <p>Inspire normalmente, depois expire devagar como se fosse apagar uma vela sem fazer ela tremer.</p>
+            </div>
+            
+            <div class="calm-box">
+                <h3>🕊️ Respiração de Emergência (Durante o Ataque):</h3>
+                <ul style="color: white;">
+                    <li><strong>Passo 1:</strong> Reconheça: "Estou tendo um ataque de pânico"</li>
+                    <li><strong>Passo 2:</strong> Lembre-se: "Isso vai passar, não é perigoso"</li>
+                    <li><strong>Passo 3:</strong> Respire: Use a técnica 4-7-8</li>
+                    <li><strong>Passo 4:</strong> Conte: De 10 até 1, bem devagar</li>
+                    <li><strong>Passo 5:</strong> Observe: Como seu corpo vai se acalmando</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <h3>✨ Por que a respiração é mágica?</h3>
+                <p style="color: white;">Quando respiramos devagar e profundo, ativamos o "sistema de calma" do nosso corpo. É como apertar um botão que diz para o cérebro: "Está tudo bem, pode relaxar!" A respiração é o único superpoder que você sempre tem com você!</p>
+            </div>
+            
+            <div class="source-box">
+                <strong>📚 Fonte:</strong> Técnicas baseadas em terapia cognitivo-comportamental, estudos sobre controle respiratório em ataques de pânico (Clark & Beck, 2010).
+            </div>
+        </div>
+
+        <!-- Página 9: Kit de Emergência da Calma -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">9</div>
+                <div class="chapter-badge">FERRAMENTAS</div>
+            </div>
+            <h2>🧰 Seu Kit de Emergência da Calma</h2>
+            <div class="story-illustration">🧰✨🌈🦸‍♀️</div>
+            
+            <p>Todo guerreiro da calma precisa de um kit especial para momentos difíceis. Vamos montar o seu kit de emergência com ferramentas poderosas!</p>
+            
+            <div class="tip-box">
+                <h3>🎒 Ferramenta 1: Cartões de Poder</h3>
+                <p>Crie pequenos cartões com frases poderosas para carregar sempre:</p>
+                <ul>
+                    <li>"Isso vai passar, sempre passa"</li>
+                    <li>"Eu sou mais forte que este sentimento"</li>
+                    <li>"Meu corpo está me protegendo, mas estou seguro"</li>
+                    <li>"Eu posso respirar e me acalmar"</li>
+                    <li>"Já passei por isso antes e consegui"</li>
+                    <li>"Sou corajoso e capaz"</li>
+                </ul>
+                <h4>💡 Como usar:</h4>
+                <p>Leia um cartão quando sentir os primeiros sinais de pânico.</p>
+            </div>
+            
+            <div class="activity-box">
+                <h3>🧸 Ferramenta 2: Objeto de Calma</h3>
+                <p style="color: white;">Escolha um objeto pequeno que te traga paz:</p>
+                <ul style="color: white;">
+                    <li>Uma pedrinha lisa para apertar</li>
+                    <li>Um chaveiro especial</li>
+                    <li>Uma pulseira ou anel</li>
+                    <li>Um pequeno brinquedo</li>
+                    <li>Uma foto de família</li>
+                    <li>Um cristal ou concha</li>
+                </ul>
+                <p style="color: white;">Sempre que tocar nesse objeto, lembre-se: "Eu tenho o poder de me acalmar!"</p>
+            </div>
+            
+            <div class="calm-box">
+                <h3>🔢 Ferramenta 3: Técnica dos 5 Sentidos</h3>
+                <p style="color: white;">Quando o pânico começar, encontre:</p>
+                <ul style="color: white;">
+                    <li><strong>5 coisas que você VÊ:</strong> Olhe ao redor e nomeie</li>
+                    <li><strong>4 coisas que você OUVE:</strong> Sons diferentes ao seu redor</li>
+                    <li><strong>3 coisas que você SENTE:</strong> Texturas, temperatura</li>
+                    <li><strong>2 coisas que você CHEIRA:</strong> Aromas no ambiente</li>
+                    <li><strong>1 coisa que você PROVA:</strong> Gosto na boca</li>
+                </ul>
+                <p style="color: white;">Isso traz sua mente de volta para o presente!</p>
+            </div>
+            
+            <div class="panic-scenario">
+                <h3>🚨 Ferramenta 4: Plano de Emergência</h3>
+                <ul style="color: white;">
+                    <li><strong>Reconheça:</strong> "Estou tendo um ataque de pânico"</li>
+                    <li><strong>Aceite:</strong> "Isso é desconfortável, mas não perigoso"</li>
+                    <li><strong>Respire:</strong> Use sua técnica favorita</li>
+                    <li><strong>Conte:</strong> De 100 até 1, de 3 em 3</li>
+                    <li><strong>Mova-se:</strong> Balance os braços suavemente</li>
+                    <li><strong>Espere:</strong> Deixe a onda passar</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <h3>🎨 Ferramenta 5: Visualização do Lugar Seguro</h3>
+                <p style="color: white;">Crie um lugar especial na sua mente:</p>
+                <ul style="color: white;">
+                    <li>Pode ser real ou imaginário</li>
+                    <li>Um lugar onde você se sente completamente seguro</li>
+                    <li>Visualize todos os detalhes: cores, sons, cheiros</li>
+                    <li>Pratique "ir" para lá quando estiver calmo</li>
+                    <li>Durante o pânico, "visite" seu lugar seguro</li>
+                </ul>
+            </div>
+            
+            <div class="source-box">
+                <strong>📚 Fonte:</strong> Estratégias baseadas em terapia cognitivo-comportamental, técnicas de grounding e mindfulness para crianças (Kendall & Hedtke, 2006).
+            </div>
+        </div>
+
+        <!-- Página 10: Cenários e Situações -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">10</div>
+                <div class="chapter-badge">CENÁRIOS</div>
+            </div>
+            <h2>🎭 Situações Comuns e Como Agir</h2>
+            <div class="story-illustration">🎪🎯🏠</div>
+            
+            <p>Vamos praticar como usar suas ferramentas em diferentes situações. Conhecer essas estratégias te deixará mais preparado para qualquer momento!</p>
+            
+            <div class="panic-scenario">
+                <h3>🏠 Cenário 1: Em Casa</h3>
+                <p style="color: white;"><strong>Situação:</strong> Você está assistindo TV e de repente sente o coração disparar.</p>
+                <p style="color: white;"><strong>Plano de Ação:</strong></p>
+                <ul style="color: white;">
+                    <li>Pause o que está fazendo</li>
+                    <li>Vá para um lugar confortável</li>
+                    <li>Use a respiração 4-7-8</li>
+                    <li>Pegue seu objeto de calma</li>
+                    <li>Conte para um adulto de confiança</li>
+                    <li>Lembre-se: você está seguro em casa</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <h3>🏫 Cenário 2: Na Escola</h3>
+                <p><strong>Situação:</strong> Durante uma aula, você começa a sentir os sintomas.</p>
+                <p><strong>Estratégias Discretas:</strong></p>
+                <ul>
+                    <li><strong>Respiração silenciosa:</strong> Ninguém vai perceber</li>
+                    <li><strong>Técnica dos 5 sentidos:</strong> Olhe ao redor discretamente</li>
+                    <li><strong>Toque seu objeto de calma:</strong> No bolso ou mochila</li>
+                    <li><strong>Peça para sair:</strong> "Posso ir beber água?"</li>
+                    <li><strong>Converse depois:</strong> Com professor ou orientador</li>
+                </ul>
+            </div>
+            
+            <div class="calm-box">
+                <h3>🛍️ Cenário 3: Em Lugares Públicos</h3>
+                <p style="color: white;"><strong>Situação:</strong> No shopping ou supermercado com a família.</p>
+                <p style="color: white;"><strong>Estratégias:</strong></p>
+                <ul style="color: white;">
+                    <li>Avise um adulto: "Estou me sentindo nervoso"</li>
+                    <li>Encontre um lugar para sentar</li>
+                    <li>Use a técnica da respiração da flor</li>
+                    <li>Foque em uma coisa específica (vitrine, música)</li>
+                    <li>Lembre-se: muitas pessoas passam por isso</li>
+                    <li>Não tenha vergonha de pedir ajuda</li>
+                </ul>
+            </div>
+            
+            <div class="activity-box">
+                <h3>🌙 Cenário 4: À Noite/Na Cama</h3>
+                <p style="color: white;"><strong>Situação:</strong> Ataque de pânico noturno ou antes de dormir.</p>
+                <p style="color: white;"><strong>Estratégias Especiais:</strong></p>
+                <ul style="color: white;">
+                    <li>Acenda uma luz suave</li>
+                    <li>Sente-se na cama</li>
+                    <li>Use a respiração da onda</li>
+                    <li>Conte ovelhinhas ou estrelas imaginárias</li>
+                    <li>Chame seus pais se precisar</li>
+                    <li>Lembre-se: você está seguro no seu quarto</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <h3>👥 Cenário 5: Com Amigos</h3>
+                <p style="color: white;"><strong>Situação:</strong> Durante uma brincadeira ou festa.</p>
+                <p style="color: white;"><strong>Estratégias Sociais:</strong></p>
+                <ul style="color: white;">
+                    <li>Seja honesto: "Preciso de um minutinho"</li>
+                    <li>Vá ao banheiro para se acalmar</li>
+                    <li>Use técnicas discretas</li>
+                    <li>Peça ajuda a um amigo de confiança</li>
+                    <li>Lembre-se: amigos verdadeiros vão entender</li>
+                    <li>Volte quando se sentir melhor</li>
+                </ul>
+            </div>
+            
+            <div class="source-box">
+                <strong>📚 Fonte:</strong> Baseado em protocolos de intervenção situacional, técnicas de enfrentamento contextual e programas de manejo de ansiedade.
+            </div>
+        </div>
+
+        <!-- Página 11: Atividades Terapêuticas -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">11</div>
+                <div class="chapter-badge">ATIVIDADES</div>
+            </div>
+            <h2>🎨 Atividades Terapêuticas Divertidas</h2>
+            <div class="story-illustration">🎭🎪🎨🎯</div>
+            
+            <div class="activity-box">
+                <h3>📔 Diário do Guerreiro da Calma</h3>
+                <p style="color: white;"><strong>Como fazer:</strong></p>
+                <ol style="color: white;" class="steps-list">
+                    <li>Decore um caderno especial para ser seu diário</li>
+                    <li>Todo dia, anote como se sentiu</li>
+                    <li>Use cores: 🟢 dias calmos, 🟡 dias normais, 🔴 dias difíceis</li>
+                    <li>Anote que técnicas usou e se funcionaram</li>
+                    <li>Escreva uma coisa boa que aconteceu</li>
+                    <li>Celebre cada pequena vitória!</li>
+                </ol>
+            </div>
+            
+            <div class="tip-box">
+                <h3>🎭 Teatro das Emoções</h3>
+                <p><strong>Brincadeira em família:</strong></p>
+                <ul>
+                    <li>Representem diferentes emoções</li>
+                    <li>Criem histórias sobre personagens corajosos</li>
+                    <li>Pratiquem técnicas de calma juntos</li>
+                    <li>Inventem super-heróis que controlam o pânico</li>
+                    <li>Façam um "filme" sobre superar medos</li>
+                </ul>
+            </div>
+            
+            <div class="calm-box">
+                <h3>🗺️ Mapa da Minha Jornada de Calma</h3>
+                <p style="color: white;"><strong>Crie seu mapa pessoal:</strong></p>
+                <ul style="color: white;">
+                    <li>Desenhe todos os lugares onde você se sente seguro</li>
+                    <li>Marque com ⭐ os momentos de maior coragem</li>
+                    <li>Use 💪 para marcar quando usou suas técnicas</li>
+                    <li>Coloque 🌈 nos lugares onde se sentiu calmo</li>
+                    <li>Adicione 🏆 para cada vitória sobre o pânico</li>
+                    <li>Desenhe caminhos coloridos conectando tudo</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <h3>📚 Biblioteca de Histórias de Coragem</h3>
+                <p style="color: white;"><strong>Torne-se um autor:</strong></p>
+                <ul style="color: white;">
+                    <li>Escreva sobre um momento que você foi corajoso</li>
+                    <li>Crie um personagem que supera ataques de pânico</li>
+                    <li>Desenhe quadrinhos sobre aventuras de calma</li>
+                    <li>Faça uma lista: "Coisas Corajosas que Já Fiz"</li>
+                    <li>Escreva uma carta para você mesmo no futuro</li>
+                </ul>
+            </div>
+            
+            <div class="panic-scenario">
+                <h3>🎯 Jogo da Calma Progressiva</h3>
+                <ul style="color: white;">
+                    <li><strong>Nível 1:</strong> Pratique respiração por 2 minutos</li>
+                    <li><strong>Nível 2:</strong> Use técnica dos 5 sentidos</li>
+                    <li><strong>Nível 3:</strong> Visualize seu lugar seguro</li>
+                    <li><strong>Nível 4:</strong> Combine duas técnicas</li>
+                    <li><strong>Nível 5:</strong> Ensine alguém uma técnica</li>
+                    <li><strong>Nível Boss:</strong> Mantenha-se calmo em situação desafiadora</li>
+                </ul>
+            </div>
+            
+            <div class="emotion-box">
+                <h3>🏆 Sistema de Recompensas da Coragem</h3>
+                <p>Crie um sistema para celebrar suas conquistas:</p>
+                <ul>
+                    <li>🌟 1 estrela: Usou uma técnica de calma</li>
+                    <li>⭐ 2 estrelas: Ajudou alguém com ansiedade</li>
+                    <li>🏆 3 estrelas: Enfrentou uma situação difícil</li>
+                    <li>A cada 10 estrelas: escolha uma atividade especial</li>
+                    <li>A cada 20 estrelas: pequena comemoração</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Página 12: Guia para a Família -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">12</div>
+                <div class="chapter-badge">FAMÍLIA</div>
+            </div>
+            <h2>👨‍👩‍👧‍👦 Guia para a Família</h2>
+            <div class="story-illustration">💝👪🤗📋</div>
+            
+            <div class="tip-box">
+                <h3>🌟 Como a Família Pode Ajudar:</h3>
+                
+                <h4>✅ O que FAZER:</h4>
+                <ul class="checklist">
+                    <li><strong>Mantenha a calma:</strong> Sua tranquilidade ajuda a criança</li>
+                    <li><strong>Valide os sentimentos:</strong> "Eu entendo que é assustador"</li>
+                    <li><strong>Ensine técnicas:</strong> Pratiquem respiração juntos</li>
+                    <li><strong>Crie um ambiente seguro:</strong> Casa como refúgio</li>
+                    <li><strong>Estabeleça rotinas:</strong> Previsibilidade reduz ansiedade</li>
+                    <li><strong>Celebre progressos:</strong> Reconheça cada pequena vitória</li>
+                    <li><strong>Busque informação:</strong> Entenda sobre ataques de pânico</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h3>❌ O que EVITAR:</h3>
+                <ul>
+                    <li><strong>Minimizar:</strong> "Não é nada demais", "É só nervosismo"</li>
+                    <li><strong>Entrar em pânico:</strong> Sua ansiedade piora a situação</li>
+                    <li><strong>Evitar situações:</strong> Isso reforça o medo</li>
+                    <li><strong>Forçar exposição:</strong> Respeite o ritmo da criança</li>
+                    <li><strong>Dar atenção excessiva:</strong> Pode reforçar o comportamento</li>
+                    <li><strong>Fazer comparações:</strong> Cada criança é única</li>
+                </ul>
+            </div>
+            
+            <div class="calm-box">
+                <h3>🕊️ Durante um Ataque de Pânico:</h3>
+                <ul style="color: white;">
+                    <li><strong>Fique calmo:</strong> Respire fundo você também</li>
+                    <li><strong>Fale suavemente:</strong> "Estou aqui com você"</li>
+                    <li><strong>Guie a respiração:</strong> "Vamos respirar juntos"</li>
+                    <li><strong>Não force:</strong> Deixe a criança no controle</li>
+                    <li><strong>Ofereça presença:</strong> Às vezes só estar perto ajuda</li>
+                    <li><strong>Lembre que passa:</strong> "Isso vai passar, sempre passa"</li>
+                </ul>
+            </div>
+            
+            <div class="activity-box">
+                <h3>🏠 Preparando o Ambiente Familiar:</h3>
+                <p style="color: white;"><strong>Crie um lar acolhedor:</strong></p>
+                <ul style="color: white;">
+                    <li>Tenha um "cantinho da calma" em casa</li>
+                    <li>Mantenha objetos de conforto disponíveis</li>
+                    <li>Crie rotinas relaxantes (música, aromas)</li>
+                    <li>Estabeleça horários regulares para conversar</li>
+                    <li>Pratiquem técnicas de relaxamento em família</li>
+                    <li>Tenham um plano para emergências</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <h3>📞 Frases que Ajudam:</h3>
+                <p style="color: white;"><strong>Use estas frases durante e após os ataques:</strong></p>
+                <ul style="color: white;">
+                    <li>"Você está seguro, eu estou aqui"</li>
+                    <li>"Isso vai passar, sempre passa"</li>
+                    <li>"Você é corajoso por enfrentar isso"</li>
+                    <li>"Vamos respirar juntos"</li>
+                    <li>"Que técnica você quer tentar?"</li>
+                    <li>"Estou orgulhoso de como você lidou com isso"</li>
+                    <li>"Você está ficando cada vez mais forte"</li>
+                </ul>
+            </div>
+            
+            <div class="emotion-box">
+                <h3>👥 Envolvendo Irmãos e Família Estendida:</h3>
+                <ul>
+                    <li>Explique de forma adequada para a idade</li>
+                    <li>Ensine todos a serem solidários</li>
+                    <li>Evite que a criança se sinta "diferente"</li>
+                    <li>Crie um sistema de apoio familiar</li>
+                    <li>Pratiquem técnicas de calma todos juntos</li>
+                </ul>
+            </div>
+            
+            <div class="source-box">
+                <strong>📚 Fonte:</strong> Diretrizes da American Academy of Pediatrics, estudos sobre suporte familiar em transtornos de ansiedade infantil (Rapee et al., 2009).
+            </div>
+        </div>
+
+        <!-- Página 13: Quando Buscar Ajuda -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">13</div>
+                <div class="chapter-badge">AJUDA PROFISSIONAL</div>
+            </div>
+            <h2>🚨 Quando Buscar Ajuda Profissional</h2>
+            <div class="story-illustration">👩‍⚕️🏥💙</div>
+            
+            <p>Às vezes, mesmo com todo amor e técnicas, algumas crianças precisam de ajuda extra de profissionais especializados. Buscar ajuda é um sinal de inteligência e coragem!</p>
+            
+            <div class="warning-box">
+                <h3>🚩 Sinais de Alerta - Procure ajuda se:</h3>
+                <ul>
+                    <li><strong>Frequência alta:</strong> Ataques várias vezes por semana</li>
+                    <li><strong>Interferência na vida:</strong> Evita escola, amigos, atividades</li>
+                    <li><strong>Medo do medo:</strong> Fica ansioso pensando em ter outro ataque</li>
+                    <li><strong>Sintomas físicos persistentes:</strong> Dores sem causa médica</li>
+                    <li><strong>Mudanças comportamentais:</strong> Isolamento, agressividade</li>
+                    <li><strong>Problemas de sono:</strong> Pesadelos, insônia frequente</li>
+                    <li><strong>Queda no rendimento:</strong> Escolar ou em atividades</li>
+                    <li><strong>Pensamentos negativos:</strong> Sobre si mesmo ou o futuro</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <h3>👩‍⚕️ Profissionais que Podem Ajudar:</h3>
+                
+                <h4>🧠 Psicólogo Clínico:</h4>
+                <p>Especialista em terapias para ansiedade, usa técnicas específicas para crianças.</p>
+                
+                <h4>👨‍⚕️ Psiquiatra Infantil:</h4>
+                <p>Médico especializado que pode avaliar necessidade de medicação.</p>
+                
+                <h4>👩‍⚕️ Pediatra:</h4>
+                <p>Primeiro profissional a procurar, pode descartar causas físicas.</p>
+                
+                <h4>👥 Terapeuta Familiar:</h4>
+                <p>Trabalha com toda a família para melhorar o suporte.</p>
+                
+                <h4>🏫 Psicólogo Escolar:</h4>
+                <p>Ajuda com questões relacionadas ao ambiente escolar.</p>
+            </div>
+            
+            <div class="success-box">
+                <h3>💚 Tipos de Tratamento Eficazes:</h3>
+                <ul style="color: white;">
+                    <li><strong>Terapia Cognitivo-Comportamental (TCC):</strong> Ensina a identificar e mudar pensamentos ansiosos</li>
+                    <li><strong>Terapia de Exposição:</strong> Enfrenta medos gradualmente</li>
+                    <li><strong>Técnicas de Relaxamento:</strong> Mindfulness e respiração avançadas</li>
+                    <li><strong>EMDR:</strong> Para traumas que podem estar relacionados</li>
+                    <li><strong>Terapia Lúdica:</strong> Usa brincadeiras para processar emoções</li>
+                    <li><strong>Medicação:</strong> Em casos específicos, sempre com acompanhamento</li>
+                </ul>
+            </div>
+            
+            <div class="calm-box">
+                <h3>🤝 Como Preparar a Criança para a Terapia:</h3>
+                <ul style="color: white;">
+                    <li>Explique que é um "treinador de sentimentos"</li>
+                    <li>Diga que muitas crianças vão lá para aprender</li>
+                    <li>Garanta que não é castigo, mas ajuda</li>
+                    <li>Deixe claro que vocês estarão juntos</li>
+                    <li>Explique que vai ajudar com os ataques de pânico</li>
+                    <li>Permita perguntas sobre o processo</li>
+                    <li>Visite o local antes, se possível</li>
+                </ul>
+            </div>
+            
+            <div class="activity-box">
+                <h3>📋 O que Esperar do Tratamento:</h3>
+                <p style="color: white;"><strong>Processo típico:</strong></p>
+                <ul style="color: white;">
+                    <li><strong>Avaliação:</strong> Entender a situação completa (2-3 sessões)</li>
+                    <li><strong>Psicoeducação:</strong> Aprender sobre ataques de pânico</li>
+                    <li><strong>Técnicas:</strong> Aprender estratégias avançadas</li>
+                    <li><strong>Prática:</strong> Aplicar técnicas em situações reais</li>
+                    <li><strong>Manutenção:</strong> Sessões espaçadas para acompanhamento</li>
+                    <li><strong>Alta:</strong> Quando a criança se sente confiante</li>
+                </ul>
+            </div>
+            
+            <div class="source-box">
+                <strong>📚 Fonte:</strong> American Academy of Child and Adolescent Psychiatry, International Association for Child and Adolescent Psychiatry, diretrizes para tratamento de transtornos de ansiedade.
+            </div>
+        </div>
+
+        <!-- Página 14: Plano de Ação Pessoal -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">14</div>
+                <div class="chapter-badge">PLANO DE AÇÃO</div>
+            </div>
+            <h2>📋 Meu Plano de Ação Pessoal</h2>
+            <div class="story-illustration">📝✅🎯</div>
+            
+            <p>Agora que você aprendeu tantas técnicas poderosas, vamos criar seu plano pessoal para ser cada vez mais forte e calmo!</p>
+            
+        </div>
+    </div>
+</div>
+
+
+</div>
+        <div class="navigation">
+        <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
+        <button id="nextBtn" class="nav-btn">Próximo</button>
+    </div>
+
+     <script>
+        
+    const pages = document.querySelectorAll('.page');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const progressBar = document.getElementById('progressBar');
+    const pageCounter = document.getElementById('pageCounter');
+    let currentPageIndex = 0;
+
+    function showPage(index) {
+        pages.forEach((page, i) => {
+            if (i === index) {
+                page.classList.add('active');
+            } else {
+                page.classList.remove('active');
+            }
+        });
+        updateNavigationButtons();
+        updateProgressBar();
+        updatePageCounter();
+    }
+
+    function updateNavigationButtons() {
+        prevBtn.disabled = currentPageIndex === 0;
+        nextBtn.disabled = currentPageIndex === pages.length - 1;
+    }
+
+    function updateProgressBar() {
+        const progress = (currentPageIndex / (pages.length - 1)) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+
+    function updatePageCounter() {
+        pageCounter.textContent = `${currentPageIndex + 1} / ${pages.length}`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentPageIndex > 0) {
+            currentPageIndex--;
+            showPage(currentPageIndex);
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentPageIndex < pages.length - 1) {
+            currentPageIndex++;
+            showPage(currentPageIndex);
+        }
+    });
+
+    // Initialize the first page and navigation
+    showPage(currentPageIndex);
+</script>

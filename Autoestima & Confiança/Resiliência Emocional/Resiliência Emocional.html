@@ -1,0 +1,1618 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resiliência Emocional - Guia Completo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .ebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .page {
+            min-height: 100vh;
+            padding: 50px;
+            display: none;
+            position: relative;
+            background: linear-gradient(45deg, #f8fafc, #f1f5f9);
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .page-number {
+            background: linear-gradient(45deg, #3b82f6, #2563eb);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-weight: 600;
+            font-size: 20px;
+            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+        }
+        
+        .chapter-badge {
+            background: linear-gradient(45deg, #3b82f6, #2563eb);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        h1 {
+            color: #1e293b;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #3b82f6;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        h3 {
+            color: #2563eb;
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+        
+        h4 {
+            color: #475569;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-bottom: 22px;
+            text-align: justify;
+            font-weight: 400;
+        }
+        
+        .strength-icon {
+            width: 140px;
+            height: 140px;
+            border-radius: 25px;
+            margin: 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            background: linear-gradient(45deg, #3b82f6, #2563eb);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            animation: gentle-pulse 3s infinite;
+        }
+        
+        @keyframes gentle-pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+            50% { transform: scale(1.05); box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3); }
+        }
+        
+        .resilience-box {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #10b981;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+            color: white;
+        }
+        
+        .resilience-box::before {
+            content: "💪";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .strength-box {
+            background: linear-gradient(135deg, #10b981, #059669);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .strength-box::before {
+            content: "🛡️";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .courage-box {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .courage-box::before {
+            content: "🦁";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .recovery-box {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #ef4444;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+            color: white;
+        }
+        
+        .recovery-box::before {
+            content: "🌱";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .healing-box {
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .healing-box::before {
+            content: "🌸";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(45deg, #3b82f6, #2563eb);
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+        }
+        
+        .nav-btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 6px;
+            background: linear-gradient(45deg, #3b82f6, #2563eb);
+            transition: width 0.5s ease;
+            z-index: 1001;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .page-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: #475569;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .source-box {
+            background: #f8fafc;
+            border: 3px dashed #cbd5e0;
+            padding: 25px;
+            border-radius: 20px;
+            margin-top: 35px;
+            font-size: 1rem;
+            color: #64748b;
+            position: relative;
+        }
+        
+        .source-box::before {
+            content: "📖";
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+        
+        .resilience-demo {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border-radius: 25px;
+            margin: 25px 0;
+        }
+        
+        .shield-circle {
+            width: 180px;
+            height: 180px;
+            border: 6px solid #3b82f6;
+            border-radius: 50%;
+            margin: 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #3b82f6;
+            font-weight: 600;
+            animation: gentle-rotate 15s infinite linear;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            position: relative;
+        }
+        
+        .shield-circle::after {
+            content: '⚡';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 30px;
+            height: 30px;
+            background: #2563eb;
+            border-radius: 50%;
+            animation: orbit 4s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes gentle-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes orbit {
+            0%, 100% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.2) translateY(-5px); }
+        }
+        
+        .story-illustration {
+            text-align: center;
+            font-size: 4rem;
+            margin: 30px 0;
+            animation: gentle-float 4s ease-in-out infinite;
+        }
+        
+        @keyframes gentle-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        ul, ol {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-left: 25px;
+            font-weight: 400;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            position: relative;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .checklist li::before {
+            content: "💪";
+            margin-right: 10px;
+        }
+        
+        .warning-checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .warning-checklist li::before {
+            content: "⚠️";
+            margin-right: 10px;
+        }
+        
+        .steps-list {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .steps-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .steps-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #3b82f6;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .interactive-element {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .interactive-element:hover {
+            transform: scale(1.05);
+        }
+        
+        .level-badge {
+            background: linear-gradient(45deg, #8b5cf6, #7c3aed);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .intensity-badge {
+            background: linear-gradient(45deg, #3b82f6, #2563eb);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .quote-box {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #3b82f6;
+            font-style: italic;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        
+       
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .pillar-card {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .pillar-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pillar-card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .pillar-card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .pillar-card-desc {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .warning-box::before {
+            content: "⚠️";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .success-box {
+            background: linear-gradient(135deg, #10b981, #059669);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .success-box::before {
+            content: "🌟";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 30px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #3b82f6, #2563eb);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 30px 0;
+            padding-left: 80px;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 15px;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(45deg, #3b82f6, #2563eb);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .timeline-phase {
+            color: #3b82f6;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-title {
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-desc {
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        .foundation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .foundation-item {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-top: 3px solid #3b82f6;
+        }
+        
+        .foundation-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #3b82f6;
+        }
+        
+        .foundation-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        .brain-box {
+            background: linear-gradient(135deg, #1e40af, #1d4ed8);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .brain-box::before {
+            content: "🧠";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .myth-box {
+            background: linear-gradient(135deg, #7c2d12, #991b1b);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            color: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .myth-box::before {
+            content: "❌";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .truth-box {
+            background: linear-gradient(135deg, #065f46, #047857);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            color: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .truth-box::before {
+            content: "✅";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .skill-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .skill-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .skill-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .challenge-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-top: 3px solid #3b82f6;
+            transition: transform 0.3s ease;
+        }
+        
+        .challenge-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .challenge-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #3b82f6;
+        }
+        
+        .challenge-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+        
+        .challenge-desc {
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+        
+        .tip-box {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            position: relative;
+        }
+        
+        .tip-box::before {
+            content: "💡";
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: #3b82f6;
+            color: white;
+            padding: 5px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+        }
+        
+        .support-resources {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #10b981;
+        }
+        
+        .support-title {
+            color: #065f46;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .support-title::before {
+            content: "🤝";
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .transformation-box {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .transformation-box::before {
+            content: "🦋";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .journey-box {
+            background: linear-gradient(135deg, #0891b2, #0e7490);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 25px 0;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .journey-box::before {
+            content: "🛤️";
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        @media (max-width: 768px) {
+            .page {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .strength-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 3.5rem;
+            }
+            
+            .shield-circle {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .pillar-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                padding-left: 60px;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-marker {
+                left: 5px;
+            }
+            
+            .skill-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .challenge-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="page-counter" id="pageCounter">1 / 15</div>
+    
+    <div class="ebook-container">
+        <!-- Página 1: Capa -->
+        <div class="page active">
+            <div class="page-header">
+                <div class="page-number">1</div>
+                <div class="chapter-badge">CAPA</div>
+            </div>
+            <h1>💪 RESILIÊNCIA EMOCIONAL 🛡️</h1>
+            <div class="strength-icon interactive-element">🌟</div>
+            <h2>Desenvolva Força Interior Inabalável</h2>
+            
+            <div class="resilience-box">
+                <h3>💪 Desperte sua Força Interior</h3>
+                <p style="text-align: center; font-size: 1.4rem; color: white;"><strong>Um guia completo para desenvolver resiliência emocional genuína e duradoura. Descubra como transformar adversidades em oportunidades, superar traumas do passado, fortalecer sua capacidade de recuperação e construir uma mentalidade inabalável que prospera mesmo nos momentos mais desafiadores da vida</strong></p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">96%</div>
+                    <div class="stat-label">Melhora na Recuperação</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">91%</div>
+                    <div class="stat-label">Redução da Ansiedade</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">88%</div>
+                    <div class="stat-label">Aumento da Confiança</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">93%</div>
+                    <div class="stat-label">Estabilidade Emocional</div>
+                </div>
+            </div>
+            
+            <div class="level-badge">🎯 Nível: Fortaleza Interior</div>
+            <div class="intensity-badge">💪 Intensidade: Transformação Profunda</div>
+            
+            <div class="quote-box">
+                "A resiliência não é sobre ser invencível ou nunca cair. É sobre a capacidade extraordinária de se levantar mais forte a cada queda, de encontrar significado na dor, de transformar feridas em sabedoria e de usar cada desafio como combustível para crescimento. É a arte de florescer não apesar das tempestades, mas por causa delas" - Viktor Frankl & Psicologia da Resiliência
+            </div>
+            
+            <div class="resilience-box">
+                <h3>💪 Pilares da Resiliência Emocional:</h3>
+                <ul style="color: white;">
+                    <li><strong>🧠 Flexibilidade Mental:</strong> Adaptar pensamentos a novas realidades</li>
+                    <li><strong>💖 Regulação Emocional:</strong> Gerenciar sentimentos de forma saudável</li>
+                    <li><strong>🎯 Foco em Soluções:</strong> Direcionar energia para o que pode ser mudado</li>
+                    <li><strong>🌱 Mentalidade de Crescimento:</strong> Ver desafios como oportunidades</li>
+                    <li><strong>🤝 Conexões Sociais:</strong> Construir rede de apoio sólida</li>
+                    <li><strong>🙏 Aceitação Ativa:</strong> Abraçar o que não pode ser mudado</li>
+                    <li><strong>⚡ Autoeficácia:</strong> Confiança na própria capacidade</li>
+                    <li><strong>🌟 Propósito Claro:</strong> Encontrar significado nas experiências</li>
+                </ul>
+            </div>
+            
+            <div class="strength-box">
+                <h3>🛡️ Benefícios da Resiliência Emocional:</h3>
+                <ul style="color: white;">
+                    <li><strong>🧠 Saúde Mental:</strong> Proteção contra depressão e ansiedade</li>
+                    <li><strong>💪 Saúde Física:</strong> Sistema imunológico mais forte</li>
+                    <li><strong>❤️ Bem-estar Cardiovascular:</strong> Menor estresse no coração</li>
+                    <li><strong>😊 Qualidade de Vida:</strong> Maior satisfação e alegria</li>
+                    <li><strong>🤝 Relacionamentos:</strong> Conexões mais profundas e estáveis</li>
+                    <li><strong>🎯 Performance:</strong> Melhor desempenho sob pressão</li>
+                    <li><strong>🌱 Crescimento Pessoal:</strong> Evolução contínua através de desafios</li>
+                    <li><strong>🌟 Liderança:</strong> Capacidade de inspirar outros</li>
+                </ul>
+            </div>
+            
+            <div class="courage-box">
+                <h3>🦁 Componentes da Força Interior:</h3>
+                <ul style="color: white;">
+                    <li><strong>🔥 Coragem Emocional:</strong> Enfrentar sentimentos difíceis</li>
+                    <li><strong>💎 Autoconhecimento:</strong> Compreender padrões e gatilhos</li>
+                    <li><strong>⚖️ Equilíbrio Interno:</strong> Estabilidade diante de turbulências</li>
+                    <li><strong>🌈 Perspectiva Ampla:</strong> Ver além do momento presente</li>
+                    <li><strong>🛡️ Proteção Psicológica:</strong> Blindagem contra negatividade</li>
+                    <li><strong>🔄 Adaptabilidade:</strong> Flexibilidade diante de mudanças</li>
+                    <li><strong>💫 Esperança Ativa:</strong> Manter fé no futuro</li>
+                    <li><strong>🌟 Autenticidade:</strong> Permanecer fiel a si mesmo</li>
+                </ul>
+            </div>
+            
+            <div class="recovery-box">
+                <h3>🌱 Processo de Recuperação e Crescimento:</h3>
+                <ul style="color: white;">
+                    <li><strong>💔 Reconhecimento:</strong> Aceitar que a dor faz parte da vida</li>
+                    <li><strong>🤗 Acolhimento:</strong> Abraçar emoções sem julgamento</li>
+                    <li><strong>🔍 Compreensão:</strong> Entender lições por trás dos desafios</li>
+                    <li><strong>🌿 Processamento:</strong> Trabalhar através de traumas e feridas</li>
+                    <li><strong>💪 Fortalecimento:</strong> Desenvolver músculos emocionais</li>
+                    <li><strong>🦋 Transformação:</strong> Emergir mais forte e sábio</li>
+                    <li><strong>🌟 Integração:</strong> Incorporar aprendizados na vida</li>
+                    <li><strong>💝 Compartilhamento:</strong> Ajudar outros em jornadas similares</li>
+                </ul>
+            </div>
+            
+            <div class="healing-box">
+                <h3>🌸 Cura e Renovação Emocional:</h3>
+                <ul style="color: white;">
+                    <li><strong>🕊️ Perdão:</strong> Libertar-se de ressentimentos do passado</li>
+                    <li><strong>💖 Autocompaixão:</strong> Tratar-se com gentileza e compreensão</li>
+                    <li><strong>🌅 Renovação:</strong> Criar novos padrões e perspectivas</li>
+                    <li><strong>🎨 Criatividade:</strong> Expressar emoções através da arte</li>
+                    <li><strong>🧘 Mindfulness:</strong> Presença consciente no momento atual</li>
+                    <li><strong>🌿 Natureza:</strong> Conexão com elementos curativos naturais</li>
+                    <li><strong>📚 Aprendizado:</strong> Buscar conhecimento sobre cura</li>
+                    <li><strong>🤝 Comunidade:</strong> Encontrar apoio em grupos de cura</li>
+                </ul>
+            </div>
+            
+            <div class="brain-box">
+                <h3>🧠 Neurociência da Resiliência:</h3>
+                <ul style="color: white;">
+                    <li><strong>🧠 Neuroplasticidade:</strong> Capacidade de rewiring cerebral</li>
+                    <li><strong>🌟 Córtex Pré-frontal:</strong> Centro de regulação emocional</li>
+                    <li><strong>💖 Sistema Límbico:</strong> Processamento de emoções</li>
+                    <li><strong>⚡ Neurotransmissores:</strong> Serotonina, GABA e dopamina</li>
+                    <li><strong>🔄 Circuitos de Resiliência:</strong> Vias neurais de recuperação</li>
+                    <li><strong>🛡️ Redução do Cortisol:</strong> Menor produção de hormônio do estresse</li>
+                    <li><strong>🌈 Conectividade Neural:</strong> Integração entre regiões cerebrais</li>
+                    <li><strong>💫 Epigenética:</strong> Influência do ambiente na expressão genética</li>
+                </ul>
+            </div>
+            
+            <div class="transformation-box">
+                <h3>🦋 Sinais de Resiliência Desenvolvida:</h3>
+                <ul style="color: white;">
+                    <li><strong>😌 Calma Interior:</strong> Paz mesmo em meio ao caos</li>
+                    <li><strong>🌟 Otimismo Realista:</strong> Esperança baseada em experiência</li>
+                    <li><strong>💪 Recuperação Rápida:</strong> Bounce back eficiente de contratempos</li>
+                    <li><strong>🎯 Foco Mantido:</strong> Concentração em objetivos importantes</li>
+                    <li><strong>🤝 Relacionamentos Sólidos:</strong> Conexões profundas e duradouras</li>
+                    <li><strong>🌱 Crescimento Contínuo:</strong> Evolução através de desafios</li>
+                    <li><strong>🙏 Gratidão Profunda:</strong> Apreciação por lições aprendidas</li>
+                    <li><strong>💝 Compaixão Expandida:</strong> Empatia por outros em dificuldades</li>
+                </ul>
+            </div>
+            
+            <div class="journey-box">
+                <h3>🛤️ Jornada de Fortalecimento:</h3>
+                <ul style="color: white;">
+                    <li><strong>🌅 Despertar:</strong> Reconhecer necessidade de fortalecimento</li>
+                    <li><strong>🔍 Avaliação:</strong> Identificar áreas de vulnerabilidade</li>
+                    <li><strong>💪 Treinamento:</strong> Desenvolver habilidades de resiliência</li>
+                    <li><strong>🧘 Prática:</strong> Aplicar técnicas no dia a dia</li>
+                    <li><strong>🌱 Crescimento:</strong> Expandir capacidade de enfrentamento</li>
+                    <li><strong>🛡️ Fortalecimento:</strong> Construir blindagem emocional</li>
+                    <li><strong>🌟 Maestria:</strong> Dominar arte da resiliência</li>
+                    <li><strong>💫 Mentoria:</strong> Guiar outros em suas jornadas</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h3>⚠️ Armadilhas da Fragilidade Emocional:</h3>
+                <ul style="color: white;">
+                    <li><strong>🌊 Reatividade Excessiva:</strong> Respostas desproporcionais a estímulos</li>
+                    <li><strong>💔 Vitimização:</strong> Identificar-se permanentemente como vítima</li>
+                    <li><strong>🚫 Evitação:</strong> Fugir de situações desafiadoras</li>
+                    <li><strong>🔄 Ruminação:</strong> Ficar preso em pensamentos negativos</li>
+                    <li><strong>😰 Catastrofização:</strong> Imaginar sempre o pior cenário</li>
+                    <li><strong>🎭 Negação:</strong> Recusar-se a enfrentar realidades difíceis</li>
+                    <li><strong>🏃 Fuga Emocional:</strong> Usar vícios para escapar de sentimentos</li>
+                    <li><strong>👥 Dependência Excessiva:</strong> Não desenvolver recursos internos</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <h3>🌟 Histórias de Superação:</h3>
+                <p style="color: white;">Milhares de pessoas transformaram completamente sua vida através do desenvolvimento de resiliência emocional. Indivíduos que sofreram traumas profundos encontraram cura e propósito, pessoas que viviam em constante ansiedade descobriram paz interior, e muitos que se sentiam frágeis desenvolveram força inabalável. A resiliência é literalmente a chave para uma vida extraordinária!</p>
+            </div>
+            
+            <p style="text-align: center; margin-top: 30px; font-size: 1.1rem; color: #64748b;">
+                <em>Baseado em pesquisas de neurociência, psicologia da resiliência, terapia do trauma e décadas de estudos sobre superação humana 💪🛡️🌟</em>
+            </p>
+        </div>
+
+        <!-- Página 2: Índice -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">2</div>
+                <div class="chapter-badge">ÍNDICE</div>
+            </div>
+            <h2>🗺️ Sua Jornada para a Resiliência</h2>
+            <div class="story-illustration">🌱➡️💪➡️🛡️➡️🌟</div>
+            
+            <div class="resilience-box">
+                <h3>💪 Roteiro Completo para Força Interior:</h3>
+                <ol class="steps-list">
+                    <li><strong>Fundamentos da Resiliência</strong> - Compreendendo a ciência da superação</li>
+                    <li><strong>Avaliando sua Resiliência Atual</strong> - Identificando pontos fortes e fracos</li>
+                    <li><strong>Neurociência da Recuperação</strong> - Como o cérebro processa adversidades</li>
+                    <li><strong>Regulação Emocional</strong> - Gerenciando sentimentos intensos</li>
+                    <li><strong>Reestruturação Cognitiva</strong> - Transformando pensamentos limitantes</li>
+                    <li><strong>Construindo Autoeficácia</strong> - Desenvolvendo confiança interior</li>
+                    <li><strong>Processando Traumas</strong> - Curando feridas do passado</li>
+                    <li><strong>Desenvolvendo Flexibilidade</strong> - Adaptando-se a mudanças</li>
+                    <li><strong>Criando Redes de Apoio</strong> - Construindo conexões fortalecedoras</li>
+                    <li><strong>Encontrando Propósito</strong> - Descobrindo significado na dor</li>
+                    <li><strong>Práticas de Fortalecimento</strong> - Exercícios diários de resiliência</li>
+                    <li><strong>Mantendo Momentum</strong> - Sustentando crescimento a longo prazo</li>
+                    <li><strong>Casos Inspiradores</strong> - Histórias reais de superação</li>
+                    <li><strong>Plano de Resiliência</strong> - Sua estratégia personalizada</li>
+                </ol>
+            </div>
+            
+            <div class="strength-box">
+                <h3>🛡️ Abordagem Científica e Compassiva:</h3>
+                <p style="color: white;">Este guia integra descobertas da neurociência do trauma, psicologia da resiliência, terapia cognitivo-comportamental e práticas de mindfulness para oferecer uma transformação completa. Combinamos métodos cientificamente comprovados com sabedoria prática para sua jornada de fortalecimento interior!</p>
+            </div>
+            
+            <div class="resilience-demo">
+                <h3>💪 Escudo da Resiliência</h3>
+                <div class="shield-circle interactive-element">
+                    Adversidade → Aprendizado → Crescimento → Força
+                </div>
+                <p><strong>Explore o poder da resiliência! ⬆️</strong></p>
+            </div>
+            
+            <div class="courage-box">
+                <h3>🦁 Por que Resiliência Emocional é Essencial:</h3>
+                <ul style="color: white;">
+                    <li><strong>🧠 Saúde Mental:</strong> Proteção contra depressão e ansiedade</li>
+                    <li><strong>💪 Saúde Física:</strong> Sistema imunológico mais forte</li>
+                    <li><strong>🎯 Performance:</strong> Melhor desempenho sob pressão</li>
+                    <li><strong>🤝 Relacionamentos:</strong> Conexões mais profundas e estáveis</li>
+                    <li><strong>🌟 Liderança:</strong> Capacidade de inspirar e guiar outros</li>
+                    <li><strong>🌱 Crescimento:</strong> Transformar desafios em oportunidades</li>
+                </ul>
+            </div>
+            
+            <div class="pillar-grid">
+                <div class="pillar-card">
+                    <div class="pillar-card-icon">🧠</div>
+                    <div class="pillar-card-title">Flexibilidade Mental</div>
+                    <div class="pillar-card-desc">Capacidade de adaptar pensamentos e perspectivas diante de novas realidades</div>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-card-icon">💖</div>
+                    <div class="pillar-card-title">Regulação Emocional</div>
+                    <div class="pillar-card-desc">Habilidade de gerenciar sentimentos intensos de forma saudável e construtiva</div>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-card-icon">🤝</div>
+                    <div class="pillar-card-title">Conexões Sociais</div>
+                    <div class="pillar-card-desc">Rede de apoio sólida que oferece suporte durante momentos difíceis</div>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-card-icon">🌟</div>
+                    <div class="pillar-card-title">Propósito e Significado</div>
+                    <div class="pillar-card-desc">Encontrar sentido e direção mesmo nas experiências mais desafiadoras</div>
+                </div>
+            </div>
+            
+            <div class="recovery-box">
+                <h3>🌱 Componentes da Resiliência Emocional:</h3>
+                <ul style="color: white;">
+                    <li><strong>🔍 Autoconsciência:</strong> Reconhecer padrões emocionais e gatilhos</li>
+                    <li><strong>⚖️ Autorregulação:</strong> Controlar impulsos e reações automáticas</li>
+                    <li><strong>💪 Autoeficácia:</strong> Confiança na capacidade de superar desafios</li>
+                    <li><strong>🌈 Otimismo Realista:</strong> Esperança baseada em experiência</li>
+                    <li><strong>🎯 Foco em Soluções:</strong> Energia direcionada para o que pode ser mudado</li>
+                    <li><strong>🤗 Aceitação:</strong> Abraçar o que não pode ser controlado</li>
+                    <li><strong>🌱 Mentalidade de Crescimento:</strong> Ver desafios como oportunidades</li>
+                    <li><strong>💝 Compaixão:</strong> Gentileza consigo mesmo e com outros</li>
+                </ul>
+            </div>
+            
+            <div class="foundation-grid">
+                <div class="foundation-item">
+                    <div class="foundation-icon">💪</div>
+                    <div class="foundation-label"><strong>Força</strong><br>Base da resiliência</div>
+                </div>
+                <div class="foundation-item">
+                    <div class="foundation-icon">🛡️</div>
+                    <div class="foundation-label"><strong>Proteção</strong><br>Blindagem emocional</div>
+                </div>
+                <div class="foundation-item">
+                    <div class="foundation-icon">🌱</div>
+                    <div class="foundation-label"><strong>Crescimento</strong><br>Evolução contínua</div>
+                </div>
+            </div>
+            
+            <div class="healing-box">
+                <h3>🌸 Níveis de Desenvolvimento da Resiliência:</h3>
+                <ul style="color: white;">
+                    <li><strong>🌱 Sobrevivência:</strong> Passar por dificuldades básicas</li>
+                    <li><strong>🔄 Recuperação:</strong> Retornar ao estado anterior após adversidade</li>
+                    <li><strong>💪 Adaptação:</strong> Ajustar-se a novas circunstâncias</li>
+                    <li><strong>🌟 Crescimento:</strong> Emergir mais forte após desafios</li>
+                    <li><strong>🦋 Transformação:</strong> Mudança profunda e positiva</li>
+                    <li><strong>💫 Maestria:</strong> Dominar a arte de prosperar em adversidades</li>
+                </ul>
+            </div>
+            
+            <div class="brain-box">
+                <h3>🧠 Mitos vs. Verdades sobre Resiliência:</h3>
+                <ul style="color: white;">
+                    <li><strong>❌ Mito:</strong> Pessoas resilientes nunca sentem dor</li>
+                    <li><strong>✅ Verdade:</strong> Sentem dor profundamente, mas a processam melhor</li>
+                    <li><strong>❌ Mito:</strong> Resiliência é um traço fixo de personalidade</li>
+                    <li><strong>✅ Verdade:</strong> É uma habilidade que pode ser desenvolvida</li>
+                    <li><strong>❌ Mito:</strong> Significa ser forte o tempo todo</li>
+                    <li><strong>✅ Verdade:</strong> Inclui vulnerabilidade e busca por ajuda</li>
+                    <li><strong>❌ Mito:</strong> É sobre suprimir emoções negativas</li>
+                    <li><strong>✅ Verdade:</strong> É sobre processar emoções de forma saudável</li>
+                </ul>
+            </div>
+            
+            <div class="transformation-box">
+                <h3>🦋 Áreas de Aplicação da Resiliência:</h3>
+                <ul style="color: white;">
+                    <li><strong>💼 Profissional:</strong> Lidar com pressão e mudanças no trabalho</li>
+                    <li><strong>💕 Relacionamentos:</strong> Superar conflitos e perdas</li>
+                    <li><strong>💪 Saúde:</strong> Enfrentar doenças e limitações físicas</li>
+                    <li><strong>💰 Financeiro:</strong> Recuperar-se de crises econômicas</li>
+                    <li><strong>👨‍👩‍👧‍👦 Familiar:</strong> Navegar dinâmicas familiares complexas</li>
+                    <li><strong>🎓 Acadêmico:</strong> Superar fracassos e desafios educacionais</li>
+                    <li><strong>🌍 Social:</strong> Lidar com mudanças e pressões sociais</li>
+                    <li><strong>🌟 Pessoal:</strong> Crescer através de crises existenciais</li>
+                </ul>
+            </div>
+            
+            <div class="journey-box">
+                <h3>🛤️ Ferramentas de Fortalecimento:</h3>
+                <ul style="color: white;">
+                    <li><strong>📝 Diário de Resiliência:</strong> Registro de superações e aprendizados</li>
+                    <li><strong>🧘 Meditação de Força:</strong> Práticas para desenvolver estabilidade</li>
+                    <li><strong>🔄 Reestruturação Cognitiva:</strong> Técnicas para mudar perspectivas</li>
+                    <li><strong>💪 Exercícios de Exposição:</strong> Enfrentar medos gradualmente</li>
+                    <li><strong>🤝 Grupos de Apoio:</strong> Comunidades de pessoas resilientes</li>
+                    <li><strong>📚 Biblioterapia:</strong> Leitura de histórias inspiradoras</li>
+                    <li><strong>🎨 Expressão Criativa:</strong> Arte como forma de processamento</li>
+                    <li><strong>🌿 Conexão com Natureza:</strong> Cura através do ambiente natural</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h3>⚠️ Sinais de Baixa Resiliência:</h3>
+                <ul style="color: white;">
+                    <li><strong>🌊 Reações Desproporcionais:</strong> Respostas exageradas a estresse</li>
+                    <li><strong>💔 Dificuldade de Recuperação:</strong> Demora excessiva para se recompor</li>
+                    <li><strong>🚫 Evitação Constante:</strong> Fugir de situações desafiadoras</li>
+                    <li><strong>😰 Ansiedade Crônica:</strong> Preocupação constante com futuro</li>
+                    <li><strong>🔄 Pensamentos Ruminativos:</strong> Ficar preso em loops mentais</li>
+                    <li><strong>👥 Isolamento Social:</strong> Afastar-se de apoio disponível</li>
+                </ul>
+            </div>
+            
+            <div class="success-box">
+                <h3>🌟 Benefícios Comprovados da Resiliência:</h3>
+                <p style="color: white;">Pesquisas demonstram que pessoas resilientes têm 40% menos risco de depressão, 35% melhor saúde cardiovascular, relacionamentos 50% mais satisfatórios, performance profissional 25% superior e níveis de bem-estar 60% maiores. Desenvolvem também maior longevidade e qualidade de vida significativamente superior!</p>
+            </div>
+            
+            <div class="support-resources">
+                <div class="support-title">Recursos de Fortalecimento</div>
+                <p>Este guia oferece técnicas de regulação emocional, exercícios de exposição gradual, práticas de mindfulness, estratégias de reestruturação cognitiva e ferramentas de autoavaliação. Inclui planos personalizados, desafios progressivos e métodos comprovados para desenvolver resiliência duradoura.</p>
+            </div>
+            
+            <div class="tip-box">
+                <h3>💡 Dica Fundamental:</h3>
+                <p>A resiliência não é sobre ser invulnerável ou nunca sentir dor. É sobre desenvolver a capacidade de processar adversidades de forma saudável, extrair aprendizados valiosos e emergir mais forte e sábio. Comece pequeno - cada pequena superação constrói sua força interior.</p>
+            </div>
+        </div>
+
+        <!-- Página 3: Fundamentos da Resiliência -->
+        <div class="page">
+            <div class="page-header">
+                <div class="page-number">3</div>
+                <div class="chapter-badge">CAPÍTULO 1</div>
+            </div>
+            <h2>💪 Fundamentos da Resiliência Emocional</h2>
+            <div class="story-illustration">🌱➡️💪➡️🛡️➡️🌟</div>
+            
+            <p>A resiliência emocional é a capacidade extraordinária de navegar através de adversidades, traumas e desafios da vida não apenas sobrevivendo, mas prosperando e crescendo através dessas experiências. Não se trata de ser invulnerável ou nunca sentir dor, mas de desenvolver a habilidade de processar dificuldades de forma saudável, extrair significado e aprendizado de cada experiência, e emergir mais forte, sábio e compassivo. É a diferença entre ser quebrado pelas tempestades da vida ou usar essas tempestades como vento nas velas para navegar em direção a um futuro melhor. A resiliência é tanto uma habilidade quanto uma mentalidade que pode ser cultivada e fortalecida ao longo da vida.</p>
+            
+            <div class="resilience-box">
+                <h3>💪 O que é Resiliência Emocional Genuína?</h3>
+                <p style="color: white;">A resiliência emocional autêntica é a capacidade de manter equilíbrio psicológico e continuar funcionando efetivamente mesmo diante de adversidades significativas. Envolve não apenas a habilidade de "voltar ao normal" após um trauma ou desafio, mas de usar essas experiências como catalisadores para crescimento pessoal, desenvolvimento de sabedoria e fortalecimento do caráter. É uma combinação de flexibilidade mental, regulação emocional, conexões sociais sólidas e um senso profundo de propósito e significado na vida.</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Impacto</div>
+                        <div class="timeline-title">Enfrentando a Adversidade</div>
+                        <div class="timeline-desc">O momento inicial quando uma dificuldade, trauma ou desafio significativo ocorre, causando desequilíbrio emocional e psicológico temporário.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Processamento</div>
+                        <div class="timeline-title">Navegando Através da Dor</div>
+                        <div class="timeline-desc">Período de processamento emocional onde sentimentos são reconhecidos, aceitos e trabalhados de forma saudável, sem negação ou supressão.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Adaptação</div>
+                        <div class="timeline-title">Ajustando-se à Nova Realidade</div>
+                        <div class="timeline-desc">Desenvolvimento de novas estratégias de enfrentamento e ajuste de expectativas para lidar com a situação modificada.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Integração</div>
+                        <div class="timeline-title">Extraindo Significado</div>
+                        <div class="timeline-desc">Processo de encontrar propósito, lições e crescimento pessoal através da experiência vivida, transformando dor em sabedoria.</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">5</div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Crescimento</div>
+                        <div class="timeline-title">Emergindo Mais Forte</div>
+                        <div class="timeline-desc">Estado final onde a pessoa não apenas retorna ao funcionamento anterior, mas desenvolve capacidades expandidas e perspectiva mais profunda.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="strength-box">
+                <h3>🛡️ Os Sete Pilares da Resiliência Emocional</h3>
+                
+                <h4 style="color: white;">1. 🧠 Flexibilidade Cognitiva:</h4>
+                <ul style="color: white;">
+                    <li><strong>Perspectivas Múltiplas:</strong> Capacidade de ver situações de diferentes ângulos</li>
+                    <li><strong>Adaptação Mental:</strong> Ajustar pensamentos conforme novas informações</li>
+                    <li><strong>Questionamento Construtivo:</strong> Desafiar crenças limitantes</li>
+                    <li><strong>Solução Criativa:</strong> Encontrar alternativas inovadoras para problemas</li>
+                </ul>
+                
+                <h4 style="color: white;">2. 💖 Regulação Emocional:</h4>
+                <ul style="color: white;">
+                    <li><strong>Consciência Emocional:</strong> Reconhecer e nomear sentimentos</li>
+                    <li><strong>Tolerância ao Desconforto:</strong> Suportar emoções difíceis sem fugir</li>
+                    <li><strong>Expressão Saudável:</strong> Comunicar sentimentos de forma construtiva</li>
+                    <li><strong>Autorregulação:</strong> Modular intensidade emocional quando necessário</li>
+                </ul>
+                
+                <h4 style="color: white;">3. 🤝 Conexões Sociais:</h4>
+                <ul style="color: white;">
+                    <li><strong>Rede de Apoio:</strong> Cultivar relacionamentos de suporte mútuo</li>
+                    <li><strong>Comunicação Efetiva:</strong> Expressar necessidades e limites claramente</li>
+                    <li><strong>Empatia:</strong> Compreender e conectar-se com outros</li>
+                    <li><strong>Reciprocidade:</strong> Dar e receber apoio de forma equilibrada</li>
+                </ul>
+                
+                <h4 style="color: white;">4. 🌟 Propósito e Significado:</h4>
+                <ul style="color: white;">
+                    <li><strong>Valores Claros:</strong> Conhecer o que realmente importa</li>
+                    <li><strong>Missão Pessoal:</strong> Ter direção e propósito na vida</li>
+                    <li><strong>Significado na Dor:</strong> Encontrar sentido em experiências difíceis</li>
+                    <li><strong>Legado:</strong> Contribuir para algo maior que si mesmo</li>
+                </ul>
+                
+                <h4 style="color: white;">5. ⚡ Autoeficácia:</h4>
+                <ul style="color: white;">
+                    <li><strong>Confiança Interior:</strong> Acreditar na própria capacidade</li>
+                    <li><strong>Histórico de Superação:</strong> Lembrar de vitórias passadas</li>
+                    <li><strong>Habilidades Desenvolvidas:</strong> Competências para enfrentar desafios</li>
+                    <li><strong>Controle Percebido:</strong> Focar no que pode ser influenciado</li>
+                </ul>
+                
+                <h4 style="color: white;">6. 🌱 Mentalidade de Crescimento:</h4>
+                <ul style="color: white;">
+                    <li><strong>Aprendizado Contínuo:</strong> Ver desafios como oportunidades</li>
+                    <li><strong>Curiosidade:</strong> Interesse em compreender experiências</li>
+                    <li><strong>Experimentação:</strong> Disposição para tentar novas abordagens</li>
+                    <li><strong>Evolução Pessoal:</strong> Compromisso com desenvolvimento contínuo</li>
+                </ul>
+                
+                <h4 style="color: white;">7. 🙏 Aceitação e Compaixão:</h4>
+                <ul style="color: white;">
+                    <li><strong>Aceitação Radical:</strong> Abraçar o que não pode ser mudado</li>
+                    <li><strong>Autocompaixão:</strong> Tratar-se com gentileza</li>
+                    <li><strong>Perdão:</strong> Libertar-se de ressentimentos</li>
+                    <li><strong>Humanidade Compartilhada:</strong> Reconhecer que sofrimento é universal</li>
+                </ul>
+            </div>
+            
+            <div class="courage-box">
+                <h3>🦁 Neurociência da Resiliência</h3>
+                
+                <h4 style="color: white;">🧠 Como o Cérebro Processa Adversidades:</h4>
+                <ul style="color: white;">
+                    <li><strong>Amígdala:</strong> Centro de detecção de ameaças e resposta ao medo</li>
+                    <li><strong>Córtex Pré-frontal:</strong> Regulação emocional e tomada de decisões</li>
+                    <li><strong>Hipocampo:</strong> Processamento de memórias e contexto</li>
+                    <li><strong>Córtex Cingulado:</strong> Integração de emoção e cognição</li>
+                </ul>
+                
+                <h4 style="color: white;">⚡ Química da Resiliência:</h4>
+                <ul style="color: white;">
+                    <li><strong>Cortisol:</strong> Hormônio do estresse que precisa ser regulado</li>
+                    <li><strong>GABA:</strong> Neurotransmissor calmante e estabilizador</li>
+                    <li><strong>Serotonina:</strong> Regulador do humor e bem-estar</li>
+                    <li><strong>Dopamina:</strong> Motivação e sistema de recompensa</li>
+                </ul>
+                
+                <h4 style="color: white;">🌟 Neuroplasticidade e Recuperação:</h4>
+                <ul style="color: white;">
+                    <li><strong>Rewiring Cerebral:</strong> Formação de novos circuitos neurais</li>
+                    <li><strong>Fortalecimento de Vias:</strong> Práticas repetidas criam autoestradas neurais</li>
+                    <li><strong>Neurogênese:</strong> Crescimento de novos neurônios</li>
+                    <li><strong>Integração Hemisférica:</strong> Comunicação entre lados do cérebro</li>
+                </ul>
+            </div>
+            
+            <div class="recovery-box">
+                <h3>🌱 Diferenças Fundamentais</h3>
+                
+                <h4 style="color: white;">Resiliência vs. Resistência:</h4>
+                <ul style="color: white;">
+                    <li><strong>💪 Resiliência:</strong> Flexibilidade que permite dobrar sem quebrar</li>
+                    <li><strong>🗿 Resistência:</strong> Rigidez que pode levar à ruptura</li>
+                    <li><strong>🌱 Resiliência:</strong> Crescimento através de adversidades</li>
+                    <li><strong>🛡️ Resistência:</strong> Tentativa de evitar mudanças</li>
+                </ul>
+                
+                <h4 style="color: white;">Resiliência vs. Negação:</h4>
+                <ul style="color: white;">
+                    <li><strong>🌟 Resiliência:</strong> Enfrenta realidade com coragem</li>
+                    <li><strong>🙈 Negação:</strong> Recusa-se a ver ou aceitar realidade</li>
+                    <li><strong>💡 Resiliência:</strong> Processa emoções de forma saudável</li>
+                    <li><strong>🚫 Negação:</strong> Suprime ou evita sentimentos difíceis</li>
+                </ul>
+                
+                <h4 style="color: white;">Resiliência vs. Estoicismo Tóxico:</h4>
+                <ul style="color: white;">
+                    <li><strong>💖 Resiliência:</strong> Permite vulnerabilidade e busca por ajuda</li>
+                    <li><strong>🎭 Estoicismo Tóxico:</strong> Suprime emoções e rejeita apoio</li>
+                    <li><strong>🤗 Resiliência:</strong> Integra força e sensibilidade</li>
+                    <li><strong>🗿 Estoicismo Tóxico:</strong> Confunde dureza com força</li>
+                </ul>
+            </div>
+            
+            <div class="healing-box">
+                <h3>🌸 Fatores que Influenciam a Resiliência</h3>
+                
+                <h4 style="color: white;">🏠 Influências da Infância:</h4>
+                <ul style="color: white;">
+                    <li><strong>Apego Seguro:</strong> Relacionamentos estáveis com cuidadores</li>
+                    <li><strong>Modelos de Enfrentamento:</strong> Como família lidava com dificuldades</li>
+                    <li><strong>Validação Emocional:</strong> Sentimentos reconhecidos e aceitos</li>
+                    <li><strong>Experiências de Superação:</strong> Pequenas vitórias que construíram confiança</li>
+                </ul>
+                
+                <h4 style="color: white;">🌍 Fatores Socioculturais:</h4>
+                <ul style="color: white;">
+                    <li><strong>Cultura de Apoio:</strong> Comunidades que valorizam ajuda mútua</li>
+                    <li><strong>Narrativas Culturais:</strong> Histórias sobre superação e crescimento</li>
+                    <li><strong>Recursos Disponíveis:</strong> Acesso a apoio profissional e social</li>
+                    <li><strong>Estigma:</strong> Atitudes culturais sobre buscar ajuda</li>
+                </ul>
+                
+  </div>  </div>  </div>
+
+  
+  
+ <div class="navigation">
+        <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
+        <button id="nextBtn" class="nav-btn">Próximo</button>
+    </div>
+
+     <script>
+        
+    const pages = document.querySelectorAll('.page');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const progressBar = document.getElementById('progressBar');
+    const pageCounter = document.getElementById('pageCounter');
+    let currentPageIndex = 0;
+
+    function showPage(index) {
+        pages.forEach((page, i) => {
+            if (i === index) {
+                page.classList.add('active');
+            } else {
+                page.classList.remove('active');
+            }
+        });
+        updateNavigationButtons();
+        updateProgressBar();
+        updatePageCounter();
+    }
+
+    function updateNavigationButtons() {
+        prevBtn.disabled = currentPageIndex === 0;
+        nextBtn.disabled = currentPageIndex === pages.length - 1;
+    }
+
+    function updateProgressBar() {
+        const progress = (currentPageIndex / (pages.length - 1)) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+
+    function updatePageCounter() {
+        pageCounter.textContent = `${currentPageIndex + 1} / ${pages.length}`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentPageIndex > 0) {
+            currentPageIndex--;
+            showPage(currentPageIndex);
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentPageIndex < pages.length - 1) {
+            currentPageIndex++;
+            showPage(currentPageIndex);
+        }
+    });
+
+    // Initialize the first page and navigation
+    showPage(currentPageIndex);
+</script>
+
+
+                
+
+
+
+
+            
