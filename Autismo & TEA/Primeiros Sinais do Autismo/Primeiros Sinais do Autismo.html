@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizador de Documentos Otimizado</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Desvendando o Autismo - Leitura Otimizada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #5865F2; /* Azul vibrante */
+            --secondary-color: #4A56E2; /* Azul mais escuro para títulos */
+            --gradient-start: #667eea;
+            --gradient-end: #764ba2;
+            --text-light: #f0f0f0;
+            --text-dark: #333;
+            --bg-card: rgba(255, 255, 255, 0.98);
+            --shadow-light: rgba(0, 0, 0, 0.15);
+            --shadow-strong: rgba(0, 0, 0, 0.25);
+            --border-radius-lg: 12px;
+            --border-radius-md: 8px;
+        }
+
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
@@ -15,125 +29,218 @@
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--text-light);
             text-align: center;
             box-sizing: border-box;
-            padding-top: 30px;
-            padding-bottom: 30px;
-            overflow-x: hidden; /* ESSENCIAL: Esconde a barra de rolagem horizontal */
+            padding: 40px 20px; /* Padding geral para telas grandes */
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
+
         .container {
-            width: 95%; /* Mantém a largura para tablets/desktops */
-            max-width: 1100px;
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-            border-radius: 12px;
+            width: 100%;
+            max-width: 900px;
+            background-color: var(--bg-card);
+            padding: 40px;
+            box-shadow: 0 15px 35px var(--shadow-strong);
+            border-radius: var(--border-radius-lg);
             margin-bottom: 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-        h1 {
-            color: #4A56E2;
-            margin-bottom: 25px;
-            font-size: 2.2em;
-            font-weight: 700;
-            line-height: 1.2; /* Melhora a quebra de linha em títulos longos */
-        }
-        iframe {
-            width: 100%;
-            height: 80vh;
-            min-height: 500px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-        }
-        button {
-            padding: 14px 35px;
-            font-size: 1.15em;
-            background-color: #5865F2;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-        button:hover {
-            background-color: #4452D3;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-        p {
-            margin-top: 20px;
-            color: #555;
-            font-size: 1em;
-            line-height: 1.6;
-        }
-        p a {
-            color: #0060e0;
-            text-decoration: underline;
-            font-weight: 500;
-        }
-        p a:hover {
-            color: #004da0;
+            color: var(--text-dark);
+            position: relative; /* Necessário para posicionar a lupa */
         }
 
+        h1 {
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 700;
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .document-viewer-wrapper {
+            position: relative; /* Para posicionar a lupa dentro */
+            width: 100%;
+            min-height: 550px;
+            height: 75vh;
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 8px 20px var(--shadow-light);
+            overflow: hidden; /* Garante que a lupa não vaze */
+            cursor: zoom-in; /* Indica que é clicável para zoom */
+        }
+
+        .document-viewer {
+            width: 100%;
+            height: 100%;
+            border: none; /* A borda será no wrapper */
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        button, .button-link {
+            padding: 14px 30px;
+            font-size: 1.1em;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 180px;
+        }
+
+        button:hover, .button-link:hover {
+            background-color: #4452D3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        button:active, .button-link:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            margin-top: 25px;
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        p a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        p a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        /* --- Estilos da Lupa --- */
+        .magnifier-glass {
+            position: absolute;
+            border: 3px solid var(--primary-color);
+            border-radius: 50%;
+            cursor: zoom-out;
+            width: 150px; /* Tamanho da lupa */
+            height: 150px;
+            transform: translate(-50%, -50%); /* Centraliza a lupa no clique */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden; /* Garante que o conteúdo dentro não transborde */
+            pointer-events: none; /* Permite interagir com o iframe por baixo, mas a lupa ainda bloqueia o clique nela */
+            z-index: 10; /* Garante que a lupa fique acima do iframe */
+            background-color: rgba(255, 255, 255, 0.1); /* Um leve fundo translúcido */
+            display: flex; /* Para centralizar o conteúdo dentro */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .magnifier-content {
+            position: absolute;
+            width: 200%; /* Exemplo de zoom: 2x */
+            height: 200%; /* Exemplo de zoom: 2x */
+            transform-origin: 0 0; /* Ponto de origem da transformação */
+            /* Isso será ajustado via JS */
+        }
+        
         /* --- Media Queries para Responsividade --- */
-        @media (max-width: 768px) {
-            body {
-                padding-top: 20px;
-                padding-bottom: 20px;
-            }
+        @media (max-width: 992px) {
             .container {
-                width: 98%; /* Ocupa ainda mais espaço para evitar rolagem horizontal */
-                padding: 20px;
-                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+                max-width: 95%;
+                padding: 30px;
             }
             h1 {
-                font-size: 1.8em;
-                margin-bottom: 20px;
+                font-size: 2.2em;
             }
-            iframe {
+            .document-viewer-wrapper {
+                min-height: 500px;
                 height: 70vh;
-                min-height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 15px;
+            }
+            .container {
+                padding: 25px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 1.9em;
                 margin-bottom: 25px;
             }
-            button {
-                padding: 12px 28px;
-                font-size: 1.05em;
+            .document-viewer-wrapper {
+                min-height: 450px;
+                height: 65vh;
+                margin-bottom: 25px;
+            }
+            button, .button-link {
+                padding: 12px 25px;
+                font-size: 1em;
+                min-width: unset;
+                flex-grow: 1;
+            }
+            .actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            p {
+                font-size: 0.95em;
+                margin-top: 20px;
+            }
+            .magnifier-glass {
+                width: 120px; /* Lupa menor em telas menores */
+                height: 120px;
             }
         }
 
         @media (max-width: 480px) {
             body {
-                padding-top: 15px;
-                padding-bottom: 15px;
+                padding: 20px 10px;
             }
             .container {
-                width: calc(100% - 30px); /* Ajusta para 100% menos o padding lateral total (15px * 2) */
-                padding: 15px;
-                border-radius: 10px;
+                padding: 20px;
+                border-radius: 8px;
             }
             h1 {
-                font-size: 1.4em; /* Reduzi um pouco mais para telas bem pequenas */
-                margin-bottom: 15px;
-            }
-            iframe {
-                height: 65vh; /* Aumentei um pouco a altura para leitura em celular */
-                min-height: 380px; /* Aumentei a altura mínima */
+                font-size: 1.6em;
                 margin-bottom: 20px;
             }
-            button {
-                padding: 10px 20px;
-                font-size: 1em;
+            .document-viewer-wrapper {
+                min-height: 400px;
+                height: 60vh;
             }
-            p {
-                font-size: 0.95em; /* Ligeiramente menor para caber melhor */
+            button, .button-link {
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+            .magnifier-glass {
+                width: 100px; /* Lupa ainda menor em telas muito pequenas */
+                height: 100px;
             }
         }
     </style>
@@ -141,12 +248,104 @@
 <body>
 
     <div class="container">
-        <h1>Visualizador de Documentos</h1>
-        <iframe src="Desvendando-o-Autismo-Primeiros-Sinais-e-a-Importancia-da-Intervencao-Precoce.pdf" type="application/pdf">
-            <p>Seu navegador não suporta a visualização de PDFs. Por favor, <a href="Desvendando-o-Autismo-Primeiros-Sinais-e-a-Importancia-da-Intervencao-Precoce.pdf" target="_blank">clique aqui para baixar o documento</a>.</p>
-        </iframe>
-        <button onclick="history.back()">Voltar</button>
+        <h1>Desvendando o Autismo: Primeiros Sinais e Intervenção Precoce</h1>
+        
+        <div class="document-viewer-wrapper" id="pdfViewerWrapper">
+            <iframe 
+                src="Desvendando-o-Autismo-Primeiros-Sinais-e-a-Importancia-da-Intervencao-Precoce.pdf" 
+                class="document-viewer" 
+                id="pdfViewer"
+                type="application/pdf"
+                aria-label="Visualizador do documento PDF sobre Autismo">
+                <p>Seu navegador não suporta a visualização de PDFs diretamente. Você pode <a href="Desvendando-o-Autismo-Primeiros-Sinais-e-a-Importancia-da-Intervencao-Precoce.pdf" target="_blank" rel="noopener noreferrer">clicar aqui para baixar o documento</a> e visualizá-lo em um leitor de PDF.</p>
+            </iframe>
+        </div>
+
+        <div class="actions">
+            <a href="Desvendando-o-Autismo-Primeiros-Sinais-e-a-Importancia-da-Intervencao-Precoce.pdf" download class="button-link">
+                Baixar PDF
+            </a>
+            <a href="#" class="button-link" onclick="alert('Esta função exigiria a criação de um arquivo EPUB ou similar. Para demonstração, o botão de download do PDF é a melhor opção no momento.'); return false;">
+                Ver em Formato de Livro (E-book)
+            </a>
+            <button onclick="history.back()">Voltar</button>
+        </div>
+
+        <p>Este documento oferece informações cruciais sobre os primeiros sinais do autismo e a importância da intervenção precoce. Para ativar a lupa, clique em qualquer parte do documento acima. Para desativar, clique novamente na lupa ou em qualquer outro lugar.</p>
     </div>
 
+    <script>
+        const pdfViewerWrapper = document.getElementById('pdfViewerWrapper');
+        const pdfViewer = document.getElementById('pdfViewer');
+        let magnifierGlass = null; // Variável para armazenar a lupa
+
+        // Adiciona um ouvinte de eventos para cliques no wrapper do PDF
+        pdfViewerWrapper.addEventListener('click', function(e) {
+            // Se já existe uma lupa, remove-a
+            if (magnifierGlass) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                // Restaura o cursor padrão
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+                return; // Sai da função após remover
+            }
+
+            // Cria o elemento da lupa
+            magnifierGlass = document.createElement('div');
+            magnifierGlass.classList.add('magnifier-glass');
+
+            // Cria o conteúdo da lupa (uma cópia do iframe para simular o zoom)
+            const magnifierContent = pdfViewer.cloneNode(true);
+            magnifierContent.classList.remove('document-viewer'); // Remove estilos do iframe original
+            magnifierContent.style.position = 'absolute';
+            magnifierContent.style.top = '0';
+            magnifierContent.style.left = '0';
+            magnifierContent.style.width = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.height = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.pointerEvents = 'none'; // Impede interação com o iframe clonado na lupa
+
+            magnifierGlass.appendChild(magnifierContent);
+            pdfViewerWrapper.appendChild(magnifierGlass);
+
+            // Adiciona um evento de clique na lupa para removê-la
+            magnifierGlass.addEventListener('click', function(event) {
+                event.stopPropagation(); // Impede que o clique na lupa se propague para o wrapper
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+            });
+
+            // Calcula a posição do clique dentro do iframe
+            const rect = pdfViewerWrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left; // Coordenada X relativa ao wrapper
+            const y = e.clientY - rect.top;  // Coordenada Y relativa ao wrapper
+
+            // Posiciona a lupa no centro do clique
+            magnifierGlass.style.left = `${x}px`;
+            magnifierGlass.style.top = `${y}px`;
+
+            // Calcula o deslocamento do conteúdo dentro da lupa para simular o zoom na área clicada
+            // O conteúdo da lupa é 2x maior, então o ponto de origem deve ser metade da distância
+            // da borda para o clique.
+            const zoomLevel = 2; // O mesmo que as dimensões do magnifierContent
+            const contentX = -x * (zoomLevel - 1) + (magnifierGlass.offsetWidth / 2);
+            const contentY = -y * (zoomLevel - 1) + (magnifierGlass.offsetHeight / 2);
+
+            magnifierContent.style.transform = `translate(${contentX}px, ${contentY}px)`;
+
+            // Muda o cursor para indicar que a lupa está ativa
+            pdfViewerWrapper.style.cursor = 'zoom-out';
+        });
+
+        // Adiciona um ouvinte para cliques em qualquer lugar do documento
+        // Isso permite remover a lupa clicando fora dela (no body, por exemplo)
+        document.addEventListener('click', function(event) {
+            if (magnifierGlass && !pdfViewerWrapper.contains(event.target)) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+            }
+        });
+    </script>
 </body>
 </html>

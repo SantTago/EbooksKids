@@ -1,1524 +1,351 @@
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Mente Tranquila - eBook Profissional Infantil</title>
+    <title>Desvendando o Autismo - Leitura Otimizada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Comic+Neue:wght@300;400;700&display=swap');
-        
-        * {
+        :root {
+            --primary-color: #5865F2; /* Azul vibrante */
+            --secondary-color: #4A56E2; /* Azul mais escuro para títulos */
+            --gradient-start: #667eea;
+            --gradient-end: #764ba2;
+            --text-light: #f0f0f0;
+            --text-dark: #333;
+            --bg-card: rgba(255, 255, 255, 0.98);
+            --shadow-light: rgba(0, 0, 0, 0.15);
+            --shadow-strong: rgba(0, 0, 0, 0.25);
+            --border-radius-lg: 12px;
+            --border-radius-md: 8px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--text-light);
+            text-align: center;
             box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Fredoka', cursive;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #a8edea 100%);
-            min-height: 100vh;
+            padding: 40px 20px; /* Padding geral para telas grandes */
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        
-        .ebook-container {
+
+        .container {
+            width: 100%;
             max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            border-radius: 25px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .page {
-            min-height: 100vh;
-            padding: 50px;
-            display: none;
-            position: relative;
-            background: linear-gradient(45deg, #f0f8ff, #f5fffa);
-        }
-        
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .page-header {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        
-        .page-number {
-            background: linear-gradient(45deg, #667eea, #a8edea);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-weight: 600;
-            font-size: 20px;
-            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
-        }
-        
-        .chapter-badge {
-            background: linear-gradient(45deg, #a8edea, #fed6e3);
-            color: #2d3748;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-        
-        h1 {
-            color: #2d3748;
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        h2 {
-            color: #667eea;
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            text-align: center;
-            font-weight: 600;
-        }
-        
-        h3 {
-            color: #764ba2;
-            font-size: 1.6rem;
-            margin-bottom: 18px;
-            font-weight: 600;
-        }
-        
-        h4 {
-            color: #4a5568;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        
-        p {
-            font-size: 1.3rem;
-            line-height: 1.9;
-            color: #4a5568;
-            margin-bottom: 22px;
-            text-align: justify;
-            font-weight: 400;
-        }
-        
-        .character {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            margin: 25px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            background: linear-gradient(45deg, #a8edea, #fed6e3);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            animation: breathe 4s infinite;
-        }
-        
-        @keyframes breathe {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        
-        .emotion-box {
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #667eea;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .emotion-box::before {
-            content: "🧘‍♀️";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .tip-box {
-            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #e17055;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .tip-box::before {
-            content: "🧠";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .activity-box {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .activity-box::before {
-            content: "🎯";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .warning-box {
-            background: linear-gradient(135deg, #fdcb6e, #e17055);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #d63031;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .warning-box::before {
-            content: "⚠️";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .success-box {
-            background: linear-gradient(135deg, #00b894, #00cec9);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .success-box::before {
-            content: "🌟";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .navigation {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            z-index: 1000;
-        }
-        
-        .nav-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 18px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Fredoka', cursive;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        
-        .nav-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-        }
-        
-        .nav-btn:disabled {
-            background: #cbd5e0;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 6px;
-            background: linear-gradient(45deg, #667eea, #a8edea);
-            transition: width 0.5s ease;
-            z-index: 1001;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .page-counter {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.9);
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            color: #4a5568;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .source-box {
-            background: #f7fafc;
-            border: 3px dashed #cbd5e0;
-            padding: 25px;
-            border-radius: 20px;
-            margin-top: 35px;
-            font-size: 1rem;
-            color: #718096;
-            position: relative;
-        }
-        
-        .source-box::before {
-            content: "📚";
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-        }
-        
-        .meditation-exercise {
-            text-align: center;
+            background-color: var(--bg-card);
             padding: 40px;
-            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
-            border-radius: 25px;
-            margin: 25px 0;
-        }
-        
-        .meditation-circle {
-            width: 180px;
-            height: 180px;
-            border: 6px solid #667eea;
-            border-radius: 50%;
-            margin: 25px auto;
+            box-shadow: 0 15px 35px var(--shadow-strong);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: 30px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            color: #667eea;
-            font-weight: 600;
-            animation: pulse 3s infinite;
-            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+            color: var(--text-dark);
+            position: relative; /* Necessário para posicionar a lupa */
         }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(102, 126, 234, 0.3); }
-            50% { transform: scale(1.1); box-shadow: 0 0 40px rgba(102, 126, 234, 0.6); }
-        }
-        
-        .story-illustration {
-            text-align: center;
-            font-size: 4rem;
-            margin: 30px 0;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        ul, ol {
-            font-size: 1.2rem;
-            line-height: 2;
-            color: #4a5568;
-            margin-left: 25px;
-            font-weight: 400;
-        }
-        
-        li {
-            margin-bottom: 12px;
-            position: relative;
-        }
-        
-        .checklist {
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .checklist li::before {
-            content: "✅";
-            margin-right: 10px;
-        }
-        
-        .steps-list {
-            counter-reset: step-counter;
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .steps-list li {
-            counter-increment: step-counter;
-            position: relative;
-            padding-left: 40px;
-        }
-        
-        .steps-list li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: #667eea;
-            color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        
-        .interactive-element {
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        
-        .interactive-element:hover {
-            transform: scale(1.05);
-        }
-        
-        .age-badge {
-            background: linear-gradient(45deg, #a8edea, #fed6e3);
-            color: #4a5568;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-        
-        .difficulty-badge {
-            background: linear-gradient(45deg, #ffeaa7, #fab1a0);
-            color: #4a5568;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-left: 10px;
-        }
-        
-        .quote-box {
-            background: linear-gradient(135deg, #ffecd2, #fcb69f);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #ff8a80;
-            font-style: italic;
-            font-size: 1.1rem;
-            position: relative;
-        }
-        
-       /* .quote-box::before {
-            content: """;
-            font-size: 4rem;
-            color: #ff8a80;
-            position: absolute;
-            top: -10px;
-            left: 15px;
-            line-height: 1;
-        }
-        */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .stat-card {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
+
+        h1 {
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            font-size: 2.5em;
             font-weight: 700;
-            margin-bottom: 10px;
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
-        
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
+
+        .document-viewer-wrapper {
+            position: relative; /* Para posicionar a lupa dentro */
+            width: 100%;
+            min-height: 550px;
+            height: 75vh;
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 8px 20px var(--shadow-light);
+            overflow: hidden; /* Garante que a lupa não vaze */
+            cursor: zoom-in; /* Indica que é clicável para zoom */
         }
-        
-        .mindful-scenario {
-            background: linear-gradient(135deg, #74b9ff, #0984e3);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
+
+        .document-viewer {
+            width: 100%;
+            height: 100%;
+            border: none; /* A borda será no wrapper */
         }
-        
-        .mindful-scenario::before {
-            content: "🧘‍♂️";
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        button, .button-link {
+            padding: 14px 30px;
+            font-size: 1.1em;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 180px;
+        }
+
+        button:hover, .button-link:hover {
+            background-color: #4452D3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        button:active, .button-link:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            margin-top: 25px;
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        p a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        p a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        /* --- Estilos da Lupa --- */
+        .magnifier-glass {
             position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
+            border: 3px solid var(--primary-color);
             border-radius: 50%;
+            cursor: zoom-out;
+            width: 150px; /* Tamanho da lupa */
+            height: 150px;
+            transform: translate(-50%, -50%); /* Centraliza a lupa no clique */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden; /* Garante que o conteúdo dentro não transborde */
+            pointer-events: none; /* Permite interagir com o iframe por baixo, mas a lupa ainda bloqueia o clique nela */
+            z-index: 10; /* Garante que a lupa fique acima do iframe */
+            background-color: rgba(255, 255, 255, 0.1); /* Um leve fundo translúcido */
+            display: flex; /* Para centralizar o conteúdo dentro */
+            align-items: center;
+            justify-content: center;
         }
-        
-        .calm-box {
-            background: linear-gradient(135deg, #00b894, #00cec9);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .calm-box::before {
-            content: "🕊️";
+
+        .magnifier-content {
             position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
+            width: 200%; /* Exemplo de zoom: 2x */
+            height: 200%; /* Exemplo de zoom: 2x */
+            transform-origin: 0 0; /* Ponto de origem da transformação */
+            /* Isso será ajustado via JS */
         }
         
-        .nature-box {
-            background: linear-gradient(135deg, #55a3ff, #003d82);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .nature-box::before {
-            content: "🌿";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        @media (max-width: 768px) {
-            .page {
-                padding: 30px 20px;
+        /* --- Media Queries para Responsividade --- */
+        @media (max-width: 992px) {
+            .container {
+                max-width: 95%;
+                padding: 30px;
             }
-            
             h1 {
-                font-size: 2.2rem;
+                font-size: 2.2em;
             }
-            
-            h2 {
-                font-size: 1.8rem;
+            .document-viewer-wrapper {
+                min-height: 500px;
+                height: 70vh;
             }
-            
-            .character {
-                width: 100px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 15px;
+            }
+            .container {
+                padding: 25px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 1.9em;
+                margin-bottom: 25px;
+            }
+            .document-viewer-wrapper {
+                min-height: 450px;
+                height: 65vh;
+                margin-bottom: 25px;
+            }
+            button, .button-link {
+                padding: 12px 25px;
+                font-size: 1em;
+                min-width: unset;
+                flex-grow: 1;
+            }
+            .actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            p {
+                font-size: 0.95em;
+                margin-top: 20px;
+            }
+            .magnifier-glass {
+                width: 120px; /* Lupa menor em telas menores */
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+            .container {
+                padding: 20px;
+                border-radius: 8px;
+            }
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 20px;
+            }
+            .document-viewer-wrapper {
+                min-height: 400px;
+                height: 60vh;
+            }
+            button, .button-link {
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+            .magnifier-glass {
+                width: 100px; /* Lupa ainda menor em telas muito pequenas */
                 height: 100px;
-                font-size: 3.5rem;
-            }
-            
-            .meditation-circle {
-                width: 140px;
-                height: 140px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
-    <div class="page-counter" id="pageCounter">1 / 15</div>
-    
-    <div class="ebook-container">
-        <!-- Página 1: Capa Profissional -->
-        <div class="page active">
-            <div class="page-header">
-                <div class="page-number">1</div>
-                <div class="chapter-badge">CAPA</div>
-            </div>
-            <h1>🧘‍♀️ MINHA MENTE TRANQUILA 🧘‍♂️</h1>
-            <div class="character interactive-element">🌸</div>
-            <h2>eBook Completo sobre Mindfulness Infantil</h2>
-            
-            <div class="emotion-box">
-                <h3>🌟 Para Pequenos Exploradores da Mente</h3>
-                <p style="text-align: center; font-size: 1.4rem;"><strong>Um eBook especial para crianças que querem descobrir a magia da atenção plena e viver com mais calma e felicidade</strong></p>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">12</div>
-                    <div class="stat-label">Páginas Interativas</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">30+</div>
-                    <div class="stat-label">Exercícios de Mindfulness</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Baseado em Ciência</div>
-                </div>
-            </div>
-            
-            <div class="age-badge">👶 Idade: 5-12 anos</div>
-            <div class="difficulty-badge">📚 Nível: Iniciante</div>
-            
-            <p style="text-align: center; margin-top: 30px; font-size: 1.1rem; color: #718096;">
-                <em>Desenvolvido por especialistas em mindfulness e psicologia infantil 🧠✨</em>
-            </p>
+
+    <div class="container">
+        <h1>Mindfulness Infantil</h1>
+        
+        <div class="document-viewer-wrapper" id="pdfViewerWrapper">
+            <iframe 
+                src="Superpoder-da-Atencao-Mindfulness-para-Criancas.pdf" 
+                class="document-viewer" 
+                id="pdfViewer"
+                type="application/pdf"
+                aria-label="Visualizador do documento PDF sobre Autismo">
+                <p>Seu navegador não suporta a visualização de PDFs diretamente. Você pode <a href="Superpoder-da-Atencao-Mindfulness-para-Criancas.pdf" target="_blank" rel="noopener noreferrer">clicar aqui para baixar o documento</a> e visualizá-lo em um leitor de PDF.</p>
+            </iframe>
         </div>
 
-        <!-- Página 2: Índice Interativo -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">2</div>
-                <div class="chapter-badge">ÍNDICE</div>
-            </div>
-            <h2>📚 Nossa Jornada da Atenção Plena</h2>
-            <div class="story-illustration">🗺️📖🧘‍♀️</div>
-            
-            <div class="tip-box">
-                <h3>🧭 Nosso Mapa da Tranquilidade Mental:</h3>
-                <ol class="steps-list">
-                    <li><strong>O que é Mindfulness?</strong> - Descobrindo a atenção plena</li>
-                    <li><strong>Benefícios para Crianças</strong> - Como mindfulness ajuda</li>
-                    <li><strong>A História do Lucas Atento</strong> - Uma jornada de descoberta</li>
-                    <li><strong>Dados Científicos</strong> - O que a pesquisa mostra</li>
-                    <li><strong>Respiração Consciente</strong> - Seu primeiro superpoder</li>
-                    <li><strong>Kit do Pequeno Meditador</strong> - Ferramentas práticas</li>
-                    <li><strong>Exercícios Divertidos</strong> - Mindfulness na prática</li>
-                    <li><strong>Atividades Criativas</strong> - Arte e atenção plena</li>
-                    <li><strong>Guia para Família</strong> - Praticando juntos</li>
-                    <li><strong>Mindfulness na Escola</strong> - Atenção nos estudos</li>
-                    <li><strong>Lidando com Emoções</strong> - Sentimentos com consciência</li>
-                    <li><strong>Plano de Prática Diária</strong> - Sua rotina mindful</li>
-                    <li><strong>Certificado de Pequeno Meditador</strong> - Sua conquista</li>
-                </ol>
-            </div>
-            
-            <div class="activity-box">
-                <h3>🎯 Como usar este eBook:</h3>
-                <p style="color: white;">Leia com calma, pratique os exercícios e lembre-se: mindfulness é como um músculo - quanto mais você pratica, mais forte fica. Cada momento de atenção plena é uma pequena vitória!</p>
-            </div>
+        <div class="actions">
+            <a href="Superpoder-da-Atencao-Mindfulness-para-Criancas.pdf" download class="button-link">
+                Baixar PDF
+            </a>
+            <a href="#" class="button-link" onclick="alert('Esta função exigiria a criação de um arquivo EPUB ou similar. Para demonstração, o botão de download do PDF é a melhor opção no momento.'); return false;">
+                Ver em Formato de Livro (E-book)
+            </a>
+            <button onclick="history.back()">Voltar</button>
         </div>
 
-        <!-- Página 3: O que é Mindfulness? -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">3</div>
-                <div class="chapter-badge">CAPÍTULO 1</div>
-            </div>
-            <h2>🤔 O que é Mindfulness?</h2>
-            <div class="story-illustration">🧠➡️👁️➡️💗➡️🌸</div>
-            
-            <p>Você já parou para realmente prestar atenção no que está acontecendo agora? Mindfulness é exatamente isso - é como ser um detetive da sua própria vida, observando tudo com curiosidade e carinho!</p>
-            
-            <div class="emotion-box">
-                <h3>🎭 O que é Mindfulness (Atenção Plena)?</h3>
-                <p>Mindfulness é prestar atenção no momento presente de propósito, sem julgar se é bom ou ruim. É como acender uma luzinha especial na sua mente que ilumina tudo o que está acontecendo agora: seus pensamentos, sentimentos, sensações e o mundo ao seu redor.</p>
-            </div>
-            
-            <div class="quote-box">
-                Mindfulness é como ser um explorador da sua própria mente - descobrindo tesouros escondidos de paz e felicidade que sempre estiveram lá!
-            </div>
-            
-            <div class="tip-box">
-                <h3>🌟 Mindfulness é como:</h3>
-                <ul>
-                    <li><strong>🔍 Uma lupa mágica:</strong> Que te ajuda a ver detalhes incríveis</li>
-                    <li><strong>🎵 Ouvir sua música favorita:</strong> Prestando atenção em cada nota</li>
-                    <li><strong>🌈 Observar um arco-íris:</strong> Vendo cada cor com admiração</li>
-                    <li><strong>🐶 Brincar com um cachorrinho:</strong> Totalmente presente na brincadeira</li>
-                    <li><strong>🍓 Saborear um morango:</strong> Sentindo cada gostinho</li>
-                    <li><strong>🌊 Ouvir as ondas do mar:</strong> Focado apenas no som</li>
-                </ul>
-            </div>
-            
-            <div class="mindful-scenario">
-                <h3>🧘‍♂️ Exemplo de Mindfulness:</h3>
-                <p style="color: white;"><strong>Sem Mindfulness:</strong> Você está comendo, mas pensando na prova de amanhã, preocupado com o que o amigo disse, planejando o fim de semana...</p>
-                <p style="color: white;"><strong>Com Mindfulness:</strong> Você está comendo e realmente sentindo o sabor, a textura, o cheiro da comida. Você está presente, aqui e agora!</p>
-            </div>
-            
-            <div class="success-box">
-                <h3>💎 Os Três Pilares do Mindfulness:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎯 Atenção:</strong> Focar no que está acontecendo agora</li>
-                    <li><strong>🤗 Aceitação:</strong> Não julgar se é bom ou ruim</li>
-                    <li><strong>💝 Gentileza:</strong> Ser carinhoso consigo mesmo</li>
-                </ul>
-            </div>
-            
-            <div class="activity-box">
-                <h3>🎨 Atividade: Meu Primeiro Momento Mindful</h3>
-                <p style="color: white;">Agora mesmo, pare por 30 segundos. Respire fundo e observe: O que você vê? O que você ouve? Como seu corpo está se sentindo? Não precisa mudar nada, apenas observe com curiosidade!</p>
-            </div>
-            
-            <div class="source-box">
-                <strong>📚 Fonte Científica:</strong> Baseado na definição de Jon Kabat-Zinn e adaptações para crianças desenvolvidas por pesquisadores como Susan Kaiser Greenland e Christopher Willard.
-            </div>
-        </div>
-
-        <!-- Página 4: Benefícios para Crianças -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">4</div>
-                <div class="chapter-badge">BENEFÍCIOS</div>
-            </div>
-            <h2>🌟 Como Mindfulness Ajuda as Crianças</h2>
-            <div class="story-illustration">🧘‍♀️➡️💪➡️🧠➡️❤️</div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">78%</div>
-                    <div class="stat-label">melhora na concentração</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">65%</div>
-                    <div class="stat-label">redução da ansiedade</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">82%</div>
-                    <div class="stat-label">melhora no sono</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">90%</div>
-                    <div class="stat-label">maior bem-estar emocional</div>
-                </div>
-            </div>
-            
-            <div class="success-box">
-                <h3>🧠 Benefícios para a Mente:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎯 Concentração Turbinada:</strong> Foco melhor nos estudos e brincadeiras</li>
-                    <li><strong>🧘‍♀️ Menos Ansiedade:</strong> Mente mais calma e tranquila</li>
-                    <li><strong>💭 Pensamentos Organizados:</strong> Menos bagunça mental</li>
-                    <li><strong>🎨 Mais Criatividade:</strong> Ideias fluem com mais facilidade</li>
-                    <li><strong>🧩 Melhor Memória:</strong> Lembra das coisas com mais clareza</li>
-                    <li><strong>⚡ Menos Impulsividade:</strong> Pensa antes de agir</li>
-                </ul>
-            </div>
-            
-            <div class="emotion-box">
-                <h3>❤️ Benefícios Emocionais:</h3>
-                <ul>
-                    <li><strong>😊 Mais Felicidade:</strong> Aprecia momentos simples da vida</li>
-                    <li><strong>🤗 Autoestima Melhor:</strong> Se aceita e se ama mais</li>
-                    <li><strong>😌 Controle Emocional:</strong> Lida melhor com raiva e tristeza</li>
-                    <li><strong>💝 Mais Empatia:</strong> Entende melhor os sentimentos dos outros</li>
-                    <li><strong>🌈 Otimismo:</strong> Vê o lado bom das situações</li>
-                    <li><strong>🕊️ Paz Interior:</strong> Sente-se calmo por dentro</li>
-                </ul>
-            </div>
-            
-            <div class="tip-box">
-                <h3>🏃‍♀️ Benefícios Físicos:</h3>
-                <ul>
-                    <li><strong>😴 Sono Melhor:</strong> Dorme mais profundamente</li>
-                    <li><strong>💪 Menos Tensão:</strong> Músculos mais relaxados</li>
-                    <li><strong>❤️ Coração Calmo:</strong> Batimentos mais regulares</li>
-                    <li><strong>🫁 Respiração Profunda:</strong> Oxigena melhor o corpo</li>
-                    <li><strong>🤸‍♀️ Mais Energia:</strong> Sente-se mais disposto</li>
-                    <li><strong>🛡️ Sistema Imunológico:</strong> Fica doente com menos frequência</li>
-                </ul>
-            </div>
-            
-            <div class="mindful-scenario">
-                <h3>👥 Benefícios Sociais:</h3>
-                <ul style="color: white;">
-                    <li><strong>🤝 Amizades Melhores:</strong> Relaciona-se com mais qualidade</li>
-                    <li><strong>👂 Escuta Ativa:</strong> Presta mais atenção nos outros</li>
-                    <li><strong>🗣️ Comunicação Clara:</strong> Expressa-se melhor</li>
-                    <li><strong>⚖️ Menos Conflitos:</strong> Resolve problemas com calma</li>
-                    <li><strong>🎭 Menos Timidez:</strong> Mais confiante em grupos</li>
-                    <li><strong>🌟 Liderança Natural:</strong> Inspira calma nos outros</li>
-                </ul>
-            </div>
-            
-            <div class="activity-box">
-                <h3>📊 Atividade: Meu Gráfico de Bem-Estar</h3>
-                <p style="color: white;">Desenhe um gráfico com os dias da semana. A cada dia, marque de 1 a 10 como você se sentiu. Depois de praticar mindfulness por uma semana, compare os resultados!</p>
-            </div>
-            
-            <div class="source-box">
-                <strong>📚 Fonte:</strong> Estudos de Mindfulness-Based Interventions em crianças (Goyal et al., 2014; Zenner et al., 2014), pesquisas sobre neuroplasticidade infantil.
-            </div>
-        </div>
-
-        <!-- Página 5: História do Lucas Atento - Parte 1 -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">5</div>
-                <div class="chapter-badge">HISTÓRIA</div>
-            </div>
-            <h2>📖 A Descoberta do Lucas Atento - Parte 1</h2>
-            <div class="story-illustration">👦🌪️😵‍💫</div>
-            
-            <p>Era uma vez um menino chamado Lucas, de 8 anos, que tinha uma mente muito, muito agitada. Seus pensamentos corriam como carrinhos de corrida - vrum, vrum, vrum - sem parar nunca! Lucas adorava brincar, mas às vezes se sentia cansado de ter tantos pensamentos ao mesmo tempo.</p>
-            
-            <div class="quote-box">
-                "Por que minha mente não para quieta? É como se tivesse um monte de macacos pulando lá dentro!" - pensava Lucas, confuso.
-            </div>
-            
-            <p>Na escola, Lucas tinha dificuldade para prestar atenção. Enquanto a professora explicava matemática, ele pensava no lanche, no jogo de futebol, no desenho animado que ia assistir... Sua mente estava sempre em mil lugares ao mesmo tempo!</p>
-            
-            <div class="mindful-scenario">
-                <h3>🌪️ Como era a mente do Lucas:</h3>
-                <ul style="color: white;">
-                    <li>"O que vou almoçar hoje?"</li>
-                    <li>"Será que vai chover?"</li>
-                    <li>"Preciso terminar a lição de casa"</li>
-                    <li>"Quero brincar de videogame"</li>
-                    <li>"E se eu esquecer a mochila?"</li>
-                    <li>"Que horas são?"</li>
-                </ul>
-                <p style="color: white;">Tudo isso ao mesmo tempo, como uma rádio com várias estações tocando juntas!</p>
-            </div>
-            
-            <p>Um dia, Lucas estava no parque com sua avó, Dona Clara, que era muito sábia e tranquila. Ela percebeu que Lucas estava inquieto, mexendo nas folhas, olhando para todos os lados, sem conseguir ficar parado.</p>
-            
-            <div class="tip-box">
-                <h3>🤔 Você já se sentiu como o Lucas?</h3>
-                <p>Muitas crianças têm mentes agitadas como a do Lucas! É normal ter muitos pensamentos, mas existe um jeito especial de organizar essa bagunça mental e encontrar paz interior.</p>
-            </div>
-            
-            <div class="activity-box">
-                <h3>🎨 Atividade: Desenhe Sua Mente</h3>
-                <p style="color: white;">Como você imagina sua mente quando está agitada? Desenhe! Pode ser como uma tempestade, um enxame de abelhas, ou carros correndo. Depois desenhe como gostaria que ela fosse.</p>
-            </div>
-        </div>
-
-        <!-- Página 6: História do Lucas Atento - Parte 2 -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">6</div>
-                <div class="chapter-badge">HISTÓRIA</div>
-            </div>
-            <h2>📖 A Descoberta do Lucas Atento - Parte 2</h2>
-            <div class="story-illustration">👦👵🌸</div>
-            
-            <p>Dona Clara sorriu carinhosamente e disse: "Lucas, você quer aprender um segredo mágico que vai ajudar sua mente a ficar mais calma e organizada?" Os olhos do Lucas brilharam de curiosidade. "Claro, vovó! Que segredo é esse?"</p>
-            
-            <div class="quote-box">
-                "Lucas, sua mente é como um lago. Quando está agitado, a água fica turva e você não consegue ver o fundo. Mas quando fica calmo, a água fica cristalina e você pode ver tudo claramente. Vou te ensinar como acalmar seu lago interior!" - disse Dona Clara.
-            </div>
-            
-            <p>A avó explicou que existe uma prática especial chamada "atenção plena" ou "mindfulness". Ela contou que é como treinar a mente para ser um observador gentil de tudo o que acontece, sem se deixar levar pela correria dos pensamentos.</p>
-            
-            <div class="success-box">
-                <h3>💎 Os Ensinamentos da Dona Clara:</h3>
-                <ul style="color: white;">
-                    <li>A mente pode ser treinada como um músculo</li>
-                    <li>Não precisamos acreditar em todos os nossos pensamentos</li>
-                    <li>Podemos escolher onde colocar nossa atenção</li>
-                    <li>A respiração é nossa âncora para o presente</li>
-                    <li>Pequenos momentos de atenção fazem grande diferença</li>
-                </ul>
-            </div>
-            
-            <p>Dona Clara ensinou para Lucas o primeiro exercício: a "Respiração da Borboleta". Ela pediu para ele imaginar que tinha uma borboleta pousada na barriga, e que precisava respirar suavemente para não assustá-la.</p>
-            
-            <div class="meditation-exercise">
-                <h3>🦋 Primeira Meditação do Lucas</h3>
-                <div class="meditation-circle interactive-element">
-                    Inspire... Borboleta sobe... Expire... Borboleta desce...
-                </div>
-                <p><strong>Acompanhe o círculo mágico acima! ⬆️</strong></p>
-            </div>
-            
-            <div class="calm-box">
-                <h3>🌟 O que Lucas descobriu:</h3>
-                <ul style="color: white;">
-                    <li>Quando focava na respiração, os pensamentos ficavam mais calmos</li>
-                    <li>Ele podia observar seus pensamentos sem se perder neles</li>
-                    <li>A sensação de paz estava sempre disponível dentro dele</li>
-                    <li>Não precisava lutar contra os pensamentos, apenas observá-los</li>
-                    <li>Cada respiração consciente era como um pequeno presente</li>
-                </ul>
-            </div>
-            
-            <div class="activity-box">
-                <h3>🎯 Atividade: Sua Primeira Respiração Consciente</h3>
-                <p style="color: white;">Feche os olhos e imagine uma borboleta na sua barriga. Respire suavemente 5 vezes, sentindo a borboleta subir e descer. Como você se sente depois?</p>
-            </div>
-            
-            <p>A partir daquele dia, Lucas começou sua jornada de descoberta da atenção plena. Ele aprendeu que tinha um superpoder escondido: a capacidade de estar presente!</p>
-        </div>
-
-        <!-- Página 7: Dados Científicos -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">7</div>
-                <div class="chapter-badge">DADOS CIENTÍFICOS</div>
-            </div>
-            <h2>📊 O que a Ciência Diz sobre Mindfulness</h2>
-            <div class="story-illustration">📈🔬🧠</div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">47</div>
-                    <div class="stat-label">estudos comprovam benefícios</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">8</div>
-                    <div class="stat-label">semanas para ver mudanças</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">23%</div>
-                    <div class="stat-label">melhora na atenção</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">15</div>
-                    <div class="stat-label">minutos diários são suficientes</div>
-                </div>
-            </div>
-            
-            <div class="tip-box">
-                <h3>🧠 O que Acontece no Cérebro:</h3>
-                <ul>
-                    <li><strong>Córtex Pré-frontal:</strong> Área da atenção fica mais forte</li>
-                    <li><strong>Amígdala:</strong> Centro do medo fica mais calmo</li>
-                    <li><strong>Hipocampo:</strong> Área da memória melhora</li>
-                    <li><strong>Ínsula:</strong> Consciência corporal aumenta</li>
-                    <li><strong>Conexões neurais:</strong> Cérebro fica mais integrado</li>
-                    <li><strong>Neuroplasticidade:</strong> Cérebro se adapta positivamente</li>
-                </ul>
-            </div>
-            
-            <div class="success-box">
-                <h3>📚 Pesquisas em Escolas:</h3>
-                <ul style="color: white;">
-                    <li><strong>Concentração:</strong> 89% das crianças melhoraram o foco</li>
-                    <li><strong>Comportamento:</strong> 76% reduziram agressividade</li>
-                    <li><strong>Notas:</strong> 34% melhoraram desempenho acadêmico</li>
-                    <li><strong>Relacionamentos:</strong> 82% melhoraram amizades</li>
-                    <li><strong>Autoestima:</strong> 91% se sentiram mais confiantes</li>
-                    <li><strong>Estresse:</strong> 67% relataram menos ansiedade</li>
-                </ul>
-            </div>
-            
-            <div class="mindful-scenario">
-                <h3>🏥 Benefícios Médicos Comprovados:</h3>
-                <ul style="color: white;">
-                    <li><strong>Sistema Imunológico:</strong> 23% mais resistente a doenças</li>
-                    <li><strong>Pressão Arterial:</strong> Redução significativa</li>
-                    <li><strong>Cortisol:</strong> 27% menos hormônio do estresse</li>
-                    <li><strong>Inflamação:</strong> Marcadores inflamatórios reduzidos</li>
-                    <li><strong>Sono:</strong> 40% melhora na qualidade</li>
-                    <li><strong>Dor:</strong> Redução da percepção de dor</li>
-                </ul>
-            </div>
-            
-            <div class="warning-box">
-                <h3>⚠️ Mitos vs. Realidade:</h3>
-                <h4>❌ MITOS:</h4>
-                <ul>
-                    <li>"Mindfulness é religião"</li>
-                    <li>"Precisa meditar horas por dia"</li>
-                    <li>"É só para adultos"</li>
-                    <li>"Tem que esvaziar a mente"</li>
-                </ul>
-                <h4>✅ REALIDADE:</h4>
-                <ul>
-                    <li>É uma prática secular e científica</li>
-                    <li>5-15 minutos diários já fazem diferença</li>
-                    <li>Crianças aprendem facilmente</li>
-                    <li>É observar os pensamentos, não eliminá-los</li>
-                </ul>
-            </div>
-            
-            <div class="activity-box">
-                <h3>🔬 Atividade: Seja um Cientista</h3>
-                <p style="color: white;">Faça seu próprio experimento! Anote como você se sente antes e depois de 5 minutos de respiração consciente. Faça isso por uma semana e observe os resultados!</p>
-            </div>
-            
-            <div class="source-box">
-                <strong>📚 Fontes:</strong> Meta-análises de Goyal et al. (2014), Zenner et al. (2014), estudos de neuroimagem de Sara Lazar (Harvard), pesquisas de Daniel Siegel sobre cérebro adolescente.
-            </div>
-        </div>
-
-        <!-- Página 8: Respiração Consciente -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">8</div>
-                <div class="chapter-badge">TÉCNICAS</div>
-            </div>
-            <h2>🌬️ Respiração Consciente - Seu Primeiro Superpoder</h2>
-            
-            <p>A respiração é como uma ponte mágica entre seu corpo e sua mente. Quando você respira conscientemente, está usando seu primeiro e mais poderoso superpoder de mindfulness!</p>
-            
-            <div class="meditation-exercise">
-                <h3>🫁 Respiração do Balão Mágico</h3>
-                <div class="meditation-circle interactive-element">
-                    Enche... Segura... Esvazia...
-                </div>
-                <p><strong>Acompanhe o círculo respirando! ⬆️</strong></p>
-            </div>
-            
-            <div class="activity-box">
-                <h3>🎈 Como fazer a Respiração do Balão:</h3>
-                <ol class="steps-list" style="color: white;">
-                    <li>Sente-se confortavelmente e coloque uma mão na barriga</li>
-                    <li>Imagine que tem um balão na barriga</li>
-                    <li>Inspire pelo nariz enchendo o balão (4 segundos)</li>
-                    <li>Segure o ar como se o balão estivesse cheio (2 segundos)</li>
-                    <li>Expire pela boca esvaziando o balão (6 segundos)</li>
-                    <li>Repita 8 vezes e sinta a magia acontecer!</li>
-                </ol>
-            </div>
-            
-            <div class="tip-box">
-                <h3>🌟 Outras Respirações Mindful:</h3>
-                
-                <h4>🌊 Respiração das Ondas:</h4>
-                <p>Inspire como uma onda chegando à praia (suave e longa), expire como a onda voltando ao mar (levando toda tensão embora).</p>
-                
-                <h4>🌸 Respiração da Flor:</h4>
-                <p>Inspire cheirando uma flor imaginária (4 segundos), expire soprando as pétalas suavemente (8 segundos).</p>
-                
-                <h4>⭐ Respiração da Estrela:</h4>
-                <p>Desenhe uma estrela no ar. Inspire subindo cada ponta, expire descendo. A estrela te conecta com o universo!</p>
-                
-                <h4>🦋 Respiração da Borboleta:</h4>
-                <p>Imagine uma borboleta na barriga. Respire suavemente para não assustá-la. Ela representa sua paz interior.</p>
-            </div>
-            
-            <div class="calm-box">
-                <h3>🕊️ Respiração de Emergência (Para Momentos Difíceis):</h3>
-                <ul style="color: white;">
-                    <li><strong>Passo 1:</strong> Pare o que está fazendo</li>
-                    <li><strong>Passo 2:</strong> Coloque a mão no coração</li>
-                    <li><strong>Passo 3:</strong> Respire fundo 3 vezes</li>
-                    <li><strong>Passo 4:</strong> Diga: "Estou aqui, estou bem"</li>
-                    <li><strong>Passo 5:</strong> Continue respirando até se acalmar</li>
-                </ul>
-            </div>
-            
-            <div class="nature-box">
-                <h3>🌿 Respiração da Natureza:</h3>
-                <p style="color: white;"><strong>Exercício especial:</strong></p>
-                <ul style="color: white;">
-                    <li>Sente-se perto de uma janela ou vá para fora</li>
-                    <li>Observe a natureza ao redor (árvores, céu, flores)</li>
-                    <li>Respire como se estivesse trocando ar com as plantas</li>
-                    <li>Inspire o oxigênio que elas te dão</li>
-                    <li>Expire o gás carbônico que elas precisam</li>
-                    <li>Sinta-se conectado com toda a natureza!</li>
-                </ul>
-            </div>
-            
-            <div class="success-box">
-                <h3>✨ Por que a respiração consciente é mágica?</h3>
-                <p style="color: white;">Quando você respira conscientemente, ativa o "sistema de calma" do seu corpo. É como apertar um botão de reset na sua mente! A respiração sempre está com você - é seu superpoder portátil que funciona em qualquer lugar!</p>
-            </div>
-            
-            <div class="source-box">
-                <strong>📚 Fonte:</strong> Técnicas adaptadas de programas como Mindful Schools, .b (Mindfulness in Schools Project), e pesquisas sobre respiração consciente em crianças.
-            </div>
-        </div>
-
-        <!-- Página 9: Kit do Pequeno Meditador -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">9</div>
-                <div class="chapter-badge">FERRAMENTAS</div>
-            </div>
-            <h2>🧰 Seu Kit do Pequeno Meditador</h2>
-            <div class="story-illustration">🧰✨🌈🧘‍♀️</div>
-            
-            <p>Todo pequeno meditador precisa de ferramentas especiais para praticar mindfulness. Vamos montar seu kit pessoal com objetos mágicos de atenção plena!</p>
-            
-            <div class="tip-box">
-                <h3>🎒 Ferramenta 1: Objetos de Foco</h3>
-                <p>Escolha objetos que te ajudem a focar:</p>
-                <ul>
-                    <li><strong>Pedra da Atenção:</strong> Uma pedrinha lisa para segurar</li>
-                    <li><strong>Concha do Mar:</strong> Para ouvir o "som do oceano"</li>
-                    <li><strong>Cristal Especial:</strong> Para observar a luz passar</li>
-                    <li><strong>Pena Mágica:</strong> Para sentir a textura suave</li>
-                    <li><strong>Sino Tibetano:</strong> Para ouvir o som se espalhando</li>
-                </ul>
-                <h4>💡 Como usar:</h4>
-                <p>Segure o objeto e foque toda sua atenção nele por alguns minutos.</p>
-            </div>
-            
-            <div class="activity-box">
-                <h3>📝 Ferramenta 2: Diário Mindful</h3>
-                <p style="color: white;">Crie seu diário especial:</p>
-                <ul style="color: white;">
-                    <li>Decore um caderno bonito</li>
-                    <li>Todo dia, escreva 3 coisas que notou</li>
-                    <li>Desenhe seus sentimentos</li>
-                    <li>Anote momentos de gratidão</li>
-                    <li>Registre suas práticas de mindfulness</li>
-                    <li>Cole fotos ou desenhos especiais</li>
-                </ul>
-            </div>
-            
-            <div class="mindful-scenario">
-                <h3>🔔 Ferramenta 3: Sinos da Atenção</h3>
-                <p style="color: white;">Use sons para treinar a atenção:</p>
-                <ul style="color: white;">
-                    <li><strong>Sino real:</strong> Toque e escute até o som sumir</li>
-                    <li><strong>App de sinos:</strong> Use aplicativos com sons relaxantes</li>
-                    <li><strong>Tigela cantante:</strong> Faça círculos na borda</li>
-                    <li><strong>Chocalho suave:</strong> Balance devagar e escute</li>
-                    <li><strong>Música da natureza:</strong> Sons de chuva, mar, pássaros</li>
-                </ul>
-            </div>
-            
-            <div class="calm-box">
-                <h3>🎨 Ferramenta 4: Mandala da Calma</h3>
-                <p style="color: white;">Crie sua mandala pessoal:</p>
-                <ul style="color: white;">
-                    <li>Desenhe um círculo grande no papel</li>
-                    <li>Crie padrões repetitivos dentro</li>
-                    <li>Use cores que te acalmam</li>
-                    <li>Foque completamente no desenho</li>
-                    <li>Não se preocupe com perfeição</li>
-                    <li>Deixe sua mente relaxar enquanto desenha</li>
-                </ul>
-            </div>
-            
-            <div class="success-box">
-                <h3>🌱 Ferramenta 5: Jardim da Atenção</h3>
-                <p style="color: white;">Crie um espaço especial:</p>
-                <ul style="color: white;">
-                    <li>Escolha um cantinho calmo em casa</li>
-                    <li>Coloque uma almofada confortável</li>
-                    <li>Adicione uma planta pequena</li>
-                    <li>Tenha seus objetos especiais por perto</li>
-                    <li>Use uma luz suave</li>
-                    <li>Faça deste seu "santuário da paz"</li>
-                </ul>
-            </div>
-            
-            <div class="nature-box">
-                <h3>📱 Ferramenta 6: Apps Mindful para Crianças</h3>
-                <p style="color: white;">Tecnologia a favor da atenção plena:</p>
-                <ul style="color: white;">
-                    <li><strong>Headspace for Kids:</strong> Meditações guiadas</li>
-                    <li><strong>Calm:</strong> Histórias para dormir mindful</li>
-                    <li><strong>Stop, Breathe & Think Kids:</strong> Exercícios divertidos</li>
-                    <li><strong>Smiling Mind:</strong> Programa específico para idades</li>
-                    <li><strong>Insight Timer:</strong> Meditações gratuitas</li>
-                </ul>
-            </div>
-            
-            <div class="source-box">
-                <strong>📚 Fonte:</strong> Ferramentas baseadas em programas estabelecidos de mindfulness infantil e recomendações de especialistas como Susan Kaiser Greenland.
-            </div>
-        </div>
-
-        <!-- Página 10: Exercícios Divertidos -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">10</div>
-                <div class="chapter-badge">EXERCÍCIOS</div>
-            </div>
-            <h2>🎪 Exercícios Super Divertidos de Mindfulness</h2>
-            <div class="story-illustration">🎭🎪🎨🎯</div>
-            
-            <div class="activity-box">
-                <h3>🍇 Exercício: Comendo com Atenção Plena</h3>
-                <p style="color: white;"><strong>O Exercício da Uva Passa Mágica:</strong></p>
-                <ol style="color: white;" class="steps-list">
-                    <li>Pegue uma uva passa (ou qualquer fruta pequena)</li>
-                    <li>Observe como se nunca tivesse visto antes</li>
-                    <li>Sinta a textura com os dedos</li>
-                    <li>Cheire o aroma</li>
-                    <li>Coloque na boca sem mastigar</li>
-                    <li>Mastigue devagar, sentindo cada sabor</li>
-                    <li>Engula conscientemente</li>
-                </ol>
-            </div>
-            
-            <div class="tip-box">
-                <h3>👂 Exercício: Caça aos Sons</h3>
-                <p><strong>Torne-se um detetive dos sons:</strong></p>
-                <ul>
-                    <li>Sente-se confortavelmente e feche os olhos</li>
-                    <li>Escute por 2 minutos todos os sons ao redor</li>
-                    <li>Identifique: sons perto, longe, altos, baixos</li>
-                    <li>Não julgue os sons, apenas observe</li>
-                    <li>Conte quantos sons diferentes você ouviu</li>
-                    <li>Desenhe ou escreva sobre sua descoberta</li>
-                </ul>
-            </div>
-            
-            <div class="mindful-scenario">
-                <h3>🚶‍♀️ Exercício: Caminhada Mindful</h3>
-                <p style="color: white;"><strong>Transforme uma caminhada em meditação:</strong></p>
-                <ul style="color: white;">
-                    <li>Caminhe mais devagar que o normal</li>
-                    <li>Sinta seus pés tocando o chão</li>
-                    <li>Observe tudo ao redor com curiosidade</li>
-                    <li>Respire conscientemente enquanto anda</li>
-                    <li>Se a mente vagar, volte para os passos</li>
-                    <li>Agradeça por poder caminhar</li>
-                </ul>
-            </div>
-            
-            <div class="calm-box">
-                <h3>🌈 Exercício: Escaneamento do Corpo</h3>
-                <p style="color: white;"><strong>Viagem pela sua casa corporal:</strong></p>
-                <ul style="color: white;">
-                    <li>Deite-se confortavelmente</li>
-                    <li>Comece pelos dedos dos pés</li>
-                    <li>Sinta cada parte do corpo, subindo devagar</li>
-                    <li>Observe sensações sem tentar mudá-las</li>
-                    <li>Agradeça a cada parte do corpo</li>
-                    <li>Termine enviando amor para todo seu corpo</li>
-                </ul>
-            </div>
-            
-            <div class="success-box">
-                <h3>🎨 Exercício: Desenho Mindful</h3>
-                <p style="color: white;"><strong>Arte com atenção plena:</strong></p>
-                <ul style="color: white;">
-                    <li>Pegue papel e lápis de cor</li>
-                    <li>Desenhe sem planejar o que vai fazer</li>
-                    <li>Foque nas sensações: lápis no papel, cores</li>
-                    <li>Não se preocupe com o resultado</li>
-                    <li>Deixe sua mão se mover livremente</li>
-                    <li>Observe que sentimentos surgem</li>
-                </ul>
-            </div>
-            
-            <div class="nature-box">
-                <h3>☁️ Exercício: Observando as Nuvens</h3>
-                <p style="color: white;"><strong>Meditação no céu:</strong></p>
-                <ul style="color: white;">
-                    <li>Deite-se na grama ou sente-se confortavelmente</li>
-                    <li>Olhe para o céu e observe as nuvens</li>
-                    <li>Veja as formas que elas fazem</li>
-                    <li>Observe como elas mudam e se movem</li>
-                    <li>Compare com seus pensamentos: vêm e vão</li>
-                    <li>Sinta-se conectado com o céu infinito</li>
-                </ul>
-            </div>
-            
-            <div class="emotion-box">
-                <h3>🎭 Exercício: Teatro das Emoções</h3>
-                <p>Pratique mindfulness com sentimentos:</p>
-                <ul>
-                    <li>Quando sentir uma emoção forte, pare</li>
-                    <li>Dê um nome para o sentimento</li>
-                    <li>Onde você sente isso no corpo?</li>
-                    <li>Respire e observe sem julgar</li>
-                    <li>Diga: "Olá, [nome da emoção], eu te vejo"</li>
-                    <li>Lembre-se: sentimentos passam como nuvens</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Página 11: Atividades Criativas -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">11</div>
-                <div class="chapter-badge">CRIATIVIDADE</div>
-            </div>
-            <h2>🎨 Atividades Criativas com Mindfulness</h2>
-            <div class="story-illustration">🎭🎪🎨🎯</div>
-            
-            <div class="activity-box">
-                <h3>📔 Diário da Gratidão Mindful</h3>
-                <p style="color: white;"><strong>Crie seu livro de momentos especiais:</strong></p>
-                <ol style="color: white;" class="steps-list">
-                    <li>Decore um caderno especial</li>
-                    <li>Todo dia, escreva 3 coisas pelas quais é grato</li>
-                    <li>Use todos os sentidos: "Vi...", "Ouvi...", "Senti..."</li>
-                    <li>Desenhe ou cole fotos dos momentos especiais</li>
-                    <li>Escreva como cada coisa te fez sentir</li>
-                    <li>Releia quando estiver triste para lembrar das coisas boas</li>
-                </ol>
-            </div>
-            
-            <div class="tip-box">
-                <h3>🎭 Teatro Mindful</h3>
-                <p><strong>Brincadeira em família:</strong></p>
-                <ul>
-                    <li>Representem diferentes emoções com consciência</li>
-                    <li>Criem personagens que praticam mindfulness</li>
-                    <li>Inventem histórias sobre atenção plena</li>
-                    <li>Façam mímica de exercícios de respiração</li>
-                    <li>Criem um "filme" sobre momentos mindful</li>
-                </ul>
-            </div>
-            
-            <div class="mindful-scenario">
-                <h3>🗺️ Mapa da Minha Jornada Mindful</h3>
-                <p style="color: white;"><strong>Crie seu mapa pessoal:</strong></p>
-                <ul style="color: white;">
-                    <li>Desenhe todos os lugares onde pratica mindfulness</li>
-                    <li>Marque com 🧘‍♀️ seus cantinhos de meditação</li>
-                    <li>Use 🌟 para momentos de maior consciência</li>
-                    <li>Coloque 🌈 nos lugares que te trazem paz</li>
-                    <li>Adicione 💝 para momentos de gratidão</li>
-                    <li>Desenhe caminhos coloridos conectando tudo</li>
-                </ul>
-            </div>
-            
-            <div class="success-box">
-                <h3>📚 Biblioteca de Histórias Mindful</h3>
-                <p style="color: white;"><strong>Torne-se um autor consciente:</strong></p>
-                <ul style="color: white;">
-                    <li>Escreva sobre um momento muito presente que viveu</li>
-                    <li>Crie um personagem que descobre mindfulness</li>
-                    <li>Desenhe quadrinhos sobre aventuras de atenção plena</li>
-                    <li>Faça uma lista: "Momentos Mágicos que Vivi"</li>
-                    <li>Escreva uma carta para você mesmo sobre paz interior</li>
-                </ul>
-            </div>
-            
-            <div class="calm-box">
-                <h3>🎯 Jogo da Atenção Progressiva</h3>
-                <ul style="color: white;">
-                    <li><strong>Nível 1:</strong> Foque na respiração por 2 minutos</li>
-                    <li><strong>Nível 2:</strong> Pratique escuta mindful por 3 minutos</li>
-                    <li><strong>Nível 3:</strong> Faça uma refeição com atenção plena</li>
-                    <li><strong>Nível 4:</strong> Combine duas técnicas</li>
-                    <li><strong>Nível 5:</strong> Ensine mindfulness para alguém</li>
-                    <li><strong>Nível Mestre:</strong> Mantenha atenção plena por um dia inteiro</li>
-                </ul>
-            </div>
-            
-            <div class="nature-box">
-                <h3>🏆 Sistema de Estrelas da Consciência</h3>
-                <p style="color: white;">Crie um sistema para celebrar sua prática:</p>
-                <ul style="color: white;">
-                    <li>⭐ 1 estrela: Praticou respiração consciente</li>
-                    <li>🌟 2 estrelas: Fez uma atividade com atenção plena</li>
-                    <li>✨ 3 estrelas: Ajudou alguém a se acalmar</li>
-                    <li>A cada 10 estrelas: escolha uma atividade especial</li>
-                    <li>A cada 20 estrelas: pequena comemoração mindful</li>
-                </ul>
-            </div>
-            
-            <div class="emotion-box">
-                <h3>🎪 Festival da Atenção Plena</h3>
-                <p>Organize um evento especial:</p>
-                <ul>
-                    <li>Convide família e amigos</li>
-                    <li>Ensine uma técnica simples para todos</li>
-                    <li>Façam uma refeição mindful juntos</li>
-                    <li>Compartilhem momentos de gratidão</li>
-                    <li>Criem arte com atenção plena</li>
-                    <li>Terminem com uma meditação em grupo</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Página 12: Guia para a Família -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">12</div>
-                <div class="chapter-badge">FAMÍLIA</div>
-            </div>
-            <h2>👨‍👩‍👧‍👦 Guia para a Família Mindful</h2>
-            <div class="story-illustration">💝👪🤗📋</div>
-            
-            <div class="tip-box">
-                <h3>🌟 Como a Família Pode Praticar Juntos:</h3>
-                
-                <h4>✅ Atividades Familiares:</h4>
-                <ul class="checklist">
-                    <li><strong>Refeições mindful:</strong> Comam em silêncio por 5 minutos</li>
-                    <li><strong>Caminhadas conscientes:</strong> Explorem a natureza com atenção</li>
-                    <li><strong>Respiração em família:</strong> Pratiquem juntos antes de dormir</li>
-                    <li><strong>Gratidão compartilhada:</strong> Cada um fala 3 coisas boas do dia</li>
-                    <li><strong>Momentos de silêncio:</strong> 2 minutos de quietude juntos</li>
-                    <li><strong>Arte mindful:</strong> Desenhem ou pintem conscientemente</li>
-                </ul>
-            </div>
-            
-            <div class="warning-box">
-                <h3>❌ O que EVITAR:</h3>
-                <ul>
-                    <li><strong>Forçar a prática:</strong> "Você TEM que meditar agora!"</li>
-                    <li><strong>Criticar tentativas:</strong> "Você não está fazendo certo"</li>
-                    <li><strong>Comparar com outros:</strong> "Seu irmão consegue ficar quieto"</li>
-                    <li><strong>Praticar quando irritado:</strong> Mindfulness não é punição</li>
-                    <li><strong>Expectativas altas:</strong> Resultados imediatos</li>
-                    <li><strong>Sessões muito longas:</strong> Começar com 2-5 minutos</li>
-                </ul>
-            </div>
-            
-            <div class="mindful-scenario">
-                <h3>🏠 Criando um Lar Mindful:</h3>
-                <ul style="color: white;">
-                    <li><strong>Espaço sagrado:</strong> Cantinho especial para prática</li>
-                    <li><strong>Rotinas conscientes:</strong> Momentos regulares de mindfulness</li>
-                    <li><strong>Tecnologia consciente:</strong> Pausas regulares das telas</li>
-                    <li><strong>Natureza em casa:</strong> Plantas e elementos naturais</li>
-                    <li><strong>Sons calmantes:</strong> Música suave ou sons da natureza</li>
-                    <li><strong>Iluminação suave:</strong> Luz natural ou velas (com supervisão)</li>
-                </ul>
-            </div>
-            
-            <div class="activity-box">
-                <h3>🎯 Estratégias por Idade:</h3>
-                <p style="color: white;"><strong>Adaptando mindfulness:</strong></p>
-                <ul style="color: white;">
-                    <li><strong>3-5 anos:</strong> Respiração de animais, 2-3 minutos</li>
-                    <li><strong>6-8 anos:</strong> Jogos de atenção, 5-8 minutos</li>
-                    <li><strong>9-12 anos:</strong> Meditações guiadas, 10-15 minutos</li>
-                    <li><strong>Adolescentes:</strong> Apps, grupos, 15-20 minutos</li>
-                </ul>
-            </div>
-            
-            <div class="success-box">
-                <h3>📞 Frases que Incentivam:</h3>
-                <p style="color: white;"><strong>Use estas frases para encorajar:</strong></p>
-                <ul style="color: white;">
-                    <li>"Que bom que você está cuidando da sua mente"</li>
-                    <li>"Percebi como você ficou calmo depois da respiração"</li>
-                    <li>"Vamos praticar juntos?"</li>
-                    <li>"Como você se sente depois do mindfulness?"</li>
-                    <li>"Você está aprendendo uma habilidade muito valiosa"</li>
-                    <li>"Estou orgulhoso da sua dedicação"</li>
-                    <li>"Que técnica você quer tentar hoje?"</li>
-                </ul>
-            </div>
-            
-            <div class="calm-box">
-                <h3>🌱 Modelando Mindfulness:</h3>
-                <ul style="color: white;">
-                    <li><strong>Pratique você também:</strong> Crianças aprendem pelo exemplo</li>
-                    <li><strong>Compartilhe suas experiências:</strong> "Hoje me senti mais calmo depois da meditação"</li>
-                    <li><strong>Seja paciente consigo mesmo:</strong> Mindfulness é uma jornada</li>
-                    <li><strong>Use momentos difíceis:</strong> "Vamos respirar juntos"</li>
-                    <li><strong>Celebre pequenos progressos:</strong> Reconheça tentativas</li>
-                </ul>
-            </div>
-           
-</div>
-</div>
-
-</div>
-        <div class="navigation">
-        <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
-        <button id="nextBtn" class="nav-btn">Próximo</button>
+        <p>Este documento oferece informações cruciais sobre os primeiros sinais do autismo e a importância da intervenção precoce. Para ativar a lupa, clique em qualquer parte do documento acima. Para desativar, clique novamente na lupa ou em qualquer outro lugar.</p>
     </div>
 
-     <script>
-        
-    const pages = document.querySelectorAll('.page');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const progressBar = document.getElementById('progressBar');
-    const pageCounter = document.getElementById('pageCounter');
-    let currentPageIndex = 0;
+    <script>
+        const pdfViewerWrapper = document.getElementById('pdfViewerWrapper');
+        const pdfViewer = document.getElementById('pdfViewer');
+        let magnifierGlass = null; // Variável para armazenar a lupa
 
-    function showPage(index) {
-        pages.forEach((page, i) => {
-            if (i === index) {
-                page.classList.add('active');
-            } else {
-                page.classList.remove('active');
+        // Adiciona um ouvinte de eventos para cliques no wrapper do PDF
+        pdfViewerWrapper.addEventListener('click', function(e) {
+            // Se já existe uma lupa, remove-a
+            if (magnifierGlass) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                // Restaura o cursor padrão
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+                return; // Sai da função após remover
+            }
+
+            // Cria o elemento da lupa
+            magnifierGlass = document.createElement('div');
+            magnifierGlass.classList.add('magnifier-glass');
+
+            // Cria o conteúdo da lupa (uma cópia do iframe para simular o zoom)
+            const magnifierContent = pdfViewer.cloneNode(true);
+            magnifierContent.classList.remove('document-viewer'); // Remove estilos do iframe original
+            magnifierContent.style.position = 'absolute';
+            magnifierContent.style.top = '0';
+            magnifierContent.style.left = '0';
+            magnifierContent.style.width = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.height = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.pointerEvents = 'none'; // Impede interação com o iframe clonado na lupa
+
+            magnifierGlass.appendChild(magnifierContent);
+            pdfViewerWrapper.appendChild(magnifierGlass);
+
+            // Adiciona um evento de clique na lupa para removê-la
+            magnifierGlass.addEventListener('click', function(event) {
+                event.stopPropagation(); // Impede que o clique na lupa se propague para o wrapper
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+            });
+
+            // Calcula a posição do clique dentro do iframe
+            const rect = pdfViewerWrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left; // Coordenada X relativa ao wrapper
+            const y = e.clientY - rect.top;  // Coordenada Y relativa ao wrapper
+
+            // Posiciona a lupa no centro do clique
+            magnifierGlass.style.left = `${x}px`;
+            magnifierGlass.style.top = `${y}px`;
+
+            // Calcula o deslocamento do conteúdo dentro da lupa para simular o zoom na área clicada
+            // O conteúdo da lupa é 2x maior, então o ponto de origem deve ser metade da distância
+            // da borda para o clique.
+            const zoomLevel = 2; // O mesmo que as dimensões do magnifierContent
+            const contentX = -x * (zoomLevel - 1) + (magnifierGlass.offsetWidth / 2);
+            const contentY = -y * (zoomLevel - 1) + (magnifierGlass.offsetHeight / 2);
+
+            magnifierContent.style.transform = `translate(${contentX}px, ${contentY}px)`;
+
+            // Muda o cursor para indicar que a lupa está ativa
+            pdfViewerWrapper.style.cursor = 'zoom-out';
+        });
+
+        // Adiciona um ouvinte para cliques em qualquer lugar do documento
+        // Isso permite remover a lupa clicando fora dela (no body, por exemplo)
+        document.addEventListener('click', function(event) {
+            if (magnifierGlass && !pdfViewerWrapper.contains(event.target)) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
             }
         });
-        updateNavigationButtons();
-        updateProgressBar();
-        updatePageCounter();
-    }
-
-    function updateNavigationButtons() {
-        prevBtn.disabled = currentPageIndex === 0;
-        nextBtn.disabled = currentPageIndex === pages.length - 1;
-    }
-
-    function updateProgressBar() {
-        const progress = (currentPageIndex / (pages.length - 1)) * 100;
-        progressBar.style.width = `${progress}%`;
-    }
-
-    function updatePageCounter() {
-        pageCounter.textContent = `${currentPageIndex + 1} / ${pages.length}`;
-    }
-
-    prevBtn.addEventListener('click', () => {
-        if (currentPageIndex > 0) {
-            currentPageIndex--;
-            showPage(currentPageIndex);
-        }
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (currentPageIndex < pages.length - 1) {
-            currentPageIndex++;
-            showPage(currentPageIndex);
-        }
-    });
-
-    // Initialize the first page and navigation
-    showPage(currentPageIndex);
-</script>
+    </script>
+</body>
+</html>
