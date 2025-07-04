@@ -1,1632 +1,351 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coragem e Determinação - Guia Completo</title>
+    <title>Desvendando o Autismo - Leitura Otimizada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap');
-        
-        * {
+        :root {
+            --primary-color: #5865F2; /* Azul vibrante */
+            --secondary-color: #4A56E2; /* Azul mais escuro para títulos */
+            --gradient-start: #667eea;
+            --gradient-end: #764ba2;
+            --text-light: #f0f0f0;
+            --text-dark: #333;
+            --bg-card: rgba(255, 255, 255, 0.98);
+            --shadow-light: rgba(0, 0, 0, 0.15);
+            --shadow-strong: rgba(0, 0, 0, 0.25);
+            --border-radius-lg: 12px;
+            --border-radius-md: 8px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--text-light);
+            text-align: center;
             box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            min-height: 100vh;
+            padding: 40px 20px; /* Padding geral para telas grandes */
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        
-        .ebook-container {
+
+        .container {
+            width: 100%;
             max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            border-radius: 25px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .page {
-            min-height: 100vh;
-            padding: 50px;
-            display: none;
-            position: relative;
-            background: linear-gradient(45deg, #f8fafc, #f1f5f9);
-        }
-        
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .page-header {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        
-        .page-number {
-            background: linear-gradient(45deg, #dc2626, #b91c1c);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-weight: 600;
-            font-size: 20px;
-            box-shadow: 0 8px 16px rgba(220, 38, 38, 0.3);
-        }
-        
-        .chapter-badge {
-            background: linear-gradient(45deg, #dc2626, #991b1b);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-        
-        h1 {
-            color: #1e293b;
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        h2 {
-            color: #dc2626;
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            text-align: center;
-            font-weight: 700;
-        }
-        
-        h3 {
-            color: #991b1b;
-            font-size: 1.6rem;
-            margin-bottom: 18px;
-            font-weight: 600;
-        }
-        
-        h4 {
-            color: #475569;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        
-        p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #475569;
-            margin-bottom: 22px;
-            text-align: justify;
-            font-weight: 400;
-        }
-        
-        .courage-icon {
-            width: 140px;
-            height: 140px;
-            border-radius: 25px;
-            margin: 25px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            background: linear-gradient(45deg, #dc2626, #b91c1c);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            animation: gentle-pulse 3s infinite;
-        }
-        
-        @keyframes gentle-pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
-            50% { transform: scale(1.05); box-shadow: 0 20px 40px rgba(220, 38, 38, 0.3); }
-        }
-        
-        .bravery-box {
-            background: linear-gradient(135deg, #dc2626, #b91c1c);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #f59e0b;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-            color: white;
-        }
-        
-        .bravery-box::before {
-            content: "🦁";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .determination-box {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .determination-box::before {
-            content: "🎯";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .resilience-box {
-            background: linear-gradient(135deg, #059669, #047857);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .resilience-box::before {
-            content: "🛡️";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .warrior-box {
-            background: linear-gradient(135deg, #7c2d12, #991b1b);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #ef4444;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-            color: white;
-        }
-        
-        .warrior-box::before {
-            content: "⚔️";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .victory-box {
-            background: linear-gradient(135deg, #7c3aed, #6d28d9);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .victory-box::before {
-            content: "🏆";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .navigation {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            z-index: 1000;
-        }
-        
-        .nav-btn {
-            background: linear-gradient(45deg, #dc2626, #991b1b);
-            color: white;
-            border: none;
-            padding: 18px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Nunito', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        
-        .nav-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-        }
-        
-        .nav-btn:disabled {
-            background: #cbd5e0;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 6px;
-            background: linear-gradient(45deg, #dc2626, #991b1b);
-            transition: width 0.5s ease;
-            z-index: 1001;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .page-counter {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.9);
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            color: #475569;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .source-box {
-            background: #f8fafc;
-            border: 3px dashed #cbd5e0;
-            padding: 25px;
-            border-radius: 20px;
-            margin-top: 35px;
-            font-size: 1rem;
-            color: #64748b;
-            position: relative;
-        }
-        
-        .source-box::before {
-            content: "📖";
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-        }
-        
-        .courage-demo {
-            text-align: center;
+            background-color: var(--bg-card);
             padding: 40px;
-            background: linear-gradient(135deg, #fef2f2, #fee2e2);
-            border-radius: 25px;
-            margin: 25px 0;
-        }
-        
-        .strength-circle {
-            width: 180px;
-            height: 180px;
-            border: 6px solid #dc2626;
-            border-radius: 50%;
-            margin: 25px auto;
+            box-shadow: 0 15px 35px var(--shadow-strong);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: 30px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            color: #dc2626;
-            font-weight: 600;
-            animation: gentle-rotate 15s infinite linear;
-            box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
-            position: relative;
+            color: var(--text-dark);
+            position: relative; /* Necessário para posicionar a lupa */
         }
-        
-        .strength-circle::after {
-            content: '⚡';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 30px;
-            height: 30px;
-            background: #b91c1c;
-            border-radius: 50%;
-            animation: orbit 4s infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        @keyframes gentle-rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes orbit {
-            0%, 100% { transform: scale(1) translateY(0); }
-            50% { transform: scale(1.2) translateY(-5px); }
-        }
-        
-        .story-illustration {
-            text-align: center;
-            font-size: 4rem;
-            margin: 30px 0;
-            animation: gentle-float 4s ease-in-out infinite;
-        }
-        
-        @keyframes gentle-float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        ul, ol {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #475569;
-            margin-left: 25px;
-            font-weight: 400;
-        }
-        
-        li {
-            margin-bottom: 12px;
-            position: relative;
-        }
-        
-        .checklist {
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .checklist li::before {
-            content: "🔥";
-            margin-right: 10px;
-        }
-        
-        .warning-checklist {
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .warning-checklist li::before {
-            content: "⚠️";
-            margin-right: 10px;
-        }
-        
-        .steps-list {
-            counter-reset: step-counter;
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .steps-list li {
-            counter-increment: step-counter;
-            position: relative;
-            padding-left: 40px;
-        }
-        
-        .steps-list li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: #dc2626;
-            color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        
-        .interactive-element {
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        
-        .interactive-element:hover {
-            transform: scale(1.05);
-        }
-        
-        .level-badge {
-            background: linear-gradient(45deg, #7c3aed, #6d28d9);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-        
-        .intensity-badge {
-            background: linear-gradient(45deg, #dc2626, #b91c1c);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-left: 10px;
-        }
-        
-        .quote-box {
-            background: linear-gradient(135deg, #fef2f2, #fee2e2);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #dc2626;
-            font-style: italic;
-            font-size: 1.1rem;
-            position: relative;
-        }
-        
-       
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .stat-card {
-            background: linear-gradient(135deg, #dc2626, #b91c1c);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
+
+        h1 {
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            font-size: 2.5em;
             font-weight: 700;
-            margin-bottom: 10px;
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
-        
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
+
+        .document-viewer-wrapper {
+            position: relative; /* Para posicionar a lupa dentro */
+            width: 100%;
+            min-height: 550px;
+            height: 75vh;
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 8px 20px var(--shadow-light);
+            overflow: hidden; /* Garante que a lupa não vaze */
+            cursor: zoom-in; /* Indica que é clicável para zoom */
         }
-        
-        .virtue-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
+
+        .document-viewer {
+            width: 100%;
+            height: 100%;
+            border: none; /* A borda será no wrapper */
         }
-        
-        .virtue-card {
-            background: linear-gradient(135deg, #dc2626, #b91c1c);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .virtue-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .virtue-card-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .virtue-card-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .virtue-card-desc {
-            font-size: 1rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-        
-        .warning-box {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .warning-box::before {
-            content: "⚠️";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .success-box {
-            background: linear-gradient(135deg, #059669, #047857);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .success-box::before {
-            content: "🌟";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .timeline {
-            position: relative;
-            margin: 30px 0;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, #dc2626, #b91c1c);
-            border-radius: 2px;
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin: 30px 0;
-            padding-left: 80px;
-        }
-        
-        .timeline-marker {
-            position: absolute;
-            left: 15px;
-            top: 0;
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(45deg, #dc2626, #b91c1c);
-            border-radius: 50%;
+
+        .actions {
             display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        button, .button-link {
+            padding: 14px 30px;
+            font-size: 1.1em;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            min-width: 180px;
+        }
+
+        button:hover, .button-link:hover {
+            background-color: #4452D3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        button:active, .button-link:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            margin-top: 25px;
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        p a {
+            color: #007bff;
+            text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
         }
-        
-        .timeline-content {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-left: 4px solid #dc2626;
+        p a:hover {
+            text-decoration: underline;
+            color: #0056b3;
         }
-        
-        .timeline-phase {
-            color: #dc2626;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-        
-        .timeline-title {
-            color: #1e293b;
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        
-        .timeline-desc {
-            color: #64748b;
-            line-height: 1.6;
-        }
-        
-        .foundation-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .foundation-item {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-top: 3px solid #dc2626;
-        }
-        
-        .foundation-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #dc2626;
-        }
-        
-        .foundation-label {
-            font-size: 0.9rem;
-            color: #64748b;
-            font-weight: 500;
-        }
-        
-        .mindset-box {
-            background: linear-gradient(135deg, #1e40af, #1d4ed8);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .mindset-box::before {
-            content: "🧠";
+
+        /* --- Estilos da Lupa --- */
+        .magnifier-glass {
             position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
+            border: 3px solid var(--primary-color);
             border-radius: 50%;
-        }
-        
-        .myth-box {
-            background: linear-gradient(135deg, #7c2d12, #991b1b);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            color: white;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .myth-box::before {
-            content: "❌";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .truth-box {
-            background: linear-gradient(135deg, #065f46, #047857);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            color: white;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .truth-box::before {
-            content: "✅";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .challenge-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .challenge-card {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .challenge-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .challenge-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .challenge-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .challenge-desc {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            line-height: 1.4;
-        }
-        
-        .fear-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .fear-card {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-top: 3px solid #dc2626;
-            transition: transform 0.3s ease;
-        }
-        
-        .fear-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .fear-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #dc2626;
-        }
-        
-        .fear-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #1e293b;
-        }
-        
-        .fear-desc {
-            font-size: 0.9rem;
-            color: #64748b;
-            line-height: 1.4;
-        }
-        
-        .tip-box {
-            background: #1e293b;
-            color: #e2e8f0;
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            overflow-x: auto;
-            position: relative;
-        }
-        
-        .tip-box::before {
-            content: "💡";
-            position: absolute;
-            top: -10px;
-            right: 15px;
-            background: #dc2626;
-            color: white;
-            padding: 5px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-        }
-        
-        .support-resources {
-            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #059669;
-        }
-        
-        .support-title {
-            color: #065f46;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: flex;
+            cursor: zoom-out;
+            width: 150px; /* Tamanho da lupa */
+            height: 150px;
+            transform: translate(-50%, -50%); /* Centraliza a lupa no clique */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden; /* Garante que o conteúdo dentro não transborde */
+            pointer-events: none; /* Permite interagir com o iframe por baixo, mas a lupa ainda bloqueia o clique nela */
+            z-index: 10; /* Garante que a lupa fique acima do iframe */
+            background-color: rgba(255, 255, 255, 0.1); /* Um leve fundo translúcido */
+            display: flex; /* Para centralizar o conteúdo dentro */
             align-items: center;
+            justify-content: center;
         }
-        
-        .support-title::before {
-            content: "🤝";
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .transformation-box {
-            background: linear-gradient(135deg, #7c3aed, #6d28d9);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .transformation-box::before {
-            content: "🦋";
+
+        .magnifier-content {
             position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
+            width: 200%; /* Exemplo de zoom: 2x */
+            height: 200%; /* Exemplo de zoom: 2x */
+            transform-origin: 0 0; /* Ponto de origem da transformação */
+            /* Isso será ajustado via JS */
         }
         
-        .journey-box {
-            background: linear-gradient(135deg, #0891b2, #0e7490);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .journey-box::before {
-            content: "🛤️";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        @media (max-width: 768px) {
-            .page {
-                padding: 30px 20px;
+        /* --- Media Queries para Responsividade --- */
+        @media (max-width: 992px) {
+            .container {
+                max-width: 95%;
+                padding: 30px;
             }
-            
             h1 {
-                font-size: 2.2rem;
+                font-size: 2.2em;
             }
-            
-            h2 {
-                font-size: 1.8rem;
+            .document-viewer-wrapper {
+                min-height: 500px;
+                height: 70vh;
             }
-            
-            .courage-icon {
-                width: 100px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 15px;
+            }
+            .container {
+                padding: 25px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 1.9em;
+                margin-bottom: 25px;
+            }
+            .document-viewer-wrapper {
+                min-height: 450px;
+                height: 65vh;
+                margin-bottom: 25px;
+            }
+            button, .button-link {
+                padding: 12px 25px;
+                font-size: 1em;
+                min-width: unset;
+                flex-grow: 1;
+            }
+            .actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            p {
+                font-size: 0.95em;
+                margin-top: 20px;
+            }
+            .magnifier-glass {
+                width: 120px; /* Lupa menor em telas menores */
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+            .container {
+                padding: 20px;
+                border-radius: 8px;
+            }
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 20px;
+            }
+            .document-viewer-wrapper {
+                min-height: 400px;
+                height: 60vh;
+            }
+            button, .button-link {
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+            .magnifier-glass {
+                width: 100px; /* Lupa ainda menor em telas muito pequenas */
                 height: 100px;
-                font-size: 3.5rem;
-            }
-            
-            .strength-circle {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .virtue-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline-item {
-                padding-left: 60px;
-            }
-            
-            .timeline::before {
-                left: 20px;
-            }
-            
-            .timeline-marker {
-                left: 5px;
-            }
-            
-            .challenge-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .fear-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
         }
     </style>
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
-    <div class="page-counter" id="pageCounter">1 / 15</div>
-    
-    <div class="ebook-container">
-        <!-- Página 1: Capa -->
-        <div class="page active">
-            <div class="page-header">
-                <div class="page-number">1</div>
-                <div class="chapter-badge">CAPA</div>
-            </div>
-            <h1>🔥 CORAGEM E DETERMINAÇÃO ⚔️</h1>
-            <div class="courage-icon interactive-element">🦁</div>
-            <h2>Desenvolva Coragem Interior e Determinação Inabalável</h2>
-            
-            <div class="bravery-box">
-                <h3>🦁 Desperte o Guerreiro Interior</h3>
-                <p style="text-align: center; font-size: 1.4rem; color: white;"><strong>Um guia completo para desenvolver coragem genuína e determinação inabalável. Descubra como superar medos, enfrentar desafios com bravura e manter foco inquebrantável em seus objetivos, mesmo diante das maiores adversidades</strong></p>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">96%</div>
-                    <div class="stat-label">Aumento da Coragem</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">91%</div>
-                    <div class="stat-label">Maior Determinação</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">88%</div>
-                    <div class="stat-label">Superação de Medos</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">93%</div>
-                    <div class="stat-label">Resiliência Mental</div>
-                </div>
-            </div>
-            
-            <div class="level-badge">🎯 Nível: Guerreiro Interior</div>
-            <div class="intensity-badge">🔥 Intensidade: Transformação Radical</div>
-            
-            <div class="quote-box">
-                "A coragem não é a ausência do medo, mas a decisão de que algo é mais importante que o medo. A determinação não é nunca falhar, mas levantar-se toda vez que você cair. Juntas, elas formam a força mais poderosa do espírito humano" - Winston Churchill, Líder em Tempos de Guerra
-            </div>
-            
-            <div class="bravery-box">
-                <h3>🦁 Pilares da Coragem Verdadeira:</h3>
-                <ul style="color: white;">
-                    <li><strong>💪 Coragem Física:</strong> Enfrentar perigos e desafios corporais</li>
-                    <li><strong>🧠 Coragem Mental:</strong> Confrontar pensamentos limitantes e medos</li>
-                    <li><strong>💖 Coragem Emocional:</strong> Sentir e expressar emoções autenticamente</li>
-                    <li><strong>🌟 Coragem Moral:</strong> Defender valores e princípios éticos</li>
-                    <li><strong>🎯 Coragem de Ação:</strong> Tomar decisões difíceis e agir</li>
-                    <li><strong>🗣️ Coragem de Voz:</strong> Falar sua verdade mesmo quando difícil</li>
-                    <li><strong>🌱 Coragem de Crescer:</strong> Sair da zona de conforto para evoluir</li>
-                    <li><strong>❤️ Coragem de Amar:</strong> Abrir o coração apesar da vulnerabilidade</li>
-                </ul>
-            </div>
-            
-            <div class="determination-box">
-                <h3>🎯 Elementos da Determinação Inabalável:</h3>
-                <ul style="color: white;">
-                    <li><strong>🔥 Propósito Ardente:</strong> Clareza cristalina sobre seus objetivos</li>
-                    <li><strong>💎 Foco Diamante:</strong> Concentração inquebrantável no essencial</li>
-                    <li><strong>🛡️ Persistência Férrea:</strong> Continuar mesmo quando tudo parece impossível</li>
-                    <li><strong>⚡ Disciplina de Aço:</strong> Fazer o necessário independente do humor</li>
-                    <li><strong>🌊 Adaptabilidade:</strong> Ajustar estratégias mantendo o objetivo</li>
-                    <li><strong>🔄 Resiliência:</strong> Recuperar-se rapidamente de fracassos</li>
-                    <li><strong>⏰ Paciência Estratégica:</strong> Entender que grandes conquistas levam tempo</li>
-                    <li><strong>🎪 Sacrifício Consciente:</strong> Abrir mão do bom pelo excelente</li>
-                </ul>
-            </div>
-            
-            <div class="resilience-box">
-                <h3>🛡️ Fortaleza Mental e Emocional:</h3>
-                <ul style="color: white;">
-                    <li><strong>🧠 Controle Mental:</strong> Domínio sobre pensamentos e emoções</li>
-                    <li><strong>💪 Força Interior:</strong> Reservas profundas de energia e vontade</li>
-                    <li><strong>🎯 Clareza de Visão:</strong> Saber exatamente onde quer chegar</li>
-                    <li><strong>🔥 Paixão Ardente:</strong> Amor profundo pelo que faz</li>
-                    <li><strong>⚖️ Equilíbrio:</strong> Manter estabilidade em meio ao caos</li>
-                    <li><strong>🌟 Esperança Inabalável:</strong> Fé no futuro mesmo em tempos sombrios</li>
-                    <li><strong>🎨 Criatividade:</strong> Encontrar soluções inovadoras para problemas</li>
-                    <li><strong>🤝 Apoio Estratégico:</strong> Cercar-se de pessoas que fortalecem</li>
-                </ul>
-            </div>
-            
-            <div class="warrior-box">
-                <h3>⚔️ Mentalidade de Guerreiro:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎯 Foco no Objetivo:</strong> Visão laser no que realmente importa</li>
-                    <li><strong>💀 Aceitação da Dificuldade:</strong> Abraçar desafios como oportunidades</li>
-                    <li><strong>⚡ Ação Imediata:</strong> Agir rapidamente quando necessário</li>
-                    <li><strong>🛡️ Preparação Constante:</strong> Sempre pronto para batalhas</li>
-                    <li><strong>🔥 Intensidade Controlada:</strong> Energia focada e direcionada</li>
-                    <li><strong>🧘 Calma na Tempestade:</strong> Serenidade em meio ao caos</li>
-                    <li><strong>📚 Aprendizado Contínuo:</strong> Sempre evoluindo e melhorando</li>
-                    <li><strong>👑 Liderança Natural:</strong> Inspirar outros através do exemplo</li>
-                </ul>
-            </div>
-            
-            <div class="victory-box">
-                <h3>🏆 Características dos Corajosos e Determinados:</h3>
-                <ul style="color: white;">
-                    <li><strong>🌟 Autenticidade:</strong> Ser genuinamente você mesmo</li>
-                    <li><strong>💎 Integridade:</strong> Alinhar ações com valores</li>
-                    <li><strong>🔥 Paixão:</strong> Amor ardente pelo que fazem</li>
-                    <li><strong>🎯 Precisão:</strong> Foco cirúrgico nos objetivos</li>
-                    <li><strong>⚡ Velocidade:</strong> Agir rapidamente quando necessário</li>
-                    <li><strong>🛡️ Proteção:</strong> Defender o que é importante</li>
-                    <li><strong>🌱 Crescimento:</strong> Evolução constante</li>
-                    <li><strong>💝 Generosidade:</strong> Usar força para ajudar outros</li>
-                </ul>
-            </div>
-            
-            <div class="mindset-box">
-                <h3>🧠 Neurociência da Coragem:</h3>
-                <ul style="color: white;">
-                    <li><strong>🧠 Córtex Pré-frontal:</strong> Centro de tomada de decisões corajosas</li>
-                    <li><strong>⚡ Amígdala:</strong> Processamento e superação do medo</li>
-                    <li><strong>💪 Sistema Nervoso:</strong> Regulação de respostas de luta ou fuga</li>
-                    <li><strong>🌟 Neurotransmissores:</strong> Dopamina, serotonina e noradrenalina</li>
-                    <li><strong>🔄 Neuroplasticidade:</strong> Capacidade de rewiring cerebral</li>
-                    <li><strong>🎯 Foco Atencional:</strong> Direcionamento consciente da atenção</li>
-                    <li><strong>💎 Memória:</strong> Armazenamento de experiências de sucesso</li>
-                    <li><strong>🌈 Visualização:</strong> Criação de mapas mentais de vitória</li>
-                </ul>
-            </div>
-            
-            <div class="transformation-box">
-                <h3>🦋 Benefícios da Coragem e Determinação:</h3>
-                <ul style="color: white;">
-                    <li><strong>🚀 Realização de Sonhos:</strong> Alcançar objetivos aparentemente impossíveis</li>
-                    <li><strong>💪 Autoconfiança:</strong> Confiança inabalável em suas capacidades</li>
-                    <li><strong>🌟 Liderança:</strong> Inspirar e guiar outros naturalmente</li>
-                    <li><strong>🏆 Sucesso:</strong> Conquistas em todas as áreas da vida</li>
-                    <li><strong>💖 Relacionamentos:</strong> Conexões mais profundas e autênticas</li>
-                    <li><strong>🎨 Criatividade:</strong> Liberdade para inovar e criar</li>
-                    <li><strong>🌱 Crescimento:</strong> Evolução pessoal acelerada</li>
-                    <li><strong>😊 Felicidade:</strong> Satisfação profunda de viver plenamente</li>
-                </ul>
-            </div>
-            
-            <div class="journey-box">
-                <h3>🛤️ Jornada do Desenvolvimento:</h3>
-                <ul style="color: white;">
-                    <li><strong>🌅 Despertar:</strong> Reconhecer a necessidade de coragem</li>
-                    <li><strong>🔍 Autoavaliação:</strong> Identificar medos e limitações</li>
-                    <li><strong>💪 Fortalecimento:</strong> Desenvolver músculos da coragem</li>
-                    <li><strong>🎯 Foco:</strong> Clarificar objetivos e propósitos</li>
-                    <li><strong>⚔️ Prática:</strong> Enfrentar desafios progressivamente</li>
-                    <li><strong>🏆 Conquistas:</strong> Celebrar vitórias e aprender com derrotas</li>
-                    <li><strong>🌟 Maestria:</strong> Integrar coragem como segunda natureza</li>
-                    <li><strong>👑 Liderança:</strong> Inspirar outros a serem corajosos</li>
-                </ul>
-            </div>
-            
-            <div class="warning-box">
-                <h3>⚠️ Armadilhas da Falsa Coragem:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎭 Bravata:</strong> Coragem performática sem substância</li>
-                    <li><strong>😤 Imprudência:</strong> Confundir coragem com irresponsabilidade</li>
-                    <li><strong>💀 Temeridade:</strong> Riscos desnecessários por ego</li>
-                    <li><strong>🎪 Exibicionismo:</strong> Buscar atenção através de "coragem"</li>
-                    <li><strong>⚡ Impaciência:</strong> Querer resultados imediatos</li>
-                    <li><strong>🚫 Negação do Medo:</strong> Fingir que não sente medo</li>
-                    <li><strong>👑 Arrogância:</strong> Confundir coragem com superioridade</li>
-                    <li><strong>🔥 Raiva Destrutiva:</strong> Usar raiva como combustível principal</li>
-                </ul>
-            </div>
-            
-            <div class="success-box">
-                <h3>🌟 Histórias de Transformação:</h3>
-                <p style="color: white;">Milhares de pessoas transformaram completamente sua vida através do desenvolvimento de coragem e determinação. Indivíduos paralisados pelo medo se tornaram líderes inspiradores, pessoas sem direção descobriram propósito ardente, e muitos que desistiam facilmente desenvolveram persistência inabalável. A coragem e determinação são músculos que podem ser fortalecidos!</p>
-            </div>
-            
-            <p style="text-align: center; margin-top: 30px; font-size: 1.1rem; color: #64748b;">
-                <em>Baseado em pesquisas de neurociência, psicologia do desempenho, estudos militares sobre coragem e décadas de análise de líderes corajosos da história 🔥⚔️🦁</em>
-            </p>
+
+    <div class="container">
+        <h1>Desvendando o Autismo: Primeiros Sinais e Intervenção Precoce</h1>
+        
+        <div class="document-viewer-wrapper" id="pdfViewerWrapper">
+            <iframe 
+                src="Coragem e Determinação - infantil.jpg" 
+                class="document-viewer" 
+                id="pdfViewer"
+                type="application/pdf"
+                aria-label="Visualizador do documento PDF sobre Autismo">
+                <p>Seu navegador não suporta a visualização de PDFs diretamente. Você pode <a href="Meu-Poder-Secreto-Coragem-e-Determinacao-me-Levam-Longe.pdf" target="_blank" rel="noopener noreferrer">clicar aqui para baixar o documento</a> e visualizá-lo em um leitor de PDF.</p>
+            </iframe>
         </div>
 
-        <!-- Página 2: Índice -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">2</div>
-                <div class="chapter-badge">ÍNDICE</div>
-            </div>
-            <h2>🗺️ Sua Jornada para Coragem e Determinação</h2>
-            <div class="story-illustration">🌱➡️🔥➡️⚔️➡️🏆</div>
-            
-            <div class="bravery-box">
-                <h3>🦁 Roteiro Completo para Desenvolver Coragem:</h3>
-                <ol class="steps-list">
-                    <li><strong>Fundamentos da Coragem</strong> - Compreendendo a natureza da bravura</li>
-                    <li><strong>Anatomia do Medo</strong> - Entendendo e superando medos limitantes</li>
-                    <li><strong>Tipos de Coragem</strong> - Física, mental, emocional e moral</li>
-                    <li><strong>Construindo Determinação</strong> - Desenvolvendo foco e persistência</li>
-                    <li><strong>Mentalidade de Guerreiro</strong> - Forjando força mental inabalável</li>
-                    <li><strong>Superando Obstáculos</strong> - Estratégias para vencer adversidades</li>
-                    <li><strong>Disciplina e Autocontrole</strong> - Domínio sobre impulsos e emoções</li>
-                    <li><strong>Resiliência Extrema</strong> - Recuperação rápida de fracassos</li>
-                    <li><strong>Liderança Corajosa</strong> - Inspirando outros através do exemplo</li>
-                    <li><strong>Tomada de Decisões Difíceis</strong> - Escolhas corajosas sob pressão</li>
-                    <li><strong>Mantendo o Foco</strong> - Concentração laser em objetivos</li>
-                    <li><strong>Casos Épicos de Coragem</strong> - Histórias inspiradoras da história</li>
-                    <li><strong>Treinamento Diário</strong> - Exercícios práticos de fortalecimento</li>
-                    <li><strong>Plano de Batalha Pessoal</strong> - Sua estratégia única de desenvolvimento</li>
-                </ol>
-            </div>
-            
-            <div class="determination-box">
-                <h3>🎯 Abordagem Científica e Prática:</h3>
-                <p style="color: white;">Este guia combina descobertas da neurociência, psicologia militar, estudos sobre alta performance e análises de líderes históricos para oferecer uma transformação completa. Baseamos nosso conteúdo em pesquisas de instituições militares de elite, estudos sobre coragem em situações extremas e técnicas comprovadas de desenvolvimento mental!</p>
-            </div>
-            
-            <div class="courage-demo">
-                <h3>🔥 Círculo da Coragem</h3>
-                <div class="strength-circle interactive-element">
-                    Medo → Ação → Coragem → Vitória
-                </div>
-                <p><strong>Explore o ciclo da bravura! ⬆️</strong></p>
-            </div>
-            
-            <div class="resilience-box">
-                <h3>🛡️ Por que Coragem e Determinação são Essenciais:</h3>
-                <ul style="color: white;">
-                    <li><strong>🧠 Impacto Neurológico:</strong> Fortalece circuitos de tomada de decisão</li>
-                    <li><strong>🏆 Sucesso Extraordinário:</strong> Base para conquistas excepcionais</li>
-                    <li><strong>👑 Liderança Natural:</strong> Capacidade de guiar outros em crises</li>
-                    <li><strong>💪 Resiliência:</strong> Recuperação rápida de adversidades</li>
-                    <li><strong>🌟 Realização:</strong> Alcançar potencial máximo</li>
-                    <li><strong>🎯 Propósito:</strong> Viver com significado e direção</li>
-                </ul>
-            </div>
-            
-            <div class="virtue-grid">
-                <div class="virtue-card">
-                    <div class="virtue-card-icon">🦁</div>
-                    <div class="virtue-card-title">Coragem Física</div>
-                    <div class="virtue-card-desc">Enfrentar perigos físicos e desafios corporais com bravura e determinação</div>
-                </div>
-                <div class="virtue-card">
-                    <div class="virtue-card-icon">🧠</div>
-                    <div class="virtue-card-title">Coragem Mental</div>
-                    <div class="virtue-card-desc">Confrontar pensamentos limitantes e desafiar crenças que impedem crescimento</div>
-                </div>
-                <div class="virtue-card">
-                    <div class="virtue-card-icon">💖</div>
-                    <div class="virtue-card-title">Coragem Emocional</div>
-                    <div class="virtue-card-desc">Sentir e expressar emoções autenticamente, mesmo quando vulnerável</div>
-                </div>
-                <div class="virtue-card">
-                    <div class="virtue-card-icon">⚖️</div>
-                    <div class="virtue-card-title">Coragem Moral</div>
-                    <div class="virtue-card-desc">Defender valores e princípios éticos mesmo quando impopular</div>
-                </div>
-            </div>
-            
-            <div class="warrior-box">
-                <h3>⚔️ Componentes da Determinação Inabalável:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎯 Clareza de Propósito:</strong> Saber exatamente o que quer alcançar</li>
-                    <li><strong>🔥 Paixão Ardente:</strong> Amor profundo pelo objetivo</li>
-                    <li><strong>💎 Foco Diamante:</strong> Concentração inquebrantável no essencial</li>
-                    <li><strong>🛡️ Persistência Férrea:</strong> Continuar mesmo quando tudo parece perdido</li>
-                    <li><strong>⚡ Disciplina de Aço:</strong> Fazer o necessário independente do humor</li>
-                    <li><strong>🌊 Adaptabilidade:</strong> Ajustar táticas mantendo estratégia</li>
-                    <li><strong>🔄 Resiliência:</strong> Recuperar-se rapidamente de derrotas</li>
-                    <li><strong>⏰ Paciência Estratégica:</strong> Entender timing e processo</li>
-                </ul>
-            </div>
-            
-            <div class="foundation-grid">
-                <div class="foundation-item">
-                    <div class="foundation-icon">🔥</div>
-                    <div class="foundation-label"><strong>Coragem</strong><br>Ação apesar do medo</div>
-                </div>
-                <div class="foundation-item">
-                    <div class="foundation-icon">🎯</div>
-                    <div class="foundation-label"><strong>Determinação</strong><br>Foco inquebrantável</div>
-                </div>
-                <div class="foundation-item">
-                    <div class="foundation-icon">🛡️</div>
-                    <div class="foundation-label"><strong>Resiliência</strong><br>Força para continuar</div>
-                </div>
-            </div>
-            
-            <div class="victory-box">
-                <h3>🏆 Níveis de Desenvolvimento da Coragem:</h3>
-                <ul style="color: white;">
-                    <li><strong>🌱 Iniciante:</strong> Reconhecer medos e dar primeiros passos</li>
-                    <li><strong>🔥 Emergente:</strong> Enfrentar desafios pequenos consistentemente</li>
-                    <li><strong>⚔️ Guerreiro:</strong> Confrontar medos significativos com estratégia</li>
-                    <li><strong>🦁 Corajoso:</strong> Liderança natural em situações difíceis</li>
-                    <li><strong>👑 Herói:</strong> Inspirar outros através de atos corajosos</li>
-                    <li><strong>🌟 Lenda:</strong> Coragem que transcende e transforma outros</li>
-                </ul>
-            </div>
-            
-            <div class="mindset-box">
-                <h3>🧠 Mitos vs. Verdades sobre Coragem:</h3>
-                <ul style="color: white;">
-                    <li><strong>❌ Mito:</strong> Coragem é ausência de medo</li>
-                    <li><strong>✅ Verdade:</strong> Coragem é ação apesar do medo</li>
-                    <li><strong>❌ Mito:</strong> Pessoas corajosas nunca duvidam</li>
-                    <li><strong>✅ Verdade:</strong> Coragem inclui dúvida mas age mesmo assim</li>
-                    <li><strong>❌ Mito:</strong> Coragem é sempre dramática</li>
-                    <li><strong>✅ Verdade:</strong> Coragem cotidiana é igualmente valiosa</li>
-                    <li><strong>❌ Mito:</strong> Determinação é teimosia</li>
-                    <li><strong>✅ Verdade:</strong> Determinação é flexível mas focada</li>
-                </ul>
-            </div>
-            
-            <div class="transformation-box">
-                <h3>🦋 Áreas de Aplicação da Coragem:</h3>
-                <ul style="color: white;">
-                    <li><strong>💼 Profissional:</strong> Assumir riscos calculados e liderança</li>
-                    <li><strong>💕 Relacionamentos:</strong> Vulnerabilidade e comunicação honesta</li>
-                    <li><strong>🎨 Criativa:</strong> Expressar-se autenticamente e inovar</li>
-                    <li><strong>💪 Física:</strong> Superar limites e enfrentar desafios</li>
-                    <li><strong>🧠 Mental:</strong> Confrontar crenças limitantes</li>
-                    <li><strong>💖 Emocional:</strong> Sentir e processar emoções difíceis</li>
-                    <li><strong>⚖️ Moral:</strong> Defender valores em situações difíceis</li>
-                    <li><strong>🌟 Espiritual:</strong> Buscar propósito e significado</li>
-                </ul>
-            </div>
-            
-            <div class="journey-box">
-                <h3>🛤️ Ferramentas de Desenvolvimento:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎯 Exposição Gradual:</strong> Enfrentar medos progressivamente</li>
-                    <li><strong>🧘 Meditação Guerreira:</strong> Fortalecer mente e espírito</li>
-                    <li><strong>📝 Diário de Coragem:</strong> Registrar atos corajosos diários</li>
-                    <li><strong>🏋️ Treinamento Físico:</strong> Fortalecer corpo e mente</li>
-                    <li><strong>📚 Estudo de Heróis:</strong> Aprender com exemplos históricos</li>
-                    <li><strong>🎭 Visualização:</strong> Ensaiar mentalmente situações corajosas</li>
-                    <li><strong>🤝 Mentoria:</strong> Aprender com pessoas corajosas</li>
-                    <li><strong>🎪 Desafios Controlados:</strong> Criar oportunidades de prática</li>
-                </ul>
-            </div>
-            
-            <div class="warning-box">
-                <h3>⚠️ Sinais de que Você Precisa Desenvolver Coragem:</h3>
-                <ul style="color: white;">
-                    <li><strong>😰 Paralisia por Medo:</strong> Evitar ações por ansiedade</li>
-                    <li><strong>🚫 Evitação Constante:</strong> Fugir de situações desafiadoras</li>
-                    <li><strong>💔 Arrependimentos:</strong> Lamentar oportunidades perdidas</li>
-                    <li><strong>🎭 Vida Inautêntica:</strong> Não ser verdadeiro consigo mesmo</li>
-                    <li><strong>📉 Baixa Autoestima:</strong> Duvidar constantemente de si</li>
-                    <li><strong>🔄 Procrastinação:</strong> Adiar decisões importantes</li>
-                </ul>
-            </div>
-            
-            <div class="success-box">
-                <h3>🌟 Benefícios Comprovados da Coragem:</h3>
-                <p style="color: white;">Estudos demonstram que pessoas corajosas têm 73% mais chances de alcançar objetivos ambiciosos, níveis significativamente maiores de satisfação pessoal, relacionamentos mais profundos e autênticos, e uma sensação de propósito e significado na vida. A coragem é literalmente o combustível dos sonhos!</p>
-            </div>
-            
-            <div class="support-resources">
-                <div class="support-title">Arsenal de Transformação</div>
-                <p>Este guia oferece técnicas de exposição gradual, exercícios de fortalecimento mental, estratégias militares adaptadas, métodos de visualização, desafios progressivos e ferramentas de autoavaliação. Inclui planos de batalha personalizados e técnicas comprovadas para desenvolver coragem inabalável.</p>
-            </div>
-            
-            <div class="tip-box">
-                <h3>💡 Dica Fundamental:</h3>
-                <p>A coragem não é a ausência do medo, mas a decisão de que algo é mais importante que o medo. Comece pequeno - um ato corajoso por dia, por menor que seja, constrói o músculo da bravura. A coragem é como um músculo: quanto mais você usa, mais forte fica.</p>
-            </div>
+        <div class="actions">
+            <a href="Meu-Poder-Secreto-Coragem-e-Determinacao-me-Levam-Longe.pdf" download class="button-link">
+                Baixar PDF
+            </a>
+            <a href="#" class="button-link" onclick="alert('Esta função exigiria a criação de um arquivo EPUB ou similar. Para demonstração, o botão de download do PDF é a melhor opção no momento.'); return false;">
+                Ver em Formato de Livro (E-book)
+            </a>
+            <button onclick="history.back()">Voltar</button>
         </div>
 
-        <!-- Página 3: Fundamentos da Coragem -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">3</div>
-                <div class="chapter-badge">CAPÍTULO 1</div>
-            </div>
-            <h2>🔥 Fundamentos da Coragem</h2>
-            <div class="story-illustration">🌱➡️🔥➡️🦁➡️👑</div>
-            
-            <p>A coragem é uma das virtudes mais admiradas e necessárias da experiência humana. Não é a ausência do medo, mas a capacidade de agir de acordo com seus valores e objetivos mesmo quando o medo está presente. É a força interior que nos permite enfrentar o desconhecido, superar obstáculos e crescer além de nossas limitações percebidas. A coragem verdadeira não é imprudência ou temeridade, mas uma decisão consciente e calculada de fazer o que é certo ou necessário, mesmo quando é difícil.</p>
-            
-            <div class="bravery-box">
-                <h3>🦁 O que é Coragem Verdadeira?</h3>
-                <p style="color: white;">A coragem autêntica é a capacidade de agir de acordo com seus valores, princípios e objetivos, mesmo quando há risco, incerteza ou medo presente. É uma qualidade multidimensional que se manifesta em diferentes formas - física, mental, emocional e moral. A coragem não elimina o medo, mas o transforma em combustível para ação. É a diferença entre ser controlado pelas circunstâncias e escolher conscientemente como responder a elas.</p>
-            </div>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">1</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Reconhecimento</div>
-                        <div class="timeline-title">Identificando Seus Medos</div>
-                        <div class="timeline-desc">Reconhecer honestamente quais medos estão limitando sua vida e impedindo seu crescimento. Compreender que o medo é natural e pode ser um aliado quando bem compreendido.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">2</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Compreensão</div>
-                        <div class="timeline-title">Entendendo a Natureza do Medo</div>
-                        <div class="timeline-desc">Aprender como o medo funciona neurologicamente e psicologicamente. Distinguir entre medos racionais que nos protegem e medos irracionais que nos limitam.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">3</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Preparação</div>
-                        <div class="timeline-title">Construindo Base de Coragem</div>
-                        <div class="timeline-desc">Desenvolver recursos internos como autoconfiança, clareza de valores e habilidades práticas que servem como fundação para atos corajosos.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">4</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Ação</div>
-                        <div class="timeline-title">Primeiros Passos Corajosos</div>
-                        <div class="timeline-desc">Começar com pequenos atos de coragem que constroem confiança e momentum. Praticar enfrentar medos em situações controladas e seguras.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">5</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Integração</div>
-                        <div class="timeline-title">Coragem como Segunda Natureza</div>
-                        <div class="timeline-desc">Integrar a coragem como parte natural de sua personalidade e forma de viver. Tornar-se alguém que naturalmente enfrenta desafios com bravura.</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="determination-box">
-                <h3>🎯 Os Quatro Tipos de Coragem</h3>
-                
-                <h4 style="color: white;">1. 🦁 Coragem Física:</h4>
-                <ul style="color: white;">
-                    <li><strong>Enfrentar Perigos:</strong> Confrontar ameaças físicas quando necessário</li>
-                    <li><strong>Superar Limites:</strong> Ir além de zonas de conforto físico</li>
-                    <li><strong>Proteger Outros:</strong> Usar força física para defender</li>
-                    <li><strong>Desafios Corporais:</strong> Enfrentar medos relacionados ao corpo</li>
-                </ul>
-                
-                <h4 style="color: white;">2. 🧠 Coragem Mental:</h4>
-                <ul style="color: white;">
-                    <li><strong>Questionar Crenças:</strong> Desafiar pensamentos limitantes</li>
-                    <li><strong>Aprender Novo:</strong> Sair da zona de conhecimento confortável</li>
-                    <li><strong>Tomar Decisões:</strong> Escolher mesmo com informação incompleta</li>
-                    <li><strong>Pensar Diferente:</strong> Ter opiniões próprias e independentes</li>
-                </ul>
-                
-                <h4 style="color: white;">3. 💖 Coragem Emocional:</h4>
-                <ul style="color: white;">
-                    <li><strong>Vulnerabilidade:</strong> Mostrar-se autenticamente</li>
-                    <li><strong>Expressar Sentimentos:</strong> Comunicar emoções honestamente</li>
-                    <li><strong>Amar Profundamente:</strong> Abrir o coração apesar dos riscos</li>
-                    <li><strong>Processar Dor:</strong> Enfrentar emoções difíceis</li>
-                </ul>
-                
-                <h4 style="color: white;">4. ⚖️ Coragem Moral:</h4>
-                <ul style="color: white;">
-                    <li><strong>Defender Valores:</strong> Manter princípios mesmo quando difícil</li>
-                    <li><strong>Falar a Verdade:</strong> Ser honesto mesmo quando inconveniente</li>
-                    <li><strong>Justiça:</strong> Lutar pelo que é certo</li>
-                    <li><strong>Integridade:</strong> Alinhar ações com valores</li>
-                </ul>
-            </div>
-            
-            <div class="resilience-box">
-                <h3>🛡️ Neurociência da Coragem</h3>
-                
-                <h4 style="color: white;">🧠 Como o Cérebro Processa Coragem:</h4>
-                <ul style="color: white;">
-                    <li><strong>Córtex Pré-frontal:</strong> Centro de tomada de decisões corajosas</li>
-                    <li><strong>Amígdala:</strong> Processamento inicial do medo</li>
-                    <li><strong>Hipocampo:</strong> Memórias de experiências corajosas</li>
-                    <li><strong>Sistema Nervoso Autônomo:</strong> Regulação de respostas fisiológicas</li>
-                </ul>
-                
-                <h4 style="color: white;">⚡ Química da Coragem:</h4>
-                <ul style="color: white;">
-                    <li><strong>Adrenalina:</strong> Energia para ação em situações de risco</li>
-                    <li><strong>Dopamina:</strong> Motivação e recompensa por atos corajosos</li>
-                    <li><strong>Serotonina:</strong> Confiança e bem-estar</li>
-                    <li><strong>GABA:</strong> Regulação da ansiedade</li>
-                </ul>
-                
-                <h4 style="color: white;">🌟 Desenvolvendo Circuitos de Coragem:</h4>
-                <ul style="color: white;">
-                    <li><strong>Repetição:</strong> Prática consistente fortalece vias neurais</li>
-                    <li><strong>Visualização:</strong> Ensaio mental de situações corajosas</li>
-                    <li><strong>Exposição Gradual:</strong> Dessensibilização progressiva ao medo</li>
-                    <li><strong>Mindfulness:</strong> Consciência presente reduz ansiedade antecipatória</li>
-                </ul>
-            </div>
-            
-            <div class="warrior-box">
-                <h3>⚔️ Diferenças Fundamentais</h3>
-                
-                <h4 style="color: white;">Coragem vs. Imprudência:</h4>
-                <ul style="color: white;">
-                    <li><strong>🎯 Coragem:</strong> Ação calculada apesar do risco</li>
-                    <li><strong>💀 Imprudência:</strong> Ação sem consideração das consequências</li>
-                    <li><strong>🧠 Coragem:</strong> Baseada em valores e propósito</li>
-                    <li><strong>⚡ Imprudência:</strong> Baseada em impulso ou ego</li>
-                </ul>
-                
-                <h4 style="color: white;">Coragem vs. Ausência de Medo:</h4>
-                <ul style="color: white;">
-                    <li><strong>🔥 Coragem:</strong> Ação apesar do medo presente</li>
-                    <li><strong>🤖 Ausência de Medo:</strong> Não sentir medo (pode ser patológico)</li>
-                    <li><strong>💪 Coragem:</strong> Reconhece o risco mas age mesmo assim</li>
-                    <li><strong>😴 Ausência de Medo:</strong> Não percebe ou ignora riscos reais</li>
-                </ul>
-                
-                <h4 style="color: white;">Coragem vs. Bravata:</h4>
-                <ul style="color: white;">
-                    <li><strong>🌟 Coragem:</strong> Ação genuína baseada em necessidade</li>
-                    <li><strong>🎭 Bravata:</strong> Performance para impressionar outros</li>
-                    <li><strong>💎 Coragem:</strong> Humilde e focada no resultado</li>
-                    <li><strong>📢 Bravata:</strong> Barulhenta e focada na atenção</li>
-                </ul>
-            </div>
-            
-            <div class="victory-box">
-                <h3>🏆 Fatores que Influenciam a Coragem</h3>
-                
-                <h4 style="color: white;">🏠 Influências da Infância:</h4>
-                <ul style="color: white;">
-                    <li><strong>Modelos de Referência:</strong> Exemplos de coragem dos pais</li>
-                    <li><strong>Encorajamento:</strong> Apoio para enfrentar desafios</li>
-                    <li><strong>Experiências de Sucesso:</strong> Vitórias que constroem confiança</li>
-                    <li><strong>Ambiente Seguro:</strong> Base de segurança para explorar</li>
-                </ul>
-                
-                <h4 style="color: white;">🌍 Fatores Culturais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Valores Sociais:</strong> Cultura que valoriza ou desencoraja coragem</li>
-                    <li><strong>Histórias Heroicas:</strong> Narrativas culturais de bravura</li>
-                    <li><strong>Expectativas de Gênero:</strong> Diferentes padrões para homens e mulheres</li>
-                    <li><strong>Contexto Histórico:</strong> Épocas que demandam mais ou menos coragem</li>
-                </ul>
-                
-                <h4 style="color: white;">💼 Experiências de Vida:</h4>
-                <ul style="color: white;">
-                    <li><strong>Adversidades Superadas:</strong> Desafios que fortaleceram</li>
-                    <li><strong>Fracassos Processados:</strong> Aprendizado com derrotas</li>
-                    <li><strong>Mentores Corajosos:</strong> Pessoas que inspiraram bravura</li>
-                    <li><strong>Momentos Decisivos:</strong> Situações que exigiram coragem</li>
-                </ul>
-            </div>
-            
-            <div class="transformation-box">
-                <h3>🦋 Sinais de Coragem Genuína</h3>
-                <ul style="color: white;">
-                    <li><strong>🎯 Ação Apesar do Medo:</strong> Fazer o necessário mesmo com ansiedade</li>
-                    <li><strong>💎 Integridade:</strong> Manter valores mesmo quando difícil</li>
-                    <li><strong>🌟 Autenticidade:</strong> Ser genuíno mesmo arriscando rejeição</li>
-                    <li><strong>🤝 Proteção de Outros:</strong> Defender quem precisa</li>
-                    <li><strong>🔥 Persistência:</strong> Continuar mesmo quando tudo parece perdido</li>
-                    <li><strong>💪 Responsabilidade:</strong> Assumir consequências de ações</li>
-                    <li><strong>🌱 Crescimento:</strong> Buscar desafios para evoluir</li>
-                    <li><strong>⚖️ Justiça:</strong> Lutar pelo que é certo</li>
-                </ul>
-            </div>
-            
-            <div class="mindset-box">
-                <h3>🧠 Desenvolvendo Mentalidade Corajosa</h3>
-                
-                <h4 style="color: white;">Exercício: Inventário de Coragem</h4>
-                <ol style="color: white;">
-                    <li>Liste 5 momentos em que você foi corajoso</li>
-                    <li>Identifique 3 medos que estão limitando sua vida</li>
-                    <li>Reconheça 5 valores pelos quais vale a pena lutar</li>
-                    <li>Anote 3 situações onde você evitou agir por medo</li>
-                    <li>Defina 1 ato corajoso que fará esta semana</li>
-                </ol>
-                
-                <h4 style="color: white;">Técnica: Respiração do Guerreiro</h4>
-                <ul style="color: white;">
-                    <li><strong>Inspiração:</strong> 4 tempos pelo nariz</li>
-                    <li><strong>Retenção:</strong> 4 tempos</li>
-                         </ol>
-
- </div> </div> </div>
-
- 
- 
- <div class="navigation">
-        <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
-        <button id="nextBtn" class="nav-btn">Próximo</button>
+        <p>Este documento oferece informações cruciais sobre os primeiros sinais do autismo e a importância da intervenção precoce. Para ativar a lupa, clique em qualquer parte do documento acima. Para desativar, clique novamente na lupa ou em qualquer outro lugar.</p>
     </div>
 
-     <script>
-        
-    const pages = document.querySelectorAll('.page');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const progressBar = document.getElementById('progressBar');
-    const pageCounter = document.getElementById('pageCounter');
-    let currentPageIndex = 0;
+    <script>
+        const pdfViewerWrapper = document.getElementById('pdfViewerWrapper');
+        const pdfViewer = document.getElementById('pdfViewer');
+        let magnifierGlass = null; // Variável para armazenar a lupa
 
-    function showPage(index) {
-        pages.forEach((page, i) => {
-            if (i === index) {
-                page.classList.add('active');
-            } else {
-                page.classList.remove('active');
+        // Adiciona um ouvinte de eventos para cliques no wrapper do PDF
+        pdfViewerWrapper.addEventListener('click', function(e) {
+            // Se já existe uma lupa, remove-a
+            if (magnifierGlass) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                // Restaura o cursor padrão
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+                return; // Sai da função após remover
+            }
+
+            // Cria o elemento da lupa
+            magnifierGlass = document.createElement('div');
+            magnifierGlass.classList.add('magnifier-glass');
+
+            // Cria o conteúdo da lupa (uma cópia do iframe para simular o zoom)
+            const magnifierContent = pdfViewer.cloneNode(true);
+            magnifierContent.classList.remove('document-viewer'); // Remove estilos do iframe original
+            magnifierContent.style.position = 'absolute';
+            magnifierContent.style.top = '0';
+            magnifierContent.style.left = '0';
+            magnifierContent.style.width = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.height = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.pointerEvents = 'none'; // Impede interação com o iframe clonado na lupa
+
+            magnifierGlass.appendChild(magnifierContent);
+            pdfViewerWrapper.appendChild(magnifierGlass);
+
+            // Adiciona um evento de clique na lupa para removê-la
+            magnifierGlass.addEventListener('click', function(event) {
+                event.stopPropagation(); // Impede que o clique na lupa se propague para o wrapper
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+            });
+
+            // Calcula a posição do clique dentro do iframe
+            const rect = pdfViewerWrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left; // Coordenada X relativa ao wrapper
+            const y = e.clientY - rect.top;  // Coordenada Y relativa ao wrapper
+
+            // Posiciona a lupa no centro do clique
+            magnifierGlass.style.left = `${x}px`;
+            magnifierGlass.style.top = `${y}px`;
+
+            // Calcula o deslocamento do conteúdo dentro da lupa para simular o zoom na área clicada
+            // O conteúdo da lupa é 2x maior, então o ponto de origem deve ser metade da distância
+            // da borda para o clique.
+            const zoomLevel = 2; // O mesmo que as dimensões do magnifierContent
+            const contentX = -x * (zoomLevel - 1) + (magnifierGlass.offsetWidth / 2);
+            const contentY = -y * (zoomLevel - 1) + (magnifierGlass.offsetHeight / 2);
+
+            magnifierContent.style.transform = `translate(${contentX}px, ${contentY}px)`;
+
+            // Muda o cursor para indicar que a lupa está ativa
+            pdfViewerWrapper.style.cursor = 'zoom-out';
+        });
+
+        // Adiciona um ouvinte para cliques em qualquer lugar do documento
+        // Isso permite remover a lupa clicando fora dela (no body, por exemplo)
+        document.addEventListener('click', function(event) {
+            if (magnifierGlass && !pdfViewerWrapper.contains(event.target)) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
             }
         });
-        updateNavigationButtons();
-        updateProgressBar();
-        updatePageCounter();
-    }
-
-    function updateNavigationButtons() {
-        prevBtn.disabled = currentPageIndex === 0;
-        nextBtn.disabled = currentPageIndex === pages.length - 1;
-    }
-
-    function updateProgressBar() {
-        const progress = (currentPageIndex / (pages.length - 1)) * 100;
-        progressBar.style.width = `${progress}%`;
-    }
-
-    function updatePageCounter() {
-        pageCounter.textContent = `${currentPageIndex + 1} / ${pages.length}`;
-    }
-
-    prevBtn.addEventListener('click', () => {
-        if (currentPageIndex > 0) {
-            currentPageIndex--;
-            showPage(currentPageIndex);
-        }
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (currentPageIndex < pages.length - 1) {
-            currentPageIndex++;
-            showPage(currentPageIndex);
-        }
-    });
-
-    // Initialize the first page and navigation
-    showPage(currentPageIndex);
-</script>
-
-
-                
-
-
-
+    </script>
+</body>
+</html>

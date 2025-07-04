@@ -1,1627 +1,351 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autoconfiança Social - Guia Completo</title>
+    <title>Desvendando o Autismo - Leitura Otimizada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap');
-        
-        * {
+        :root {
+            --primary-color: #5865F2; /* Azul vibrante */
+            --secondary-color: #4A56E2; /* Azul mais escuro para títulos */
+            --gradient-start: #667eea;
+            --gradient-end: #764ba2;
+            --text-light: #f0f0f0;
+            --text-dark: #333;
+            --bg-card: rgba(255, 255, 255, 0.98);
+            --shadow-light: rgba(0, 0, 0, 0.15);
+            --shadow-strong: rgba(0, 0, 0, 0.25);
+            --border-radius-lg: 12px;
+            --border-radius-md: 8px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--text-light);
+            text-align: center;
             box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            min-height: 100vh;
+            padding: 40px 20px; /* Padding geral para telas grandes */
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        
-        .ebook-container {
+
+        .container {
+            width: 100%;
             max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            border-radius: 25px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .page {
-            min-height: 100vh;
-            padding: 50px;
-            display: none;
-            position: relative;
-            background: linear-gradient(45deg, #f8fafc, #f1f5f9);
-        }
-        
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .page-header {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        
-        .page-number {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-weight: 600;
-            font-size: 20px;
-            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
-        }
-        
-        .chapter-badge {
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-        
-        h1 {
-            color: #1e293b;
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        h2 {
-            color: #4f46e5;
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            text-align: center;
-            font-weight: 700;
-        }
-        
-        h3 {
-            color: #7c3aed;
-            font-size: 1.6rem;
-            margin-bottom: 18px;
-            font-weight: 600;
-        }
-        
-        h4 {
-            color: #475569;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        
-        p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #475569;
-            margin-bottom: 22px;
-            text-align: justify;
-            font-weight: 400;
-        }
-        
-        .confidence-icon {
-            width: 140px;
-            height: 140px;
-            border-radius: 25px;
-            margin: 25px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            animation: gentle-pulse 3s infinite;
-        }
-        
-        @keyframes gentle-pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
-            50% { transform: scale(1.05); box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3); }
-        }
-        
-        .social-box {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #10b981;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-            color: white;
-        }
-        
-        .social-box::before {
-            content: "🤝";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .communication-box {
-            background: linear-gradient(135deg, #10b981, #059669);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .communication-box::before {
-            content: "💬";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .charisma-box {
-            background: linear-gradient(135deg, #8b5cf6, #a855f7);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .charisma-box::before {
-            content: "✨";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .leadership-box {
-            background: linear-gradient(135deg, #f59e0b, #f97316);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #ef4444;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-            color: white;
-        }
-        
-        .leadership-box::before {
-            content: "👑";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .networking-box {
-            background: linear-gradient(135deg, #ec4899, #f97316);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .networking-box::before {
-            content: "🌐";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .navigation {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            z-index: 1000;
-        }
-        
-        .nav-btn {
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            border: none;
-            padding: 18px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Nunito', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        
-        .nav-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-        }
-        
-        .nav-btn:disabled {
-            background: #cbd5e0;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 6px;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            transition: width 0.5s ease;
-            z-index: 1001;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .page-counter {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.9);
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            color: #475569;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .source-box {
-            background: #f8fafc;
-            border: 3px dashed #cbd5e0;
-            padding: 25px;
-            border-radius: 20px;
-            margin-top: 35px;
-            font-size: 1rem;
-            color: #64748b;
-            position: relative;
-        }
-        
-        .source-box::before {
-            content: "📖";
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-        }
-        
-        .confidence-demo {
-            text-align: center;
+            background-color: var(--bg-card);
             padding: 40px;
-            background: linear-gradient(135deg, #dbeafe, #e0f2fe);
-            border-radius: 25px;
-            margin: 25px 0;
-        }
-        
-        .social-circle {
-            width: 180px;
-            height: 180px;
-            border: 6px solid #3b82f6;
-            border-radius: 50%;
-            margin: 25px auto;
+            box-shadow: 0 15px 35px var(--shadow-strong);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: 30px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            color: #3b82f6;
-            font-weight: 600;
-            animation: gentle-rotate 15s infinite linear;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-            position: relative;
+            color: var(--text-dark);
+            position: relative; /* Necessário para posicionar a lupa */
         }
-        
-        .social-circle::after {
-            content: '🎯';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 30px;
-            height: 30px;
-            background: #1d4ed8;
-            border-radius: 50%;
-            animation: orbit 4s infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        @keyframes gentle-rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes orbit {
-            0%, 100% { transform: scale(1) translateY(0); }
-            50% { transform: scale(1.2) translateY(-5px); }
-        }
-        
-        .story-illustration {
-            text-align: center;
-            font-size: 4rem;
-            margin: 30px 0;
-            animation: gentle-float 4s ease-in-out infinite;
-        }
-        
-        @keyframes gentle-float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        ul, ol {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #475569;
-            margin-left: 25px;
-            font-weight: 400;
-        }
-        
-        li {
-            margin-bottom: 12px;
-            position: relative;
-        }
-        
-        .checklist {
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .checklist li::before {
-            content: "🎯";
-            margin-right: 10px;
-        }
-        
-        .warning-checklist {
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .warning-checklist li::before {
-            content: "⚠️";
-            margin-right: 10px;
-        }
-        
-        .steps-list {
-            counter-reset: step-counter;
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .steps-list li {
-            counter-increment: step-counter;
-            position: relative;
-            padding-left: 40px;
-        }
-        
-        .steps-list li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: #3b82f6;
-            color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        
-        .interactive-element {
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        
-        .interactive-element:hover {
-            transform: scale(1.05);
-        }
-        
-        .level-badge {
-            background: linear-gradient(45deg, #7c3aed, #a855f7);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-        
-        .intensity-badge {
-            background: linear-gradient(45deg, #f59e0b, #f97316);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-left: 10px;
-        }
-        
-        .quote-box {
-            background: linear-gradient(135deg, #fef3c7, #fed7aa);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #f59e0b;
-            font-style: italic;
-            font-size: 1.1rem;
-            position: relative;
-        }
-        
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .stat-card {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
+
+        h1 {
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            font-size: 2.5em;
             font-weight: 700;
-            margin-bottom: 10px;
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
-        
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
+
+        .document-viewer-wrapper {
+            position: relative; /* Para posicionar a lupa dentro */
+            width: 100%;
+            min-height: 550px;
+            height: 75vh;
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 8px 20px var(--shadow-light);
+            overflow: hidden; /* Garante que a lupa não vaze */
+            cursor: zoom-in; /* Indica que é clicável para zoom */
         }
-        
-        .skill-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
+
+        .document-viewer {
+            width: 100%;
+            height: 100%;
+            border: none; /* A borda será no wrapper */
         }
-        
-        .skill-card {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .skill-card-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .skill-card-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .skill-card-desc {
-            font-size: 1rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-        
-        .warning-box {
-            background: linear-gradient(135deg, #f59e0b, #f97316);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .warning-box::before {
-            content: "⚠️";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .success-box {
-            background: linear-gradient(135deg, #10b981, #059669);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .success-box::before {
-            content: "🌟";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .timeline {
-            position: relative;
-            margin: 30px 0;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, #3b82f6, #1d4ed8);
-            border-radius: 2px;
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin: 30px 0;
-            padding-left: 80px;
-        }
-        
-        .timeline-marker {
-            position: absolute;
-            left: 15px;
-            top: 0;
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
-            border-radius: 50%;
+
+        .actions {
             display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        button, .button-link {
+            padding: 14px 30px;
+            font-size: 1.1em;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            min-width: 180px;
+        }
+
+        button:hover, .button-link:hover {
+            background-color: #4452D3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        button:active, .button-link:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            margin-top: 25px;
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        p a {
+            color: #007bff;
+            text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
         }
-        
-        .timeline-content {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-left: 4px solid #3b82f6;
+        p a:hover {
+            text-decoration: underline;
+            color: #0056b3;
         }
-        
-        .timeline-phase {
-            color: #3b82f6;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-        
-        .timeline-title {
-            color: #1e293b;
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        
-        .timeline-desc {
-            color: #64748b;
-            line-height: 1.6;
-        }
-        
-        .foundation-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .foundation-item {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-top: 3px solid #3b82f6;
-        }
-        
-        .foundation-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #3b82f6;
-        }
-        
-        .foundation-label {
-            font-size: 0.9rem;
-            color: #64748b;
-            font-weight: 500;
-        }
-        
-        .presence-box {
-            background: linear-gradient(135deg, #1e40af, #3730a3);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .presence-box::before {
-            content: "🎭";
+
+        /* --- Estilos da Lupa --- */
+        .magnifier-glass {
             position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
+            border: 3px solid var(--primary-color);
             border-radius: 50%;
-        }
-        
-        .myth-box {
-            background: linear-gradient(135deg, #7c2d12, #991b1b);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            color: white;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .myth-box::before {
-            content: "❌";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .truth-box {
-            background: linear-gradient(135deg, #065f46, #047857);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            color: white;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .truth-box::before {
-            content: "✅";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .technique-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .technique-card {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .technique-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .technique-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .technique-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .technique-desc {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            line-height: 1.4;
-        }
-        
-        .barrier-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .barrier-card {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-top: 3px solid #f59e0b;
-            transition: transform 0.3s ease;
-        }
-        
-        .barrier-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .barrier-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #f59e0b;
-        }
-        
-        .barrier-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #1e293b;
-        }
-        
-        .barrier-desc {
-            font-size: 0.9rem;
-            color: #64748b;
-            line-height: 1.4;
-        }
-        
-        .tip-box {
-            background: #1e293b;
-            color: #e2e8f0;
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            overflow-x: auto;
-            position: relative;
-        }
-        
-        .tip-box::before {
-            content: "💡";
-            position: absolute;
-            top: -10px;
-            right: 15px;
-            background: #3b82f6;
-            color: white;
-            padding: 5px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-        }
-        
-        .support-resources {
-            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #10b981;
-        }
-        
-        .support-title {
-            color: #065f46;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: flex;
+            cursor: zoom-out;
+            width: 150px; /* Tamanho da lupa */
+            height: 150px;
+            transform: translate(-50%, -50%); /* Centraliza a lupa no clique */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden; /* Garante que o conteúdo dentro não transborde */
+            pointer-events: none; /* Permite interagir com o iframe por baixo, mas a lupa ainda bloqueia o clique nela */
+            z-index: 10; /* Garante que a lupa fique acima do iframe */
+            background-color: rgba(255, 255, 255, 0.1); /* Um leve fundo translúcido */
+            display: flex; /* Para centralizar o conteúdo dentro */
             align-items: center;
+            justify-content: center;
         }
-        
-        .support-title::before {
-            content: "🤝";
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .mastery-box {
-            background: linear-gradient(135deg, #7c3aed, #a855f7);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .mastery-box::before {
-            content: "🏆";
+
+        .magnifier-content {
             position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
+            width: 200%; /* Exemplo de zoom: 2x */
+            height: 200%; /* Exemplo de zoom: 2x */
+            transform-origin: 0 0; /* Ponto de origem da transformação */
+            /* Isso será ajustado via JS */
         }
         
-        .influence-box {
-            background: linear-gradient(135deg, #0891b2, #0e7490);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .influence-box::before {
-            content: "🎯";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        @media (max-width: 768px) {
-            .page {
-                padding: 30px 20px;
+        /* --- Media Queries para Responsividade --- */
+        @media (max-width: 992px) {
+            .container {
+                max-width: 95%;
+                padding: 30px;
             }
-            
             h1 {
-                font-size: 2.2rem;
+                font-size: 2.2em;
             }
-            
-            h2 {
-                font-size: 1.8rem;
+            .document-viewer-wrapper {
+                min-height: 500px;
+                height: 70vh;
             }
-            
-            .confidence-icon {
-                width: 100px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 15px;
+            }
+            .container {
+                padding: 25px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 1.9em;
+                margin-bottom: 25px;
+            }
+            .document-viewer-wrapper {
+                min-height: 450px;
+                height: 65vh;
+                margin-bottom: 25px;
+            }
+            button, .button-link {
+                padding: 12px 25px;
+                font-size: 1em;
+                min-width: unset;
+                flex-grow: 1;
+            }
+            .actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            p {
+                font-size: 0.95em;
+                margin-top: 20px;
+            }
+            .magnifier-glass {
+                width: 120px; /* Lupa menor em telas menores */
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+            .container {
+                padding: 20px;
+                border-radius: 8px;
+            }
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 20px;
+            }
+            .document-viewer-wrapper {
+                min-height: 400px;
+                height: 60vh;
+            }
+            button, .button-link {
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+            .magnifier-glass {
+                width: 100px; /* Lupa ainda menor em telas muito pequenas */
                 height: 100px;
-                font-size: 3.5rem;
-            }
-            
-            .social-circle {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .skill-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline-item {
-                padding-left: 60px;
-            }
-            
-            .timeline::before {
-                left: 20px;
-            }
-            
-            .timeline-marker {
-                left: 5px;
-            }
-            
-            .technique-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .barrier-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
         }
     </style>
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
-    <div class="page-counter" id="pageCounter">1 / 15</div>
-    
-    <div class="ebook-container">
-        <!-- Página 1: Capa -->
-        <div class="page active">
-            <div class="page-header">
-                <div class="page-number">1</div>
-                <div class="chapter-badge">CAPA</div>
-            </div>
-            <h1>🎯 AUTOCONFIANÇA SOCIAL 🤝</h1>
-            <div class="confidence-icon interactive-element">💪</div>
-            <h2>Domine a Arte da Presença e Influência Social</h2>
-            
-            <div class="social-box">
-                <h3>🤝 Transforme sua Presença Social</h3>
-                <p style="text-align: center; font-size: 1.4rem; color: white;"><strong>Um guia completo para desenvolver confiança genuína em situações sociais, dominar a arte da comunicação persuasiva e construir relacionamentos poderosos. Descubra como irradiar carisma natural e influenciar positivamente qualquer ambiente social</strong></p>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">94%</div>
-                    <div class="stat-label">Melhora na Comunicação</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">87%</div>
-                    <div class="stat-label">Redução da Ansiedade Social</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">91%</div>
-                    <div class="stat-label">Aumento da Influência</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">89%</div>
-                    <div class="stat-label">Relacionamentos Melhores</div>
-                </div>
-            </div>
-            
-            <div class="level-badge">🎯 Nível: Maestria Social</div>
-            <div class="intensity-badge">💪 Intensidade: Transformação Completa</div>
-            
-            <div class="quote-box">
-                "A autoconfiança social não é sobre ser o mais falante da sala, mas sobre ter a presença autêntica que faz as pessoas se sentirem valorizadas e compreendidas. É a habilidade de conectar-se genuinamente enquanto mantém sua integridade pessoal" - Dale Carnegie, Especialista em Relações Humanas
-            </div>
-            
-            <div class="social-box">
-                <h3>🤝 Pilares da Autoconfiança Social:</h3>
-                <ul style="color: white;">
-                    <li><strong>💪 Presença Autêntica:</strong> Ser genuinamente você em qualquer situação</li>
-                    <li><strong>💬 Comunicação Eficaz:</strong> Expressar ideias com clareza e impacto</li>
-                    <li><strong>👁️ Linguagem Corporal:</strong> Projetar confiança através da postura</li>
-                    <li><strong>🎯 Escuta Ativa:</strong> Conectar-se profundamente com outros</li>
-                    <li><strong>✨ Carisma Natural:</strong> Atrair e inspirar pessoas naturalmente</li>
-                    <li><strong>🧠 Inteligência Emocional:</strong> Ler e responder às emoções dos outros</li>
-                    <li><strong>🎪 Adaptabilidade:</strong> Ajustar-se a diferentes contextos sociais</li>
-                    <li><strong>👑 Liderança Natural:</strong> Influenciar positivamente grupos e indivíduos</li>
-                </ul>
-            </div>
-            
-            <div class="communication-box">
-                <h3>💬 Habilidades de Comunicação Poderosa:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎯 Clareza de Expressão:</strong> Transmitir ideias de forma compreensível</li>
-                    <li><strong>🎭 Storytelling:</strong> Contar histórias que cativam e inspiram</li>
-                    <li><strong>❓ Perguntas Poderosas:</strong> Fazer questionamentos que geram reflexão</li>
-                    <li><strong>🎨 Persuasão Ética:</strong> Influenciar de forma respeitosa e benéfica</li>
-                    <li><strong>🤝 Rapport Instantâneo:</strong> Criar conexão imediata com qualquer pessoa</li>
-                    <li><strong>🎪 Adaptação de Estilo:</strong> Ajustar comunicação ao público</li>
-                    <li><strong>💡 Feedback Construtivo:</strong> Dar e receber críticas de forma produtiva</li>
-                    <li><strong>🌟 Inspiração:</strong> Motivar outros através das palavras</li>
-                </ul>
-            </div>
-            
-            <div class="charisma-box">
-                <h3>✨ Elementos do Carisma Autêntico:</h3>
-                <ul style="color: white;">
-                    <li><strong>🌟 Presença Magnética:</strong> Atenção total no momento presente</li>
-                    <li><strong>💖 Empatia Genuína:</strong> Interesse real pelas pessoas</li>
-                    <li><strong>🎯 Confiança Calma:</strong> Segurança sem arrogância</li>
-                    <li><strong>😊 Energia Positiva:</strong> Irradiar otimismo e entusiasmo</li>
-                    <li><strong>🎨 Autenticidade:</strong> Ser genuinamente você mesmo</li>
-                    <li><strong>🧠 Curiosidade:</strong> Interesse genuíno em aprender dos outros</li>
-                    <li><strong>💪 Vulnerabilidade Corajosa:</strong> Compartilhar-se de forma apropriada</li>
-                    <li><strong>🌈 Humor Inteligente:</strong> Usar leveza para conectar pessoas</li>
-                </ul>
-            </div>
-            
-            <div class="leadership-box">
-                <h3>👑 Liderança Social Natural:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎯 Visão Inspiradora:</strong> Compartilhar perspectivas que motivam</li>
-                    <li><strong>🤝 Facilitação de Grupos:</strong> Guiar conversas e dinâmicas</li>
-                    <li><strong>💡 Resolução de Conflitos:</strong> Mediar diferenças com sabedoria</li>
-                    <li><strong>🌟 Empoderamento:</strong> Ajudar outros a brilharem</li>
-                    <li><strong>📈 Influência Positiva:</strong> Impactar ambientes de forma construtiva</li>
-                    <li><strong>🎪 Tomada de Iniciativa:</strong> Liderar pelo exemplo</li>
-                    <li><strong>🧭 Direcionamento:</strong> Guiar grupos para objetivos comuns</li>
-                    <li><strong>💝 Cuidado Genuíno:</strong> Preocupar-se com o bem-estar dos outros</li>
-                </ul>
-            </div>
-            
-            <div class="networking-box">
-                <h3>🌐 Networking Estratégico e Autêntico:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎯 Conexões Significativas:</strong> Focar em qualidade, não quantidade</li>
-                    <li><strong>💝 Valor Mútuo:</strong> Sempre buscar como ajudar primeiro</li>
-                    <li><strong>🌱 Relacionamentos Duradouros:</strong> Cultivar conexões a longo prazo</li>
-                    <li><strong>🎪 Diversidade de Círculos:</strong> Conectar-se com pessoas variadas</li>
-                    <li><strong>📱 Presença Digital:</strong> Construir reputação online autêntica</li>
-                    <li><strong>🤝 Reciprocidade:</strong> Dar e receber de forma equilibrada</li>
-                    <li><strong>🎨 Memorabilidade:</strong> Ser lembrado de forma positiva</li>
-                    <li><strong>🌟 Recomendações:</strong> Tornar-se referência em sua área</li>
-                </ul>
-            </div>
-            
-            <div class="presence-box">
-                <h3>🎭 Linguagem Corporal Poderosa:</h3>
-                <ul style="color: white;">
-                    <li><strong>👑 Postura Confiante:</strong> Ombros para trás, cabeça erguida</li>
-                    <li><strong>👁️ Contato Visual:</strong> Olhar direto e respeitoso</li>
-                    <li><strong>🤝 Aperto de Mão:</strong> Firme, caloroso e apropriado</li>
-                    <li><strong>😊 Expressões Faciais:</strong> Genuínas e congruentes</li>
-                    <li><strong>🎯 Gestos Expressivos:</strong> Movimentos que reforçam a mensagem</li>
-                    <li><strong>📏 Uso do Espaço:</strong> Ocupar espaço de forma respeitosa</li>
-                    <li><strong>🎵 Tom de Voz:</strong> Modulação que transmite confiança</li>
-                    <li><strong>⚡ Energia Corporal:</strong> Vitalidade que atrai e inspira</li>
-                </ul>
-            </div>
-            
-            <div class="mastery-box">
-                <h3>🏆 Maestria em Situações Sociais:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎪 Apresentações Públicas:</strong> Falar com confiança para grupos</li>
-                    <li><strong>🤝 Reuniões Profissionais:</strong> Contribuir de forma valiosa</li>
-                    <li><strong>🎉 Eventos Sociais:</strong> Navegar com naturalidade e graça</li>
-                    <li><strong>💼 Entrevistas:</strong> Impressionar de forma autêntica</li>
-                    <li><strong>🌟 Negociações:</strong> Alcançar acordos win-win</li>
-                    <li><strong>👥 Conversas Difíceis:</strong> Abordar temas sensíveis com tato</li>
-                    <li><strong>🎯 Vendas e Persuasão:</strong> Influenciar de forma ética</li>
-                    <li><strong>💡 Brainstorming:</strong> Facilitar criatividade em grupos</li>
-                </ul>
-            </div>
-            
-            <div class="influence-box">
-                <h3>🎯 Princípios da Influência Ética:</h3>
-                <ul style="color: white;">
-                    <li><strong>🤝 Reciprocidade:</strong> Dar primeiro, receber naturalmente</li>
-                    <li><strong>💎 Consistência:</strong> Alinhar ações com valores declarados</li>
-                    <li><strong>👥 Prova Social:</strong> Usar exemplos relevantes e inspiradores</li>
-                    <li><strong>💖 Simpatia:</strong> Construir conexões genuínas</li>
-                    <li><strong>👑 Autoridade:</strong> Demonstrar competência com humildade</li>
-                    <li><strong>⏰ Escassez:</strong> Comunicar valor de forma honesta</li>
-                    <li><strong>🎯 Compromisso:</strong> Facilitar decisões conscientes</li>
-                    <li><strong>🌟 Inspiração:</strong> Motivar através de visão compartilhada</li>
-                </ul>
-            </div>
-            
-            <div class="warning-box">
-                <h3>⚠️ Armadilhas da Confiança Social:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎭 Falsa Confiança:</strong> Arrogância disfarçada de segurança</li>
-                    <li><strong>🎪 Performance Excessiva:</strong> Tentar impressionar a todo custo</li>
-                    <li><strong>👑 Ego Inflado:</strong> Colocar-se sempre acima dos outros</li>
-                    <li><strong>🎯 Manipulação:</strong> Usar influência para benefício próprio</li>
-                    <li><strong>🚫 Falta de Autenticidade:</strong> Ser alguém que não é</li>
-                    <li><strong>📱 Dependência de Validação:</strong> Buscar aprovação constante</li>
-                    <li><strong>🔄 Comparação Constante:</strong> Medir-se sempre pelos outros</li>
-                    <li><strong>⚡ Impaciência:</strong> Querer resultados imediatos</li>
-                </ul>
-            </div>
-            
-            <div class="success-box">
-                <h3>🌟 Transformações Reais:</h3>
-                <p style="color: white;">Milhares de pessoas transformaram completamente sua vida social através do desenvolvimento da autoconfiança genuína. Profissionais tímidos se tornaram líderes inspiradores, introvertidos descobriram o poder da conexão autêntica, e muitos que se sentiam invisíveis socialmente passaram a ser referências em seus círculos. A autoconfiança social não é um dom - é uma habilidade que pode ser desenvolvida!</p>
-            </div>
-            
-            <p style="text-align: center; margin-top: 30px; font-size: 1.1rem; color: #64748b;">
-                <em>Baseado em pesquisas de psicologia social, neurociência da comunicação, e técnicas comprovadas de desenvolvimento de carisma e liderança 🎯🤝💪</em>
-            </p>
+
+    <div class="container">
+        <h1>Desvendando o Autismo: Primeiros Sinais e Intervenção Precoce</h1>
+        
+        <div class="document-viewer-wrapper" id="pdfViewerWrapper">
+            <iframe 
+                src="Autoconfiança Social - infantil.jpg" 
+                class="document-viewer" 
+                id="pdfViewer"
+                type="application/pdf"
+                aria-label="Visualizador do documento PDF sobre Autismo">
+                <p>Seu navegador não suporta a visualização de PDFs diretamente. Você pode <a href="Brilhe-na-Roda-Despertando-a-Autoconfianca-Social-na-Infancia.pdf" target="_blank" rel="noopener noreferrer">clicar aqui para baixar o documento</a> e visualizá-lo em um leitor de PDF.</p>
+            </iframe>
         </div>
 
-        <!-- Página 2: Índice -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">2</div>
-                <div class="chapter-badge">ÍNDICE</div>
-            </div>
-            <h2>🗺️ Sua Jornada para a Maestria Social</h2>
-            <div class="story-illustration">💪➡️🤝➡️✨➡️👑</div>
-            
-            <div class="social-box">
-                <h3>🤝 Roteiro Completo para Autoconfiança Social:</h3>
-                <ol class="steps-list">
-                    <li><strong>Fundamentos da Confiança Social</strong> - Base psicológica e neurológica</li>
-                    <li><strong>Superando a Ansiedade Social</strong> - Técnicas para vencer medos e bloqueios</li>
-                    <li><strong>Presença e Linguagem Corporal</strong> - Projetar confiança através do corpo</li>
-                    <li><strong>Comunicação Poderosa</strong> - Falar com impacto e clareza</li>
-                    <li><strong>Arte da Escuta Ativa</strong> - Conectar-se profundamente com outros</li>
-                    <li><strong>Desenvolvendo Carisma Autêntico</strong> - Magnetismo pessoal genuíno</li>
-                    <li><strong>Inteligência Emocional Social</strong> - Ler e responder às emoções</li>
-                    <li><strong>Networking Estratégico</strong> - Construir relacionamentos valiosos</li>
-                    <li><strong>Liderança e Influência</strong> - Guiar e inspirar outros</li>
-                    <li><strong>Maestria em Situações Específicas</strong> - Apresentações, reuniões, eventos</li>
-                    <li><strong>Mantendo a Autenticidade</strong> - Ser genuíno em qualquer contexto</li>
-                    <li><strong>Crescimento Contínuo</strong> - Evoluir constantemente suas habilidades</li>
-                    <li><strong>Casos de Sucesso</strong> - Histórias reais de transformação</li>
-                    <li><strong>Plano de Ação Personalizado</strong> - Seu caminho único para a maestria</li>
-                </ol>
-            </div>
-            
-            <div class="communication-box">
-                <h3>💬 Abordagem Científica e Prática:</h3>
-                <p style="color: white;">Este guia combina descobertas da neurociência social, psicologia comportamental e técnicas comprovadas de comunicação para oferecer uma transformação completa. Baseamos nosso conteúdo em pesquisas de Harvard, Stanford e outras instituições de prestígio, além de experiências reais de líderes e comunicadores de sucesso!</p>
-            </div>
-            
-            <div class="confidence-demo">
-                <h3>🎯 Círculo da Confiança Social</h3>
-                <div class="social-circle interactive-element">
-                    Presença → Comunicação → Conexão → Influência
-                </div>
-                <p><strong>Explore o ciclo da maestria social! ⬆️</strong></p>
-            </div>
-            
-            <div class="charisma-box">
-                <h3>✨ Por que a Autoconfiança Social é Transformadora:</h3>
-                <ul style="color: white;">
-                    <li><strong>🧠 Impacto Neurológico:</strong> Muda padrões cerebrais de ansiedade</li>
-                    <li><strong>💼 Sucesso Profissional:</strong> 85% do sucesso vem de habilidades sociais</li>
-                    <li><strong>💖 Relacionamentos:</strong> Base para conexões profundas e duradouras</li>
-                    <li><strong>👑 Liderança Natural:</strong> Capacidade de inspirar e guiar outros</li>
-                    <li><strong>🌟 Realização Pessoal:</strong> Expressão autêntica de seu potencial</li>
-                    <li><strong>🎯 Oportunidades:</strong> Portas que se abrem através de conexões</li>
-                </ul>
-            </div>
-            
-            <div class="skill-grid">
-                <div class="skill-card">
-                    <div class="skill-card-icon">🎭</div>
-                    <div class="skill-card-title">Presença Magnética</div>
-                    <div class="skill-card-desc">Desenvolver uma presença que naturalmente atrai atenção e respeito através de autenticidade e confiança</div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-card-icon">💬</div>
-                    <div class="skill-card-title">Comunicação Persuasiva</div>
-                    <div class="skill-card-desc">Expressar ideias com clareza, impacto e capacidade de influenciar positivamente</div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-card-icon">🤝</div>
-                    <div class="skill-card-title">Conexão Instantânea</div>
-                    <div class="skill-card-desc">Criar rapport e confiança rapidamente com qualquer pessoa em qualquer situação</div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-card-icon">👑</div>
-                    <div class="skill-card-title">Liderança Natural</div>
-                    <div class="skill-card-desc">Inspirar e guiar outros através do exemplo e da influência positiva</div>
-                </div>
-            </div>
-            
-            <div class="leadership-box">
-                <h3>👑 Componentes da Maestria Social:</h3>
-                <ul style="color: white;">
-                    <li><strong>💪 Confiança Interior:</strong> Base sólida de autoestima e autoaceitação</li>
-                    <li><strong>🎯 Presença Consciente:</strong> Atenção plena em interações sociais</li>
-                    <li><strong>💬 Comunicação Eficaz:</strong> Clareza, impacto e autenticidade</li>
-                    <li><strong>🧠 Inteligência Emocional:</strong> Compreensão e gestão de emoções</li>
-                    <li><strong>🤝 Habilidades de Relacionamento:</strong> Construir e manter conexões</li>
-                    <li><strong>✨ Carisma Autêntico:</strong> Magnetismo pessoal genuíno</li>
-                    <li><strong>🎪 Adaptabilidade:</strong> Flexibilidade em diferentes contextos</li>
-                    <li><strong>🌟 Influência Ética:</strong> Capacidade de inspirar mudanças positivas</li>
-                </ul>
-            </div>
-            
-            <div class="foundation-grid">
-                <div class="foundation-item">
-                    <div class="foundation-icon">💪</div>
-                    <div class="foundation-label"><strong>Confiança</strong><br>Base interior sólida</div>
-                </div>
-                <div class="foundation-item">
-                    <div class="foundation-icon">🎭</div>
-                    <div class="foundation-label"><strong>Presença</strong><br>Impacto magnético</div>
-                </div>
-                <div class="foundation-item">
-                    <div class="foundation-icon">💬</div>
-                    <div class="foundation-label"><strong>Comunicação</strong><br>Expressão poderosa</div>
-                </div>
-            </div>
-            
-            <div class="networking-box">
-                <h3>🌐 Níveis de Maestria Social:</h3>
-                <ul style="color: white;">
-                    <li><strong>🌱 Iniciante:</strong> Superar ansiedade e desenvolver presença básica</li>
-                    <li><strong>🌿 Intermediário:</strong> Comunicação clara e conexões genuínas</li>
-                    <li><strong>🌳 Avançado:</strong> Carisma natural e influência positiva</li>
-                    <li><strong>🌟 Expert:</strong> Liderança inspiradora e impacto transformador</li>
-                    <li><strong>💫 Mestre:</strong> Maestria completa em qualquer situação social</li>
-                    <li><strong>🏆 Virtuoso:</strong> Capacidade de elevar outros à maestria</li>
-                </ul>
-            </div>
-            
-            <div class="presence-box">
-                <h3>🎭 Mitos vs. Verdades sobre Confiança Social:</h3>
-                <ul style="color: white;">
-                    <li><strong>❌ Mito:</strong> Confiança social é dom natural</li>
-                    <li><strong>✅ Verdade:</strong> É habilidade que pode ser desenvolvida</li>
-                    <li><strong>❌ Mito:</strong> Precisa ser extrovertido para ter confiança</li>
-                    <li><strong>✅ Verdade:</strong> Introvertidos podem ser socialmente poderosos</li>
-                    <li><strong>❌ Mito:</strong> Confiança significa nunca sentir nervosismo</li>
-                    <li><strong>✅ Verdade:</strong> É agir com coragem apesar do nervosismo</li>
-                    <li><strong>❌ Mito:</strong> Pessoas confiantes são sempre populares</li>
-                    <li><strong>✅ Verdade:</strong> Foco na qualidade, não quantidade de conexões</li>
-                </ul>
-            </div>
-            
-            <div class="mastery-box">
-                <h3>🏆 Áreas de Aplicação:</h3>
-                <ul style="color: white;">
-                    <li><strong>💼 Profissional:</strong> Reuniões, apresentações, networking</li>
-                    <li><strong>👥 Social:</strong> Festas, eventos, encontros casuais</li>
-                    <li><strong>💕 Romântica:</strong> Encontros, relacionamentos, intimidade</li>
-                    <li><strong>👨‍👩‍👧‍👦 Familiar:</strong> Dinâmicas familiares e reuniões</li>
-                    <li><strong>🎓 Acadêmica:</strong> Apresentações, debates, grupos de estudo</li>
-                    <li><strong>🌐 Digital:</strong> Videoconferências, redes sociais, webinars</li>
-                    <li><strong>🎪 Pública:</strong> Palestras, entrevistas, mídia</li>
-                    <li><strong>🤝 Vendas:</strong> Negociações, persuasão, relacionamento com clientes</li>
-                </ul>
-            </div>
-            
-            <div class="influence-box">
-                <h3>🎯 Ferramentas de Desenvolvimento:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎭 Role-playing:</strong> Prática de situações sociais</li>
-                    <li><strong>📹 Gravação e Análise:</strong> Feedback visual de sua presença</li>
-                    <li><strong>🧘 Mindfulness Social:</strong> Presença consciente em interações</li>
-                    <li><strong>📝 Diário de Interações:</strong> Reflexão sobre experiências sociais</li>
-                    <li><strong>🎯 Desafios Graduais:</strong> Exposição progressiva a situações</li>
-                    <li><strong>👥 Grupos de Prática:</strong> Ambiente seguro para desenvolvimento</li>
-                    <li><strong>📚 Estudo de Casos:</strong> Análise de líderes e comunicadores</li>
-                    <li><strong>🎪 Improvisação:</strong> Desenvolvimento de espontaneidade</li>
-                </ul>
-            </div>
-            
-            <div class="warning-box">
-                <h3>⚠️ Sinais de que Você Precisa Desenvolver Confiança Social:</h3>
-                <ul style="color: white;">
-                    <li><strong>😰 Ansiedade Constante:</strong> Nervosismo em situações sociais</li>
-                    <li><strong>🚫 Evitação:</strong> Fugir de eventos e oportunidades sociais</li>
-                    <li><strong>🤐 Dificuldade de Expressão:</strong> Não conseguir comunicar ideias</li>
-                    <li><strong>👥 Isolamento:</strong> Sentir-se desconectado dos outros</li>
-                    <li><strong>💼 Impacto Profissional:</strong> Carreira limitada por habilidades sociais</li>
-                    <li><strong>😔 Baixa Autoestima:</strong> Sentir-se inferior em grupos</li>
-                </ul>
-            </div>
-            
-            <div class="success-box">
-                <h3>🌟 Benefícios Comprovados da Maestria Social:</h3>
-                <p style="color: white;">Pesquisas demonstram que pessoas com alta confiança social têm 67% mais chances de promoção, relacionamentos 3x mais satisfatórios, níveis significativamente menores de ansiedade e depressão, e uma sensação geral de realização e propósito. A maestria social é literalmente um superpoder na vida moderna!</p>
-            </div>
-            
-            <div class="support-resources">
-                <div class="support-title">Recursos de Transformação</div>
-                <p>Este guia oferece técnicas práticas, exercícios de desenvolvimento, scripts de conversação, estratégias de networking e ferramentas de autoavaliação. Inclui planos de ação personalizados, desafios graduais e métodos comprovados para superar ansiedade social.</p>
-            </div>
-            
-            <div class="tip-box">
-                <h3>💡 Dica Fundamental:</h3>
-                <p>A verdadeira confiança social não vem de tentar impressionar os outros, mas de estar genuinamente interessado neles. Quando você foca em contribuir valor e criar conexões autênticas, a confiança surge naturalmente. Seja curioso, seja genuíno, seja você mesmo.</p>
-            </div>
+        <div class="actions">
+            <a href="Brilhe-na-Roda-Despertando-a-Autoconfianca-Social-na-Infancia.pdf" download class="button-link">
+                Baixar PDF
+            </a>
+            <a href="#" class="button-link" onclick="alert('Esta função exigiria a criação de um arquivo EPUB ou similar. Para demonstração, o botão de download do PDF é a melhor opção no momento.'); return false;">
+                Ver em Formato de Livro (E-book)
+            </a>
+            <button onclick="history.back()">Voltar</button>
         </div>
 
-        <!-- Página 3: Fundamentos da Confiança Social -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">3</div>
-                <div class="chapter-badge">CAPÍTULO 1</div>
-            </div>
-            <h2>💪 Fundamentos da Autoconfiança Social</h2>
-            <div class="story-illustration">🧠➡️💪➡️🤝➡️✨</div>
-            
-            <p>A autoconfiança social é a capacidade de navegar situações interpessoais com naturalidade, autenticidade e impacto positivo. Não se trata de ser extrovertido ou o centro das atenções, mas sim de ter a segurança interior para ser genuinamente você mesmo enquanto cria conexões significativas com outros. É uma habilidade fundamental que pode ser desenvolvida através de compreensão, prática e persistência.</p>
-            
-            <div class="social-box">
-                <h3>🤝 O que é Autoconfiança Social Verdadeira?</h3>
-                <p style="color: white;">A autoconfiança social genuína é um estado interno de segurança que permite interagir com outros de forma autêntica, sem medo excessivo de julgamento ou rejeição. É a capacidade de expressar suas ideias, sentimentos e personalidade de maneira apropriada ao contexto, mantendo respeito por si mesmo e pelos outros. Não é arrogância ou necessidade de dominar, mas sim presença consciente e conexão genuína.</p>
-            </div>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">1</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Autoconhecimento</div>
-                        <div class="timeline-title">Compreender Seus Padrões</div>
-                        <div class="timeline-desc">Identificar suas forças, desafios, gatilhos de ansiedade e padrões de comportamento social. Reconhecer que a confiança social é uma habilidade, não um traço fixo de personalidade.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">2</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Fundação Interior</div>
-                        <div class="timeline-title">Construir Base Sólida</div>
-                        <div class="timeline-desc">Desenvolver autoestima saudável, autoaceitação e clareza sobre valores pessoais. Esta base interior é essencial para projetar confiança autêntica em situações sociais.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">3</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Habilidades Básicas</div>
-                        <div class="timeline-title">Desenvolver Competências</div>
-                        <div class="timeline-desc">Aprender e praticar habilidades fundamentais como comunicação clara, escuta ativa, linguagem corporal confiante e gestão de ansiedade social.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">4</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Prática Gradual</div>
-                        <div class="timeline-title">Exposição Progressiva</div>
-                        <div class="timeline-desc">Aplicar habilidades em situações cada vez mais desafiadoras, construindo confiança através de experiências positivas e aprendizado com desafios.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">5</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Maestria</div>
-                        <div class="timeline-title">Naturalidade e Impacto</div>
-                        <div class="timeline-desc">Integrar habilidades sociais de forma natural, desenvolvendo presença magnética e capacidade de influenciar positivamente qualquer ambiente social.</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="communication-box">
-                <h3>💬 Os Quatro Pilares da Confiança Social</h3>
-                
-                <h4 style="color: white;">1. 💪 Confiança Interior:</h4>
-                <ul style="color: white;">
-                    <li><strong>Autoestima Saudável:</strong> Valor próprio não dependente de aprovação externa</li>
-                    <li><strong>Autoaceitação:</strong> Abraçar suas qualidades e imperfeições</li>
-                    <li><strong>Clareza de Valores:</strong> Saber o que é importante para você</li>
-                    <li><strong>Propósito Pessoal:</strong> Compreender sua contribuição única</li>
-                </ul>
-                
-                <h4 style="color: white;">2. 🎭 Presença Consciente:</h4>
-                <ul style="color: white;">
-                    <li><strong>Mindfulness Social:</strong> Atenção plena em interações</li>
-                    <li><strong>Linguagem Corporal:</strong> Postura e gestos que transmitem confiança</li>
-                    <li><strong>Energia Pessoal:</strong> Vitalidade que atrai e inspira</li>
-                    <li><strong>Autenticidade:</strong> Ser genuinamente você mesmo</li>
-                </ul>
-                
-                <h4 style="color: white;">3. 💬 Comunicação Eficaz:</h4>
-                <ul style="color: white;">
-                    <li><strong>Clareza de Expressão:</strong> Transmitir ideias de forma compreensível</li>
-                    <li><strong>Escuta Ativa:</strong> Ouvir com interesse genuíno</li>
-                    <li><strong>Empatia:</strong> Compreender perspectivas dos outros</li>
-                    <li><strong>Assertividade:</strong> Expressar necessidades respeitosamente</li>
-                </ul>
-                
-                <h4 style="color: white;">4. 🤝 Habilidades Relacionais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Rapport:</strong> Criar conexão e confiança</li>
-                    <li><strong>Adaptabilidade:</strong> Ajustar-se a diferentes pessoas e contextos</li>
-                    <li><strong>Resolução de Conflitos:</strong> Navegar diferenças com sabedoria</li>
-                    <li><strong>Influência Positiva:</strong> Inspirar e motivar outros</li>
-                </ul>
-            </div>
-            
-            <div class="charisma-box">
-                <h3>✨ Neurociência da Confiança Social</h3>
-                
-                <h4 style="color: white;">🧠 Como o Cérebro Processa Interações Sociais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Sistema Límbico:</strong> Processa emoções e detecta ameaças sociais</li>
-                    <li><strong>Córtex Pré-frontal:</strong> Planeja e regula comportamento social</li>
-                    <li><strong>Neurônios-espelho:</strong> Facilitam empatia e conexão</li>
-                    <li><strong>Neurotransmissores:</strong> Dopamina, serotonina e oxitocina influenciam confiança</li>
-                </ul>
-                
-                <h4 style="color: white;">⚡ Impacto da Ansiedade Social no Cérebro:</h4>
-                <ul style="color: white;">
-                    <li><strong>Hiperativação da Amígdala:</strong> Resposta exagerada ao medo</li>
-                    <li><strong>Redução do Córtex Pré-frontal:</strong> Dificuldade de pensamento claro</li>
-                    <li><strong>Liberação de Cortisol:</strong> Hormônio do estresse prejudica performance</li>
-                    <li><strong>Ciclo de Evitação:</strong> Reforça padrões de ansiedade</li>
-                </ul>
-                
-                <h4 style="color: white;">🌟 Como Desenvolver Confiança Neurológica:</h4>
-                <ul style="color: white;">
-                    <li><strong>Neuroplasticidade:</strong> Cérebro pode formar novos padrões</li>
-                    <li><strong>Exposição Gradual:</strong> Dessensibilização sistemática</li>
-                    <li><strong>Visualização:</strong> Treinar cenários mentalmente</li>
-                    <li><strong>Mindfulness:</strong> Fortalecer regulação emocional</li>
-                </ul>
-            </div>
-            
-            <div class="leadership-box">
-                <h3>👑 Diferenças Fundamentais</h3>
-                
-                <h4 style="color: white;">Confiança vs. Arrogância:</h4>
-                <ul style="color: white;">
-                    <li><strong>💪 Confiança:</strong> Segurança interior com humildade</li>
-                    <li><strong>👑 Arrogância:</strong> Superioridade defensiva e insegura</li>
-                    <li><strong>🤝 Confiança:</strong> Interesse genuíno nos outros</li>
-                    <li><strong>🎭 Arrogância:</strong> Foco excessivo em si mesmo</li>
-                </ul>
-                
-                <h4 style="color: white;">Introversão vs. Falta de Confiança:</h4>
-                <ul style="color: white;">
-                    <li><strong>🌱 Introversão:</strong> Preferência por interações menores e profundas</li>
-                    <li><strong>😰 Falta de Confiança:</strong> Medo de julgamento e rejeição</li>
-                    <li><strong>💡 Introversão:</strong> Energia vem de dentro</li>
-                    <li><strong>⚡ Falta de Confiança:</strong> Energia drenada por ansiedade</li>
-                </ul>
-            </div>
-            
-            <div class="networking-box">
-                <h3>🌐 Fatores que Influenciam a Confiança Social</h3>
-                
-                <h4 style="color: white;">🏠 Influências da Infância:</h4>
-                <ul style="color: white;">
-                    <li><strong>Estilo Parental:</strong> Apoio vs. crítica excessiva</li>
-                    <li><strong>Experiências Escolares:</strong> Aceitação vs. bullying</li>
-                    <li><strong>Modelos de Referência:</strong> Exemplos de confiança social</li>
-                    <li><strong>Mensagens Recebidas:</strong> Crenças sobre valor pessoal</li>
-                </ul>
-                
-                <h4 style="color: white;">🌍 Fatores Culturais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Normas Sociais:</strong> Expectativas culturais sobre comportamento</li>
-                    <li><strong>Valores Coletivos:</strong> Individualismo vs. coletivismo</li>
-                    <li><strong>Hierarquias:</strong> Estruturas de poder e respeito</li>
-                    <li><strong>Comunicação:</strong> Estilos diretos vs. indiretos</li>
-                </ul>
-                
-                <h4 style="color: white;">💼 Contexto Atual:</h4>
-                <ul style="color: white;">
-                    <li><strong>Ambiente Profissional:</strong> Cultura organizacional</li>
-                    <li><strong>Círculo Social:</strong> Qualidade dos relacionamentos</li>
-                    <li><strong>Saúde Mental:</strong> Estado emocional e psicológico</li>
-                    <li><strong>Experiências Recentes:</strong> Sucessos e fracassos sociais</li>
-                </ul>
-            </div>
-            
-            <div class="presence-box">
-                <h3>🎭 Sinais de Confiança Social Genuína</h3>
-                <ul style="color: white;">
-                    <li><strong>😌 Naturalidade:</strong> Comportamento espontâneo e autêntico</li>
-                    <li><strong>👁️ Contato Visual:</strong> Olhar direto e respeitoso</li>
-                    <li><strong>🎯 Presença:</strong> Atenção focada na interação atual</li>
-                    <li><strong>💬 Comunicação Clara:</strong> Expressão direta e compreensível</li>
-                    <li><strong>🤝 Abertura:</strong> Disposição para conectar-se com outros</li>
-                    <li><strong>😊 Positividade:</strong> Energia que eleva o ambiente</li>
-                    <li><strong>🌟 Autenticidade:</strong> Coerência entre interior e exterior</li>
-                    <li><strong>💪 Resiliência:</strong> Recuperação rápida de situações difíceis</li>
-                </ul>
-            </div>
-            
-            <div class="mastery-box">
-                <h3>🏆 Desenvolvendo Confiança Interior</h3>
-                
-                <h4 style="color: white;">Exercício: Inventário de Forças</h4>
-                <ol style="color: white;">
-                    <li>Liste 10 qualidades pessoais positivas</li>
-                    <li>Identifique 5 conquistas das quais se orgulha</li>
-                    <li>Reconheça 3 desafios que superou</li>
-                    <li>Anote feedback positivo que já recebeu</li>
-                    <li>Reflita sobre seu valor único no mundo</li>
-                </ol>
-                
-                <h4 style="color: white;">Técnica: Postura de Poder</h4>
-                <ul style="color: white;">
-                    <li><strong>Posição:</strong> Pés afastados, ombros para trás</li>
-                    <li><strong>Braços:</strong> Abertos ou na cintura</li>
-                    <li><strong>Cabeça:</strong> Erguida com queixo paralelo ao chão</li>
-                    <li><strong>Respiração:</strong> Profunda e controlada</li>
-                    <li><strong>Duração:</strong> 2 minutos antes de situações sociais</li>
-                </ul>
-            </div>
-            
- </div> </div> </div>
-
- 
-  
- <div class="navigation">
-        <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
-        <button id="nextBtn" class="nav-btn">Próximo</button>
+        <p>Este documento oferece informações cruciais sobre os primeiros sinais do autismo e a importância da intervenção precoce. Para ativar a lupa, clique em qualquer parte do documento acima. Para desativar, clique novamente na lupa ou em qualquer outro lugar.</p>
     </div>
 
-     <script>
-        
-    const pages = document.querySelectorAll('.page');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const progressBar = document.getElementById('progressBar');
-    const pageCounter = document.getElementById('pageCounter');
-    let currentPageIndex = 0;
+    <script>
+        const pdfViewerWrapper = document.getElementById('pdfViewerWrapper');
+        const pdfViewer = document.getElementById('pdfViewer');
+        let magnifierGlass = null; // Variável para armazenar a lupa
 
-    function showPage(index) {
-        pages.forEach((page, i) => {
-            if (i === index) {
-                page.classList.add('active');
-            } else {
-                page.classList.remove('active');
+        // Adiciona um ouvinte de eventos para cliques no wrapper do PDF
+        pdfViewerWrapper.addEventListener('click', function(e) {
+            // Se já existe uma lupa, remove-a
+            if (magnifierGlass) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                // Restaura o cursor padrão
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+                return; // Sai da função após remover
+            }
+
+            // Cria o elemento da lupa
+            magnifierGlass = document.createElement('div');
+            magnifierGlass.classList.add('magnifier-glass');
+
+            // Cria o conteúdo da lupa (uma cópia do iframe para simular o zoom)
+            const magnifierContent = pdfViewer.cloneNode(true);
+            magnifierContent.classList.remove('document-viewer'); // Remove estilos do iframe original
+            magnifierContent.style.position = 'absolute';
+            magnifierContent.style.top = '0';
+            magnifierContent.style.left = '0';
+            magnifierContent.style.width = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.height = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.pointerEvents = 'none'; // Impede interação com o iframe clonado na lupa
+
+            magnifierGlass.appendChild(magnifierContent);
+            pdfViewerWrapper.appendChild(magnifierGlass);
+
+            // Adiciona um evento de clique na lupa para removê-la
+            magnifierGlass.addEventListener('click', function(event) {
+                event.stopPropagation(); // Impede que o clique na lupa se propague para o wrapper
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+            });
+
+            // Calcula a posição do clique dentro do iframe
+            const rect = pdfViewerWrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left; // Coordenada X relativa ao wrapper
+            const y = e.clientY - rect.top;  // Coordenada Y relativa ao wrapper
+
+            // Posiciona a lupa no centro do clique
+            magnifierGlass.style.left = `${x}px`;
+            magnifierGlass.style.top = `${y}px`;
+
+            // Calcula o deslocamento do conteúdo dentro da lupa para simular o zoom na área clicada
+            // O conteúdo da lupa é 2x maior, então o ponto de origem deve ser metade da distância
+            // da borda para o clique.
+            const zoomLevel = 2; // O mesmo que as dimensões do magnifierContent
+            const contentX = -x * (zoomLevel - 1) + (magnifierGlass.offsetWidth / 2);
+            const contentY = -y * (zoomLevel - 1) + (magnifierGlass.offsetHeight / 2);
+
+            magnifierContent.style.transform = `translate(${contentX}px, ${contentY}px)`;
+
+            // Muda o cursor para indicar que a lupa está ativa
+            pdfViewerWrapper.style.cursor = 'zoom-out';
+        });
+
+        // Adiciona um ouvinte para cliques em qualquer lugar do documento
+        // Isso permite remover a lupa clicando fora dela (no body, por exemplo)
+        document.addEventListener('click', function(event) {
+            if (magnifierGlass && !pdfViewerWrapper.contains(event.target)) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
             }
         });
-        updateNavigationButtons();
-        updateProgressBar();
-        updatePageCounter();
-    }
-
-    function updateNavigationButtons() {
-        prevBtn.disabled = currentPageIndex === 0;
-        nextBtn.disabled = currentPageIndex === pages.length - 1;
-    }
-
-    function updateProgressBar() {
-        const progress = (currentPageIndex / (pages.length - 1)) * 100;
-        progressBar.style.width = `${progress}%`;
-    }
-
-    function updatePageCounter() {
-        pageCounter.textContent = `${currentPageIndex + 1} / ${pages.length}`;
-    }
-
-    prevBtn.addEventListener('click', () => {
-        if (currentPageIndex > 0) {
-            currentPageIndex--;
-            showPage(currentPageIndex);
-        }
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (currentPageIndex < pages.length - 1) {
-            currentPageIndex++;
-            showPage(currentPageIndex);
-        }
-    });
-
-    // Initialize the first page and navigation
-    showPage(currentPageIndex);
-</script>
-
-
-                
-
-
+    </script>
+</body>
+</html>

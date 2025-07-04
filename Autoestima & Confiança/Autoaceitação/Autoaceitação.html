@@ -1,1619 +1,351 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autoaceitação - Guia Completo</title>
+    <title>Desvendando o Autismo - Leitura Otimizada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap');
-        
-        * {
+        :root {
+            --primary-color: #5865F2; /* Azul vibrante */
+            --secondary-color: #4A56E2; /* Azul mais escuro para títulos */
+            --gradient-start: #667eea;
+            --gradient-end: #764ba2;
+            --text-light: #f0f0f0;
+            --text-dark: #333;
+            --bg-card: rgba(255, 255, 255, 0.98);
+            --shadow-light: rgba(0, 0, 0, 0.15);
+            --shadow-strong: rgba(0, 0, 0, 0.25);
+            --border-radius-lg: 12px;
+            --border-radius-md: 8px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--text-light);
+            text-align: center;
             box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            min-height: 100vh;
+            padding: 40px 20px; /* Padding geral para telas grandes */
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        
-        .ebook-container {
+
+        .container {
+            width: 100%;
             max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            border-radius: 25px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .page {
-            min-height: 100vh;
-            padding: 50px;
-            display: none;
-            position: relative;
-            background: linear-gradient(45deg, #f8fafc, #f1f5f9);
-        }
-        
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .page-header {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        
-        .page-number {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-weight: 600;
-            font-size: 20px;
-            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
-        }
-        
-        .chapter-badge {
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-        
-        h1 {
-            color: #1e293b;
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        h2 {
-            color: #4f46e5;
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            text-align: center;
-            font-weight: 700;
-        }
-        
-        h3 {
-            color: #7c3aed;
-            font-size: 1.6rem;
-            margin-bottom: 18px;
-            font-weight: 600;
-        }
-        
-        h4 {
-            color: #475569;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        
-        p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #475569;
-            margin-bottom: 22px;
-            text-align: justify;
-            font-weight: 400;
-        }
-        
-        .heart-icon {
-            width: 140px;
-            height: 140px;
-            border-radius: 25px;
-            margin: 25px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            background: linear-gradient(45deg, #ec4899, #f97316);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            animation: gentle-pulse 3s infinite;
-        }
-        
-        @keyframes gentle-pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
-            50% { transform: scale(1.05); box-shadow: 0 20px 40px rgba(236, 72, 153, 0.3); }
-        }
-        
-        .love-box {
-            background: linear-gradient(135deg, #ec4899, #f97316);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #10b981;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-            color: white;
-        }
-        
-        .love-box::before {
-            content: "💖";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .growth-box {
-            background: linear-gradient(135deg, #10b981, #059669);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .growth-box::before {
-            content: "🌱";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .mindfulness-box {
-            background: linear-gradient(135deg, #8b5cf6, #a855f7);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .mindfulness-box::before {
-            content: "🧘";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .healing-box {
-            background: linear-gradient(135deg, #06b6d4, #3b82f6);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #ef4444;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-            color: white;
-        }
-        
-        .healing-box::before {
-            content: "🌈";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .wisdom-box {
-            background: linear-gradient(135deg, #f59e0b, #f97316);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .wisdom-box::before {
-            content: "✨";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .navigation {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            z-index: 1000;
-        }
-        
-        .nav-btn {
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            border: none;
-            padding: 18px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Nunito', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        
-        .nav-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-        }
-        
-        .nav-btn:disabled {
-            background: #cbd5e0;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 6px;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            transition: width 0.5s ease;
-            z-index: 1001;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .page-counter {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.9);
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            color: #475569;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .source-box {
-            background: #f8fafc;
-            border: 3px dashed #cbd5e0;
-            padding: 25px;
-            border-radius: 20px;
-            margin-top: 35px;
-            font-size: 1rem;
-            color: #64748b;
-            position: relative;
-        }
-        
-        .source-box::before {
-            content: "📖";
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-        }
-        
-        .self-love-demo {
-            text-align: center;
+            background-color: var(--bg-card);
             padding: 40px;
-            background: linear-gradient(135deg, #fef3c7, #fed7aa);
-            border-radius: 25px;
-            margin: 25px 0;
-        }
-        
-        .acceptance-circle {
-            width: 180px;
-            height: 180px;
-            border: 6px solid #ec4899;
-            border-radius: 50%;
-            margin: 25px auto;
+            box-shadow: 0 15px 35px var(--shadow-strong);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: 30px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            color: #ec4899;
-            font-weight: 600;
-            animation: gentle-rotate 15s infinite linear;
-            box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
-            position: relative;
+            color: var(--text-dark);
+            position: relative; /* Necessário para posicionar a lupa */
         }
-        
-        .acceptance-circle::after {
-            content: '💝';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 30px;
-            height: 30px;
-            background: #f97316;
-            border-radius: 50%;
-            animation: orbit 4s infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        @keyframes gentle-rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes orbit {
-            0%, 100% { transform: scale(1) translateY(0); }
-            50% { transform: scale(1.2) translateY(-5px); }
-        }
-        
-        .story-illustration {
-            text-align: center;
-            font-size: 4rem;
-            margin: 30px 0;
-            animation: gentle-float 4s ease-in-out infinite;
-        }
-        
-        @keyframes gentle-float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        ul, ol {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #475569;
-            margin-left: 25px;
-            font-weight: 400;
-        }
-        
-        li {
-            margin-bottom: 12px;
-            position: relative;
-        }
-        
-        .checklist {
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .checklist li::before {
-            content: "💖";
-            margin-right: 10px;
-        }
-        
-        .warning-checklist {
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .warning-checklist li::before {
-            content: "⚠️";
-            margin-right: 10px;
-        }
-        
-        .steps-list {
-            counter-reset: step-counter;
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .steps-list li {
-            counter-increment: step-counter;
-            position: relative;
-            padding-left: 40px;
-        }
-        
-        .steps-list li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: #ec4899;
-            color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        
-        .interactive-element {
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        
-        .interactive-element:hover {
-            transform: scale(1.05);
-        }
-        
-        .level-badge {
-            background: linear-gradient(45deg, #7c3aed, #a855f7);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-        
-        .intensity-badge {
-            background: linear-gradient(45deg, #f59e0b, #f97316);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-left: 10px;
-        }
-        
-        .quote-box {
-            background: linear-gradient(135deg, #fef3c7, #fed7aa);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #f59e0b;
-            font-style: italic;
-            font-size: 1.1rem;
-            position: relative;
-        }
-        
-        
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .stat-card {
-            background: linear-gradient(135deg, #ec4899, #f97316);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
+
+        h1 {
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            font-size: 2.5em;
             font-weight: 700;
-            margin-bottom: 10px;
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
-        
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
+
+        .document-viewer-wrapper {
+            position: relative; /* Para posicionar a lupa dentro */
+            width: 100%;
+            min-height: 550px;
+            height: 75vh;
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 8px 20px var(--shadow-light);
+            overflow: hidden; /* Garante que a lupa não vaze */
+            cursor: zoom-in; /* Indica que é clicável para zoom */
         }
-        
-        .practice-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
+
+        .document-viewer {
+            width: 100%;
+            height: 100%;
+            border: none; /* A borda será no wrapper */
         }
-        
-        .practice-card {
-            background: linear-gradient(135deg, #ec4899, #f97316);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .practice-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .practice-card-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .practice-card-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .practice-card-desc {
-            font-size: 1rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-        
-        .warning-box {
-            background: linear-gradient(135deg, #f59e0b, #f97316);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .warning-box::before {
-            content: "⚠️";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .success-box {
-            background: linear-gradient(135deg, #10b981, #059669);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .success-box::before {
-            content: "🌟";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .timeline {
-            position: relative;
-            margin: 30px 0;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, #ec4899, #f97316);
-            border-radius: 2px;
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin: 30px 0;
-            padding-left: 80px;
-        }
-        
-        .timeline-marker {
-            position: absolute;
-            left: 15px;
-            top: 0;
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(45deg, #ec4899, #f97316);
-            border-radius: 50%;
+
+        .actions {
             display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        button, .button-link {
+            padding: 14px 30px;
+            font-size: 1.1em;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            min-width: 180px;
+        }
+
+        button:hover, .button-link:hover {
+            background-color: #4452D3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        button:active, .button-link:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            margin-top: 25px;
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        p a {
+            color: #007bff;
+            text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
         }
-        
-        .timeline-content {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-left: 4px solid #ec4899;
+        p a:hover {
+            text-decoration: underline;
+            color: #0056b3;
         }
-        
-        .timeline-phase {
-            color: #ec4899;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-        
-        .timeline-title {
-            color: #1e293b;
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        
-        .timeline-desc {
-            color: #64748b;
-            line-height: 1.6;
-        }
-        
-        .pillar-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .pillar-item {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-top: 3px solid #ec4899;
-        }
-        
-        .pillar-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #ec4899;
-        }
-        
-        .pillar-label {
-            font-size: 0.9rem;
-            color: #64748b;
-            font-weight: 500;
-        }
-        
-        .compassion-box {
-            background: linear-gradient(135deg, #1e40af, #3730a3);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .compassion-box::before {
-            content: "🤗";
+
+        /* --- Estilos da Lupa --- */
+        .magnifier-glass {
             position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
+            border: 3px solid var(--primary-color);
             border-radius: 50%;
-        }
-        
-        .myth-box {
-            background: linear-gradient(135deg, #7c2d12, #991b1b);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            color: white;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .myth-box::before {
-            content: "❌";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .truth-box {
-            background: linear-gradient(135deg, #065f46, #047857);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            color: white;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .truth-box::before {
-            content: "✅";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .exercise-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .exercise-card {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .exercise-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .exercise-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .exercise-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .exercise-desc {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            line-height: 1.4;
-        }
-        
-        .barrier-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .barrier-card {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-top: 3px solid #f59e0b;
-            transition: transform 0.3s ease;
-        }
-        
-        .barrier-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .barrier-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #f59e0b;
-        }
-        
-        .barrier-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #1e293b;
-        }
-        
-        .barrier-desc {
-            font-size: 0.9rem;
-            color: #64748b;
-            line-height: 1.4;
-        }
-        
-        .tip-box {
-            background: #1e293b;
-            color: #e2e8f0;
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            overflow-x: auto;
-            position: relative;
-        }
-        
-        .tip-box::before {
-            content: "💡";
-            position: absolute;
-            top: -10px;
-            right: 15px;
-            background: #ec4899;
-            color: white;
-            padding: 5px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-        }
-        
-        .support-resources {
-            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #10b981;
-        }
-        
-        .support-title {
-            color: #065f46;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: flex;
+            cursor: zoom-out;
+            width: 150px; /* Tamanho da lupa */
+            height: 150px;
+            transform: translate(-50%, -50%); /* Centraliza a lupa no clique */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden; /* Garante que o conteúdo dentro não transborde */
+            pointer-events: none; /* Permite interagir com o iframe por baixo, mas a lupa ainda bloqueia o clique nela */
+            z-index: 10; /* Garante que a lupa fique acima do iframe */
+            background-color: rgba(255, 255, 255, 0.1); /* Um leve fundo translúcido */
+            display: flex; /* Para centralizar o conteúdo dentro */
             align-items: center;
+            justify-content: center;
         }
-        
-        .support-title::before {
-            content: "🤝";
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .transformation-box {
-            background: linear-gradient(135deg, #7c3aed, #a855f7);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .transformation-box::before {
-            content: "🦋";
+
+        .magnifier-content {
             position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
+            width: 200%; /* Exemplo de zoom: 2x */
+            height: 200%; /* Exemplo de zoom: 2x */
+            transform-origin: 0 0; /* Ponto de origem da transformação */
+            /* Isso será ajustado via JS */
         }
         
-        .journey-box {
-            background: linear-gradient(135deg, #0891b2, #0e7490);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .journey-box::before {
-            content: "🛤️";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        @media (max-width: 768px) {
-            .page {
-                padding: 30px 20px;
+        /* --- Media Queries para Responsividade --- */
+        @media (max-width: 992px) {
+            .container {
+                max-width: 95%;
+                padding: 30px;
             }
-            
             h1 {
-                font-size: 2.2rem;
+                font-size: 2.2em;
             }
-            
-            h2 {
-                font-size: 1.8rem;
+            .document-viewer-wrapper {
+                min-height: 500px;
+                height: 70vh;
             }
-            
-            .heart-icon {
-                width: 100px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 15px;
+            }
+            .container {
+                padding: 25px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 1.9em;
+                margin-bottom: 25px;
+            }
+            .document-viewer-wrapper {
+                min-height: 450px;
+                height: 65vh;
+                margin-bottom: 25px;
+            }
+            button, .button-link {
+                padding: 12px 25px;
+                font-size: 1em;
+                min-width: unset;
+                flex-grow: 1;
+            }
+            .actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            p {
+                font-size: 0.95em;
+                margin-top: 20px;
+            }
+            .magnifier-glass {
+                width: 120px; /* Lupa menor em telas menores */
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+            .container {
+                padding: 20px;
+                border-radius: 8px;
+            }
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 20px;
+            }
+            .document-viewer-wrapper {
+                min-height: 400px;
+                height: 60vh;
+            }
+            button, .button-link {
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+            .magnifier-glass {
+                width: 100px; /* Lupa ainda menor em telas muito pequenas */
                 height: 100px;
-                font-size: 3.5rem;
-            }
-            
-            .acceptance-circle {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .practice-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline-item {
-                padding-left: 60px;
-            }
-            
-            .timeline::before {
-                left: 20px;
-            }
-            
-            .timeline-marker {
-                left: 5px;
-            }
-            
-            .exercise-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .barrier-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
         }
     </style>
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
-    <div class="page-counter" id="pageCounter">1 / 15</div>
-    
-    <div class="ebook-container">
-        <!-- Página 1: Capa -->
-        <div class="page active">
-            <div class="page-header">
-                <div class="page-number">1</div>
-                <div class="chapter-badge">CAPA</div>
-            </div>
-            <h1>💖 AUTOACEITAÇÃO 🌟</h1>
-            <div class="heart-icon interactive-element">💝</div>
-            <h2>A Jornada para o Amor-Próprio Genuíno</h2>
-            
-            <div class="love-box">
-                <h3>💖 Transforme sua Relação Consigo Mesmo</h3>
-                <p style="text-align: center; font-size: 1.4rem; color: white;"><strong>Um guia completo para desenvolver uma relação amorosa, compassiva e autêntica consigo mesmo. Descubra como abraçar suas imperfeições, celebrar suas qualidades e construir uma base sólida de autoestima e bem-estar emocional</strong></p>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">85%</div>
-                    <div class="stat-label">Melhora na Autoestima</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">92%</div>
-                    <div class="stat-label">Redução da Ansiedade</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">78%</div>
-                    <div class="stat-label">Maior Felicidade</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">90%</div>
-                    <div class="stat-label">Relacionamentos Melhores</div>
-                </div>
-            </div>
-            
-            <div class="level-badge">🎯 Nível: Transformação Pessoal</div>
-            <div class="intensity-badge">💪 Intensidade: Profunda e Duradoura</div>
-            
-            <div class="quote-box">
-                "A autoaceitação não significa resignação ou conformismo. Significa reconhecer e abraçar quem você é neste momento, enquanto permanece aberto ao crescimento e à mudança. É o primeiro passo para uma vida autêntica e plena" - Carl Rogers, Psicólogo Humanista
-            </div>
-            
-            <div class="love-box">
-                <h3>💖 Pilares da Autoaceitação:</h3>
-                <ul style="color: white;">
-                    <li><strong>🌟 Autoconhecimento:</strong> Compreender suas emoções, pensamentos e padrões</li>
-                    <li><strong>🤗 Autocompaixão:</strong> Tratar-se com gentileza e compreensão</li>
-                    <li><strong>🎯 Autenticidade:</strong> Viver de acordo com seus valores verdadeiros</li>
-                    <li><strong>🌱 Crescimento:</strong> Abraçar a jornada de desenvolvimento pessoal</li>
-                    <li><strong>💝 Amor-próprio:</strong> Cultivar uma relação amorosa consigo mesmo</li>
-                    <li><strong>🌈 Perdão:</strong> Liberar-se da culpa e do julgamento interno</li>
-                    <li><strong>✨ Gratidão:</strong> Reconhecer e valorizar suas qualidades únicas</li>
-                    <li><strong>🦋 Transformação:</strong> Permitir-se evoluir e mudar naturalmente</li>
-                </ul>
-            </div>
-            
-            <div class="growth-box">
-                <h3>🌱 Benefícios da Autoaceitação:</h3>
-                <ul style="color: white;">
-                    <li><strong>😊 Bem-estar Emocional:</strong> Maior estabilidade e paz interior</li>
-                    <li><strong>💪 Autoestima Saudável:</strong> Confiança genuína e duradoura</li>
-                    <li><strong>🤝 Relacionamentos Melhores:</strong> Conexões mais autênticas e profundas</li>
-                    <li><strong>🎯 Clareza de Propósito:</strong> Alinhamento com valores e objetivos</li>
-                    <li><strong>🌟 Resiliência:</strong> Capacidade de superar desafios com graça</li>
-                    <li><strong>🎨 Criatividade:</strong> Liberdade para expressar-se autenticamente</li>
-                    <li><strong>⚡ Energia Vital:</strong> Menos desgaste com autocrítica destrutiva</li>
-                    <li><strong>🌈 Felicidade Genuína:</strong> Alegria que vem de dentro para fora</li>
-                </ul>
-            </div>
-            
-            <div class="mindfulness-box">
-                <h3>🧘 Práticas de Autoaceitação:</h3>
-                <ul style="color: white;">
-                    <li><strong>🪞 Autoobservação:</strong> Mindfulness e consciência do momento presente</li>
-                    <li><strong>📝 Diário Reflexivo:</strong> Escrita terapêutica e autoexploração</li>
-                    <li><strong>🤗 Abraço Interior:</strong> Técnicas de autocompaixão e gentileza</li>
-                    <li><strong>🌟 Afirmações Positivas:</strong> Reprogramação de crenças limitantes</li>
-                    <li><strong>🎨 Expressão Criativa:</strong> Arte, música e outras formas de expressão</li>
-                    <li><strong>🧘 Meditação:</strong> Cultivo da paz interior e aceitação</li>
-                    <li><strong>🌱 Rituais de Cuidado:</strong> Práticas de autocuidado e amor-próprio</li>
-                    <li><strong>💬 Diálogo Interior Positivo:</strong> Transformação da voz interna crítica</li>
-                </ul>
-            </div>
-            
-            <div class="healing-box">
-                <h3>🌈 Processo de Cura e Transformação:</h3>
-                <ul style="color: white;">
-                    <li><strong>🔍 Reconhecimento:</strong> Identificar padrões de autocrítica e rejeição</li>
-                    <li><strong>💔 Cura de Feridas:</strong> Trabalhar traumas e experiências dolorosas</li>
-                    <li><strong>🤗 Abraçar Imperfeições:</strong> Aceitar aspectos "imperfeitos" como humanos</li>
-                    <li><strong>🌟 Celebrar Qualidades:</strong> Reconhecer e valorizar pontos fortes</li>
-                    <li><strong>🦋 Integração:</strong> Unificar todos os aspectos de si mesmo</li>
-                    <li><strong>🌱 Crescimento Contínuo:</strong> Manter abertura para evolução</li>
-                    <li><strong>💝 Amor Incondicional:</strong> Desenvolver amor-próprio genuíno</li>
-                    <li><strong>🌈 Vida Autêntica:</strong> Viver alinhado com sua verdade interior</li>
-                </ul>
-            </div>
-            
-            <div class="wisdom-box">
-                <h3>✨ Sabedorias da Autoaceitação:</h3>
-                <ul style="color: white;">
-                    <li><strong>🌟 Você é Suficiente:</strong> Sua existência tem valor intrínseco</li>
-                    <li><strong>🌱 Imperfeição é Humana:</strong> Falhas fazem parte da experiência humana</li>
-                    <li><strong>💝 Amor-próprio é Escolha:</strong> Decisão consciente de se tratar bem</li>
-                    <li><strong>🦋 Mudança é Natural:</strong> Crescimento faz parte da vida</li>
-                    <li><strong>🌈 Unicidade é Dádiva:</strong> Suas diferenças são seus presentes</li>
-                    <li><strong>🤗 Compaixão Cura:</strong> Gentileza consigo mesmo transforma</li>
-                    <li><strong>✨ Presente é Poder:</strong> Aceitação acontece no agora</li>
-                    <li><strong>💖 Amor Multiplica:</strong> Amor-próprio gera amor pelos outros</li>
-                </ul>
-            </div>
-            
-            <div class="compassion-box">
-                <h3>🤗 Autocompaixão vs. Autocrítica:</h3>
-                <ul style="color: white;">
-                    <li><strong>💝 Gentileza vs. Dureza:</strong> Tratar-se como trataria um amigo querido</li>
-                    <li><strong>🌍 Humanidade vs. Isolamento:</strong> Reconhecer que todos sofrem e falham</li>
-                    <li><strong>🧘 Mindfulness vs. Identificação:</strong> Observar sem se fundir com pensamentos</li>
-                    <li><strong>🌱 Crescimento vs. Paralisia:</strong> Aprender com erros sem se punir</li>
-                    <li><strong>🌟 Motivação Saudável:</strong> Inspiração ao invés de coerção interna</li>
-                    <li><strong>💪 Resiliência:</strong> Recuperação mais rápida de dificuldades</li>
-                    <li><strong>😊 Bem-estar:</strong> Maior satisfação e paz interior</li>
-                    <li><strong>🤝 Relacionamentos:</strong> Conexões mais profundas e autênticas</li>
-                </ul>
-            </div>
-            
-            <div class="transformation-box">
-                <h3>🦋 Sinais de Autoaceitação Crescente:</h3>
-                <ul style="color: white;">
-                    <li><strong>😌 Paz Interior:</strong> Menos conflito interno e mais serenidade</li>
-                    <li><strong>🎯 Autenticidade:</strong> Agir de acordo com valores verdadeiros</li>
-                    <li><strong>💪 Confiança:</strong> Segurança em suas capacidades e decisões</li>
-                    <li><strong>🌟 Autoestima Estável:</strong> Valor próprio não dependente de aprovação externa</li>
-                    <li><strong>🤗 Compaixão:</strong> Gentileza consigo mesmo em momentos difíceis</li>
-                    <li><strong>🌱 Abertura ao Crescimento:</strong> Disposição para aprender e evoluir</li>
-                    <li><strong>🎨 Expressão Livre:</strong> Coragem para ser genuinamente você</li>
-                    <li><strong>💝 Amor-próprio:</strong> Cuidado e carinho genuíno consigo mesmo</li>
-                </ul>
-            </div>
-            
-            <div class="journey-box">
-                <h3>🛤️ Jornada da Autoaceitação:</h3>
-                <ul style="color: white;">
-                    <li><strong>🌅 Despertar:</strong> Reconhecer a necessidade de mudança</li>
-                    <li><strong>🔍 Exploração:</strong> Investigar padrões e crenças limitantes</li>
-                    <li><strong>💔 Cura:</strong> Trabalhar feridas emocionais e traumas</li>
-                    <li><strong>🤗 Aceitação:</strong> Abraçar todos os aspectos de si mesmo</li>
-                    <li><strong>🌱 Crescimento:</strong> Desenvolver novas formas de se relacionar consigo</li>
-                    <li><strong>🦋 Transformação:</strong> Integrar mudanças na vida cotidiana</li>
-                    <li><strong>🌟 Florescimento:</strong> Viver com autenticidade e plenitude</li>
-                    <li><strong>💖 Irradiação:</strong> Compartilhar amor e aceitação com outros</li>
-                </ul>
-            </div>
-            
-            <div class="warning-box">
-                <h3>⚠️ Armadilhas Comuns na Jornada:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎭 Falsa Aceitação:</strong> Conformismo disfarçado de aceitação</li>
-                    <li><strong>⏰ Pressa Excessiva:</strong> Querer resultados imediatos</li>
-                    <li><strong>🔄 Perfeccionismo:</strong> Buscar aceitar-se "perfeitamente"</li>
-                    <li><strong>📱 Comparação:</strong> Medir-se pelos padrões dos outros</li>
-                    <li><strong>🎪 Performance:</strong> Fingir aceitação para impressionar</li>
-                    <li><strong>🚫 Negação:</strong> Evitar aspectos difíceis de aceitar</li>
-                    <li><strong>💔 Autocompaixão Excessiva:</strong> Usar como desculpa para não crescer</li>
-                    <li><strong>🌊 Flutuações:</strong> Esperar progresso linear constante</li>
-                </ul>
-            </div>
-            
-            <div class="success-box">
-                <h3>🌟 Histórias de Transformação:</h3>
-                <p style="color: white;">Milhares de pessoas ao redor do mundo descobriram o poder transformador da autoaceitação. Indivíduos que lutavam com baixa autoestima encontraram paz interior, pessoas presas em padrões de autocrítica desenvolveram compaixão genuína, e muitos que se sentiam inadequados descobriram sua própria beleza única. A autoaceitação não é apenas um conceito - é uma prática que revoluciona vidas!</p>
-            </div>
-            
-            <p style="text-align: center; margin-top: 30px; font-size: 1.1rem; color: #64748b;">
-                <em>Baseado em pesquisas de psicologia positiva, terapia de aceitação e compromisso, e sabedorias milenares sobre amor-próprio e crescimento pessoal 💖🌟🦋</em>
-            </p>
+
+    <div class="container">
+        <h1>Desvendando o Autismo: Primeiros Sinais e Intervenção Precoce</h1>
+        
+        <div class="document-viewer-wrapper" id="pdfViewerWrapper">
+            <iframe 
+                src="Autoaceitação - infantil.jpg" 
+                class="document-viewer" 
+                id="pdfViewer"
+                type="application/pdf"
+                aria-label="Visualizador do documento PDF sobre Autismo">
+                <p>Seu navegador não suporta a visualização de PDFs diretamente. Você pode <a href="Meu-Jeito-de-Ser-Celebre-Quem-Voce-E.pdf" target="_blank" rel="noopener noreferrer">clicar aqui para baixar o documento</a> e visualizá-lo em um leitor de PDF.</p>
+            </iframe>
         </div>
 
-        <!-- Página 2: Índice -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">2</div>
-                <div class="chapter-badge">ÍNDICE</div>
-            </div>
-            <h2>🗺️ Sua Jornada de Autoaceitação</h2>
-            <div class="story-illustration">💝➡️🌱➡️🦋➡️🌟</div>
-            
-            <div class="love-box">
-                <h3>💖 Roteiro Completo para o Amor-Próprio:</h3>
-                <ol class="steps-list">
-                    <li><strong>Fundamentos da Autoaceitação</strong> - O que é e por que é essencial</li>
-                    <li><strong>Autoconhecimento Profundo</strong> - Descobrindo quem você realmente é</li>
-                    <li><strong>Superando a Autocrítica</strong> - Transformando a voz interior negativa</li>
-                    <li><strong>Desenvolvendo Autocompaixão</strong> - Gentileza e cuidado consigo mesmo</li>
-                    <li><strong>Abraçando Imperfeições</strong> - Encontrando beleza na humanidade</li>
-                    <li><strong>Curando Feridas Emocionais</strong> - Trabalhando traumas e dores do passado</li>
-                    <li><strong>Construindo Autoestima Saudável</strong> - Confiança genuína e duradoura</li>
-                    <li><strong>Vivendo com Autenticidade</strong> - Alinhamento com valores verdadeiros</li>
-                    <li><strong>Práticas Diárias de Amor-Próprio</strong> - Rituais e exercícios transformadores</li>
-                    <li><strong>Relacionamentos e Autoaceitação</strong> - Como isso impacta suas conexões</li>
-                    <li><strong>Superando Obstáculos</strong> - Lidando com recaídas e desafios</li>
-                    <li><strong>Mantendo o Progresso</strong> - Sustentando a transformação a longo prazo</li>
-                    <li><strong>Casos Reais de Transformação</strong> - Histórias inspiradoras de mudança</li>
-                    <li><strong>Recursos e Próximos Passos</strong> - Ferramentas para continuar crescendo</li>
-                </ol>
-            </div>
-            
-            <div class="growth-box">
-                <h3>🌱 Abordagem Holística e Compassiva:</h3>
-                <p style="color: white;">Este guia integra sabedorias da psicologia humanista, terapia de aceitação e compromisso, mindfulness, e tradições contemplativas para oferecer uma abordagem completa e compassiva para a autoaceitação. Combinamos ciência moderna com sabedoria ancestral para sua transformação!</p>
-            </div>
-            
-            <div class="self-love-demo">
-                <h3>💝 Círculo da Autoaceitação</h3>
-                <div class="acceptance-circle interactive-element">
-                    Eu me aceito completamente como sou
-                </div>
-                <p><strong>Explore o poder da aceitação! ⬆️</strong></p>
-            </div>
-            
-            <div class="mindfulness-box">
-                <h3>🧘 Por que a Autoaceitação é Transformadora:</h3>
-                <ul style="color: white;">
-                    <li><strong>🧠 Base Neurológica:</strong> Muda literalmente a estrutura do cérebro</li>
-                    <li><strong>💖 Cura Emocional:</strong> Resolve feridas profundas do passado</li>
-                    <li><strong>🌟 Liberdade Autêntica:</strong> Permite ser genuinamente você</li>
-                    <li><strong>💪 Resiliência Natural:</strong> Fortalece capacidade de superar desafios</li>
-                    <li><strong>🤝 Relacionamentos Saudáveis:</strong> Melhora todas as suas conexões</li>
-                    <li><strong>🎯 Clareza de Propósito:</strong> Alinha com sua missão de vida</li>
-                </ul>
-            </div>
-            
-            <div class="practice-grid">
-                <div class="practice-card">
-                    <div class="practice-card-icon">🪞</div>
-                    <div class="practice-card-title">Autoobservação Compassiva</div>
-                    <div class="practice-card-desc">Desenvolver consciência gentil de pensamentos, emoções e padrões sem julgamento</div>
-                </div>
-                <div class="practice-card">
-                    <div class="practice-card-icon">🤗</div>
-                    <div class="practice-card-title">Abraço Interior</div>
-                    <div class="practice-card-desc">Técnicas para oferecer conforto e apoio emocional a si mesmo</div>
-                </div>
-                <div class="practice-card">
-                    <div class="practice-card-icon">📝</div>
-                    <div class="practice-card-title">Diário de Gratidão</div>
-                    <div class="practice-card-desc">Reconhecer e celebrar qualidades, conquistas e momentos especiais</div>
-                </div>
-                <div class="practice-card">
-                    <div class="practice-card-icon">🌟</div>
-                    <div class="practice-card-title">Afirmações Autênticas</div>
-                    <div class="practice-card-desc">Criar e praticar afirmações genuínas baseadas em sua verdade interior</div>
-                </div>
-            </div>
-            
-            <div class="healing-box">
-                <h3>🌈 Componentes Essenciais da Autoaceitação:</h3>
-                <ul style="color: white;">
-                    <li><strong>🔍 Consciência:</strong> Perceber padrões e crenças limitantes</li>
-                    <li><strong>🤗 Compaixão:</strong> Tratar-se com gentileza e compreensão</li>
-                    <li><strong>💝 Amor-próprio:</strong> Cultivar carinho genuíno por si mesmo</li>
-                    <li><strong>🌟 Valorização:</strong> Reconhecer qualidades e conquistas únicas</li>
-                    <li><strong>🦋 Perdão:</strong> Liberar culpa e ressentimento interno</li>
-                    <li><strong>🌱 Crescimento:</strong> Abraçar a jornada de desenvolvimento</li>
-                    <li><strong>🎯 Autenticidade:</strong> Viver alinhado com valores verdadeiros</li>
-                    <li><strong>🌈 Integração:</strong> Unificar todos os aspectos de si mesmo</li>
-                </ul>
-            </div>
-            
-            <div class="pillar-grid">
-                <div class="pillar-item">
-                    <div class="pillar-icon">💖</div>
-                    <div class="pillar-label"><strong>Amor-Próprio</strong><br>Base de tudo</div>
-                </div>
-                <div class="pillar-item">
-                    <div class="pillar-icon">🤗</div>
-                    <div class="pillar-label"><strong>Compaixão</strong><br>Gentileza interior</div>
-                </div>
-                <div class="pillar-item">
-                    <div class="pillar-icon">🌟</div>
-                    <div class="pillar-label"><strong>Autenticidade</strong><br>Verdade pessoal</div>
-                </div>
-            </div>
-            
-            <div class="wisdom-box">
-                <h3>✨ Níveis de Autoaceitação:</h3>
-                <ul style="color: white;">
-                    <li><strong>🌱 Básica:</strong> Parar de se atacar constantemente</li>
-                    <li><strong>🌿 Intermediária:</strong> Desenvolver neutralidade compassiva</li>
-                    <li><strong>🌳 Avançada:</strong> Cultivar amor-próprio genuíno</li>
-                    <li><strong>🌟 Profunda:</strong> Abraçar completamente quem você é</li>
-                    <li><strong>💫 Radiante:</strong> Irradiar aceitação para outros</li>
-                    <li><strong>🌈 Transcendente:</strong> Unidade com sua essência verdadeira</li>
-                </ul>
-            </div>
-            
-            <div class="compassion-box">
-                <h3>🤗 Mitos vs. Verdades sobre Autoaceitação:</h3>
-                <ul style="color: white;">
-                    <li><strong>❌ Mito:</strong> Autoaceitação é conformismo ou preguiça</li>
-                    <li><strong>✅ Verdade:</strong> É base sólida para crescimento genuíno</li>
-                    <li><strong>❌ Mito:</strong> Significa aceitar comportamentos destrutivos</li>
-                    <li><strong>✅ Verdade:</strong> Distingue entre ser e comportamento</li>
-                    <li><strong>❌ Mito:</strong> É egoísmo ou narcisismo</li>
-                    <li><strong>✅ Verdade:</strong> Permite amar outros mais profundamente</li>
-                    <li><strong>❌ Mito:</strong> Acontece da noite para o dia</li>
-                    <li><strong>✅ Verdade:</strong> É processo gradual e contínuo</li>
-                </ul>
-            </div>
-            
-            <div class="transformation-box">
-                <h3>🦋 Áreas de Transformação:</h3>
-                <ul style="color: white;">
-                    <li><strong>🧠 Mental:</strong> Pensamentos mais gentis e realistas</li>
-                    <li><strong>💖 Emocional:</strong> Maior estabilidade e bem-estar</li>
-                    <li><strong>🤝 Social:</strong> Relacionamentos mais autênticos</li>
-                    <li><strong>💼 Profissional:</strong> Confiança e clareza de propósito</li>
-                    <li><strong>🎨 Criativa:</strong> Liberdade para expressar-se genuinamente</li>
-                    <li><strong>🏠 Familiar:</strong> Dinâmicas mais saudáveis e amorosas</li>
-                    <li><strong>🌟 Espiritual:</strong> Conexão com propósito maior</li>
-                    <li><strong>💪 Física:</strong> Cuidado amoroso com o corpo</li>
-                </ul>
-            </div>
-            
-            <div class="journey-box">
-                <h3>🛤️ Ferramentas de Transformação:</h3>
-                <ul style="color: white;">
-                    <li><strong>📝 Journaling:</strong> Escrita reflexiva e autoexploração</li>
-                    <li><strong>🧘 Meditação:</strong> Cultivo da presença e aceitação</li>
-                    <li><strong>🎨 Arte Terapia:</strong> Expressão criativa de emoções</li>
-                    <li><strong>🤗 Exercícios de Compaixão:</strong> Práticas de gentileza interior</li>
-                    <li><strong>🌟 Visualizações:</strong> Imagens mentais de cura e amor</li>
-                    <li><strong>💬 Diálogo Interior:</strong> Transformação da voz interna</li>
-                    <li><strong>🌱 Rituais de Cuidado:</strong> Práticas de autocuidado</li>
-                    <li><strong>📚 Educação Emocional:</strong> Compreensão de padrões psicológicos</li>
-                </ul>
-            </div>
-            
-            <div class="warning-box">
-                <h3>⚠️ Sinais de que Você Precisa de Mais Autoaceitação:</h3>
-                <ul style="color: white;">
-                    <li><strong>🔄 Autocrítica Constante:</strong> Voz interior sempre negativa</li>
-                    <li><strong>📱 Comparação Excessiva:</strong> Sempre se medindo pelos outros</li>
-                    <li><strong>🎭 Perfeccionismo Paralisante:</strong> Medo de não ser "bom o suficiente"</li>
-                    <li><strong>😰 Ansiedade Social:</strong> Medo constante de julgamento</li>
-                    <li><strong>💔 Relacionamentos Tóxicos:</strong> Aceitar tratamento inadequado</li>
-                    <li><strong>🚫 Evitação:</strong> Fugir de desafios por medo de falhar</li>
-                </ul>
-            </div>
-            
-            <div class="success-box">
-                <h3>🌟 Benefícios Comprovados da Autoaceitação:</h3>
-                <p style="color: white;">Pesquisas científicas demonstram que pessoas com maior autoaceitação apresentam níveis significativamente menores de ansiedade e depressão, relacionamentos mais satisfatórios, maior criatividade, melhor desempenho profissional e uma sensação geral de bem-estar e propósito de vida. A autoaceitação é literalmente a chave para uma vida mais plena!</p>
-            </div>
-            
-            <div class="support-resources">
-                <div class="support-title">Recursos de Apoio</div>
-                <p>Este guia oferece ferramentas práticas, exercícios transformadores, técnicas de autocompaixão e estratégias comprovadas para desenvolver uma relação amorosa consigo mesmo. Inclui meditações guiadas, journaling estruturado e práticas diárias de amor-próprio.</p>
-            </div>
-            
-            <div class="tip-box">
-                <h3>💡 Dica Fundamental:</h3>
-                <p>A autoaceitação não é um destino, mas uma jornada. Cada momento oferece uma nova oportunidade de escolher gentileza ao invés de crítica, compaixão ao invés de julgamento, e amor ao invés de rejeição. Seja paciente e gentil consigo mesmo neste processo.</p>
-            </div>
+        <div class="actions">
+            <a href="Meu-Jeito-de-Ser-Celebre-Quem-Voce-E.pdf" download class="button-link">
+                Baixar PDF
+            </a>
+            <a href="#" class="button-link" onclick="alert('Esta função exigiria a criação de um arquivo EPUB ou similar. Para demonstração, o botão de download do PDF é a melhor opção no momento.'); return false;">
+                Ver em Formato de Livro (E-book)
+            </a>
+            <button onclick="history.back()">Voltar</button>
         </div>
 
-        <!-- Página 3: Fundamentos da Autoaceitação -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">3</div>
-                <div class="chapter-badge">CAPÍTULO 1</div>
-            </div>
-            <h2>💖 Fundamentos da Autoaceitação</h2>
-            <div class="story-illustration">🌱➡️💝➡️🌟➡️🦋</div>
-            
-            <p>A autoaceitação é a base fundamental para uma vida plena e autêntica. É o ato consciente de abraçar todos os aspectos de si mesmo - suas qualidades, imperfeições, história, emoções e potencial - com compaixão e amor incondicional. Não se trata de resignação ou conformismo, mas sim de uma aceitação radical que se torna o solo fértil para o crescimento genuíno.</p>
-            
-            <div class="love-box">
-                <h3>💖 O que é Autoaceitação Verdadeira?</h3>
-                <p style="color: white;">A autoaceitação é um estado de consciência onde você reconhece e abraça sua humanidade completa sem condições. É a capacidade de olhar para si mesmo com os mesmos olhos compassivos que você usaria para olhar uma criança amada - vendo beleza na imperfeição, potencial na vulnerabilidade, e valor intrínseco na simples existência.</p>
-            </div>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">1</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Reconhecimento</div>
-                        <div class="timeline-title">Despertar da Consciência</div>
-                        <div class="timeline-desc">Perceber padrões de autocrítica e rejeição interna. Reconhecer que a voz interior crítica não é sua verdadeira identidade, mas um padrão aprendido que pode ser transformado.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">2</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Exploração</div>
-                        <div class="timeline-title">Investigação Compassiva</div>
-                        <div class="timeline-desc">Explorar as origens da autocrítica com curiosidade gentil. Compreender como experiências passadas moldaram sua relação consigo mesmo, sem culpa ou julgamento.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">3</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Aceitação</div>
-                        <div class="timeline-title">Abraço da Humanidade</div>
-                        <div class="timeline-desc">Começar a abraçar aspectos de si mesmo que antes rejeitava. Reconhecer que imperfeições são parte natural da experiência humana e não diminuem seu valor.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">4</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Integração</div>
-                        <div class="timeline-title">Unificação Interior</div>
-                        <div class="timeline-desc">Integrar todos os aspectos de si mesmo em uma identidade coesa e amorosa. Desenvolver uma relação interna baseada em compaixão e aceitação incondicional.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">5</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Transformação</div>
-                        <div class="timeline-title">Vida Autêntica</div>
-                        <div class="timeline-desc">Viver a partir de um lugar de autoaceitação genuína, fazendo escolhas alinhadas com valores verdadeiros e expressando-se autenticamente no mundo.</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="growth-box">
-                <h3>🌱 Os Três Pilares da Autoaceitação</h3>
-                
-                <h4 style="color: white;">1. 🤗 Autocompaixão:</h4>
-                <ul style="color: white;">
-                    <li><strong>Gentileza Interior:</strong> Tratar-se com a mesma bondade que ofereceria a um amigo</li>
-                    <li><strong>Humanidade Compartilhada:</strong> Reconhecer que sofrimento e imperfeição são universais</li>
-                    <li><strong>Mindfulness:</strong> Observar experiências difíceis sem se identificar completamente com elas</li>
-                    <li><strong>Perdão:</strong> Liberar-se da culpa e do julgamento interno destrutivo</li>
-                </ul>
-                
-                <h4 style="color: white;">2. 🌟 Autenticidade:</h4>
-                <ul style="color: white;">
-                    <li><strong>Valores Verdadeiros:</strong> Viver alinhado com o que realmente importa para você</li>
-                    <li><strong>Expressão Genuína:</strong> Mostrar-se ao mundo sem máscaras ou pretensões</li>
-                    <li><strong>Integridade:</strong> Coerência entre pensamentos, sentimentos e ações</li>
-                    <li><strong>Coragem:</strong> Ousadia para ser vulnerável e real</li>
-                </ul>
-                
-                <h4 style="color: white;">3. 💝 Amor-Próprio:</h4>
-                <ul style="color: white;">
-                    <li><strong>Cuidado Pessoal:</strong> Atender suas necessidades físicas, emocionais e espirituais</li>
-                    <li><strong>Limites Saudáveis:</strong> Proteger sua energia e bem-estar</li>
-                    <li><strong>Celebração:</strong> Reconhecer e valorizar suas qualidades únicas</li>
-                    <li><strong>Crescimento:</strong> Investir em seu desenvolvimento e potencial</li>
-                </ul>
-            </div>
-            
-            <div class="mindfulness-box">
-                <h3>🧘 Diferenças Fundamentais</h3>
-                
-                <h4 style="color: white;">Autoaceitação vs. Autoestima:</h4>
-                <ul style="color: white;">
-                    <li><strong>🌟 Autoaceitação:</strong> Incondicional, baseada no ser</li>
-                    <li><strong>🏆 Autoestima:</strong> Condicional, baseada em conquistas</li>
-                    <li><strong>💝 Autoaceitação:</strong> Estável, não flutua com circunstâncias</li>
-                    <li><strong>📈 Autoestima:</strong> Variável, dependente de validação externa</li>
-                </ul>
-                
-                <h4 style="color: white;">Autoaceitação vs. Conformismo:</h4>
-                <ul style="color: white;">
-                    <li><strong>🌱 Autoaceitação:</strong> Abraça o presente, permite crescimento</li>
-                    <li><strong>😴 Conformismo:</strong> Resignação passiva, evita mudança</li>
-                    <li><strong>💪 Autoaceitação:</strong> Empodera e energiza</li>
-                    <li><strong>🛑 Conformismo:</strong> Paralisa e desanima</li>
-                </ul>
-            </div>
-            
-            <div class="healing-box">
-                <h3>🌈 Benefícios Científicos da Autoaceitação</h3>
-                
-                <h4 style="color: white;">🧠 Benefícios Neurológicos:</h4>
-                <ul style="color: white;">
-                    <li><strong>Redução do Cortisol:</strong> Menos hormônios do estresse</li>
-                    <li><strong>Ativação do Sistema Parassimpático:</strong> Estado de calma e restauração</li>
-                    <li><strong>Neuroplasticidade:</strong> Formação de novos padrões neurais positivos</li>
-                    <li><strong>Regulação Emocional:</strong> Melhor controle de emoções intensas</li>
-                </ul>
-                
-                <h4 style="color: white;">💖 Benefícios Emocionais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Redução da Ansiedade:</strong> Menos preocupação com julgamento</li>
-                    <li><strong>Diminuição da Depressão:</strong> Menos autocrítica destrutiva</li>
-                    <li><strong>Maior Resiliência:</strong> Recuperação mais rápida de adversidades</li>
-                    <li><strong>Bem-estar Geral:</strong> Sensação de paz e contentamento</li>
-                </ul>
-                
-                <h4 style="color: white;">🤝 Benefícios Sociais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Relacionamentos Mais Profundos:</strong> Conexões autênticas</li>
-                    <li><strong>Menos Conflitos:</strong> Redução de projeções e defensividade</li>
-                    <li><strong>Maior Empatia:</strong> Compaixão estendida aos outros</li>
-                    <li><strong>Liderança Natural:</strong> Inspirar outros através do exemplo</li>
-                </ul>
-            </div>
-            
-            <div class="wisdom-box">
-                <h3>✨ Obstáculos Comuns à Autoaceitação</h3>
-                
-                <h4 style="color: white;">🎭 Perfeccionismo:</h4>
-                <ul style="color: white;">
-                    <li><strong>Padrões Impossíveis:</strong> Expectativas irrealistas sobre si mesmo</li>
-                    <li><strong>Medo do Fracasso:</strong> Evitar riscos para proteger a imagem</li>
-                    <li><strong>Procrastinação:</strong> Paralisia por medo de não ser perfeito</li>
-                    <li><strong>Autocrítica Severa:</strong> Punição interna por "falhas"</li>
-                </ul>
-                
-                <h4 style="color: white;">📱 Comparação Social:</h4>
-                <ul style="color: white;">
-                    <li><strong>Redes Sociais:</strong> Comparação com versões editadas da vida dos outros</li>
-                    <li><strong>Competição Constante:</strong> Sempre medindo-se contra outros</li>
-                    <li><strong>Inveja:</strong> Ressentimento por conquistas alheias</li>
-                    <li><strong>Inadequação:</strong> Sensação de nunca ser "suficiente"</li>
-                </ul>
-                
-                <h4 style="color: white;">👨‍👩‍👧‍👦 Condicionamento Familiar:</h4>
-                <ul style="color: white;">
-                    <li><strong>Amor Condicional:</strong> Afeto baseado em desempenho</li>
-                    <li><strong>Críticas Constantes:</strong> Ambiente de julgamento e correção</li>
-                    <li><strong>Expectativas Irreais:</strong> Pressão para ser algo que não é</li>
-                    <li><strong>Mensagens Tóxicas:</strong> Crenças limitantes internalizadas</li>
-                </ul>
-            </div>
-            
-            <div class="compassion-box">
-                <h3>🤗 Desenvolvendo Autocompaixão</h3>
-                
-                <h4 style="color: white;">Exercício: A Mão no Coração</h4>
-                <ol style="color: white;">
-                    <li>Coloque a mão sobre o coração</li>
-                    <li>Sinta o calor e o movimento</li>
-                    <li>Respire profundamente</li>
-                    <li>Diga: "Este é um momento de sofrimento"</li>
-                    <li>Continue: "Sofrimento faz parte da vida"</li>
-                    <li>Conclua: "Que eu seja gentil comigo mesmo"</li>
-                </ol>
-                
-                <h4 style="color: white;">Frases de Autocompaixão:</h4>
-                <ul style="color: white;">
-                    <li><strong>"Que eu me trate com gentileza"</strong></li>
-                    <li><strong>"Que eu me perdoe por ser humano"</strong></li>
-                    <li><strong>"Que eu encontre paz em meio à imperfeição"</strong></li>
-                    <li><strong>"Que eu me ame incondicionalmente"</strong></li>
-                </ul>
-            </div>
-            
-            <div class="transformation-box">
-                <h3>🦋 Sinais de Autoaceitação Crescente</h3>
-                <ul style="color: white;">
-                    <li><strong>😌 Paz Interior:</strong> Menos conflito interno e mais serenidade</li>
-                    <li><strong>🎯 Decisões Autênticas:</strong> Escolhas baseadas em valores pessoais</li>
-                    <li><strong>💪 Confiança Genuína:</strong> Segurança que não depende de aprovação</li>
-                    <li><strong>🤗 Compaixão Natural:</strong> Gentileza automática consigo mesmo</li>
-                    <li><strong>🌟 Expressão Livre:</strong> Coragem para ser vulnerável e real</li>
-                    <li><strong>🌱 Abertura ao Crescimento:</strong> Disposição para aprender e evoluir</li>
-                    <li><strong>💝 Relacionamentos Saudáveis:</strong> Conexões baseadas em autenticidade</li>
-                    <li><strong>🎨 Criatividade Fluida:</strong> Expressão sem medo de julgamento</li>
-                </ul>
-            </div>
-   </div>  </div>  </div>
-
-   
-  
- <div class="navigation">
-        <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
-        <button id="nextBtn" class="nav-btn">Próximo</button>
+        <p>Este documento oferece informações cruciais sobre os primeiros sinais do autismo e a importância da intervenção precoce. Para ativar a lupa, clique em qualquer parte do documento acima. Para desativar, clique novamente na lupa ou em qualquer outro lugar.</p>
     </div>
 
-     <script>
-        
-    const pages = document.querySelectorAll('.page');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const progressBar = document.getElementById('progressBar');
-    const pageCounter = document.getElementById('pageCounter');
-    let currentPageIndex = 0;
+    <script>
+        const pdfViewerWrapper = document.getElementById('pdfViewerWrapper');
+        const pdfViewer = document.getElementById('pdfViewer');
+        let magnifierGlass = null; // Variável para armazenar a lupa
 
-    function showPage(index) {
-        pages.forEach((page, i) => {
-            if (i === index) {
-                page.classList.add('active');
-            } else {
-                page.classList.remove('active');
+        // Adiciona um ouvinte de eventos para cliques no wrapper do PDF
+        pdfViewerWrapper.addEventListener('click', function(e) {
+            // Se já existe uma lupa, remove-a
+            if (magnifierGlass) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                // Restaura o cursor padrão
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+                return; // Sai da função após remover
+            }
+
+            // Cria o elemento da lupa
+            magnifierGlass = document.createElement('div');
+            magnifierGlass.classList.add('magnifier-glass');
+
+            // Cria o conteúdo da lupa (uma cópia do iframe para simular o zoom)
+            const magnifierContent = pdfViewer.cloneNode(true);
+            magnifierContent.classList.remove('document-viewer'); // Remove estilos do iframe original
+            magnifierContent.style.position = 'absolute';
+            magnifierContent.style.top = '0';
+            magnifierContent.style.left = '0';
+            magnifierContent.style.width = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.height = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.pointerEvents = 'none'; // Impede interação com o iframe clonado na lupa
+
+            magnifierGlass.appendChild(magnifierContent);
+            pdfViewerWrapper.appendChild(magnifierGlass);
+
+            // Adiciona um evento de clique na lupa para removê-la
+            magnifierGlass.addEventListener('click', function(event) {
+                event.stopPropagation(); // Impede que o clique na lupa se propague para o wrapper
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+            });
+
+            // Calcula a posição do clique dentro do iframe
+            const rect = pdfViewerWrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left; // Coordenada X relativa ao wrapper
+            const y = e.clientY - rect.top;  // Coordenada Y relativa ao wrapper
+
+            // Posiciona a lupa no centro do clique
+            magnifierGlass.style.left = `${x}px`;
+            magnifierGlass.style.top = `${y}px`;
+
+            // Calcula o deslocamento do conteúdo dentro da lupa para simular o zoom na área clicada
+            // O conteúdo da lupa é 2x maior, então o ponto de origem deve ser metade da distância
+            // da borda para o clique.
+            const zoomLevel = 2; // O mesmo que as dimensões do magnifierContent
+            const contentX = -x * (zoomLevel - 1) + (magnifierGlass.offsetWidth / 2);
+            const contentY = -y * (zoomLevel - 1) + (magnifierGlass.offsetHeight / 2);
+
+            magnifierContent.style.transform = `translate(${contentX}px, ${contentY}px)`;
+
+            // Muda o cursor para indicar que a lupa está ativa
+            pdfViewerWrapper.style.cursor = 'zoom-out';
+        });
+
+        // Adiciona um ouvinte para cliques em qualquer lugar do documento
+        // Isso permite remover a lupa clicando fora dela (no body, por exemplo)
+        document.addEventListener('click', function(event) {
+            if (magnifierGlass && !pdfViewerWrapper.contains(event.target)) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
             }
         });
-        updateNavigationButtons();
-        updateProgressBar();
-        updatePageCounter();
-    }
-
-    function updateNavigationButtons() {
-        prevBtn.disabled = currentPageIndex === 0;
-        nextBtn.disabled = currentPageIndex === pages.length - 1;
-    }
-
-    function updateProgressBar() {
-        const progress = (currentPageIndex / (pages.length - 1)) * 100;
-        progressBar.style.width = `${progress}%`;
-    }
-
-    function updatePageCounter() {
-        pageCounter.textContent = `${currentPageIndex + 1} / ${pages.length}`;
-    }
-
-    prevBtn.addEventListener('click', () => {
-        if (currentPageIndex > 0) {
-            currentPageIndex--;
-            showPage(currentPageIndex);
-        }
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (currentPageIndex < pages.length - 1) {
-            currentPageIndex++;
-            showPage(currentPageIndex);
-        }
-    });
-
-    // Initialize the first page and navigation
-    showPage(currentPageIndex);
-</script>
-
-
-                
-
-
+    </script>
+</body>
+</html>

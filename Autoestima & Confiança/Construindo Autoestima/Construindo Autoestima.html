@@ -1,1605 +1,351 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Construindo Autoestima - Guia Completo</title>
+    <title>Desvendando o Autismo - Leitura Otimizada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap');
-        
-        * {
+        :root {
+            --primary-color: #5865F2; /* Azul vibrante */
+            --secondary-color: #4A56E2; /* Azul mais escuro para títulos */
+            --gradient-start: #667eea;
+            --gradient-end: #764ba2;
+            --text-light: #f0f0f0;
+            --text-dark: #333;
+            --bg-card: rgba(255, 255, 255, 0.98);
+            --shadow-light: rgba(0, 0, 0, 0.15);
+            --shadow-strong: rgba(0, 0, 0, 0.25);
+            --border-radius-lg: 12px;
+            --border-radius-md: 8px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--text-light);
+            text-align: center;
             box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            min-height: 100vh;
+            padding: 40px 20px; /* Padding geral para telas grandes */
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        
-        .ebook-container {
+
+        .container {
+            width: 100%;
             max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            border-radius: 25px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .page {
-            min-height: 100vh;
-            padding: 50px;
-            display: none;
-            position: relative;
-            background: linear-gradient(45deg, #f8fafc, #f1f5f9);
-        }
-        
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .page-header {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        
-        .page-number {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-weight: 600;
-            font-size: 20px;
-            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
-        }
-        
-        .chapter-badge {
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-        
-        h1 {
-            color: #1e293b;
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        h2 {
-            color: #4f46e5;
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            text-align: center;
-            font-weight: 700;
-        }
-        
-        h3 {
-            color: #7c3aed;
-            font-size: 1.6rem;
-            margin-bottom: 18px;
-            font-weight: 600;
-        }
-        
-        h4 {
-            color: #475569;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        
-        p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #475569;
-            margin-bottom: 22px;
-            text-align: justify;
-            font-weight: 400;
-        }
-        
-        .esteem-icon {
-            width: 140px;
-            height: 140px;
-            border-radius: 25px;
-            margin: 25px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            background: linear-gradient(45deg, #f59e0b, #f97316);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            animation: gentle-pulse 3s infinite;
-        }
-        
-        @keyframes gentle-pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
-            50% { transform: scale(1.05); box-shadow: 0 20px 40px rgba(245, 158, 11, 0.3); }
-        }
-        
-        .confidence-box {
-            background: linear-gradient(135deg, #f59e0b, #f97316);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #10b981;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-            color: white;
-        }
-        
-        .confidence-box::before {
-            content: "💪";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .growth-box {
-            background: linear-gradient(135deg, #10b981, #059669);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .growth-box::before {
-            content: "🌱";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .strength-box {
-            background: linear-gradient(135deg, #8b5cf6, #a855f7);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .strength-box::before {
-            content: "🏆";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .resilience-box {
-            background: linear-gradient(135deg, #06b6d4, #3b82f6);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #ef4444;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-            color: white;
-        }
-        
-        .resilience-box::before {
-            content: "🛡️";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .empowerment-box {
-            background: linear-gradient(135deg, #ec4899, #f97316);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .empowerment-box::before {
-            content: "⚡";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .navigation {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            z-index: 1000;
-        }
-        
-        .nav-btn {
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            border: none;
-            padding: 18px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Nunito', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        
-        .nav-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-        }
-        
-        .nav-btn:disabled {
-            background: #cbd5e0;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 6px;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            transition: width 0.5s ease;
-            z-index: 1001;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .page-counter {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.9);
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            color: #475569;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .source-box {
-            background: #f8fafc;
-            border: 3px dashed #cbd5e0;
-            padding: 25px;
-            border-radius: 20px;
-            margin-top: 35px;
-            font-size: 1rem;
-            color: #64748b;
-            position: relative;
-        }
-        
-        .source-box::before {
-            content: "📖";
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-        }
-        
-        .esteem-demo {
-            text-align: center;
+            background-color: var(--bg-card);
             padding: 40px;
-            background: linear-gradient(135deg, #fef3c7, #fed7aa);
-            border-radius: 25px;
-            margin: 25px 0;
-        }
-        
-        .value-circle {
-            width: 180px;
-            height: 180px;
-            border: 6px solid #f59e0b;
-            border-radius: 50%;
-            margin: 25px auto;
+            box-shadow: 0 15px 35px var(--shadow-strong);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: 30px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            color: #f59e0b;
-            font-weight: 600;
-            animation: gentle-rotate 15s infinite linear;
-            box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
-            position: relative;
+            color: var(--text-dark);
+            position: relative; /* Necessário para posicionar a lupa */
         }
-        
-        .value-circle::after {
-            content: '🌟';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 30px;
-            height: 30px;
-            background: #f97316;
-            border-radius: 50%;
-            animation: orbit 4s infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        @keyframes gentle-rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes orbit {
-            0%, 100% { transform: scale(1) translateY(0); }
-            50% { transform: scale(1.2) translateY(-5px); }
-        }
-        
-        .story-illustration {
-            text-align: center;
-            font-size: 4rem;
-            margin: 30px 0;
-            animation: gentle-float 4s ease-in-out infinite;
-        }
-        
-        @keyframes gentle-float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        ul, ol {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #475569;
-            margin-left: 25px;
-            font-weight: 400;
-        }
-        
-        li {
-            margin-bottom: 12px;
-            position: relative;
-        }
-        
-        .checklist {
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .checklist li::before {
-            content: "🌟";
-            margin-right: 10px;
-        }
-        
-        .warning-checklist {
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .warning-checklist li::before {
-            content: "⚠️";
-            margin-right: 10px;
-        }
-        
-        .steps-list {
-            counter-reset: step-counter;
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .steps-list li {
-            counter-increment: step-counter;
-            position: relative;
-            padding-left: 40px;
-        }
-        
-        .steps-list li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: #f59e0b;
-            color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        
-        .interactive-element {
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        
-        .interactive-element:hover {
-            transform: scale(1.05);
-        }
-        
-        .level-badge {
-            background: linear-gradient(45deg, #7c3aed, #a855f7);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-        
-        .intensity-badge {
-            background: linear-gradient(45deg, #f59e0b, #f97316);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-left: 10px;
-        }
-        
-        .quote-box {
-            background: linear-gradient(135deg, #fef3c7, #fed7aa);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #f59e0b;
-            font-style: italic;
-            font-size: 1.1rem;
-            position: relative;
-        }
-        
-       
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .stat-card {
-            background: linear-gradient(135deg, #f59e0b, #f97316);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
+
+        h1 {
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            font-size: 2.5em;
             font-weight: 700;
-            margin-bottom: 10px;
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
-        
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
+
+        .document-viewer-wrapper {
+            position: relative; /* Para posicionar a lupa dentro */
+            width: 100%;
+            min-height: 550px;
+            height: 75vh;
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 8px 20px var(--shadow-light);
+            overflow: hidden; /* Garante que a lupa não vaze */
+            cursor: zoom-in; /* Indica que é clicável para zoom */
         }
-        
-        .pillar-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
+
+        .document-viewer {
+            width: 100%;
+            height: 100%;
+            border: none; /* A borda será no wrapper */
         }
-        
-        .pillar-card {
-            background: linear-gradient(135deg, #f59e0b, #f97316);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .pillar-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .pillar-card-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .pillar-card-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .pillar-card-desc {
-            font-size: 1rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-        
-        .warning-box {
-            background: linear-gradient(135deg, #f59e0b, #f97316);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .warning-box::before {
-            content: "⚠️";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .success-box {
-            background: linear-gradient(135deg, #10b981, #059669);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .success-box::before {
-            content: "🌟";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .timeline {
-            position: relative;
-            margin: 30px 0;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, #f59e0b, #f97316);
-            border-radius: 2px;
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin: 30px 0;
-            padding-left: 80px;
-        }
-        
-        .timeline-marker {
-            position: absolute;
-            left: 15px;
-            top: 0;
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(45deg, #f59e0b, #f97316);
-            border-radius: 50%;
+
+        .actions {
             display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        button, .button-link {
+            padding: 14px 30px;
+            font-size: 1.1em;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            min-width: 180px;
+        }
+
+        button:hover, .button-link:hover {
+            background-color: #4452D3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        button:active, .button-link:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            margin-top: 25px;
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        p a {
+            color: #007bff;
+            text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
         }
-        
-        .timeline-content {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-left: 4px solid #f59e0b;
+        p a:hover {
+            text-decoration: underline;
+            color: #0056b3;
         }
-        
-        .timeline-phase {
-            color: #f59e0b;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-        
-        .timeline-title {
-            color: #1e293b;
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        
-        .timeline-desc {
-            color: #64748b;
-            line-height: 1.6;
-        }
-        
-        .foundation-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .foundation-item {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-top: 3px solid #f59e0b;
-        }
-        
-        .foundation-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #f59e0b;
-        }
-        
-        .foundation-label {
-            font-size: 0.9rem;
-            color: #64748b;
-            font-weight: 500;
-        }
-        
-        .mindset-box {
-            background: linear-gradient(135deg, #1e40af, #3730a3);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .mindset-box::before {
-            content: "🧠";
+
+        /* --- Estilos da Lupa --- */
+        .magnifier-glass {
             position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
+            border: 3px solid var(--primary-color);
             border-radius: 50%;
-        }
-        
-        .myth-box {
-            background: linear-gradient(135deg, #7c2d12, #991b1b);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            color: white;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .myth-box::before {
-            content: "❌";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .truth-box {
-            background: linear-gradient(135deg, #065f46, #047857);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            color: white;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .truth-box::before {
-            content: "✅";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .exercise-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .exercise-card {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .exercise-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .exercise-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .exercise-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .exercise-desc {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            line-height: 1.4;
-        }
-        
-        .challenge-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .challenge-card {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-top: 3px solid #f59e0b;
-            transition: transform 0.3s ease;
-        }
-        
-        .challenge-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .challenge-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #f59e0b;
-        }
-        
-        .challenge-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #1e293b;
-        }
-        
-        .challenge-desc {
-            font-size: 0.9rem;
-            color: #64748b;
-            line-height: 1.4;
-        }
-        
-        .tip-box {
-            background: #1e293b;
-            color: #e2e8f0;
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            overflow-x: auto;
-            position: relative;
-        }
-        
-        .tip-box::before {
-            content: "💡";
-            position: absolute;
-            top: -10px;
-            right: 15px;
-            background: #f59e0b;
-            color: white;
-            padding: 5px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-        }
-        
-        .support-resources {
-            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #10b981;
-        }
-        
-        .support-title {
-            color: #065f46;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: flex;
+            cursor: zoom-out;
+            width: 150px; /* Tamanho da lupa */
+            height: 150px;
+            transform: translate(-50%, -50%); /* Centraliza a lupa no clique */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden; /* Garante que o conteúdo dentro não transborde */
+            pointer-events: none; /* Permite interagir com o iframe por baixo, mas a lupa ainda bloqueia o clique nela */
+            z-index: 10; /* Garante que a lupa fique acima do iframe */
+            background-color: rgba(255, 255, 255, 0.1); /* Um leve fundo translúcido */
+            display: flex; /* Para centralizar o conteúdo dentro */
             align-items: center;
+            justify-content: center;
         }
-        
-        .support-title::before {
-            content: "🤝";
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .transformation-box {
-            background: linear-gradient(135deg, #7c3aed, #a855f7);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .transformation-box::before {
-            content: "🦋";
+
+        .magnifier-content {
             position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
+            width: 200%; /* Exemplo de zoom: 2x */
+            height: 200%; /* Exemplo de zoom: 2x */
+            transform-origin: 0 0; /* Ponto de origem da transformação */
+            /* Isso será ajustado via JS */
         }
         
-        .journey-box {
-            background: linear-gradient(135deg, #0891b2, #0e7490);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .journey-box::before {
-            content: "🛤️";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        @media (max-width: 768px) {
-            .page {
-                padding: 30px 20px;
+        /* --- Media Queries para Responsividade --- */
+        @media (max-width: 992px) {
+            .container {
+                max-width: 95%;
+                padding: 30px;
             }
-            
             h1 {
-                font-size: 2.2rem;
+                font-size: 2.2em;
             }
-            
-            h2 {
-                font-size: 1.8rem;
+            .document-viewer-wrapper {
+                min-height: 500px;
+                height: 70vh;
             }
-            
-            .esteem-icon {
-                width: 100px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 15px;
+            }
+            .container {
+                padding: 25px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 1.9em;
+                margin-bottom: 25px;
+            }
+            .document-viewer-wrapper {
+                min-height: 450px;
+                height: 65vh;
+                margin-bottom: 25px;
+            }
+            button, .button-link {
+                padding: 12px 25px;
+                font-size: 1em;
+                min-width: unset;
+                flex-grow: 1;
+            }
+            .actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            p {
+                font-size: 0.95em;
+                margin-top: 20px;
+            }
+            .magnifier-glass {
+                width: 120px; /* Lupa menor em telas menores */
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+            .container {
+                padding: 20px;
+                border-radius: 8px;
+            }
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 20px;
+            }
+            .document-viewer-wrapper {
+                min-height: 400px;
+                height: 60vh;
+            }
+            button, .button-link {
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+            .magnifier-glass {
+                width: 100px; /* Lupa ainda menor em telas muito pequenas */
                 height: 100px;
-                font-size: 3.5rem;
-            }
-            
-            .value-circle {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .pillar-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline-item {
-                padding-left: 60px;
-            }
-            
-            .timeline::before {
-                left: 20px;
-            }
-            
-            .timeline-marker {
-                left: 5px;
-            }
-            
-            .exercise-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .challenge-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
         }
     </style>
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
-    <div class="page-counter" id="pageCounter">1 / 15</div>
-    
-    <div class="ebook-container">
-        <!-- Página 1: Capa -->
-        <div class="page active">
-            <div class="page-header">
-                <div class="page-number">1</div>
-                <div class="chapter-badge">CAPA</div>
-            </div>
-            <h1>🌟 CONSTRUINDO AUTOESTIMA 💪</h1>
-            <div class="esteem-icon interactive-element">👑</div>
-            <h2>Desenvolva uma Autoestima Sólida e Duradoura</h2>
-            
-            <div class="confidence-box">
-                <h3>💪 Transforme sua Relação Consigo Mesmo</h3>
-                <p style="text-align: center; font-size: 1.4rem; color: white;"><strong>Um guia completo para construir uma autoestima genuína e resiliente. Descubra como desenvolver confiança interior duradoura, superar crenças limitantes e criar uma base sólida de valor pessoal que não depende de validação externa</strong></p>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">89%</div>
-                    <div class="stat-label">Aumento da Confiança</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">92%</div>
-                    <div class="stat-label">Melhora no Bem-estar</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">85%</div>
-                    <div class="stat-label">Redução da Autocrítica</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">94%</div>
-                    <div class="stat-label">Maior Resiliência</div>
-                </div>
-            </div>
-            
-            <div class="level-badge">🎯 Nível: Transformação Interior</div>
-            <div class="intensity-badge">💪 Intensidade: Profunda e Duradoura</div>
-            
-            <div class="quote-box">
-                "A autoestima não é sobre se sentir superior aos outros, mas sobre não ter que se comparar com ninguém. É a tranquila certeza de seu próprio valor, independentemente de circunstâncias externas ou opiniões alheias" - Nathaniel Branden, Psicólogo e Pioneiro da Autoestima
-            </div>
-            
-            <div class="confidence-box">
-                <h3>💪 Pilares da Autoestima Sólida:</h3>
-                <ul style="color: white;">
-                    <li><strong>🌟 Autoconhecimento:</strong> Compreensão profunda de suas qualidades e valores</li>
-                    <li><strong>💝 Autoaceitação:</strong> Abraçar todos os aspectos de sua personalidade</li>
-                    <li><strong>🎯 Autoconfiança:</strong> Segurança em suas capacidades e decisões</li>
-                    <li><strong>🤗 Autocompaixão:</strong> Gentileza e compreensão consigo mesmo</li>
-                    <li><strong>🏆 Autorrespeito:</strong> Valorizar e honrar suas necessidades</li>
-                    <li><strong>⚡ Autoeficácia:</strong> Crença em sua capacidade de alcançar objetivos</li>
-                    <li><strong>🌱 Crescimento Pessoal:</strong> Compromisso com desenvolvimento contínuo</li>
-                    <li><strong>🛡️ Resiliência:</strong> Capacidade de superar adversidades</li>
-                </ul>
-            </div>
-            
-            <div class="growth-box">
-                <h3>🌱 Benefícios de uma Autoestima Saudável:</h3>
-                <ul style="color: white;">
-                    <li><strong>😊 Bem-estar Emocional:</strong> Maior estabilidade e felicidade interior</li>
-                    <li><strong>🤝 Relacionamentos Saudáveis:</strong> Conexões mais autênticas e equilibradas</li>
-                    <li><strong>💼 Sucesso Profissional:</strong> Confiança para assumir desafios e liderança</li>
-                    <li><strong>🎯 Tomada de Decisões:</strong> Clareza e segurança nas escolhas</li>
-                    <li><strong>🛡️ Resistência à Crítica:</strong> Menos impacto de opiniões negativas</li>
-                    <li><strong>🌟 Expressão Autêntica:</strong> Coragem para ser genuinamente você</li>
-                    <li><strong>⚡ Energia Vital:</strong> Menos desgaste com inseguranças</li>
-                    <li><strong>🎨 Criatividade:</strong> Liberdade para explorar e inovar</li>
-                </ul>
-            </div>
-            
-            <div class="strength-box">
-                <h3>🏆 Características de Alta Autoestima:</h3>
-                <ul style="color: white;">
-                    <li><strong>💪 Confiança Interior:</strong> Segurança que vem de dentro</li>
-                    <li><strong>🎯 Clareza de Valores:</strong> Saber o que é importante para você</li>
-                    <li><strong>🤗 Autocompaixão:</strong> Tratar-se com gentileza e compreensão</li>
-                    <li><strong>🌟 Autenticidade:</strong> Ser genuíno em todas as situações</li>
-                    <li><strong>🛡️ Limites Saudáveis:</strong> Proteger sua energia e bem-estar</li>
-                    <li><strong>🌱 Mentalidade de Crescimento:</strong> Ver desafios como oportunidades</li>
-                    <li><strong>💝 Amor-próprio:</strong> Cuidar de si mesmo com carinho</li>
-                    <li><strong>⚡ Assertividade:</strong> Expressar necessidades com respeito</li>
-                </ul>
-            </div>
-            
-            <div class="resilience-box">
-                <h3>🛡️ Construindo Resiliência Emocional:</h3>
-                <ul style="color: white;">
-                    <li><strong>🧠 Flexibilidade Mental:</strong> Adaptar-se a mudanças e desafios</li>
-                    <li><strong>💪 Força Interior:</strong> Recursos internos para superar dificuldades</li>
-                    <li><strong>🌈 Perspectiva Positiva:</strong> Encontrar oportunidades em adversidades</li>
-                    <li><strong>🤝 Rede de Apoio:</strong> Cultivar relacionamentos de suporte</li>
-                    <li><strong>🎯 Foco em Soluções:</strong> Concentrar energia em resolver problemas</li>
-                    <li><strong>🧘 Regulação Emocional:</strong> Gerenciar emoções de forma saudável</li>
-                    <li><strong>📚 Aprendizado Contínuo:</strong> Extrair lições de cada experiência</li>
-                    <li><strong>🌟 Esperança:</strong> Manter otimismo sobre o futuro</li>
-                </ul>
-            </div>
-            
-            <div class="empowerment-box">
-                <h3>⚡ Empoderamento Pessoal:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎯 Responsabilidade Pessoal:</strong> Assumir controle de sua vida</li>
-                    <li><strong>💪 Autoeficácia:</strong> Confiança em suas capacidades</li>
-                    <li><strong>🌟 Visão Pessoal:</strong> Clareza sobre seus objetivos e sonhos</li>
-                    <li><strong>🚀 Ação Proativa:</strong> Tomar iniciativa para criar mudanças</li>
-                    <li><strong>🧠 Mentalidade de Abundância:</strong> Acreditar em possibilidades ilimitadas</li>
-                    <li><strong>🎨 Criatividade:</strong> Encontrar soluções inovadoras</li>
-                    <li><strong>🤝 Liderança Pessoal:</strong> Influenciar positivamente seu ambiente</li>
-                    <li><strong>🌈 Otimismo Realista:</strong> Esperança baseada em ação</li>
-                </ul>
-            </div>
-            
-            <div class="mindset-box">
-                <h3>🧠 Mentalidade de Crescimento:</h3>
-                <ul style="color: white;">
-                    <li><strong>📈 Desenvolvimento Contínuo:</strong> Sempre buscando evoluir</li>
-                    <li><strong>🎯 Foco no Processo:</strong> Valorizar esforço e aprendizado</li>
-                    <li><strong>💡 Curiosidade:</strong> Interesse genuíno em aprender</li>
-                    <li><strong>🌱 Abraçar Desafios:</strong> Ver dificuldades como oportunidades</li>
-                    <li><strong>🔄 Feedback Construtivo:</strong> Usar críticas para crescer</li>
-                    <li><strong>🏆 Celebrar Progresso:</strong> Reconhecer pequenas vitórias</li>
-                    <li><strong>⚡ Persistência:</strong> Não desistir diante de obstáculos</li>
-                    <li><strong>🌟 Inspiração:</strong> Aprender com o sucesso dos outros</li>
-                </ul>
-            </div>
-            
-            <div class="transformation-box">
-                <h3>🦋 Sinais de Autoestima em Crescimento:</h3>
-                <ul style="color: white;">
-                    <li><strong>😌 Paz Interior:</strong> Menos conflito interno e mais serenidade</li>
-                    <li><strong>🎯 Decisões Confiantes:</strong> Escolhas baseadas em valores pessoais</li>
-                    <li><strong>💪 Assertividade Natural:</strong> Expressar necessidades sem agressividade</li>
-                    <li><strong>🤗 Autocompaixão:</strong> Gentileza automática consigo mesmo</li>
-                    <li><strong>🌟 Expressão Autêntica:</strong> Coragem para ser genuíno</li>
-                    <li><strong>🛡️ Resistência à Crítica:</strong> Menos impacto de opiniões negativas</li>
-                    <li><strong>💝 Relacionamentos Saudáveis:</strong> Conexões baseadas em respeito mútuo</li>
-                    <li><strong>🎨 Criatividade Livre:</strong> Expressão sem medo de julgamento</li>
-                </ul>
-            </div>
-            
-            <div class="journey-box">
-                <h3>🛤️ Jornada de Construção da Autoestima:</h3>
-                <ul style="color: white;">
-                    <li><strong>🌅 Despertar:</strong> Reconhecer a necessidade de mudança</li>
-                    <li><strong>🔍 Autoavaliação:</strong> Identificar padrões e crenças limitantes</li>
-                    <li><strong>💔 Cura:</strong> Trabalhar feridas emocionais do passado</li>
-                    <li><strong>🌱 Reconstrução:</strong> Desenvolver nova base de valor pessoal</li>
-                    <li><strong>💪 Fortalecimento:</strong> Praticar habilidades de autoestima</li>
-                    <li><strong>🦋 Integração:</strong> Incorporar mudanças na vida cotidiana</li>
-                    <li><strong>🌟 Florescimento:</strong> Viver com confiança e autenticidade</li>
-                    <li><strong>💖 Irradiação:</strong> Inspirar outros através do exemplo</li>
-                </ul>
-            </div>
-            
-            <div class="warning-box">
-                <h3>⚠️ Armadilhas na Construção da Autoestima:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎭 Falsa Confiança:</strong> Arrogância disfarçada de autoestima</li>
-                    <li><strong>📱 Dependência de Validação:</strong> Buscar aprovação constante</li>
-                    <li><strong>🔄 Comparação Constante:</strong> Medir-se sempre pelos outros</li>
-                    <li><strong>🎪 Perfeccionismo:</strong> Padrões impossíveis de alcançar</li>
-                    <li><strong>🚫 Negação de Fraquezas:</strong> Não aceitar limitações humanas</li>
-                    <li><strong>⏰ Pressa Excessiva:</strong> Querer resultados imediatos</li>
-                    <li><strong>💔 Autocrítica Severa:</strong> Punir-se por imperfeições</li>
-                    <li><strong>🌊 Flutuações:</strong> Esperar progresso linear constante</li>
-                </ul>
-            </div>
-            
-            <div class="success-box">
-                <h3>🌟 Histórias de Transformação:</h3>
-                <p style="color: white;">Milhares de pessoas transformaram completamente sua vida através da construção de autoestima sólida. Indivíduos que se sentiam inadequados descobriram seu valor único, pessoas presas em padrões de autocrítica desenvolveram amor-próprio genuíno, e muitos que dependiam de aprovação externa encontraram segurança interior. A autoestima saudável é a base para uma vida plena e realizada!</p>
-            </div>
-            
-            <p style="text-align: center; margin-top: 30px; font-size: 1.1rem; color: #64748b;">
-                <em>Baseado em pesquisas de psicologia positiva, neurociência, terapia cognitivo-comportamental e décadas de estudos sobre desenvolvimento da autoestima 🌟💪🦋</em>
-            </p>
+
+    <div class="container">
+        <h1>Desvendando o Autismo: Primeiros Sinais e Intervenção Precoce</h1>
+        
+        <div class="document-viewer-wrapper" id="pdfViewerWrapper">
+            <iframe 
+                src="Construindo Autoestima - infantil.jpg" 
+                class="document-viewer" 
+                id="pdfViewer"
+                type="application/pdf"
+                aria-label="Visualizador do documento PDF sobre Autismo">
+                <p>Seu navegador não suporta a visualização de PDFs diretamente. Você pode <a href="Coracao-Forte-Mente-Brilhante-Construindo-a-Autoestima-na-Infancia.pdf" target="_blank" rel="noopener noreferrer">clicar aqui para baixar o documento</a> e visualizá-lo em um leitor de PDF.</p>
+            </iframe>
         </div>
 
-        <!-- Página 2: Índice -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">2</div>
-                <div class="chapter-badge">ÍNDICE</div>
-            </div>
-            <h2>🗺️ Sua Jornada para Autoestima Sólida</h2>
-            <div class="story-illustration">🌱➡️💪➡️🏆➡️👑</div>
-            
-            <div class="confidence-box">
-                <h3>💪 Roteiro Completo para Construir Autoestima:</h3>
-                <ol class="steps-list">
-                    <li><strong>Fundamentos da Autoestima</strong> - Compreendendo a base psicológica</li>
-                    <li><strong>Autoconhecimento Profundo</strong> - Descobrindo suas qualidades únicas</li>
-                    <li><strong>Superando Crenças Limitantes</strong> - Transformando pensamentos negativos</li>
-                    <li><strong>Desenvolvendo Autocompaixão</strong> - Gentileza e cuidado interior</li>
-                    <li><strong>Construindo Confiança Interior</strong> - Segurança que vem de dentro</li>
-                    <li><strong>Curando Feridas do Passado</strong> - Liberando traumas e mágoas</li>
-                    <li><strong>Estabelecendo Limites Saudáveis</strong> - Protegendo sua energia</li>
-                    <li><strong>Desenvolvendo Assertividade</strong> - Expressando necessidades com respeito</li>
-                    <li><strong>Práticas Diárias de Fortalecimento</strong> - Exercícios para autoestima</li>
-                    <li><strong>Relacionamentos e Autoestima</strong> - Como isso impacta suas conexões</li>
-                    <li><strong>Mantendo Progresso Duradouro</strong> - Sustentando mudanças a longo prazo</li>
-                    <li><strong>Lidando com Recaídas</strong> - Superando momentos difíceis</li>
-                    <li><strong>Casos Reais de Sucesso</strong> - Histórias inspiradoras de transformação</li>
-                    <li><strong>Plano de Ação Personalizado</strong> - Seu caminho único para autoestima</li>
-                </ol>
-            </div>
-            
-            <div class="growth-box">
-                <h3>🌱 Abordagem Científica e Compassiva:</h3>
-                <p style="color: white;">Este guia integra descobertas da neurociência, psicologia positiva, terapia cognitivo-comportamental e práticas de mindfulness para oferecer uma transformação completa e duradoura. Combinamos métodos cientificamente comprovados com sabedoria prática para sua jornada de autoestima!</p>
-            </div>
-            
-            <div class="esteem-demo">
-                <h3>🌟 Círculo da Autoestima</h3>
-                <div class="value-circle interactive-element">
-                    Eu tenho valor intrínseco e mereço respeito
-                </div>
-                <p><strong>Explore o poder da autoestima! ⬆️</strong></p>
-            </div>
-            
-            <div class="strength-box">
-                <h3>🏆 Por que a Autoestima é Fundamental:</h3>
-                <ul style="color: white;">
-                    <li><strong>🧠 Base Neurológica:</strong> Influencia diretamente o funcionamento cerebral</li>
-                    <li><strong>💖 Saúde Mental:</strong> Previne depressão, ansiedade e outros transtornos</li>
-                    <li><strong>🤝 Relacionamentos:</strong> Base para conexões saudáveis e duradouras</li>
-                    <li><strong>💼 Sucesso Profissional:</strong> Confiança para assumir desafios e liderança</li>
-                    <li><strong>🌟 Realização Pessoal:</strong> Coragem para perseguir sonhos e objetivos</li>
-                    <li><strong>🛡️ Resiliência:</strong> Capacidade de superar adversidades com força</li>
-                </ul>
-            </div>
-            
-            <div class="pillar-grid">
-                <div class="pillar-card">
-                    <div class="pillar-card-icon">🌟</div>
-                    <div class="pillar-card-title">Autoconhecimento</div>
-                    <div class="pillar-card-desc">Compreender profundamente suas qualidades, valores e potencial único</div>
-                </div>
-                <div class="pillar-card">
-                    <div class="pillar-card-icon">💝</div>
-                    <div class="pillar-card-title">Autoaceitação</div>
-                    <div class="pillar-card-desc">Abraçar todos os aspectos de si mesmo com compaixão e amor</div>
-                </div>
-                <div class="pillar-card">
-                    <div class="pillar-card-icon">💪</div>
-                    <div class="pillar-card-title">Autoconfiança</div>
-                    <div class="pillar-card-desc">Desenvolver segurança interior e confiança em suas capacidades</div>
-                </div>
-                <div class="pillar-card">
-                    <div class="pillar-card-icon">🏆</div>
-                    <div class="pillar-card-title">Autorrespeito</div>
-                    <div class="pillar-card-desc">Valorizar e honrar suas necessidades, limites e bem-estar</div>
-                </div>
-            </div>
-            
-            <div class="resilience-box">
-                <h3>🛡️ Componentes da Autoestima Saudável:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎯 Senso de Valor:</strong> Reconhecer seu valor intrínseco como pessoa</li>
-                    <li><strong>💪 Senso de Competência:</strong> Confiança em suas habilidades</li>
-                    <li><strong>🌟 Senso de Pertencimento:</strong> Sentir-se aceito e valorizado</li>
-                    <li><strong>🎨 Senso de Propósito:</strong> Clareza sobre sua missão de vida</li>
-                    <li><strong>🤗 Senso de Segurança:</strong> Confiança em sua capacidade de lidar com desafios</li>
-                    <li><strong>💝 Senso de Amor-próprio:</strong> Cuidado e carinho genuíno consigo mesmo</li>
-                    <li><strong>🌱 Senso de Crescimento:</strong> Compromisso com desenvolvimento pessoal</li>
-                    <li><strong>⚡ Senso de Empoderamento:</strong> Controle sobre sua própria vida</li>
-                </ul>
-            </div>
-            
-            <div class="foundation-grid">
-                <div class="foundation-item">
-                    <div class="foundation-icon">💪</div>
-                    <div class="foundation-label"><strong>Confiança</strong><br>Base interior sólida</div>
-                </div>
-                <div class="foundation-item">
-                    <div class="foundation-icon">🌟</div>
-                    <div class="foundation-label"><strong>Valor</strong><br>Reconhecimento próprio</div>
-                </div>
-                <div class="foundation-item">
-                    <div class="foundation-icon">💝</div>
-                    <div class="foundation-label"><strong>Amor-próprio</strong><br>Cuidado genuíno</div>
-                </div>
-            </div>
-            
-            <div class="empowerment-box">
-                <h3>⚡ Níveis de Desenvolvimento da Autoestima:</h3>
-                <ul style="color: white;">
-                    <li><strong>🌱 Básico:</strong> Parar de se atacar constantemente</li>
-                    <li><strong>🌿 Emergente:</strong> Desenvolver neutralidade compassiva</li>
-                    <li><strong>🌳 Crescente:</strong> Cultivar confiança e valor pessoal</li>
-                    <li><strong>🌟 Sólida:</strong> Autoestima estável e resiliente</li>
-                    <li><strong>💫 Radiante:</strong> Inspirar outros através do exemplo</li>
-                    <li><strong>🏆 Mestre:</strong> Ajudar outros a desenvolverem autoestima</li>
-                </ul>
-            </div>
-            
-            <div class="mindset-box">
-                <h3>🧠 Mitos vs. Verdades sobre Autoestima:</h3>
-                <ul style="color: white;">
-                    <li><strong>❌ Mito:</strong> Autoestima é egoísmo ou narcisismo</li>
-                    <li><strong>✅ Verdade:</strong> É base saudável para amar outros genuinamente</li>
-                    <li><strong>❌ Mito:</strong> Pessoas com autoestima nunca duvidam de si</li>
-                    <li><strong>✅ Verdade:</strong> É normal ter momentos de insegurança</li>
-                    <li><strong>❌ Mito:</strong> Autoestima significa nunca aceitar críticas</li>
-                    <li><strong>✅ Verdade:</strong> Permite receber feedback de forma construtiva</li>
-                    <li><strong>❌ Mito:</strong> É algo que você tem ou não tem</li>
-                    <li><strong>✅ Verdade:</strong> Pode ser desenvolvida e fortalecida</li>
-                </ul>
-            </div>
-            
-            <div class="transformation-box">
-                <h3>🦋 Áreas de Impacto da Autoestima:</h3>
-                <ul style="color: white;">
-                    <li><strong>🧠 Mental:</strong> Pensamentos mais positivos e realistas</li>
-                    <li><strong>💖 Emocional:</strong> Maior estabilidade e bem-estar</li>
-                    <li><strong>🤝 Social:</strong> Relacionamentos mais saudáveis e autênticos</li>
-                    <li><strong>💼 Profissional:</strong> Confiança para assumir desafios</li>
-                    <li><strong>🎨 Criativa:</strong> Liberdade para expressar-se genuinamente</li>
-                    <li><strong>🏠 Familiar:</strong> Dinâmicas mais equilibradas e respeitosas</li>
-                    <li><strong>🌟 Espiritual:</strong> Conexão com propósito e significado</li>
-                    <li><strong>💪 Física:</strong> Cuidado amoroso com o corpo e saúde</li>
-                </ul>
-            </div>
-            
-            <div class="journey-box">
-                <h3>🛤️ Ferramentas de Desenvolvimento:</h3>
-                <ul style="color: white;">
-                    <li><strong>📝 Diário de Autoestima:</strong> Registro diário de qualidades e conquistas</li>
-                    <li><strong>🧘 Meditação de Amor-próprio:</strong> Práticas de compaixão interior</li>
-                    <li><strong>🎯 Definição de Objetivos:</strong> Metas que fortalecem confiança</li>
-                    <li><strong>🤗 Exercícios de Autocompaixão:</strong> Gentileza e cuidado interior</li>
-                    <li><strong>🌟 Afirmações Personalizadas:</strong> Declarações baseadas em verdades pessoais</li>
-                    <li><strong>💬 Reestruturação Cognitiva:</strong> Transformação de pensamentos negativos</li>
-                    <li><strong>🎨 Expressão Criativa:</strong> Arte, música e outras formas de expressão</li>
-                    <li><strong>📚 Educação Emocional:</strong> Compreensão de padrões psicológicos</li>
-                </ul>
-            </div>
-            
-            <div class="warning-box">
-                <h3>⚠️ Sinais de Baixa Autoestima:</h3>
-                <ul style="color: white;">
-                    <li><strong>🔄 Autocrítica Constante:</strong> Voz interior sempre negativa</li>
-                    <li><strong>📱 Busca de Validação:</strong> Dependência de aprovação externa</li>
-                    <li><strong>🎭 Perfeccionismo Paralisante:</strong> Medo de não ser "bom o suficiente"</li>
-                    <li><strong>😰 Medo de Rejeição:</strong> Evitar riscos por medo de falhar</li>
-                    <li><strong>💔 Relacionamentos Tóxicos:</strong> Aceitar tratamento inadequado</li>
-                    <li><strong>🚫 Dificuldade de Dizer Não:</strong> Não estabelecer limites saudáveis</li>
-                </ul>
-            </div>
-            
-            <div class="success-box">
-                <h3>🌟 Benefícios Comprovados da Autoestima Saudável:</h3>
-                <p style="color: white;">Pesquisas científicas demonstram que pessoas com autoestima saudável apresentam níveis significativamente menores de ansiedade e depressão, relacionamentos mais satisfatórios, maior sucesso profissional, melhor saúde física e uma sensação geral de bem-estar e propósito de vida. A autoestima é literalmente o alicerce de uma vida plena!</p>
-            </div>
-            
-            <div class="support-resources">
-                <div class="support-title">Recursos de Transformação</div>
-                <p>Este guia oferece exercícios práticos, técnicas de reestruturação cognitiva, meditações guiadas, estratégias de autocompaixão e ferramentas de autoavaliação. Inclui planos de ação personalizados, desafios graduais e métodos comprovados para construir autoestima duradoura.</p>
-            </div>
-            
-            <div class="tip-box">
-                <h3>💡 Dica Fundamental:</h3>
-                <p>A autoestima saudável não é sobre se sentir superior aos outros, mas sobre reconhecer seu valor único e intrínseco. É a diferença entre "Eu sou melhor que os outros" (arrogância) e "Eu tenho valor assim como todos os outros" (autoestima genuína). Cultive essa perspectiva equilibrada.</p>
-            </div>
+        <div class="actions">
+            <a href="Coracao-Forte-Mente-Brilhante-Construindo-a-Autoestima-na-Infancia.pdf" download class="button-link">
+                Baixar PDF
+            </a>
+            <a href="#" class="button-link" onclick="alert('Esta função exigiria a criação de um arquivo EPUB ou similar. Para demonstração, o botão de download do PDF é a melhor opção no momento.'); return false;">
+                Ver em Formato de Livro (E-book)
+            </a>
+            <button onclick="history.back()">Voltar</button>
         </div>
 
-        <!-- Página 3: Fundamentos da Autoestima -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">3</div>
-                <div class="chapter-badge">CAPÍTULO 1</div>
-            </div>
-            <h2>🌟 Fundamentos da Autoestima</h2>
-            <div class="story-illustration">🧠➡️💪➡️🏆➡️👑</div>
-            
-            <p>A autoestima é a avaliação subjetiva que fazemos de nós mesmos - nossa percepção sobre nosso valor, competência e dignidade como seres humanos. É a base fundamental sobre a qual construímos nossa identidade, tomamos decisões e nos relacionamos com o mundo. Uma autoestima saudável não significa se sentir superior aos outros, mas reconhecer seu valor intrínseco e ter confiança em suas capacidades, mesmo reconhecendo limitações e áreas de crescimento.</p>
-            
-            <div class="confidence-box">
-                <h3>💪 O que é Autoestima Verdadeira?</h3>
-                <p style="color: white;">A autoestima genuína é um estado interno de reconhecimento do próprio valor que não depende de comparações com outros ou de validação externa constante. É a capacidade de se ver com realismo - reconhecendo tanto qualidades quanto limitações - mantendo uma atitude fundamentalmente positiva e compassiva consigo mesmo. Não é arrogância nem falsa modéstia, mas uma avaliação equilibrada e amorosa de quem você é.</p>
-            </div>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">1</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Autoconhecimento</div>
-                        <div class="timeline-title">Descobrindo Quem Você É</div>
-                        <div class="timeline-desc">Identificar suas qualidades, valores, talentos e áreas de crescimento. Compreender sua história pessoal e como ela moldou sua percepção de si mesmo, sem julgamento ou crítica.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">2</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Autoaceitação</div>
-                        <div class="timeline-title">Abraçando Sua Humanidade</div>
-                        <div class="timeline-desc">Aceitar todos os aspectos de si mesmo, incluindo imperfeições e limitações. Reconhecer que ser humano significa ser imperfeito e que isso não diminui seu valor fundamental.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">3</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Autocompaixão</div>
-                        <div class="timeline-title">Desenvolvendo Gentileza Interior</div>
-                        <div class="timeline-desc">Aprender a tratar-se com a mesma gentileza que ofereceria a um amigo querido. Substituir autocrítica destrutiva por diálogo interno compassivo e construtivo.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">4</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Autoconfiança</div>
-                        <div class="timeline-title">Construindo Segurança Interior</div>
-                        <div class="timeline-desc">Desenvolver confiança em suas capacidades e julgamento. Aprender a confiar em si mesmo para tomar decisões e enfrentar desafios, mesmo quando há incertezas.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">5</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Autorrespeito</div>
-                        <div class="timeline-title">Honrando Suas Necessidades</div>
-                        <div class="timeline-desc">Estabelecer limites saudáveis, cuidar de suas necessidades físicas e emocionais, e tomar decisões que honrem seu bem-estar e valores pessoais.</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="growth-box">
-                <h3>🌱 Os Seis Pilares da Autoestima Saudável</h3>
-                
-                <h4 style="color: white;">1. 🌟 Consciência de Si Mesmo:</h4>
-                <ul style="color: white;">
-                    <li><strong>Autoconhecimento:</strong> Compreender seus pensamentos, emoções e motivações</li>
-                    <li><strong>Honestidade Interior:</strong> Ser verdadeiro consigo mesmo sobre qualidades e limitações</li>
-                    <li><strong>Mindfulness:</strong> Consciência presente de suas experiências internas</li>
-                    <li><strong>Reflexão:</strong> Tempo regular para introspecção e autoavaliação</li>
-                </ul>
-                
-                <h4 style="color: white;">2. 💝 Autoaceitação:</h4>
-                <ul style="color: white;">
-                    <li><strong>Abraçar Imperfeições:</strong> Aceitar limitações como parte da humanidade</li>
-                    <li><strong>Perdão Pessoal:</strong> Liberar-se de culpa e ressentimento interno</li>
-                    <li><strong>Realismo Compassivo:</strong> Ver-se com clareza e gentileza</li>
-                    <li><strong>Integração:</strong> Unificar todos os aspectos de sua personalidade</li>
-                </ul>
-                
-                <h4 style="color: white;">3. 🎯 Responsabilidade Pessoal:</h4>
-                <ul style="color: white;">
-                    <li><strong>Propriedade de Ações:</strong> Assumir responsabilidade por escolhas e consequências</li>
-                    <li><strong>Empoderamento:</strong> Reconhecer seu poder de criar mudanças</li>
-                    <li><strong>Proatividade:</strong> Tomar iniciativa em sua vida</li>
-                    <li><strong>Crescimento:</strong> Compromisso com desenvolvimento pessoal</li>
-                </ul>
-                
-                <h4 style="color: white;">4. ⚡ Assertividade:</h4>
-                <ul style="color: white;">
-                    <li><strong>Expressão Autêntica:</strong> Comunicar necessidades e sentimentos claramente</li>
-                    <li><strong>Limites Saudáveis:</strong> Proteger sua energia e bem-estar</li>
-                    <li><strong>Respeito Mútuo:</strong> Honrar suas necessidades e as dos outros</li>
-                    <li><strong>Coragem:</strong> Defender seus valores e convicções</li>
-                </ul>
-                
-                <h4 style="color: white;">5. 🎯 Viver com Propósito:</h4>
-                <ul style="color: white;">
-                    <li><strong>Clareza de Valores:</strong> Saber o que é verdadeiramente importante</li>
-                    <li><strong>Objetivos Significativos:</strong> Metas alinhadas com valores pessoais</li>
-                    <li><strong>Direção de Vida:</strong> Senso claro de para onde está indo</li>
-                    <li><strong>Contribuição:</strong> Usar talentos para impactar positivamente o mundo</li>
-                </ul>
-                
-                <h4 style="color: white;">6. 🏆 Integridade Pessoal:</h4>
-                <ul style="color: white;">
-                    <li><strong>Coerência:</strong> Alinhamento entre valores, palavras e ações</li>
-                    <li><strong>Autenticidade:</strong> Ser genuinamente você mesmo</li>
-                    <li><strong>Confiabilidade:</strong> Cumprir compromissos consigo mesmo</li>
-                    <li><strong>Honra:</strong> Viver de acordo com seus princípios</li>
-                </ul>
-            </div>
-            
-            <div class="strength-box">
-                <h3>🏆 Neurociência da Autoestima</h3>
-                
-                <h4 style="color: white;">🧠 Como o Cérebro Processa Autoestima:</h4>
-                <ul style="color: white;">
-                    <li><strong>Córtex Pré-frontal:</strong> Responsável por autoavaliação e julgamento</li>
-                    <li><strong>Sistema Límbico:</strong> Processa emoções relacionadas ao valor pessoal</li>
-                    <li><strong>Hipocampo:</strong> Armazena memórias que influenciam autoestima</li>
-                    <li><strong>Neurotransmissores:</strong> Serotonina, dopamina e noradrenalina afetam humor</li>
-                </ul>
-                
-                <h4 style="color: white;">⚡ Impacto da Baixa Autoestima no Cérebro:</h4>
-                <ul style="color: white;">
-                    <li><strong>Hiperativação da Amígdala:</strong> Resposta exagerada a ameaças percebidas</li>
-                    <li><strong>Redução da Atividade Pré-frontal:</strong> Dificuldade de pensamento racional</li>
-                    <li><strong>Padrões Neurais Negativos:</strong> Circuitos de autocrítica bem estabelecidos</li>
-                    <li><strong>Desequilíbrio Químico:</strong> Níveis alterados de neurotransmissores</li>
-                </ul>
-                
-                <h4 style="color: white;">🌟 Como Fortalecer Autoestima Neurologicamente:</h4>
-                <ul style="color: white;">
-                    <li><strong>Neuroplasticidade:</strong> Capacidade do cérebro de formar novos padrões</li>
-                    <li><strong>Repetição Positiva:</strong> Reforçar circuitos neurais saudáveis</li>
-                    <li><strong>Mindfulness:</strong> Fortalecer córtex pré-frontal e regulação emocional</li>
-                    <li><strong>Exercício Físico:</strong> Aumentar neurotransmissores do bem-estar</li>
-                </ul>
-            </div>
-            
-            <div class="resilience-box">
-                <h3>🛡️ Diferenças Fundamentais</h3>
-                
-                <h4 style="color: white;">Autoestima vs. Arrogância:</h4>
-                <ul style="color: white;">
-                    <li><strong>💪 Autoestima:</strong> Reconhecimento equilibrado do próprio valor</li>
-                    <li><strong>👑 Arrogância:</strong> Superioridade defensiva baseada em insegurança</li>
-                    <li><strong>🤝 Autoestima:</strong> Respeito por si mesmo e pelos outros</li>
-                    <li><strong>🎭 Arrogância:</strong> Necessidade de se sentir superior aos outros</li>
-                </ul>
-                
-                <h4 style="color: white;">Autoestima vs. Autoconfiança:</h4>
-                <ul style="color: white;">
-                    <li><strong>🌟 Autoestima:</strong> Valor pessoal fundamental e incondicional</li>
-                    <li><strong>🎯 Autoconfiança:</strong> Confiança em habilidades específicas</li>
-                    <li><strong>💝 Autoestima:</strong> "Eu tenho valor como pessoa"</li>
-                    <li><strong>💪 Autoconfiança:</strong> "Eu posso fazer isso"</li>
-                </ul>
-                
-                <h4 style="color: white;">Autoestima Saudável vs. Falsa Autoestima:</h4>
-                <ul style="color: white;">
-                    <li><strong>🌱 Saudável:</strong> Baseada em autoconhecimento e aceitação</li>
-                    <li><strong>🎭 Falsa:</strong> Baseada em comparação e validação externa</li>
-                    <li><strong>🛡️ Saudável:</strong> Estável diante de críticas e fracassos</li>
-                    <li><strong>📉 Falsa:</strong> Flutua com circunstâncias externas</li>
-                </ul>
-            </div>
-            
-            <div class="empowerment-box">
-                <h3>⚡ Fatores que Influenciam a Autoestima</h3>
-                
-                <h4 style="color: white;">🏠 Influências da Infância:</h4>
-                <ul style="color: white;">
-                    <li><strong>Estilo Parental:</strong> Amor incondicional vs. amor condicional</li>
-                    <li><strong>Mensagens Recebidas:</strong> "Você é capaz" vs. "Você nunca faz nada certo"</li>
-                    <li><strong>Experiências de Sucesso:</strong> Oportunidades de competência e maestria</li>
-                    <li><strong>Modelos de Referência:</strong> Exemplos de autoestima saudável</li>
-                </ul>
-                
-                <h4 style="color: white;">🌍 Fatores Sociais e Culturais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Padrões Culturais:</strong> Definições sociais de sucesso e valor</li>
-                    <li><strong>Mídia e Redes Sociais:</strong> Comparações constantes e padrões irreais</li>
-                    <li><strong>Grupos de Pertencimento:</strong> Aceitação e valorização social</li>
-                    <li><strong>Discriminação:</strong> Experiências de preconceito e exclusão</li>
-                </ul>
- </div> </div> </div>
-
- 
- <div class="navigation">
-        <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
-        <button id="nextBtn" class="nav-btn">Próximo</button>
+        <p>Este documento oferece informações cruciais sobre os primeiros sinais do autismo e a importância da intervenção precoce. Para ativar a lupa, clique em qualquer parte do documento acima. Para desativar, clique novamente na lupa ou em qualquer outro lugar.</p>
     </div>
 
-     <script>
-        
-    const pages = document.querySelectorAll('.page');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const progressBar = document.getElementById('progressBar');
-    const pageCounter = document.getElementById('pageCounter');
-    let currentPageIndex = 0;
+    <script>
+        const pdfViewerWrapper = document.getElementById('pdfViewerWrapper');
+        const pdfViewer = document.getElementById('pdfViewer');
+        let magnifierGlass = null; // Variável para armazenar a lupa
 
-    function showPage(index) {
-        pages.forEach((page, i) => {
-            if (i === index) {
-                page.classList.add('active');
-            } else {
-                page.classList.remove('active');
+        // Adiciona um ouvinte de eventos para cliques no wrapper do PDF
+        pdfViewerWrapper.addEventListener('click', function(e) {
+            // Se já existe uma lupa, remove-a
+            if (magnifierGlass) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                // Restaura o cursor padrão
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+                return; // Sai da função após remover
+            }
+
+            // Cria o elemento da lupa
+            magnifierGlass = document.createElement('div');
+            magnifierGlass.classList.add('magnifier-glass');
+
+            // Cria o conteúdo da lupa (uma cópia do iframe para simular o zoom)
+            const magnifierContent = pdfViewer.cloneNode(true);
+            magnifierContent.classList.remove('document-viewer'); // Remove estilos do iframe original
+            magnifierContent.style.position = 'absolute';
+            magnifierContent.style.top = '0';
+            magnifierContent.style.left = '0';
+            magnifierContent.style.width = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.height = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.pointerEvents = 'none'; // Impede interação com o iframe clonado na lupa
+
+            magnifierGlass.appendChild(magnifierContent);
+            pdfViewerWrapper.appendChild(magnifierGlass);
+
+            // Adiciona um evento de clique na lupa para removê-la
+            magnifierGlass.addEventListener('click', function(event) {
+                event.stopPropagation(); // Impede que o clique na lupa se propague para o wrapper
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+            });
+
+            // Calcula a posição do clique dentro do iframe
+            const rect = pdfViewerWrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left; // Coordenada X relativa ao wrapper
+            const y = e.clientY - rect.top;  // Coordenada Y relativa ao wrapper
+
+            // Posiciona a lupa no centro do clique
+            magnifierGlass.style.left = `${x}px`;
+            magnifierGlass.style.top = `${y}px`;
+
+            // Calcula o deslocamento do conteúdo dentro da lupa para simular o zoom na área clicada
+            // O conteúdo da lupa é 2x maior, então o ponto de origem deve ser metade da distância
+            // da borda para o clique.
+            const zoomLevel = 2; // O mesmo que as dimensões do magnifierContent
+            const contentX = -x * (zoomLevel - 1) + (magnifierGlass.offsetWidth / 2);
+            const contentY = -y * (zoomLevel - 1) + (magnifierGlass.offsetHeight / 2);
+
+            magnifierContent.style.transform = `translate(${contentX}px, ${contentY}px)`;
+
+            // Muda o cursor para indicar que a lupa está ativa
+            pdfViewerWrapper.style.cursor = 'zoom-out';
+        });
+
+        // Adiciona um ouvinte para cliques em qualquer lugar do documento
+        // Isso permite remover a lupa clicando fora dela (no body, por exemplo)
+        document.addEventListener('click', function(event) {
+            if (magnifierGlass && !pdfViewerWrapper.contains(event.target)) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
             }
         });
-        updateNavigationButtons();
-        updateProgressBar();
-        updatePageCounter();
-    }
-
-    function updateNavigationButtons() {
-        prevBtn.disabled = currentPageIndex === 0;
-        nextBtn.disabled = currentPageIndex === pages.length - 1;
-    }
-
-    function updateProgressBar() {
-        const progress = (currentPageIndex / (pages.length - 1)) * 100;
-        progressBar.style.width = `${progress}%`;
-    }
-
-    function updatePageCounter() {
-        pageCounter.textContent = `${currentPageIndex + 1} / ${pages.length}`;
-    }
-
-    prevBtn.addEventListener('click', () => {
-        if (currentPageIndex > 0) {
-            currentPageIndex--;
-            showPage(currentPageIndex);
-        }
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (currentPageIndex < pages.length - 1) {
-            currentPageIndex++;
-            showPage(currentPageIndex);
-        }
-    });
-
-    // Initialize the first page and navigation
-    showPage(currentPageIndex);
-</script>
-
-
-                
-
-
+    </script>
+</body>
+</html>
