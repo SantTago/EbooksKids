@@ -1,1758 +1,351 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunicação Alternativa - Guia Completo</title>
+    <title>Desvendando o Autismo - Leitura Otimizada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap');
-        
-        * {
+        :root {
+            --primary-color: #5865F2; /* Azul vibrante */
+            --secondary-color: #4A56E2; /* Azul mais escuro para títulos */
+            --gradient-start: #667eea;
+            --gradient-end: #764ba2;
+            --text-light: #f0f0f0;
+            --text-dark: #333;
+            --bg-card: rgba(255, 255, 255, 0.98);
+            --shadow-light: rgba(0, 0, 0, 0.15);
+            --shadow-strong: rgba(0, 0, 0, 0.25);
+            --border-radius-lg: 12px;
+            --border-radius-md: 8px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--text-light);
+            text-align: center;
             box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            min-height: 100vh;
+            padding: 40px 20px; /* Padding geral para telas grandes */
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        
-        .ebook-container {
+
+        .container {
+            width: 100%;
             max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            border-radius: 25px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .page {
-            min-height: 100vh;
-            padding: 50px;
-            display: none;
-            position: relative;
-            background: linear-gradient(45deg, #f8fafc, #f1f5f9);
-        }
-        
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .page-header {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        
-        .page-number {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-weight: 600;
-            font-size: 20px;
-            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
-        }
-        
-        .chapter-badge {
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-        
-        h1 {
-            color: #1e293b;
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        h2 {
-            color: #4f46e5;
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            text-align: center;
-            font-weight: 700;
-        }
-        
-        h3 {
-            color: #7c3aed;
-            font-size: 1.6rem;
-            margin-bottom: 18px;
-            font-weight: 600;
-        }
-        
-        h4 {
-            color: #475569;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        
-        p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #475569;
-            margin-bottom: 22px;
-            text-align: justify;
-            font-weight: 400;
-        }
-        
-        .communication-icon {
-            width: 140px;
-            height: 140px;
-            border-radius: 25px;
-            margin: 25px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            animation: gentle-pulse 3s infinite;
-        }
-        
-        @keyframes gentle-pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
-            50% { transform: scale(1.05); box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3); }
-        }
-        
-        .aac-box {
-            background: linear-gradient(135deg, #06b6d4, #3b82f6);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #10b981;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-            color: white;
-        }
-        
-        .aac-box::before {
-            content: "🗣️";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .inclusion-box {
-            background: linear-gradient(135deg, #ec4899, #f97316);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .inclusion-box::before {
-            content: "🤝";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .technology-box {
-            background: linear-gradient(135deg, #8b5cf6, #a855f7);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .technology-box::before {
-            content: "📱";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .method-box {
-            background: linear-gradient(135deg, #f59e0b, #f97316);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #ef4444;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-            color: white;
-        }
-        
-        .method-box::before {
-            content: "🎯";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .strategy-box {
-            background: linear-gradient(135deg, #10b981, #059669);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .strategy-box::before {
-            content: "💡";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .navigation {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            z-index: 1000;
-        }
-        
-        .nav-btn {
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            border: none;
-            padding: 18px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Nunito', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        
-        .nav-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-        }
-        
-        .nav-btn:disabled {
-            background: #cbd5e0;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 6px;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            transition: width 0.5s ease;
-            z-index: 1001;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .page-counter {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.9);
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            color: #475569;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .source-box {
-            background: #f8fafc;
-            border: 3px dashed #cbd5e0;
-            padding: 25px;
-            border-radius: 20px;
-            margin-top: 35px;
-            font-size: 1rem;
-            color: #64748b;
-            position: relative;
-        }
-        
-        .source-box::before {
-            content: "📚";
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-        }
-        
-        .communication-demo {
-            text-align: center;
+            background-color: var(--bg-card);
             padding: 40px;
-            background: linear-gradient(135deg, #e0f2fe, #f3e8ff);
-            border-radius: 25px;
-            margin: 25px 0;
-        }
-        
-        .communication-circle {
-            width: 180px;
-            height: 180px;
-            border: 6px solid #4f46e5;
-            border-radius: 50%;
-            margin: 25px auto;
+            box-shadow: 0 15px 35px var(--shadow-strong);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: 30px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            color: #4f46e5;
-            font-weight: 600;
-            animation: gentle-rotate 15s infinite linear;
-            box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
-            position: relative;
+            color: var(--text-dark);
+            position: relative; /* Necessário para posicionar a lupa */
         }
-        
-        .communication-circle::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 30px;
-            height: 30px;
-            background: #7c3aed;
-            border-radius: 50%;
-            animation: orbit 4s infinite;
-        }
-        
-        @keyframes gentle-rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes orbit {
-            0%, 100% { transform: scale(1) translateY(0); }
-            50% { transform: scale(1.2) translateY(-5px); }
-        }
-        
-        .story-illustration {
-            text-align: center;
-            font-size: 4rem;
-            margin: 30px 0;
-            animation: gentle-float 4s ease-in-out infinite;
-        }
-        
-        @keyframes gentle-float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        ul, ol {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #475569;
-            margin-left: 25px;
-            font-weight: 400;
-        }
-        
-        li {
-            margin-bottom: 12px;
-            position: relative;
-        }
-        
-        .checklist {
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .checklist li::before {
-            content: "✅";
-            margin-right: 10px;
-        }
-        
-        .steps-list {
-            counter-reset: step-counter;
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .steps-list li {
-            counter-increment: step-counter;
-            position: relative;
-            padding-left: 40px;
-        }
-        
-        .steps-list li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: #4f46e5;
-            color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        
-        .interactive-element {
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        
-        .interactive-element:hover {
-            transform: scale(1.05);
-        }
-        
-        .level-badge {
-            background: linear-gradient(45deg, #7c3aed, #a855f7);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-        
-        .age-badge {
-            background: linear-gradient(45deg, #f59e0b, #f97316);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-left: 10px;
-        }
-        
-        .quote-box {
-            background: linear-gradient(135deg, #fef3c7, #fed7aa);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #f59e0b;
-            font-style: italic;
-            font-size: 1.1rem;
-            position: relative;
-        }
-        
-       
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .stat-card {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
+
+        h1 {
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            font-size: 2.5em;
             font-weight: 700;
-            margin-bottom: 10px;
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
-        
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
+
+        .document-viewer-wrapper {
+            position: relative; /* Para posicionar a lupa dentro */
+            width: 100%;
+            min-height: 550px;
+            height: 75vh;
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 8px 20px var(--shadow-light);
+            overflow: hidden; /* Garante que a lupa não vaze */
+            cursor: zoom-in; /* Indica que é clicável para zoom */
         }
-        
-        .aspect-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
+
+        .document-viewer {
+            width: 100%;
+            height: 100%;
+            border: none; /* A borda será no wrapper */
         }
-        
-        .aspect-card {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .aspect-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .aspect-card-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .aspect-card-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .aspect-card-desc {
-            font-size: 1rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-        
-        .milestone-box {
-            background: linear-gradient(135deg, #06b6d4, #0891b2);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .milestone-box::before {
-            content: "🎯";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .warning-box {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .warning-box::before {
-            content: "⚠️";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .hope-box {
-            background: linear-gradient(135deg, #10b981, #059669);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .hope-box::before {
-            content: "🌟";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .resource-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .resource-card {
-            background: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            border-top: 4px solid #4f46e5;
-        }
-        
-        .resource-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .resource-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .resource-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-align: center;
-            color: #1e293b;
-        }
-        
-        .resource-desc {
-            font-size: 1rem;
-            color: #64748b;
-            line-height: 1.5;
-            text-align: center;
-        }
-        
-        .benefit-list {
-            background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #10b981;
-        }
-        
-        .benefit-title {
-            color: #065f46;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .benefit-item {
+
+        .actions {
             display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            color: #064e3b;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            width: 100%;
         }
-        
-        .benefit-icon {
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .implementation-steps {
-            background: linear-gradient(135deg, #eff6ff, #dbeafe);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #3b82f6;
-        }
-        
-        .step-title {
-            color: #1e40af;
-            font-size: 1.3rem;
+
+        button, .button-link {
+            padding: 14px 30px;
+            font-size: 1.1em;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
             font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .step-item {
-            background: white;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border-left: 3px solid #3b82f6;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        
-        .step-number {
-            background: #3b82f6;
-            color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
+            letter-spacing: 0.5px;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-right: 10px;
+            min-width: 180px;
         }
-        
-        .metric-box {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 15px 0;
-            text-align: center;
-            border: 2px solid #f59e0b;
-        }
-        
-        .metric-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #92400e;
-            margin-bottom: 5px;
-        }
-        
-        .metric-label {
-            font-size: 1rem;
-            color: #78350f;
-            font-weight: 500;
-        }
-        
-        .symbol-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
-            margin: 25px 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-            border-radius: 20px;
-        }
-        
-        .symbol-card {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .symbol-card:hover {
+
+        button:hover, .button-link:hover {
+            background-color: #4452D3;
             transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
         }
-        
-        .symbol-icon {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+
+        button:active, .button-link:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
-        
-        .symbol-label {
-            font-size: 0.9rem;
+
+        p {
+            margin-top: 25px;
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        p a {
+            color: #007bff;
+            text-decoration: none;
             font-weight: 600;
-            color: #475569;
         }
-        
-        .device-showcase {
-            background: linear-gradient(135deg, #1e293b, #334155);
-            padding: 30px;
-            border-radius: 20px;
-            margin: 25px 0;
-            color: white;
-            position: relative;
-            overflow: hidden;
+        p a:hover {
+            text-decoration: underline;
+            color: #0056b3;
         }
-        
-        .device-showcase::before {
-            content: '';
+
+        /* --- Estilos da Lupa --- */
+        .magnifier-glass {
             position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(79, 70, 229, 0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .device-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .app-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .app-card {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .app-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .app-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        
-        .app-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        
-        .app-desc {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            line-height: 1.4;
-        }
-        
-        .tip-box {
-            background: #1e293b;
-            color: #e2e8f0;
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            overflow-x: auto;
-            position: relative;
-        }
-        
-        .tip-box::before {
-            content: "💡";
-            position: absolute;
-            top: -10px;
-            right: 15px;
-            background: #4f46e5;
-            color: white;
-            padding: 5px;
+            border: 3px solid var(--primary-color);
             border-radius: 50%;
-            font-size: 1.2rem;
-        }
-        
-        .success-story {
-            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #10b981;
-        }
-        
-        .success-title {
-            color: #065f46;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .success-title::before {
-            content: "🌟";
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .timeline {
-            position: relative;
-            margin: 30px 0;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, #4f46e5, #7c3aed);
-            border-radius: 2px;
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin: 30px 0;
-            padding-left: 80px;
-        }
-        
-        .timeline-marker {
-            position: absolute;
-            left: 15px;
-            top: 0;
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            border-radius: 50%;
-            display: flex;
+            cursor: zoom-out;
+            width: 150px; /* Tamanho da lupa */
+            height: 150px;
+            transform: translate(-50%, -50%); /* Centraliza a lupa no clique */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden; /* Garante que o conteúdo dentro não transborde */
+            pointer-events: none; /* Permite interagir com o iframe por baixo, mas a lupa ainda bloqueia o clique nela */
+            z-index: 10; /* Garante que a lupa fique acima do iframe */
+            background-color: rgba(255, 255, 255, 0.1); /* Um leve fundo translúcido */
+            display: flex; /* Para centralizar o conteúdo dentro */
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
+        }
+
+        .magnifier-content {
+            position: absolute;
+            width: 200%; /* Exemplo de zoom: 2x */
+            height: 200%; /* Exemplo de zoom: 2x */
+            transform-origin: 0 0; /* Ponto de origem da transformação */
+            /* Isso será ajustado via JS */
         }
         
-        .timeline-content {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-left: 4px solid #4f46e5;
-        }
-        
-        .timeline-phase {
-            color: #4f46e5;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-        
-        .timeline-title {
-            color: #1e293b;
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        
-        .timeline-desc {
-            color: #64748b;
-            line-height: 1.6;
-        }
-        
-        .pecs-demo {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            padding: 30px;
-            border-radius: 20px;
-            margin: 25px 0;
-            text-align: center;
-        }
-        
-        .pecs-board {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin: 20px 0;
-            padding: 20px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .pecs-card {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        
-        .pecs-card:hover {
-            transform: scale(1.05);
-        }
-        
-        .pecs-icon {
-            font-size: 2rem;
-            margin-bottom: 8px;
-        }
-        
-        .pecs-text {
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        
-        @media (max-width: 768px) {
-            .page {
-                padding: 30px 20px;
+        /* --- Media Queries para Responsividade --- */
+        @media (max-width: 992px) {
+            .container {
+                max-width: 95%;
+                padding: 30px;
             }
-            
             h1 {
-                font-size: 2.2rem;
+                font-size: 2.2em;
             }
-            
-            h2 {
-                font-size: 1.8rem;
+            .document-viewer-wrapper {
+                min-height: 500px;
+                height: 70vh;
             }
-            
-            .communication-icon {
-                width: 100px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 15px;
+            }
+            .container {
+                padding: 25px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 1.9em;
+                margin-bottom: 25px;
+            }
+            .document-viewer-wrapper {
+                min-height: 450px;
+                height: 65vh;
+                margin-bottom: 25px;
+            }
+            button, .button-link {
+                padding: 12px 25px;
+                font-size: 1em;
+                min-width: unset;
+                flex-grow: 1;
+            }
+            .actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            p {
+                font-size: 0.95em;
+                margin-top: 20px;
+            }
+            .magnifier-glass {
+                width: 120px; /* Lupa menor em telas menores */
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+            .container {
+                padding: 20px;
+                border-radius: 8px;
+            }
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 20px;
+            }
+            .document-viewer-wrapper {
+                min-height: 400px;
+                height: 60vh;
+            }
+            button, .button-link {
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+            .magnifier-glass {
+                width: 100px; /* Lupa ainda menor em telas muito pequenas */
                 height: 100px;
-                font-size: 3.5rem;
-            }
-            
-            .communication-circle {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .aspect-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .resource-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .symbol-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .pecs-board {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .timeline-item {
-                padding-left: 60px;
-            }
-            
-            .timeline::before {
-                left: 20px;
-            }
-            
-            .timeline-marker {
-                left: 5px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
-    <div class="page-counter" id="pageCounter">1 / 15</div>
-    
-    <div class="ebook-container">
-        <!-- Página 1: Capa -->
-        <div class="page active">
-            <div class="page-header">
-                <div class="page-number">1</div>
-                <div class="chapter-badge">CAPA</div>
-            </div>
-            <h1>🗣️ COMUNICAÇÃO ALTERNATIVA 💬</h1>
-            <div class="communication-icon interactive-element">🤝</div>
-            <h2>Guia Completo de CAA - Comunicação Aumentativa e Alternativa</h2>
-            
-            <div class="inclusion-box">
-                <h3>🤝 Conectando Pessoas, Quebrando Barreiras</h3>
-                <p style="text-align: center; font-size: 1.4rem; color: white;"><strong>Um guia abrangente sobre métodos, tecnologias e estratégias para comunicação inclusiva e efetiva para pessoas com necessidades especiais</strong></p>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">15%</div>
-                    <div class="stat-label">População com Dificuldades de Comunicação</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">100+</div>
-                    <div class="stat-label">Métodos Disponíveis</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">85%</div>
-                    <div class="stat-label">Melhora na Qualidade de Vida</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">∞</div>
-                    <div class="stat-label">Possibilidades de Expressão</div>
-                </div>
-            </div>
-            
-            <div class="level-badge">🎯 Público: Famílias, Educadores, Terapeutas</div>
-            <div class="age-badge">👥 Foco: Inclusão e Acessibilidade</div>
-            
-            <div class="quote-box">
-                "A comunicação é um direito humano fundamental. Toda pessoa merece ter sua voz ouvida, independentemente de como ela se expressa" - Princípio da Comunicação Inclusiva
-            </div>
-            
-            <div class="metric-box">
-                <div class="metric-number">🌈</div>
-                <div class="metric-label">Cada Pessoa Tem Sua Forma Única de Comunicar</div>
-            </div>
-            
-            <div class="aac-box">
-                <h3>🗣️ O que você vai descobrir:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎯 Fundamentos da CAA:</strong> Conceitos essenciais e princípios básicos</li>
-                    <li><strong>🛠️ Métodos e Sistemas:</strong> PECS, símbolos, gestos e sinais</li>
-                    <li><strong>📱 Tecnologias Assistivas:</strong> Apps, dispositivos e softwares</li>
-                    <li><strong>🏠 Implementação Familiar:</strong> Estratégias para casa e escola</li>
-                    <li><strong>👨‍🏫 Treinamento de Parceiros:</strong> Envolvendo toda a família</li>
-                    <li><strong>🎨 Personalização:</strong> Adaptando sistemas às necessidades individuais</li>
-                    <li><strong>📈 Avaliação e Progresso:</strong> Monitorando o desenvolvimento</li>
-                    <li><strong>🌍 Inclusão Social:</strong> Participação plena na comunidade</li>
-                </ul>
-            </div>
-            
-            <div class="technology-box">
-                <h3>📱 Tecnologias Abordadas:</h3>
-                <ul style="color: white;">
-                    <li><strong>📲 Aplicativos de CAA:</strong> Proloquo2Go, LAMP, TouchChat</li>
-                    <li><strong>💻 Softwares Especializados:</strong> Boardmaker, SymbolStix</li>
-                    <li><strong>🎤 Dispositivos de Voz:</strong> SGDs (Speech Generating Devices)</li>
-                    <li><strong>👁️ Comunicação por Olhar:</strong> Eye-tracking e seleção visual</li>
-                    <li><strong>🤲 Interfaces Adaptadas:</strong> Switches e acionadores</li>
-                    <li><strong>🎨 Criação de Símbolos:</strong> Ferramentas de personalização</li>
-                </ul>
-            </div>
-            
-            <div class="method-box">
-                <h3>🎯 Métodos e Abordagens:</h3>
-                <ul style="color: white;">
-                    <li><strong>🖼️ PECS:</strong> Sistema de Comunicação por Troca de Figuras</li>
-                    <li><strong>🤟 Libras:</strong> Língua Brasileira de Sinais</li>
-                    <li><strong>✋ Gestos Naturais:</strong> Comunicação corporal e facial</li>
-                    <li><strong>📝 Símbolos Gráficos:</strong> PCS, Bliss, SymbolStix</li>
-                    <li><strong>🎵 Comunicação Musical:</strong> Ritmos e melodias</li>
-                    <li><strong>🎭 Dramatização:</strong> Expressão através do corpo</li>
-                    <li><strong>🖊️ Escrita Adaptada:</strong> Métodos alternativos de registro</li>
-                    <li><strong>🔤 Soletração:</strong> Comunicação letra por letra</li>
-                </ul>
-            </div>
-            
-            <div class="strategy-box">
-                <h3>💡 Estratégias de Implementação:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎯 Avaliação Inicial:</strong> Identificando necessidades e habilidades</li>
-                    <li><strong>📋 Planejamento Personalizado:</strong> Criando sistemas individualizados</li>
-                    <li><strong>👨‍👩‍👧‍👦 Envolvimento Familiar:</strong> Treinamento e suporte contínuo</li>
-                    <li><strong>🏫 Integração Escolar:</strong> Colaboração com educadores</li>
-                    <li><strong>📊 Monitoramento:</strong> Acompanhamento do progresso</li>
-                    <li><strong>🔄 Adaptações:</strong> Ajustes conforme desenvolvimento</li>
-                </ul>
-            </div>
-            
-            <div class="hope-box">
-                <h3>🌟 Nossa Missão:</h3>
-                <p style="color: white;">Acreditamos que toda pessoa tem o direito de se comunicar e ser compreendida. Este guia oferece conhecimento prático e esperança para famílias, educadores e profissionais que trabalham com comunicação alternativa, mostrando que existem sempre caminhos para conectar pessoas e quebrar barreiras comunicativas.</p>
-            </div>
-            
-            <div class="benefit-list">
-                <div class="benefit-title">🌟 Benefícios da Comunicação Alternativa:</div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">🗣️</span>
-                    <span><strong>Expressão Pessoal:</strong> Capacidade de comunicar necessidades, desejos e sentimentos</span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">🤝</span>
-                    <span><strong>Relacionamentos:</strong> Melhora significativa nas interações sociais</span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">📚</span>
-                    <span><strong>Aprendizagem:</strong> Facilitação do processo educacional</span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">😊</span>
-                    <span><strong>Bem-estar:</strong> Redução da frustração e aumento da autoestima</span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">🌍</span>
-                    <span><strong>Inclusão:</strong> Participação plena na sociedade</span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">🎯</span>
-                    <span><strong>Autonomia:</strong> Maior independência nas atividades diárias</span>
-                </div>
-            </div>
-            
-            <div class="implementation-steps">
-                <div class="step-title">🚀 Jornada da Comunicação Alternativa:</div>
-                <div class="step-item">
-                    <span class="step-number">1</span>
-                    <strong>Avaliação:</strong> Identificação das necessidades e habilidades comunicativas
-                </div>
-                <div class="step-item">
-                    <span class="step-number">2</span>
-                    <strong>Seleção:</strong> Escolha do método ou sistema mais adequado
-                </div>
-                <div class="step-item">
-                    <span class="step-number">3</span>
-                    <strong>Treinamento:</strong> Aprendizagem do usuário e parceiros de comunicação
-                </div>
-                <div class="step-item">
-                    <span class="step-number">4</span>
-                    <strong>Implementação:</strong> Uso gradual em diferentes ambientes
-                </div>
-                <div class="step-item">
-                    <span class="step-number">5</span>
-                    <strong>Expansão:</strong> Ampliação do vocabulário e complexidade
-                </div>
-                <div class="step-item">
-                    <span class="step-number">6</span>
-                    <strong>Generalização:</strong> Uso independente em todas as situações
-                </div>
-            </div>
-            
-            <p style="text-align: center; margin-top: 30px; font-size: 1.1rem; color: #64748b;">
-                <em>Baseado em pesquisas científicas, diretrizes internacionais de CAA, experiências clínicas e histórias reais de sucesso 🗣️💬🤝</em>
-            </p>
+
+    <div class="container">
+        <h1>Comunicação Alternativa - infantil</h1>
+        
+        <div class="document-viewer-wrapper" id="pdfViewerWrapper">
+            <iframe 
+                src="Minha-Voz-Meu-Mundo-Descobrindo-a-Comunicacao-Alternativa.pdf" 
+                class="document-viewer" 
+                id="pdfViewer"
+                type="application/pdf"
+                aria-label="Visualizador do documento PDF sobre Autismo">
+                <p>Seu navegador não suporta a visualização de PDFs diretamente. Você pode <a href="Minha-Voz-Meu-Mundo-Descobrindo-a-Comunicacao-Alternativa.pdf" target="_blank" rel="noopener noreferrer">clicar aqui para baixar o documento</a> e visualizá-lo em um leitor de PDF.</p>
+            </iframe>
         </div>
 
-        <!-- Página 2: Índice -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">2</div>
-                <div class="chapter-badge">ÍNDICE</div>
-            </div>
-            <h2>🗺️ Sua Jornada na Comunicação Alternativa</h2>
-            <div class="story-illustration">🗣️➡️💬➡️🤝➡️🌟</div>
-            
-            <div class="aac-box">
-                <h3>🧭 Roteiro Completo de Aprendizagem:</h3>
-                <ol class="steps-list">
-                    <li><strong>Fundamentos da CAA</strong> - Conceitos essenciais e princípios básicos</li>
-                    <li><strong>Avaliação e Diagnóstico</strong> - Identificando necessidades comunicativas</li>
-                    <li><strong>Sistemas de Símbolos</strong> - PCS, Bliss, SymbolStix e outros</li>
-                    <li><strong>PECS - Sistema de Troca</strong> - Metodologia estruturada passo a passo</li>
-                    <li><strong>Tecnologias Assistivas</strong> - Apps, dispositivos e softwares</li>
-                    <li><strong>Comunicação por Gestos</strong> - Libras e gestos naturais</li>
-                    <li><strong>Implementação Familiar</strong> - Estratégias para casa e rotina</li>
-                    <li><strong>Ambiente Escolar</strong> - Integração educacional efetiva</li>
-                    <li><strong>Treinamento de Parceiros</strong> - Envolvendo toda a rede de apoio</li>
-                    <li><strong>Personalização de Sistemas</strong> - Adaptando às necessidades individuais</li>
-                    <li><strong>Monitoramento e Progresso</strong> - Avaliação contínua do desenvolvimento</li>
-                    <li><strong>Inclusão Social</strong> - Participação plena na comunidade</li>
-                    <li><strong>Recursos e Ferramentas</strong> - Materiais práticos e aplicativos</li>
-                    <li><strong>Casos de Sucesso</strong> - Histórias inspiradoras reais</li>
-                </ol>
-            </div>
-            
-            <div class="technology-box">
-                <h3>📱 Abordagem Tecnológica:</h3>
-                <p style="color: white;">Este guia combina métodos tradicionais comprovados com as mais modernas tecnologias assistivas. Exploramos desde sistemas básicos de troca de figuras até aplicativos avançados de comunicação, sempre priorizando a funcionalidade e a facilidade de uso para cada pessoa única!</p>
-            </div>
-            
-            <div class="communication-demo">
-                <h3>🗣️ Comunicação: Direito Universal</h3>
-                <div class="communication-circle interactive-element">
-                    Expressão + Compreensão + Conexão = Comunicação Efetiva
-                </div>
-                <p><strong>Visualize as possibilidades se expandindo! ⬆️</strong></p>
-            </div>
-            
-            <div class="milestone-box">
-                <h3>🎯 Por que a CAA é essencial:</h3>
-                <ul style="color: white;">
-                    <li><strong>🌍 Direito Fundamental:</strong> Comunicação é um direito humano básico</li>
-                    <li><strong>📊 Necessidade Real:</strong> Milhões de pessoas precisam de apoio comunicativo</li>
-                    <li><strong>🚫 Barreiras Existentes:</strong> Falta de conhecimento e recursos adequados</li>
-                    <li><strong>💡 Soluções Disponíveis:</strong> Tecnologias e métodos cada vez mais acessíveis</li>
-                    <li><strong>🌱 Potencial de Transformação:</strong> Impacto profundo na qualidade de vida</li>
-                    <li><strong>🤝 Inclusão Social:</strong> Participação plena na sociedade</li>
-                </ul>
-            </div>
-            
-            <div class="symbol-grid">
-                <div class="symbol-card interactive-element">
-                    <div class="symbol-icon">🍎</div>
-                    <div class="symbol-label">COMER</div>
-                </div>
-                <div class="symbol-card interactive-element">
-                    <div class="symbol-icon">💧</div>
-                    <div class="symbol-label">BEBER</div>
-                </div>
-                <div class="symbol-card interactive-element">
-                    <div class="symbol-icon">🏠</div>
-                    <div class="symbol-label">CASA</div>
-                </div>
-                <div class="symbol-card interactive-element">
-                    <div class="symbol-icon">❤️</div>
-                    <div class="symbol-label">AMOR</div>
-                </div>
-                <div class="symbol-card interactive-element">
-                    <div class="symbol-icon">😊</div>
-                    <div class="symbol-label">FELIZ</div>
-                </div>
-                <div class="symbol-card interactive-element">
-                    <div class="symbol-icon">🎵</div>
-                    <div class="symbol-label">MÚSICA</div>
-                </div>
-                <div class="symbol-card interactive-element">
-                    <div class="symbol-icon">🚗</div>
-                    <div class="symbol-label">CARRO</div>
-                </div>
-                <div class="symbol-card interactive-element">
-                    <div class="symbol-icon">📚</div>
-                    <div class="symbol-label">LIVRO</div>
-                </div>
-            </div>
-            
-            <div class="inclusion-box">
-                <h3>🤝 Nossa Filosofia Inclusiva:</h3>
-                <p style="color: white;">Acreditamos que não existe uma forma "certa" ou "errada" de se comunicar. Cada pessoa tem seu próprio estilo, ritmo e necessidades comunicativas. Nosso papel é encontrar e desenvolver os métodos que melhor funcionam para cada indivíduo, respeitando sua singularidade e potencializando suas habilidades naturais.</p>
-            </div>
-            
-            <div class="method-box">
-                <h3>🎯 Métodos Principais Abordados:</h3>
-                <ul style="color: white;">
-                    <li><strong>🖼️ Sistemas Pictográficos:</strong> Comunicação através de imagens e símbolos</li>
-                    <li><strong>🤟 Comunicação Gestual:</strong> Libras, gestos naturais e sinais</li>
-                    <li><strong>📱 Tecnologia Assistiva:</strong> Apps, tablets e dispositivos especializados</li>
-                    <li><strong>🔤 Comunicação Alfabética:</strong> Soletração e escrita adaptada</li>
-                    <li><strong>🎵 Métodos Alternativos:</strong> Música, arte e expressão corporal</li>
-                    <li><strong>🔄 Sistemas Híbridos:</strong> Combinação de múltiplas abordagens</li>
-                </ul>
-            </div>
-            
-            <div class="device-showcase">
-                <div class="device-content">
-                    <h3>📱 Tecnologias em Destaque:</h3>
-                    <div class="app-grid">
-                        <div class="app-card">
-                            <div class="app-icon">📲</div>
-                            <div class="app-name">Proloquo2Go</div>
-                            <div class="app-desc">App líder em comunicação por voz sintética</div>
-                        </div>
-                        <div class="app-card">
-                            <div class="app-icon">💬</div>
-                            <div class="app-name">TouchChat</div>
-                            <div class="app-desc">Interface intuitiva com símbolos PCS</div>
-                        </div>
-                        <div class="app-card">
-                            <div class="app-icon">🎯</div>
-                            <div class="app-name">LAMP</div>
-                            <div class="app-desc">Sistema baseado em padrões motores</div>
-                        </div>
-                        <div class="app-card">
-                            <div class="app-icon">🎨</div>
-                            <div class="app-name">Boardmaker</div>
-                            <div class="app-desc">Criação de materiais personalizados</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="strategy-box">
-                <h3>💡 Estratégias de Sucesso:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎯 Individualização:</strong> Cada pessoa é única e merece abordagem personalizada</li>
-                    <li><strong>👥 Colaboração:</strong> Envolvimento de toda a equipe e família</li>
-                    <li><strong>📈 Progressão Gradual:</strong> Desenvolvimento passo a passo respeitando o ritmo</li>
-                    <li><strong>🔄 Flexibilidade:</strong> Adaptação constante conforme necessidades</li>
-                    <li><strong>🎉 Celebração:</strong> Reconhecimento de cada conquista, por menor que seja</li>
-                    <li><strong>💪 Persistência:</strong> Manutenção do apoio mesmo diante de desafios</li>
-                </ul>
-            </div>
-            
-            <div class="hope-box">
-                <h3>🌟 Mensagem de Esperança:</h3>
-                <p style="color: white;">A comunicação alternativa não é apenas sobre métodos e tecnologias - é sobre dar voz a quem tem muito a dizer. Cada pessoa que encontra sua forma de se expressar não apenas melhora sua própria vida, mas enriquece toda a comunidade ao seu redor. Sua jornada na CAA pode transformar vidas e abrir mundos de possibilidades!</p>
-            </div>
-            
-            <div class="success-story">
-                <div class="success-title">História de Inspiração</div>
-                <p>Maria, de 8 anos, começou usando PECS para pedir água. Hoje, dois anos depois, ela usa um tablet para contar histórias complexas, fazer piadas e expressar seus sonhos. Sua família diz que foi como se uma porta se abrisse para um mundo que sempre esteve lá, esperando para ser descoberto.</p>
-            </div>
+        <div class="actions">
+            <a href="Minha-Voz-Meu-Mundo-Descobrindo-a-Comunicacao-Alternativa.pdf" download class="button-link">
+                Baixar PDF
+            </a>
+            <a href="#" class="button-link" onclick="alert('Esta função exigiria a criação de um arquivo EPUB ou similar. Para demonstração, o botão de download do PDF é a melhor opção no momento.'); return false;">
+                Ver em Formato de Livro (E-book)
+            </a>
+            <button onclick="history.back()">Voltar</button>
         </div>
 
-        <!-- Página 3: Fundamentos da CAA -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">3</div>
-                <div class="chapter-badge">CAPÍTULO 1</div>
-            </div>
-            <h2>🗣️ Fundamentos da CAA</h2>
-            <div class="story-illustration">💬➡️🤝➡️🌟➡️🌍</div>
-            
-            <p>A Comunicação Aumentativa e Alternativa (CAA) é um campo interdisciplinar que abrange todas as formas de comunicação (além da fala) usadas para expressar pensamentos, necessidades, desejos e ideias. É uma área que combina conhecimentos de fonoaudiologia, terapia ocupacional, psicologia, educação e tecnologia para criar soluções comunicativas personalizadas e efetivas para pessoas com necessidades especiais.</p>
-            
-            <div class="aac-box">
-                <h3>🗣️ O que é Comunicação Aumentativa e Alternativa?</h3>
-                <p style="color: white;">A CAA é um conjunto de ferramentas e estratégias que uma pessoa usa para resolver desafios comunicativos cotidianos. Pode incluir gestos, expressões faciais, símbolos, figuras, escrita e dispositivos eletrônicos que produzem fala. O objetivo é sempre maximizar a capacidade comunicativa de cada pessoa, respeitando suas habilidades únicas.</p>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">3.5M</div>
-                    <div class="stat-label">Pessoas no Brasil Precisam de CAA</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">0-99</div>
-                    <div class="stat-label">Idade dos Usuários</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Condições Beneficiadas</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">95%</div>
-                    <div class="stat-label">Taxa de Sucesso</div>
-                </div>
-            </div>
-            
-            <div class="aspect-grid">
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">🔄</div>
-                    <div class="aspect-card-title">CAA Aumentativa</div>
-                    <div class="aspect-card-desc">
-                        Complementa e apoia a fala existente. Usada quando a pessoa tem alguma capacidade de fala, mas precisa de suporte adicional para se comunicar de forma mais clara e efetiva.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">🔀</div>
-                    <div class="aspect-card-title">CAA Alternativa</div>
-                    <div class="aspect-card-desc">
-                        Substitui completamente a fala quando esta não é funcional. Oferece métodos alternativos de expressão para pessoas que não conseguem usar a fala como meio primário de comunicação.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">⏰</div>
-                    <div class="aspect-card-title">CAA Temporária</div>
-                    <div class="aspect-card-desc">
-                        Usada durante períodos específicos, como recuperação de cirurgias, tratamentos médicos ou desenvolvimento da fala. Oferece suporte comunicativo durante fases transitórias.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">🔒</div>
-                    <div class="aspect-card-title">CAA Permanente</div>
-                    <div class="aspect-card-desc">
-                        Solução de longo prazo para pessoas com condições permanentes que afetam a comunicação. Foca no desenvolvimento de sistemas duradouros e evolutivos.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">🏠</div>
-                    <div class="aspect-card-title">CAA Sem Tecnologia</div>
-                    <div class="aspect-card-desc">
-                        Inclui gestos, expressões faciais, símbolos impressos, pranchas de comunicação e sistemas de troca de figuras. Não depende de dispositivos eletrônicos.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">📱</div>
-                    <div class="aspect-card-title">CAA com Tecnologia</div>
-                    <div class="aspect-card-desc">
-                        Utiliza dispositivos eletrônicos como tablets, computadores e equipamentos especializados. Oferece recursos avançados como síntese de voz e personalização.
-                    </div>
-                </div>
-            </div>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">1</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Pré-História</div>
-                        <div class="timeline-title">Comunicação Natural</div>
-                        <div class="timeline-desc">Gestos, expressões faciais e linguagem corporal sempre foram formas naturais de comunicação humana, especialmente para pessoas com dificuldades de fala.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">2</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">1950s-60s</div>
-                        <div class="timeline-title">Primeiros Sistemas</div>
-                        <div class="timeline-desc">Desenvolvimento dos primeiros sistemas formais de símbolos, como o sistema Bliss, criado por Charles Bliss para comunicação internacional.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">3</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">1970s-80s</div>
-                        <div class="timeline-title">Expansão Científica</div>
-                        <div class="timeline-desc">Pesquisas sistemáticas sobre CAA começam. Desenvolvimento de sistemas pictográficos como PCS (Picture Communication Symbols) por Roxanna Mayer Johnson.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">4</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">1990s</div>
-                        <div class="timeline-title">Era Digital</div>
-                        <div class="timeline-desc">Primeiros dispositivos eletrônicos de comunicação. Computadores começam a ser adaptados para CAA, oferecendo síntese de voz e maior flexibilidade.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">5</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">2000s-2010s</div>
-                        <div class="timeline-title">Revolução Mobile</div>
-                        <div class="timeline-desc">Tablets e smartphones transformam a CAA. Apps especializados tornam a tecnologia assistiva mais acessível e portátil para milhões de pessoas.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">6</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">2020s</div>
-                        <div class="timeline-title">IA e Personalização</div>
-                        <div class="timeline-desc">Inteligência artificial e aprendizado de máquina começam a personalizar sistemas de CAA, oferecendo predição de texto e adaptação automática às necessidades do usuário.</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="technology-box">
-                <h3>📱 Princípios Fundamentais da CAA</h3>
-                
-                <h4 style="color: white;">🎯 Princípio da Funcionalidade:</h4>
-                <ul style="color: white;">
-                    <li><strong>Comunicação Real:</strong> Foco em necessidades comunicativas genuínas do dia a dia</li>
-                    <li><strong>Contexto Natural:</strong> Uso em situações reais e significativas</li>
-                    <li><strong>Propósito Claro:</strong> Cada interação deve ter objetivo específico</li>
-                    <li><strong>Relevância Pessoal:</strong> Conteúdo relacionado aos interesses da pessoa</li>
-                </ul>
-                
-                <h4 style="color: white;">🌱 Princípio do Desenvolvimento:</h4>
-                <ul style="color: white;">
-                    <li><strong>Progressão Gradual:</strong> Evolução respeitando o ritmo individual</li>
-                    <li><strong>Complexidade Crescente:</strong> Aumento gradual da sofisticação comunicativa</li>
-                    <li><strong>Habilidades Emergentes:</strong> Reconhecimento e apoio a novas capacidades</li>
-                    <li><strong>Aprendizagem Contínua:</strong> Processo que nunca termina</li>
-                </ul>
-                
-                <h4 style="color: white;">🤝 Princípio da Parceria:</h4>
-                <ul style="color: white;">
-                    <li><strong>Colaboração Ativa:</strong> Envolvimento de todos os parceiros comunicativos</li>
-                    <li><strong>Treinamento Conjunto:</strong> Aprendizagem simultânea de usuários e parceiros</li>
-                    <li><strong>Responsabilidade Compartilhada:</strong> Sucesso depende de toda a rede</li>
-                    <li><strong>Apoio Mútuo:</strong> Suporte contínuo entre todos os envolvidos</li>
-                </ul>
-            </div>
-            
-            <div class="method-box">
-                <h3>🎯 Quem se Beneficia da CAA?</h3>
-                
-                <h4 style="color: white;">🧩 Condições do Neurodesenvolvimento:</h4>
-                <ul style="color: white;">
-                    <li><strong>Autismo:</strong> Dificuldades na comunicação social e verbal</li>
-                    <li><strong>Deficiência Intelectual:</strong> Limitações no desenvolvimento da linguagem</li>
-                    <li><strong>Síndrome de Down:</strong> Atrasos na fala e dificuldades articulatórias</li>
-                    <li><strong>Paralisia Cerebral:</strong> Comprometimentos motores que afetam a fala</li>
-                </ul>
-                
-                <h4 style="color: white;">🏥 Condições Adquiridas:</h4>
-                <ul style="color: white;">
-                    <li><strong>AVC (Derrame):</strong> Afasia e dificuldades de linguagem</li>
-                    <li><strong>Traumatismo Craniano:</strong> Lesões que afetam a comunicação</li>
-                    <li><strong>Doenças Degenerativas:</strong> ELA, Parkinson, demências</li>
-                    <li><strong>Câncer:</strong> Tratamentos que afetam temporariamente a fala</li>
-                </ul>
-                
-                <h4 style="color: white;">👶 Situações Temporárias:</h4>
-                <ul style="color: white;">
-                    <li><strong>Intubação:</strong> Pacientes em UTI que não podem falar</li>
-                    <li><strong>Cirurgias:</strong> Procedimentos que afetam temporariamente a voz</li>
-                    <li><strong>Desenvolvimento Típico:</strong> Crianças pequenas ainda desenvolvendo a fala</li>
-                    <li><strong>Multilinguismo:</strong> Apoio durante aprendizagem de idiomas</li>
-                </ul>
-            </div>
-            
-            <div class="strategy-box">
-                <h3>💡 Mitos e Verdades sobre CAA</h3>
-                
-                <h4 style="color: white;">❌ Mitos Comuns:</h4>
-                <ul style="color: white;">
-                    <li><strong>"CAA impede o desenvolvimento da fala"</strong> - FALSO: Na verdade, pode estimular a fala</li>
-                    <li><strong>"É só para pessoas com deficiência severa"</strong> - FALSO: Beneficia pessoas com diversos níveis de necessidade</li>
-                    <li><strong>"É muito caro e complicado"</strong> - FALSO: Existem opções simples e acessíveis</li>
-                    <li><strong>"Só funciona com crianças"</strong> - FALSO: Efetivo em todas as idades</li>
-                </ul>
-                
-                <h4 style="color: white;">✅ Verdades Importantes:</h4>
-                <ul style="color: white;">
-                    <li><strong>CAA pode estimular o desenvolvimento da fala natural</strong></li>
-                    <li><strong>Quanto mais cedo começar, melhores os resultados</strong></li>
-                    <li><strong>Funciona melhor quando toda a família participa</strong></li>
-                    <li><strong>Cada pessoa precisa de uma abordagem individualizada</strong></li>
-                </ul>
-            </div>
-            
-            <div class="inclusion-box">
-                <h3>🤝 Componentes de um Sistema de CAA</h3>
-                
-                <h4 style="color: white;">👤 O Usuário:</h4>
-                <ul style="color: white;">
-                    <li><strong>Habilidades Atuais:</strong> Capacidades comunicativas existentes</li>
-                    <li><strong>Necessidades Específicas:</strong> O que precisa expressar</li>
-                    <li><strong>Preferências Pessoais:</strong> Gostos e interesses individuais</li>
-                    <li><strong>Potencial de Desenvolvimento:</strong> Capacidades emergentes</li>
-                </ul>
-                
-                <h4 style="color: white;">🛠️ As Ferramentas:</h4>
-                <ul style="color: white;">
-                    <li><strong>Símbolos:</strong> Figuras, fotos, palavras, gestos</li>
-                    <li><strong>Dispositivos:</strong> Pranchas, tablets, computadores</li>
-                    <li><strong>Software:</strong> Aplicativos e programas especializados</li>
-                    <li><strong>Acessórios:</strong> Suportes, acionadores, adaptações</li>
-                </ul>
-                
-                <h4 style="color: white;">🌍 O Ambiente:</h4>
-                <ul style="color: white;">
-                    <li><strong>Contextos de Uso:</strong> Casa, escola, trabalho, comunidade</li>
-                    <li><strong>Parceiros Comunicativos:</strong> Família, amigos, profissionais</li>
-                    <li><strong>Oportunidades:</strong> Situações que estimulam a comunicação</li>
-                    <li><strong>Suporte:</strong> Recursos e apoio disponíveis</li>
-                </ul>
-            </div>
-            
-            <div class="milestone-box">
-                <h3>🎯 Características de um Sistema CAA Efetivo</h3>
-                
-                <h4 style="color: white;">🎨 Personalização:</h4>
-                <ul style="color: white;">
-                    <li><strong>Vocabulário Relevante:</strong> Palavras e conceitos importantes para a pessoa</li>
-                    <li><strong>Interface Adaptada:</strong> Layout e organização que fazem sentido</li>
-                    <li><strong>Níveis de Complexidade:</strong> Opções simples e avançadas</li>
-                    <li><strong>Preferências Visuais:</strong> Cores, tamanhos e estilos adequados</li>
-                </ul>
-                
-                <h4 style="color: white;">⚡ Eficiência:</h4>
-                <ul style="color: white;">
-                    <li><strong>Acesso Rápido:</strong> Comunicação ágil e fluida</li>
-                    <li><strong>Organização Lógica:</strong> Estrutura que facilita a localização</li>
-                    <li><strong>Predição Inteligente:</strong> Sugestões baseadas no contexto</li>
-                    <li><strong>Múltiplas Modalidades:</strong> Diferentes formas de acesso</li>
-                </ul>
-                
-                <h4 style="color: white;">🔄 Flexibilidade:</h4>
-                <ul style="color: white;">
-                    <li><strong>Adaptação Contínua:</strong> Evolução conforme necessidades</li>
-                    <li><strong>Portabilidade:</strong> Uso em diferentes ambientes</li>
-                    <li><strong>Backup e Sincronização:</strong> Segurança dos dados</li>
-                    <li><strong>Integração:</strong> Compatibilidade com outros sistemas</li>
-                </ul>
-            </div>
-            
-            <div class="pecs-demo">
-                <h3>🖼️ Exemplo: Sistema Básico de Comunicação</h3>
-                <p>Veja como símbolos simples podem formar uma comunicação efetiva:</p>
-                <div class="pecs-board">
-                    <div class="pecs-card interactive-element">
-                        <div class="pecs-icon">👋</div>
-                        <div class="pecs-text">OLÁ</div>
-                    </div>
-                    <div class="pecs-card interactive-element">
-                        <div class="pecs-icon">🍎</div>
-                        <div class="pecs-text">QUERO</div>
-                    </div>
-                    <div class="pecs-card interactive-element">
-                        <div class="pecs-icon">💧</div>
-                        <div class="pecs-text">ÁGUA</div>
-                    </div>
-                    <div class="pecs-card interactive-element">
-                        <div class="pecs-icon">🙏</div>
-                        <div class="pecs-text">OBRIGADO</div>
-                    </div>
-                </div>
-                <p><strong>Clique nos símbolos para ver como funciona! ⬆️</strong></p>
-            </div>
-            
-            <div class="tip-box">
-                <h3>💡 Dicas para Começar com CAA</h3>
-                
-                <h4 style="color: #e2e8f0;">🎯 Passo 1: Observação</h4>
-                <p style="color: #cbd5e0;">Observe como a pessoa se comunica atualmente. Que gestos usa? Como expressa necessidades? Quais são suas tentativas de comunicação? Esta observação é fundamental para escolher o sistema mais adequado.</p>
-                
-                <h4 style="color: #e2e8f0;">📋 Passo 2: Avaliação Simples</h4>
-                <p style="color: #cbd5e0;">Identifique: O que a pessoa mais precisa comunicar? Quais são suas habilidades motoras? Como é sua visão e audição? Que tecnologias já usa ou tem interesse?</p>
-                
-                <h4 style="color: #e2e8f0;">🚀 Passo 3: Começar Simples</h4>
-                <p style="color: #cbd5e0;">Inicie com 2-3 símbolos das necessidades mais básicas (água, banheiro, mais). Use situações naturais do dia a dia. Celebre cada tentativa de comunicação, mesmo que imperfeita.</p>
-                
-            
-</div>
-</div>
-</div>
-
-
-
- <div class="navigation">
-        <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
-        <button id="nextBtn" class="nav-btn">Próximo</button>
+        <p>Este documento oferece informações cruciais sobre os primeiros sinais do autismo e a importância da intervenção precoce. Para ativar a lupa, clique em qualquer parte do documento acima. Para desativar, clique novamente na lupa ou em qualquer outro lugar.</p>
     </div>
 
-     <script>
-        
-    const pages = document.querySelectorAll('.page');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const progressBar = document.getElementById('progressBar');
-    const pageCounter = document.getElementById('pageCounter');
-    let currentPageIndex = 0;
+    <script>
+        const pdfViewerWrapper = document.getElementById('pdfViewerWrapper');
+        const pdfViewer = document.getElementById('pdfViewer');
+        let magnifierGlass = null; // Variável para armazenar a lupa
 
-    function showPage(index) {
-        pages.forEach((page, i) => {
-            if (i === index) {
-                page.classList.add('active');
-            } else {
-                page.classList.remove('active');
+        // Adiciona um ouvinte de eventos para cliques no wrapper do PDF
+        pdfViewerWrapper.addEventListener('click', function(e) {
+            // Se já existe uma lupa, remove-a
+            if (magnifierGlass) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                // Restaura o cursor padrão
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+                return; // Sai da função após remover
+            }
+
+            // Cria o elemento da lupa
+            magnifierGlass = document.createElement('div');
+            magnifierGlass.classList.add('magnifier-glass');
+
+            // Cria o conteúdo da lupa (uma cópia do iframe para simular o zoom)
+            const magnifierContent = pdfViewer.cloneNode(true);
+            magnifierContent.classList.remove('document-viewer'); // Remove estilos do iframe original
+            magnifierContent.style.position = 'absolute';
+            magnifierContent.style.top = '0';
+            magnifierContent.style.left = '0';
+            magnifierContent.style.width = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.height = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.pointerEvents = 'none'; // Impede interação com o iframe clonado na lupa
+
+            magnifierGlass.appendChild(magnifierContent);
+            pdfViewerWrapper.appendChild(magnifierGlass);
+
+            // Adiciona um evento de clique na lupa para removê-la
+            magnifierGlass.addEventListener('click', function(event) {
+                event.stopPropagation(); // Impede que o clique na lupa se propague para o wrapper
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+            });
+
+            // Calcula a posição do clique dentro do iframe
+            const rect = pdfViewerWrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left; // Coordenada X relativa ao wrapper
+            const y = e.clientY - rect.top;  // Coordenada Y relativa ao wrapper
+
+            // Posiciona a lupa no centro do clique
+            magnifierGlass.style.left = `${x}px`;
+            magnifierGlass.style.top = `${y}px`;
+
+            // Calcula o deslocamento do conteúdo dentro da lupa para simular o zoom na área clicada
+            // O conteúdo da lupa é 2x maior, então o ponto de origem deve ser metade da distância
+            // da borda para o clique.
+            const zoomLevel = 2; // O mesmo que as dimensões do magnifierContent
+            const contentX = -x * (zoomLevel - 1) + (magnifierGlass.offsetWidth / 2);
+            const contentY = -y * (zoomLevel - 1) + (magnifierGlass.offsetHeight / 2);
+
+            magnifierContent.style.transform = `translate(${contentX}px, ${contentY}px)`;
+
+            // Muda o cursor para indicar que a lupa está ativa
+            pdfViewerWrapper.style.cursor = 'zoom-out';
+        });
+
+        // Adiciona um ouvinte para cliques em qualquer lugar do documento
+        // Isso permite remover a lupa clicando fora dela (no body, por exemplo)
+        document.addEventListener('click', function(event) {
+            if (magnifierGlass && !pdfViewerWrapper.contains(event.target)) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
             }
         });
-        updateNavigationButtons();
-        updateProgressBar();
-        updatePageCounter();
-    }
-
-    function updateNavigationButtons() {
-        prevBtn.disabled = currentPageIndex === 0;
-        nextBtn.disabled = currentPageIndex === pages.length - 1;
-    }
-
-    function updateProgressBar() {
-        const progress = (currentPageIndex / (pages.length - 1)) * 100;
-        progressBar.style.width = `${progress}%`;
-    }
-
-    function updatePageCounter() {
-        pageCounter.textContent = `${currentPageIndex + 1} / ${pages.length}`;
-    }
-
-    prevBtn.addEventListener('click', () => {
-        if (currentPageIndex > 0) {
-            currentPageIndex--;
-            showPage(currentPageIndex);
-        }
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (currentPageIndex < pages.length - 1) {
-            currentPageIndex++;
-            showPage(currentPageIndex);
-        }
-    });
-
-    // Initialize the first page and navigation
-    showPage(currentPageIndex);
-</script>
-
+    </script>
+</body>
+</html>

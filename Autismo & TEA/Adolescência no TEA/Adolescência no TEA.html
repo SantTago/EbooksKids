@@ -1,2797 +1,351 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adolescência no TEA - Guia Completo</title>
+    <title>Desvendando o Autismo - Leitura Otimizada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap');
-        
-        * {
+        :root {
+            --primary-color: #5865F2; /* Azul vibrante */
+            --secondary-color: #4A56E2; /* Azul mais escuro para títulos */
+            --gradient-start: #667eea;
+            --gradient-end: #764ba2;
+            --text-light: #f0f0f0;
+            --text-dark: #333;
+            --bg-card: rgba(255, 255, 255, 0.98);
+            --shadow-light: rgba(0, 0, 0, 0.15);
+            --shadow-strong: rgba(0, 0, 0, 0.25);
+            --border-radius-lg: 12px;
+            --border-radius-md: 8px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--text-light);
+            text-align: center;
             box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            min-height: 100vh;
+            padding: 40px 20px; /* Padding geral para telas grandes */
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        
-        .ebook-container {
+
+        .container {
+            width: 100%;
             max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            border-radius: 25px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .page {
-            min-height: 100vh;
-            padding: 50px;
-            display: none;
-            position: relative;
-            background: linear-gradient(45deg, #f8fafc, #f1f5f9);
-        }
-        
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .page-header {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        
-        .page-number {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-weight: 600;
-            font-size: 20px;
-            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
-        }
-        
-        .chapter-badge {
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-        
-        h1 {
-            color: #1e293b;
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        h2 {
-            color: #4f46e5;
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            text-align: center;
-            font-weight: 700;
-        }
-        
-        h3 {
-            color: #7c3aed;
-            font-size: 1.6rem;
-            margin-bottom: 18px;
-            font-weight: 600;
-        }
-        
-        h4 {
-            color: #475569;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        
-        p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #475569;
-            margin-bottom: 22px;
-            text-align: justify;
-            font-weight: 400;
-        }
-        
-        .autism-icon {
-            width: 140px;
-            height: 140px;
-            border-radius: 25px;
-            margin: 25px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            animation: gentle-pulse 3s infinite;
-        }
-        
-        @keyframes gentle-pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
-            50% { transform: scale(1.05); box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3); }
-        }
-        
-        .understanding-box {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #f59e0b;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-            color: white;
-        }
-        
-        .understanding-box::before {
-            content: "🧩";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .support-box {
-            background: linear-gradient(135deg, #06b6d4, #3b82f6);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #10b981;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-            color: white;
-        }
-        
-        .support-box::before {
-            content: "🤝";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .development-box {
-            background: linear-gradient(135deg, #8b5cf6, #a855f7);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .development-box::before {
-            content: "🌱";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .challenge-box {
-            background: linear-gradient(135deg, #f59e0b, #f97316);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #ef4444;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-            color: white;
-        }
-        
-        .challenge-box::before {
-            content: "⚡";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .strategy-box {
-            background: linear-gradient(135deg, #10b981, #059669);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .strategy-box::before {
-            content: "💡";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .navigation {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            z-index: 1000;
-        }
-        
-        .nav-btn {
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            border: none;
-            padding: 18px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Nunito', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        
-        .nav-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-        }
-        
-        .nav-btn:disabled {
-            background: #cbd5e0;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 6px;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            transition: width 0.5s ease;
-            z-index: 1001;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .page-counter {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.9);
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            color: #475569;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .source-box {
-            background: #f8fafc;
-            border: 3px dashed #cbd5e0;
-            padding: 25px;
-            border-radius: 20px;
-            margin-top: 35px;
-            font-size: 1rem;
-            color: #64748b;
-            position: relative;
-        }
-        
-        .source-box::before {
-            content: "📚";
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-        }
-        
-        .teen-demo {
-            text-align: center;
+            background-color: var(--bg-card);
             padding: 40px;
-            background: linear-gradient(135deg, #e0f2fe, #f3e8ff);
-            border-radius: 25px;
-            margin: 25px 0;
-        }
-        
-        .teen-circle {
-            width: 180px;
-            height: 180px;
-            border: 6px solid #4f46e5;
-            border-radius: 50%;
-            margin: 25px auto;
+            box-shadow: 0 15px 35px var(--shadow-strong);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: 30px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            color: #4f46e5;
-            font-weight: 600;
-            animation: gentle-rotate 15s infinite linear;
-            box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
-            position: relative;
+            color: var(--text-dark);
+            position: relative; /* Necessário para posicionar a lupa */
         }
-        
-        .teen-circle::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 30px;
-            height: 30px;
-            background: #7c3aed;
-            border-radius: 50%;
-            animation: orbit 4s infinite;
-        }
-        
-        @keyframes gentle-rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes orbit {
-            0%, 100% { transform: scale(1) translateY(0); }
-            50% { transform: scale(1.2) translateY(-5px); }
-        }
-        
-        .story-illustration {
-            text-align: center;
-            font-size: 4rem;
-            margin: 30px 0;
-            animation: gentle-float 4s ease-in-out infinite;
-        }
-        
-        @keyframes gentle-float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        ul, ol {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #475569;
-            margin-left: 25px;
-            font-weight: 400;
-        }
-        
-        li {
-            margin-bottom: 12px;
-            position: relative;
-        }
-        
-        .checklist {
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .checklist li::before {
-            content: "✅";
-            margin-right: 10px;
-        }
-        
-        .steps-list {
-            counter-reset: step-counter;
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .steps-list li {
-            counter-increment: step-counter;
-            position: relative;
-            padding-left: 40px;
-        }
-        
-        .steps-list li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: #4f46e5;
-            color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        
-        .interactive-element {
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        
-        .interactive-element:hover {
-            transform: scale(1.05);
-        }
-        
-        .level-badge {
-            background: linear-gradient(45deg, #7c3aed, #a855f7);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-        
-        .age-badge {
-            background: linear-gradient(45deg, #f59e0b, #f97316);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-left: 10px;
-        }
-        
-        .quote-box {
-            background: linear-gradient(135deg, #fef3c7, #fed7aa);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #f59e0b;
-            font-style: italic;
-            font-size: 1.1rem;
-            position: relative;
-        }
-        
-    /*  .quote-box::before {
-            content: """;
-            font-size: 4rem;
-            color: #f59e0b;
-            position: absolute;
-            top: -10px;
-            left: 15px;
-            line-height: 1;
-        }*/
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .stat-card {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
+
+        h1 {
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            font-size: 2.5em;
             font-weight: 700;
-            margin-bottom: 10px;
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
-        
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
+
+        .document-viewer-wrapper {
+            position: relative; /* Para posicionar a lupa dentro */
+            width: 100%;
+            min-height: 550px;
+            height: 75vh;
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 8px 20px var(--shadow-light);
+            overflow: hidden; /* Garante que a lupa não vaze */
+            cursor: zoom-in; /* Indica que é clicável para zoom */
         }
-        
-        .aspect-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
+
+        .document-viewer {
+            width: 100%;
+            height: 100%;
+            border: none; /* A borda será no wrapper */
         }
-        
-        .aspect-card {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .aspect-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .aspect-card-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .aspect-card-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .aspect-card-desc {
-            font-size: 1rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-        
-        .milestone-box {
-            background: linear-gradient(135deg, #06b6d4, #0891b2);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .milestone-box::before {
-            content: "🎯";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .warning-box {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .warning-box::before {
-            content: "⚠️";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .hope-box {
-            background: linear-gradient(135deg, #10b981, #059669);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .hope-box::before {
-            content: "🌟";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .timeline {
-            position: relative;
-            margin: 30px 0;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, #4f46e5, #7c3aed);
-            border-radius: 2px;
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin: 30px 0;
-            padding-left: 80px;
-        }
-        
-        .timeline-marker {
-            position: absolute;
-            left: 15px;
-            top: 0;
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            border-radius: 50%;
+
+        .actions {
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
             justify-content: center;
-            color: white;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        button, .button-link {
+            padding: 14px 30px;
+            font-size: 1.1em;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
             font-weight: 600;
-            font-size: 0.9rem;
-        }
-        
-        .timeline-content {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-left: 4px solid #4f46e5;
-        }
-        
-        .timeline-age {
-            color: #4f46e5;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-        
-        .timeline-title {
-            color: #1e293b;
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        
-        .timeline-desc {
-            color: #64748b;
-            line-height: 1.6;
-        }
-        
-        .tip-box {
-            background: #1e293b;
-            color: #e2e8f0;
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            overflow-x: auto;
-            position: relative;
-        }
-        
-        .tip-box::before {
-            content: "💡";
-            position: absolute;
-            top: -10px;
-            right: 15px;
-            background: #4f46e5;
-            color: white;
-            padding: 5px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-        }
-        
-        .resource-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .resource-card {
-            background: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            border-top: 4px solid #4f46e5;
-        }
-        
-        .resource-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .resource-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .resource-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-align: center;
-            color: #1e293b;
-        }
-        
-        .resource-desc {
-            font-size: 1rem;
-            color: #64748b;
-            line-height: 1.5;
-            text-align: center;
-        }
-        
-        .benefit-list {
-            background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #10b981;
-        }
-        
-        .benefit-title {
-            color: #065f46;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .benefit-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            color: #064e3b;
-        }
-        
-        .benefit-icon {
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .implementation-steps {
-            background: linear-gradient(135deg, #eff6ff, #dbeafe);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #3b82f6;
-        }
-        
-        .step-title {
-            color: #1e40af;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .step-item {
-            background: white;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border-left: 3px solid #3b82f6;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        
-        .step-number {
-            background: #3b82f6;
-            color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
+            letter-spacing: 0.5px;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            min-width: 180px;
+        }
+
+        button:hover, .button-link:hover {
+            background-color: #4452D3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        button:active, .button-link:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            margin-top: 25px;
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        p a {
+            color: #007bff;
+            text-decoration: none;
             font-weight: 600;
-            margin-right: 10px;
+        }
+        p a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        /* --- Estilos da Lupa --- */
+        .magnifier-glass {
+            position: absolute;
+            border: 3px solid var(--primary-color);
+            border-radius: 50%;
+            cursor: zoom-out;
+            width: 150px; /* Tamanho da lupa */
+            height: 150px;
+            transform: translate(-50%, -50%); /* Centraliza a lupa no clique */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden; /* Garante que o conteúdo dentro não transborde */
+            pointer-events: none; /* Permite interagir com o iframe por baixo, mas a lupa ainda bloqueia o clique nela */
+            z-index: 10; /* Garante que a lupa fique acima do iframe */
+            background-color: rgba(255, 255, 255, 0.1); /* Um leve fundo translúcido */
+            display: flex; /* Para centralizar o conteúdo dentro */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .magnifier-content {
+            position: absolute;
+            width: 200%; /* Exemplo de zoom: 2x */
+            height: 200%; /* Exemplo de zoom: 2x */
+            transform-origin: 0 0; /* Ponto de origem da transformação */
+            /* Isso será ajustado via JS */
         }
         
-        .metric-box {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 15px 0;
-            text-align: center;
-            border: 2px solid #f59e0b;
-        }
-        
-        .metric-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #92400e;
-            margin-bottom: 5px;
-        }
-        
-        .metric-label {
-            font-size: 1rem;
-            color: #78350f;
-            font-weight: 500;
-        }
-        
-        .family-box {
-            background: linear-gradient(135deg, #fce7f3, #fdf2f8);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #ec4899;
-        }
-        
-        .family-title {
-            color: #be185d;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .school-box {
-            background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #0284c7;
-        }
-        
-        .school-title {
-            color: #0c4a6e;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .teen-box {
-            background: linear-gradient(135deg, #f3e8ff, #faf5ff);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #8b5cf6;
-        }
-        
-        .teen-title {
-            color: #6b21a8;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        @media (max-width: 768px) {
-            .page {
-                padding: 30px 20px;
+        /* --- Media Queries para Responsividade --- */
+        @media (max-width: 992px) {
+            .container {
+                max-width: 95%;
+                padding: 30px;
             }
-            
             h1 {
-                font-size: 2.2rem;
+                font-size: 2.2em;
             }
-            
-            h2 {
-                font-size: 1.8rem;
+            .document-viewer-wrapper {
+                min-height: 500px;
+                height: 70vh;
             }
-            
-            .autism-icon {
-                width: 100px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 15px;
+            }
+            .container {
+                padding: 25px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 1.9em;
+                margin-bottom: 25px;
+            }
+            .document-viewer-wrapper {
+                min-height: 450px;
+                height: 65vh;
+                margin-bottom: 25px;
+            }
+            button, .button-link {
+                padding: 12px 25px;
+                font-size: 1em;
+                min-width: unset;
+                flex-grow: 1;
+            }
+            .actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            p {
+                font-size: 0.95em;
+                margin-top: 20px;
+            }
+            .magnifier-glass {
+                width: 120px; /* Lupa menor em telas menores */
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+            .container {
+                padding: 20px;
+                border-radius: 8px;
+            }
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 20px;
+            }
+            .document-viewer-wrapper {
+                min-height: 400px;
+                height: 60vh;
+            }
+            button, .button-link {
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+            .magnifier-glass {
+                width: 100px; /* Lupa ainda menor em telas muito pequenas */
                 height: 100px;
-                font-size: 3.5rem;
-            }
-            
-            .teen-circle {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .aspect-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .resource-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline-item {
-                padding-left: 60px;
-            }
-            
-            .timeline::before {
-                left: 20px;
-            }
-            
-            .timeline-marker {
-                left: 5px;
             }
         }
     </style>
 </head>
 <body>
-     <div class="navigation">
-        <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
-        <button id="nextBtn" class="nav-btn">Próximo</button>
-    </div>
-    <div class="progress-bar" id="progressBar"></div>
-    <div class="page-counter" id="pageCounter">1 / 15</div>
-    
 
-      <!-- Página 1: Índice -->
-   <div class="ebook-container">
-    <div class="page active">
-        <div class="page-header">
-            <div class="page-number">1</div>
-            <div class="chapter-badge">CAPA</div>
-        </div>
+    <div class="container">
+        <h1>Comunicação Alternativa - infantil</h1>
         
-        <h1>🧩 **Adolescência no TEA: Um Guia Para Pais e Mães** 🌟</h1>
-        <div class="autism-icon interactive-element">🧠</div>
-        <h2>**Seu Roteiro Essencial para Apoiar seu Filho(a) Autista nesta Fase de Grandes Descobertas**</h2>
-
-        <div class="understanding-box">
-            <h3>💙 Navegando Juntos Nesta Jornada</h3>
-            <p style="text-align: center; font-size: 1.4rem; color: white;">
-                <strong>Queridos pais e mães, esta é uma jornada única e, com o conhecimento certo, vocês se tornarão os maiores guias para seus filhos adolescentes no Espectro Autista. Este e-book foi feito para vocês.</strong>
-            </p>
+        <div class="document-viewer-wrapper" id="pdfViewerWrapper">
+            <iframe 
+                src="Adolescencia-no-Espectro-Navegando-as-Mudancas-com-Confianca.pdf" 
+                class="document-viewer" 
+                id="pdfViewer"
+                type="application/pdf"
+                aria-label="Visualizador do documento PDF sobre Autismo">
+                <p>Seu navegador não suporta a visualização de PDFs diretamente. Você pode <a href="Adolescencia-no-Espectro-Navegando-as-Mudancas-com-Confianca.pdf" target="_blank" rel="noopener noreferrer">clicar aqui para baixar o documento</a> e visualizá-lo em um leitor de PDF.</p>
+            </iframe>
         </div>
 
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">1,2%</div>
-                <div class="stat-label">População Autista no Brasil (IBGE 2022)</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">85%</div>
-                <div class="stat-label">Podem Alcançar Grande Independência</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">∞</div>
-                <div class="stat-label">Potencial Único e Ilimitado</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">💙</div>
-                <div class="stat-label">Seu Amor Transforma Vidas</div>
-            </div>
+        <div class="actions">
+            <a href="Adolescencia-no-Espectro-Navegando-as-Mudancas-com-Confianca.pdf" download class="button-link">
+                Baixar PDF
+            </a>
+            <a href="#" class="button-link" onclick="alert('Esta função exigiria a criação de um arquivo EPUB ou similar. Para demonstração, o botão de download do PDF é a melhor opção no momento.'); return false;">
+                Ver em Formato de Livro (E-book)
+            </a>
+            <button onclick="history.back()">Voltar</button>
         </div>
 
-        <div class="level-badge">🎯 **Para quem é este guia?** Para você, pai e mãe!</div>
-        <div class="age-badge">👥 **Foco Principal:** Adolescentes no TEA (12-18 anos)</div>
-
-        <div class="quote-box">
-            "Cada adolescente no espectro autista é um universo de talentos, desafios e sonhos. Nosso papel, como pais, é construir as pontes de compreensão e abrir as portas para o crescimento e a realização de seus filhos." - Uma Reflexão Para Você, Família.
-        </div>
-
-        <div class="metric-box">
-            <div class="metric-number">🌈</div>
-            <div class="metric-label">Celebrando a Neurodiversidade em Sua Casa</div>
-        </div>
-
-        <div class="support-box">
-            <h3>🤝 O que você, pai ou mãe, vai encontrar aqui para apoiar seu filho(a):</h3>
-            <ul style="color: white;">
-                <li><strong>🧩 Compreensão Profunda da Adolescência no TEA:</strong> Desvende as características e fases que seu filho(a) está vivenciando.</li>
-                <li><strong>⚡ Desafios Específicos e Soluções Práticas:</strong> Lide com mudanças físicas, sociais e emocionais com estratégias eficazes.</li>
-                <li><strong>💡 Estratégias e Ferramentas para o Dia a Dia:</strong> Guia prático para a comunicação, rotinas e resolução de conflitos.</li>
-                <li><strong>🏫 Como Navegar o Ambiente Escolar:</strong> Dicas para garantir as adaptações e a inclusão educacional que seu filho(a) precisa.</li>
-                <li><strong>👨‍👩‍👧‍👦 Fortalecendo os Vínculos Familiares:</strong> Descubra como criar um ambiente de apoio mútuo e comunicação aberta em casa.</li>
-                <li><strong>🌟 Caminho para a Autonomia:</strong> Prepare seu filho(a) para a vida adulta, incentivando suas habilidades e independência.</li>
-                <li><strong>🤝 Desenvolvimento de Habilidades Sociais Essenciais:</strong> Ajude-o(a) a construir amizades e interações sociais saudáveis.</li>
-                <li><strong>🔮 Desenhando um Futuro Promissor:</strong> Conheça as oportunidades e perspectivas para o desenvolvimento contínuo do seu filho(a).</li>
-            </ul>
-        </div>
-
-        <div class="development-box">
-            <h3>🌱 Nossos Princípios Fundamentais para Sua Jornada Familiar:</h3>
-            <ul style="color: white;">
-                <li><strong>🎯 Individualidade Acima de Tudo:</strong> Cada filho é único em suas necessidades, forças e ritmos.</li>
-                <li><strong>💪 Foco nos Talentos e Interesses:</strong> Celebre as habilidades especiais e paixões do seu adolescente.</li>
-                <li><strong>🌈 A Neurodiversidade como Riqueza:</strong> Enxergue as diferenças como parte da diversidade natural humana.</li>
-                <li><strong>🤝 Colaboração é a Chave:</strong> Trabalhe em parceria com a escola e os profissionais para o melhor suporte.</li>
-                <li><strong>📈 Crescimento Contínuo e Sem Limites:</strong> Acredite no potencial de desenvolvimento ao longo de toda a vida.</li>
-                <li><strong>💙 Aceitação e Amor Incondicional:</strong> A base mais forte para um desenvolvimento saudável e feliz.</li>
-            </ul>
-        </div>
-
-        <p style="text-align: center; margin-top: 30px; font-size: 1.1rem; color: #64748b;">
-            <em>Este guia é construído com base em pesquisas científicas atualizadas, experiências práticas de especialistas e, o mais importante, nas histórias reais de famílias e adolescentes no espectro autista. Ele é seu parceiro nessa jornada. 💙🧩</em>
-        </p>
-    </div>
-</div>
-
-        <!-- Página 2: Índice -->
-        <div class="page">
-    <div class="page-header">
-        <div class="page-number">2</div>
-        <div class="chapter-badge">ÍNDICE</div>
-    </div>
-    <h2>🗺️ **Seu Roteiro Essencial: Desvendando a Adolescência no TEA**</h2>
-    <div class="story-illustration">🧩💙🌟🤝</div>
-
-    <div class="support-box">
-        <h3>🧭 **Os Capítulos que Vão Guiar Você e Seu Filho(a):**</h3>
-        <ol class="steps-list">
-            <li><strong>Capítulo 1: Compreendendo a Adolescência no TEA</strong>
-                <br>Desvende as características únicas do espectro nesta fase crucial.</li>
-            <li><strong>Capítulo 2: Navegando as Mudanças Físicas e Hormonais</strong>
-                <br>Um guia para entender e apoiar seu filho(a) durante a puberdade.</li>
-            <li><strong>Capítulo 3: Fortalecendo o Desenvolvimento Emocional</strong>
-                <br>Estratégias práticas para ajudar na regulação e expressão das emoções.</li>
-            <li><strong>Capítulo 4: Cultivando Habilidades Sociais e Relacionamentos</strong>
-                <br>Ferramentas para construir conexões significativas e melhorar a comunicação.</li>
-            <li><strong>Capítulo 5: O Ambiente Escolar: Adaptação e Inclusão</strong>
-                <br>Como ser o maior defensor do seu filho(a) na jornada educacional.</li>
-            <li><strong>Capítulo 6: Apoio Familiar: Construindo um Lar de Suporte</strong>
-                <br>Dicas para fortalecer os laços e a dinâmica familiar.</li>
-            <li><strong>Capítulo 7: Rumo à Autonomia e Independência</strong>
-                <br>Prepare seu filho(a) para os desafios e conquistas da vida adulta.</li>
-            <li><strong>Capítulo 8: Explorando Interesses Especiais e Talentos</strong>
-                <br>Ajude seu filho(a) a transformar paixões em oportunidades de desenvolvimento.</li>
-           
-        </ol>
+        <p>Este documento oferece informações cruciais sobre os primeiros sinais do autismo e a importância da intervenção precoce. Para ativar a lupa, clique em qualquer parte do documento acima. Para desativar, clique novamente na lupa ou em qualquer outro lugar.</p>
     </div>
 
-    <div class="development-box">
-        <h3>🎯 **Nossa Abordagem: Um Olhar Positivo e Prático**</h3>
-        <p style="color: white;">Este guia adota uma perspectiva otimista e baseada nas últimas evidências científicas. Nosso foco é **celebrar as forças e o potencial imenso** do seu filho(a) adolescente no espectro autista. Cada capítulo combina **conhecimento especializado com estratégias práticas** que você pode aplicar no dia a dia, tudo enriquecido com **histórias reais** que inspiram!</p>
-    </div>
-
-    <div class="teen-demo">
-        <h3>🌟 **Adolescência: Uma Fase de Grandes Transformações e Potencial**</h3>
-        <div class="teen-circle interactive-element">
-            Crescimento + Descobertas = **Futuro Promissor!**
-        </div>
-        <p><strong>Visualize as possibilidades se expandindo para o seu filho(a)! ⬆️</strong></p>
-    </div>
-
-    <div class="milestone-box">
-        <h3>🎯 **Por que este guia é essencial para você, pai ou mãe:**</h3>
-        <ul style="color: white;">
-            <li><strong>📊 Dados Atuais:</strong> Entenda a realidade do TEA para melhor apoiar.</li>
-            <li><strong>🌱 Fase Crítica:</strong> A adolescência é um período de mudanças intensas, exigindo um apoio diferenciado.</li>
-            <li><strong>💡 Falta de Recursos:</strong> Existem poucos materiais práticos e específicos para esta faixa etária e para as famílias.</li>
-            <li><strong>🤝 Necessidade Urgente de Apoio:</strong> Vocês, famílias, precisam de orientação prática e acessível.</li>
-            <li><strong>🏫 Impacto Escolar:</strong> Com este guia, você estará mais preparado para dialogar com educadores e garantir a inclusão.</li>
-            <li><strong>🌟 Potencial Imenso:</strong> Ajudamos você a enxergar e nutrir o vasto potencial do seu adolescente no TEA.</li>
-        </ul>
-    </div>
-
-    <div class="understanding-box">
-        <h3>💙 **Nossa Filosofia: Celebre o Potencial Único do Seu Filho(a)**</h3>
-        <p style="color: white;">Acreditamos firmemente que cada adolescente no espectro autista possui **talentos únicos e um potencial ilimitado**. Este guia vai muito além dos desafios; ele se concentra, acima de tudo, nas **oportunidades incríveis de crescimento, desenvolvimento e realização pessoal** que aguardam seu filho(a).</p>
-    </div>
-
-    <div class="hope-box">
-        <h3>🌟 **Uma Mensagem de Esperança para Sua Família:**</h3>
-        <p style="color: white;">Sim, a adolescência no TEA pode trazer seus próprios desafios, mas é também uma fase **repleta de descobertas emocionantes, crescimento contínuo e conquistas extraordinárias**. Com a sua **compreensão**, o **apoio adequado** e as **estratégias certas** que você encontrará aqui, cada adolescente pode **florescer, desenvolver suas capacidades e alcançar os seus sonhos mais únicos**.</p>
-    </div>
-</div>
-
-        <!-- Página 3: Compreendendo o TEA na Adolescência -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">3</div>
-                <div class="chapter-badge">CAPÍTULO 1</div>
-            </div>
-            <h2>🧩 Compreendendo o TEA na Adolescência</h2>
-            <div class="story-illustration">🧠➡️🌱➡️🌟➡️💙</div>
-            
-            <p>A adolescência é uma fase de transformações intensas para todos os jovens, mas para adolescentes no Transtorno do Espectro Autista (TEA), essa jornada apresenta características únicas e especiais. É um período onde as diferenças neurológicas se encontram com as mudanças típicas da adolescência, criando um panorama complexo que requer compreensão, paciência e estratégias específicas de apoio.</p>
-            
-            <div class="understanding-box">
-                <h3>🧩 O que é o TEA?</h3>
-                <p style="color: white;">O Transtorno do Espectro Autista é uma condição neurológica que afeta a comunicação, interação social e comportamento. É chamado de "espectro" porque se manifesta de formas muito variadas - cada pessoa autista é única, com suas próprias forças, desafios e características especiais.</p>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">1:44</div>
-                    <div class="stat-label">Prevalência Atual</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">4:1</div>
-                    <div class="stat-label">Proporção Meninos:Meninas</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">85%</div>
-                    <div class="stat-label">Podem Ter Vida Independente</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">∞</div>
-                    <div class="stat-label">Variações no Espectro</div>
-                </div>
-            </div>
-            
-            <div class="aspect-grid">
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">💬</div>
-                    <div class="aspect-card-title">Comunicação</div>
-                    <div class="aspect-card-desc">
-                        Diferenças na comunicação verbal e não-verbal. Pode incluir dificuldades com linguagem figurada, ironia, ou preferência por comunicação direta e literal. Alguns usam comunicação alternativa.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">🤝</div>
-                    <div class="aspect-card-title">Interação Social</div>
-                    <div class="aspect-card-desc">
-                        Desafios em relacionamentos sociais, leitura de sinais sociais não-verbais, e compreensão de regras sociais implícitas. Pode haver dificuldade em fazer e manter amizades.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">🔄</div>
-                    <div class="aspect-card-title">Comportamentos Repetitivos</div>
-                    <div class="aspect-card-desc">
-                        Padrões de comportamento, interesses ou atividades repetitivas. Pode incluir movimentos corporais, fixação em objetos, ou rotinas rígidas que proporcionam conforto e previsibilidade.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">🌈</div>
-                    <div class="aspect-card-title">Processamento Sensorial</div>
-                    <div class="aspect-card-desc">
-                        Diferenças na forma como processam informações sensoriais. Pode haver hipersensibilidade ou hiposensibilidade a sons, luzes, texturas, sabores ou cheiros.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">🎯</div>
-                    <div class="aspect-card-title">Interesses Especiais</div>
-                    <div class="aspect-card-desc">
-                        Interesses intensos e focados em tópicos específicos. Estes interesses podem ser fonte de grande conhecimento, habilidade e até oportunidades profissionais futuras.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">🧠</div>
-                    <div class="aspect-card-title">Pensamento Único</div>
-                    <div class="aspect-card-desc">
-                        Formas diferentes de processar informações e resolver problemas. Pode incluir atenção aos detalhes, pensamento lógico e perspectivas únicas sobre situações.
-                    </div>
-                </div>
-            </div>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">12</div>
-                    <div class="timeline-content">
-                        <div class="timeline-age">12-13 anos</div>
-                        <div class="timeline-title">Início da Puberdade</div>
-                        <div class="timeline-desc">Mudanças físicas começam. Pode haver confusão sobre as transformações corporais. Necessidade de explicações claras e apoio para compreender as mudanças.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">14</div>
-                    <div class="timeline-content">
-                        <div class="timeline-age">14-15 anos</div>
-                        <div class="timeline-title">Intensificação Social</div>
-                        <div class="timeline-desc">Pressão social aumenta. Diferenças se tornam mais evidentes. Pode haver isolamento ou tentativas de "mascarar" características autistas. Necessidade de apoio emocional.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">16</div>
-                    <div class="timeline-content">
-                        <div class="timeline-age">16-17 anos</div>
-                        <div class="timeline-title">Busca por Identidade</div>
-                        <div class="timeline-desc">Questionamentos sobre identidade e futuro. Pode haver maior consciência sobre o autismo. Importante trabalhar autoestima e aceitação pessoal.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">18</div>
-                    <div class="timeline-content">
-                        <div class="timeline-age">18+ anos</div>
-                        <div class="timeline-title">Transição para Adulto</div>
-                        <div class="timeline-desc">Preparação para independência. Decisões sobre educação superior, trabalho e vida adulta. Necessidade de planejamento estruturado para a transição.</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="development-box">
-                <h3>🌱 Características Específicas da Adolescência no TEA</h3>
-                
-                <h4 style="color: white;">🧠 Desenvolvimento Cognitivo:</h4>
-                <ul style="color: white;">
-                    <li><strong>Pensamento Concreto:</strong> Dificuldade com conceitos abstratos e metáforas</li>
-                    <li><strong>Processamento Sequencial:</strong> Preferência por informações organizadas e estruturadas</li>
-                    <li><strong>Atenção aos Detalhes:</strong> Capacidade excepcional de notar padrões e detalhes</li>
-                    <li><strong>Memória Específica:</strong> Excelente memória para áreas de interesse</li>
-                </ul>
-                
-                <h4 style="color: white;">💭 Desenvolvimento Emocional:</h4>
-                <ul style="color: white;">
-                    <li><strong>Intensidade Emocional:</strong> Emoções podem ser mais intensas e duradouras</li>
-                    <li><strong>Dificuldade de Regulação:</strong> Necessidade de estratégias específicas para autorregulação</li>
-                    <li><strong>Expressão Diferente:</strong> Formas únicas de demonstrar emoções</li>
-                    <li><strong>Sensibilidade Aumentada:</strong> Maior reatividade a mudanças e estressores</li>
-                </ul>
-                
-                <h4 style="color: white;">🤝 Desenvolvimento Social:</h4>
-                <ul style="color: white;">
-                    <li><strong>Desejo de Conexão:</strong> Muitos querem amizades, mas enfrentam dificuldades</li>
-                    <li><strong>Regras Sociais:</strong> Necessidade de ensino explícito de habilidades sociais</li>
-                    <li><strong>Comunicação Direta:</strong> Preferência por comunicação clara e honesta</li>
-                    <li><strong>Grupos Pequenos:</strong> Melhor funcionamento em ambientes sociais menores</li>
-                </ul>
-            </div>
-            
-            <div class="challenge-box">
-                <h3>⚡ Desafios Únicos da Adolescência no TEA</h3>
-                
-                <h4 style="color: white;">🌪️ Mudanças Múltiplas:</h4>
-                <ul style="color: white;">
-                    <li>Mudanças físicas da puberdade + características do TEA</li>
-                    <li>Pressões sociais aumentadas + dificuldades de comunicação</li>
-                    <li>Expectativas de independência + necessidade de estrutura</li>
-                    <li>Descoberta da identidade + compreensão do autismo</li>
-                </ul>
-                
-                <h4 style="color: white;">😰 Questões Emocionais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Ansiedade:</strong> Níveis elevados devido a mudanças e incertezas</li>
-                    <li><strong>Depressão:</strong> Risco aumentado, especialmente em meninas</li>
-                    <li><strong>Baixa Autoestima:</strong> Comparações sociais e sentimento de diferença</li>
-                    <li><strong>Isolamento:</strong> Dificuldades sociais podem levar ao afastamento</li>
-                </ul>
-                
-                <h4 style="color: white;">🏫 Desafios Acadêmicos:</h4>
-                <ul style="color: white;">
-                    <li>Aumento da demanda por habilidades executivas</li>
-                    <li>Maior complexidade social no ambiente escolar</li>
-                    <li>Necessidade de adaptações curriculares</li>
-                    <li>Preparação para transições pós-ensino médio</li>
-                </ul>
-            </div>
-            
-            <div class="strategy-box">
-                <h3>💡 Forças e Talentos Únicos</h3>
-                
-                <h4 style="color: white;">🎯 Habilidades Especiais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Atenção aos Detalhes:</strong> Capacidade de notar padrões que outros perdem</li>
-                    <li><strong>Pensamento Lógico:</strong> Abordagem sistemática para resolver problemas</li>
-                    <li><strong>Honestidade:</strong> Comunicação direta e autêntica</li>
-                    <li><strong>Lealdade:</strong> Relacionamentos profundos e duradouros</li>
-                    <li><strong>Expertise:</strong> Conhecimento profundo em áreas de interesse</li>
-                </ul>
-                
-                <h4 style="color: white;">🌟 Potenciais Profissionais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Tecnologia:</strong> Programação, análise de sistemas, design</li>
-                    <li><strong>Ciências:</strong> Pesquisa, matemática, engenharia</li>
-                    <li><strong>Artes:</strong> Música, arte visual, escrita</li>
-                    <li><strong>Organização:</strong> Biblioteconomia, arquivismo, logística</li>
-                    <li><strong>Cuidado:</strong> Veterinária, cuidado de plantas, conservação</li>
-                </ul>
-            </div>
-            
-            <div class="hope-box">
-                <h3>🌟 Perspectiva Positiva</h3>
-                
-                <h4 style="color: white;">💪 Crescimento e Desenvolvimento:</h4>
-                <ul style="color: white;">
-                    <li>Adolescentes no TEA continuam aprendendo e crescendo</li>
-                    <li>Habilidades sociais podem ser desenvolvidas com apoio adequado</li>
-                    <li>Autoconhecimento aumenta com a idade e experiência</li>
-                    <li>Muitos desenvolvem estratégias eficazes de enfrentamento</li>
-                </ul>
-                
-                <h4 style="color: white;">🎓 Sucessos Documentados:</h4>
-                <ul style="color: white;">
-                    <li>85% podem viver de forma independente ou semi-independente</li>
-                    <li>Muitos completam ensino superior com apoios adequados</li>
-                    <li>Crescente número de profissionais bem-sucedidos no espectro</li>
-                    <li>Contribuições valiosas para sociedade em diversas áreas</li>
-                </ul>
-            </div>
-            
-            <div class="tip-box">
-                <h3>💡 Dicas Fundamentais para Compreensão</h3>
-                
-                <h4 style="color: #e2e8f0;">🔍 Observe sem Julgar:</h4>
-                <p style="color: #cbd5e0;">Cada comportamento tem uma função. Antes de tentar mudar algo, procure entender o "porquê" por trás do comportamento.</p>
-                
-                <h4 style="color: #e2e8f0;">💬 Comunique-se Claramente:</h4>
-                <p style="color: #cbd5e0;">Use linguagem direta, específica e concreta. Evite sarcasmo, ironia ou linguagem figurada sem explicação.</p>
-                
-                <h4 style="color: #e2e8f0;">⏰ Respeite o Tempo:</h4>
-                <p style="color: #cbd5e0;">Mudanças levam tempo. Seja paciente e celebre pequenos progressos. Cada adolescente tem seu próprio ritmo de desenvolvimento.</p>
-                
-                <h4 style="color: #e2e8f0;">🎯 Foque nas Forças:</h4>
-                <p style="color: #cbd5e0;">Identifique e desenvolva os talentos e interesses especiais. Eles podem ser a chave para o sucesso futuro.</p>
-            </div>
-            
-            <div class="teen-demo">
-                <h3>🧩 Reflexão: Cada Peça é Única</h3>
-                <div class="teen-circle interactive-element">
-                    Como você pode apoiar melhor?
-                </div>
-                <p><strong>Pense sobre sua abordagem e atitude! ⬆️</strong></p>
-            </div>
-            
-            <div class="implementation-steps">
-                <div class="step-title">🎯 Primeiros Passos para Apoio Efetivo</div>
-                
-                <div class="step-item">
-                    <span class="step-number">1</span>
-                    <strong>Eduque-se:</strong> Aprenda sobre TEA, características específicas e necessidades individuais do adolescente
-                </div>
-                
-                <div class="step-item">
-                    <span class="step-number">2</span>
-                    <strong>Observe e escute:</strong> Preste atenção aos sinais, preferências e formas de comunicação únicas
-                </div>
-                
-                <div class="step-item">
-                    <span class="step-number">3</span>
-                    <strong>Crie estrutura:</strong> Estabeleça rotinas previsíveis e ambientes organizados
-                </div>
-                
-                <div class="step-item">
-                    <span class="step-number">4</span>
-                    <strong>Desenvolva comunicação:</strong> Encontre formas efetivas de se comunicar e compreender
-                </div>
-                
-                <div class="step-item">
-                    <span class="step-number">5</span>
-                    <strong>Celebre diferenças:</strong> Reconheça e valorize as qualidades únicas e talentos especiais
-                </div>
-            </div>
-            
-            <div class="source-box">
-                <strong>📚 Fontes:</strong> American Psychiatric Association (DSM-5), Autism Speaks, National Autistic Society, pesquisas recentes em desenvolvimento adolescente no TEA, e experiências clínicas documentadas.
-            </div>
-        </div>
-
-        <!-- Página 4: Mudanças Físicas e Hormonais -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">4</div>
-                <div class="chapter-badge">Capítulo 2</div>
-            </div>
-            <h2>🌱 Mudanças Físicas e Hormonais</h2>
-            <div class="story-illustration">🧬🌱💪⚡</div>
-            
-            <p>A puberdade é uma montanha-russa de mudanças para qualquer adolescente, mas para jovens no espectro autista, essas transformações podem ser ainda mais intensas e confusas. As mudanças físicas e hormonais não acontecem isoladamente - elas interagem com as características do TEA, criando experiências únicas que requerem compreensão especial e apoio cuidadoso.</p>
-            
-            <div class="development-box">
-                <h3>🌱 Puberdade no TEA: O que é Diferente?</h3>
-                <p style="color: white;">Embora as mudanças físicas da puberdade sejam similares para todos os adolescentes, jovens no espectro autista podem experimentar essas transformações de forma mais intensa devido à sensibilidade sensorial aumentada, dificuldades com mudanças e necessidade de compreensão concreta dos processos corporais.</p>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">8-14</div>
-                    <div class="stat-label">Idade Início (anos)</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">2-5</div>
-                    <div class="stat-label">Duração (anos)</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Passam pela Puberdade</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">+50%</div>
-                    <div class="stat-label">Mais Sensibilidade</div>
-                </div>
-            </div>
-            
-            <div class="milestone-box">
-                <h3>🎯 Marcos do Desenvolvimento Físico</h3>
-                
-                <h4 style="color: white;">👦 Meninos (12-16 anos):</h4>
-                <ul style="color: white;">
-                    <li><strong>Crescimento em altura:</strong> Estirão de crescimento, pode ser desconfortável</li>
-                    <li><strong>Mudança de voz:</strong> Pode causar ansiedade pela imprevisibilidade</li>
-                    <li><strong>Desenvolvimento muscular:</strong> Aumento de força e coordenação</li>
-                    <li><strong>Pelos corporais:</strong> Crescimento de barba, pelos no corpo</li>
-                    <li><strong>Odor corporal:</strong> Necessidade de nova rotina de higiene</li>
-                </ul>
-                
-                <h4 style="color: white;">👧 Meninas (10-14 anos):</h4>
-                <ul style="color: white;">
-                    <li><strong>Desenvolvimento mamário:</strong> Pode causar desconforto sensorial</li>
-                    <li><strong>Menstruação:</strong> Necessita preparação e apoio especial</li>
-                    <li><strong>Mudanças corporais:</strong> Quadris, distribuição de gordura</li>
-                    <li><strong>Crescimento em altura:</strong> Geralmente antes dos meninos</li>
-                    <li><strong>Mudanças emocionais:</strong> Flutuações hormonais intensas</li>
-                </ul>
-            </div>
-            
-            <div class="challenge-box">
-                <h3>⚡ Desafios Específicos no TEA</h3>
-                
-                <h4 style="color: white;">🌪️ Sensibilidade Sensorial Aumentada:</h4>
-                <ul style="color: white;">
-                    <li><strong>Roupas:</strong> Sutiãs, roupas íntimas podem ser desconfortáveis</li>
-                    <li><strong>Produtos de higiene:</strong> Cheiros, texturas podem ser aversivos</li>
-                    <li><strong>Mudanças corporais:</strong> Sensações novas podem ser perturbadoras</li>
-                    <li><strong>Dor:</strong> Pode ter dificuldade para comunicar desconfortos</li>
-                </ul>
-                
-                <h4 style="color: white;">🤔 Compreensão e Comunicação:</h4>
-                <ul style="color: white;">
-                    <li><strong>Conceitos abstratos:</strong> Dificuldade para entender "normalidade" das mudanças</li>
-                    <li><strong>Privacidade:</strong> Pode não compreender questões de privacidade corporal</li>
-                    <li><strong>Expressão:</strong> Dificuldade para comunicar desconfortos ou dúvidas</li>
-                    <li><strong>Comparações:</strong> Pode se comparar excessivamente com outros</li>
-                </ul>
-                
-                <h4 style="color: white;">😰 Aspectos Emocionais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Ansiedade:</strong> Medo das mudanças e do desconhecido</li>
-                    <li><strong>Confusão:</strong> Não compreender o que está acontecendo</li>
-                    <li><strong>Resistência:</strong> Pode rejeitar cuidados de higiene necessários</li>
-                    <li><strong>Isolamento:</strong> Pode se afastar devido ao desconforto</li>
-                </ul>
-            </div>
-            
-            <div class="strategy-box">
-                <h3>💡 Estratégias de Apoio</h3>
-                
-                <h4 style="color: white;">📚 Educação Preparatória:</h4>
-                <ul style="color: white;">
-                    <li><strong>Livros visuais:</strong> Use recursos com imagens claras e explicações simples</li>
-                    <li><strong>Conversas antecipadas:</strong> Comece a falar sobre mudanças antes que aconteçam</li>
-                    <li><strong>Linguagem concreta:</strong> Evite metáforas, seja específico e direto</li>
-                    <li><strong>Repetição:</strong> Revise informações múltiplas vezes</li>
-                </ul>
-                
-                <h4 style="color: white;">🛁 Rotinas de Higiene Adaptadas:</h4>
-                <ul style="color: white;">
-                    <li><strong>Listas visuais:</strong> Checklist passo-a-passo para higiene diária</li>
-                    <li><strong>Produtos sensoriais:</strong> Escolha produtos com texturas/cheiros toleráveis</li>
-                    <li><strong>Horários fixos:</strong> Estabeleça rotinas previsíveis</li>
-                    <li><strong>Privacidade:</strong> Ensine sobre privacidade corporal gradualmente</li>
-                </ul>
-                
-                <h4 style="color: white;">👕 Adaptações de Vestuário:</h4>
-                <ul style="color: white;">
-                    <li><strong>Roupas confortáveis:</strong> Priorize conforto sobre aparência</li>
-                    <li><strong>Transição gradual:</strong> Introduza novas peças aos poucos</li>
-                    <li><strong>Escolhas:</strong> Permita que escolham entre opções aceitáveis</li>
-                    <li><strong>Tecidos macios:</strong> Prefira materiais naturais e suaves</li>
-                </ul>
-            </div>
-            
-            <div class="support-box">
-                <h3>🤝 Apoio Específico para Meninas</h3>
-                
-                <h4 style="color: white;">🌸 Preparação para Menstruação:</h4>
-                <ul style="color: white;">
-                    <li><strong>Educação precoce:</strong> Comece a conversar aos 9-10 anos</li>
-                    <li><strong>Produtos sensoriais:</strong> Teste diferentes absorventes/coletores</li>
-                    <li><strong>Calendário visual:</strong> Use calendários para prever ciclos</li>
-                    <li><strong>Kit de emergência:</strong> Prepare kit para escola/atividades</li>
-                    <li><strong>Apoio emocional:</strong> Valide sentimentos e ofereça conforto</li>
-                </ul>
-                
-                <h4 style="color: white;">👙 Questões de Desenvolvimento:</h4>
-                <ul style="color: white;">
-                    <li><strong>Sutiãs confortáveis:</strong> Priorize conforto, considere tops esportivos</li>
-                    <li><strong>Privacidade:</strong> Ensine sobre mudanças no corpo e privacidade</li>
-                    <li><strong>Autoestima:</strong> Foque em aspectos positivos das mudanças</li>
-                    <li><strong>Comunicação aberta:</strong> Crie ambiente seguro para perguntas</li>
-                </ul>
-            </div>
-            
-            <div class="understanding-box">
-                <h3>🧩 Apoio Específico para Meninos</h3>
-                
-                <h4 style="color: white;">💪 Mudanças Físicas:</h4>
-                <ul style="color: white;">
-                    <li><strong>Mudança de voz:</strong> Explique que é temporário e normal</li>
-                    <li><strong>Crescimento:</strong> Pode afetar coordenação temporariamente</li>
-                    <li><strong>Pelos faciais:</strong> Ensine técnicas de barbear quando necessário</li>
-                    <li><strong>Odor corporal:</strong> Introduza desodorante gradualmente</li>
-                    <li><strong>Força física:</strong> Ensine sobre controle e limites apropriados</li>
-                </ul>
-                
-                <h4 style="color: white;">🧼 Higiene Pessoal:</h4>
-                <ul style="color: white;">
-                    <li><strong>Banho diário:</strong> Pode precisar de lembretes e estrutura</li>
-                    <li><strong>Cuidados faciais:</strong> Rotina para pele oleosa/acne</li>
-                    <li><strong>Higiene íntima:</strong> Educação sobre cuidados apropriados</li>
-                    <li><strong>Roupas limpas:</strong> Sistema para trocar roupas regularmente</li>
-                </ul>
-            </div>
-            
-            <div class="warning-box">
-                <h3>⚠️ Sinais de Alerta</h3>
-                
-                <h4 style="color: white;">🚨 Quando Buscar Ajuda Profissional:</h4>
-                <ul style="color: white;">
-                    <li><strong>Regressão severa:</strong> Perda significativa de habilidades adquiridas</li>
-                    <li><strong>Comportamentos autolesivos:</strong> Machucam-se devido ao desconforto</li>
-                    <li><strong>Recusa total:</strong> Não aceita cuidados básicos de higiene</li>
-                    <li><strong>Isolamento extremo:</strong> Para completamente de interagir</li>
-                    <li><strong>Mudanças drásticas:</strong> Alterações súbitas de humor ou comportamento</li>
-                </ul>
-                
-                <h4 style="color: white;">👨‍⚕️ Profissionais que Podem Ajudar:</h4>
-                <ul style="color: white;">
-                    <li><strong>Pediatra/Ginecologista:</strong> Questões médicas e desenvolvimento</li>
-                    <li><strong>Terapeuta Ocupacional:</strong> Adaptações sensoriais e rotinas</li>
-                    <li><strong>Psicólogo:</strong> Apoio emocional e estratégias de enfrentamento</li>
-                    <li><strong>Nutricionista:</strong> Questões alimentares relacionadas às mudanças</li>
-                </ul>
-            </div>
-            
-            <div class="resource-grid">
-                <div class="resource-card">
-                    <div class="resource-icon">📖</div>
-                    <div class="resource-name">Livros Educativos</div>
-                    <div class="resource-desc">Livros com ilustrações claras sobre puberdade, adaptados para diferentes níveis de compreensão e necessidades específicas do TEA.</div>
-                </div>
-                
-                <div class="resource-card">
-                    <div class="resource-icon">📱</div>
-                    <div class="resource-name">Apps de Acompanhamento</div>
-                    <div class="resource-desc">Aplicativos para rastrear ciclos menstruais, lembretes de higiene e acompanhamento de mudanças físicas.</div>
-                </div>
-                
-                <div class="resource-card">
-                    <div class="resource-icon">🎥</div>
-                    <div class="resource-name">Vídeos Educacionais</div>
-                    <div class="resource-desc">Conteúdo visual que explica mudanças da puberdade de forma clara, concreta e apropriada para o TEA.</div>
-                </div>
-                
-                <div class="resource-card">
-                    <div class="resource-icon">🛍️</div>
-                    <div class="resource-name">Produtos Sensoriais</div>
-                    <div class="resource-desc">Roupas íntimas, produtos de higiene e cuidados pessoais adaptados para sensibilidades sensoriais.</div>
-                </div>
-            </div>
-            
-            <div class="tip-box">
-                <h3>💡 Dicas Práticas para Famílias</h3>
-                
-                <h4 style="color: #e2e8f0;">🗣️ Comunicação Efetiva:</h4>
-                <p style="color: #cbd5e0;">Use linguagem simples e direta. "Seu corpo está crescendo e mudando, isso é normal e saudável" em vez de metáforas sobre "se tornar adulto".</p>
-                
-                <h4 style="color: #e2e8f0;">📅 Preparação Antecipada:</h4>
-                <p style="color: #cbd5e0;">Comece conversas sobre mudanças corporais antes que aconteçam. Use calendários visuais para mostrar quando mudanças podem ocorrer.</p>
-                
-                <h4 style="color: #e2e8f0;">🎯 Foco no Positivo:</h4>
-                <p style="color: #cbd5e0;">Enfatize aspectos positivos: "Você está ficando mais forte", "Seu corpo está se desenvolvendo bem". Evite focar apenas em desafios.</p>
-                
-                <h4 style="color: #e2e8f0;">🤝 Paciência e Apoio:</h4>
-                <p style="color: #cbd5e0;">Mudanças levam tempo para serem aceitas. Seja paciente, ofereça apoio constante e celebre pequenos progressos na adaptação.</p>
-            </div>
-            
-            <div class="teen-demo">
-                <h3>🌱 Crescimento é Natural</h3>
-                <div class="teen-circle interactive-element">
-                    Mudança + Apoio = Desenvolvimento Saudável
-                </div>
-                <p><strong>Visualize o crescimento acontecendo! ⬆️</strong></p>
-            </div>
-            
-            <div class="hope-box">
-                <h3>🌟 Mensagem de Esperança</h3>
-                <p style="color: white;">Embora a puberdade possa ser desafiadora para adolescentes no TEA, com apoio adequado, compreensão e estratégias apropriadas, eles podem navegar por essas mudanças com sucesso. Muitos adolescentes no espectro desenvolvem maior autoconhecimento e confiança durante este período, especialmente quando recebem o apoio necessário de famílias e profissionais compreensivos.</p>
-            </div>
-            
-            <div class="source-box">
-                <strong>📚 Fontes:</strong> American Academy of Pediatrics, Autism Society, pesquisas sobre desenvolvimento puberal no TEA, guidelines médicos para adolescentes autistas, e experiências clínicas documentadas.
-            </div>
-        </div>
-         </div>
-          </div>
-                 </div>
-          <!-- Página 5: Compreendendo o TEA na Adolescência -->
-                 <div class="page">
-            <div class="page-header">
-                <div class="page-number">5</div>
-                <div class="chapter-badge">Capítulo 3</div>
-            </div>
-            <h2>🌱 Fortalecendo o Desenvolvimento Emocional</h2>
-            <div class="story-illustration">🧬🌱💪⚡</div>
-            <p>A adolescência é uma fase de intensas transformações e descobertas para todos os jovens, mas para aqueles no Espectro Autista (TEA), este período pode apresentar desafios e particularidades ainda mais marcantes. As características do TEA interagem com o desenvolvimento típico da adolescência, moldando uma experiência única que exige compreensão e abordagens adaptadas.</p>
-
-<div class="development-box">
-    <h3>🧠 O que é o TEA na Adolescência?</h3>
-    <p style="color: white;">O Transtorno do Espectro Autista (TEA) é uma condição do neurodesenvolvimento caracterizada por diferenças na interação social, comunicação e padrões de comportamento e interesses. Na adolescência, essas características se manifestam em um contexto de busca por identidade, relacionamentos complexos e maior autonomia.</p>
-</div>
-
-<div class="stats-grid">
-    <div class="stat-card">
-        <div class="stat-number">1 em 36</div>
-        <div class="stat-label">Jovens com TEA</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">+50%</div>
-        <div class="stat-label">Comorbidades</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">2x</div>
-        <div class="stat-label">Maior Ansiedade</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">30-50%</div>
-        <div class="stat-label">Não Verbais</div>
-    </div>
-</div>
-
-<div class="milestone-box">
-    <h3>🎯 Características Comuns na Adolescência TEA</h3>
-    
-    <h4 style="color: white;">💬 Desafios de Comunicação:</h4>
-    <ul style="color: white;">
-        <li><strong>Linguagem literal:</strong> Dificuldade em entender sarcasmo, ironia ou duplos sentidos.</li>
-        <li><strong>Comunicação social:</strong> Podem ter dificuldade em iniciar ou manter conversas, interpretar sinais não verbais.</li>
-        <li><strong>Expressão de emoções:</strong> Dificuldade em verbalizar sentimentos complexos, podendo resultar em frustração.</li>
-        <li><strong>Variação na fala:</strong> Desde mutismo seletivo a fala excessiva sobre interesses restritos.</li>
-    </ul>
-    
-    <h4 style="color: white;">🤝 Interação Social:</h4>
-    <ul style="color: white;">
-        <li><strong>Dificuldade em fazer amigos:</strong> Podem ter vontade de se conectar, mas não sabem como.</li>
-        <li><strong>Isolamento social:</strong> Preferência por atividades solitárias ou dificuldade em participar de grupos.</li>
-        <li><strong>Interpretação social:</strong> Dificuldade em ler intenções alheias, regras sociais implícitas.</li>
-        <li><strong>Bullying:</strong> Maior vulnerabilidade ao bullying devido a diferenças sociais.</li>
-    </ul>
-</div>
-
-<div class="challenge-box">
-    <h3>⚡ Desafios e Oportunidades Únicas</h3>
-    
-    <h4 style="color: white;">🔄 Rigidez Cognitiva e Mudanças:</h4>
-    <ul style="color: white;">
-        <li><strong>Rotinas:</strong> Grande apego a rotinas e dificuldade em lidar com imprevistos.</li>
-        <li><strong>Transições:</strong> Resistência a transições (escola para faculdade, infância para adolescência).</li>
-        <li><strong>Interesses restritos:</strong> Podem se aprofundar intensamente em um ou poucos temas.</li>
-    </ul>
-    
-    <h4 style="color: white;">🌟 Forças e Talentos:</h4>
-    <ul style="color: white;">
-        <li><strong>Atenção aos detalhes:</strong> Capacidade de focar em minúcias que outros ignoram.</li>
-        <li><strong>Memória:</strong> Excelente memória para fatos, números e informações específicas.</li>
-        <li><strong>Pensamento lógico:</strong> Tendência a resolver problemas de forma sistemática.</li>
-        <li><strong>Interesses aprofundados:</strong> Paixões que podem ser transformadas em habilidades ou carreiras.</li>
-    </ul>
-</div>
-
-<div class="strategy-box">
-    <h3>💡 Estratégias de Apoio</h3>
-    
-    <h4 style="color: white;">🗣️ Comunicação Clara e Direta:</h4>
-    <ul style="color: white;">
-        <li><strong>Linguagem literal:</strong> Seja claro e direto, evite sarcasmo ou figuras de linguagem.</li>
-        <li><strong>Recursos visuais:</strong> Use agendas, listas e apoios visuais para comunicar expectativas.</li>
-        <li><strong>Tempo para processar:</strong> Dê tempo para que seu filho(a) processe informações e responda.</li>
-    </ul>
-    
-    <h4 style="color: white;">💖 Validação e Aceitação:</h4>
-    <ul style="color: white;">
-        <li><strong>Aceite as diferenças:</strong> Valorize as características únicas do TEA como parte da identidade.</li>
-        <li><strong>Celebre as conquistas:</strong> Reconheça e celebre cada pequeno avanço e esforço.</li>
-        <li><strong>Ouça ativamente:</strong> Tente entender o mundo pela perspectiva do seu filho(a).</li>
-    </ul>
-</div>
-
-<div class="support-box">
-    <h3>🤝 O Papel da Família</h3>
-    
-    <h4 style="color: white;">🏡 Construindo um Ambiente de Suporte:</h4>
-    <ul style="color: white;">
-        <li><strong>Rotina previsível:</strong> Manter uma rotina consistente ajuda a reduzir a ansiedade.</li>
-        <li><strong>Espaço seguro:</strong> Ofereça um local onde o adolescente possa se desregular sem julgamentos.</li>
-        <li><strong>Interesses especiais:</strong> Apoie e incorpore os interesses restritos em atividades familiares.</li>
-        <li><strong>Autonomia gradual:</strong> Incentive a independência em tarefas diárias, respeitando o ritmo.</li>
-        <li><strong>Paciência:</strong> O desenvolvimento é um processo contínuo, com avanços e desafios.</li>
-    </ul>
-    
-    <h4 style="color: white;">👨‍👩‍👧‍👦 Envolvimento Ativo:</h4>
-    <ul style="color: white;">
-        <li><strong>Advocacia:</strong> Seja o principal defensor do seu filho(a) na escola e em outros ambientes.</li>
-        <li><strong>Colaboração:</strong> Trabalhe em conjunto com terapeutas e profissionais de saúde.</li>
-        <li><strong>Rede de apoio:</strong> Conecte-se com outras famílias de autistas para troca de experiências.</li>
-        <li><strong>Autocuidado:</strong> Lembre-se que cuidar de si mesmo é fundamental para cuidar do seu filho(a).</li>
-    </ul>
-</div>
-
-<div class="warning-box">
-    <h3>⚠️ Sinais de Alerta</h3>
-    
-    <h4 style="color: white;">🚨 Quando Buscar Ajuda Profissional:</h4>
-    <ul style="color: white;">
-        <li><strong>Comportamentos regressivos:</strong> Perda de habilidades sociais ou de comunicação.</li>
-        <li><strong>Crises frequentes:</strong> Aumento da intensidade ou frequência de crises emocionais.</li>
-        <li><strong>Isolamento extremo:</strong> Recusa persistente em interagir ou sair de casa.</li>
-        <li><strong>Mudanças drásticas de humor:</strong> Tristeza profunda, irritabilidade excessiva ou ansiedade severa.</li>
-        <li><strong>Dificuldades escolares acentuadas:</strong> Grande queda no desempenho ou recusa em ir à escola.</li>
-    </ul>
-    
-    <h4 style="color: white;">👨‍⚕️ Profissionais que Podem Ajudar:</h4>
-    <ul style="color: white;">
-        <li><strong>Psicólogo/Psicoterapeuta:</strong> Apoio emocional, estratégias de enfrentamento, terapia individual/familiar.</li>
-        <li><strong>Terapeuta Ocupacional:</strong> Regulação sensorial, habilidades de vida diária.</li>
-        <li><strong>Fonoaudiólogo:</strong> Habilidades de comunicação social e pragmática da linguagem.</li>
-        <li><strong>Neuropsicólogo:</strong> Avaliação e estratégias para funções executivas e cognitivas.</li>
-        <li><strong>Psiquiatra:</strong> Manejo de comorbidades como ansiedade, depressão (se necessário).</li>
-    </ul>
-</div>
-
-<div class="resource-grid">
-    <div class="resource-card">
-        <div class="resource-icon">📖</div>
-        <div class="resource-name">Guias e Manuais</div>
-        <div class="resource-desc">Livros e publicações sobre adolescência no TEA, com informações detalhadas e estratégias práticas para pais.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🌐</div>
-        <div class="resource-name">Comunidades Online</div>
-        <div class="resource-desc">Fóruns e grupos de apoio para pais de adolescentes com TEA, trocando experiências e dicas.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🎥</div>
-        <div class="resource-name">Documentários e Webinars</div>
-        <div class="resource-desc">Conteúdo audiovisual que explora as vivências e desafios de adolescentes autistas e suas famílias.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🏛️</div>
-        <div class="resource-name">Associações de Autismo</div>
-        <div class="resource-desc">Organizações que oferecem informações, apoio e recursos para famílias e indivíduos no espectro.</div>
-    </div>
-</div>
-
-<div class="tip-box">
-    <h3>💡 Dicas Práticas para Famílias</h3>
-    
-    <h4 style="color: #e2e8f0;">🗣️ Entenda o Mundo Dele(a):</h4>
-    <p style="color: #cbd5e0;">Tente ver o mundo pelos olhos do seu filho(a). A empatia e a paciência são suas maiores ferramentas.</p>
-    
-    <h4 style="color: #e2e8f0;">🎁 Foque nas Forças:</h4>
-    <p style="color: #cbd5e0;">Identifique e celebre os talentos e interesses especiais do seu filho(a). Eles são fontes de alegria e desenvolvimento.</p>
-    
-    <h4 style="color: #e2e8f0;">⚖️ Equilíbrio e Flexibilidade:</h4>
-    <p style="color: #cbd5e0;">Busque um equilíbrio entre rotina e flexibilidade. Adapte-se às necessidades do momento, mantendo a estrutura.</p>
-    
-    <h4 style="color: #e2e8f0;">💖 Amor Incondicional:</h4>
-    <p style="color: #cbd5e0;">Acima de tudo, demonstre amor, aceitação e apoio incondicional. Isso constrói a base para um desenvolvimento saudável.</p>
-</div>
-
-<div class="teen-demo">
-    <h3>🌱 Crescimento no Espectro</h3>
-    <div class="teen-circle interactive-element">
-        Compreensão + Apoio = Potencial Desabrochando
-    </div>
-    <p><strong>Visualize o florescer do potencial! 🌟</strong></p>
-</div>
-
-<div class="hope-box">
-    <h3>🌟 Mensagem de Esperança</h3>
-    <p style="color: white;">A jornada da adolescência no TEA é repleta de particularidades, mas também de infinitas possibilidades. Com informação, estratégias adequadas e um ambiente de amor e suporte, seu filho(a) tem tudo para crescer, aprender e encontrar seu lugar no mundo, desenvolvendo suas habilidades e contribuindo de forma única.</p>
-</div>
-
-<div class="source-box">
-    <strong>📚 Fontes:</strong> Autism Speaks, DSM-5 (Manual Diagnóstico e Estatístico de Transtornos Mentais), pesquisas em neurociências e psicologia do desenvolvimento, e experiências de famílias e profissionais especializados em TEA.
-</div>
-</div>
-</div>
-
-           <!-- Página 6: Compreendendo o TEA na Adolescência -->
-            <div class="page">
-            <div class="page-header">
-                <div class="page-number">6</div>
-                <div class="chapter-badge">Capítulo 4</div>
-            </div>
-            <h2>🌱 Mudanças Físicas e Hormonais</h2>
-            <div class="story-illustration">🧬🌱💪⚡</div>
-            <div class="development-box">
-    <h3>💡 A Importância das Habilidades Sociais</h3>
-    <p style="color: white;">As habilidades sociais são o alicerce para a participação plena na vida em comunidade, na escola, no trabalho e nos relacionamentos pessoais. Para adolescentes no TEA, o desenvolvimento dessas habilidades é crucial para reduzir a ansiedade social, prevenir o isolamento e promover a autoestima e o bem-estar geral.</p>
-</div>
-
-<div class="stats-grid">
-    <div class="stat-card">
-        <div class="stat-number">+70%</div>
-        <div class="stat-label">Dific. Interação Social</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">60%</div>
-        <div class="stat-label">Risco de Isolamento</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">4x</div>
-        <div class="stat-label">Mais Suscetíveis a Bullying</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">20%</div>
-        <div class="stat-label">Têm Amigos Íntimos</div>
-    </div>
-</div>
-
-<div class="milestone-box">
-    <h3>🎯 Desafios Comuns na Interação Social</h3>
-    
-    <h4 style="color: white;">💬 Comunicação Não Verbal:</h4>
-    <ul style="color: white;">
-        <li><strong>Interpretação de Expressões:</strong> Dificuldade em ler e responder a expressões faciais e tom de voz.</li>
-        <li><strong>Linguagem Corporal:</strong> Podem não compreender ou usar gestos e postura de forma típica.</li>
-        <li><strong>Contato Visual:</strong> Pode ser evitado ou parecer "diferente" para neurotípicos.</li>
-    </ul>
-    
-    <h4 style="color: white;">🗣️ Início e Manutenção de Conversas:</h4>
-    <ul style="color: white;">
-        <li><strong>Início:</strong> Dificuldade em saber como iniciar uma conversa ou se juntar a um grupo.</li>
-        <li><strong>Tópicos:</strong> Tendência a falar excessivamente sobre interesses restritos sem perceber o desinteresse do ouvinte.</li>
-        <li><strong>Turnos:</strong> Dificuldade em esperar a vez de falar ou em perceber quando a conversa deve terminar.</li>
-    </ul>
-</div>
-
-<div class="challenge-box">
-    <h3>⚡ Barreiras Específicas e suas Consequências</h3>
-    
-    <h4 style="color: white;">🌪️ Compreensão de Regras Sociais Implícitas:</h4>
-    <ul style="color: white;">
-        <li><strong>"Teoria da Mente":</strong> Dificuldade em inferir pensamentos, sentimentos e intenções dos outros.</li>
-        <li><strong>Contexto Social:</strong> Não adaptar o comportamento a diferentes ambientes ou situações (ex: comportamento em casa vs. na escola).</li>
-        <li><strong>Ironia/Sarcasmo:</strong> Interpretação literal da linguagem, perdendo o sentido figurado.</li>
-    </ul>
-    
-    <h4 style="color: white;">😰 Impacto no Bem-estar Emocional:</h4>
-    <ul style="color: white;">
-        <li><strong>Ansiedade Social:</strong> Medo intenso de situações sociais, levando à evitação.</li>
-        <li><strong>Frustração e Solidão:</strong> Desejo de ter amigos, mas dificuldade em alcançá-lo.</li>
-        <li><strong>Vulnerabilidade:</strong> Maior risco de ser alvo de bullying ou exploração por não entender intenções maliciosas.</li>
-    </ul>
-</div>
-
-<div class="strategy-box">
-    <h3>💡 Estratégias de Ensino e Apoio</h3>
-    
-    <h4 style="color: white;">📚 Ensino Explícito e Visual:</h4>
-    <ul style="color: white;">
-        <li><strong>Histórias Sociais:</strong> Crie roteiros visuais para situações sociais específicas (ex: "Como pedir ajuda").</li>
-        <li><strong>Role-Playing:</strong> Pratique interações em um ambiente seguro, com feedback construtivo.</li>
-        <li><strong>Vídeos Modelagem:</strong> Use vídeos para demonstrar comportamentos sociais desejados.</li>
-        <li><strong>Listas de Regras:</strong> Crie listas visuais de "regras sociais" para diferentes contextos.</li>
-    </ul>
-    
-    <h4 style="color: white;">👥 Facilitando Oportunidades de Interação:</h4>
-    <ul style="color: white;">
-        <li><strong>Grupos de Habilidades Sociais:</strong> Terapia em grupo focada no desenvolvimento social.</li>
-        <li><strong>Amizades Guiadas:</strong> Incentive interações com colegas compreensivos e pacientes.</li>
-        <li><strong>Interesses Compartilhados:</strong> Use os interesses especiais como ponte para a socialização (clubes, jogos).</li>
-    </ul>
-</div>
-
-<div class="support-box">
-    <h3>🤝 O Papel da Família no Desenvolvimento Social</h3>
-    
-    <h4 style="color: white;">🏡 Criando um Ambiente de Prática:</h4>
-    <ul style="color: white;">
-        <li><strong>Jogos de Tabuleiro:</strong> Ótimos para praticar turnos, regras e lidar com frustração.</li>
-        <li><strong>Refeições em Família:</strong> Incentive a conversação e a escuta ativa.</li>
-        <li><strong>Conversas Diárias:</strong> Pergunte sobre o dia, incentivando a descrição de interações.</li>
-        <li><strong>Modelagem:</strong> Demonstre você mesmo(a) habilidades sociais em suas interações.</li>
-    </ul>
-    
-    <h4 style="color: white;">🏫 Apoio na Escola e Comunidade:</h4>
-    <ul style="color: white;">
-        <li><strong>Comunicação com a Escola:</strong> Trabalhe com professores para criar oportunidades sociais inclusivas.</li>
-        <li><strong>Atividades Extracurriculares:</strong> Escolha atividades que correspondam aos interesses do adolescente e ofereçam estrutura.</li>
-        <li><strong>Advocacia contra Bullying:</strong> Esteja atento(a) e intervenha proativamente.</li>
-    </ul>
-</div>
-
-<div class="warning-box">
-    <h3>⚠️ Sinais de Alerta e Quando Buscar Ajuda</h3>
-    
-    <h4 style="color: white;">🚨 Indicadores de Dificuldade Significativa:</h4>
-    <ul style="color: white;">
-        <li><strong>Isolamento Extremo:</strong> Recusa persistente em participar de qualquer interação social.</li>
-        <li><strong>Ansiedade Social Debilitante:</strong> Ataques de pânico ou grande sofrimento em situações sociais.</li>
-        <li><strong>Regressão Social:</strong> Perda de habilidades sociais que já haviam sido adquiridas.</li>
-        <li><strong>Vítima de Bullying Recorrente:</strong> Se o adolescente está constantemente sendo alvo de intimidação.</li>
-    </ul>
-    
-    <h4 style="color: white;">👨‍⚕️ Profissionais que Podem Ajudar:</h4>
-    <ul style="color: white;">
-        <li><strong>Terapeuta de Habilidades Sociais:</strong> Especializado em intervenções diretas e treinamento.</li>
-        <li><strong>Psicólogo (TCC):</strong> Para lidar com ansiedade social e desenvolver estratégias cognitivas.</li>
-        <li><strong>Fonoaudiólogo:</strong> Foco na pragmática da comunicação e compreensão social.</li>
-        <li><strong>Psicopedagogo:</strong> Para adaptações no ambiente escolar e estratégias de inclusão.</li>
-    </ul>
-</div>
-
-<div class="resource-grid">
-    <div class="resource-card">
-        <div class="resource-icon">📚</div>
-        <div class="resource-name">Livros e Guias</div>
-        <div class="resource-desc">Materiais sobre habilidades sociais para adolescentes com TEA, com exemplos e exercícios práticos.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🎮</div>
-        <div class="resource-name">Jogos de Tabuleiro/RPG</div>
-        <div class="resource-desc">Estimulam a interação, negociação e compreensão de regras sociais de forma divertida.</div>
-    </div>
-    
-    <div class="resource-icon">💻</div>
-        <div class="resource-name">Apps de Habilidades Sociais</div>
-        <div class="resource-desc">Aplicativos que simulam situações sociais e oferecem dicas de comportamento.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🗣️</div>
-        <div class="resource-name">Grupos de Apoio de Pares</div>
-        <div class="resource-desc">Ambientes seguros para que adolescentes com TEA pratiquem interações e façam amigos.</div>
-    </div>
-</div>
-
-
-
-</div>
-</div>  
-
-
-
-
-
-
-
-            <!-- Página 7: Compreendendo o TEA na Adolescência -->
-            <div class="page">
-            <div class="page-header">
-                <div class="page-number">7</div>
-                <div class="chapter-badge">Capítulo 4</div>
-            </div>
-            <h2>🌱 O Cenário da Inclusão Escolar no TEA</h2>
-            <div class="story-illustration">🧬🌱💪⚡</div>
-            <div class="development-box">
-    <h3>🧠 O Cenário da Inclusão Escolar no TEA</h3>
-    <p style="color: white;">A inclusão não é apenas sobre a presença física na sala de aula, mas sobre a participação plena e significativa. Para adolescentes com TEA, isso implica adaptações pedagógicas, apoio social e um ambiente que compreenda e valorize suas particularidades sensoriais e comunicativas.</p>
-</div>
-
-<div class="stats-grid">
-    <div class="stat-card">
-        <div class="stat-number">+80%</div>
-        <div class="stat-label">Em Escolas Regulares</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">50%</div>
-        <div class="stat-label">Necessitam de Apoio</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">2x</div>
-        <div class="stat-label">Risco de Abandono</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">100%</div>
-        <div class="stat-label">Potencial de Aprendizagem</div>
-    </div>
-</div>
-
-<div class="milestone-box">
-    <h3>🎯 Desafios Comuns no Cotidiano Escolar</h3>
-    
-    <h4 style="color: white;">📚 Dificuldades Acadêmicas e de Aprendizagem:</h4>
-    <ul style="color: white;">
-        <li><strong>Organização e Planejamento:</strong> Dificuldade com tarefas complexas, gestão do tempo e execução de projetos.</li>
-        <li><strong>Generalização:</strong> Problemas em aplicar conhecimentos de um contexto para outro.</li>
-        <li><strong>Pensamento Abstrato:</strong> Dificuldade em conceitos que não são concretos ou visuais.</li>
-        <li><strong>Flexibilidade Cognitiva:</strong> Resistência a mudanças de rotina ou de metodologia de ensino.</li>
-    </ul>
-    
-    <h4 style="color: white;">🗣️ Interações Sociais no Ambiente Escolar:</h4>
-    <ul style="color: white;">
-        <li><strong>Bullying e Exclusão:</strong> Vulnerabilidade a situações de intimidação e dificuldade em formar grupos.</li>
-        <li><strong>Compreensão Social:</strong> Interpretar regras sociais implícitas em interações com colegas e professores.</li>
-        <li><strong>Trabalhos em Grupo:</strong> Dificuldade em colaborar, negociar e dividir tarefas.</li>
-    </ul>
-</div>
-
-<div class="challenge-box">
-    <h3>⚡ Barreiras Sensoriais e Comportamentais</h3>
-    
-    <h4 style="color: white;">🌪️ Sensibilidade no Ambiente de Sala de Aula:</h4>
-    <ul style="color: white;">
-        <li><strong>Barulho:</strong> Sons altos (sinos, conversas) podem ser esmagadores.</li>
-        <li><strong>Luzes:</strong> Iluminação forte ou fluorescente pode causar desconforto.</li>
-        <li><strong>Cheiros:</strong> Odor de produtos de limpeza, perfumes de colegas podem ser aversivos.</li>
-        <li><strong>Agitação:</strong> Excesso de movimento no corredor ou recreio pode desorganizar.</li>
-    </ul>
-    
-    <h4 style="color: white;">😰 Impactos no Comportamento e Bem-estar:</h4>
-    <ul style="color: white;">
-        <li><strong>Ansiedade Escolar:</strong> Medo ou relutância em ir à escola.</li>
-        <li><strong>Crises de Estresse (Meltdowns):</strong> Respostas intensas a sobrecarga sensorial ou social.</li>
-        <li><strong>Comportamentos Rígidos:</strong> Dificuldade em aceitar interrupções ou mudanças de planos.</li>
-        <li><strong>Dificuldade de Foco:</strong> Ambientes muito estimulantes podem dificultar a concentração.</li>
-    </ul>
-</div>
-
-<div class="strategy-box">
-    <h3>💡 Estratégias de Adaptação e Inclusão Efetiva</h3>
-    
-    <h4 style="color: white;">📚 Adaptações Pedagógicas e Curriculares:</h4>
-    <ul style="color: white;">
-        <li><strong>Recursos Visuais:</strong> Agendas visuais, organizadores gráficos, instruções passo-a-passo.</li>
-        <li><strong>Instruções Claras:</strong> Linguagem direta e objetiva, evitando abstrações.</li>
-        <li><strong>Tempo Extra:</strong> Para processar informações ou completar tarefas.</li>
-        <li><strong>Ensino Individualizado:</strong> Plano de Educação Individualizado (PEI) com metas e estratégias específicas.</li>
-        <li><strong>Foco em Interesses:</strong> Conectar o conteúdo escolar aos interesses do aluno.</li>
-    </ul>
-    
-    <h4 style="color: white;">👥 Apoio Social e Emocional:</h4>
-    <ul style="color: white;">
-        <li><strong>Mediador/Acompanhante Terapêutico:</strong> Suporte individualizado na sala de aula.</li>
-        <li><strong>Programas de Amigo Oculto/Mentor:</strong> Pares que auxiliam na integração social.</li>
-        <li><strong>Treinamento de Equipe:</strong> Capacitação de professores e funcionários sobre o TEA.</li>
-        <li><strong>Espaços Seguros:</strong> Áreas calmas para descompressão durante o dia escolar.</li>
-    </ul>
-</div>
-
-<div class="support-box">
-    <h3>🤝 A Parceria Escola-Família é Essencial</h3>
-    
-    <h4 style="color: white;">💬 Comunicação Constante e Colaboração:</h4>
-    <ul style="color: white;">
-        <li><strong>Reuniões Periódicas:</strong> Manter diálogo aberto com a equipe escolar (professores, coordenação, AEE).</li>
-        <li><strong>Troca de Informações:</strong> Compartilhar sobre o bem-estar do adolescente em casa e na escola.</li>
-        <li><strong>Defensor Ativo:</strong> Conhecer os direitos do seu filho(a) e defender suas necessidades.</li>
-        <li><strong>Estabelecer Metas Conjuntas:</strong> Alinhar objetivos educacionais e sociais entre casa e escola.</li>
-    </ul>
-    
-    <h4 style="color: white;">🏡 Fortalecendo o Vínculo Casa-Escola:</h4>
-    <ul style="color: white;">
-        <li><strong>Rotina Consistente:</strong> Manter rotinas semelhantes em casa e na escola para maior previsibilidade.</li>
-        <li><strong>Preparação para Mudanças:</strong> Antecipar e preparar o adolescente para eventos escolares ou mudanças na rotina.</li>
-        <li><strong>Reforço Positivo:</strong> Celebrar conquistas acadêmicas e sociais, por menores que sejam.</li>
-    </ul>
-</div>
-
-<div class="warning-box">
-    <h3>⚠️ Sinais de Alerta no Ambiente Escolar</h3>
-    
-    <h4 style="color: white;">🚨 Quando Buscar Intervenção Adicional:</h4>
-    <ul style="color: white;">
-        <li><strong>Recusa Escolar Persistente:</strong> Dificuldade ou recusa em ir à escola diariamente.</li>
-        <li><strong>Regressão no Aprendizado:</strong> Perda significativa de habilidades acadêmicas.</li>
-        <li><strong>Aumento de Crises:</strong> Frequência ou intensidade maior de crises de estresse relacionadas à escola.</li>
-        <li><strong>Isolamento Social Extremo:</strong> Nenhuma interação com colegas ou recusa a participar de atividades.</li>
-        <li><strong>Queixas Constantes de Bullying:</strong> Se as tentativas de resolver na escola não são eficazes.</li>
-    </ul>
-    
-    <h4 style="color: white;">👨‍⚕️ Profissionais que Podem Auxiliar:</h4>
-    <ul style="color: white;">
-        <li><strong>Psicólogo Escolar/Neuropsicólogo:</strong> Avaliação e estratégias para dificuldades de aprendizagem e emocionais.</li>
-        <li><strong>Terapeuta Ocupacional:</strong> Adaptações sensoriais e de rotina no ambiente escolar.</li>
-        <li><strong>Psicopedagogo:</strong> Intervenções para dificuldades de aprendizagem específicas.</li>
-        <li><strong>Assistente Social:</strong> Para apoio na comunicação com a escola e defesa de direitos.</li>
-    </ul>
-</div>
-
-<div class="resource-grid">
-    <div class="resource-card">
-        <div class="resource-icon">📖</div>
-        <div class="resource-name">Guia de PEI/Plano Individualizado</div>
-        <div class="resource-desc">Recursos para ajudar pais a entender e desenvolver Planos de Educação Individualizados eficazes.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🌐</div>
-        <div class="resource-name">Associações de Apoio Escolar</div>
-        <div class="resource-desc">Organizações que oferecem suporte, informações e advocacy para inclusão educacional.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🎥</div>
-        <div class="resource-name">Webinars sobre Inclusão</div>
-        <div class="resource-desc">Conteúdo audiovisual de especialistas sobre melhores práticas de inclusão escolar para TEA.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🛠️</div>
-        <div class="resource-name">Ferramentas de Apoio Visual</div>
-        <div class="resource-desc">Sites e lojas com materiais visuais (agendas, cartões) para adaptação escolar.</div>
-    </div>
-</div>
-
-<div class="tip-box">
-    <h3>💡 Dicas Essenciais para Famílias</h3>
-    
-    <h4 style="color: #e2e8f0;">🗣️ Seja o Principal Defensor:</h4>
-    <p style="color: #cbd5e0;">Você conhece seu filho(a) como ninguém. Seja proativo(a) na comunicação com a escola e na defesa de suas necessidades.</p>
-    
-    <h4 style="color: #e2e8f0;">🤝 Construa Pontes:</h4>
-    <p style="color: #cbd5e0;">Trabalhe em parceria com a equipe escolar. Uma boa relação é a chave para a inclusão bem-sucedida.</p>
-    
-    <h4 style="color: #e2e8f0;">🧘 Crie um Refúgio em Casa:</h4>
-    <p style="color: #cbd5e0;">Garanta que o lar seja um espaço seguro e previsível, onde seu filho(a) possa descompensar após um dia intenso de escola.</p>
-    
-    <h4 style="color: #e2e8f0;">🎉 Celebre os Pequenos Feitos:</h4>
-    <p style="color: #cbd5e0;">Reconheça cada adaptação, cada nova habilidade e cada esforço do seu filho(a) no ambiente escolar.</p>
-</div>
-
-<div class="teen-demo">
-    <h3>🌱 Escola: Um Ambiente de Crescimento</h3>
-    <div class="teen-circle interactive-element">
-        Adaptação + Colaboração = Sucesso Escolar
-    </div>
-    <p><strong>Visualize o potencial da aprendizagem! 📈</strong></p>
-</div>
-
-<div class="hope-box">
-    <h3>🌟 Mensagem de Esperança</h3>
-    <p style="color: white;">A inclusão escolar é um direito e uma oportunidade para todos os alunos, incluindo aqueles no espectro autista. Com dedicação da família, da escola e dos profissionais de apoio, é possível criar um ambiente educacional que não apenas acomode, mas também celebre as particularidades de seu filho(a), permitindo que ele(a) floresça academicamente e socialmente, construindo uma base sólida para o futuro.</p>
-</div>
-
-<div class="source-box">
-    <strong>📚 Fontes:</strong> Lei Brasileira de Inclusão (Estatuto da Pessoa com Deficiência), Diretrizes do Ministério da Educação sobre Educação Inclusiva, Pesquisas da Autism Society e Autism Speaks sobre inclusão escolar, e experiências de educadores e famílias.
-</div>
-
-
-
-
-
-
-             <!-- Página 8: Compreendendo o TEA na Adolescência -->
-            <div class="page">
-            <div class="page-header">
-                <div class="page-number">8</div>
-                <div class="chapter-badge">Capítulo 6</div>
-            </div>
-            <h2>🏡 Apoio Familiar: Construindo um Lar de Suporte</h2>
-            <div class="story-illustration">👨‍👩‍👧‍👦💖🔗🫂</div>
-            <div class="development-box">
-    <h3>💖 O Núcleo do Suporte: A Família</h3>
-    <p style="color: white;">Muito além de um teto, o lar é um ecossistema de relações. Para o adolescente no TEA, a dinâmica familiar influencia diretamente sua capacidade de navegar as complexidades da puberdade e da adolescência. O apoio mútuo, a comunicação eficaz e o bem-estar de cada membro são cruciais para o equilíbrio de todo o sistema.</p>
-</div>
-
-<div class="stats-grid">
-    <div class="stat-card">
-        <div class="stat-number">85%</div>
-        <div class="stat-label">Famílias: Apoio Chave</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">40%</div>
-        <div class="stat-label">Reportam Estresse Alto</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">60%</div>
-        <div class="stat-label">Buscam Grupos de Apoio</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">TODOS</div>
-        <div class="stat-label">Membros São Essenciais</div>
-    </div>
-</div>
-
-<div class="milestone-box">
-    <h3>🎯 Desafios Comuns para Famílias de Adolescentes no TEA</h3>
-    
-    <h4 style="color: white;">🌪️ Pressões e Demandas Diárias:</h4>
-    <ul style="color: white;">
-        <li><strong>Estresse Parental:</strong> Aumenta com as complexidades da adolescência e a busca por recursos.</li>
-        <li><strong>Gestão do Tempo:</strong> Equilibrar terapias, escola, atividades e vida familiar.</li>
-        <li><strong>Cansaço Físico e Mental:</strong> A rotina intensa pode levar à exaustão dos cuidadores.</li>
-        <li><strong>Isolamento Social dos Pais:</strong> Dificuldade em manter redes de apoio ou vida social.</li>
-    </ul>
-    
-    <h4 style="color: white;">💬 Impactos nas Dinâmicas Familiares:</h4>
-    <ul style="color: white;">
-        <li><strong>Comunicação:</strong> Dificuldade em dialogar sobre necessidades e frustrações de todos os membros.</li>
-        <li><strong>Relações entre Irmãos:</strong> Ciúmes, sentimento de negligência ou sobrecarga nos irmãos típicos.</li>
-        <li><strong>Relacionamento Conjugal:</strong> Tensões e divergências sobre a abordagem parental.</li>
-        <li><strong>Aceitação:</strong> Lidar com a percepção externa e o processo contínuo de aceitação.</li>
-    </ul>
-</div>
-
-<div class="challenge-box">
-    <h3>⚡ Barreiras Emocionais e Sociais no Lar</h3>
-    
-    <h4 style="color: white;">😟 Lidando com Emoções Intensas:</h4>
-    <ul style="color: white;">
-        <li><strong>Frustração:</strong> Ao lidar com desafios comportamentais ou de comunicação.</li>
-        <li><strong>Culpa:</strong> Sentimentos de não estar fazendo o suficiente.</li>
-        <li><strong>Preocupação com o Futuro:</strong> Questões sobre a autonomia e independência na vida adulta.</li>
-        <li><strong>Luto Contínuo:</strong> Pelo "filho que não veio", embora se ame o filho que se tem.</li>
-    </ul>
-    
-    <h4 style="color: white;">🧩 Necessidade de Adaptação Constante:</h4>
-    <ul style="color: white;">
-        <li><strong>Rotinas:</strong> A necessidade de rotinas rígidas pode ser difícil para outros membros da família.</li>
-        <li><strong>Preferências Restritas:</strong> Dificuldade em conciliar interesses de todos os membros.</li>
-        <li><strong>Eventos Familiares:</strong> Planejamento cuidadoso para evitar sobrecarga sensorial ou social.</li>
-        <li><strong>Compreensão Mútua:</strong> Desafio em fazer com que todos compreendam as particularidades do TEA.</li>
-    </ul>
-</div>
-
-<div class="strategy-box">
-    <h3>💡 Estratégias para Fortalecer o Apoio Familiar</h3>
-    
-    <h4 style="color: white;">🗣️ Promovendo uma Comunicação Eficaz:</h4>
-    <ul style="color: white;">
-        <li><strong>Diálogo Aberto:</strong> Crie um espaço seguro para todos expressarem sentimentos e necessidades.</li>
-        <li><strong>Comunicação Aumentativa e Alternativa (CAA):</strong> Utilize-a se for o caso do seu filho(a) para melhorar a expressão.</li>
-        <li><strong>Reuniões Familiares:</strong> Momentos para discutir planos, rotinas e desafios de forma estruturada.</li>
-        <li><strong>Linguagem Literal:</strong> Ensine os membros da família a usar comunicação clara e direta.</li>
-    </ul>
-    
-    <h4 style="color: white;">🏠 Estrutura e Previsibilidade no Lar:</h4>
-    <ul style="color: white;">
-        <li><strong>Rotinas Visuais:</strong> Utilize calendários e quadros visuais de tarefas para todos.</li>
-        <li><strong>Organização:</strong> Ambientes organizados reduzem a sobrecarga sensorial e facilitam o dia a dia.</li>
-        <li><strong>Preparo para Mudanças:</strong> Antecipe alterações na rotina e prepare o adolescente com antecedência.</li>
-        <li><strong>Espaços Seguros:</strong> Tenha um local de descompressão para o adolescente, e para os pais também.</li>
-    </ul>
-</div>
-
-<div class="support-box">
-    <h3>🤝 O Papel de Cada Membro e o Autocuidado</h3>
-    
-    <h4 style="color: white;">👨‍👩‍👧‍👦 Envolvimento dos Irmãos:</h4>
-    <ul style="color: white;">
-        <li><strong>Educação:</strong> Ensine os irmãos sobre o TEA, suas particularidades e pontos fortes.</li>
-        <li><strong>Inclusão:</strong> Dê-lhes papéis no cuidado e nas atividades, com limites.</li>
-        <li><strong>Tempo Individual:</strong> Garanta que os irmãos típicos recebam atenção individual e de qualidade.</li>
-        <li><strong>Grupos de Apoio:</strong> Considere grupos para irmãos de pessoas com TEA.</li>
-    </ul>
-    
-    <h4 style="color: white;">🧘 Priorizando o Autocuidado Parental:</h4>
-    <ul style="color: white;">
-        <li><strong>Respiro:</strong> Busque momentos de lazer e descanso regularmente.</li>
-        <li><strong>Rede de Apoio:</strong> Conecte-se com outros pais para troca de experiências e apoio mútuo.</li>
-        <li><strong>Terapia Individual:</strong> Se necessário, para lidar com o estresse e emoções.</li>
-        <li><strong>Divisão de Tarefas:</strong> Compartilhe responsabilidades de cuidado entre os parceiros, quando possível.</li>
-    </ul>
-</div>
-
-<div class="warning-box">
-    <h3>⚠️ Sinais de Alerta na Dinâmica Familiar</h3>
-    
-    <h4 style="color: white;">🚨 Quando a Família Precisa de Ajuda Externa:</h4>
-    <ul style="color: white;">
-        <li><strong>Esgotamento Parental Severo:</strong> Sentimento constante de exaustão e desespero.</li>
-        <li><strong>Conflitos Familiares Recorrentes:</strong> Brigas frequentes e incapacidade de resolver problemas.</li>
-        <li><strong>Isolamento Familiar:</strong> Quando a família se afasta de amigos e atividades sociais.</li>
-        <li><strong>Problemas de Saúde Mental:</strong> Depressão, ansiedade ou burnout em qualquer membro.</li>
-        <li><strong>Regressão no Adolescente:</strong> Se o ambiente familiar parece contribuir para piora dos comportamentos.</li>
-    </ul>
-    
-    <h4 style="color: white;">👨‍⚕️ Profissionais que Podem Ajudar a Família:</h4>
-    <ul style="color: white;">
-        <li><strong>Terapeuta Familiar:</strong> Para mediar conflitos e melhorar a comunicação.</li>
-        <li><strong>Psicólogo:</strong> Apoio individual para pais e irmãos, e terapia para o adolescente.</li>
-        <li><strong>Grupos de Apoio para Pais:</strong> Conexão com outras famílias para compartilhar experiências e estratégias.</li>
-        <li><strong>Assistente Social:</strong> Para acesso a recursos e programas de apoio governamentais ou comunitários.</li>
-    </ul>
-</div>
-
-<div class="resource-grid">
-    <div class="resource-card">
-        <div class="resource-icon">📚</div>
-        <div class="resource-name">Livros sobre Famílias e TEA</div>
-        <div class="resource-desc">Materiais que abordam a dinâmica familiar, estresse parental e estratégias de coesão.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🌐</div>
-        <div class="resource-name">Comunidades Online para Pais</div>
-        <div class="resource-desc">Fóruns e grupos de redes sociais para troca de experiências e suporte emocional entre pais.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🧘</div>
-        <div class="resource-name">Recursos de Autocuidado</div>
-        <div class="resource-desc">Aplicativos de meditação, mindfulness ou programas de bem-estar para pais e cuidadores.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🗣️</div>
-        <div class="resource-name">Organizações de Apoio Local</div>
-        <div class="resource-desc">Associações de autismo que oferecem grupos de apoio, palestras e serviços de aconselhamento familiar.</div>
-    </div>
-</div>
-
-<div class="tip-box">
-    <h3>💡 Dicas Essenciais para Fortalecer o Lar</h3>
-    
-    <h4 style="color: #e2e8f0;">🗣️ Comunique-se com Clareza e Amor:</h4>
-    <p style="color: #cbd5e0;">Converse abertamente sobre as necessidades de todos, use linguagem simples e reforce o afeto.</p>
-    
-    <h4 style="color: #e2e8f0;">🧘 Priorize o Autocuidado:</h4>
-    <p style="color: #cbd5e0;">Você não pode servir de um copo vazio. Dedique tempo para sua saúde física e mental.</p>
-    
-    <h4 style="color: #e2e8f0;">🔗 Envolva Todos os Membros:</h4>
-    <p style="color: #cbd5e0;">Eduque os irmãos, delegue tarefas e garanta que todos se sintam parte da jornada.</p>
-    
-    <h4 style="color: #e2e8f0;">🎉 Celebre a Resiliência Familiar:</h4>
-    <p style="color: #cbd5e0;">Reconheçam a força e a capacidade de adaptação da sua família diante dos desafios.</p>
-</div>
-
-<div class="teen-demo">
-    <h3>🌱 Família: O Alicerce do Futuro</h3>
-    <div class="teen-circle interactive-element">
-        Amor + Suporte = Lar Fortalecido
-    </div>
-    <p><strong>Visualize uma família unida e resiliente! 💖</strong></p>
-</div>
-
-<div class="hope-box">
-    <h3>🌟 Mensagem de Esperança</h3>
-    <p style="color: white;">Construir um lar de suporte para um adolescente no TEA é uma jornada de amor, aprendizado e resiliência. Embora possa haver momentos de grande desafio, a capacidade da família de se adaptar, comunicar e cuidar uns dos outros é um superpoder. Com estratégias eficazes, apoio mútuo e a valorização das particularidades de cada membro, seu lar pode ser um refúgio de segurança, aceitação e crescimento para seu filho(a) e para toda a sua família.</p>
-</div>
-
-<div class="source-box">
-    <strong>📚 Fontes:</strong> Pesquisas sobre estresse familiar e autismo, Modelos de Terapia Familiar Sistêmica, Organizações de apoio a famílias de pessoas com TEA (ex: Family Autism Network), e publicações sobre bem-estar parental em cuidados especiais.
-</div>
-   </div>         
-              <!-- Página 9: Compreendendo o TEA na Adolescência -->
-            <div class="page">
-            <div class="page-header">
-                <div class="page-number">9</div>
-                <div class="chapter-badge">Capítulo 7</div>
-            </div>
-            <h2>🚀 Rumo à Autonomia e Independência</h2>
-            <div class="story-illustration">🧭✅🔑📈</div>
-            <div class="development-box">
-    <h3>✨ O Significado da Independência no TEA</h3>
-    <p style="color: white;">A independência não se resume a morar sozinho ou ter um emprego. Para pessoas no espectro autista, significa desenvolver a capacidade de tomar decisões, resolver problemas, cuidar de si e expressar suas próprias vontades. É um processo que visa maximizar o potencial individual, respeitando as necessidades e ritmos de cada um.</p>
-</div>
-
-<div class="stats-grid">
-    <div class="stat-card">
-        <div class="stat-number">18-21</div>
-        <div class="stat-label">Idade da Transição Adulta</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">60%</div>
-        <div class="stat-label">Buscando Habilidades de Vida</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">30%</div>
-        <div class="stat-label">Com Suporte Emprego</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">CADA UM</div>
-        <div class="stat-label">Seu Próprio Caminho</div>
-    </div>
-</div>
-
-<div class="milestone-box">
-    <h3>🎯 Áreas Chave para o Desenvolvimento da Autonomia</h3>
-    
-    <h4 style="color: white;">📋 Habilidades de Vida Diária (HVD):</h4>
-    <ul style="color: white;">
-        <li><strong>Higiene Pessoal:</strong> Banho, escovação, cuidados com o cabelo e vestuário adequado.</li>
-        <li><strong>Preparação de Alimentos:</strong> Fazer lanches simples, aquecer refeições, seguir receitas básicas.</li>
-        <li><strong>Cuidados Domésticos:</strong> Organizar o quarto, ajudar com tarefas domésticas, lavar louça/roupa.</li>
-        <li><strong>Saúde e Segurança:</strong> Agendar consultas, tomar medicamentos, reconhecer sinais de perigo.</li>
-    </ul>
-    
-    <h4 style="color: white;">🗣️ Autodefesa e Tomada de Decisão:</h4>
-    <ul style="color: white;">
-        <li><strong>Expressar Necessidades:</strong> Articular preferências, limites e o que é necessário para seu bem-estar.</li>
-        <li><strong>Fazer Escolhas:</strong> Praticar decisões sobre atividades, roupas, alimentação, com orientação.</li>
-        <li><strong>Resolução de Problemas:</strong> Identificar problemas e pensar em soluções práticas para o dia a dia.</li>
-        <li><strong>Advocacia Pessoal:</strong> Conhecer e reivindicar seus direitos, buscar apoios adequados.</li>
-    </ul>
-</div>
-
-<div class="challenge-box">
-    <h3>⚡ Desafios Comuns na Busca por Independência</h3>
-    
-    <h4 style="color: white;">🧠 Funções Executivas e Organização:</h4>
-    <ul style="color: white;">
-        <li><strong>Início de Tarefas:</strong> Dificuldade em começar atividades de forma autônoma.</li>
-        <li><strong>Planejamento e Priorização:</strong> Problemas em organizar passos e priorizar o que precisa ser feito.</li>
-        <li><strong>Gestão do Tempo:</strong> Dificuldade em estimar o tempo necessário para tarefas e cumprir prazos.</li>
-        <li><strong>Flexibilidade:</strong> Resistência a mudanças de planos ou imprevistos.</li>
-    </ul>
-    
-    <h4 style="color: white;">💡 Consciência Social e Segurança:</h4>
-    <ul style="color: white;">
-        <li><strong>Interpretação de Intenções:</strong> Dificuldade em perceber intenções maliciosas ou golpes.</li>
-        <li><strong>Segurança Online:</strong> Vulnerabilidade a cyberbullying ou exploração digital.</li>
-        <li><strong>Navegação Comunitária:</strong> Usar transporte público, orientar-se em locais desconhecidos.</li>
-        <li><strong>Gerenciamento Financeiro:</strong> Compreender o valor do dinheiro, orçamento, evitar gastos impulsivos.</li>
-    </ul>
-</div>
-
-<div class="strategy-box">
-    <h3>💡 Estratégias para Fomentar a Autonomia</h3>
-    
-    <h4 style="color: white;">🛠️ Ensino Estruturado de Habilidades:</h4>
-    <ul style="color: white;">
-        <li><strong>Decomposição de Tarefas:</strong> Dividir habilidades complexas em passos pequenos e ensináveis.</li>
-        <li><strong>Modelagem e Prática:</strong> Demonstrar a habilidade e praticar repetidamente em diferentes contextos.</li>
-        <li><strong>Listas de Verificação/Visuais:</strong> Usar roteiros visuais para rotinas (ex: "Lista de banho", "Passos para fazer um sanduíche").</li>
-        <li><strong>Reforço Positivo:</strong> Elogiar e recompensar o esforço e a iniciativa, não apenas o resultado perfeito.</li>
-    </ul>
-    
-    <h4 style="color: white;">📈 Apoio Gradual e Autonomia Progressiva:</h4>
-    <ul style="color: white;">
-        <li><strong>Comece Pequeno:</strong> Inicie com escolhas simples e aumente a complexidade gradualmente.</li>
-        <li><strong>Dê Oportunidades:</strong> Permita que seu filho(a) tente, mesmo que erre. Os erros são parte do aprendizado.</li>
-        <li><strong>"Ajuda Mínima Necessária":</strong> Ofereça apenas o suporte que for estritamente necessário, incentivando a independência.</li>
-        <li><strong>Planejamento Conjunto:</strong> Envolver o adolescente no planejamento de atividades e metas pessoais.</li>
-    </ul>
-</div>
-
-<div class="support-box">
-    <h3>🤝 O Papel dos Pais: Guia e Facilitador</h3>
-    
-    <h4 style="color: white;">🌳 Cultivando a Independência no Lar:</h4>
-    <ul style="color: white;">
-        <li><strong>Delegar Responsabilidades:</strong> Atribua tarefas domésticas adequadas à idade e habilidade.</li>
-        <li><strong>Gerenciamento de Dinheiro:</strong> Inicie com mesada e ensine sobre poupança e gastos conscientes.</li>
-        <li><strong>Escolhas Cotidianas:</strong> Permita que o adolescente escolha o que vestir, comer (dentro de opções).</li>
-        <li><strong>Erros como Aprendizado:</strong> Permita que experimente as consequências naturais de pequenas falhas.</li>
-    </ul>
-    
-    <h4 style="color: white;">🗺️ Planejamento para o Futuro:</h4>
-    <ul style="color: white;">
-        <li><strong>Explorar Interesses:</strong> Conectar paixões a possíveis carreiras ou estudos.</li>
-        <li><strong>Visitas a Faculdades/Centros Vocacionais:</strong> Familiarizar com ambientes pós-ensino médio.</li>
-        <li><strong>Discussões Abertas:</strong> Conversar sobre moradia, trabalho e vida social na vida adulta.</li>
-        <li><strong>Rede de Apoio:</strong> Pesquisar programas de transição e serviços de apoio para adultos com TEA.</li>
-    </ul>
-</div>
-
-<div class="warning-box">
-    <h3>⚠️ Sinais de Alerta e Quando Buscar Ajuda</h3>
-    
-    <h4 style="color: white;">🚨 Indicadores de Dificuldade de Transição:</h4>
-    <ul style="color: white;">
-        <li><strong>Dependência Excessiva:</strong> Incapacidade de realizar tarefas básicas sem supervisão constante.</li>
-        <li><strong>Risco de Segurança:</strong> Vulnerabilidade a situações perigosas ou dificuldade em lidar com emergências.</li>
-        <li><strong>Frustração Extrema:</strong> Raiva ou desorganização ao tentar ser independente.</li>
-        <li><strong>Falta de Motivação:</strong> Apatia ou recusa em aprender novas habilidades de vida.</li>
-    </ul>
-    
-    <h4 style="color: white;">👨‍⚕️ Profissionais que Podem Auxiliar:</h4>
-    <ul style="color: white;">
-        <li><strong>Terapeuta Ocupacional (TO):</strong> Especializado em ensinar Habilidades de Vida Diária e função executiva.</li>
-        <li><strong>Coach de Habilidades de Vida/Transição:</strong> Profissional focado em desenvolver autonomia em áreas específicas.</li>
-        <li><strong>Psicólogo:</strong> Para lidar com ansiedade ou resistências relacionadas à independência.</li>
-        <li><strong>Conselheiro Vocacional:</strong> Para explorar opções de carreira e educação superior.</li>
-    </ul>
-</div>
-
-<div class="resource-grid">
-    <div class="resource-card">
-        <div class="resource-icon">📚</div>
-        <div class="resource-name">Guias de Habilidades de Vida</div>
-        <div class="resource-desc">Livros e manuais com instruções passo a passo para ensinar habilidades diárias e de autonomia.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🌐</div>
-        <div class="resource-name">Programas de Transição para Adultos</div>
-        <div class="resource-desc">Organizações que oferecem programas estruturados para a transição do ensino médio para a vida adulta.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🛠️</div>
-        <div class="resource-name">Aplicativos de Organização</div>
-        <div class="resource-desc">Apps que ajudam com agenda, tarefas, lembretes e gerenciamento de dinheiro.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🗣️</div>
-        <div class="resource-name">Workshops de Autodefesa</div>
-        <div class="resource-desc">Treinamentos para ensinar jovens a expressar suas necessidades e defender seus direitos.</div>
-    </div>
-</div>
-
-<div class="tip-box">
-    <h3>💡 Dicas Essenciais para Fomentar a Autonomia</h3>
-    
-    <h4 style="color: #e2e8f0;">🗣️ Ensine com Paciência e Estrutura:</h4>
-    <p style="color: #cbd5e0;">Divida tarefas complexas em passos menores e celebre cada pequena conquista. A repetição é chave.</p>
-    
-    <h4 style="color: #e2e8f0;">💖 Permita os Erros:</h4>
-    <p style="color: #cbd5e0;">Aprender a ser independente envolve tentativas e erros. Esteja lá para apoiar, não para impedir.</p>
-    
-    <h4 style="color: #e2e8f0;">🔗 Envolva-o(a) nas Decisões:</h4>
-    <p style="color: #cbd5e0;">Dê opções e permita que seu filho(a) faça escolhas, mesmo que pequenas, para construir confiança.</p>
-    
-    <h4 style="color: #e2e8f0;">🎉 Celebre Cada Passo Rumo à Independência:</h4>
-    <p style="color: #cbd5e0;">Reconheça e elogie cada nova habilidade adquirida, reforçando a capacidade e o esforço.</p>
-</div>
-
-<div class="teen-demo">
-    <h3>🌱 Desabrochando para o Futuro</h3>
-    <div class="teen-circle interactive-element">
-        Ensino + Oportunidade = Vidas Plenas
-    </div>
-    <p><strong>Visualize o florescer da independência! 🚀</strong></p>
-</div>
-
-<div class="hope-box">
-    <h3>🌟 Mensagem de Esperança</h3>
-    <p style="color: white;">A jornada rumo à autonomia e independência é um dos maiores presentes que você pode dar ao seu filho(a) no espectro autista. É um caminho único para cada indivíduo, repleto de aprendizados e superações. Com um planejamento cuidadoso, ensino estruturado, paciência e, acima de tudo, amor e fé no potencial do seu filho(a), ele(a) poderá desenvolver as habilidades necessárias para uma vida mais autônoma, feliz e significativa.</p>
-</div>
-
-<div class="source-box">
-    <strong>📚 Fontes:</strong> Pesquisas sobre Transição para a Vida Adulta no TEA, Manuais de Habilidades de Vida Diária para Autismo (ex: TEACCH), Guidelines da Autism Speaks sobre Independência e Emprego, e experiências de coaches de vida e terapeutas ocupacionais.
-</div></div></div>
-
-
-               <!-- Página 10: Compreendendo o TEA na Adolescência -->
-            <div class="page">
-            <div class="page-header">
-                <div class="page-number">10</div>
-                <div class="chapter-badge">Capítulo 8</div>
-            </div>
-            <h2>🎨 Explorando Interesses Especiais e Talentos</h2>
-            <div class="story-illustration">🌟🔍💡🧠</div>
-               
-
-
-            <div class="development-box">
-    <h3>✨ O Poder dos Interesses Especiais</h3>
-    <p style="color: white;">Os interesses especiais são uma marca distintiva do TEA, caracterizados por uma intensidade e profundidade que muitas vezes superam as paixões de jovens neurotípicos. Eles oferecem um senso de propósito, previsibilidade e domínio, e podem ser uma ferramenta poderosa para o bem-estar e o aprendizado, agindo como um porto seguro em um mundo muitas vezes confuso.</p>
-</div>
-
-<div class="stats-grid">
-    <div class="stat-card">
-        <div class="stat-number">+90%</div>
-        <div class="stat-label">Com Interesses Especiais</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">4x</div>
-        <div class="stat-label">Maior Foco na Área</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">30%</div>
-        <div class="stat-label">Podem Gerar Carreira</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">ÚNICO</div>
-        <div class="stat-label">Potencial de Paixão</div>
-    </div>
-</div>
-
-<div class="milestone-box">
-    <h3>🎯 Benefícios dos Interesses Especiais</h3>
-    
-    <h4 style="color: white;">🧠 Desenvolvimento Cognitivo e Aprendizagem:</h4>
-    <ul style="color: white;">
-        <li><strong>Aprofundamento do Conhecimento:</strong> Desenvolvem expertise e memória detalhada sobre o tema.</li>
-        <li><strong>Foco Aprimorado:</strong> Capacidade de concentração intensa quando engajados no interesse.</li>
-        <li><strong>Habilidades de Pesquisa:</strong> Muitas vezes buscam e organizam vastas quantidades de informações.</li>
-        <li><strong>Resolução de Problemas:</strong> Aplicam lógica e raciocínio para desafios dentro do interesse.</li>
-    </ul>
-    
-    <h4 style="color: white;">💖 Bem-Estar Emocional e Social:</h4>
-    <ul style="color: white;">
-        <li><strong>Redução de Ansiedade:</strong> Oferecem conforto e uma fuga de estímulos sobrecarregantes.</li>
-        <li><strong>Autoconfiança:</strong> Sentimento de competência e orgulho pelo seu conhecimento.</li>
-        <li><strong>Conexões Sociais:</strong> Podem servir como ponte para interações com outros que compartilham o mesmo interesse.</li>
-        <li><strong>Regulação Emocional:</strong> Podem ser uma ferramenta para autorregulação e calma.</li>
-    </ul>
-</div>
-
-<div class="challenge-box">
-    <h3>⚡ Desafios e Armadilhas dos Interesses Restritos</h3>
-    
-    <h4 style="color: white;">🌪️ Quando o Interesse se Torna Demais:</h4>
-    <ul style="color: white;">
-        <li><strong>Restrição Excessiva:</strong> Dificuldade em se engajar em outras atividades ou tópicos.</li>
-        <li><strong>Interferência Diária:</strong> Quando o interesse impede sono, higiene, alimentação ou tarefas escolares/sociais.</li>
-        <li><strong>Isolamento Social:</strong> Se o interesse não permite ou encoraja a interação com os pares.</li>
-        <li><strong>Rigidez:</strong> Incapacidade de adaptar o interesse ou de aceitar interrupções.</li>
-    </ul>
-    
-    <h4 style="color: white;">😟 Comunicação e Impacto Social:</h4>
-    <ul style="color: white;">
-        <li><strong>Monopolizar Conversas:</strong> Dificuldade em perceber quando o ouvinte está desinteressado.</li>
-        <li><strong>Falta de Reciprocidade:</strong> Não dar espaço para o outro falar sobre outros temas.</li>
-        <li><strong>Vulnerabilidade:</strong> Em casos raros, ser explorado devido ao foco excessivo em um tema.</li>
-    </ul>
-</div>
-
-<div class="strategy-box">
-    <h3>💡 Estratégias para Nutrir e Canalizar Talentos</h3>
-    
-    <h4 style="color: white;">✅ Validação e Apoio Ativo:</h4>
-    <ul style="color: white;">
-        <li><strong>Mostre Interesse Genuíno:</strong> Faça perguntas, ouça atentamente e participe (se convidado).</li>
-        <li><strong>Forneça Recursos:</strong> Livros, vídeos, ferramentas ou visitas relacionadas ao interesse.</li>
-        <li><strong>Crie um Espaço:</strong> Dedique um local em casa para o interesse ser explorado sem interrupções.</li>
-        <li><strong>Celebre Conquistas:</strong> Reconheça o conhecimento e as habilidades desenvolvidas.</li>
-    </ul>
-    
-    <h4 style="color: white;">🔄 Expansão e Conexão:</h4>
-    <ul style="color: white;">
-        <li><strong>Amplie o Tema:</strong> Ajude a encontrar sub-tópicos ou áreas relacionadas ao interesse principal.</li>
-        <li><strong>Integre ao Aprendizado:</strong> Conecte o interesse a matérias escolares (ex: dinossauros para história, física).</li>
-        <li><strong>Use para Habilidades:</strong> Utilize o interesse para ensinar organização, pesquisa, comunicação.</li>
-        <li><strong>Conecte Socialmente:</strong> Procure clubes, comunidades online ou grupos com o mesmo interesse.</li>
-    </ul>
-</div>
-
-<div class="support-box">
-    <h3>🤝 Transformando Interesses em Oportunidades</h3>
-    
-    <h4 style="color: white;">🏡 No Ambiente Doméstico:</h4>
-    <ul style="color: white;">
-        <li><strong>Recompensa e Reforço:</strong> Use o acesso ao interesse como reforço para completar tarefas.</li>
-        <li><strong>Gestão do Tempo:</strong> Ajude a equilibrar o tempo dedicado ao interesse com outras responsabilidades.</li>
-        <li><strong>Modelagem:</strong> Mostre como você equilibra seus próprios interesses com outras atividades.</li>
-    </ul>
-    
-    <h4 style="color: white;">🌐 Para o Futuro e Conexão Social:</h4>
-    <ul style="color: white;">
-        <li><strong>Educação e Carreira:</strong> Pesquise como o interesse pode se traduzir em estudos ou profissões.</li>
-        <li><strong>Voluntariado/Estágios:</strong> Oportunidades para aplicar o interesse na prática.</li>
-        <li><strong>Conferências/Eventos:</strong> Participe de eventos relacionados ao interesse para networking.</li>
-        <li><strong>Construção de Portfólio:</strong> Se o interesse é criativo (arte, programação), incentive a documentação.</li>
-    </ul>
-</div>
-
-<div class="warning-box">
-    <h3>⚠️ Sinais de Alerta: Quando Intervir</h3>
-    
-    <h4 style="color: white;">🚨 Indicadores de Desequilíbrio:</h4>
-    <ul style="color: white;">
-        <li><strong>Isolamento Extremo:</strong> Recusa em sair ou interagir devido ao interesse.</li>
-        <li><strong>Impacto Negativo na Saúde:</strong> Negligência de higiene, alimentação ou sono.</li>
-        <li><strong>Queda no Desempenho:</strong> Quando o interesse prejudica significativamente a escola ou outras responsabilidades.</li>
-        <li><strong>Ansiedade/Estresse Severo:</strong> Se o interesse se torna uma fonte de angústia ao invés de prazer.</li>
-        <li><strong>Dificuldade Extrema em Transição:</strong> Pânico ou agressão ao ser interrompido do interesse.</li>
-    </ul>
-    
-    <h4 style="color: white;">👨‍⚕️ Profissionais que Podem Auxiliar:</h4>
-    <ul style="color: white;">
-        <li><strong>Psicólogo:</strong> Para ajudar a gerenciar a rigidez, ansiedade e comportamento obsessivo.</li>
-        <li><strong>Terapeuta Ocupacional:</strong> Para integrar o interesse à rotina diária de forma funcional.</li>
-        <li><strong>Conselheiro Vocacional:</strong> Para explorar como os interesses podem se tornar uma carreira.</li>
-        <li><strong>Especialistas em Habilidades Sociais:</strong> Para ajudar a usar o interesse como ponte para a socialização.</li>
-    </ul>
-</div>
-
-<div class="resource-grid">
-    <div class="resource-card">
-        <div class="resource-icon">📚</div>
-        <div class="resource-name">Livros sobre Talentos no TEA</div>
-        <div class="resource-desc">Publicações que destacam como os interesses especiais podem ser desenvolvidos em habilidades e carreiras.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🌐</div>
-        <div class="resource-name">Comunidades de Interesses Online</div>
-        <div class="resource-desc">Fóruns e grupos especializados onde seu filho(a) pode interagir com pares que compartilham a mesma paixão.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">👨‍🏫</div>
-        <div class="resource-name">Mentores Especializados</div>
-        <div class="resource-desc">Profissionais ou entusiastas que podem guiar o desenvolvimento do interesse do seu filho(a).</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🎨</div>
-        <div class="resource-name">Cursos e Workshops</div>
-        <div class="resource-desc">Oportunidades de aprendizado aprofundado na área de interesse do seu filho(a).</div>
-    </div>
-</div>
-
-<div class="tip-box">
-    <h3>💡 Dicas Essenciais para os Pais</h3>
-    
-    <h4 style="color: #e2e8f0;">🗣️ Valide e Respeite:</h4>
-    <p style="color: #cbd5e0;">Seja um ouvinte ativo e mostre interesse genuíno. A validação é o primeiro passo para o florescimento.</p>
-    
-    <h4 style="color: #e2e8f0;">💖 Busque o Equilíbrio:</h4>
-    <p style="color: #cbd5e0;">Ajude seu filho(a) a gerenciar o tempo, garantindo que o interesse não exclua outras áreas importantes da vida.</p>
-    
-    <h4 style="color: #e2e8f0;">🔗 Conecte e Amplie:</h4>
-    <p style="color: #cbd5e0;">Procure formas de usar o interesse para aprendizado, socialização e futuras oportunidades.</p>
-    
-    <h4 style="color: #e2e8f0;">🎉 Celebre a Singularidade:</h4>
-    <p style="color: #cbd5e0;">Os interesses especiais são parte da identidade única do seu filho(a). Celebre essa paixão e o conhecimento que ela traz.</p>
-</div>
-
-<div class="teen-demo">
-    <h3>🌱 Paixão que Transforma</h3>
-    <div class="teen-circle interactive-element">
-        Paixão + Apoio = Potencial Ilimitado
-    </div>
-    <p><strong>Visualize o florescer dos talentos únicos! ✨</strong></p>
-</div>
-
-<div class="hope-box">
-    <h3>🌟 Mensagem de Esperança</h3>
-    <p style="color: white;">Os interesses especiais de seu filho(a) não são apenas "hobbies", mas podem ser superpoderes. Com seu apoio, esses focos intensos podem se transformar em fontes incríveis de desenvolvimento pessoal, acadêmico e profissional, abrindo portas para uma vida rica em significado e realizações. Ao invés de tentar eliminá-los, a chave é aprender a canalizá-los e integrá-los de forma produtiva na vida de seu adolescente, celebrando a profundidade e a paixão que eles trazem.</p>
-</div>
-
-<div class="source-box">
-    <strong>📚 Fontes:</strong> Pesquisas sobre interesses restritos no TEA (Laurent Mottron, Temple Grandin), Modelos de intervenção baseados em força (Strengths-Based Approach), Publicações da Autism Speaks e National Autistic Society sobre talentos e autismo, e experiências de educadores especializados.
-</div>
-                     
-           </div>
- 
-
-
-
-     <script>
-        
-    const pages = document.querySelectorAll('.page');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const progressBar = document.getElementById('progressBar');
-    const pageCounter = document.getElementById('pageCounter');
-    let currentPageIndex = 0;
-
-    function showPage(index) {
-        pages.forEach((page, i) => {
-            if (i === index) {
-                page.classList.add('active');
-            } else {
-                page.classList.remove('active');
+    <script>
+        const pdfViewerWrapper = document.getElementById('pdfViewerWrapper');
+        const pdfViewer = document.getElementById('pdfViewer');
+        let magnifierGlass = null; // Variável para armazenar a lupa
+
+        // Adiciona um ouvinte de eventos para cliques no wrapper do PDF
+        pdfViewerWrapper.addEventListener('click', function(e) {
+            // Se já existe uma lupa, remove-a
+            if (magnifierGlass) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                // Restaura o cursor padrão
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+                return; // Sai da função após remover
+            }
+
+            // Cria o elemento da lupa
+            magnifierGlass = document.createElement('div');
+            magnifierGlass.classList.add('magnifier-glass');
+
+            // Cria o conteúdo da lupa (uma cópia do iframe para simular o zoom)
+            const magnifierContent = pdfViewer.cloneNode(true);
+            magnifierContent.classList.remove('document-viewer'); // Remove estilos do iframe original
+            magnifierContent.style.position = 'absolute';
+            magnifierContent.style.top = '0';
+            magnifierContent.style.left = '0';
+            magnifierContent.style.width = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.height = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.pointerEvents = 'none'; // Impede interação com o iframe clonado na lupa
+
+            magnifierGlass.appendChild(magnifierContent);
+            pdfViewerWrapper.appendChild(magnifierGlass);
+
+            // Adiciona um evento de clique na lupa para removê-la
+            magnifierGlass.addEventListener('click', function(event) {
+                event.stopPropagation(); // Impede que o clique na lupa se propague para o wrapper
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+            });
+
+            // Calcula a posição do clique dentro do iframe
+            const rect = pdfViewerWrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left; // Coordenada X relativa ao wrapper
+            const y = e.clientY - rect.top;  // Coordenada Y relativa ao wrapper
+
+            // Posiciona a lupa no centro do clique
+            magnifierGlass.style.left = `${x}px`;
+            magnifierGlass.style.top = `${y}px`;
+
+            // Calcula o deslocamento do conteúdo dentro da lupa para simular o zoom na área clicada
+            // O conteúdo da lupa é 2x maior, então o ponto de origem deve ser metade da distância
+            // da borda para o clique.
+            const zoomLevel = 2; // O mesmo que as dimensões do magnifierContent
+            const contentX = -x * (zoomLevel - 1) + (magnifierGlass.offsetWidth / 2);
+            const contentY = -y * (zoomLevel - 1) + (magnifierGlass.offsetHeight / 2);
+
+            magnifierContent.style.transform = `translate(${contentX}px, ${contentY}px)`;
+
+            // Muda o cursor para indicar que a lupa está ativa
+            pdfViewerWrapper.style.cursor = 'zoom-out';
+        });
+
+        // Adiciona um ouvinte para cliques em qualquer lugar do documento
+        // Isso permite remover a lupa clicando fora dela (no body, por exemplo)
+        document.addEventListener('click', function(event) {
+            if (magnifierGlass && !pdfViewerWrapper.contains(event.target)) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
             }
         });
-        updateNavigationButtons();
-        updateProgressBar();
-        updatePageCounter();
-    }
-
-    function updateNavigationButtons() {
-        prevBtn.disabled = currentPageIndex === 0;
-        nextBtn.disabled = currentPageIndex === pages.length - 1;
-    }
-
-    function updateProgressBar() {
-        const progress = (currentPageIndex / (pages.length - 1)) * 100;
-        progressBar.style.width = `${progress}%`;
-    }
-
-    function updatePageCounter() {
-        pageCounter.textContent = `${currentPageIndex + 1} / ${pages.length}`;
-    }
-
-    prevBtn.addEventListener('click', () => {
-        if (currentPageIndex > 0) {
-            currentPageIndex--;
-            showPage(currentPageIndex);
-        }
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (currentPageIndex < pages.length - 1) {
-            currentPageIndex++;
-            showPage(currentPageIndex);
-        }
-    });
-
-    // Initialize the first page and navigation
-    showPage(currentPageIndex);
-</script>
-
+    </script>
+</body>
+</html>

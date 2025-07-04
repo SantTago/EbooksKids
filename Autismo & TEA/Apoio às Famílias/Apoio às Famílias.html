@@ -1,2620 +1,351 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apoio às Famílias - Guia Completo</title>
+    <title>Desvendando o Autismo - Leitura Otimizada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap');
-        
-        * {
+        :root {
+            --primary-color: #5865F2; /* Azul vibrante */
+            --secondary-color: #4A56E2; /* Azul mais escuro para títulos */
+            --gradient-start: #667eea;
+            --gradient-end: #764ba2;
+            --text-light: #f0f0f0;
+            --text-dark: #333;
+            --bg-card: rgba(255, 255, 255, 0.98);
+            --shadow-light: rgba(0, 0, 0, 0.15);
+            --shadow-strong: rgba(0, 0, 0, 0.25);
+            --border-radius-lg: 12px;
+            --border-radius-md: 8px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--text-light);
+            text-align: center;
             box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            min-height: 100vh;
+            padding: 40px 20px; /* Padding geral para telas grandes */
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        
-        .ebook-container {
+
+        .container {
+            width: 100%;
             max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            border-radius: 25px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .page {
-            min-height: 100vh;
-            padding: 50px;
-            display: none;
-            position: relative;
-            background: linear-gradient(45deg, #f8fafc, #f1f5f9);
-        }
-        
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .page-header {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        
-        .page-number {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-weight: 600;
-            font-size: 20px;
-            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
-        }
-        
-        .chapter-badge {
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-        
-        h1 {
-            color: #1e293b;
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        h2 {
-            color: #4f46e5;
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            text-align: center;
-            font-weight: 700;
-        }
-        
-        h3 {
-            color: #7c3aed;
-            font-size: 1.6rem;
-            margin-bottom: 18px;
-            font-weight: 600;
-        }
-        
-        h4 {
-            color: #475569;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        
-        p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #475569;
-            margin-bottom: 22px;
-            text-align: justify;
-            font-weight: 400;
-        }
-        
-        .family-icon {
-            width: 140px;
-            height: 140px;
-            border-radius: 25px;
-            margin: 25px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            animation: gentle-pulse 3s infinite;
-        }
-        
-        @keyframes gentle-pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
-            50% { transform: scale(1.05); box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3); }
-        }
-        
-        .support-box {
-            background: linear-gradient(135deg, #06b6d4, #3b82f6);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #10b981;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-            color: white;
-        }
-        
-        .support-box::before {
-            content: "🤝";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .love-box {
-            background: linear-gradient(135deg, #ec4899, #f97316);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .love-box::before {
-            content: "💝";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .strength-box {
-            background: linear-gradient(135deg, #8b5cf6, #a855f7);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .strength-box::before {
-            content: "💪";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .challenge-box {
-            background: linear-gradient(135deg, #f59e0b, #f97316);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #ef4444;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-            color: white;
-        }
-        
-        .challenge-box::before {
-            content: "⚡";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .strategy-box {
-            background: linear-gradient(135deg, #10b981, #059669);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .strategy-box::before {
-            content: "💡";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .navigation {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            z-index: 1000;
-        }
-        
-        .nav-btn {
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            border: none;
-            padding: 18px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Nunito', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        
-        .nav-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-        }
-        
-        .nav-btn:disabled {
-            background: #cbd5e0;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 6px;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            transition: width 0.5s ease;
-            z-index: 1001;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .page-counter {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.9);
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            color: #475569;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .source-box {
-            background: #f8fafc;
-            border: 3px dashed #cbd5e0;
-            padding: 25px;
-            border-radius: 20px;
-            margin-top: 35px;
-            font-size: 1rem;
-            color: #64748b;
-            position: relative;
-        }
-        
-        .source-box::before {
-            content: "📚";
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-        }
-        
-        .family-demo {
-            text-align: center;
+            background-color: var(--bg-card);
             padding: 40px;
-            background: linear-gradient(135deg, #e0f2fe, #f3e8ff);
-            border-radius: 25px;
-            margin: 25px 0;
-        }
-        
-        .family-circle {
-            width: 180px;
-            height: 180px;
-            border: 6px solid #4f46e5;
-            border-radius: 50%;
-            margin: 25px auto;
+            box-shadow: 0 15px 35px var(--shadow-strong);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: 30px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            color: #4f46e5;
-            font-weight: 600;
-            animation: gentle-rotate 15s infinite linear;
-            box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
-            position: relative;
+            color: var(--text-dark);
+            position: relative; /* Necessário para posicionar a lupa */
         }
-        
-        .family-circle::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 30px;
-            height: 30px;
-            background: #7c3aed;
-            border-radius: 50%;
-            animation: orbit 4s infinite;
-        }
-        
-        @keyframes gentle-rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes orbit {
-            0%, 100% { transform: scale(1) translateY(0); }
-            50% { transform: scale(1.2) translateY(-5px); }
-        }
-        
-        .story-illustration {
-            text-align: center;
-            font-size: 4rem;
-            margin: 30px 0;
-            animation: gentle-float 4s ease-in-out infinite;
-        }
-        
-        @keyframes gentle-float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        ul, ol {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #475569;
-            margin-left: 25px;
-            font-weight: 400;
-        }
-        
-        li {
-            margin-bottom: 12px;
-            position: relative;
-        }
-        
-        .checklist {
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .checklist li::before {
-            content: "✅";
-            margin-right: 10px;
-        }
-        
-        .steps-list {
-            counter-reset: step-counter;
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .steps-list li {
-            counter-increment: step-counter;
-            position: relative;
-            padding-left: 40px;
-        }
-        
-        .steps-list li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: #4f46e5;
-            color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        
-        .interactive-element {
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        
-        .interactive-element:hover {
-            transform: scale(1.05);
-        }
-        
-        .level-badge {
-            background: linear-gradient(45deg, #7c3aed, #a855f7);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-        
-        .age-badge {
-            background: linear-gradient(45deg, #f59e0b, #f97316);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-left: 10px;
-        }
-        
-        .quote-box {
-            background: linear-gradient(135deg, #fef3c7, #fed7aa);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #f59e0b;
-            font-style: italic;
-            font-size: 1.1rem;
-            position: relative;
-        }
-        
-       
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .stat-card {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
+
+        h1 {
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            font-size: 2.5em;
             font-weight: 700;
-            margin-bottom: 10px;
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
-        
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
+
+        .document-viewer-wrapper {
+            position: relative; /* Para posicionar a lupa dentro */
+            width: 100%;
+            min-height: 550px;
+            height: 75vh;
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 8px 20px var(--shadow-light);
+            overflow: hidden; /* Garante que a lupa não vaze */
+            cursor: zoom-in; /* Indica que é clicável para zoom */
         }
-        
-        .aspect-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
+
+        .document-viewer {
+            width: 100%;
+            height: 100%;
+            border: none; /* A borda será no wrapper */
         }
-        
-        .aspect-card {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .aspect-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .aspect-card-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .aspect-card-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .aspect-card-desc {
-            font-size: 1rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-        
-        .milestone-box {
-            background: linear-gradient(135deg, #06b6d4, #0891b2);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .milestone-box::before {
-            content: "🎯";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .warning-box {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .warning-box::before {
-            content: "⚠️";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .hope-box {
-            background: linear-gradient(135deg, #10b981, #059669);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .hope-box::before {
-            content: "🌟";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .resource-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .resource-card {
-            background: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            border-top: 4px solid #4f46e5;
-        }
-        
-        .resource-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .resource-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .resource-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-align: center;
-            color: #1e293b;
-        }
-        
-        .resource-desc {
-            font-size: 1rem;
-            color: #64748b;
-            line-height: 1.5;
-            text-align: center;
-        }
-        
-        .benefit-list {
-            background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #10b981;
-        }
-        
-        .benefit-title {
-            color: #065f46;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .benefit-item {
+
+        .actions {
             display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            color: #064e3b;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            width: 100%;
         }
-        
-        .benefit-icon {
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .implementation-steps {
-            background: linear-gradient(135deg, #eff6ff, #dbeafe);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #3b82f6;
-        }
-        
-        .step-title {
-            color: #1e40af;
-            font-size: 1.3rem;
+
+        button, .button-link {
+            padding: 14px 30px;
+            font-size: 1.1em;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
             font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .step-item {
-            background: white;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border-left: 3px solid #3b82f6;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        
-        .step-number {
-            background: #3b82f6;
-            color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
+            letter-spacing: 0.5px;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            min-width: 180px;
+        }
+
+        button:hover, .button-link:hover {
+            background-color: #4452D3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        button:active, .button-link:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            margin-top: 25px;
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        p a {
+            color: #007bff;
+            text-decoration: none;
             font-weight: 600;
-            margin-right: 10px;
         }
-        
-        .metric-box {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 15px 0;
-            text-align: center;
-            border: 2px solid #f59e0b;
+        p a:hover {
+            text-decoration: underline;
+            color: #0056b3;
         }
-        
-        .metric-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #92400e;
-            margin-bottom: 5px;
-        }
-        
-        .metric-label {
-            font-size: 1rem;
-            color: #78350f;
-            font-weight: 500;
-        }
-        
-        .care-box {
-            background: linear-gradient(135deg, #fce7f3, #fdf2f8);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #ec4899;
-        }
-        
-        .care-title {
-            color: #be185d;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .wellness-box {
-            background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #0284c7;
-        }
-        
-        .wellness-title {
-            color: #0c4a6e;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .community-box {
-            background: linear-gradient(135deg, #f3e8ff, #faf5ff);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #8b5cf6;
-        }
-        
-        .community-title {
-            color: #6b21a8;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .tip-box {
-            background: #1e293b;
-            color: #e2e8f0;
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            overflow-x: auto;
-            position: relative;
-        }
-        
-        .tip-box::before {
-            content: "💡";
+
+        /* --- Estilos da Lupa --- */
+        .magnifier-glass {
             position: absolute;
-            top: -10px;
-            right: 15px;
-            background: #4f46e5;
-            color: white;
-            padding: 5px;
+            border: 3px solid var(--primary-color);
             border-radius: 50%;
-            font-size: 1.2rem;
-        }
-        
-        .emergency-box {
-            background: linear-gradient(135deg, #fee2e2, #fecaca);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border: 3px solid #ef4444;
-        }
-        
-        .emergency-title {
-            color: #dc2626;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .emergency-title::before {
-            content: "🚨";
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .timeline {
-            position: relative;
-            margin: 30px 0;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, #4f46e5, #7c3aed);
-            border-radius: 2px;
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin: 30px 0;
-            padding-left: 80px;
-        }
-        
-        .timeline-marker {
-            position: absolute;
-            left: 15px;
-            top: 0;
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            border-radius: 50%;
-            display: flex;
+            cursor: zoom-out;
+            width: 150px; /* Tamanho da lupa */
+            height: 150px;
+            transform: translate(-50%, -50%); /* Centraliza a lupa no clique */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden; /* Garante que o conteúdo dentro não transborde */
+            pointer-events: none; /* Permite interagir com o iframe por baixo, mas a lupa ainda bloqueia o clique nela */
+            z-index: 10; /* Garante que a lupa fique acima do iframe */
+            background-color: rgba(255, 255, 255, 0.1); /* Um leve fundo translúcido */
+            display: flex; /* Para centralizar o conteúdo dentro */
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
+        }
+
+        .magnifier-content {
+            position: absolute;
+            width: 200%; /* Exemplo de zoom: 2x */
+            height: 200%; /* Exemplo de zoom: 2x */
+            transform-origin: 0 0; /* Ponto de origem da transformação */
+            /* Isso será ajustado via JS */
         }
         
-        .timeline-content {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-left: 4px solid #4f46e5;
-        }
-        
-        .timeline-phase {
-            color: #4f46e5;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-        
-        .timeline-title {
-            color: #1e293b;
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        
-        .timeline-desc {
-            color: #64748b;
-            line-height: 1.6;
-        }
-        
-        @media (max-width: 768px) {
-            .page {
-                padding: 30px 20px;
+        /* --- Media Queries para Responsividade --- */
+        @media (max-width: 992px) {
+            .container {
+                max-width: 95%;
+                padding: 30px;
             }
-            
             h1 {
-                font-size: 2.2rem;
+                font-size: 2.2em;
             }
-            
-            h2 {
-                font-size: 1.8rem;
+            .document-viewer-wrapper {
+                min-height: 500px;
+                height: 70vh;
             }
-            
-            .family-icon {
-                width: 100px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 15px;
+            }
+            .container {
+                padding: 25px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 1.9em;
+                margin-bottom: 25px;
+            }
+            .document-viewer-wrapper {
+                min-height: 450px;
+                height: 65vh;
+                margin-bottom: 25px;
+            }
+            button, .button-link {
+                padding: 12px 25px;
+                font-size: 1em;
+                min-width: unset;
+                flex-grow: 1;
+            }
+            .actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            p {
+                font-size: 0.95em;
+                margin-top: 20px;
+            }
+            .magnifier-glass {
+                width: 120px; /* Lupa menor em telas menores */
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+            .container {
+                padding: 20px;
+                border-radius: 8px;
+            }
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 20px;
+            }
+            .document-viewer-wrapper {
+                min-height: 400px;
+                height: 60vh;
+            }
+            button, .button-link {
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+            .magnifier-glass {
+                width: 100px; /* Lupa ainda menor em telas muito pequenas */
                 height: 100px;
-                font-size: 3.5rem;
-            }
-            
-            .family-circle {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .aspect-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .resource-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline-item {
-                padding-left: 60px;
-            }
-            
-            .timeline::before {
-                left: 20px;
-            }
-            
-            .timeline-marker {
-                left: 5px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="navigation">
-        <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
-        <button id="nextBtn" class="nav-btn">Próximo</button>
-    </div>
 
-
-    <div class="progress-bar" id="progressBar"></div>
-    <div class="page-counter" id="pageCounter">1 / 15</div>
-    
-    <div class="ebook-container">
-        <!-- Página 1: Capa -->
-        <div class="page active">
-            <div class="page-header">
-                <div class="page-number">1</div>
-                <div class="chapter-badge">CAPA</div>
-            </div>
-            <h1>👨‍👩‍👧‍👦 APOIO ÀS FAMÍLIAS 💝</h1>
-            <div class="family-icon interactive-element">❤️</div>
-            <h2>Guia Completo de Suporte, Estratégias e Esperança</h2>
-            
-            <div class="love-box">
-                <h3>💝 Fortalecendo Vínculos e Construindo Resiliência</h3>
-                <p style="text-align: center; font-size: 1.4rem; color: white;"><strong>Um guia abrangente para famílias que buscam apoio, compreensão e estratégias práticas para enfrentar desafios e celebrar conquistas juntos</strong></p>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Famílias Merecem Apoio</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">∞</div>
-                    <div class="stat-label">Amor Incondicional</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Dedicação Familiar</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">💪</div>
-                    <div class="stat-label">Força Coletiva</div>
-                </div>
-            </div>
-            
-            <div class="level-badge">🎯 Público: Todas as Famílias</div>
-            <div class="age-badge">👥 Foco: Apoio Integral</div>
-            
-            <div class="quote-box">
-                "Uma família forte não é aquela que nunca enfrenta desafios, mas sim aquela que se une, se apoia mutuamente e cresce junta através de cada experiência" - Reflexão sobre resiliência familiar
-            </div>
-            
-            <div class="metric-box">
-                <div class="metric-number">🌈</div>
-                <div class="metric-label">Cada Família é Única e Especial</div>
-            </div>
-            
-            <div class="support-box">
-                <h3>🤝 O que você vai descobrir:</h3>
-                <ul style="color: white;">
-                    <li><strong>💝 Compreensão Familiar:</strong> Dinâmicas e necessidades únicas</li>
-                    <li><strong>💪 Fortalecimento de Vínculos:</strong> Estratégias para união familiar</li>
-                    <li><strong>🛡️ Enfrentamento de Desafios:</strong> Ferramentas práticas de apoio</li>
-                    <li><strong>🌱 Desenvolvimento de Resiliência:</strong> Crescimento através das dificuldades</li>
-                    <li><strong>🤝 Redes de Apoio:</strong> Construindo comunidades solidárias</li>
-                    <li><strong>💡 Estratégias de Comunicação:</strong> Diálogo efetivo e empático</li>
-                    <li><strong>🏠 Ambiente Familiar Saudável:</strong> Criando espaços de amor e segurança</li>
-                    <li><strong>🌟 Autocuidado:</strong> Cuidando de quem cuida</li>
-                </ul>
-            </div>
-            
-            <div class="strength-box">
-                <h3>💪 Pilares do Apoio Familiar:</h3>
-                <ul style="color: white;">
-                    <li><strong>❤️ Amor Incondicional:</strong> Base de toda família forte</li>
-                    <li><strong>🗣️ Comunicação Aberta:</strong> Diálogo honesto e respeitoso</li>
-                    <li><strong>🤝 Apoio Mútuo:</strong> Cada membro importa e contribui</li>
-                    <li><strong>🌱 Crescimento Conjunto:</strong> Aprendendo e evoluindo juntos</li>
-                    <li><strong>🛡️ Proteção e Segurança:</strong> Ambiente seguro para todos</li>
-                    <li><strong>🎉 Celebração:</strong> Reconhecendo conquistas e momentos especiais</li>
-                </ul>
-            </div>
-            
-            <div class="hope-box">
-                <h3>🌟 Nossa Missão:</h3>
-                <p style="color: white;">Acreditamos que toda família possui uma força única e capacidade de superação. Este guia não oferece soluções mágicas, mas sim ferramentas práticas, compreensão profunda e esperança renovada para que cada família possa florescer em sua jornada única.</p>
-            </div>
-            
-            <div class="care-box">
-                <div class="care-title">💝 Tipos de Apoio Abordados:</div>
-                <ul>
-                    <li><strong>🏥 Situações Médicas:</strong> Apoio durante tratamentos e cuidados especiais</li>
-                    <li><strong>🧩 Necessidades Especiais:</strong> Famílias com membros com deficiências</li>
-                    <li><strong>😢 Luto e Perdas:</strong> Enfrentamento de perdas significativas</li>
-                    <li><strong>💔 Crises Familiares:</strong> Separações, conflitos e reconciliações</li>
-                    <li><strong>💰 Dificuldades Financeiras:</strong> Estratégias para tempos difíceis</li>
-                    <li><strong>🌍 Mudanças Significativas:</strong> Adaptação a novas realidades</li>
-                    <li><strong>👶 Diferentes Fases da Vida:</strong> Apoio em cada etapa familiar</li>
-                    <li><strong>🌈 Diversidade Familiar:</strong> Celebrando diferentes configurações</li>
-                </ul>
-            </div>
-            
-            <div class="wellness-box">
-                <div class="wellness-title">🌿 Bem-estar Integral:</div>
-                <ul>
-                    <li><strong>🧠 Saúde Mental:</strong> Cuidando do emocional de todos</li>
-                    <li><strong>💪 Saúde Física:</strong> Hábitos saudáveis em família</li>
-                    <li><strong>🤝 Relacionamentos:</strong> Fortalecendo vínculos internos e externos</li>
-                    <li><strong>🎯 Propósito:</strong> Encontrando significado nas experiências</li>
-                    <li><strong>⚖️ Equilíbrio:</strong> Harmonizando diferentes aspectos da vida</li>
-                    <li><strong>🌱 Crescimento:</strong> Desenvolvimento contínuo de todos os membros</li>
-                </ul>
-            </div>
-            
-            <p style="text-align: center; margin-top: 30px; font-size: 1.1rem; color: #64748b;">
-                <em>Baseado em pesquisas sobre dinâmicas familiares, psicologia positiva, terapia familiar e histórias reais de superação e crescimento 💝👨‍👩‍👧‍👦</em>
-            </p>
-        </div>
-
-        <!-- Página 2: Índice -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">2</div>
-                <div class="chapter-badge">ÍNDICE</div>
-            </div>
-            <h2>🗺️ Sua Jornada de Apoio e Fortalecimento Familiar</h2>
-            <div class="story-illustration">👨‍👩‍👧‍👦💝🤝🌟</div>
-            
-            <div class="support-box">
-                <h3>🧭 Roteiro de Apoio e Crescimento:</h3>
-                <ol class="steps-list">
-                    <li><strong>Compreendendo Sua Família</strong> - Dinâmicas e necessidades únicas</li>
-                    <li><strong>Fortalecendo Vínculos</strong> - Estratégias para união e conexão</li>
-                    <li><strong>Comunicação Efetiva</strong> - Diálogo saudável e empático</li>
-                    <li><strong>Enfrentando Desafios</strong> - Ferramentas práticas de superação</li>
-                    <li><strong>Construindo Resiliência</strong> - Desenvolvendo força interior</li>
-                    <li><strong>Redes de Apoio</strong> - Criando comunidades solidárias</li>
-                    <li><strong>Cuidando de Quem Cuida</strong> - Autocuidado e bem-estar</li>
-                    <li><strong>Ambiente Familiar Saudável</strong> - Criando espaços de amor</li>
-                    <li><strong>Gestão de Crises</strong> - Navegando momentos difíceis</li>
-                    <li><strong>Celebrando Conquistas</strong> - Reconhecendo progressos e vitórias</li>
-                    
-                </ol>
-            </div>
-            
-            <div class="strength-box">
-                <h3>💪 Abordagem do Guia:</h3>
-                <p style="color: white;">Este guia adota uma perspectiva holística e positiva, reconhecendo que cada família é única em suas forças, desafios e jornada. Combinamos conhecimento científico com sabedoria prática e histórias reais de famílias que encontraram caminhos de crescimento e superação!</p>
-            </div>
-            
-            <div class="family-demo">
-                <h3>💝 Família: Fonte de Força e Amor</h3>
-                <div class="family-circle interactive-element">
-                    Amor + Apoio + União = Família Forte
-                </div>
-                <p><strong>Visualize sua família crescendo e se fortalecendo! ⬆️</strong></p>
-            </div>
-            
-            <div class="milestone-box">
-                <h3>🎯 Por que este guia é essencial:</h3>
-                <ul style="color: white;">
-                    <li><strong>🌍 Realidade Atual:</strong> Famílias enfrentam desafios únicos hoje</li>
-                    <li><strong>💪 Necessidade de Apoio:</strong> Todos precisam de suporte em algum momento</li>
-                    <li><strong>🤝 Isolamento Social:</strong> Muitas famílias se sentem sozinhas</li>
-                    <li><strong>📚 Falta de Recursos:</strong> Poucos materiais práticos e acessíveis</li>
-                    <li><strong>🌱 Potencial de Crescimento:</strong> Famílias podem se fortalecer através dos desafios</li>
-                    <li><strong>❤️ Amor Transformador:</strong> O poder do apoio familiar é imenso</li>
-                </ul>
-            </div>
-            
-            <div class="love-box">
-                <h3>💝 Nossa Filosofia:</h3>
-                <p style="color: white;">Acreditamos que toda família possui recursos internos para superar desafios e crescer. Não se trata de ser uma família "perfeita", mas sim de ser uma família que se ama, se apoia e cresce junta. Cada dificuldade pode se tornar uma oportunidade de fortalecimento quando enfrentada com amor e estratégias adequadas.</p>
-            </div>
-            
-            <div class="community-box">
-                <div class="community-title">🤝 Construindo Comunidade:</div>
-                <p>Este guia também enfatiza a importância de não enfrentar desafios sozinho. Famílias fortes fazem parte de comunidades fortes, onde há apoio mútuo, compreensão e solidariedade. Juntos, podemos criar redes de apoio que beneficiam todas as famílias.</p>
-            </div>
-            
-            <div class="hope-box">
-                <h3>🌟 Mensagem de Esperança:</h3>
-                <p style="color: white;">Não importa quais desafios sua família esteja enfrentando agora, há sempre esperança. Cada dia é uma nova oportunidade para fortalecer vínculos, criar memórias positivas e construir um futuro melhor juntos. Sua família tem uma força única que pode superar qualquer obstáculo.</p>
-            </div>
-            
-            <div class="care-box">
-                <div class="care-title">💝 Compromisso com Você:</div>
-                <p>Este guia foi criado com amor e dedicação, pensando em cada família que busca apoio e orientação. Nosso compromisso é oferecer informações práticas, estratégias testadas e, acima de tudo, esperança renovada para sua jornada familiar.</p>
-            </div>
-        </div>
-
-        <!-- Página 3: Compreendendo Sua Família -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">3</div>
-                <div class="chapter-badge">CAPÍTULO 1</div>
-            </div>
-            <h2>👨‍👩‍👧‍👦 Compreendendo Sua Família</h2>
-            <div class="story-illustration">❤️➡️🏠➡️🤝➡️🌟</div>
-            
-            <p>Cada família é um universo único, com sua própria constelação de personalidades, histórias, tradições e dinâmicas. Compreender profundamente sua família - suas forças, desafios, padrões de comunicação e necessidades individuais - é o primeiro passo fundamental para construir um sistema de apoio efetivo e duradouro. Não existe uma família "padrão" ou "perfeita"; existe apenas sua família, com toda sua beleza e complexidade única.</p>
-            
-            <div class="love-box">
-                <h3>💝 O que Torna Sua Família Especial?</h3>
-                <p style="color: white;">Sua família é uma combinação única de histórias, valores, sonhos e experiências compartilhadas. É um sistema vivo que evolui constantemente, onde cada membro contribui com suas próprias qualidades especiais para criar algo maior que a soma de suas partes individuais.</p>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">∞</div>
-                    <div class="stat-label">Configurações Familiares</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Famílias São Únicas</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Amor Incondicional</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">💪</div>
-                    <div class="stat-label">Força Interior</div>
-                </div>
-            </div>
-            
-            <div class="aspect-grid">
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">👥</div>
-                    <div class="aspect-card-title">Composição Familiar</div>
-                    <div class="aspect-card-desc">
-                        Famílias nucleares, monoparentais, reconstituídas, extensas, adotivas - cada configuração traz suas próprias forças e desafios únicos. O amor e o compromisso definem uma família, não sua estrutura.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">🗣️</div>
-                    <div class="aspect-card-title">Estilos de Comunicação</div>
-                    <div class="aspect-card-desc">
-                        Cada família desenvolve padrões únicos de comunicação - alguns são mais diretos, outros mais sutis. Compreender esses padrões ajuda a melhorar o diálogo e resolver conflitos.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">⚖️</div>
-                    <div class="aspect-card-title">Papéis e Responsabilidades</div>
-                    <div class="aspect-card-desc">
-                        Cada membro da família assume diferentes papéis - provedor, cuidador, mediador, animador. Esses papéis podem mudar ao longo do tempo e das circunstâncias.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">🎯</div>
-                    <div class="aspect-card-title">Valores e Tradições</div>
-                    <div class="aspect-card-desc">
-                        Os valores familiares orientam decisões e comportamentos. Tradições criam senso de identidade e pertencimento, conectando gerações e fortalecendo vínculos.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">🌱</div>
-                    <div class="aspect-card-title">Ciclo de Vida Familiar</div>
-                    <div class="aspect-card-desc">
-                        Famílias passam por diferentes fases - formação, expansão, consolidação, contração. Cada fase traz desafios e oportunidades específicas de crescimento.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">🛡️</div>
-                    <div class="aspect-card-title">Mecanismos de Enfrentamento</div>
-                    <div class="aspect-card-desc">
-                        Cada família desenvolve formas únicas de lidar com estresse e desafios. Identificar e fortalecer esses mecanismos é essencial para a resiliência familiar.
-                    </div>
-                </div>
-            </div>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">1</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Formação</div>
-                        <div class="timeline-title">Início da Família</div>
-                        <div class="timeline-desc">Estabelecimento de vínculos, definição de papéis iniciais, criação de rotinas e tradições. Período de adaptação e descoberta mútua.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">2</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Expansão</div>
-                        <div class="timeline-title">Crescimento da Família</div>
-                        <div class="timeline-desc">Chegada de novos membros, redefinição de espaços e responsabilidades, desenvolvimento de novas dinâmicas e ajustes necessários.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">3</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Consolidação</div>
-                        <div class="timeline-title">Estabilização</div>
-                        <div class="timeline-desc">Estabelecimento de rotinas estáveis, fortalecimento de vínculos, desenvolvimento de identidade familiar sólida e tradições consolidadas.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">4</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Transformação</div>
-                        <div class="timeline-title">Mudanças e Adaptações</div>
-                        <div class="timeline-desc">Adolescência dos filhos, mudanças profissionais, novos desafios. Período de renegociação de papéis e expectativas.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">5</div>
-                    <div class="timeline-content">
-                        <div class="timeline-phase">Renovação</div>
-                        <div class="timeline-title">Nova Fase</div>
-                        <div class="timeline-desc">Filhos adultos, possível chegada de netos, redefinição de relacionamentos. Oportunidade para novos projetos e sonhos compartilhados.</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="strength-box">
-                <h3>💪 Identificando as Forças da Sua Família</h3>
-                
-                <h4 style="color: white;">🌟 Forças Relacionais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Amor Incondicional:</strong> Aceitação e apoio mútuos independente das circunstâncias</li>
-                    <li><strong>Lealdade:</strong> Compromisso duradouro uns com os outros</li>
-                    <li><strong>Confiança:</strong> Segurança emocional e abertura para vulnerabilidade</li>
-                    <li><strong>Respeito:</strong> Valorização das diferenças individuais</li>
-                </ul>
-                
-                <h4 style="color: white;">🛠️ Forças Funcionais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Organização:</strong> Capacidade de estruturar rotinas e responsabilidades</li>
-                    <li><strong>Flexibilidade:</strong> Adaptação a mudanças e desafios</li>
-                    <li><strong>Resolução de Problemas:</strong> Habilidade para encontrar soluções juntos</li>
-                    <li><strong>Comunicação:</strong> Capacidade de expressar necessidades e sentimentos</li>
-                </ul>
-                
-                <h4 style="color: white;">🎯 Forças Individuais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Talentos Únicos:</strong> Habilidades especiais de cada membro</li>
-                    <li><strong>Personalidades Complementares:</strong> Diferenças que se equilibram</li>
-                    <li><strong>Experiências Diversas:</strong> Conhecimentos e perspectivas variadas</li>
-                    <li><strong>Recursos Pessoais:</strong> Capacidades individuais que beneficiam o grupo</li>
-                </ul>
-            </div>
-            
-            <div class="challenge-box">
-                <h3>⚡ Compreendendo os Desafios Familiares</h3>
-                
-                <h4 style="color: white;">🌪️ Desafios Estruturais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Mudanças de Configuração:</strong> Separações, novos casamentos, mudanças de cidade</li>
-                    <li><strong>Pressões Externas:</strong> Trabalho, escola, sociedade</li>
-                    <li><strong>Recursos Limitados:</strong> Tempo, dinheiro, energia</li>
-                    <li><strong>Diferenças Geracionais:</strong> Conflitos entre diferentes idades e perspectivas</li>
-                </ul>
-                
-                <h4 style="color: white;">💭 Desafios Emocionais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Conflitos de Comunicação:</strong> Mal-entendidos e dificuldades de expressão</li>
-                    <li><strong>Expectativas Não Atendidas:</strong> Frustrações com comportamentos ou resultados</li>
-                    <li><strong>Estresse Acumulado:</strong> Pressões que se somam ao longo do tempo</li>
-                    <li><strong>Traumas ou Perdas:</strong> Experiências difíceis que afetam toda a família</li>
-                </ul>
-                
-                <h4 style="color: white;">🔄 Padrões Disfuncionais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Comunicação Destrutiva:</strong> Críticas, culpabilização, silêncio</li>
-                    <li><strong>Papéis Rígidos:</strong> Expectativas inflexíveis sobre comportamentos</li>
-                    <li><strong>Evitação de Conflitos:</strong> Não enfrentar problemas importantes</li>
-                    <li><strong>Dependência Excessiva:</strong> Falta de autonomia individual saudável</li>
-                </ul>
-            </div>
-            
-            <div class="strategy-box">
-                <h3>💡 Ferramentas de Autoconhecimento Familiar</h3>
-                
-                <h4 style="color: white;">🔍 Mapeamento Familiar:</h4>
-                <ul style="color: white;">
-                    <li><strong>Genograma:</strong> Desenhe sua árvore genealógica incluindo relacionamentos e padrões</li>
-                    <li><strong>Linha do Tempo:</strong> Identifique eventos importantes na história familiar</li>
-                    <li><strong>Mapa de Recursos:</strong> Liste todas as forças e recursos disponíveis</li>
-                    <li><strong>Análise de Papéis:</strong> Identifique quem faz o quê na família</li>
-                </ul>
-                
-                <h4 style="color: white;">📊 Avaliação de Dinâmicas:</h4>
-                <ul style="color: white;">
-                    <li><strong>Padrões de Comunicação:</strong> Como vocês conversam e resolvem conflitos?</li>
-                    <li><strong>Rituais e Tradições:</strong> Que atividades fortalecem seus vínculos?</li>
-                    <li><strong>Gestão de Estresse:</strong> Como a família lida com pressões?</li>
-                    <li><strong>Tomada de Decisões:</strong> Quem decide o quê e como?</li>
-                </ul>
-                
-                <h4 style="color: white;">💬 Conversas Importantes:</h4>
-                <ul style="color: white;">
-                    <li><strong>Reuniões Familiares:</strong> Espaços regulares para diálogo aberto</li>
-                    <li><strong>Conversas Individuais:</strong> Tempo exclusivo com cada membro</li>
-                    <li><strong>Reflexões Conjuntas:</strong> Discussões sobre valores e objetivos</li>
-                    <li><strong>Feedback Construtivo:</strong> Compartilhamento honesto e respeitoso</li>
-                </ul>
-            </div>
-            
-            <div class="support-box">
-                <h3>🤝 Tipos de Família e Suas Características</h3>
-                
-                <h4 style="color: white;">👨‍👩‍👧‍👦 Família Nuclear:</h4>
-                <ul style="color: white;">
-                    <li><strong>Características:</strong> Pais e filhos vivendo juntos</li>
-                    <li><strong>Forças:</strong> Estrutura clara, papéis definidos, intimidade</li>
-                    <li><strong>Desafios:</strong> Pressão sobre poucos membros, isolamento potencial</li>
-                    <li><strong>Apoio Necessário:</strong> Redes externas, tempo para o casal</li>
-                </ul>
-                
-                <h4 style="color: white;">👩‍👧‍👦 Família Monoparental:</h4>
-                <ul style="color: white;">
-                    <li><strong>Características:</strong> Um dos pais criando os filhos</li>
-                    <li><strong>Forças:</strong> Vínculos estreitos, independência, flexibilidade</li>
-                    <li><strong>Desafios:</strong> Sobrecarga, recursos limitados, solidão</li>
-                    <li><strong>Apoio Necessário:</strong> Rede de apoio forte, recursos comunitários</li>
-                </ul>
-                
-                <h4 style="color: white;">👨‍👩‍👧‍👦👨‍👩‍👧‍👦 Família Reconstituída:</h4>
-                <ul style="color: white;">
-                    <li><strong>Características:</strong> Novos casamentos com filhos de relacionamentos anteriores</li>
-                    <li><strong>Forças:</strong> Diversidade, segundas chances, recursos ampliados</li>
-                    <li><strong>Desafios:</strong> Lealdades divididas, ajustes complexos</li>
-                    <li><strong>Apoio Necessário:</strong> Paciência, comunicação clara, terapia familiar</li>
-                </ul>
-                
-                <h4 style="color: white;">👴👵👨‍👩‍👧‍👦 Família Extensa:</h4>
-                <ul style="color: white;">
-                    <li><strong>Características:</strong> Múltiplas gerações vivendo juntas ou próximas</li>
-                    <li><strong>Forças:</strong> Sabedoria compartilhada, apoio amplo, tradições</li>
-                    <li><strong>Desafios:</strong> Conflitos geracionais, limites difusos</li>
-                    <li><strong>Apoio Necessário:</strong> Mediação, respeito às diferenças</li>
-                </ul>
-            </div>
-            
-            <div class="milestone-box">
-                <h3>🎯 Sinais de uma Família Saudável</h3>
-                
-                <h4 style="color: white;">💝 Relacionamentos Saudáveis:</h4>
-                <ul style="color: white;">
-                    <li><strong>Comunicação Aberta:</strong> Membros se sentem seguros para expressar sentimentos</li>
-                    <li><strong>Apoio Mútuo:</strong> Cada um sabe que pode contar com os outros</li>
-                    <li><strong>Respeito às Diferenças:</strong> Individualidade é valorizada</li>
-                    <li><strong>Resolução de Conflitos:</strong> Problemas são enfrentados construtivamente</li>
-                </ul>
-                
-                <h4 style="color: white;">🌱 Crescimento e Desenvolvimento:</h4>
-                <ul style="color: white;">
-                    <li><strong>Autonomia Apropriada:</strong> Membros desenvolvem independência saudável</li>
-                    <li><strong>Flexibilidade:</strong> Família se adapta a mudanças e desafios</li>
-                    <li><strong>Aprendizado Contínuo:</strong> Todos crescem e evoluem juntos</li>
-                    <li><strong>Celebração:</strong> Conquistas e momentos especiais são reconhecidos</li>
-                </ul>
-                
-                <h4 style="color: white;">🛡️ Estabilidade e Segurança:</h4>
-                <ul style="color: white;">
-                    <li><strong>Rotinas Previsíveis:</strong> Estrutura que oferece segurança</li>
-                    <li><strong>Limites Claros:</strong> Regras e expectativas bem definidas</li>
-                    <li><strong>Ambiente Seguro:</strong> Espaço físico e emocional protegido</li>
-                    <li><strong>Valores Consistentes:</strong> Princípios que orientam decisões</li>
-                </ul>
-            </div>
-            
-            <div class="tip-box">
-                <h3>💡 Exercícios Práticos de Autoconhecimento</h3>
-                
-                <h4 style="color: #e2e8f0;">🎯 Exercício 1: Mapa de Forças Familiares</h4>
-                <p style="color: #cbd5e0;">Reúna a família e peça para cada um listar 3 qualidades que vê em cada membro. Depois, identifiquem 5 forças que vocês têm como família. Criem um cartaz visual com essas descobertas.</p>
-                
-                <h4 style="color: #e2e8f0;">📝 Exercício 2: História da Nossa Família</h4>
-                <p style="color: #cbd5e0;">Criem juntos uma linha do tempo da família, incluindo momentos importantes, desafios superados e conquistas. Identifiquem padrões de resiliência e crescimento.</p>
-                
-                <h4 style="color: #e2e8f0;">🗣️ Exercício 3: Roda de Conversas</h4>
-                <p style="color: #cbd5e0;">Estabeleçam um momento semanal onde cada membro pode compartilhar: algo que foi bem na semana, um desafio enfrentado, e algo pelo qual é grato na família.</p>
-                
-                <h4 style="color: #e2e8f0;">🎨 Exercício 4: Visão de Futuro</h4>
-                <p style="color: #cbd5e0;">Cada membro desenha ou escreve como imagina a família daqui a 5 anos. Compartilhem as visões e identifiquem sonhos comuns para trabalhar juntos.</p>
-            </div>
-            
-            <div class="family-demo">
-                <h3>💝 Sua Família é Única e Especial</h3>
-                <div class="family-circle interactive-element">
-                    Compreensão + Aceitação + Amor = Família Forte
-                </div>
-                <p><strong>Celebre a singularidade da sua família! ⬆️</strong></p>
-            </div>
-            
-            <div class="hope-box">
-                <h3>🌟 Mensagem de Esperança</h3>
-                <p style="color: white;">Compreender sua família profundamente é um presente que você dá a todos os membros. Quando reconhecemos nossas forças únicas e aceitamos nossos desafios com compaixão, criamos um ambiente onde cada pessoa pode florescer. Sua família tem uma combinação especial de qualidades que nenhuma outra família possui - e isso é algo para ser celebrado!</p>
-            </div>
-            
-            <div class="source-box">
-                <strong>📚 Fontes:</strong> Terapia Familiar Sistêmica, Psicologia Positiva, pesquisas sobre dinâmicas familiares saudáveis, estudos sobre resiliência familiar, e experiências clínicas documentadas.
-            </div>
-        </div>
-
-        <!-- Página 4: Fortalecendo Vínculos -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">4</div>
-                <div class="chapter-badge">VÍNCULOS FAMILIARES</div>
-            </div>
-            <h2>🤝 Fortalecendo Vínculos</h2>
-            <div class="story-illustration">💝🔗❤️🌟</div>
-            
-            <p>Os vínculos familiares são os fios invisíveis que conectam corações, criando uma rede de amor, apoio e pertencimento que sustenta cada membro da família. Fortalecer esses vínculos não acontece por acaso - é um processo intencional que requer tempo, atenção e estratégias específicas. Quando os vínculos familiares são sólidos, eles se tornam uma fonte inesgotável de força, conforto e alegria para toda a vida.</p>
-            
-            <div class="love-box">
-                <h3>💝 O Poder dos Vínculos Familiares</h3>
-                <p style="color: white;">Vínculos familiares fortes são como raízes profundas de uma árvore - eles fornecem estabilidade, nutrição e suporte para que cada membro possa crescer e florescer. Esses vínculos criam um senso de identidade, segurança emocional e pertencimento que acompanha cada pessoa ao longo de toda a vida.</p>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">85%</div>
-                    <div class="stat-label">Melhora na Autoestima</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">70%</div>
-                    <div class="stat-label">Redução do Estresse</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">90%</div>
-                    <div class="stat-label">Maior Resiliência</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">∞</div>
-                    <div class="stat-label">Benefícios Duradouros</div>
-                </div>
-            </div>
-            
-            <div class="strength-box">
-                <h3>💪 Elementos dos Vínculos Fortes</h3>
-                
-                <h4 style="color: white;">❤️ Conexão Emocional:</h4>
-                <ul style="color: white;">
-                    <li><strong>Empatia:</strong> Capacidade de compreender e sentir com o outro</li>
-                    <li><strong>Aceitação:</strong> Amor incondicional independente de falhas ou diferenças</li>
-                    <li><strong>Intimidade:</strong> Compartilhamento de pensamentos e sentimentos profundos</li>
-                    <li><strong>Confiança:</strong> Segurança de que o outro estará presente quando necessário</li>
-                </ul>
-                
-                <h4 style="color: white;">🕰️ Tempo de Qualidade:</h4>
-                <ul style="color: white;">
-                    <li><strong>Presença Plena:</strong> Atenção total durante momentos juntos</li>
-                    <li><strong>Atividades Compartilhadas:</strong> Experiências que criam memórias positivas</li>
-                    <li><strong>Conversas Significativas:</strong> Diálogos que vão além do superficial</li>
-                    <li><strong>Rituais Familiares:</strong> Tradições que fortalecem a identidade do grupo</li>
-                </ul>
-                
-                <h4 style="color: white;">🗣️ Comunicação Autêntica:</h4>
-                <ul style="color: white;">
-                    <li><strong>Escuta Ativa:</strong> Ouvir verdadeiramente sem julgar ou interromper</li>
-                    <li><strong>Expressão Honesta:</strong> Compartilhar sentimentos de forma respeitosa</li>
-                    <li><strong>Validação:</strong> Reconhecer e valorizar os sentimentos dos outros</li>
-                    <li><strong>Resolução Colaborativa:</strong> Trabalhar juntos para resolver conflitos</li>
-                </ul>
-            </div>
-            
-            <div class="aspect-grid">
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">👨‍👩‍👧‍👦</div>
-                    <div class="aspect-card-title">Vínculos Pais-Filhos</div>
-                    <div class="aspect-card-desc">
-                        A base de segurança emocional. Fortalecidos através de tempo individual, escuta ativa, apoio incondicional e orientação amorosa. Essenciais para o desenvolvimento saudável.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">💑</div>
-                    <div class="aspect-card-title">Vínculos Conjugais</div>
-                    <div class="aspect-card-desc">
-                        O alicerce da família. Fortalecidos através de comunicação íntima, tempo a sós, apoio mútuo e renovação constante do compromisso e amor.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">👫</div>
-                    <div class="aspect-card-title">Vínculos entre Irmãos</div>
-                    <div class="aspect-card-desc">
-                        Relacionamentos únicos e duradouros. Fortalecidos através de atividades conjuntas, resolução justa de conflitos e celebração das diferenças individuais.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">👴👵</div>
-                    <div class="aspect-card-title">Vínculos Intergeracionais</div>
-                    <div class="aspect-card-desc">
-                        Conexões com avós e família extensa. Fortalecidos através de histórias compartilhadas, tradições familiares e valorização da sabedoria dos mais velhos.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">🏠</div>
-                    <div class="aspect-card-title">Vínculos com o Lar</div>
-                    <div class="aspect-card-desc">
-                        Conexão com o espaço físico familiar. Fortalecidos através de criação de ambientes acolhedores, memórias positivas e senso de pertencimento ao lugar.
-                    </div>
-                </div>
-                
-                <div class="aspect-card">
-                    <div class="aspect-card-icon">🌳</div>
-                    <div class="aspect-card-title">Vínculos com Tradições</div>
-                    <div class="aspect-card-desc">
-                        Conexão com a história e valores familiares. Fortalecidos através de rituais, celebrações, histórias familiares e transmissão de valores.
-                    </div>
-                </div>
-            </div>
-            
-            <div class="strategy-box">
-                <h3>💡 Estratégias para Fortalecer Vínculos</h3>
-                
-                <h4 style="color: white;">🎯 Atividades de Conexão Diária:</h4>
-                <ul style="color: white;">
-                    <li><strong>Refeições Juntos:</strong> Pelo menos uma refeição diária sem dispositivos eletrônicos</li>
-                    <li><strong>Ritual de Boa Noite:</strong> Momento especial antes de dormir com cada filho</li>
-                    <li><strong>Caminhadas Familiares:</strong> Exercício e conversa combinados</li>
-                    <li><strong>Tempo de Gratidão:</strong> Compartilhar diariamente algo pelo qual são gratos</li>
-                </ul>
-                
-                <h4 style="color: white;">📅 Atividades Semanais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Noite da Família:</strong> Uma noite por semana dedicada exclusivamente à família</li>
-                    <li><strong>Projetos Conjuntos:</strong> Cozinhar, jardinagem, artesanato juntos</li>
-                    <li><strong>Aventuras Locais:</strong> Explorar novos lugares na cidade</li>
-                    <li><strong>Reunião Familiar:</strong> Espaço para planejar e resolver questões familiares</li>
-                </ul>
-                
-</div>
-</div>
-</div>
-
-
- <!-- Página 10: Compreendendo o TEA na Adolescência -->
-            <div class="page">
-            <div class="page-header">
-                <div class="page-number">5</div>
-                <div class="chapter-badge">Capítulo 5</div>
-            </div>
-            <h2>🗣️ Comunicação Efetiva: Diálogo Saudável e Empático</h2>
-            <div class="story-illustration">💬👂💖🔄</div>
-
-            <div class="development-box">
-    <h3>✨ O Papel Central da Comunicação</h3>
-    <p style="color: white;">A comunicação efetiva vai além da mera troca de informações. Ela envolve a capacidade de compreender, interpretar e responder de forma adequada, tanto para o falante quanto para o ouvinte. Para adolescentes no TEA, as particularidades na forma de processar e expressar podem exigir abordagens diferenciadas, mas sempre focadas na conexão e no entendimento mútuo.</p>
-</div>
-
-<div class="stats-grid">
-    <div class="stat-card">
-        <div class="stat-number">+80%</div>
-        <div class="stat-label">Com Desafios Com.</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">50%</div>
-        <div class="stat-label">Beneficiam de CAA</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">60%</div>
-        <div class="stat-label">Melhora com Suporte</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">2 Vias</div>
-        <div class="stat-label">É o Diálogo</div>
-    </div>
-</div>
-
-<div class="milestone-box">
-    <h3>🎯 Barreiras Comuns na Comunicação com o TEA</h3>
-    
-    <h4 style="color: white;">🧠 Desafios de Processamento e Compreensão:</h4>
-    <ul style="color: white;">
-        <li><strong>Linguagem Literal:</strong> Dificuldade em entender metáforas, sarcasmo, ironia e expressões idiomáticas.</li>
-        <li><strong>Abstrações:</strong> Dificuldade com conceitos abstratos ou instruções muito longas e complexas.</li>
-        <li><strong>Tempo de Processamento:</strong> Necessidade de mais tempo para entender o que foi dito e formular uma resposta.</li>
-        <li><strong>Sobrecarga Sensorial:</strong> Ambientes barulhentos ou muito estimulantes podem dificultar a escuta e o foco.</li>
-    </ul>
-    
-    <h4 style="color: white;">🗣️ Dificuldades de Expressão e Interação:</h4>
-    <ul style="color: white;">
-        <li><strong>Expressão de Emoções:</strong> Dificuldade em identificar e verbalizar sentimentos internos (alexitimia).</li>
-        <li><strong>Início/Manutenção de Conversa:</strong> Dificuldade em iniciar, manter um tópico ou perceber o momento de finalizar.</li>
-        <li><strong>Sinais Não Verbais:</strong> Dificuldade em usar ou interpretar expressões faciais, tom de voz e linguagem corporal.</li>
-        <li><strong>Comunicação Funcional:</strong> Desafios em comunicar necessidades básicas (dor, fome, desconforto) de forma clara.</li>
-    </ul>
-</div>
-
-<div class="challenge-box">
-    <h3>⚡ O Impacto da Comunicação Ineficaz</h3>
-    
-    <h4 style="color: white;">🌪️ Frustração e Comportamentos Desafiadores:</h4>
-    <ul style="color: white;">
-        <li><strong>Crises de Estresse (Meltdowns):</strong> Frequente resultado de incapacidade de se comunicar ou ser compreendido.</li>
-        <li><strong>Ansiedade e Retraimento:</strong> Pode levar ao isolamento social e medo de interagir.</li>
-        <li><strong>Agitação e Irritabilidade:</strong> Quando as necessidades não são atendidas por falta de comunicação.</li>
-        <li><strong>Mal-entendidos:</strong> Conflitos decorrentes de interpretações errôneas.</li>
-    </ul>
-    
-    <h4 style="color: white;">😟 Impacto nos Relacionamentos:</h4>
-    <ul style="color: white;">
-        <li><strong>Dificuldade na Construção de Amizades:</strong> Limita a profundidade e a reciprocidade dos laços.</li>
-        <li><strong>Estresse Familiar:</strong> Tensão gerada por ciclos de comunicação falhos.</li>
-        <li><strong>Vulnerabilidade:</strong> Dificuldade em comunicar abusos ou situações de risco.</li>
-    </ul>
-</div>
-
-<div class="strategy-box">
-    <h3>💡 Estratégias para um Diálogo Empático e Claro</h3>
-    
-    <h4 style="color: white;">✅ Seja Claro e Objetivo:</h4>
-    <ul style="color: white;">
-        <li><strong>Linguagem Literal:</strong> Fale de forma direta, evite sarcasmo, ironia ou duplos sentidos.</li>
-        <li><strong>Instruções Simples:</strong> Divida instruções complexas em passos curtos e claros.</li>
-        <li><strong>Recursos Visuais:</strong> Utilize imagens, agendas visuais, listas e escrita para apoiar a comunicação.</li>
-        <li><strong>Contextualize:</strong> Explique o "porquê" das coisas, ajudando a entender a lógica por trás de regras sociais ou tarefas.</li>
-    </ul>
-    
-    <h4 style="color: white;">👂 Escuta Ativa e Paciência:</h4>
-    <ul style="color: white;">
-        <li><strong>Dê Tempo para Responder:</strong> Evite preencher o silêncio. Permita que processe e formule a resposta.</li>
-        <li><strong>Valide as Emoções:</strong> Mesmo que a expressão seja atípica, reconheça o sentimento por trás do comportamento.</li>
-        <li><strong>Observe Sinais Não Verbais:</strong> Aprenda os sinais únicos de seu filho(a) para expressar desconforto, alegria, etc.</li>
-        <li><strong>Confirme o Entendimento:</strong> Peça para ele(a) repetir ou explicar o que entendeu, sem pressão.</li>
-    </ul>
-</div>
-
-<div class="support-box">
-    <h3>🤝 Ferramentas e Práticas para Comunicação no Lar</h3>
-    
-    <h4 style="color: white;">🏡 Práticas Diárias de Comunicação:</h4>
-    <ul style="color: white;">
-        <li><strong>Crie Rotinas de Conversa:</strong> Horários específicos para discutir o dia, planos, etc.</li>
-        <li><strong>Use Interesses Especiais:</strong> Fale sobre os tópicos de interesse do seu filho(a) para motivar a comunicação.</li>
-        <li><strong>Jogos e Role-Playing:</strong> Pratique cenários de conversação e interação em um ambiente seguro e lúdico.</li>
-        <li><strong>Espaço de Expressão Segura:</strong> Incentive a comunicação de frustrações ou medos sem julgamento.</li>
-    </ul>
-    
-    <h4 style="color: white;">🛠️ Apoios Complementares:</h4>
-    <ul style="color: white;">
-        <li><strong>Comunicação Aumentativa e Alternativa (CAA):</strong> Considere o uso de PECS, aplicativos de comunicação ou dispositivos se a comunicação verbal for limitada.</li>
-        <li><strong>Histórias Sociais Personalizadas:</strong> Para preparar para novas situações ou ensinar scripts de conversação.</li>
-        <li><strong>Ensine Habilidades de Conversação:</strong> Como fazer perguntas, manter o contato visual (se confortável), esperar a vez de falar.</li>
-    </ul>
-</div>
-
-<div class="warning-box">
-    <h3>⚠️ Sinais de Alerta na Comunicação</h3>
-    
-    <h4 style="color: white;">🚨 Quando Buscar Ajuda Especializada:</h4>
-    <ul style="color: white;">
-        <li><strong>Dificuldade Persistente:</strong> Se a comunicação não melhora, mesmo com estratégias caseiras.</li>
-        <li><strong>Frustração Extrema:</strong> Tanto do adolescente quanto da família, devido a barreiras de comunicação.</li>
-        <li><strong>Isolamento Crescente:</strong> Se a dificuldade de comunicação leva ao retraimento social.</li>
-        <li><strong>Comportamentos Agressivos/Autoagressivos:</strong> Como resultado direto da incapacidade de comunicar necessidades.</li>
-        <li><strong>Incapacidade de Expressar Dor/Desconforto:</strong> Um risco significativo para a saúde e segurança.</li>
-    </ul>
-    
-    <h4 style="color: white;">👨‍⚕️ Profissionais que Podem Auxiliar:</h4>
-    <ul style="color: white;">
-        <li><strong>Fonoaudiólogo (Terapeuta da Fala):</strong> Especialista em comunicação social, pragmática da linguagem e CAA.</li>
-        <li><strong>Psicólogo:</strong> Para lidar com a ansiedade da comunicação, frustração e treinar habilidades sociais.</li>
-        <li><strong>Terapeuta Ocupacional:</strong> Para abordar questões sensoriais que afetam a comunicação e atenção.</li>
-        <li><strong>Coach de Habilidades Sociais:</strong> Para prática de comunicação em contextos específicos.</li>
-    </ul>
-</div>
-
-<div class="resource-grid">
-    <div class="resource-card">
-        <div class="resource-icon">📚</div>
-        <div class="resource-name">Livros sobre CAA e Comunicação</div>
-        <div class="resource-desc">Materiais informativos sobre técnicas de comunicação alternativa e estratégias para aprimorar o diálogo.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">📱</div>
-        <div class="resource-name">Aplicativos de Comunicação</div>
-        <div class="resource-desc">Apps de CAA (ex: Proloquo2Go, Grid 3) ou outros que auxiliam na expressão e compreensão.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🗣️</div>
-        <div class="resource-name">Workshops de Habilidades de Comunicação</div>
-        <div class="resource-desc">Treinamentos para pais e adolescentes sobre comunicação social e verbal.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🌐</div>
-        <div class="resource-name">Fóruns de Apoio</div>
-        <div class="resource-desc">Comunidades online onde pais trocam experiências e estratégias de comunicação.</div>
-    </div>
-</div>
-
-<div class="tip-box">
-    <h3>💡 Dicas Essenciais para um Diálogo Empático</h3>
-    
-    <h4 style="color: #e2e8f0;">🗣️ Seja o Modelo de Clareza:</h4>
-    <p style="color: #cbd5e0;">Comunique-se de forma explícita, direta e consistente. Seu exemplo é a melhor ferramenta.</p>
-    
-    <h4 style="color: #e2e8f0;">💖 Valide a Perspectiva Única:</h4>
-    <p style="color: #cbd5e0;">Tente entender o mundo pelos olhos de seu filho(a). A empatia transforma a comunicação.</p>
-    
-    <h4 style="color: #e2e8f0;">🔗 Use Apoios Visuais:</h4>
-    <p style="color: #cbd5e0;">Agendas, listas e imagens facilitam a compreensão e reduzem a ansiedade de processamento.</p>
-    
-    <h4 style="color: #e2e8f0;">🎉 Celebre Cada Troca:</h4>
-    <p style="color: #cbd5e0;">Cada esforço para se comunicar é um passo adiante. Reforce o esforço, não apenas a perfeição.</p>
-</div>
-
-<div class="teen-demo">
-    <h3>🌱 Vozes que Conectam</h3>
-    <div class="teen-circle interactive-element">
-        Compreensão + Apoio = Diálogo Aberto
-    </div>
-    <p><strong>Visualize a ponte da comunicação crescendo! 🌉</strong></p>
-</div>
-
-<div class="hope-box">
-    <h3>🌟 Mensagem de Esperança</h3>
-    <p style="color: white;">A comunicação com seu adolescente no espectro autista pode ser uma das jornadas mais gratificantes. Ao adotar estratégias empáticas e personalizadas, e ao buscar apoio profissional quando necessário, você fortalecerá não apenas as habilidades de seu filho(a), mas também o vínculo entre vocês. Cada pequena vitória na comunicação é um passo em direção a um relacionamento mais profundo, menos frustrante e mais alegre para toda a família.</p>
-</div>
-
-<div class="source-box">
-    <strong>📚 Fontes:</strong> American Speech-Language-Hearing Association (ASHA), Social Thinking Methodology (Michelle Garcia Winner), Pesquisas sobre Comunicação Aumentativa e Alternativa (CAA) no TEA, e práticas clínicas de fonoaudiólogos e psicólogos especializados.
-</div>
-
-</div>
-</div>
-
-
-
-                <!-- Página 10: Compreendendo o TEA na Adolescência -->
-            <div class="page">
-            <div class="page-header">
-                <div class="page-number">6</div>
-                <div class="chapter-badge">Capítulo 6</div>
-            </div>
-            <h2>🛠️ Enfrentando Desafios: Ferramentas Práticas de Superação</h2>
-            <div class="story-illustration">🚧✅ resilência 💪</div>
-
-            div class="development-box">
-    <h3>🧠 Entendendo o Comportamento Desafiador no TEA</h3>
-    <p style="color: white;">Comportamentos desafiadores são, na maioria das vezes, uma forma de comunicação. Eles podem indicar sobrecarga sensorial, frustração com a comunicação, ansiedade, busca por atenção, ou a necessidade de evitar algo. Compreender essa função é o primeiro passo para desenvolver estratégias que abordem a causa-raiz, e não apenas o comportamento em si.</p>
-</div>
-
-
-</div>
-</div>
-</div>
-
-
-
-             <!-- Página 10: Compreendendo o TEA na Adolescência -->
-            <div class="page">
-            <div class="page-header">
-                <div class="page-number">7</div>
-                <div class="chapter-badge">Capítulo 7</div>
-            </div>
-            <h2>💪 Construindo Resiliência: Desenvolvendo Força Interior</h2>
-            <div class="story-illustration">🌱🛡️🌟🧭</div>
-
-            <div class="development-box">
-    <h3>✨ O Que é Resiliência no Contexto do TEA?</h3>
-    <p style="color: white;">Resiliência é a capacidade de se adaptar e se recuperar diante de estresse, trauma, adversidade ou ameaças significativas. Para adolescentes no TEA, ela se manifesta na habilidade de lidar com a sobrecarga sensorial, social e emocional, superar frustrações em tarefas, adaptar-se a rotinas alteradas e persistir em desafios que outros poderiam abandonar. Não é ausência de dor, mas sim a capacidade de superá-la.</p>
-</div>
-
-<div class="stats-grid">
-    <div class="stat-card">
-        <div class="stat-number">40%</div>
-        <div class="stat-label">Com Dificuldade em Lidar com Mudanças</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">2x</div>
-        <div class="stat-label">Maior Risco de Ansiedade/Depressão</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">100%</div>
-        <div class="stat-label">Potencial de Crescimento Pessoal</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">CADA PASSO</div>
-        <div class="stat-label">É uma Conquista</div>
-    </div>
-</div>
-
-<div class="milestone-box">
-    <h3>🎯 Pilares da Resiliência para Adolescentes no TEA</h3>
-    
-    <h4 style="color: white;">🧠 Habilidades de Autorregulação Emocional:</h4>
-    <ul style="color: white;">
-        <li>**Identificação de Emoções:** Aprender a nomear e reconhecer seus próprios sentimentos e os dos outros.</li>
-        <li>**Estratégias de Calma:** Desenvolver técnicas para lidar com a raiva, ansiedade e frustração (ex: respiração profunda, "espaço seguro").</li>
-        <li>**Tolerância à Frustração:** Aumentar gradualmente a capacidade de lidar com resultados não esperados.</li>
-        <li>**Flexibilidade Cognitiva:** Desenvolver a capacidade de adaptar pensamentos e planos quando as coisas não saem como o esperado.</li>
-    </ul>
-    
-    <h4 style="color: white;">🗣️ Competências Sociais e Resolução de Problemas:</h4>
-    <ul style="color: white;">
-        <li>**Autodefesa (Self-Advocacy):** Capacidade de expressar suas necessidades, preferências e limites de forma assertiva.</li>
-        <li>**Resolução de Conflitos:** Aprender a negociar e encontrar soluções para desentendimentos.</li>
-        <li>**Busca por Apoio:** Saber pedir ajuda a adultos de confiança ou pares quando necessário.</li>
-        <li>**Persistência:** Manter o esforço mesmo diante de dificuldades, sem desistir facilmente.</li>
-    </ul>
-</div>
-
-<div class="challenge-box">
-    <h3>⚡ Obstáculos à Resiliência e Suas Consequências</h3>
-    
-    <h4 style="color: white;">🌪️ Barreiras Inerentes ao TEA:</h4>
-    <ul style="color: white;">
-        <li>**Rigidez de Pensamento:** Dificuldade em ver alternativas ou mudar o curso de ação.</li>
-        <li>**Dificuldade com Mudanças:** Ansiedade extrema diante de transições inesperadas ou interrupções.</li>
-        <li>**Interpretação Literal:** Levar comentários negativos ou críticas ao pé da letra, sem contextualização.</li>
-        <li>**Sobrecarga Sensorial:** O estresse contínuo do ambiente pode esgotar a capacidade de lidar com desafios.</li>
-    </ul>
-    
-    <h4 style="color: white;">😟 Impacto no Bem-Estar:</h4>
-    <ul style="color: white;">
-        <li>**Ansiedade e Depressão:** A falta de resiliência pode agravar problemas de saúde mental.</li>
-        <li>**Baixa Autoestima:** Sentimento de inadequação ao falhar ou enfrentar dificuldades.</li>
-        <li>**Comportamentos de Evitação:** Recusa em tentar novas coisas ou enfrentar situações desafiadoras.</li>
-        <li>**Ciclo de Frustração:** Comportamentos desafiadores recorrentes por não conseguir lidar com a adversidade.</li>
-    </ul>
-</div>
-
-<div class="strategy-box">
-    <h3>💡 Estratégias para Fomentar a Força Interior</h3>
-    
-    <h4 style="color: white;">✅ Ensino Explícito de Habilidades de Enfrentamento:</h4>
-    <ul style="color: white;">
-        <li>**Histórias Sociais:** Crie narrativas para situações de adversidade e como superá-las.</li>
-        <li>**Role-Playing:** Pratique cenários de frustração e como reagir de forma construtiva.</li>
-        <li>**Identificação de Gatilhos:** Ajude a reconhecer o que causa estresse ou sobrecarga e desenvolver planos de ação.</li>
-        <li>**Cartões de Estratégias:** Crie cartões com ações que o adolescente pode usar para se acalmar ou resolver problemas.</li>
-    </ul>
-    
-    <h4 style="color: white;">🔄 Construindo um Ambiente de Apoio e Crescimento:</h4>
-    <ul style="color: white;">
-        <li>**Celebre o Esforço:** Recompense a tentativa e a persistência, não apenas o sucesso imediato.</li>
-        <li>**Permita o Erro:** Crie um ambiente onde errar é parte do aprendizado, sem julgamento.</li>
-        <li>**Delegue Responsabilidades:** Ofereça oportunidades para enfrentar pequenos desafios e ter sucesso.</li>
-        <li>**Modelagem:** Demonstre sua própria resiliência ao lidar com frustrações em sua vida.</li>
-    </ul>
-</div>
-
-<div class="support-box">
-    <h3>🤝 O Papel dos Pais e da Equipe de Apoio</h3>
-    
-    <h4 style="color: white;">🏡 Práticas Familiares para a Resiliência:</h4>
-    <ul style="color: white;">
-        <li>**Rotina com Flexibilidade:** Mantenha rotinas, mas introduza pequenas e planejadas mudanças para desenvolver adaptabilidade.</li>
-        <li>**Comunicação Aberta:** Incentive o adolescente a expressar suas frustrações e ouvir suas preocupações.</li>
-        <li>**Foco nos Pontos Fortes:** Enfatize os talentos e habilidades únicas do seu filho(a) para construir autoconfiança.</li>
-        <li>**Ambiente Seguro:** Garanta que o lar seja um refúgio, onde ele(a) se sinta seguro(a) para ser vulnerável e se recuperar.</li>
-    </ul>
-    
-    <h4 style="color: white;">🧑‍⚕️ Colaboração Profissional:</h4>
-    <ul style="color: white;">
-        <li>**Terapia Cognitivo-Comportamental (TCC):** Para desenvolver estratégias de coping e manejo da ansiedade.</li>
-        <li>**Terapia Ocupacional (TO):** Para lidar com questões sensoriais que afetam a resiliência e a autorregulação.</li>
-        <li>**Psicólogo: ** Para apoio emocional e desenvolvimento de habilidades de resolução de problemas.</li>
-        <li>**Grupos de Habilidades Sociais:** Para praticar resiliência em interações com pares.</li>
-    </ul>
-</div>
-
-<div class="warning-box">
-    <h3>⚠️ Sinais de Alerta: Quando a Resiliência Está em Baixa</h3>
-    
-    <h4 style="color: white;">🚨 Indicadores de Fragilidade Emocional:</h4>
-    <ul style="color: white;">
-        <li>**Reações Exageradas:** Crises de raiva ou choro desproporcionais a pequenos contratempos.</li>
-        <li>**Evitação Extrema:** Recusa persistente em tentar qualquer coisa nova ou desafiadora.</li>
-        <li>**Desesperança/Apatia:** Falta de interesse em atividades que antes gostava, ou verbalizações de desesperança.</li>
-        <li>**Regressão de Habilidades:** Perda de capacidades que já possuía em lidar com frustrações.</li>
-        <li>**Sintomas de Ansiedade/Depressão:** Persistentes e interferindo no dia a dia.</li>
-    </ul>
-    
-    <h4 style="color: white;">🏥 Onde Buscar Apoio Urgente:</h4>
-    <ul style="color: white;">
-        <li>**Emergência Psiquiátrica/Psicológica:** Em casos de pensamentos suicidas ou autoagressão.</li>
-        <li>**Psiquiatra/Neuropediatra:** Para avaliação de comorbidades e medicação, se necessário.</li>
-        <li>**Equipe Terapêutica:** Compartilhe as preocupações para ajustar as intervenções e intensificar o apoio.</li>
-    </ul>
-</div>
-
-<div class="resource-grid">
-    <div class="resource-card">
-        <div class="resource-icon">📚</div>
-        <div class="resource-name">Livros sobre Resiliência</div>
-        <div class="resource-desc">Materiais que ensinam estratégias para pais e adolescentes construírem força interior e superarem desafios.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🌐</div>
-        <div class="resource-name">Recursos de Mindfulness e Relaxamento</div>
-        <div class="resource-desc">Apps, áudios e vídeos que ensinam técnicas para acalmar a mente e o corpo.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">👨‍🏫</div>
-        <div class="resource-name">Programas de Habilidades de Vida</div>
-        <div class="resource-desc">Cursos e workshops que focam em desenvolvimento de autonomia e resolução de problemas.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🗣️</div>
-        <div class="resource-name">Grupos de Apoio para Adolescentes</div>
-        <div class="resource-desc">Espaços seguros onde podem compartilhar experiências e aprender com os pares.</div>
-    </div>
-</div>
-
-<div class="tip-box">
-    <h3>💡 Dicas Essenciais para Fortalecer a Resiliência</h3>
-    
-    <h4 style="color: #e2e8f0;">🗣️ Valide as Dificuldades, Mas Foque na Solução:</h4>
-    <p style="color: #cbd5e0;">Reconheça a frustração de seu filho(a), mas direcione-o(a) para encontrar maneiras de lidar com ela.</p>
-    
-    <h4 style="color: #e2e8f0;">💖 Permita a Frustração Controlada:</h4>
-    <p style="color: #cbd5e0;">Não o(a) proteja de todas as dificuldades. Pequenos desafios são oportunidades de aprendizado e crescimento.</p>
-    
-    <h4 style="color: #e2e8f0;">🔗 Ensine Estratégias de Coping:</h4>
-    <p style="color: #cbd5e0;">Forneça ferramentas concretas para lidar com o estresse (ex: "tempo fora", "respirar fundo", "pedir ajuda").</p>
-    
-    <h4 style="color: #e2e8f0;">🎉 Celebre a Superação, não a Perfeição:</h4>
-    <p style="color: #cbd5e0;">Elogie o esforço em tentar novamente, em se acalmar, em se adaptar, independentemente do resultado final.</p>
-</div>
-
-<div class="teen-demo">
-    <h3>🌱 Florescendo na Adversidade</h3>
-    <div class="teen-circle interactive-element">
-        Desafios + Apoio = Força Interior
-    </div>
-    <p><strong>Visualize seu filho(a) construindo uma base inabalável! 🛡️</strong></p>
-</div>
-
-<div class="hope-box">
-    <h3>🌟 Mensagem de Esperança</h3>
-    <p style="color: white;">A jornada de construir resiliência é um processo contínuo, mas cada obstáculo superado fortalece seu filho(a) para os desafios futuros. Com seu amor, paciência e a aplicação de estratégias eficazes, você está capacitando seu adolescente no TEA a desenvolver uma força interior que o(a) permitirá navegar o mundo com mais confiança, adaptabilidade e bem-estar. Essa resiliência é um dos maiores legados que você pode oferecer.</p>
-</div>
-
-<div class="source-box">
-    <strong>📚 Fontes:</strong> Pesquisas sobre Resiliência no Autismo (ex: Dr. Brené Brown - conceitos aplicados), Psicologia Positiva, Terapia Cognitivo-Comportamental (TCC) e Modelos de Intervenção Baseados em Força.
-</div>
-</div>
-</div>
-
-
-             <!-- Página 10: Compreendendo o TEA na Adolescência -->
-            <div class="page">
-            <div class="page-header">
-                <div class="page-number">8</div>
-                <div class="chapter-badge">Capítulo 8</div>
-            </div>
-            <h2>🤝 Redes de Apoio: Criando Comunidades Solidárias</h2>
-            <div class="story-illustration">🌐🫂💖🔗</div>
-
-            <div class="development-box">
-    <h3>✨ Por Que as Redes de Apoio São Vitais?</h3>
-    <p style="color: white;">O isolamento pode ser um fardo pesado para pais e cuidadores. As redes de apoio servem como um ecossistema de partilha e suporte, onde experiências são compreendidas, dúvidas são esclarecidas e a sensação de estar sobrecarregado diminui. Elas fornecem um espaço para desabafar, celebrar conquistas e aprender com quem já enfrentou ou está enfrentando desafios semelhantes.</p>
-</div>
-
-<div class="stats-grid">
-    <div class="stat-card">
-        <div class="stat-number">60%</div>
-        <div class="stat-label">Pais que Buscam Apoio</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">40%</div>
-        <div class="stat-label">Sentem-se Isolados</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">80%</div>
-        <div class="stat-label">Benefício Emocional Comprovado</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">VOCÊ</div>
-        <div class="stat-label">Faz a Diferença!</div>
-    </div>
-</div>
-
-
-<div class="challenge-box">
-    <h3>⚡ Desafios Comuns ao Buscar Apoio</h3>
-    
-    <h4 style="color: white;">🌪️ Barreiras Iniciais:</h4>
-    <ul style="color: white;">
-        <li>**Falta de Tempo:** A rotina intensa pode dificultar a participação em reuniões ou eventos.</li>
-        <li>**Sentimento de Exposição:** Relutância em compartilhar desafios pessoais com desconhecidos.</li>
-        <li>**Dificuldade em Encontrar:** Não saber onde procurar grupos ou comunidades relevantes.</li>
-        <li>**Divergência de Opiniões:** Encontrar abordagens diferentes que podem gerar dúvidas.</li>
-    </ul>
-    
-    <h4 style="color: white;">😟 Superando o Isolamento:</h4>
-    <ul style="color: white;">
-        <li>**Estigma:** Medo do julgamento ou da incompreensão de pessoas fora da comunidade do autismo.</li>
-        <li>**Exaustão:** A energia para buscar e manter contatos pode ser baixa quando se está sobrecarregado.</li>
-        <li>**Percepção de Falta de Necessidade:** Achar que precisa "dar conta de tudo" sozinho(a).</li>
-    </ul>
-</div>
-
-<div class="strategy-box">
-    <h3>💡 Estratégias para Construir sua Rede</h3>
-    
-    <h4 style="color: white;">✅ Iniciativa e Exploração:</h4>
-    <ul style="color: white;">
-        <li>**Pesquise Online:** Use plataformas de busca para encontrar associações de autismo, grupos de apoio em sua cidade ou região.</li>
-        <li>**Pergunte aos Profissionais:** Seu terapeuta, médico ou professor pode indicar grupos e serviços.</li>
-        <li>**Redes Sociais e Fóruns:** Junte-se a grupos privados no Facebook, WhatsApp ou fóruns especializados.</li>
-        <li>**Eventos e Palestras:** Participe de conferências, workshops e palestras sobre autismo, mesmo que online.</li>
-    </ul>
-    
-    <h4 style="color: white;">🔄 Engajamento e Compartilhamento:</h4>
-    <ul style="color: white;">
-        <li>**Comece Pequeno:** Participe de uma reunião online, leia alguns posts, observe antes de se engajar ativamente.</li>
-        <li>**Compartilhe com Cautela:** Comece compartilhando experiências menos íntimas e aumente a abertura conforme se sentir confortável.</li>
-        <li>**Ofereça Ajuda:** Apoiar outros também fortalece seu próprio senso de comunidade.</li>
-        <li>**Seja Seletivo:** Encontre grupos e pessoas que ressoem com seus valores e necessidades.</li>
-    </ul>
-</div>
-
-<div class="support-box">
-    <h3>🤝 O Valor de Cada Conexão</h3>
-    
-    <h4 style="color: white;">💖 Benefícios Emocionais e Práticos:</h4>
-    <ul style="color: white;">
-        <li>**Validação e Empatia:** Saber que outros entendem o que você passa, reduzindo o sentimento de solidão.</li>
-        <li>**Troca de Experiências:** Aprender estratégias e dicas práticas que funcionaram para outras famílias.</li>
-        <li>**Informação Atualizada:** Acesso a novidades sobre tratamentos, pesquisas e direitos.</li>
-        <li>**Redução de Estresse:** O apoio emocional e a partilha diminuem a carga mental.</li>
-        <li>**Sentimento de Pertencimento:** Fazer parte de uma comunidade que compreende e apoia.</li>
-    </ul>
-    
-    <h4 style="color: white;">🌐 Ampliando o Impacto:</h4>
-    <ul style="color: white;">
-        <li>**Advocacia Coletiva:** A união de pais em associações fortalece a voz e a luta por direitos e serviços.</li>
-        <li>**Oportunidades para o Adolescente:** Conectar-se pode abrir portas para grupos sociais, atividades ou programas específicos para adolescentes no TEA.</li>
-    </ul>
-</div>
-
-<div class="warning-box">
-    <h3>⚠️ Sinais de que Você Precisa de Mais Apoio</h3>
-    
-    <h4 style="color: white;">🚨 Indicadores de Sobrecarga e Isolamento:</h4>
-    <ul style="color: white;">
-        <li>**Exaustão Constante:** Sensação de esgotamento físico e mental que não melhora com o descanso.</li>
-        <li>**Tristeza Persistente:** Sentimentos de depressão ou ansiedade que impactam o dia a dia.</li>
-        <li>**Irritabilidade Aumentada:** Reações desproporcionais a pequenos problemas.</li>
-        <li>**Aflição ao Lidar Sozinho:** Sentir que não tem com quem compartilhar as dificuldades.</li>
-        <li>**Recusa em Procurar Ajuda:** Uma barreira interna que impede de buscar e aceitar suporte.</li>
-    </ul>
-    
-    <h4 style="color: white;">🏥 Onde Buscar Ajuda Especializada para Si:</h4>
-    <ul style="color: white;">
-        <li>**Psicoterapia Individual:** Para lidar com o estresse, luto ou burnout.</li>
-        <li>**Aconselhamento Familiar:** Para equilibrar as dinâmicas e o bem-estar de todos os membros.</li>
-        <li>**Médico de Família:** Para avaliar sua saúde física e mental e indicar especialistas.</li>
-        <li>**Serviços de Respiro (Respite Care):** Programas que oferecem um tempo de descanso para os cuidadores.</li>
-    </ul>
-</div>
-
-<div class="resource-grid">
-    <div class="resource-card">
-        <div class="resource-icon">📚</div>
-        <div class="resource-name">Diretórios de Organizações</div>
-        <div class="resource-desc">Listas de associações de autismo e grupos de apoio em nível nacional e local.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🌐</div>
-        <div class="resource-name">Plataformas de Redes Sociais</div>
-        <div class="resource-desc">Grupos fechados no Facebook, WhatsApp, fóruns online especializados em TEA para pais.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🗣️</div>
-        <div class="resource-name">Eventos e Conferências</div>
-        <div class="resource-desc">Calendários de eventos presenciais e online sobre autismo que promovem networking.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">👨‍👩‍👧‍👦</div>
-        <div class="resource-name">Programas de Mentoria para Pais</div>
-        <div class="resource-desc">Conectar-se com pais mais experientes para orientação e apoio individualizado.</div>
-    </div>
-</div>
-
-<div class="tip-box">
-    <h3>💡 Dicas Essenciais para Construir Sua Rede</h3>
-    
-    <h4 style="color: #e2e8f0;">🗣️ Dê o Primeiro Passo:</h4>
-    <p style="color: #cbd5e0;">Comece com uma pesquisa online ou um e-mail para uma associação. Pequenos passos levam a grandes conexões.</p>
-    
-    <h4 style="color: #e2e8f0;">💖 Seja Aberto(a) e Autêntico(a):</h4>
-    <p style="color: #cbd5e0;">Compartilhe suas experiências e vulnerabilidades. A autenticidade gera conexão real.</p>
-    
-    <h4 style="color: #e2e8f0;">🔗 Mantenha a Comunicação:</h4>
-    <p style="color: #cbd5e0;">Responda a mensagens, participe de reuniões quando possível. A consistência fortalece a rede.</p>
-    
-    <h4 style="color: #e2e8f0;">🎉 Celebre as Conexões:</h4>
-    <p style="color: #cbd5e0;">Reconheça o valor de cada pessoa e recurso em sua rede. Eles são seus aliados.</p>
-</div>
-
-<div class="teen-demo">
-    <h3>🌱 Juntos Somos Mais Fortes</h3>
-    <div class="teen-circle interactive-element">
-        Conexão + Partilha = Resiliência Coletiva
-    </div>
-    <p><strong>Visualize uma comunidade de apoio florescendo ao seu redor! 🌳</strong></p>
-</div>
-
-<div class="hope-box">
-    <h3>🌟 Mensagem de Esperança</h3>
-    <p style="color: white;">A jornada com um adolescente no espectro autista é um maratona, não um sprint. E em maratonas, ter uma equipe de apoio é fundamental. Ao construir e nutrir suas redes de apoio, você não está apenas buscando ajuda; você está construindo uma comunidade solidária que irá compartilhar seus desafios, celebrar suas vitórias e lembrá-lo(a) que você nunca está sozinho(a) nessa incrível jornada. A força coletiva é um recurso poderoso para toda a família.</p>
-</div>
-
-<div class="source-box">
-    <strong>📚 Fontes:</strong> Pesquisas sobre o impacto de redes de apoio em cuidadores de pessoas com deficiência, Organizações como Autism Speaks e National Autistic Society (seções de apoio a famílias), e estudos sobre bem-estar parental em populações especiais.
-</div>
-</div>
-</div>
-
-
-             <!-- Página 10: Compreendendo o TEA na Adolescência -->
-            <div class="page">
-            <div class="page-header">
-                <div class="page-number">9</div>
-                <div class="chapter-badge">Capítulo 9</div>
-            </div>
-            <h2>Cuidando de Quem Cuida - Autocuidado e bem-estar</h2>
-            <div class="story-illustration">💖🔋✨🛡️</div>
-
-            <div class="development-box">
-    <h3>✨ Por Que o Autocuidado Não é Egoísmo, é Necessidade?</h3>
-    <p style="color: white;">Muitos pais e cuidadores sentem culpa ao pensar em dedicar tempo a si mesmos. No entanto, o autocuidado é a base para evitar o esgotamento, conhecido como *burnout do cuidador*. Um cuidador bem-cuidado tem mais paciência, energia, clareza mental e capacidade de lidar com os desafios diários, beneficiando não só a si mesmo, mas toda a família, especialmente o adolescente.</p>
-</div>
-
-<div class="stats-grid">
-    <div class="stat-card">
-        <div class="stat-number">70%</div>
-        <div class="stat-label">Pais com Estresse Crônico</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">50%</div>
-        <div class="stat-label">Com Risco de Burnout</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">30%</div>
-        <div class="stat-label">Negligenciam a Saúde</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">VOCÊ</div>
-        <div class="stat-label">Merece Cuidado</div>
-    </div>
-</div>
-
-<div class="milestone-box">
-    <h3>🎯 Manifestações do Esgotamento do Cuidador</h3>
-    
-    <h4 style="color: white;">🧠 Sintomas Físicos e Mentais:</h4>
-    <ul style="color: white;">
-        <li>**Fadiga Crônica:** Cansaço constante, mesmo após dormir.</li>
-        <li>**Problemas de Sono:** Insônia ou sono não reparador.</li>
-        <li>**Doenças Frequentes:** Queda na imunidade, resfriados, dores de cabeça.</li>
-        <li>**Problemas de Memória/Concentração:** Dificuldade em focar em tarefas ou lembrar de coisas.</li>
-        <li>**Irritabilidade Aumentada:** Reações explosivas ou impaciência com facilidade.</li>
-    </ul>
-    
-    <h4 style="color: white;">💖 Sinais Emocionais e Comportamentais:</h4>
-    <ul style="color: white;">
-        <li>**Sentimento de Culpa:** Por não conseguir fazer mais ou por precisar de um tempo para si.</li>
-        <li>**Ansiedade e Depressão:** Sentimentos persistentes de tristeza, desesperança ou preocupação excessiva.</li>
-        <li>**Ressentimento:** Em relação ao filho(a) ou à situação.</li>
-        <li>**Isolamento Social:** Afastamento de amigos, familiares e atividades sociais.</li>
-        <li>**Perda de Prazer:** Dificuldade em sentir alegria ou interesse em hobbies antigos.</li>
-    </ul>
-</div>
-
-<div class="challenge-box">
-    <h3>⚡ Barreiras Comuns ao Autocuidado</h3>
-    
-    <h4 style="color: white;">🌪️ Obstáculos Práticos:</h4>
-    <ul style="color: white;">
-        <li>**Falta de Tempo:** A rotina de terapias, escola e cuidados consome todas as horas.</li>
-        <li>**Dificuldade em Encontrar Apoio:** Não ter quem possa ficar com o adolescente de forma confiável.</li>
-        <li>**Questões Financeiras:** O custo das terapias pode limitar recursos para o autocuidado.</li>
-        <li>**Logística Complexa:** Dificuldade em organizar a logística para ter um tempo livre.</li>
-    </ul>
-    
-    <h4 style="color: white;">😟 Barreiras Emocionais e Sociais:</h4>
-    <ul style="color: white;">
-        <li>**Sentimento de Egoísmo:** A crença de que focar em si é egoísta quando há tantas necessidades.</li>
-        <li>**Culpa:** Por "abandonar" o filho(a) mesmo que por pouco tempo.</li>
-        <li>**Perfeccionismo:** A busca por ser o cuidador "ideal", sem falhas.</li>
-        <li>**Falta de Reconhecimento:** A ausência de validação social pelo esforço contínuo.</li>
-    </ul>
-</div>
-
-<div class="strategy-box">
-    <h3>💡 Estratégias Essenciais de Autocuidado</h3>
-    
-    <h4 style="color: white;">✅ Autocuidado Físico:</h4>
-    <ul style="color: white;">
-        <li>**Sono Adequado:** Priorize o descanso. Se precisar, peça ajuda para ter noites de sono ininterruptas.</li>
-        <li>**Alimentação Saudável:** Faça refeições nutritivas, evitando pular refeições ou comer em excesso.</li>
-        <li>**Atividade Física:** Mesmo uma caminhada curta pode liberar endorfinas e reduzir o estresse.</li>
-        <li>**Consultas Médicas:** Não negligencie suas próprias consultas e exames de rotina.</li>
-    </ul>
-    
-    <h4 style="color: white;">🔄 Autocuidado Emocional e Mental:</h4>
-    <ul style="color: white;">
-        <li>**Momentos de Relaxamento:** Meditação, mindfulness, ler um livro, ouvir música.</li>
-        <li>**Hobbies e Interesses:** Reserve um tempo para atividades que você goste e que não estejam ligadas ao cuidado.</li>
-        <li>**Limites:** Aprenda a dizer "não" a novas demandas quando já estiver sobrecarregado(a).</li>
-        <li>**Diário/Escrita Terapêutica:** Expressar sentimentos pode ser uma forma de alívio.</li>
-    </ul>
-</div>
-
-<div class="support-box">
-    <h3>🤝 Buscando e Aceitando Ajuda</h3>
-    
-    <h4 style="color: white;">🏡 Mobilizando sua Rede de Apoio Pessoal:</h4>
-    <ul style="color: white;">
-        <li>**Delegar Tarefas:** Peça ajuda a familiares e amigos para tarefas domésticas ou cuidado do adolescente.</li>
-        <li>**Respite Care:** Pesquise programas de "cuidados de respiro" que oferecem alívio temporário do cuidado.</li>
-        <li>**Compartilhar a Carga:** Se houver um parceiro, dividam as responsabilidades de forma equitativa.</li>
-        <li>**Contratar Ajuda:** Se possível, considere ajuda paga para limpeza, babá, etc.</li>
-    </ul>
-    
-    <h4 style="color: white;">🧑‍⚕️ Apoio Profissional e Comunitário:</h4>
-    <ul style="color: white;">
-        <li>**Terapia Individual:** Um psicólogo pode ajudar a lidar com o estresse, a culpa e a desenvolver estratégias.</li>
-        <li>**Grupos de Apoio para Pais:** Compartilhar experiências com outros pais que entendem seus desafios.</li>
-        <li>**Aconselhamento Familiar:** Para garantir que todos na família recebam apoio e que a dinâmica seja saudável.</li>
-        <li>**Associações de Autismo:** Oferecem recursos, workshops e redes de apoio para cuidadores.</li>
-    </ul>
-</div>
-
-<div class="warning-box">
-    <h3>⚠️ Sinais de que o Autocuidado é Urgente</h3>
-    
-    <h4 style="color: white;">🚨 Indicadores de Burnout Severo:</h4>
-    <ul style="color: white;">
-        <li>**Pensamentos de Desistência:** Desejo intenso de abandonar as responsabilidades.</li>
-        <li>**Aumento de Uso de Substâncias:** Álcool, medicamentos ou outras substâncias para lidar com o estresse.</li>
-        <li>**Ideação Suicida/Autoagressão:** Pensamentos ou atos de automutilação ou suicídio.</li>
-        <li>**Agressão Verbal/Física:** Direcionada a si mesmo, ao adolescente ou a outros, devido à sobrecarga.</li>
-        <li>**Complicações Graves de Saúde:** Doenças crônicas ou agudas diretamente ligadas ao estresse prolongado.</li>
-    </ul>
-    
-    <h4 style="color: white;">🏥 Onde Buscar Ajuda Imediata:</h4>
-    <ul style="color: white;">
-        <li>**Pronto-Socorro/Emergência Psiquiátrica:** Em casos de risco imediato para si ou para outros.</li>
-        <li>**Linhas de Apoio Psicológico:** Serviços de atendimento 24h para crises emocionais.</li>
-        <li>**Seu Médico de Família:** Para avaliação e encaminhamento para especialistas em saúde mental.</li>
-    </ul>
-</div>
-
-<div class="resource-grid">
-    <div class="resource-card">
-        <div class="resource-icon">📚</div>
-        <div class="resource-name">Livros sobre Bem-Estar do Cuidador</div>
-        <div class="resource-desc">Materiais que oferecem estratégias e inspiração para cuidadores priorizarem seu autocuidado.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🌐</div>
-        <div class="resource-name">Comunidades Online para Cuidadores</div>
-        <div class="resource-desc">Grupos e fóruns virtuais específicos para cuidadores de pessoas com necessidades especiais.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🧘</div>
-        <div class="resource-name">Apps de Meditação e Relaxamento</div>
-        <div class="resource-desc">Ferramentas digitais para práticas de mindfulness, sono e redução do estresse.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🗣️</div>
-        <div class="resource-name">Programas de Respite Care</div>
-        <div class="resource-desc">Informações sobre serviços de apoio que oferecem descanso temporário aos cuidadores.</div>
-    </div>
-</div>
-
-<div class="tip-box">
-    <h3>💡 Dicas Essenciais para o Autocuidado</h3>
-    
-    <h4 style="color: #e2e8f0;">🗣️ Peça Ajuda:</h4>
-    <p style="color: #cbd5e0;">Você não é um super-herói invencível. Reconhecer seus limites e pedir ajuda é um sinal de força.</p>
-    
-    <h4 style="color: #e2e8f0;">💖 Pequenos Gestos Contam:</h4>
-    <p style="color: #cbd5e0;">O autocuidado não precisa ser grandioso. 15 minutos de silêncio, uma xícara de chá, uma música favorita.</p>
-    
-    <h4 style="color: #e2e8f0;">🔗 Conecte-se com Outros:</h4>
-    <p style="color: #cbd5e0;">Compartilhe suas experiências com pessoas que o entendem. A solidão é um fardo pesado.</p>
-    
-    <h4 style="color: #e2e8f0;">🎉 Celebre Suas Próprias Vitórias:</h4>
-    <p style="color: #cbd5e0;">Reconheça o esforço imenso que você dedica e celebre sua própria resiliência.</p>
-</div>
-
-<div class="teen-demo">
-    <h3>🌱 Sua Energia Nutre o Lar</h3>
-    <div class="teen-circle interactive-element">
-        Cuidar de Si = Cuidar Melhor do Outro
-    </div>
-    <p><strong>Visualize sua energia sendo recarregada! 🔋</strong></p>
-</div>
-
-<div class="hope-box">
-    <h3>🌟 Mensagem de Esperança</h3>
-    <p style="color: white;">Cuidar de si mesmo é o ato mais altruísta que você pode praticar. Ao priorizar seu bem-estar, você não está sendo egoísta; está fortalecendo a base que sustenta toda a sua família. Lembre-se de que sua saúde e sua felicidade são tão importantes quanto as de seu filho(a). Com autocuidado intencional e uma rede de apoio sólida, você terá a vitalidade e a alegria necessárias para continuar a jornada com amor e resiliência, construindo um futuro brilhante para todos.</p>
-</div>
-
-<div class="source-box">
-    <strong>📚 Fontes:</strong> Pesquisas sobre burnout em cuidadores de pessoas com deficiência, Organização Mundial da Saúde (OMS) sobre bem-estar do cuidador, Modelos de Terapia Focada na Compaixão e publicações de psicologia positiva.
-</div>
-</div>
-</div>
-
-             <!-- Página 10: Compreendendo o TEA na Adolescência -->
-            <div class="page">
-            <div class="page-header">
-                <div class="page-number">10</div>
-                <div class="chapter-badge">Capítulo 10</div>
-            </div>
-            <h2>🏡 Ambiente Familiar Saudável: Criando Espaços de Amor</h2>
-            <div class="story-illustration">💖🫂🌱🏠</div>
-            <div class="development-box">
-    <h3>✨ A Essência de um Lar que Nutre</h3>
-    <p style="color: white;">Um ambiente familiar saudável é aquele onde todos os membros se sentem seguros para serem quem são, onde as diferenças são celebradas e onde o amor é a linguagem predominante. Para o adolescente no TEA, isso significa um espaço que respeita suas necessidades sensoriais, valida suas emoções (mesmo que expressas de forma atípica) e oferece uma estrutura que reduz a ansiedade, permitindo o crescimento em um clima de confiança.</p>
-</div>
-
-<div class="stats-grid">
-    <div class="stat-card">
-        <div class="stat-number">95%</div>
-        <div class="stat-label">Valorizam Acolhimento em Casa</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">60%</div>
-        <div class="stat-label">Necessitam de Rotinas Claras</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">CADA UM</div>
-        <div class="stat-label">Precisa de Seu Espaço</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-number">O AMOR</div>
-        <div class="stat-label">É a Base</div>
-    </div>
-</div>
-
-<div class="milestone-box">
-    <h3>🎯 Pilares para um Ambiente Familiar Amoroso e Saudável</h3>
-    
-    <h4 style="color: white;">💖 Segurança Emocional e Aceitação Incondicional:</h4>
-    <ul style="color: white;">
-        <li>**Validação de Emoções:** Reconheça e valide os sentimentos do seu filho(a), mesmo que a expressão seja confusa. "Eu vejo que você está frustrado(a)."</li>
-        <li>**Amor Incondicional:** Assegure que seu filho(a) saiba que é amado(a) por quem ele(a) é, não pelo que faz.</li>
-        <li>**Respeito à Neurodiversidade:** Celebre as particularidades do TEA como parte da riqueza da família.</li>
-        <li>**Comunicação Empática:** Ouça ativamente e tente compreender a perspectiva do adolescente.</li>
-    </ul>
-    
-    <h4 style="color: white;">⚙️ Estrutura e Previsibilidade Afetiva:</h4>
-    <ul style="color: white;">
-        <li>**Rotinas Claras:** Mantenha horários e sequências previsíveis para atividades diárias, reduzindo a ansiedade.</li>
-        <li>**Regras de Casa Explícitas:** Comunique as regras de forma clara e visual, explicando o "porquê".</li>
-        <li>**Transições Suaves:** Prepare o adolescente para mudanças na rotina ou planos com antecedência e suporte.</li>
-        <li>**Consistência:** Mantenha a coerência nas expectativas e respostas em toda a família.</li>
-    </ul>
-</div>
-
-<div class="challenge-box">
-    <h3>⚡ Desafios na Manutenção do Ambiente Saudável</h3>
-    
-    <h4 style="color: white;">🌪️ Pressões Cotidianas:</h4>
-    <ul style="color: white;">
-        <li>**Estresse Familiar:** A rotina intensa e os desafios podem levar a tensões e discussões.</li>
-        <li>**Sobrecarga Sensorial Compartilhada:** O ambiente pode ser esmagador para o adolescente e, por vezes, para outros membros.</li>
-        <li>**Dificuldade de Equilíbrio:** Garantir atenção individual para todos os filhos e para o casal.</li>
-        <li>**Cansaço dos Cuidadores:** O esgotamento pode afetar a paciência e a capacidade de manter a calma.</li>
-    </ul>
-    
-    <h4 style="color: white;">😟 Conflitos e Mal-entendidos:</h4>
-    <ul style="color: white;">
-        <li>**Comunicação Falha:** Dificuldade em expressar necessidades ou compreender o outro, levando a frustração.</li>
-        <li>**Diferenças nas Abordagens:** Pais ou cuidadores com visões distintas sobre como lidar com o TEA.</li>
-        <li>**Ciúmes entre Irmãos:** Sentimentos de favoritismo ou negligência por parte dos irmãos típicos.</li>
-        <li>**Gerenciamento de Crises:** Lidando com meltdowns ou shutdowns de forma que não afete negativamente o clima familiar.</li>
-    </ul>
-</div>
-
-<div class="strategy-box">
-    <h3>💡 Estratégias para Cultivar Amor e Harmonia no Lar</h3>
-    
-    <h4 style="color: white;">✅ Fomentando Conexão e Afeto:</h4>
-    <ul style="color: white;">
-        <li>**Tempo de Qualidade Individual:** Dedique momentos exclusivos para cada filho, fazendo algo que ele(a) goste.</li>
-        <li>**Atividades Familiares Compartilhadas:** Encontre hobbies ou atividades que toda a família possa desfrutar junta.</li>
-        <li>**Ritual de Gratidão:** Pratique expressar gratidão e apreciação pelos outros membros da família.</li>
-        <li>**Toque Afetuoso (se aceitável):** Abraços, carinhos, tapinhas no ombro podem reforçar o vínculo.</li>
-    </ul>
-    
-    <h4 style="color: white;">🔄 Criando Espaços e Rotinas Saudáveis:</h4>
-    <ul style="color: white;">
-        <li>**Cantos de Calma:** Crie um espaço sensorialmente amigável onde o adolescente possa se retirar para se acalmar.</li>
-        <li>**Comunicação Visual Acessível:** Utilize quadros de tarefas, calendários visuais e comunicadores para todos.</li>
-        <li>**Envolva o Adolescente:** Dê a ele(a) um papel ativo na organização e nas decisões do lar, dentro de suas capacidades.</li>
-        <li>**Resolução de Conflitos Guiada:** Ensine e pratique formas construtivas de resolver desentendimentos familiares.</li>
-    </ul>
-</div>
-
-<div class="support-box">
-    <h3>🤝 O Papel de Cada Membro para um Lar Feliz</h3>
-    
-    <h4 style="color: white;">👨‍👩‍👧‍👦 Envolvimento de Todos:</h4>
-    <ul style="color: white;">
-        <li>**Educação para os Irmãos:** Ajude os irmãos a entenderem o TEA e a desenvolverem empatia.</li>
-        <li>**Tarefas Compartilhadas:** Distribua responsabilidades domésticas de forma justa e adequada à idade/habilidade.</li>
-        <li>**Espaço para Expressão de Todos:** Garanta que cada membro da família tenha voz e se sinta ouvido.</li>
-    </ul>
-    
-    <h4 style="color: white;">🧘 Autocuidado Coletivo e Individual:</h4>
-    <ul style="color: white;">
-        <li>**Priorize o Autocuidado Parental:** Pais descansados e felizes contribuem para um lar mais sereno.</li>
-        <li>**Momentos de Respiro:** Organize-se para que os cuidadores tenham tempo para si mesmos e para o casal.</li>
-        <li>**Terapia Familiar:** Busque ajuda profissional se as dinâmicas familiares estiverem muito tensas.</li>
-    </ul>
-</div>
-
-<div class="warning-box">
-    <h3>⚠️ Sinais de Alerta: Quando o Ambiente Precisa de Atenção Urgente</h3>
-    
-    <h4 style="color: white;">🚨 Indicadores de um Lar em Desequilíbrio:</h4>
-    <ul style="color: white;">
-        <li>**Tensão Constante:** O clima em casa é persistentemente pesado, com brigas frequentes.</li>
-        <li>**Isolamento de Membros:** Alguns membros da família se retiram ou evitam a interação.</li>
-        <li>**Aumento de Comportamentos Desafiadores:** Comportamentos do adolescente pioram em casa.</li>
-        <li>**Cansaço Crônico da Família:** Todos se sentem esgotados e sem alegria no ambiente doméstico.</li>
-        <li>**Falta de Respeito:** Desrespeito mútuo ou críticas constantes entre os membros.</li>
-    </ul>
-    
-    <h4 style="color: white;">👨‍⚕️ Profissionais que Podem Auxiliar na Dinâmica Familiar:</h4>
-    <ul style="color: white;">
-        <li>**Terapeuta Familiar/Sistêmico:** Para trabalhar as dinâmicas, comunicação e resolver conflitos familiares.</li>
-        <li>**Psicólogo Infantil/Adolescente:** Para ajudar o adolescente a expressar suas necessidades e lidar com as emoções no contexto familiar.</li>
-        <li>**Consultor de Organização/Ambiente:** Para adaptar espaços físicos às necessidades sensoriais da família.</li>
-        <li>**Mediador Familiar:** Para auxiliar na resolução de conflitos complexos.</li>
-    </ul>
-</div>
-
-<div class="resource-grid">
-    <div class="resource-card">
-        <div class="resource-icon">📚</div>
-        <div class="resource-name">Livros sobre Parenting Positivo</div>
-        <div class="resource-desc">Materiais que guiam na criação de um ambiente familiar baseado no respeito, empatia e disciplina positiva.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🌐</div>
-        <div class="resource-name">Comunidades de Apoio Online</div>
-        <div class="resource-desc">Grupos para pais que compartilham estratégias de harmonia familiar no contexto do TEA.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🧘</div>
-        <div class="resource-name">Recursos de Resolução de Conflitos</div>
-        <div class="resource-desc">Ferramentas e técnicas para mediar brigas e ensinar habilidades de negociação.</div>
-    </div>
-    
-    <div class="resource-card">
-        <div class="resource-icon">🎨</div>
-        <div class="resource-name">Guias de Ambiente Sensorial</div>
-        <div class="resource-desc">Dicas para adaptar o lar às necessidades sensoriais, promovendo conforto e calma.</div>
-    </div>
-</div>
-
-<div class="tip-box">
-    <h3>💡 Dicas Essenciais para um Lar de Amor</h3>
-    
-    <h4 style="color: #e2e8f0;">🗣️ Pratique a Escuta Ativa e Empática:</h4>
-    <p style="color: #cbd5e0;">Tente ver o mundo pelos olhos do seu filho(a) e dos outros membros da família. Valide os sentimentos de todos.</p>
-    
-    <h4 style="color: #e2e8f0;">💖 Celebre as Pequenas Alegrias Diárias:</h4>
-    <p style="color: #cbd5e0;">Crie rituais familiares de conexão e aprecie os momentos simples de união e felicidade.</p>
-    
-    <h4 style="color: #e2e8f0;">🔗 Mantenha a Previsibilidade e Flexibilidade:</h4>
-    <p style="color: #cbd5e0;">Estruture a rotina para dar segurança, mas também ensine a lidar com pequenas mudanças de forma gradual.</p>
-    
-    <h4 style="color: #e2e8f0;">🎉 Reconheça o Esforço de Todos:</h4>
-    <p style="color: #cbd5e0;">Valorize a contribuição de cada membro para a harmonia do lar, mostrando apreço e gratidão.</p>
-</div>
-
-<div class="teen-demo">
-    <h3>🌱 O Lar: Onde o Amor Floresce</h3>
-    <div class="teen-circle interactive-element">
-        Aceitação + Estrutura = Família em Plenitude
-    </div>
-    <p><strong>Visualize um ninho de amor e segurança para seu filho(a)! 💖</strong></p>
-</div>
-
-<div class="hope-box">
-    <h3>🌟 Mensagem de Esperança</h3>
-    <p style="color: white;">Criar um ambiente familiar saudável é um compromisso diário com o amor, a paciência e a compreensão mútua. É um investimento no bem-estar de seu filho(a) no TEA e de todos que nele habitam. Com dedicação para nutrir um clima de aceitação, previsibilidade e afeto, seu lar será um porto seguro, um espaço onde a individualidade é celebrada e onde cada membro se sente capacitado a crescer, amar e prosperar, construindo memórias de um amor que transcende todos os desafios.</p>
-</div>
-
-<div class="source-box">
-    <strong>📚 Fontes:</strong> Modelos de Terapia Familiar Sistêmica (Murray Bowen, Salvador Minuchin), Princípios da Disciplina Positiva (Jane Nelsen), Pesquisas sobre Famílias de Crianças com TEA e Bem-Estar Familiar, e publicações sobre ambientes sensoriais e inclusivos.
-</div>
-        </div>
-</div>       
-
-
-
- 
-     <script>
+    <div class="container">
+        <h1>Comunicação Alternativa - infantil</h1>
         
-    const pages = document.querySelectorAll('.page');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const progressBar = document.getElementById('progressBar');
-    const pageCounter = document.getElementById('pageCounter');
-    let currentPageIndex = 0;
+        <div class="document-viewer-wrapper" id="pdfViewerWrapper">
+            <iframe 
+                src="Juntos-Somos-Mais-Fortes-Um-Guia-de-Apoio-para-a-Sua-Familia.pdf" 
+                class="document-viewer" 
+                id="pdfViewer"
+                type="application/pdf"
+                aria-label="Visualizador do documento PDF sobre Autismo">
+                <p>Seu navegador não suporta a visualização de PDFs diretamente. Você pode <a href="Juntos-Somos-Mais-Fortes-Um-Guia-de-Apoio-para-a-Sua-Familia.pdf" target="_blank" rel="noopener noreferrer">clicar aqui para baixar o documento</a> e visualizá-lo em um leitor de PDF.</p>
+            </iframe>
+        </div>
 
-    function showPage(index) {
-        pages.forEach((page, i) => {
-            if (i === index) {
-                page.classList.add('active');
-            } else {
-                page.classList.remove('active');
+        <div class="actions">
+            <a href="Juntos-Somos-Mais-Fortes-Um-Guia-de-Apoio-para-a-Sua-Familia.pdf" download class="button-link">
+                Baixar PDF
+            </a>
+            <a href="#" class="button-link" onclick="alert('Esta função exigiria a criação de um arquivo EPUB ou similar. Para demonstração, o botão de download do PDF é a melhor opção no momento.'); return false;">
+                Ver em Formato de Livro (E-book)
+            </a>
+            <button onclick="history.back()">Voltar</button>
+        </div>
+
+        <p>Este documento oferece informações cruciais sobre os primeiros sinais do autismo e a importância da intervenção precoce. Para ativar a lupa, clique em qualquer parte do documento acima. Para desativar, clique novamente na lupa ou em qualquer outro lugar.</p>
+    </div>
+
+    <script>
+        const pdfViewerWrapper = document.getElementById('pdfViewerWrapper');
+        const pdfViewer = document.getElementById('pdfViewer');
+        let magnifierGlass = null; // Variável para armazenar a lupa
+
+        // Adiciona um ouvinte de eventos para cliques no wrapper do PDF
+        pdfViewerWrapper.addEventListener('click', function(e) {
+            // Se já existe uma lupa, remove-a
+            if (magnifierGlass) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                // Restaura o cursor padrão
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+                return; // Sai da função após remover
+            }
+
+            // Cria o elemento da lupa
+            magnifierGlass = document.createElement('div');
+            magnifierGlass.classList.add('magnifier-glass');
+
+            // Cria o conteúdo da lupa (uma cópia do iframe para simular o zoom)
+            const magnifierContent = pdfViewer.cloneNode(true);
+            magnifierContent.classList.remove('document-viewer'); // Remove estilos do iframe original
+            magnifierContent.style.position = 'absolute';
+            magnifierContent.style.top = '0';
+            magnifierContent.style.left = '0';
+            magnifierContent.style.width = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.height = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.pointerEvents = 'none'; // Impede interação com o iframe clonado na lupa
+
+            magnifierGlass.appendChild(magnifierContent);
+            pdfViewerWrapper.appendChild(magnifierGlass);
+
+            // Adiciona um evento de clique na lupa para removê-la
+            magnifierGlass.addEventListener('click', function(event) {
+                event.stopPropagation(); // Impede que o clique na lupa se propague para o wrapper
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+            });
+
+            // Calcula a posição do clique dentro do iframe
+            const rect = pdfViewerWrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left; // Coordenada X relativa ao wrapper
+            const y = e.clientY - rect.top;  // Coordenada Y relativa ao wrapper
+
+            // Posiciona a lupa no centro do clique
+            magnifierGlass.style.left = `${x}px`;
+            magnifierGlass.style.top = `${y}px`;
+
+            // Calcula o deslocamento do conteúdo dentro da lupa para simular o zoom na área clicada
+            // O conteúdo da lupa é 2x maior, então o ponto de origem deve ser metade da distância
+            // da borda para o clique.
+            const zoomLevel = 2; // O mesmo que as dimensões do magnifierContent
+            const contentX = -x * (zoomLevel - 1) + (magnifierGlass.offsetWidth / 2);
+            const contentY = -y * (zoomLevel - 1) + (magnifierGlass.offsetHeight / 2);
+
+            magnifierContent.style.transform = `translate(${contentX}px, ${contentY}px)`;
+
+            // Muda o cursor para indicar que a lupa está ativa
+            pdfViewerWrapper.style.cursor = 'zoom-out';
+        });
+
+        // Adiciona um ouvinte para cliques em qualquer lugar do documento
+        // Isso permite remover a lupa clicando fora dela (no body, por exemplo)
+        document.addEventListener('click', function(event) {
+            if (magnifierGlass && !pdfViewerWrapper.contains(event.target)) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
             }
         });
-        updateNavigationButtons();
-        updateProgressBar();
-        updatePageCounter();
-    }
-
-    function updateNavigationButtons() {
-        prevBtn.disabled = currentPageIndex === 0;
-        nextBtn.disabled = currentPageIndex === pages.length - 1;
-    }
-
-    function updateProgressBar() {
-        const progress = (currentPageIndex / (pages.length - 1)) * 100;
-        progressBar.style.width = `${progress}%`;
-    }
-
-    function updatePageCounter() {
-        pageCounter.textContent = `${currentPageIndex + 1} / ${pages.length}`;
-    }
-
-    prevBtn.addEventListener('click', () => {
-        if (currentPageIndex > 0) {
-            currentPageIndex--;
-            showPage(currentPageIndex);
-        }
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (currentPageIndex < pages.length - 1) {
-            currentPageIndex++;
-            showPage(currentPageIndex);
-        }
-    });
-
-    // Initialize the first page and navigation
-    showPage(currentPageIndex);
-</script>
-
+    </script>
+</body>
+</html>

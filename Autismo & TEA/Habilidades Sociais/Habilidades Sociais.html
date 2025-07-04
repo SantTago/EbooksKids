@@ -1,1811 +1,351 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Habilidades Sociais - Guia Completo</title>
+    <title>Desvendando o Autismo - Leitura Otimizada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap');
-        
-        * {
+        :root {
+            --primary-color: #5865F2; /* Azul vibrante */
+            --secondary-color: #4A56E2; /* Azul mais escuro para títulos */
+            --gradient-start: #667eea;
+            --gradient-end: #764ba2;
+            --text-light: #f0f0f0;
+            --text-dark: #333;
+            --bg-card: rgba(255, 255, 255, 0.98);
+            --shadow-light: rgba(0, 0, 0, 0.15);
+            --shadow-strong: rgba(0, 0, 0, 0.25);
+            --border-radius-lg: 12px;
+            --border-radius-md: 8px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--text-light);
+            text-align: center;
             box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            min-height: 100vh;
+            padding: 40px 20px; /* Padding geral para telas grandes */
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        
-        .ebook-container {
+
+        .container {
+            width: 100%;
             max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            border-radius: 25px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .page {
-            min-height: 100vh;
-            padding: 50px;
-            display: none;
-            position: relative;
-            background: linear-gradient(45deg, #f8fafc, #f1f5f9);
-        }
-        
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .page-header {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        
-        .page-number {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-weight: 600;
-            font-size: 20px;
-            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
-        }
-        
-        .chapter-badge {
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-        
-        h1 {
-            color: #1e293b;
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        h2 {
-            color: #4f46e5;
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            text-align: center;
-            font-weight: 700;
-        }
-        
-        h3 {
-            color: #7c3aed;
-            font-size: 1.6rem;
-            margin-bottom: 18px;
-            font-weight: 600;
-        }
-        
-        h4 {
-            color: #475569;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        
-        p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #475569;
-            margin-bottom: 22px;
-            text-align: justify;
-            font-weight: 400;
-        }
-        
-        .social-icon {
-            width: 140px;
-            height: 140px;
-            border-radius: 25px;
-            margin: 25px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            animation: gentle-pulse 3s infinite;
-        }
-        
-        @keyframes gentle-pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
-            50% { transform: scale(1.05); box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3); }
-        }
-        
-        .communication-box {
-            background: linear-gradient(135deg, #06b6d4, #3b82f6);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #10b981;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-            color: white;
-        }
-        
-        .communication-box::before {
-            content: "💬";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .empathy-box {
-            background: linear-gradient(135deg, #ec4899, #f97316);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .empathy-box::before {
-            content: "❤️";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .leadership-box {
-            background: linear-gradient(135deg, #8b5cf6, #a855f7);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .leadership-box::before {
-            content: "👑";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .confidence-box {
-            background: linear-gradient(135deg, #f59e0b, #f97316);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            border-left: 6px solid #ef4444;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-            color: white;
-        }
-        
-        .confidence-box::before {
-            content: "💪";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .networking-box {
-            background: linear-gradient(135deg, #10b981, #059669);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .networking-box::before {
-            content: "🌐";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .navigation {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            z-index: 1000;
-        }
-        
-        .nav-btn {
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            color: white;
-            border: none;
-            padding: 18px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Nunito', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        
-        .nav-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-        }
-        
-        .nav-btn:disabled {
-            background: #cbd5e0;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 6px;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
-            transition: width 0.5s ease;
-            z-index: 1001;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .page-counter {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.9);
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            color: #475569;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .source-box {
-            background: #f8fafc;
-            border: 3px dashed #cbd5e0;
-            padding: 25px;
-            border-radius: 20px;
-            margin-top: 35px;
-            font-size: 1rem;
-            color: #64748b;
-            position: relative;
-        }
-        
-        .source-box::before {
-            content: "📚";
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-        }
-        
-        .social-demo {
-            text-align: center;
+            background-color: var(--bg-card);
             padding: 40px;
-            background: linear-gradient(135deg, #e0f2fe, #f3e8ff);
-            border-radius: 25px;
-            margin: 25px 0;
-        }
-        
-        .connection-circle {
-            width: 180px;
-            height: 180px;
-            border: 6px solid #4f46e5;
-            border-radius: 50%;
-            margin: 25px auto;
+            box-shadow: 0 15px 35px var(--shadow-strong);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: 30px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            color: #4f46e5;
-            font-weight: 600;
-            animation: gentle-rotate 15s infinite linear;
-            box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
-            position: relative;
+            color: var(--text-dark);
+            position: relative; /* Necessário para posicionar a lupa */
         }
-        
-        .connection-circle::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 30px;
-            height: 30px;
-            background: #7c3aed;
-            border-radius: 50%;
-            animation: orbit 4s infinite;
-        }
-        
-        @keyframes gentle-rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes orbit {
-            0%, 100% { transform: scale(1) translateY(0); }
-            50% { transform: scale(1.2) translateY(-5px); }
-        }
-        
-        .story-illustration {
-            text-align: center;
-            font-size: 4rem;
-            margin: 30px 0;
-            animation: gentle-float 4s ease-in-out infinite;
-        }
-        
-        @keyframes gentle-float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        ul, ol {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #475569;
-            margin-left: 25px;
-            font-weight: 400;
-        }
-        
-        li {
-            margin-bottom: 12px;
-            position: relative;
-        }
-        
-        .checklist {
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .checklist li::before {
-            content: "✅";
-            margin-right: 10px;
-        }
-        
-        .steps-list {
-            counter-reset: step-counter;
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .steps-list li {
-            counter-increment: step-counter;
-            position: relative;
-            padding-left: 40px;
-        }
-        
-        .steps-list li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: #4f46e5;
-            color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        
-        .interactive-element {
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        
-        .interactive-element:hover {
-            transform: scale(1.05);
-        }
-        
-        .skill-badge {
-            background: linear-gradient(45deg, #7c3aed, #a855f7);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-        
-        .level-badge {
-            background: linear-gradient(45deg, #f59e0b, #f97316);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-left: 10px;
-        }
-        
-        .quote-box {
-            background: linear-gradient(135deg, #fef3c7, #fed7aa);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #f59e0b;
-            font-style: italic;
-            font-size: 1.1rem;
-            position: relative;
-        }
-        
-    
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .stat-card {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
+
+        h1 {
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            font-size: 2.5em;
             font-weight: 700;
-            margin-bottom: 10px;
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
-        
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
+
+        .document-viewer-wrapper {
+            position: relative; /* Para posicionar a lupa dentro */
+            width: 100%;
+            min-height: 550px;
+            height: 75vh;
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 8px 20px var(--shadow-light);
+            overflow: hidden; /* Garante que a lupa não vaze */
+            cursor: zoom-in; /* Indica que é clicável para zoom */
         }
-        
-        .skill-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
+
+        .document-viewer {
+            width: 100%;
+            height: 100%;
+            border: none; /* A borda será no wrapper */
         }
-        
-        .skill-card {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .skill-card-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .skill-card-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .skill-card-desc {
-            font-size: 1rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-        
-        .technique-box {
-            background: linear-gradient(135deg, #06b6d4, #0891b2);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .technique-box::before {
-            content: "🎯";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .warning-box {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .warning-box::before {
-            content: "⚠️";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .success-box {
-            background: linear-gradient(135deg, #10b981, #059669);
-            padding: 30px;
-            border-radius: 25px;
-            margin: 25px 0;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .success-box::before {
-            content: "🌟";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .function-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .function-card {
-            background: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            border-top: 4px solid #4f46e5;
-        }
-        
-        .function-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .function-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .function-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-align: center;
-            color: #1e293b;
-        }
-        
-        .function-desc {
-            font-size: 1rem;
-            color: #64748b;
-            line-height: 1.5;
-            text-align: center;
-        }
-        
-        .benefit-list {
-            background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #10b981;
-        }
-        
-        .benefit-title {
-            color: #065f46;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .benefit-item {
+
+        .actions {
             display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            color: #064e3b;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            width: 100%;
         }
-        
-        .benefit-icon {
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .implementation-steps {
-            background: linear-gradient(135deg, #eff6ff, #dbeafe);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #3b82f6;
-        }
-        
-        .step-title {
-            color: #1e40af;
-            font-size: 1.3rem;
+
+        button, .button-link {
+            padding: 14px 30px;
+            font-size: 1.1em;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
             font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .step-item {
-            background: white;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border-left: 3px solid #3b82f6;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        
-        .step-number {
-            background: #3b82f6;
-            color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
+            letter-spacing: 0.5px;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            min-width: 180px;
+        }
+
+        button:hover, .button-link:hover {
+            background-color: #4452D3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        button:active, .button-link:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            margin-top: 25px;
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        p a {
+            color: #007bff;
+            text-decoration: none;
             font-weight: 600;
-            margin-right: 10px;
         }
-        
-        .metric-box {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 15px 0;
-            text-align: center;
-            border: 2px solid #f59e0b;
+        p a:hover {
+            text-decoration: underline;
+            color: #0056b3;
         }
-        
-        .metric-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #92400e;
-            margin-bottom: 5px;
-        }
-        
-        .metric-label {
-            font-size: 1rem;
-            color: #78350f;
-            font-weight: 500;
-        }
-        
-        .timeline {
-            position: relative;
-            margin: 30px 0;
-        }
-        
-        .timeline::before {
-            content: '';
+
+        /* --- Estilos da Lupa --- */
+        .magnifier-glass {
             position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, #4f46e5, #7c3aed);
-            border-radius: 2px;
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin: 30px 0;
-            padding-left: 80px;
-        }
-        
-        .timeline-marker {
-            position: absolute;
-            left: 15px;
-            top: 0;
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            border: 3px solid var(--primary-color);
             border-radius: 50%;
-            display: flex;
+            cursor: zoom-out;
+            width: 150px; /* Tamanho da lupa */
+            height: 150px;
+            transform: translate(-50%, -50%); /* Centraliza a lupa no clique */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden; /* Garante que o conteúdo dentro não transborde */
+            pointer-events: none; /* Permite interagir com o iframe por baixo, mas a lupa ainda bloqueia o clique nela */
+            z-index: 10; /* Garante que a lupa fique acima do iframe */
+            background-color: rgba(255, 255, 255, 0.1); /* Um leve fundo translúcido */
+            display: flex; /* Para centralizar o conteúdo dentro */
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
         }
-        
-        .timeline-content {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-left: 4px solid #4f46e5;
-        }
-        
-        .timeline-stage {
-            color: #4f46e5;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-        
-        .timeline-title {
-            color: #1e293b;
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        
-        .timeline-desc {
-            color: #64748b;
-            line-height: 1.6;
-        }
-        
-        .social-demo-advanced {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            padding: 30px;
-            border-radius: 20px;
-            margin: 25px 0;
-            text-align: center;
-        }
-        
-        .social-skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin: 20px 0;
-            padding: 20px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .social-skill {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        
-        .social-skill:hover {
-            transform: scale(1.05);
-        }
-        
-        .social-skill-icon {
-            font-size: 2rem;
-            margin-bottom: 8px;
-        }
-        
-        .social-skill-text {
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        
-        .scenario-showcase {
-            background: linear-gradient(135deg, #1e293b, #334155);
-            padding: 30px;
-            border-radius: 20px;
-            margin: 25px 0;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .scenario-showcase::before {
-            content: '';
+
+        .magnifier-content {
             position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(79, 70, 229, 0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
+            width: 200%; /* Exemplo de zoom: 2x */
+            height: 200%; /* Exemplo de zoom: 2x */
+            transform-origin: 0 0; /* Ponto de origem da transformação */
+            /* Isso será ajustado via JS */
         }
         
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .scenario-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .scenario-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .scenario-card {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .scenario-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .scenario-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        
-        .scenario-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        
-        .scenario-desc {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            line-height: 1.4;
-        }
-        
-        .tip-box {
-            background: #1e293b;
-            color: #e2e8f0;
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            overflow-x: auto;
-            position: relative;
-        }
-        
-        .tip-box::before {
-            content: "💡";
-            position: absolute;
-            top: -10px;
-            right: 15px;
-            background: #4f46e5;
-            color: white;
-            padding: 5px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-        }
-        
-        .success-story {
-            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #10b981;
-        }
-        
-        .success-title {
-            color: #065f46;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .success-title::before {
-            content: "🌟";
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .exercise-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .exercise-card {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .exercise-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .exercise-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .exercise-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .exercise-desc {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            line-height: 1.4;
-        }
-        
-        .challenge-box {
-            background: linear-gradient(135deg, #f59e0b, #f97316);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            color: white;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        
-        .challenge-box::before {
-            content: "🎯";
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            font-size: 2rem;
-            background: white;
-            padding: 5px;
-            border-radius: 50%;
-        }
-        
-        .assessment-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .assessment-item {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-top: 3px solid #4f46e5;
-        }
-        
-        .assessment-score {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #4f46e5;
-            margin-bottom: 10px;
-        }
-        
-        .assessment-label {
-            font-size: 0.9rem;
-            color: #64748b;
-            font-weight: 500;
-        }
-        
-        .practice-scenario {
-            background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #8b5cf6;
-        }
-        
-        .scenario-title {
-            color: #6b21a8;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .scenario-title::before {
-            content: "🎭";
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .conversation-flow {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 15px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        
-        .conversation-step {
-            display: flex;
-            align-items: center;
-            margin: 10px 0;
-            padding: 10px;
-            background: #f8fafc;
-            border-radius: 10px;
-            border-left: 3px solid #4f46e5;
-        }
-        
-        .step-icon {
-            background: #4f46e5;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        
-        .step-text {
-            flex: 1;
-            color: #475569;
-            font-size: 1rem;
-        }
-        
-        @media (max-width: 768px) {
-            .page {
-                padding: 30px 20px;
+        /* --- Media Queries para Responsividade --- */
+        @media (max-width: 992px) {
+            .container {
+                max-width: 95%;
+                padding: 30px;
             }
-            
             h1 {
-                font-size: 2.2rem;
+                font-size: 2.2em;
             }
-            
-            h2 {
-                font-size: 1.8rem;
+            .document-viewer-wrapper {
+                min-height: 500px;
+                height: 70vh;
             }
-            
-            .social-icon {
-                width: 100px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 15px;
+            }
+            .container {
+                padding: 25px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 1.9em;
+                margin-bottom: 25px;
+            }
+            .document-viewer-wrapper {
+                min-height: 450px;
+                height: 65vh;
+                margin-bottom: 25px;
+            }
+            button, .button-link {
+                padding: 12px 25px;
+                font-size: 1em;
+                min-width: unset;
+                flex-grow: 1;
+            }
+            .actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            p {
+                font-size: 0.95em;
+                margin-top: 20px;
+            }
+            .magnifier-glass {
+                width: 120px; /* Lupa menor em telas menores */
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+            .container {
+                padding: 20px;
+                border-radius: 8px;
+            }
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 20px;
+            }
+            .document-viewer-wrapper {
+                min-height: 400px;
+                height: 60vh;
+            }
+            button, .button-link {
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+            .magnifier-glass {
+                width: 100px; /* Lupa ainda menor em telas muito pequenas */
                 height: 100px;
-                font-size: 3.5rem;
-            }
-            
-            .connection-circle {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .skill-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .function-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .social-skills-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline-item {
-                padding-left: 60px;
-            }
-            
-            .timeline::before {
-                left: 20px;
-            }
-            
-            .timeline-marker {
-                left: 5px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
-    <div class="page-counter" id="pageCounter">1 / 15</div>
-    
-    <div class="ebook-container">
-        <!-- Página 1: Capa -->
-        <div class="page active">
-            <div class="page-header">
-                <div class="page-number">1</div>
-                <div class="chapter-badge">CAPA</div>
-            </div>
-            <h1>🤝 HABILIDADES SOCIAIS 💬</h1>
-            <div class="social-icon interactive-element">🤝</div>
-            <h2>Guia Completo para Relacionamentos de Sucesso</h2>
-            
-            <div class="communication-box">
-                <h3>💬 A Arte da Conexão Humana</h3>
-                <p style="text-align: center; font-size: 1.4rem; color: white;"><strong>Um guia prático e científico para desenvolver habilidades sociais excepcionais, construir relacionamentos saudáveis e alcançar sucesso pessoal e profissional através da comunicação eficaz</strong></p>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">93%</div>
-                    <div class="stat-label">Comunicação Não-Verbal</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">85%</div>
-                    <div class="stat-label">Sucesso Profissional</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">12</div>
-                    <div class="stat-label">Habilidades Essenciais</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">∞</div>
-                    <div class="stat-label">Oportunidades de Conexão</div>
-                </div>
-            </div>
-            
-            <div class="skill-badge">🎯 Foco: Comunicação Eficaz</div>
-            <div class="level-badge">📈 Nível: Iniciante ao Avançado</div>
-            
-            <div class="quote-box">
-                "As habilidades sociais são a moeda do século XXI. Elas determinam não apenas nosso sucesso profissional, mas também nossa felicidade e bem-estar pessoal" - Daniel Goleman
-            </div>
-            
-            <div class="metric-box">
-                <div class="metric-number">🌟</div>
-                <div class="metric-label">Cada Interação é uma Oportunidade</div>
-            </div>
-            
-            <div class="communication-box">
-                <h3>💬 O que você vai dominar:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎯 Comunicação Assertiva:</strong> Expressar-se com clareza e confiança</li>
-                    <li><strong>👂 Escuta Ativa:</strong> Ouvir verdadeiramente e compreender os outros</li>
-                    <li><strong>❤️ Inteligência Emocional:</strong> Gerenciar emoções próprias e alheias</li>
-                    <li><strong>🤝 Empatia:</strong> Conectar-se genuinamente com as pessoas</li>
-                    <li><strong>💪 Confiança Social:</strong> Superar timidez e ansiedade social</li>
-                    <li><strong>👑 Liderança:</strong> Influenciar e inspirar positivamente</li>
-                    <li><strong>🌐 Networking:</strong> Construir redes de relacionamento valiosas</li>
-                    <li><strong>🎭 Linguagem Corporal:</strong> Comunicar através de gestos e postura</li>
-                </ul>
-            </div>
-            
-            <div class="empathy-box">
-                <h3>❤️ Habilidades Fundamentais:</h3>
-                <ul style="color: white;">
-                    <li><strong>💬 Comunicação Verbal:</strong> Clareza, tom e escolha de palavras</li>
-                    <li><strong>👁️ Comunicação Não-Verbal:</strong> Gestos, expressões e postura</li>
-                    <li><strong>👂 Escuta Empática:</strong> Compreender além das palavras</li>
-                    <li><strong>🎯 Assertividade:</strong> Defender direitos respeitando os outros</li>
-                    <li><strong>🤔 Resolução de Conflitos:</strong> Mediar e solucionar desentendimentos</li>
-                    <li><strong>🎉 Habilidades de Apresentação:</strong> Falar em público com confiança</li>
-                    <li><strong>🤝 Trabalho em Equipe:</strong> Colaborar efetivamente com outros</li>
-                    <li><strong>🌱 Feedback Construtivo:</strong> Dar e receber críticas positivamente</li>
-                </ul>
-            </div>
-            
-            <div class="leadership-box">
-                <h3>👑 Competências de Liderança:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎯 Visão e Inspiração:</strong> Motivar e engajar pessoas</li>
-                    <li><strong>🤝 Influência Positiva:</strong> Persuadir sem manipular</li>
-                    <li><strong>📊 Tomada de Decisão:</strong> Decidir considerando todos os envolvidos</li>
-                    <li><strong>🌱 Desenvolvimento de Pessoas:</strong> Ajudar outros a crescer</li>
-                    <li><strong>🔄 Adaptabilidade:</strong> Ajustar estilo conforme a situação</li>
-                    <li><strong>💪 Resiliência:</strong> Manter-se forte diante de desafios</li>
-                    <li><strong>🎨 Criatividade Social:</strong> Encontrar soluções inovadoras</li>
-                    <li><strong>⚖️ Ética e Integridade:</strong> Liderar com valores sólidos</li>
-                </ul>
-            </div>
-            
-            <div class="confidence-box">
-                <h3>💪 Desenvolvimento da Confiança:</h3>
-                <ul style="color: white;">
-                    <li><strong>🧠 Autoconhecimento:</strong> Compreender pontos fortes e fracos</li>
-                    <li><strong>🎯 Definição de Objetivos:</strong> Metas claras para crescimento social</li>
-                    <li><strong>🏃‍♂️ Zona de Conforto:</strong> Expandir gradualmente limites pessoais</li>
-                    <li><strong>🎭 Prática Deliberada:</strong> Exercitar habilidades sistematicamente</li>
-                    <li><strong>📈 Feedback Contínuo:</strong> Aprender com cada interação</li>
-                    <li><strong>🌟 Celebração de Conquistas:</strong> Reconhecer progressos alcançados</li>
-                    <li><strong>🤝 Mentoria:</strong> Aprender com pessoas experientes</li>
-                    <li><strong>📚 Aprendizado Contínuo:</strong> Sempre buscar novos conhecimentos</li>
-                </ul>
-            </div>
-            
-            <div class="networking-box">
-                <h3>🌐 Estratégias de Networking:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎯 Networking Autêntico:</strong> Construir relacionamentos genuínos</li>
-                    <li><strong>💼 Networking Profissional:</strong> Expandir oportunidades de carreira</li>
-                    <li><strong>🌱 Networking Social:</strong> Desenvolver amizades significativas</li>
-                    <li><strong>💻 Networking Digital:</strong> Usar redes sociais efetivamente</li>
-                    <li><strong>🎉 Eventos e Encontros:</strong> Maximizar oportunidades presenciais</li>
-                    <li><strong>🤝 Manutenção de Contatos:</strong> Cultivar relacionamentos ao longo do tempo</li>
-                    <li><strong>🎁 Valor Mútuo:</strong> Oferecer ajuda antes de pedir</li>
-                    <li><strong>📊 Qualidade vs Quantidade:</strong> Focar em conexões significativas</li>
-                </ul>
-            </div>
-            
-            <div class="success-box">
-                <h3>🌟 Nossa Missão:</h3>
-                <p style="color: white;">Acreditamos que as habilidades sociais são fundamentais para uma vida plena e bem-sucedida. Este guia oferece estratégias práticas, técnicas comprovadas e exercícios eficazes para desenvolver sua capacidade de se conectar com outros, comunicar-se com impacto e construir relacionamentos duradouros e significativos em todas as áreas da vida.</p>
-            </div>
-            
-            <div class="benefit-list">
-                <div class="benefit-title">🌟 Benefícios das Habilidades Sociais Desenvolvidas:</div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">💼</span>
-                    <span><strong>Sucesso Profissional:</strong> Melhores oportunidades de carreira e liderança</span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">❤️</span>
-                    <span><strong>Relacionamentos Saudáveis:</strong> Conexões mais profundas e duradouras</span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">💪</span>
-                    <span><strong>Autoconfiança:</strong> Maior segurança em situações sociais</span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">🎯</span>
-                    <span><strong>Influência Positiva:</strong> Capacidade de inspirar e motivar outros</span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">🌱</span>
-                    <span><strong>Crescimento Pessoal:</strong> Desenvolvimento contínuo e autoconhecimento</span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">🌐</span>
-                    <span><strong>Rede de Contatos:</strong> Conexões valiosas para vida e carreira</span>
-                </div>
-            </div>
-            
-            <div class="implementation-steps">
-                <div class="step-title">🚀 Jornada de Desenvolvimento Social:</div>
-                <div class="step-item">
-                    <span class="step-number">1</span>
-                    <strong>Autoavaliação:</strong> Identificar pontos fortes e áreas de melhoria
-                </div>
-                <div class="step-item">
-                    <span class="step-number">2</span>
-                    <strong>Definição de Metas:</strong> Estabelecer objetivos específicos e mensuráveis
-                </div>
-                <div class="step-item">
-                    <span class="step-number">3</span>
-                    <strong>Aprendizado Teórico:</strong> Compreender princípios e técnicas
-                </div>
-                <div class="step-item">
-                    <span class="step-number">4</span>
-                    <strong>Prática Deliberada:</strong> Exercitar habilidades em situações reais
-                </div>
-                <div class="step-item">
-                    <span class="step-number">5</span>
-                    <strong>Feedback e Ajustes:</strong> Avaliar progresso e refinar abordagem
-                </div>
-                <div class="step-item">
-                    <span class="step-number">6</span>
-                    <strong>Integração:</strong> Incorporar habilidades no dia a dia
-                </div>
-            </div>
-            
-            <p style="text-align: center; margin-top: 30px; font-size: 1.1rem; color: #64748b;">
-                <em>Baseado em pesquisas em psicologia social, neurociência e décadas de experiência em desenvolvimento humano 🤝💬🌟</em>
-            </p>
+
+    <div class="container">
+        <h1>Habilidades Sociais</h1>
+        
+        <div class="document-viewer-wrapper" id="pdfViewerWrapper">
+            <iframe 
+                src="Amizade-e-Alegria-Desenvolvendo-Habilidades-Sociais-na-Infancia.pdf" 
+                class="document-viewer" 
+                id="pdfViewer"
+                type="application/pdf"
+                aria-label="Visualizador do documento PDF sobre Autismo">
+                <p>Seu navegador não suporta a visualização de PDFs diretamente. Você pode <a href="Amizade-e-Alegria-Desenvolvendo-Habilidades-Sociais-na-Infancia.pdf" target="_blank" rel="noopener noreferrer">clicar aqui para baixar o documento</a> e visualizá-lo em um leitor de PDF.</p>
+            </iframe>
         </div>
 
-        <!-- Página 2: Índice -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">2</div>
-                <div class="chapter-badge">ÍNDICE</div>
-            </div>
-            <h2>🗺️ Sua Jornada nas Habilidades Sociais</h2>
-            <div class="story-illustration">🤝➡️💬➡️🌟➡️🚀</div>
-            
-            <div class="communication-box">
-                <h3>🧭 Roteiro Completo de Desenvolvimento:</h3>
-                <ol class="steps-list">
-                    <li><strong>Fundamentos da Comunicação</strong> - Bases da interação humana eficaz</li>
-                    <li><strong>Comunicação Verbal</strong> - Dominar a arte das palavras</li>
-                    <li><strong>Comunicação Não-Verbal</strong> - Linguagem corporal e expressões</li>
-                    <li><strong>Escuta Ativa</strong> - Ouvir verdadeiramente os outros</li>
-                    <li><strong>Inteligência Emocional</strong> - Gerenciar emoções em interações</li>
-                    <li><strong>Empatia e Conexão</strong> - Criar vínculos genuínos</li>
-                    <li><strong>Assertividade</strong> - Expressar-se com confiança e respeito</li>
-                    <li><strong>Resolução de Conflitos</strong> - Mediar e solucionar desentendimentos</li>
-                    <li><strong>Habilidades de Apresentação</strong> - Falar em público com impacto</li>
-                    <li><strong>Trabalho em Equipe</strong> - Colaborar efetivamente</li>
-                    <li><strong>Liderança Social</strong> - Influenciar e inspirar positivamente</li>
-                    <li><strong>Networking Estratégico</strong> - Construir redes valiosas</li>
-                    <li><strong>Confiança Social</strong> - Superar timidez e ansiedade</li>
-                    <li><strong>Aplicações Práticas</strong> - Cenários reais e exercícios</li>
-                </ol>
-            </div>
-            
-            <div class="empathy-box">
-                <h3>❤️ Abordagem Holística:</h3>
-                <p style="color: white;">Este guia integra conhecimentos da psicologia social, neurociência, comunicação e desenvolvimento pessoal. Exploramos desde os fundamentos neurológicos da comunicação até as aplicações práticas em diferentes contextos sociais e profissionais, sempre focando no desenvolvimento autêntico e sustentável!</p>
-            </div>
-            
-            <div class="social-demo">
-                <h3>🤝 Habilidades Sociais: Competência Essencial</h3>
-                <div class="connection-circle interactive-element">
-                    Comunicação + Empatia + Confiança = Sucesso Social
-                </div>
-                <p><strong>Visualize suas conexões se fortalecendo! ⬆️</strong></p>
-            </div>
-            
-            <div class="technique-box">
-                <h3>🎯 Por que desenvolver habilidades sociais:</h3>
-                <ul style="color: white;">
-                    <li><strong>🌍 Mundo Conectado:</strong> Vivemos em uma era de relacionamentos</li>
-                    <li><strong>📊 Evidência Científica:</strong> Pesquisas comprovam a importância</li>
-                    <li><strong>🚫 Mitos Derrubados:</strong> Separar fatos de crenças limitantes</li>
-                    <li><strong>💡 Aplicações Práticas:</strong> Melhorar vida pessoal e profissional</li>
-                    <li><strong>🌱 Potencial Humano:</strong> Maximizar capacidades relacionais</li>
-                    <li><strong>🤝 Bem-estar:</strong> Relacionamentos saudáveis geram felicidade</li>
-                </ul>
-            </div>
-            
-            <div class="social-demo-advanced">
-                <h3>🤝 Competências Sociais Principais</h3>
-                <p>Explore as diferentes habilidades sociais:</p>
-                <div class="social-skills-grid">
-                    <div class="social-skill interactive-element">
-                        <div class="social-skill-icon">💬</div>
-                        <div class="social-skill-text">COMUNICAÇÃO</div>
-                    </div>
-                    <div class="social-skill interactive-element">
-                        <div class="social-skill-icon">👂</div>
-                        <div class="social-skill-text">ESCUTA</div>
-                    </div>
-                    <div class="social-skill interactive-element">
-                        <div class="social-skill-icon">❤️</div>
-                        <div class="social-skill-text">EMPATIA</div>
-                    </div>
-                    <div class="social-skill interactive-element">
-                        <div class="social-skill-icon">💪</div>
-                        <div class="social-skill-text">ASSERTIVIDADE</div>
-                    </div>
-                    <div class="social-skill interactive-element">
-                        <div class="social-skill-icon">👑</div>
-                        <div class="social-skill-text">LIDERANÇA</div>
-                    </div>
-                    <div class="social-skill interactive-element">
-                        <div class="social-skill-icon">🌐</div>
-                        <div class="social-skill-text">NETWORKING</div>
-                    </div>
-                </div>
-                <p><strong>Clique nas habilidades para explorar! ⬆️</strong></p>
-            </div>
-            
-            <div class="leadership-box">
-                <h3>👑 Nossa Filosofia de Desenvolvimento:</h3>
-                <p style="color: white;">Acreditamos que as habilidades sociais são competências que podem ser desenvolvidas por qualquer pessoa, independentemente de sua personalidade ou experiência prévia. Nosso foco está no crescimento autêntico, respeitando a individualidade de cada pessoa enquanto oferecemos ferramentas práticas e eficazes para o sucesso social.</p>
-            </div>
-            
-            <div class="confidence-box">
-                <h3>💪 Níveis de Desenvolvimento Abordados:</h3>
-                <ul style="color: white;">
-                    <li><strong>🌱 Iniciante:</strong> Fundamentos básicos da comunicação</li>
-                    <li><strong>📈 Intermediário:</strong> Técnicas avançadas de interação</li>
-                    <li><strong>🎯 Avançado:</strong> Liderança e influência social</li>
-                    <li><strong>👑 Expert:</strong> Mentoria e desenvolvimento de outros</li>
-                    <li><strong>🌟 Mestre:</strong> Criação de ambientes sociais positivos</li>
-                    <li><strong>🚀 Inovador:</strong> Pioneirismo em relacionamentos</li>
-                </ul>
-            </div>
-            
-            <div class="scenario-showcase">
-                <div class="scenario-content">
-                    <h3>🎭 Cenários de Aplicação:</h3>
-                    <div class="scenario-grid">
-                        <div class="scenario-card">
-                            <div class="scenario-icon">💼</div>
-                            <div class="scenario-name">Ambiente Profissional</div>
-                            <div class="scenario-desc">Reuniões, apresentações e networking corporativo</div>
-                        </div>
-                        <div class="scenario-card">
-                            <div class="scenario-icon">👨‍👩‍👧‍👦</div>
-                            <div class="scenario-name">Relacionamentos Pessoais</div>
-                            <div class="scenario-desc">Família, amigos e relacionamentos íntimos</div>
-                        </div>
-                        <div class="scenario-card">
-                            <div class="scenario-icon">🎓</div>
-                            <div class="scenario-name">Ambiente Acadêmico</div>
-                            <div class="scenario-desc">Estudos, grupos de trabalho e apresentações</div>
-                        </div>
-                        <div class="scenario-card">
-                            <div class="scenario-icon">🌐</div>
-                            <div class="scenario-name">Redes Sociais</div>
-                            <div class="scenario-desc">Comunicação digital e presença online</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="networking-box">
-                <h3>🌐 Estratégias de Aprendizagem:</h3>
-                <ul style="color: white;">
-                    <li><strong>🎯 Prática Deliberada:</strong> Exercícios específicos e focados</li>
-                    <li><strong>👥 Aprendizagem Social:</strong> Observação e modelagem</li>
-                    <li><strong>📈 Progressão Gradual:</strong> Desenvolvimento passo a passo</li>
-                    <li><strong>🔄 Feedback Contínuo:</strong> Avaliação e ajustes constantes</li>
-                    <li><strong>🎉 Gamificação:</strong> Tornar o aprendizado divertido</li>
-                    <li><strong>💪 Desafios Progressivos:</strong> Expandir zona de conforto</li>
-                </ul>
-            </div>
-            
-            <div class="success-box">
-                <h3>🌟 Mensagem de Inspiração:</h3>
-                <p style="color: white;">As habilidades sociais são o superpoder do século XXI. Em um mundo cada vez mais conectado, nossa capacidade de nos relacionarmos bem com outros determina não apenas nosso sucesso profissional, mas também nossa felicidade pessoal. Cada conversa é uma oportunidade de crescimento, cada relacionamento é uma chance de fazer a diferença na vida de alguém!</p>
-            </div>
-            
-            <div class="success-story">
-                <div class="success-title">História de Transformação</div>
-                <p>Carlos era um engenheiro brilhante, mas extremamente tímido. Após aplicar as técnicas deste guia, ele não apenas superou sua ansiedade social, mas se tornou um líder respeitado em sua empresa. Hoje, ele conduz apresentações para centenas de pessoas e mentora outros profissionais em desenvolvimento de habilidades sociais. A transformação começou com um simples "olá" mais confiante.</p>
-            </div>
+        <div class="actions">
+            <a href="Amizade-e-Alegria-Desenvolvendo-Habilidades-Sociais-na-Infancia.pdf" download class="button-link">
+                Baixar PDF
+            </a>
+            <a href="#" class="button-link" onclick="alert('Esta função exigiria a criação de um arquivo EPUB ou similar. Para demonstração, o botão de download do PDF é a melhor opção no momento.'); return false;">
+                Ver em Formato de Livro (E-book)
+            </a>
+            <button onclick="history.back()">Voltar</button>
         </div>
 
-        <!-- Página 3: Fundamentos da Comunicação -->
-        <div class="page">
-            <div class="page-header">
-                <div class="page-number">3</div>
-                <div class="chapter-badge">CAPÍTULO 1</div>
-            </div>
-            <h2>💬 Fundamentos da Comunicação</h2>
-            <div class="story-illustration">🧠➡️💬➡️🤝➡️🌟</div>
-            
-            <p>A comunicação é a base de todas as interações humanas. É através dela que compartilhamos ideias, emoções, necessidades e experiências. Compreender os fundamentos da comunicação é essencial para desenvolver habilidades sociais eficazes e construir relacionamentos significativos. A comunicação vai muito além das palavras - envolve tom de voz, linguagem corporal, contexto e a capacidade de compreender e ser compreendido.</p>
-            
-            <div class="communication-box">
-                <h3>💬 O que é Comunicação Eficaz?</h3>
-                <p style="color: white;">Comunicação eficaz é a capacidade de transmitir informações, ideias e sentimentos de forma clara, precisa e apropriada ao contexto. Envolve não apenas falar bem, mas também ouvir ativamente, compreender o público-alvo, adaptar a mensagem ao receptor e criar um ambiente de compreensão mútua. É um processo bidirecional que requer habilidade tanto para expressar quanto para receber informações.</p>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">55%</div>
-                    <div class="stat-label">Linguagem Corporal</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">38%</div>
-                    <div class="stat-label">Tom de Voz</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">7%</div>
-                    <div class="stat-label">Palavras</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Impacto Total</div>
-                </div>
-            </div>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">1</div>
-                    <div class="timeline-content">
-                        <div class="timeline-stage">Codificação</div>
-                        <div class="timeline-title">Formação da Mensagem</div>
-                        <div class="timeline-desc">O emissor transforma pensamentos e sentimentos em uma mensagem estruturada, escolhendo palavras, tom e canal de comunicação apropriados.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">2</div>
-                    <div class="timeline-content">
-                        <div class="timeline-stage">Transmissão</div>
-                        <div class="timeline-title">Envio da Mensagem</div>
-                        <div class="timeline-desc">A mensagem é enviada através de um canal (verbal, não-verbal, escrito, digital) do emissor para o receptor.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">3</div>
-                    <div class="timeline-content">
-                        <div class="timeline-stage">Recepção</div>
-                        <div class="timeline-title">Recebimento da Mensagem</div>
-                        <div class="timeline-desc">O receptor capta a mensagem através de seus sentidos, sendo influenciado por seu estado emocional, experiências e contexto.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">4</div>
-                    <div class="timeline-content">
-                        <div class="timeline-stage">Decodificação</div>
-                        <div class="timeline-title">Interpretação da Mensagem</div>
-                        <div class="timeline-desc">O receptor interpreta a mensagem com base em seu conhecimento, experiências, cultura e estado emocional atual.</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker">5</div>
-                    <div class="timeline-content">
-                        <div class="timeline-stage">Feedback</div>
-                        <div class="timeline-title">Resposta e Confirmação</div>
-                        <div class="timeline-desc">O receptor fornece feedback, confirmando compreensão ou solicitando esclarecimentos, completando o ciclo comunicativo.</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="empathy-box">
-                <h3>❤️ Elementos da Comunicação</h3>
-                
-                <h4 style="color: white;">🎯 Componentes Verbais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Palavras:</strong> Vocabulário escolhido e precisão da linguagem</li>
-                    <li><strong>Tom de Voz:</strong> Altura, intensidade e modulação vocal</li>
-                    <li><strong>Ritmo:</strong> Velocidade e pausas na fala</li>
-                    <li><strong>Clareza:</strong> Articulação e pronúncia adequadas</li>
-                </ul>
-                
-                <h4 style="color: white;">👁️ Componentes Não-Verbais:</h4>
-                <ul style="color: white;">
-                    <li><strong>Expressões Faciais:</strong> Emoções transmitidas pelo rosto</li>
-                    <li><strong>Gestos:</strong> Movimentos das mãos e braços</li>
-                    <li><strong>Postura:</strong> Posição e alinhamento corporal</li>
-                    <li><strong>Contato Visual:</strong> Direção e duração do olhar</li>
-                    <li><strong>Proximidade:</strong> Distância física entre interlocutores</li>
-                </ul>
-            </div>
-            
-            <div class="leadership-box">
-                <h3>👑 Princípios da Comunicação Eficaz</h3>
-                
-                <h4 style="color: white;">🎯 Clareza e Precisão:</h4>
-                <ul style="color: white;">
-                    <li><strong>Mensagem Clara:</strong> Ideias organizadas e bem estruturadas</li>
-                    <li><strong>Linguagem Apropriada:</strong> Adequada ao público e contexto</li>
-                    <li><strong>Objetividade:</strong> Ir direto ao ponto sem rodeios desnecessários</li>
-                    <li><strong>Exemplos Concretos:</strong> Ilustrar conceitos abstratos</li>
-                </ul>
-                
-                <h4 style="color: white;">🤝 Empatia e Conexão:</h4>
-                <ul style="color: white;">
-                    <li><strong>Perspectiva do Outro:</strong> Considerar o ponto de vista do receptor</li>
-                    <li><strong>Adaptação:</strong> Ajustar estilo conforme a audiência</li>
-                    <li><strong>Respeito:</strong> Valorizar opiniões e sentimentos alheios</li>
-                    <li><strong>Autenticidade:</strong> Ser genuíno e verdadeiro na comunicação</li>
-                </ul>
-            </div>
-            
-            <div class="confidence-box">
-                <h3>💪 Barreiras à Comunicação</h3>
-                
-                <h4 style="color: white;">🚧 Barreiras Físicas:</h4>
-                <ul style="color: white;">
-                    <li><strong>Ruído Ambiental:</strong> Sons que interferem na mensagem</li>
-                    <li><strong>Distância:</strong> Separação física excessiva</li>
-                    <li><strong>Problemas Técnicos:</strong> Falhas em equipamentos de comunicação</li>
-                    <li><strong>Ambiente Inadequado:</strong> Local inapropriado para a conversa</li>
-                </ul>
-                
-                <h4 style="color: white;">🧠 Barreiras Psicológicas:</h4>
-                <ul style="color: white;">
-                    <li><strong>Preconceitos:</strong> Julgamentos prévios que distorcem a percepção</li>
-                    <li><strong>Emoções Intensas:</strong> Estados emocionais que prejudicam a compreensão</li>
-                    <li><strong>Falta de Atenção:</strong> Distração ou desinteresse</li>
-                    <li><strong>Diferenças Culturais:</strong> Interpretações baseadas em contextos culturais distintos</li>
-                </ul>
-                
-                <h4 style="color: white;">💬 Barreiras Linguísticas:</h4>
-                <ul style="color: white;">
-                    <li><strong>Jargão Técnico:</strong> Linguagem especializada incompreensível</li>
-                    <li><strong>Ambiguidade:</strong> Mensagens com múltiplas interpretações</li>
-                    <li><strong>Diferenças de Idioma:</strong> Limitações na compreensão linguística</li>
-                    <li><strong>Sobrecarga de Informação:</strong> Excesso de dados simultâneos</li>
-                </ul>
-            </div>
-            
-            <div class="networking-box">
-                <h3>🌐 Tipos de Comunicação</h3>
-                
-                <h4 style="color: white;">👥 Comunicação Interpessoal:</h4>
-                <ul style="color: white;">
-                    <li><strong>Face a Face:</strong> Interação direta e pessoal</li>
-                    <li><strong>Telefônica:</strong> Comunicação vocal à distância</li>
-                    <li><strong>Digital:</strong> Mensagens, e-mails e redes sociais</li>
-                    <li><strong>Escrita:</strong> Cartas, relatórios e documentos</li>
-                </ul>
-                
-                <h4 style="color: white;">🎤 Comunicação em Grupo:</h4>
-                <ul style="color: white;">
-                    <li><strong>Reuniões:</strong> Discussões organizadas com objetivos específicos</li>
-                    <li><strong>Apresentações:</strong> Comunicação unidirecional para audiência</li>
-                    <li><strong>Workshops:</strong> Comunicação interativa e participativa</li>
-                    <li><strong>Conferências:</strong> Comunicação formal para grandes grupos</li>
-                </ul>
-                
-                <h4 style="color: white;">📢 Comunicação de Massa:</h4>
-                <ul style="color: white;">
-                    <li><strong>Mídia Tradicional:</strong> TV, rádio, jornais e revistas</li>
-                    <li><strong>Mídia Digital:</strong> Sites, blogs e plataformas online</li>
-                    <li><strong>Redes Sociais:</strong> Plataformas de interação social</li>
-                    <li><strong>Marketing:</strong> Comunicação promocional e publicitária</li>
-                </ul>
-            </div>
-            
-            <div class="function-grid">
-                <div class="function-card">
-                    <div class="function-icon">🎯</div>
-                    <div class="function-name">Assertividade</div>
-                    <div class="function-desc">
-                        Capacidade de expressar opiniões, necessidades e sentimentos de forma clara e respeitosa, defendendo direitos próprios sem violar os dos outros.
-                    </div>
-                </div>
-                
-                <div class="function-card">
-                    <div class="function-icon">👂</div>
-                    <div class="function-name">Escuta Ativa</div>
-                    <div class="function-desc">
-                        Habilidade de ouvir com atenção total, compreendendo não apenas as palavras, mas também emoções e intenções por trás da mensagem.
-                    </div>
-                </div>
-                
-                <div class="function-card">
-                    <div class="function-icon">🤝</div>
-                    <div class="function-name">Empatia</div>
-                    <div class="function-desc">
-                        Capacidade de compreender e compartilhar os sentimentos de outra pessoa, vendo situações através de sua perspectiva.
-                    </div>
-                </div>
-                
-                <div class="function-card">
-                    <div class="function-icon">🔄</div>
-                    <div class="function-name">Feedback</div>
-                    <div class="function-desc">
-                        Arte de dar e receber informações sobre desempenho ou comportamento de forma construtiva e útil para o crescimento.
-                    </div>
-                </div>
-                
-                <div class="function-card">
-                    <div class="function-icon">🎭</div>
-                    <div class="function-name">Adaptabilidade</div>
-                    <div class="function-desc">
-                        Flexibilidade para ajustar estilo de comunicação conforme a situação, audiência e contexto específico.
-                    </div>
-                </div>
-                
-                <div class="function-card">
-                    <div class="function-icon">💡</div>
-                    <div class="function-name">Persuasão</div>
-                    <div class="function-desc">
-                        Habilidade de influenciar opiniões e comportamentos através de argumentos lógicos e apelo emocional apropriado.
-                    </div>
-                </div>
-            </div>
-            
-            <div class="challenge-box">
-                <h3>🎯 Contextos de Comunicação</h3>
-                
-                <h4 style="color: white;">💼 Ambiente Profissional:</h4>
-                <ul style="color: white;">
-                    <li><strong>Reuniões de Trabalho:</strong> Discussões focadas em objetivos empresariais</li>
-                    <li><strong>Apresentações:</strong> Comunicação formal para colegas e superiores</li>
-                    <li><strong>Negociações:</strong> Busca por acordos mutuamente benéficos</li>
-                    <li><strong>Feedback de Performance:</strong> Avaliações construtivas de desempenho</li>
-                    <li><strong>Networking Corporativo:</strong> Construção de relacionamentos profissionais</li>
-                </ul>
-                
-  </div> </div> </div>
-
-
-  
- <div class="navigation">
-        <button id="prevBtn" class="nav-btn" disabled>Anterior</button>
-        <button id="nextBtn" class="nav-btn">Próximo</button>
+        <p>Este documento oferece informações cruciais sobre os primeiros sinais do autismo e a importância da intervenção precoce. Para ativar a lupa, clique em qualquer parte do documento acima. Para desativar, clique novamente na lupa ou em qualquer outro lugar.</p>
     </div>
 
-     <script>
-        
-    const pages = document.querySelectorAll('.page');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const progressBar = document.getElementById('progressBar');
-    const pageCounter = document.getElementById('pageCounter');
-    let currentPageIndex = 0;
+    <script>
+        const pdfViewerWrapper = document.getElementById('pdfViewerWrapper');
+        const pdfViewer = document.getElementById('pdfViewer');
+        let magnifierGlass = null; // Variável para armazenar a lupa
 
-    function showPage(index) {
-        pages.forEach((page, i) => {
-            if (i === index) {
-                page.classList.add('active');
-            } else {
-                page.classList.remove('active');
+        // Adiciona um ouvinte de eventos para cliques no wrapper do PDF
+        pdfViewerWrapper.addEventListener('click', function(e) {
+            // Se já existe uma lupa, remove-a
+            if (magnifierGlass) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                // Restaura o cursor padrão
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+                return; // Sai da função após remover
+            }
+
+            // Cria o elemento da lupa
+            magnifierGlass = document.createElement('div');
+            magnifierGlass.classList.add('magnifier-glass');
+
+            // Cria o conteúdo da lupa (uma cópia do iframe para simular o zoom)
+            const magnifierContent = pdfViewer.cloneNode(true);
+            magnifierContent.classList.remove('document-viewer'); // Remove estilos do iframe original
+            magnifierContent.style.position = 'absolute';
+            magnifierContent.style.top = '0';
+            magnifierContent.style.left = '0';
+            magnifierContent.style.width = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.height = '200%'; /* Exemplo: Zoom de 2x */
+            magnifierContent.style.pointerEvents = 'none'; // Impede interação com o iframe clonado na lupa
+
+            magnifierGlass.appendChild(magnifierContent);
+            pdfViewerWrapper.appendChild(magnifierGlass);
+
+            // Adiciona um evento de clique na lupa para removê-la
+            magnifierGlass.addEventListener('click', function(event) {
+                event.stopPropagation(); // Impede que o clique na lupa se propague para o wrapper
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
+            });
+
+            // Calcula a posição do clique dentro do iframe
+            const rect = pdfViewerWrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left; // Coordenada X relativa ao wrapper
+            const y = e.clientY - rect.top;  // Coordenada Y relativa ao wrapper
+
+            // Posiciona a lupa no centro do clique
+            magnifierGlass.style.left = `${x}px`;
+            magnifierGlass.style.top = `${y}px`;
+
+            // Calcula o deslocamento do conteúdo dentro da lupa para simular o zoom na área clicada
+            // O conteúdo da lupa é 2x maior, então o ponto de origem deve ser metade da distância
+            // da borda para o clique.
+            const zoomLevel = 2; // O mesmo que as dimensões do magnifierContent
+            const contentX = -x * (zoomLevel - 1) + (magnifierGlass.offsetWidth / 2);
+            const contentY = -y * (zoomLevel - 1) + (magnifierGlass.offsetHeight / 2);
+
+            magnifierContent.style.transform = `translate(${contentX}px, ${contentY}px)`;
+
+            // Muda o cursor para indicar que a lupa está ativa
+            pdfViewerWrapper.style.cursor = 'zoom-out';
+        });
+
+        // Adiciona um ouvinte para cliques em qualquer lugar do documento
+        // Isso permite remover a lupa clicando fora dela (no body, por exemplo)
+        document.addEventListener('click', function(event) {
+            if (magnifierGlass && !pdfViewerWrapper.contains(event.target)) {
+                magnifierGlass.remove();
+                magnifierGlass = null;
+                pdfViewerWrapper.style.cursor = 'zoom-in';
             }
         });
-        updateNavigationButtons();
-        updateProgressBar();
-        updatePageCounter();
-    }
-
-    function updateNavigationButtons() {
-        prevBtn.disabled = currentPageIndex === 0;
-        nextBtn.disabled = currentPageIndex === pages.length - 1;
-    }
-
-    function updateProgressBar() {
-        const progress = (currentPageIndex / (pages.length - 1)) * 100;
-        progressBar.style.width = `${progress}%`;
-    }
-
-    function updatePageCounter() {
-        pageCounter.textContent = `${currentPageIndex + 1} / ${pages.length}`;
-    }
-
-    prevBtn.addEventListener('click', () => {
-        if (currentPageIndex > 0) {
-            currentPageIndex--;
-            showPage(currentPageIndex);
-        }
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (currentPageIndex < pages.length - 1) {
-            currentPageIndex++;
-            showPage(currentPageIndex);
-        }
-    });
-
-    // Initialize the first page and navigation
-    showPage(currentPageIndex);
-</script>
-
+    </script>
+</body>
+</html>
