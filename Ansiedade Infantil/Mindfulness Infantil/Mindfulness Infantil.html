@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desvendando o Autismo - Leitura Otimizada</title>
+    <title>Mindfulness Infantil - Detalhes</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -33,7 +33,7 @@
             color: var(--text-light);
             text-align: center;
             box-sizing: border-box;
-            padding: 40px 20px; /* Padding geral para telas grandes */
+            padding: 40px 20px;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
@@ -50,7 +50,7 @@
             flex-direction: column;
             align-items: center;
             color: var(--text-dark);
-            position: relative; /* Necessário para posicionar a lupa */
+            position: relative;
         }
 
         h1 {
@@ -62,23 +62,20 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
 
-        .document-viewer-wrapper {
-            position: relative; /* Para posicionar a lupa dentro */
+        .document-image-wrapper {
             width: 100%;
-            min-height: 550px;
-            height: 75vh;
+            max-width: 500px; /* Ajuste conforme a necessidade da sua imagem */
             margin-bottom: 30px;
             border: 1px solid #e0e0e0;
             border-radius: var(--border-radius-md);
             box-shadow: 0 8px 20px var(--shadow-light);
-            overflow: hidden; /* Garante que a lupa não vaze */
-            cursor: zoom-in; /* Indica que é clicável para zoom */
+            overflow: hidden;
         }
 
-        .document-viewer {
+        .document-image {
             width: 100%;
-            height: 100%;
-            border: none; /* A borda será no wrapper */
+            height: auto;
+            display: block;
         }
 
         .actions {
@@ -139,33 +136,6 @@
             color: #0056b3;
         }
 
-        /* --- Estilos da Lupa --- */
-        .magnifier-glass {
-            position: absolute;
-            border: 3px solid var(--primary-color);
-            border-radius: 50%;
-            cursor: zoom-out;
-            width: 150px; /* Tamanho da lupa */
-            height: 150px;
-            transform: translate(-50%, -50%); /* Centraliza a lupa no clique */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            overflow: hidden; /* Garante que o conteúdo dentro não transborde */
-            pointer-events: none; /* Permite interagir com o iframe por baixo, mas a lupa ainda bloqueia o clique nela */
-            z-index: 10; /* Garante que a lupa fique acima do iframe */
-            background-color: rgba(255, 255, 255, 0.1); /* Um leve fundo translúcido */
-            display: flex; /* Para centralizar o conteúdo dentro */
-            align-items: center;
-            justify-content: center;
-        }
-
-        .magnifier-content {
-            position: absolute;
-            width: 200%; /* Exemplo de zoom: 2x */
-            height: 200%; /* Exemplo de zoom: 2x */
-            transform-origin: 0 0; /* Ponto de origem da transformação */
-            /* Isso será ajustado via JS */
-        }
-        
         /* --- Media Queries para Responsividade --- */
         @media (max-width: 992px) {
             .container {
@@ -175,9 +145,8 @@
             h1 {
                 font-size: 2.2em;
             }
-            .document-viewer-wrapper {
-                min-height: 500px;
-                height: 70vh;
+            .document-image-wrapper {
+                max-width: 450px;
             }
         }
 
@@ -193,10 +162,8 @@
                 font-size: 1.9em;
                 margin-bottom: 25px;
             }
-            .document-viewer-wrapper {
-                min-height: 450px;
-                height: 65vh;
-                margin-bottom: 25px;
+            .document-image-wrapper {
+                max-width: 380px;
             }
             button, .button-link {
                 padding: 12px 25px;
@@ -212,10 +179,6 @@
                 font-size: 0.95em;
                 margin-top: 20px;
             }
-            .magnifier-glass {
-                width: 120px; /* Lupa menor em telas menores */
-                height: 120px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -230,17 +193,14 @@
                 font-size: 1.6em;
                 margin-bottom: 20px;
             }
-            .document-viewer-wrapper {
-                min-height: 400px;
-                height: 60vh;
+            .document-image-wrapper {
+                min-height: auto;
+                height: auto;
+                max-width: 300px;
             }
             button, .button-link {
                 padding: 10px 20px;
                 font-size: 0.95em;
-            }
-            .magnifier-glass {
-                width: 100px; /* Lupa ainda menor em telas muito pequenas */
-                height: 100px;
             }
         }
     </style>
@@ -250,102 +210,23 @@
     <div class="container">
         <h1>Mindfulness Infantil</h1>
         
-        <div class="document-viewer-wrapper" id="pdfViewerWrapper">
-            <iframe 
-                src="Superpoder-da-Atencao-Mindfulness-para-Criancas.pdf" 
-                class="document-viewer" 
-                id="pdfViewer"
-                type="application/pdf"
-                aria-label="Visualizador do documento PDF sobre Autismo">
-                <p>Seu navegador não suporta a visualização de PDFs diretamente. Você pode <a href="Superpoder-da-Atencao-Mindfulness-para-Criancas.pdf" target="_blank" rel="noopener noreferrer">clicar aqui para baixar o documento</a> e visualizá-lo em um leitor de PDF.</p>
-            </iframe>
+        <div class="document-image-wrapper">
+            <img 
+                src="1.jpg" 
+                alt="Prévia do documento sobre Mindfulness Infantil" 
+                class="document-image"
+            >
         </div>
 
         <div class="actions">
-            <a href="Superpoder-da-Atencao-Mindfulness-para-Criancas.pdf" download class="button-link">
-                Baixar PDF
-            </a>
-            <a href="#" class="button-link" onclick="alert('Esta função exigiria a criação de um arquivo EPUB ou similar. Para demonstração, o botão de download do PDF é a melhor opção no momento.'); return false;">
-                Ver em Formato de Livro (E-book)
+            <a href="Superpoder-da-Atencao-Mindfulness-para-Criancas.pdf" target="_blank" rel="noopener noreferrer" class="button-link">
+                Ver PDF
             </a>
             <button onclick="history.back()">Voltar</button>
         </div>
 
-        <p>Este documento oferece informações cruciais sobre os primeiros sinais do autismo e a importância da intervenção precoce. Para ativar a lupa, clique em qualquer parte do documento acima. Para desativar, clique novamente na lupa ou em qualquer outro lugar.</p>
+        <p>Este documento explora o **Mindfulness Infantil**, apresentando o conceito do "Superpoder da Atenção" para crianças. Ele oferece insights sobre como a prática pode auxiliar no desenvolvimento da atenção plena e na regulação emocional dos pequenos. Clique em "**Ver PDF**" para acessar o conteúdo completo.</p>
     </div>
 
-    <script>
-        const pdfViewerWrapper = document.getElementById('pdfViewerWrapper');
-        const pdfViewer = document.getElementById('pdfViewer');
-        let magnifierGlass = null; // Variável para armazenar a lupa
-
-        // Adiciona um ouvinte de eventos para cliques no wrapper do PDF
-        pdfViewerWrapper.addEventListener('click', function(e) {
-            // Se já existe uma lupa, remove-a
-            if (magnifierGlass) {
-                magnifierGlass.remove();
-                magnifierGlass = null;
-                // Restaura o cursor padrão
-                pdfViewerWrapper.style.cursor = 'zoom-in';
-                return; // Sai da função após remover
-            }
-
-            // Cria o elemento da lupa
-            magnifierGlass = document.createElement('div');
-            magnifierGlass.classList.add('magnifier-glass');
-
-            // Cria o conteúdo da lupa (uma cópia do iframe para simular o zoom)
-            const magnifierContent = pdfViewer.cloneNode(true);
-            magnifierContent.classList.remove('document-viewer'); // Remove estilos do iframe original
-            magnifierContent.style.position = 'absolute';
-            magnifierContent.style.top = '0';
-            magnifierContent.style.left = '0';
-            magnifierContent.style.width = '200%'; /* Exemplo: Zoom de 2x */
-            magnifierContent.style.height = '200%'; /* Exemplo: Zoom de 2x */
-            magnifierContent.style.pointerEvents = 'none'; // Impede interação com o iframe clonado na lupa
-
-            magnifierGlass.appendChild(magnifierContent);
-            pdfViewerWrapper.appendChild(magnifierGlass);
-
-            // Adiciona um evento de clique na lupa para removê-la
-            magnifierGlass.addEventListener('click', function(event) {
-                event.stopPropagation(); // Impede que o clique na lupa se propague para o wrapper
-                magnifierGlass.remove();
-                magnifierGlass = null;
-                pdfViewerWrapper.style.cursor = 'zoom-in';
-            });
-
-            // Calcula a posição do clique dentro do iframe
-            const rect = pdfViewerWrapper.getBoundingClientRect();
-            const x = e.clientX - rect.left; // Coordenada X relativa ao wrapper
-            const y = e.clientY - rect.top;  // Coordenada Y relativa ao wrapper
-
-            // Posiciona a lupa no centro do clique
-            magnifierGlass.style.left = `${x}px`;
-            magnifierGlass.style.top = `${y}px`;
-
-            // Calcula o deslocamento do conteúdo dentro da lupa para simular o zoom na área clicada
-            // O conteúdo da lupa é 2x maior, então o ponto de origem deve ser metade da distância
-            // da borda para o clique.
-            const zoomLevel = 2; // O mesmo que as dimensões do magnifierContent
-            const contentX = -x * (zoomLevel - 1) + (magnifierGlass.offsetWidth / 2);
-            const contentY = -y * (zoomLevel - 1) + (magnifierGlass.offsetHeight / 2);
-
-            magnifierContent.style.transform = `translate(${contentX}px, ${contentY}px)`;
-
-            // Muda o cursor para indicar que a lupa está ativa
-            pdfViewerWrapper.style.cursor = 'zoom-out';
-        });
-
-        // Adiciona um ouvinte para cliques em qualquer lugar do documento
-        // Isso permite remover a lupa clicando fora dela (no body, por exemplo)
-        document.addEventListener('click', function(event) {
-            if (magnifierGlass && !pdfViewerWrapper.contains(event.target)) {
-                magnifierGlass.remove();
-                magnifierGlass = null;
-                pdfViewerWrapper.style.cursor = 'zoom-in';
-            }
-        });
-    </script>
 </body>
 </html>
