@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfica Viana - Impressão de Qualidade para Seus Momentos Especiais</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'baby-blue': '#e6f2ff',
+                        'baby-blue-dark': '#b3d9ff',
+                        'baby-blue-darker': '#80c1ff',
+                    },
+                    fontFamily: {
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-pattern {
+            background-color: #e6f2ff;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-button.active {
+            background-color: #80c1ff; /* baby-blue-darker */
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <header class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <svg class="w-10 h-10 text-baby-blue-darker" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0v3H7V4h6zm-6 8v4h6v-4H7z" clip-rule="evenodd"></path>
+                </svg>
+                <h1 class="ml-2 text-2xl font-bold text-gray-800">Gráfica Viana</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-700 hover:text-baby-blue-darker font-medium">Home</a>
+                <a href="#produtos" class="text-gray-700 hover:text-baby-blue-darker font-medium">Produtos</a>
+                <a href="#sobre" class="text-gray-700 hover:text-baby-blue-darker font-medium">Sobre Nós</a>
+                <a href="#contato" class="text-gray-700 hover:text-baby-blue-darker font-medium">Contato</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white px-4 py-2 shadow-md">
+            <a href="#home" class="block py-2 text-gray-700 hover:text-baby-blue-darker font-medium">Home</a>
+            <a href="#produtos" class="block py-2 text-gray-700 hover:text-baby-blue-darker font-medium">Produtos</a>
+            <a href="#sobre" class="block py-2 text-gray-700 hover:text-baby-blue-darker font-medium">Sobre Nós</a>
+            <a href="#contato" class="block py-2 text-gray-700 hover:text-baby-blue-darker font-medium">Contato</a>
+        </div>
+    </header>
+
+    <section id="home" class="hero-pattern pt-28 pb-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Impressão de Qualidade para Seus Momentos Especiais</h2>
+                    <p class="text-xl text-gray-600 mb-8">Da sua imaginação para as nossas máquinas, resultados que encantam. Qualidade, rapidez e o cuidado que você merece.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#produtos" class="bg-baby-blue-darker hover:bg-blue-500 text-white font-medium py-3 px-6 rounded-lg transition duration-300 shadow-md">Ver Produtos</a>
+                        <a href="#contato" class="bg-white hover:bg-gray-100 text-baby-blue-darker font-medium py-3 px-6 rounded-lg border border-baby-blue-darker transition duration-300 shadow-md">Solicitar Orçamento</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow-lg transform rotate-3">
+                            <svg class="w-full h-auto text-baby-blue-darker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="10" y="20" width="80" height="60" rx="5" fill="currentColor" opacity="0.2"/>
+                                <rect x="20" y="30" width="60" height="40" rx="3" fill="currentColor"/>
+                                <text x="50" y="55" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Convite</text>
+                            </svg>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-lg transform -rotate-2">
+                            <svg class="w-full h-auto text-baby-blue-darker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20,30 L80,30 L80,80 L20,80 Z" fill="currentColor" opacity="0.2"/>
+                                <path d="M25,25 L75,25 L75,30 L25,30 Z" fill="currentColor"/>
+                                <path d="M30,20 L70,20 L70,25 L30,25 Z" fill="currentColor"/>
+                                <text x="50" y="55" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Topo de Bolo</text>
+                            </svg>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-lg transform -rotate-3">
+                            <svg class="w-full h-auto text-baby-blue-darker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20,20 L80,20 L80,80 L20,80 Z" fill="currentColor" opacity="0.2"/>
+                                <path d="M25,25 L75,25 L75,75 L25,75 Z" fill="currentColor"/>
+                                <text x="50" y="50" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Caixinha</text>
+                            </svg>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-lg transform rotate-2">
+                            <svg class="w-full h-auto text-baby-blue-darker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="40" fill="currentColor" opacity="0.2"/>
+                                <circle cx="50" cy="50" r="30" fill="currentColor"/>
+                                <text x="50" y="55" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Adesivo</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Nossos Serviços</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="flex flex-col items-center">
+                    <div class="bg-baby-blue p-4 rounded-full mb-4">
+                        <svg class="w-10 h-10 text-baby-blue-darker" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800">Caixinhas</h3>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="bg-baby-blue p-4 rounded-full mb-4">
+                        <svg class="w-10 h-10 text-baby-blue-darker" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800">Convites</h3>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="bg-baby-blue p-4 rounded-full mb-4">
+                        <svg class="w-10 h-10 text-baby-blue-darker" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800">Topo de Bolo</h3>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="bg-baby-blue p-4 rounded-full mb-4">
+                        <svg class="w-10 h-10 text-baby-blue-darker" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800">Adesivos</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="produtos" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Nossos Produtos</h2>
+            <div class="mb-8">
+                <div class="flex flex-wrap justify-center gap-2 mb-8">
+                    <button class="tab-button bg-baby-blue-darker text-white px-4 py-2 rounded-lg font-medium" data-tab="caixinhas">Caixinhas</button>
+                    <button class="tab-button bg-white text-gray-700 px-4 py-2 rounded-lg font-medium" data-tab="convites">Convites</button>
+                    <button class="tab-button bg-white text-gray-700 px-4 py-2 rounded-lg font-medium" data-tab="topo-bolo">Topo de Bolo</button>
+                    <button class="tab-button bg-white text-gray-700 px-4 py-2 rounded-lg font-medium" data-tab="mini-painel">Mini Painel</button>
+                    <button class="tab-button bg-white text-gray-700 px-4 py-2 rounded-lg font-medium" data-tab="adesivos">Adesivos</button>
+                    <button class="tab-button bg-white text-gray-700 px-4 py-2 rounded-lg font-medium" data-tab="outros">Outros Produtos</button>
+                </div>
+
+                <div id="caixinhas" class="tab-content active">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Caixinhas Personalizadas</h3>
+                        <p class="text-gray-600 mb-6">Ideal para lembrancinhas de festas, presentes e brindes corporativos. Personalize do seu jeito!</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
+                                <div class="bg-baby-blue p-4 flex justify-center items-center h-40">
+                                    <svg class="w-24 h-24 text-baby-blue-darker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20,20 L80,20 L80,80 L20,80 Z" fill="currentColor" opacity="0.2"/>
+                                        <path d="M25,25 L75,25 L75,75 L25,75 Z" fill="currentColor"/>
+                                        <text x="50" y="50" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Milk</text>
+                                    </svg>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-semibold text-gray-800">Caixinha Milk</h4>
+                                    <div class="flex justify-between mt-2">
+                                        <span class="text-sm text-gray-600">Montadas: R$ 2,50</span>
+                                        <span class="text-sm text-gray-600">Só impressas: R$ 2,00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
+                                <div class="bg-baby-blue p-4 flex justify-center items-center h-40">
+                                    <svg class="w-24 h-24 text-baby-blue-darker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50,20 L80,50 L50,80 L20,50 Z" fill="currentColor" opacity="0.2"/>
+                                        <path d="M50,30 L70,50 L50,70 L30,50 Z" fill="currentColor"/>
+                                        <text x="50" y="50" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Pirâmide</text>
+                                    </svg>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-semibold text-gray-800">Caixinha Pirâmide</h4>
+                                    <div class="flex justify-between mt-2">
+                                        <span class="text-sm text-gray-600">Montadas: R$ 2,50</span>
+                                        <span class="text-sm text-gray-600">Só impressas: R$ 2,00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
+                                <div class="bg-baby-blue p-4 flex justify-center items-center h-40">
+                                    <svg class="w-24 h-24 text-baby-blue-darker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="25" y="25" width="50" height="50" fill="currentColor" opacity="0.2"/>
+                                        <rect x="30" y="30" width="40" height="40" fill="currentColor"/>
+                                        <text x="50" y="50" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Cubo</text>
+                                    </svg>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-semibold text-gray-800">Caixinha Cubo</h4>
+                                    <div class="flex justify-between mt-2">
+                                        <span class="text-sm text-gray-600">Montadas: R$ 2,50</span>
+                                        <span class="text-sm text-gray-600">Só impressas: R$ 2,00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300">
+                                <div class="bg-baby-blue p-4 flex justify-center items-center h-40">
+                                    <svg class="w-24 h-24 text-baby-blue-darker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M30,30 L70,30 L70,70 L50,85 L30,70 Z" fill="currentColor" opacity="0.2"/>
+                                        <path d="M35,35 L65,35 L65,65 L50,75 L35,65 Z" fill="currentColor"/>
+                                        <text x="50" y="55" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Casinha</text>
+                                    </svg>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-semibold text-gray-800">Caixinha Casinha</h4>
+                                    <div class="flex justify-between mt-2">
+                                        <span class="text-sm text-gray-600">Montadas: R$ 2,50</span>
+                                        <span class="text-sm text-gray-600">Só impressas: R$ 2,00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <a href="#contato" class="inline-block bg-baby-blue-darker hover:bg-blue-500 text-white font-medium py-2 px-6 rounded-lg transition duration-300">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="convites" class="tab-content">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Convites</h3>
+                        <p class="text-gray-600 mb-6">Convites únicos para todos os seus momentos: casamentos, aniversários, chás de bebê e eventos corporativos. Opções digitais e em vídeo para modernidade e praticidade!</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-baby-blue bg-opacity-20 p-6 rounded-lg">
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Papel Fosco</h4>
+                                <ul class="space-y-2">
+                                    <li class="flex justify-between">
+                                        <span>4 na folha</span>
+                                        <span class="font-medium">R$ 0,90</span>
+                                    </li>
+                                    <li class="flex justify-between">
+                                        <span>2 na folha</span>
+                                        <span class="font-medium">R$ 1,50</span>
+                                    </li>
+                                    <li class="flex justify-between">
+                                        <span>1 na folha</span>
+                                        <span class="font-medium">R$ 2,50</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="bg-baby-blue bg-opacity-20 p-6 rounded-lg">
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Papel Fotográfico</h4>
+                                <ul class="space-y-2">
+                                    <li class="flex justify-between">
+                                        <span>4 na folha</span>
+                                        <span class="font-medium">R$ 1,20</span>
+                                    </li>
+                                    <li class="flex justify-between">
+                                        <span>2 na folha</span>
+                                        <span class="font-medium">R$ 2,50</span>
+                                    </li>
+                                    <li class="flex justify-between">
+                                        <span>1 na folha</span>
+                                        <span class="font-medium">R$ 6,00</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <a href="#contato" class="inline-block bg-baby-blue-darker hover:bg-blue-500 text-white font-medium py-2 px-6 rounded-lg transition duration-300">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="topo-bolo" class="tab-content">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Topo de Bolo</h3>
+                        <p class="text-gray-600 mb-6">Deixe seu bolo ainda mais especial com topos personalizados e cheios de estilo.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 border border-gray-200">
+                                <div class="bg-baby-blue p-4 flex justify-center items-center h-40">
+                                    <svg class="w-24 h-24 text-baby-blue-darker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20,30 L80,30 L80,80 L20,80 Z" fill="currentColor" opacity="0.2"/>
+                                        <path d="M25,25 L75,25 L75,30 L25,30 Z" fill="currentColor"/>
+                                        <path d="M30,20 L70,20 L70,25 L30,25 Z" fill="currentColor"/>
+                                        <text x="50" y="55" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Só Impresso</text>
+                                    </svg>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-semibold text-gray-800">Só Impresso</h4>
+                                    <div class="mt-2">
+                                        <span class="text-lg font-medium text-gray-800">R$ 8,00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 border border-gray-200">
+                                <div class="bg-baby-blue p-4 flex justify-center items-center h-40">
+                                    <svg class="w-24 h-24 text-baby-blue-darker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20,30 L80,30 L80,80 L20,80 Z" fill="currentColor" opacity="0.2"/>
+                                        <path d="M25,25 L75,25 L75,30 L25,30 Z" fill="currentColor"/>
+                                        <path d="M30,20 L70,20 L70,25 L30,25 Z" fill="currentColor"/>
+                                        <path d="M20,30 L80,30 L80,80 L20,80 Z" fill="none" stroke="white" stroke-width="2" stroke-dasharray="5,5"/>
+                                        <text x="50" y="55" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Cortados</text>
+                                    </svg>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-semibold text-gray-800">Cortados</h4>
+                                    <div class="mt-2">
+                                        <span class="text-lg font-medium text-gray-800">R$ 10,00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <a href="#contato" class="inline-block bg-baby-blue-darker hover:bg-blue-500 text-white font-medium py-2 px-6 rounded-lg transition duration-300">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="mini-painel" class="tab-content">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Mini Painel / Faixas</h3>
+                        <p class="text-gray-600 mb-6">Decoração vibrante para suas festas e eventos, com mini painéis e faixas sob medida.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 border border-gray-200">
+                                <div class="bg-baby-blue p-4 flex justify-center items-center h-40">
+                                    <svg class="w-24 h-24 text-baby-blue-darker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="20" y="30" width="60" height="40" rx="2" fill="currentColor" opacity="0.2"/>
+                                        <line x1="35" y1="30" x2="35" y2="70" stroke="currentColor" stroke-width="1"/>
+                                        <line x1="65" y1="30" x2="65" y2="70" stroke="currentColor" stroke-width="1"/>
+                                        <text x="50" y="50" font-family="Arial" font-size="10" fill="currentColor" text-anchor="middle">4 partes</text>
+                                    </svg>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-semibold text-gray-800">4 partes</h4>
+                                    <div class="mt-2">
+                                        <span class="text-lg font-medium text-gray-800">R$ 10,00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 border border-gray-200">
+                                <div class="bg-baby-blue p-4 flex justify-center items-center h-40">
+                                    <svg class="w-24 h-24 text-baby-blue-darker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="20" y="30" width="60" height="40" rx="2" fill="currentColor" opacity="0.2"/>
+                                        <line x1="30" y1="30" x2="30" y2="70" stroke="currentColor" stroke-width="1"/>
+                                        <line x1="50" y1="30" x2="50" y2="70" stroke="currentColor" stroke-width="1"/>
+                                        <line x1="70" y1="30" x2="70" y2="70" stroke="currentColor" stroke-width="1"/>
+                                        <text x="50" y="50" font-family="Arial" font-size="10" fill="currentColor" text-anchor="middle">6 partes</text>
+                                    </svg>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-semibold text-gray-800">6 partes</h4>
+                                    <div class="mt-2">
+                                        <span class="text-lg font-medium text-gray-800">R$ 15,00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 border border-gray-200">
+                                <div class="bg-baby-blue p-4 flex justify-center items-center h-40">
+                                    <svg class="w-24 h-24 text-baby-blue-darker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="20" y="30" width="60" height="40" rx="2" fill="currentColor" opacity="0.2"/>
+                                        <line x1="28" y1="30" x2="28" y2="70" stroke="currentColor" stroke-width="1"/>
+                                        <line x1="42" y1="30" x2="42" y2="70" stroke="currentColor" stroke-width="1"/>
+                                        <line x1="56" y1="30" x2="56" y2="70" stroke="currentColor" stroke-width="1"/>
+                                        <line x1="70" y1="30" x2="70" y2="70" stroke="currentColor" stroke-width="1"/>
+                                        <text x="50" y="50" font-family="Arial" font-size="10" fill="currentColor" text-anchor="middle">8 partes</text>
+                                    </svg>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-semibold text-gray-800">8 partes</h4>
+                                    <div class="mt-2">
+                                        <span class="text-lg font-medium text-gray-800">R$ 20,00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <a href="#contato" class="inline-block bg-baby-blue-darker hover:bg-blue-500 text-white font-medium py-2 px-6 rounded-lg transition duration-300">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="adesivos" class="tab-content">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Adesivos</h3>
+                        <p class="text-gray-600 mb-6">Personalize seus produtos, brindes e decorações com adesivos de alta qualidade.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 border border-gray-200">
+                                <div class="bg-baby-blue p-4 flex justify-center items-center h-40">
+                                    <svg class="w-24 h-24 text-baby-blue-darker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="50" cy="50" r="40" fill="currentColor" opacity="0.2"/>
+                                        <circle cx="50" cy="50" r="30" fill="currentColor"/>
+                                        <text x="50" y="55" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Redondos</text>
+                                    </svg>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-semibold text-gray-800">Adesivos Redondos</h4>
+                                    <div class="mt-2">
+                                        <span class="text-lg font-medium text-gray-800">A partir de R$ 0,50/un</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 border border-gray-200">
+                                <div class="bg-baby-blue p-4 flex justify-center items-center h-40">
+                                    <svg class="w-24 h-24 text-baby-blue-darker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="20" y="20" width="60" height="60" rx="5" fill="currentColor" opacity="0.2"/>
+                                        <rect x="30" y="30" width="40" height="40" rx="3" fill="currentColor"/>
+                                        <text x="50" y="55" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Quadrados</text>
+                                    </svg>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-semibold text-gray-800">Adesivos Quadrados</h4>
+                                    <div class="mt-2">
+                                        <span class="text-lg font-medium text-gray-800">A partir de R$ 0,50/un</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <a href="#contato" class="inline-block bg-baby-blue-darker hover:bg-blue-500 text-white font-medium py-2 px-6 rounded-lg transition duration-300">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="outros" class="tab-content">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Outros Produtos</h3>
+                        <p class="text-gray-600 mb-6">Explore nossa variedade de produtos gráficos para todas as suas necessidades.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 border border-gray-200">
+                                <div class="bg-baby-blue p-4 flex justify-center items-center h-40">
+                                    <svg class="w-24 h-24 text-baby-blue-darker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="10" y="20" width="80" height="60" rx="5" fill="currentColor" opacity="0.2"/>
+                                        <rect x="20" y="30" width="60" height="40" rx="3" fill="currentColor"/>
+                                        <text x="50" y="55" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Revistas</text>
+                                    </svg>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-semibold text-gray-800">Revistas Personalizadas</h4>
+                                    <div class="mt-2">
+                                        <span class="text-lg font-medium text-gray-800">Consulte valores</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 border border-gray-200">
+                                <div class="bg-baby-blue p-4 flex justify-center items-center h-40">
+                                    <svg class="w-24 h-24 text-baby-blue-darker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50,10 L90,50 L50,90 L10,50 Z" fill="currentColor" opacity="0.2"/>
+                                        <path d="M50,20 L80,50 L50,80 L20,50 Z" fill="currentColor"/>
+                                        <text x="50" y="55" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Ímãs</text>
+                                    </svg>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-semibold text-gray-800">Ímãs de Geladeira</h4>
+                                    <div class="mt-2">
+                                        <span class="text-lg font-medium text-gray-800">Consulte valores</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 border border-gray-200">
+                                <div class="bg-baby-blue p-4 flex justify-center items-center h-40">
+                                    <svg class="w-24 h-24 text-baby-blue-darker" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="20" y="20" width="60" height="60" rx="10" fill="currentColor" opacity="0.2"/>
+                                        <rect x="30" y="30" width="40" height="40" rx="5" fill="currentColor"/>
+                                        <text x="50" y="55" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Chaveiros</text>
+                                    </svg>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-semibold text-gray-800">Chaveiros Personalizados</h4>
+                                    <div class="mt-2">
+                                        <span class="text-lg font-medium text-gray-800">Consulte valores</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 text-center">
+                            <a href="#contato" class="inline-block bg-baby-blue-darker hover:bg-blue-500 text-white font-medium py-2 px-6 rounded-lg transition duration-300">Solicitar Orçamento</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Sobre a Gráfica Viana</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-12">
+                <div class="md:w-1/2">
+                    <p class="text-gray-700 leading-relaxed mb-6">Na Gráfica Viana, transformamos suas ideias em realidade impressa. Desde 20XX, somos apaixonados por oferecer produtos gráficos de alta qualidade, combinando inovação, atenção aos detalhes e um atendimento personalizado.</p>
+                    <p class="text-gray-700 leading-relaxed mb-6">Acreditamos que cada projeto é único, por isso trabalhamos lado a lado com você para garantir que o resultado final supere suas expectativas. Utilizamos tecnologia de ponta e materiais selecionados para assegurar a durabilidade e o impacto visual dos seus impressos.</p>
+                    <p class="text-gray-700 leading-relaxed">Seja para um evento especial, seu negócio ou para presentear, a Gráfica Viana é sua parceira ideal em impressão. Conte conosco para dar vida às suas criações!</p>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://via.placeholder.com/500x350" alt="Gráfica Viana equipe" class="rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-16 bg-baby-blue">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Entre em Contato</h2>
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Fale Conosco</h3>
+                    <p class="text-gray-700 mb-4">Tem alguma dúvida, precisa de um orçamento ou quer saber mais sobre nossos produtos? Envie uma mensagem!</p>
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Nome</label>
+                            <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Seu Nome">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="seu@email.com">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Mensagem</label>
+                            <textarea id="message" name="message" rows="5" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Sua mensagem..."></textarea>
+                        </div>
+                        <button type="submit" class="bg-baby-blue-darker hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300">Enviar Mensagem</button>
+                    </form>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Informações de Contato</h3>
+                    <p class="text-gray-700 mb-2 flex items-center">
+                        <svg class="w-5 h-5 text-baby-blue-darker mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                        </svg>
+                        Endereço: Rua Principal, 123, Centro, Camocim - CE
+                    </p>
+                    <p class="text-gray-700 mb-2 flex items-center">
+                        <svg class="w-5 h-5 text-baby-blue-darker mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.774a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                        </svg>
+                        Telefone: (88) 9XXXX-XXXX
+                    </p>
+                    <p class="text-gray-700 mb-2 flex items-center">
+                        <svg class="w-5 h-5 text-baby-blue-darker mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                        </svg>
+                        Email: contato@graficaviana.com.br
+                    </p>
+                    <div class="mt-6">
+                        <h4 class="text-xl font-semibold text-gray-800 mb-2">Redes Sociais</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-700 hover:text-baby-blue-darker">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.776-3.89 1.094 0 2.24.195 2.24.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V22C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            <a href="#" class="text-gray-700 hover:text-baby-blue-darker">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.715.056.815.035 1.454.174 2.006.42.55.25 1.054.678 1.488 1.112s.862.938 1.112 1.488c.246.552.385 1.191.42 2.006.043.93.056 1.286.056 3.715s-.013 2.784-.056 3.715c-.035.815-.174 1.454-.42 2.006-.25.55-.678 1.054-1.112 1.488s-.938.862-1.488 1.112c-.552.246-1.191.385-2.006.42-.93.043-1.286.056-3.715.056s-2.784-.013-3.715-.056c-.815-.035-1.454-.174-2.006-.42-.55-.25-1.054-.678-1.488-1.112s-.862-.938-1.112-1.488c-.246-.552-.385-1.191-.42-2.006-.043-.93-.056-1.286-.056-3.715s.013-2.784.056-3.715c.035-.815.174-1.454.42-2.006.25-.55.678-1.054 1.112-1.488s.938-.862 1.488-1.112c.552-.246 1.191-.385 2.006-.42.93-.043 1.286-.056 3.715-.056zm0 2.163c-2.797 0-3.132.011-4.103.051-.78.033-1.205.158-1.521.309-.344.16-.622.348-.891.617-.269.269-.457.548-.617.891-.15.316-.276.741-.309 1.521-.04 1.002-.051 1.339-.051 4.103s.011 3.132.051 4.103c.033.78.158 1.205.309 1.521.16.344.348.622.617.891.269.269.548.457.891.617.316.15.741.276 1.521.309 1.002.04 1.339.051 4.103.051s3.132-.011 4.103-.051c.78-.033 1.205-.158 1.521-.309.344-.16.622-.348.891-.617.269-.269.457-.548.617-.891.15-.316.276-.741.309-1.521.04-1.002.051-1.339.051-4.103s-.011-3.132-.051-4.103c-.033-.78-.158-1.205-.309-1.521-.16-.344-.348-.622-.617-.891-.269-.269-.548-.457-.891-.617-.316-.15-.741-.276-1.521-.309-1.002-.04-1.339-.051-4.103-.051zm0 7.882a4.873 4.873 0 100-9.746 4.873 4.873 0 000 9.746zm0 2.163a7.036 7.036 0 110-14.072 7.036 7.036 0 010 14.072zm6.263-11.716c-.52.001-.94-.42-.94-.94 0-.518.42-.94.94-.94.52 0 .94.422.94.94 0 .52-.42.94-.94.94z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            <a href="#" class="text-gray-700 hover:text-baby-blue-darker">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M.057 2.004C.392.853 1.488 0 2.857 0h18.286c1.37 0 2.466.853 2.8 2.004l-11.026 7.553L.057 2.004zM24 4.545v14.91c0 1.37-.853 2.466-2.004 2.8l-5.632-6.19L24 4.545zm-24 0L7.636 16.064 2.004 21.455C.853 21.12.057 20.024.057 18.655V4.545zM8.114 12.285L24 2.004V0H0v2.004l15.886 10.281L12 15.655l-3.886-3.37z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2023 Gráfica Viana. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Product Tabs Functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('active', 'bg-baby-blue-darker', 'text-white');
+                    btn.classList.add('bg-white', 'text-gray-700');
+                });
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to the clicked button and corresponding content
+                const targetTab = button.dataset.tab;
+                document.getElementById(targetTab).classList.add('active');
+                button.classList.add('active', 'bg-baby-blue-darker', 'text-white');
+                button.classList.remove('bg-white', 'text-gray-700');
+            });
+        });
+
+        // Set initial active tab
+        document.addEventListener('DOMContentLoaded', () => {
+            const initialTabButton = document.querySelector('.tab-button[data-tab="caixinhas"]');
+            if (initialTabButton) {
+                initialTabButton.click(); // Simulate a click to activate the first tab
+            }
+        });
+    </script>
+</body>
+</html>

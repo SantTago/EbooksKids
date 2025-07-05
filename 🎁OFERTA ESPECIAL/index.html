@@ -1,0 +1,904 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Pequeno Gênio | Transforme o Futuro do Seu Filho</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        }
+        .testimonial {
+            position: relative;
+        }
+        .testimonial::before {
+            content: '"';
+            font-size: 5rem;
+            position: absolute;
+            top: -1.5rem;
+            left: -1rem;
+            color: rgba(124, 58, 237, 0.2);
+            font-family: serif;
+        }
+        .price-tag {
+            position: relative;
+            overflow: hidden;
+        }
+        .price-tag::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: -5%;
+            width: 110%;
+            height: 1px;
+            background-color: #e11d48;
+            transform: rotate(-10deg);
+        }
+        .floating-cta {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .highlight-text {
+            background: linear-gradient(to bottom, transparent 50%, rgba(124, 58, 237, 0.2) 50%);
+        }
+        .countdown-timer {
+            font-variant-numeric: tabular-nums;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Barra de navegação -->
+    <nav class="bg-white shadow-md py-4 sticky top-0 z-50">
+    <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+        <a href="javascript:history.back()" class="text-indigo-600 hover:text-indigo-800 mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+        </a>
+        <div class="text-xl font-bold text-indigo-700">Meu Pequeno Gênio</div>
+        <a href="/index.html" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-full transition duration-300 text-sm md:text-base">Quero Transformar Meu Filho</a>
+    </div>
+</nav>
+
+    <!-- Seção Hero -->
+    <section class="hero-gradient text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <span class="bg-indigo-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Método Exclusivo</span>
+                    <h1 class="text-3xl md:text-5xl font-bold mt-4 leading-tight">Descubra o Segredo Para Transformar Seu Filho em um <span class="text-yellow-300">Pequeno Gênio!</span></h1>
+                    <p class="text-xl md:text-2xl mt-6 opacity-90">Milhares de Maneiras Comprovadas para Estimular Seu Filho ao Sucesso Absoluto e Desbloquear Seu Potencial Máximo.</p>
+                    
+                    <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                        <a href="https://pay.kiwify.com.br/ly278dg" class="bg-yellow-500 hover:bg-yellow-400 text-indigo-900 font-bold py-3 px-8 rounded-lg text-center transition duration-300 transform hover:scale-105">QUERO GARANTIR AGORA</a>
+                        <a href="#depoimentos" class="bg-transparent border-2 border-white text-white font-medium py-3 px-8 rounded-lg text-center hover:bg-white hover:text-indigo-700 transition duration-300">Ver Depoimentos</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <!-- Capa do E-book -->
+                        <div class="w-64 h-80 bg-white rounded-lg shadow-2xl transform rotate-3 relative">
+                                
+                                    <div class="bg-white h-full w-full rounded-md flex flex-col justify-between p-4">
+                                        <img src="Capa Oficial.png" alt="Capa do Livro Meu Pequeno Gênio" class="w-full h-full object-cover absolute inset-0 rounded-md">
+                                        <div class="mt-auto"> <p class="text-gray-700 text-xs italic">Milhares de maneiras comprovadas para estimular seu filho ao sucesso absoluto</p>
+                                    </div>
+                                    </div>
+                        <!-- Elementos decorativos -->
+                        <div class="absolute -top-4 -right-4 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center text-indigo-900 font-bold text-xs transform rotate-12">NOVO!</div>
+                        <div class="absolute -bottom-6 -left-6 w-20 h-20 bg-pink-500 rounded-full flex items-center justify-center text-white font-bold text-xs p-2 text-center">MÉTODO EXCLUSIVO</div>
+                         <!-- Selo de garantia -->
+                        <div class="absolute -bottom-10 -right-10 w-24 h-24 bg-yellow-400 rounded-full flex items-center justify-center text-center p-2 transform rotate-12 shadow-lg">
+                            <div>
+                                <p class="font-bold text-xs">GARANTIA DE</p>
+                                <p class="font-black text-lg leading-none">30 DIAS</p>
+                                <p class="text-xs">Satisfação Total</p>
+                            </div>
+                        </div>
+                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Problema/Agitação -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">Você já se perguntou por que <span class="highlight-text">alguns pais conseguem criar filhos extraordinários</span>, enquanto outros lutam diariamente?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-red-500">
+                    <h3 class="font-bold text-lg mb-3 text-red-600">Você se preocupa com o futuro do seu filho?</h3>
+                    <p class="text-gray-700">Em um mundo cada vez mais competitivo, onde as oportunidades parecem reservadas apenas para os mais brilhantes, é natural sentir medo de que seu filho fique para trás.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-red-500">
+                    <h3 class="font-bold text-lg mb-3 text-red-600">Está cansado de tentar de tudo sem resultados?</h3>
+                    <p class="text-gray-700">Você já investiu em brinquedos educativos caros, aplicativos, cursos extras... mas ainda não vê aquela faísca de genialidade que sabe que existe dentro do seu filho?</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md border-l-4 border-red-500">
+                    <h3 class="font-bold text-lg mb-3 text-red-600">Sente que seu filho não está atingindo todo o seu potencial?</h3>
+                    <p class="text-gray-700">Aquela sensação incômoda de que seu filho poderia estar se desenvolvendo muito mais rápido, aprendendo com mais facilidade, se destacando... se você soubesse exatamente o que fazer.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-gray-100 p-8 rounded-xl">
+                <h3 class="text-xl font-bold mb-4 text-center">A verdade que ninguém te conta:</h3>
+                <p class="text-lg text-center">O sistema educacional tradicional <span class="font-bold">NÃO foi projetado</span> para desenvolver gênios. Foi criado para formar trabalhadores medianos.</p>
+                
+                <div class="mt-8 flex flex-col md:flex-row gap-6 justify-center">
+                    <div class="flex items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 mr-2 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <p class="text-gray-700">90% dos pais esperam que a escola faça todo o trabalho de desenvolvimento intelectual</p>
+                    </div>
+                    <div class="flex items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 mr-2 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <p class="text-gray-700">Os primeiros 7 anos são cruciais, mas a maioria dos pais perde esse período precioso</p>
+                    </div>
+                    <div class="flex items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 mr-2 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <p class="text-gray-700">Sem estímulo adequado, seu filho pode perder até 70% do seu potencial inato</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Solução -->
+    <section class="py-16 bg-indigo-50">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">A Solução Definitiva</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-4">Apresentando: <span class="text-indigo-700">Meu Pequeno Gênio</span></h2>
+                <p class="text-xl mt-4 max-w-3xl mx-auto text-gray-700">O guia definitivo com milhares de estratégias práticas, envolventes e cientificamente comprovadas para estimular o desenvolvimento cognitivo, emocional e social do seu filho.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="font-bold text-xl mb-6 text-indigo-700">O que você vai encontrar neste e-book revolucionário:</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 p-2 rounded-full mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Mais de 500 atividades práticas</h4>
+                                    <p class="text-gray-600 text-sm">Organizadas por idade e área de desenvolvimento, prontas para aplicação imediata</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 p-2 rounded-full mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Técnicas de estimulação precoce</h4>
+                                    <p class="text-gray-600 text-sm">Métodos comprovados para potencializar o desenvolvimento cerebral nos primeiros anos</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 p-2 rounded-full mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Rotinas diárias otimizadas</h4>
+                                    <p class="text-gray-600 text-sm">Planejamentos diários que transformam momentos comuns em oportunidades de aprendizado</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 p-2 rounded-full mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Nutrição para o cérebro</h4>
+                                    <p class="text-gray-600 text-sm">Cardápios e receitas que potencializam o desenvolvimento cognitivo</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-indigo-100 p-2 rounded-full mr-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Técnicas de comunicação avançada</h4>
+                                    <p class="text-gray-600 text-sm">Como falar com seu filho para estimular raciocínio crítico e inteligência emocional</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <!-- Capa do E-book (versão maior) -->
+                        <div class="w-72 h-96 bg-white rounded-lg shadow-2xl transform rotate-3 relative">
+                            div class="w-64 h-80 bg-white rounded-lg shadow-2xl transform rotate-3 relative">
+                                <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 to-purple-700 rounded-lg p-1">
+                                    <div class="bg-white h-full w-full rounded-md flex flex-col justify-between p-4">
+                                        <img src="Capa Oficial.png" alt="Capa do Livro Meu Pequeno Gênio" class="w-full h-full object-cover absolute inset-0 rounded-md">
+                                        <div class="mt-auto"> <p class="text-gray-700 text-xs italic">Milhares de maneiras comprovadas para estimular seu filho ao sucesso absoluto</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="https://pay.kiwify.com.br/ly278dg" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-8 rounded-lg text-xl transition duration-300 transform hover:scale-105 shadow-lg">QUERO TRANSFORMAR MEU FILHO EM UM GÊNIO</a>
+                <p class="mt-4 text-gray-600 text-sm">Acesso imediato após a compra | Formato digital (PDF)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre a Autora -->
+     <style>
+        #grande img{
+            width: 200px;
+            height: auto;
+        }
+     </style>
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row gap-10 items-center">
+                <div class="md:w-1/3 flex justify-center">
+                    <!-- Avatar da autora (SVG) -->
+                    <div id="grande" class="flex justify-center">
+                            <img src="Gemini_Generated_Image_v334q9v334q9v334.png" alt="Descrição da Imagem" class="h-24 w-24 rounded-full object-cover">
+                        </div>
+                </div>
+                
+                <div class="md:w-2/3">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Conheça a Especialista</span>
+                    <h2 class="text-3xl font-bold mt-4 mb-6">Dra. Sofia Mendes</h2>
+                    
+                    <p class="text-gray-700 mb-4">Renomada especialista em desenvolvimento infantil, psicóloga educacional e mãe de dois prodígios, a Dra. Sofia Mendes dedicou sua vida a pesquisar e implementar estratégias revolucionárias para nutrir crianças excepcionais.</p>
+                    
+                    <p class="text-gray-700 mb-4">Após mais de 20 anos trabalhando com milhares de famílias e observando padrões claros entre as crianças que se destacavam, ela compilou todas as suas descobertas neste guia definitivo.</p>
+                    
+                    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-indigo-50 p-4 rounded-lg text-center">
+                            <div class="font-bold text-indigo-700 text-xl">20+</div>
+                            <p class="text-gray-600 text-sm">Anos de experiência</p>
+                        </div>
+                        <div class="bg-indigo-50 p-4 rounded-lg text-center">
+                            <div class="font-bold text-indigo-700 text-xl">5.000+</div>
+                            <p class="text-gray-600 text-sm">Famílias transformadas</p>
+                        </div>
+                        <div class="bg-indigo-50 p-4 rounded-lg text-center">
+                            <div class="font-bold text-indigo-700 text-xl">12</div>
+                            <p class="text-gray-600 text-sm">Livros publicados</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        <p class="italic text-gray-700">"Acredito firmemente que cada criança tem um potencial genial esperando para ser desbloqueado. Minha missão é dar aos pais as ferramentas para fazer isso acontecer."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Benefícios -->
+    <section class="py-16 bg-gradient-to-b from-indigo-50 to-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold">O Que Seu Filho Vai Conquistar</h2>
+                <p class="text-xl mt-4 max-w-3xl mx-auto text-gray-700">Transformações reais que você começará a notar em questão de semanas</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-indigo-500">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Raciocínio Acelerado</h3>
+                    <p class="text-gray-700">Seu filho desenvolverá uma capacidade impressionante de resolver problemas complexos, muito além do esperado para sua idade.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-purple-500">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Amor pelo Aprendizado</h3>
+                    <p class="text-gray-700">Esqueça a luta para fazer seu filho estudar. Ele desenvolverá uma curiosidade natural e um desejo genuíno de aprender cada vez mais.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-pink-500">
+                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Inteligência Emocional</h3>
+                    <p class="text-gray-700">Seu filho aprenderá a identificar e gerenciar suas emoções, desenvolvendo empatia e habilidades sociais superiores.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-500">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Criatividade Extraordinária</h3>
+                    <p class="text-gray-700">As técnicas do livro estimulam o pensamento divergente, permitindo que seu filho encontre soluções inovadoras para qualquer desafio.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-green-500">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Autoconfiança Inabalável</h3>
+                    <p class="text-gray-700">Seu filho desenvolverá uma forte crença em suas próprias capacidades, enfrentando novos desafios com coragem e determinação.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-yellow-500">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Desempenho Acadêmico Superior</h3>
+                    <p class="text-gray-700">Notas mais altas, compreensão mais profunda e uma capacidade natural de se destacar em qualquer ambiente educacional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depoimentos - Meu Pequeno Gênio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+    <style>
+        /* Cores Personalizadas (Mantendo o tema do livro 'Meu Pequeno Gênio') */
+        .color-primary-dark { color: #4F46E5; } /* Índigo escuro */
+        .color-primary-light { color: #8B5CF6; } /* Violeta */
+        .color-accent { color: #EC4899; } /* Rosa */
+        .bg-gradient-header { background: linear-gradient(90deg, #4F46E5 0%, #7C3AED 100%); } /* Gradiente Índigo-Violeta */
+
+        /* Fontes */
+        .font-heading { font-family: 'Playfair Display', serif; }
+        .font-body { font-family: 'Montserrat', sans-serif; }
+
+        /* Estilos para o contêiner de rolagem lateral */
+        .scroll-container {
+            -webkit-overflow-scrolling: touch; /* Melhora a rolagem em iOS */
+            scroll-snap-type: x mandatory; /* Faz os itens "travarem" ao rolar */
+            /* Adicionado padding horizontal para garantir que os itens não fiquem colados nas bordas */
+            padding-left: 1rem; /* px-4 no Tailwind */
+            padding-right: 1rem; /* px-4 no Tailwind */
+        }
+        @media (min-width: 640px) { /* sm breakpoint do Tailwind */
+            .scroll-container {
+                padding-left: 1.5rem; /* sm:px-6 */
+                padding-right: 1.5rem; /* sm:px-6 */
+            }
+        }
+        @media (min-width: 1024px) { /* lg breakpoint do Tailwind */
+            .scroll-container {
+                padding-left: 2rem; /* lg:px-8 */
+                padding-right: 2rem; /* lg:px-8 */
+            }
+        }
+
+
+        .scroll-item {
+            /* **AJUSTE PRINCIPAL AQUI:** Diminuído para garantir que não corte em telas muito pequenas */
+            min-width: 80%; /* Era 85%, agora 80% para mais margem */
+            max-width: 384px; /* w-96 */
+            scroll-snap-align: center; /* Alinha o item ao centro da área de rolagem */
+        }
+        @media (min-width: 768px) {
+            .scroll-item {
+                min-width: 32%; /* Em telas médias, 3 cards por linha */
+            }
+        }
+        @media (min-width: 1024px) {
+            .scroll-item {
+                min-width: 30%; /* Em telas grandes, um pouco mais de espaço */
+            }
+        }
+
+        /* Estilo para as estrelas */
+        .star-filled { color: #F59E0B; } /* Amarelo das estrelas */
+    </style>
+</head>
+<body class="font-body bg-gray-50 antialiased">
+
+    <section class="py-16 sm:py-20 lg:py-24">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 lg:mb-16 px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-heading text-gray-800 leading-tight">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-700">O Que os Pais Dizem?</span>
+                </h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                    Histórias reais de sucesso com o Guia "Meu Pequeno Gênio".
+                </p>
+            </div>
+
+            <div class="flex overflow-x-auto pb-8 space-x-6 lg:space-x-8 scroll-container">
+
+                <div class="scroll-item flex-shrink-0 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 transform hover:scale-105 transition duration-300 ease-in-out">
+                    <div class="flex flex-col items-center mb-6">
+                        <div class="flex justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
+                            </svg>
+                        </div>
+                        <div class="flex justify-center mb-2">
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">"Uma Transformação Incrível!"</h3>
+                    </div>
+                    <p class="text-gray-700 text-base leading-relaxed italic text-center">
+                        "Meu filho era desorganizado e tinha dificuldade em focar. Depois de usar o Guia 'Meu Pequeno Gênio', ele se tornou mais autônomo e até começou a se interessar por leitura! É mágico ver a confiança dele crescer."
+                    </p>
+                    <p class="mt-4 text-sm font-semibold text-gray-500 text-center">- Maria Silva, Mãe do João (5 anos)</p>
+                </div>
+
+                <div class="scroll-item flex-shrink-0 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 transform hover:scale-105 transition duration-300 ease-in-out">
+                    <div class="flex flex-col items-center mb-6">
+                        <div class="flex justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                        </div>
+                        <div class="flex justify-center mb-2">
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">"Aprendizado Divertido e Eficaz!"</h3>
+                    </div>
+                    <p class="text-gray-700 text-base leading-relaxed italic text-center">
+                        "Eu sempre quis estimular a inteligência do meu filho, mas não sabia por onde começar. O guia ofereceu estratégias simples e jogos que transformaram o aprendizado em pura diversão. Recomendo a todos os pais!"
+                    </p>
+                    <p class="mt-4 text-sm font-semibold text-gray-500 text-center">- Carlos Santos, Pai da Sofia (7 anos)</p>
+                </div>
+
+                <div class="scroll-item flex-shrink-0 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 transform hover:scale-105 transition duration-300 ease-in-out">
+                    <div class="flex flex-col items-center mb-6">
+                        <div class="flex justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <div class="flex justify-center mb-2">
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">"Organização e Autonomia Garantidas!"</h3>
+                    </div>
+                    <p class="text-gray-700 text-base leading-relaxed italic text-center">
+                        "O template de rotina é um salvador! Minha filha agora tem uma rotina clara e se sente mais independente. Ver ela cumprindo as tarefas com entusiasmo é a melhor recompensa. Suporte incrível!"
+                    </p>
+                    <p class="mt-4 text-sm font-semibold text-gray-500 text-center">- Ana Clara, Mãe da Laura (4 anos)</p>
+                </div>
+
+                <div class="scroll-item flex-shrink-0 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 transform hover:scale-105 transition duration-300 ease-in-out">
+                    <div class="flex flex-col items-center mb-6">
+                        <div class="flex justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 8h10M7 12h10m-9 4h4M8 21m-4 0a4 4 0 118 0 4 4 0 01-8 0zM12 21m-4 0a4 4 0 118 0 4 4 0 01-8 0zM16 21m-4 0a4 4 0 118 0 4 4 0 01-8 0zM12 3v1m0 4h.01M16 4.5h.01M3.5 12h.01M4.5 16h.01M19.5 12h.01M20.5 16h.01M12 20.5v.01"/>
+                            </svg>
+                        </div>
+                        <div class="flex justify-center mb-2">
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">"Melhora Visível na Comunicação!"</h3>
+                    </div>
+                    <p class="text-gray-700 text-base leading-relaxed italic text-center">
+                        "As '7 Frases Proibidas e Poderosas' mudaram a dinâmica da nossa casa. As conversas com meu filho ficaram mais construtivas e ele está se expressando muito melhor. É um alívio!"
+                    </p>
+                    <p class="mt-4 text-sm font-semibold text-gray-500 text-center">- Ricardo Mendes, Pai do Pedro (6 anos)</p>
+                </div>
+
+                <div class="scroll-item flex-shrink-0 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 transform hover:scale-105 transition duration-300 ease-in-out">
+                    <div class="flex flex-col items-center mb-6">
+                        <div class="flex justify-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6 1.196L18.428 5M18 9l.059-1.258a1 1 0 00-1.293-1.077l-4.704.94A1 1 0 0011 7.468V4h-1V3H4v1.5L2.5 5 2 7l1.5 1.5L2 9.5l-1.5 1.5L2 12l1.5 1.5L2 15l1.5 1.5L2 18l1.5 1.5L4 20h6v-3a3 3 0 013-3h1.5a1 1 0 011 .5v2.5a3 3 0 01-3 3H9.663a3 3 0 01-3-3V7.5a1.5 1.5 0 011.5-1.5H12l-1 2.5a.5.5 0 00.5.6H12a.5.5 0 00.5-.6L12 7.5h1.5a.5.5 0 00.5-.5V5.5a.5.5 0 00-.5-.5H12a.5.5 0 00-.5.5z"/>
+                            </svg>
+                        </div>
+                        <div class="flex justify-center mb-2">
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                            <span class="star-filled">&#9733;</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">"Mais Leveza no Dia a Dia!"</h3>
+                    </div>
+                    <p class="text-gray-700 text-base leading-relaxed italic text-center">
+                        "Antes, cada tarefa era uma batalha. Com as dicas do guia, a rotina virou um momento de conexão e aprendizado. Meu Pequeno Gênio realmente nos ajudou a ter mais leveza e alegria em casa."
+                    </p>
+                    <p class="mt-4 text-sm font-semibold text-gray-500 text-center">- Fernanda Costa, Mãe da Alice (3 anos)</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+
+    
+ <style>
+        /* Cores Personalizadas (Mantendo o tema do livro 'Meu Pequeno Gênio') */
+        .color-primary-dark { color: #4F46E5; } /* Índigo escuro */
+        .color-primary-light { color: #8B5CF6; } /* Violeta */
+        .color-accent { color: #EC4899; } /* Rosa */
+        .bg-gradient-header { background: linear-gradient(90deg, #4F46E5 0%, #7C3AED 100%); } /* Gradiente Índigo-Violeta */
+
+        /* Fontes */
+        .font-heading { font-family: 'Playfair Display', serif; }
+        .font-body { font-family: 'Montserrat', sans-serif; }
+
+        /* Estilos para o contêiner de rolagem lateral */
+        .scroll-container {
+            -webkit-overflow-scrolling: touch; /* Melhora a rolagem em iOS */
+            scroll-snap-type: x mandatory; /* Faz os itens "travarem" ao rolar */
+        }
+        .scroll-item {
+            scroll-snap-align: center; /* Alinha o item ao centro da área de rolagem */
+            min-width: 90%; /* Em telas pequenas, cada card ocupa 90% da largura */
+            max-width: 384px; /* w-96 */
+        }
+        @media (min-width: 768px) {
+            .scroll-item {
+                min-width: 32%; /* Em telas médias, 3 cards por linha */
+            }
+        }
+        @media (min-width: 1024px) {
+            .scroll-item {
+                min-width: 30%; /* Em telas grandes, um pouco mais de espaço */
+            }
+        }
+
+        /* Estilo para as estrelas */
+        .star-filled { color: #F59E0B; } /* Amarelo das estrelas */
+    </style>
+
+
+
+
+
+
+
+
+
+    <!-- Seção de Perguntas Frequentes -->
+    <section class="py-16 bg-indigo-50">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold">Perguntas Frequentes</h2>
+                <p class="text-xl mt-4 max-w-3xl mx-auto text-gray-700">Tudo o que você precisa saber antes de transformar o futuro do seu filho</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="font-bold text-lg mb-3 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Para qual idade este e-book é recomendado?
+                    </h3>
+                    <p class="text-gray-700">O "Meu Pequeno Gênio" foi desenvolvido para crianças de 0 a 12 anos. As atividades são organizadas por faixa etária, permitindo que você aplique as técnicas adequadas independentemente da idade do seu filho. Quanto mais cedo começar, melhores serão os resultados!</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="font-bold text-lg mb-3 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Quanto tempo preciso dedicar diariamente às atividades?
+                    </h3>
+                    <p class="text-gray-700">As atividades foram projetadas para pais ocupados! A maioria delas pode ser integrada à rotina diária e leva apenas 15-20 minutos. O e-book inclui um planejador semanal para ajudá-lo a organizar as atividades de forma eficiente.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="font-bold text-lg mb-3 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Preciso de materiais especiais ou caros?
+                    </h3>
+                    <p class="text-gray-700">Não! A maioria das atividades utiliza itens que você já tem em casa. A Dra. Sofia Mendes acredita que o desenvolvimento excepcional não depende de brinquedos caros, mas sim de estímulos adequados e consistentes.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="font-bold text-lg mb-3 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Em quanto tempo verei resultados?
+                    </h3>
+                    <p class="text-gray-700">Muitos pais relatam mudanças perceptíveis em apenas 2-3 semanas! Você notará melhorias na concentração, vocabulário e habilidades de resolução de problemas do seu filho. Em 3 meses, a transformação será notável para todos ao seu redor.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="font-bold text-lg mb-3 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        E se eu não ficar satisfeito com o e-book?
+                    </h3>
+                    <p class="text-gray-700">Oferecemos garantia incondicional de 30 dias. Se você não ficar completamente satisfeito com os resultados, basta enviar um e-mail e devolveremos 100% do seu investimento, sem perguntas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta Especial - Meu Pequeno Gênio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+    <style>
+        /* Cores Personalizadas (Mantendo o tema do livro 'Meu Pequeno Gênio') */
+        .color-primary-dark { color: #4F46E5; } /* Índigo escuro */
+        .color-primary-light { color: #8B5CF6; } /* Violeta */
+        .color-accent { color: #EC4899; } /* Rosa */
+
+        /* Fontes */
+        .font-heading { font-family: 'Playfair Display', serif; }
+        .font-body { font-family: 'Montserrat', sans-serif; }
+
+        /* Estilo para tachar o preço antigo */
+        .price-tag {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        /* Animação do botão */
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+        .animate-pulse-green {
+            animation: pulse-green 2s infinite;
+        }
+        body, html {
+            overflow-x: hidden;
+        }
+
+        /* Estilo para as miniaturas dos brindes */
+        .brinde-thumbnail {
+            width: 60px; /* Largura da miniatura */
+            height: 80px; /* Altura da miniatura */
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-right: 12px; /* Espaçamento entre a imagem e o texto */
+        }
+
+        @media (min-width: 768px) {
+            .brinde-thumbnail {
+                width: 70px;
+                height: 90px;
+            }
+        }
+    </style>
+</head>
+<body class="font-body bg-gray-50">
+
+    <section id="comprar-agora" class="py-16 md:py-20 lg:py-24 bg-white">
+        <div class="container mx-auto px-4 md:px-6 max-w-5xl">
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl overflow-hidden shadow-2xl p-6 md:p-10 lg:p-12">
+                <div class="text-center mb-8 md:mb-10">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-heading leading-tight">Transforme o Futuro do Seu Filho Hoje!</h2>
+                    <p class="text-lg md:text-xl mt-4 text-indigo-100 font-body max-w-2xl mx-auto">Acesso imediato ao método completo que já transformou milhares de crianças em pequenos gênios</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center justify-center">
+                    <div class="md:w-1/2 flex justify-center p-4">
+                        <div class="relative w-64 h-80 sm:w-72 sm:h-96">
+                            <div class="absolute inset-0 bg-white rounded-lg shadow-2xl transform rotate-3">
+                                <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 to-purple-700 rounded-lg p-1">
+                                    <div class="bg-white h-full w-full rounded-md flex flex-col justify-between relative overflow-hidden">
+                                        <img src="Capa Oficial.png" alt="Capa do Livro Meu Pequeno Gênio" class="w-full h-full object-cover absolute inset-0 rounded-md z-0">
+                                        
+                                        <div class="absolute -bottom-10 -right-10 w-24 h-24 bg-yellow-400 rounded-full flex items-center justify-center text-center p-2 transform rotate-12 shadow-lg z-20">
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2 text-center md:text-left p-4">
+                        <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                            <div class="flex flex-col sm:flex-row justify-between items-center mb-6">
+                                <div class="mb-4 sm:mb-0 text-center sm:text-left">
+                                    <p class="text-gray-600 text-sm md:text-base">Preço normal:</p>
+                                    <p class="text-2xl md:text-3xl font-bold text-gray-400 price-tag">R$ 197,00</p>
+                                </div>
+                                <div class="text-center sm:text-right">
+                                    <p class="text-gray-600 text-sm md:text-base">Hoje apenas:</p>
+                                    <p class="text-4xl md:text-5xl font-extrabold text-indigo-700">R$ 9,90</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-6 space-y-3">
+                                <div class="flex items-center justify-center md:justify-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    <p class="text-gray-700 text-sm md:text-base">Acesso imediato ao e-book completo</p>
+                                </div>
+                                <div class="flex items-center justify-center md:justify-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    <p class="text-gray-700 text-sm md:text-base">Garantia de 30 dias</p>
+                                </div>
+                                <div class="flex items-center justify-center md:justify-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    <p class="text-gray-700 text-sm md:text-base">Acesso em qualquer dispositivo (desktop, tablet, celular)</p>
+                                </div>
+                            </div>
+
+                            <div class="mb-6 border-t border-gray-200 pt-6">
+                                <h3 class="text-xl md:text-2xl font-bold text-indigo-700 mb-4 font-heading">E não para por aí! Receba 3 BÔNUS EXCLUSIVOS:</h3>
+                                <div class="space-y-3 text-left">
+                                    <div class="flex items-center justify-center md:justify-start">
+                                        <img src="O Guia Rápido dos Jogos Inteligentes/Gemini_Generated_Image_ablazpablazpabla.png" alt="Capa do Brinde 1" class="brinde-thumbnail">
+                                        <p class="text-gray-700 text-sm md:text-base">BÔNUS 1:O Guia Rápido dos Jogos Inteligentes</p>
+                                    </div>
+                                    <div class="flex items-center justify-center md:justify-start">
+                                        <img src="Modelo de Plano de Rotina do Gênio/Gemini_Generated_Image_b1carwb1carwb1ca.png" alt="Capa do Brinde 2" class="brinde-thumbnail">
+                                        <p class="text-gray-700 text-sm md:text-base">BÔNUS 2: Modelo de Plano de Rotina do Gênio</p>
+                                    </div>
+                                    <div class="flex items-center justify-center md:justify-start">
+                                        <img src="7 Frases Proibidas e 7 Frases Poderosas/Gemini_Generated_Image_2cam0a2cam0a2cam.png" alt="Capa do Brinde 3" class="brinde-thumbnail">
+                                        <p class="text-gray-700 text-sm md:text-base">BÔNUS 3: 7 Frases Proibidas e 7 Frases Poderosas</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                                    <p class="text-sm text-center text-yellow-800">Esta oferta especial termina em:</p>
+                                    <div class="flex justify-center space-x-4 mt-2 font-bold text-lg md:text-xl text-yellow-900" id="countdown-timer">
+                                        <span id="days">00</span>:<span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="https://pay.kiwify.com.br/ly278dg" class="block w-full text-center bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-xl text-xl md:text-2xl shadow-lg transition duration-300 ease-in-out transform hover:scale-105 animate-pulse-green">
+                                SIM! QUERO MEU FILHO(A) UM GÊNIO!
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // JavaScript para o contador regressivo
+        function setupCountdown(targetDateStr, elementIds) {
+            const targetDate = new Date(targetDateStr).getTime();
+            const interval = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById(elementIds.days).innerText = String(days).padStart(2, '0');
+                document.getElementById(elementIds.hours).innerText = String(hours).padStart(2, '0');
+                document.getElementById(elementIds.minutes).innerText = String(minutes).padStart(2, '0');
+                document.getElementById(elementIds.seconds).innerText = String(seconds).padStart(2, '0');
+
+                if (distance < 0) {
+                    clearInterval(interval);
+                    document.getElementById(elementIds.days).innerText = "00";
+                    document.getElementById(elementIds.hours).innerText = "00";
+                    document.getElementById(elementIds.minutes).innerText = "00";
+                    document.getElementById(elementIds.seconds).innerText = "00";
+                    document.getElementById('countdown-timer').innerText = "Oferta Encerrada!";
+                    // Opcional: desabilitar o botão de compra
+                    document.querySelector('.animate-pulse-green').classList.add('opacity-50', 'cursor-not-allowed');
+                    document.querySelector('.animate-pulse-green').removeAttribute('href');
+                }
+            }, 1000);
+        }
+
+        // Defina a data final da sua oferta (Ano, Mês-1, Dia, Hora, Minuto, Segundo)
+        // A data é 22 de Julho de 2025 às 23:59:59 (com base na sua localização atual)
+        const offerEndDate = "July 22, 2025 23:59:59"; 
+        
+        // Chame a função de setup ao carregar a página
+        window.onload = function() {
+            setupCountdown(offerEndDate, {
+                days: 'days',
+                hours: 'hours',
+                minutes: 'minutes',
+                seconds: 'seconds'
+            });
+        };
+    </script>
+</body>
+</html>
