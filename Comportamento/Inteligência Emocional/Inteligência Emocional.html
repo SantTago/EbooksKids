@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligência Emocional - Detalhes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #5865F2; /* Azul vibrante */
+            --secondary-color: #4A56E2; /* Azul mais escuro para títulos */
+            --gradient-start: #667eea;
+            --gradient-end: #764ba2;
+            --text-light: #f0f0f0;
+            --text-dark: #333;
+            --bg-card: rgba(255, 255, 255, 0.98);
+            --shadow-light: rgba(0, 0, 0, 0.15);
+            --shadow-strong: rgba(0, 0, 0, 0.25);
+            --border-radius-lg: 12px;
+            --border-radius-md: 8px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--text-light);
+            text-align: center;
+            box-sizing: border-box;
+            padding: 40px 20px;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background-color: var(--bg-card);
+            padding: 40px;
+            box-shadow: 0 15px 35px var(--shadow-strong);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        h1 {
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 700;
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .document-image-wrapper {
+            width: 100%;
+            max-width: 500px; /* Adjust as needed for your image */
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 8px 20px var(--shadow-light);
+            overflow: hidden;
+        }
+
+        .document-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        button, .button-link {
+            padding: 14px 30px;
+            font-size: 1.1em;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 180px;
+        }
+
+        button:hover, .button-link:hover {
+            background-color: #4452D3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        button:active, .button-link:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            margin-top: 25px;
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        p a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        p a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        /* --- Media Queries para Responsividade --- */
+        @media (max-width: 992px) {
+            .container {
+                max-width: 95%;
+                padding: 30px;
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            .document-image-wrapper {
+                max-width: 450px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 15px;
+            }
+            .container {
+                padding: 25px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 1.9em;
+                margin-bottom: 25px;
+            }
+            .document-image-wrapper {
+                max-width: 380px;
+            }
+            button, .button-link {
+                padding: 12px 25px;
+                font-size: 1em;
+                min-width: unset;
+                flex-grow: 1;
+            }
+            .actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            p {
+                font-size: 0.95em;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+            .container {
+                padding: 20px;
+                border-radius: 8px;
+            }
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 20px;
+            }
+            .document-image-wrapper {
+                max-width: 300px;
+            }
+            button, .button-link {
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Inteligência Emocional</h1>
+        
+        <div class="document-image-wrapper">
+            <img 
+                src="1.png" 
+                alt="Prévia do documento sobre Inteligência Emocional" 
+                class="document-image"
+            >
+        </div>
+
+        <div class="actions">
+            <a href="Coracoes-Sabios-O-Despertar-da-Inteligencia-Emocional-em-Nossos-Filhos.pdf" target="_blank" rel="noopener noreferrer" class="button-link">
+                Ver PDF
+            </a>
+            <button onclick="history.back()">Voltar</button>
+        </div>
+
+        <p>Este documento oferece informações cruciais sobre a Inteligência Emocional, incluindo dicas e estratégias eficazes. Clique em "Ver PDF" para acessar o conteúdo completo.</p>
+    </div>
+
+</body>
+</html>
