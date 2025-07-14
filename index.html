@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
         body { font-family: 'Poppins', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #00ccff 100%); }
         .card-hover { transition: all 0.3s ease; }
         .card-hover:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .pulse-animation { animation: pulse 2s infinite; }
@@ -20,16 +21,28 @@
     </style>
 </head>
 <body class="bg-gray-50">
+
+    <style>
+        .h-10 {
+    height: 6.5rem;
+}
+    </style>
     
     <!-- Header -->
-    <header class="gradient-bg text-white py-4">
+   <header class="gradient-bg text-white py-4">
     <div class="container mx-auto px-4 flex justify-between items-center">
-        <div class="text-2xl font-bold">📚 Kids Baby</div>
+        
+        <div class="text-2xl font-bold">
+            <img src="logo.png" alt="Logo da Kids Baby" class="h-10"> 
+            </div>
+
         <button class="bg-yellow-400 text-purple-800 px-6 py-2 rounded-full font-semibold hover:bg-yellow-300 transition-colors">
             <a href="🎁OFERTA ESPECIAL/index.html">🎁 OFERTA ESPECIAL</a> 
         </button>
     </div>
-    </header>
+</header>
+
+
     <!-- Hero Section -->
     <section class="gradient-bg text-white py-20">
     <div class="container mx-auto px-4 text-center">
@@ -796,23 +809,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto px-4 text-center">
-            <div class="text-2xl font-bold mb-4">📚 Kids Baby</div>
-            <p class="text-gray-400 mb-8">Transformando o futuro das crianças, uma família por vez.</p>
-            <div class="flex flex-col md:flex-row justify-center items-center gap-8 text-sm">
-                <a href="#" class="hover:text-yellow-400">Política de Privacidade</a>
-                <a href="#" class="hover:text-yellow-400">Termos de Uso</a>
-                <a href="#" class="hover:text-yellow-400">Contato</a>
-                <a href="#" class="hover:text-yellow-400">Suporte</a>
-            </div>
-            <div class="mt-8 text-gray-500 text-sm">
-                © 2025 📚 Kids Baby. Todos os direitos reservados.
-            </div>
-        </div>
-    </footer>
-
+   
     <script>
         // Countdown Timer
         function updateCountdown() {
