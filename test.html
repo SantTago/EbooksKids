@@ -1,0 +1,594 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebooks - Ansiedade Infantil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Animações de entrada */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% { transform: translateY(0); }
+            40%, 43% { transform: translateY(-10px); }
+            70% { transform: translateY(-5px); }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: calc(200px + 100%) 0; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(34, 197, 94, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.8), 0 0 30px rgba(34, 197, 94, 0.6); }
+        }
+        
+        .animate-fadeInUp { animation: fadeInUp 0.8s ease-out; }
+        .animate-pulse-custom { animation: pulse 2s infinite; }
+        .animate-bounce-custom { animation: bounce 2s infinite; }
+        .floating { animation: float 3s ease-in-out infinite; }
+        
+        .book-cover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .book-cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+            z-index: 1;
+        }
+        
+        .book-cover:hover::before {
+            left: 100%;
+        }
+        
+        .book-cover:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%);
+            background-size: 20px 20px;
+            animation: shimmer 3s linear infinite;
+        }
+        
+        .tt{
+            text-align: center;
+            padding: 3px;
+        }
+        
+        .price-highlight {
+            position: relative;
+            display: inline-block;
+            animation: glow 2s infinite;
+        }
+        
+        .price-highlight::after {
+            content: '🔥';
+            position: absolute;
+            top: -10px;
+            right: -15px;
+            animation: bounce 1.5s infinite;
+        }
+        
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-glow:hover::before {
+            left: 100%;
+        }
+        
+        .btn-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .urgency-banner {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            animation: pulse 2s infinite;
+        }
+        
+        .counter {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #dc2626;
+        }
+        
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .benefit-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .social-proof {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Urgency Banner -->
+    <div class="urgency-banner text-white py-3 text-center relative z-50">
+        <div class="container mx-auto px-6">
+            <p class="font-semibold">🚨 <span class="animate-pulse-custom">OFERTA LIMITADA</span> - Apenas hoje: <span class="counter" id="countdown">23:59:45</span> restantes!</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="gradient-bg text-white py-16 relative">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-800 animate-fadeInUp floating">Ansiedade Infantil</h1>
+            <p class="text-xl md:text-2xl font-light mb-2 text-gray-700 animate-fadeInUp" style="animation-delay: 0.2s">Guias completos para manejo da ansiedade e bem-estar emocional</p>
+            <p class="text-lg opacity-80 text-gray-600 animate-fadeInUp" style="animation-delay: 0.4s">Métodos comprovados por psicólogos e terapeutas especializados</p>
+            
+            <!-- Stats Section -->
+            <div class="grid grid-cols-3 gap-8 mt-12 animate-fadeInUp" style="animation-delay: 0.6s">
+                <div class="text-center">
+                    <div class="stats-number">2.847</div>
+                    <p class="text-gray-600 font-medium">Famílias Ajudadas</p>
+                </div>
+                <div class="text-center">
+                    <div class="stats-number">98%</div>
+                    <p class="text-gray-600 font-medium">Satisfação</p>
+                </div>
+                <div class="text-center">
+                    <div class="stats-number">15+</div>
+                    <p class="text-gray-600 font-medium">Especialistas</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+ <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .book-cover {
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .book-cover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+        .tt {
+            text-align: center;
+            padding: 3px;
+        }
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            color: #FFD700; /* Gold color for stars */
+            margin-bottom: 8px;
+        }
+        .star-rating .fas {
+            margin: 0 2px;
+        }
+        .testimonial-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease-in-out;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+<p class="tt text-gray-800 text-lg font-semibold mt-2">Ansiedade Escolar</p>
+                <div class="star-rating" aria-label="Avaliação 4.8 de 5 estrelas">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>(4.8/5)
+                </div>
+
+
+
+
+
+
+
+    <!-- Social Proof Section -->
+    <section class="social-proof text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-center space-x-8 animate-fadeInUp">
+                <div class="flex items-center space-x-2">
+                    <div class="flex text-yellow-400">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <span class="font-semibold">4.9/5 estrelas</span>
+                </div>
+                <div class="hidden md:block w-px h-8 bg-white opacity-30"></div>
+                <div class="flex items-center space-x-2">
+                    <span class="text-2xl">👨‍👩‍👧‍👦</span>
+                    <span class="font-semibold">+5.000 downloads</span>
+                </div>
+                <div class="hidden md:block w-px h-8 bg-white opacity-30"></div>
+                <div class="flex items-center space-x-2">
+                    <span class="text-2xl">🏆</span>
+                    <span class="font-semibold">Recomendado por especialistas</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12 animate-fadeInUp">Por que escolher nossos ebooks?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="benefit-card text-center p-6 rounded-lg hover:shadow-lg transition-all duration-300 animate-fadeInUp" style="animation-delay: 0.1s">
+                    <div class="benefit-icon text-4xl mb-4">🧠</div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Baseado em Ciência</h3>
+                    <p class="text-gray-600">Técnicas validadas por pesquisas em psicologia infantil</p>
+                </div>
+                <div class="benefit-card text-center p-6 rounded-lg hover:shadow-lg transition-all duration-300 animate-fadeInUp" style="animation-delay: 0.2s">
+                    <div class="benefit-icon text-4xl mb-4">⚡</div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Resultados Rápidos</h3>
+                    <p class="text-gray-600">Veja melhorias em apenas 7 dias de aplicação</p>
+                </div>
+                <div class="benefit-card text-center p-6 rounded-lg hover:shadow-lg transition-all duration-300 animate-fadeInUp" style="animation-delay: 0.3s">
+                    <div class="benefit-icon text-4xl mb-4">💝</div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Suporte Completo</h3>
+                    <p class="text-gray-600">Acesso a comunidade exclusiva de pais</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12 animate-fadeInUp">O que os pais estão dizendo</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card p-6 rounded-lg animate-fadeInUp" style="animation-delay: 0.1s">
+                    <div class="flex text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-600 mb-4">"Minha filha de 7 anos estava com muita ansiedade para ir à escola. Em 2 semanas aplicando as técnicas, ela já estava mais tranquila!"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-pink-200 rounded-full flex items-center justify-center mr-3">👩</div>
+                        <div>
+                            <p class="font-semibold text-gray-800">Maria Silva</p>
+                            <p class="text-sm text-gray-500">Mãe de 2 filhos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card p-6 rounded-lg animate-fadeInUp" style="animation-delay: 0.2s">
+                    <div class="flex text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-600 mb-4">"Como psicóloga, recomendo estes ebooks para todos os pais. O conteúdo é excelente e muito prático!"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-blue-200 rounded-full flex items-center justify-center mr-3">👩‍⚕️</div>
+                        <div>
+                            <p class="font-semibold text-gray-800">Dra. Ana Costa</p>
+                            <p class="text-sm text-gray-500">Psicóloga Infantil</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card p-6 rounded-lg animate-fadeInUp" style="animation-delay: 0.3s">
+                    <div class="flex text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-600 mb-4">"Transformou nossa rotina familiar. Agora sabemos como lidar com os momentos de ansiedade do nosso filho."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-green-200 rounded-full flex items-center justify-center mr-3">👨</div>
+                        <div>
+                            <p class="font-semibold text-gray-800">João Santos</p>
+                            <p class="text-sm text-gray-500">Pai e Professor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <div class="text-center mb-12 animate-fadeInUp">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Nossa Coleção de Ebooks</h2>
+            <p class="text-gray-600 text-lg">Conhecimento especializado para pais, educadores e profissionais da saúde mental</p>
+            <div class="mt-6 inline-flex items-center bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full animate-bounce-custom">
+                <span class="text-xl mr-2">⏰</span>
+                <span class="font-semibold">Oferta por tempo limitado!</span>
+            </div>
+        </div>
+
+        <!-- Books Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            
+            <!-- Book 1 -->
+            <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer animate-fadeInUp" style="animation-delay: 0.1s">
+                <div class="h-80 overflow-hidden flex items-center justify-center bg-gray-100 relative">
+                    <img src="Ansiedade de Separação/1.jpg" alt="Capa do Ebook" class="w-full h-full object-cover">
+                    <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold animate-pulse-custom">
+                        GRÁTIS
+                    </div>
+                </div>
+                <p class="tt text-gray-600 text-lg"><strong>Ansiedade de Separação</strong></p>
+                
+                <div class="p-4">
+                    <div class="mb-3">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-lg font-bold text-blue-600 line-through opacity-60">R$ 36,90</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-green-600 price-highlight">GRÁTIS</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">💎 Premium</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="btn-glow flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold">
+                            <a href="Ansiedade de Separação/login.html">Para Assinantes</a>
+                        </button>
+                        <button class="btn-glow flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold">
+                            <a href="https://pay.kiwify.com.br/5MI4YKO">Comprar</a>
+                        </button>
+                    </div>
+                    <div class="mt-3 text-center">
+                        <div class="flex items-center justify-center text-yellow-500 text-sm">
+                            ⭐⭐⭐⭐⭐ <span class="ml-1 text-gray-600">(127 avaliações)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book 2 -->
+            <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer animate-fadeInUp" style="animation-delay: 0.2s">
+                <div class="h-80 overflow-hidden flex items-center justify-center bg-gray-100 relative">
+                    <div class="w-full h-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <div class="text-6xl mb-4">📚</div>
+                            <h3 class="text-xl font-bold">Próximo Ebook</h3>
+                            <p class="text-sm opacity-90">Em breve</p>
+                        </div>
+                    </div>
+                    <div class="absolute top-2 right-2 bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-bold animate-pulse-custom">
+                        EM BREVE
+                    </div>
+                </div>
+                <p class="tt text-gray-600 text-lg"><strong>Técnicas de Relaxamento</strong></p>
+                
+                <div class="p-4">
+                    <div class="mb-3">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-lg font-bold text-gray-400">R$ 29,90</span>
+                            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Novidade</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="flex-1 bg-gray-400 text-white py-2 rounded-lg text-sm font-semibold cursor-not-allowed" disabled>
+                            Aguarde o Lançamento
+                        </button>
+                    </div>
+                    <div class="mt-3 text-center">
+                        <p class="text-sm text-gray-500">🚀 Lançamento em dezembro</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Guarantee Section -->
+        <div class="mt-16 bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-8 text-center animate-fadeInUp">
+            <div class="text-6xl mb-4">🛡️</div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Garantia de 30 Dias</h3>
+            <p class="text-gray-600 text-lg mb-6">Se você não ficar 100% satisfeito, devolvemos seu dinheiro sem perguntas!</p>
+            <div class="flex items-center justify-center space-x-8 text-sm text-gray-500">
+                <div class="flex items-center">
+                    <span class="text-green-500 mr-2">✓</span>
+                    Reembolso total
+                </div>
+                <div class="flex items-center">
+                    <span class="text-green-500 mr-2">✓</span>
+                    Sem burocracia
+                </div>
+                <div class="flex items-center">
+                    <span class="text-green-500 mr-2">✓</span>
+                    Suporte 24/7
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Ansiedade Infantil</h3>
+                    <p class="text-gray-300">Ajudando famílias a construir um futuro mais tranquilo e feliz para suas crianças.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contato</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>📧 contato@ansiedadeinfantil.com</p>
+                        <p>📱 (11) 99999-9999</p>
+                        <p>🕒 Seg-Sex: 9h às 18h</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Siga-nos</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl hover:text-blue-400 transition-colors">📘</a>
+                        <a href="#" class="text-2xl hover:text-pink-400 transition-colors">📷</a>
+                        <a href="#" class="text-2xl hover:text-blue-300 transition-colors">🐦</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Ansiedade Infantil. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            
+            const distance = tomorrow - now;
+            
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').innerHTML = 
+                String(hours).padStart(2, '0') + ':' + 
+                String(minutes).padStart(2, '0') + ':' + 
+                String(seconds).padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.animate-fadeInUp').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+
+        // Add click tracking for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add CSS for ripple effect
+        const style = document.createElement('style');
+        style.textContent = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.6);
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'95f4d92f41dcba13',t:'MTc1MjUzNjI1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
