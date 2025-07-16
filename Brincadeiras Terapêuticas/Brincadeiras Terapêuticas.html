@@ -42,448 +42,929 @@
 
         <!-- Books Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            
-            <!-- Book 1 -->
-            <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer">
-
-                <style>
+             <style>
                     .tt{
                         text-align: center;
                         padding: 3px;
                     }
                 </style>
+            <!-- Book 1 -->
+           <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer">
+    <div class="h-80 overflow-hidden flex items-center justify-center bg-gray-100">
+        <img src="Brincadeiras de Socialização/1.png" alt="Capa do Ebook" class="w-full h-full object-cover">
+    </div>
+    <p class="tt text-gray-600 text-lg "><strong> Brincadeiras de Socialização</strong></p>
+
+    <div class="learning-checklist-box">
+        <h4>O que você vai aprender:</h4>
+        <ul class="checklist">
+            <li><i class="fas fa-check-circle"></i> <strong>A importância das brincadeiras para o desenvolvimento social.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Atividades lúdicas para estimular a interação e comunicação.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Brincadeiras que promovem a empatia e o trabalho em equipe.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Dicas para adaptar brincadeiras para diferentes faixas etárias e necessidades.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Como criar um ambiente divertido e inclusivo para todos.</strong></li>
+        </ul>
+    </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .book-cover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .tt {
+            text-align: center;
+            padding: 3px;
+        }
+
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            color: #FFD700;
+            /* Gold color for stars */
+            margin-bottom: 8px;
+        }
+
+        .star-rating .fas {
+            margin: 0 2px;
+        }
+
+        .testimonial-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* CSS para o checklist (adicionado) */
+        .learning-checklist-box {
+            background-color: #e0f7fa;
+            /* Um tom suave de azul claro */
+            padding: 1rem;
+            margin: 0.5rem 1rem;
+            /* Margem para não colar nas bordas */
+            border-radius: 0.5rem;
+            border: 1px solid #b2ebf2;
+            /* Borda sutil */
+        }
+
+        .learning-checklist-box h4 {
+            font-size: 1rem;
+            /* Título um pouco menor, mais elegante */
+            color: #004085;
+            /* Azul mais escuro para o título */
+            margin-bottom: 0.8rem;
+            /* Ajuste do espaçamento */
+            text-align: center;
+            /* Centraliza o título */
+            font-weight: bold;
+            /* Título em negrito */
+        }
+
+        .learning-checklist-box .checklist {
+            list-style: none;
+            /* Remove os marcadores padrão da lista */
+            padding: 0;
+            margin: 0;
+        }
+
+        .learning-checklist-box .checklist li {
+            display: flex;
+            /* Para alinhar o ícone com o texto */
+            align-items: flex-start;
+            /* Alinha o início do texto com o ícone */
+            margin-bottom: 0.4rem;
+            /* Espaçamento reduzido entre os itens */
+            font-size: 0.85rem;
+            /* Tamanho da fonte menor */
+            color: #333;
+            line-height: 1.3;
+            /* Espaçamento entre linhas para melhor leitura */
+        }
+
+        .learning-checklist-box .checklist li strong {
+            font-weight: 600;
+            /* Garante que o texto dentro do strong seja negrito */
+        }
+
+        .learning-checklist-box .checklist li .fas {
+            color: #28a744;
+            /* Verde para o ícone de check */
+            margin-right: 0.6rem;
+            /* Espaço maior entre ícone e texto */
+            font-size: 0.95rem;
+            /* Ícone um pouco menor para acompanhar o texto */
+            flex-shrink: 0;
+            /* Previne que o ícone encolha em telas pequenas */
+            padding-top: 2px;
+            /* Pequeno ajuste para alinhamento vertical do ícone */
+        }
+    </style>
+    <div class="star-rating" aria-label="Avaliação 4.8 de 5 estrelas">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>(4.1/5)
+    </div>
 
 
-               <div class="h-80 overflow-hidden flex items-center justify-center bg-gray-100">
-                    <img src="Brincadeiras de Socialização/1.png" alt="Capa do Ebook" class="w-full h-full object-cover">
-                    
-                </div>
-                 <p class="tt text-gray-600 text-lg "><strong> Brincadeiras de Socialização</strong></p>
-
-                  <script src="https://cdn.tailwindcss.com"></script>
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-                <style>
-                        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-                        body { font-family: 'Inter', sans-serif; }
-                        
-                        .book-cover:hover {
-                            transform: translateY(-8px);
-                            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-                        }
-                        .gradient-bg {
-                            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-                        }
-                        .tt {
-                            text-align: center;
-                            padding: 3px;
-                        }
-                        .star-rating {
-                            display: flex;
-                            justify-content: center;
-                            color: #FFD700; /* Gold color for stars */
-                            margin-bottom: 8px;
-                        }
-                        .star-rating .fas {
-                            margin: 0 2px;
-                        }
-                        .testimonial-card {
-                            background-color: #ffffff;
-                            border-radius: 0.75rem;
-                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                            padding: 1.5rem;
-                            margin-bottom: 1.5rem;
-                            transition: transform 0.2s ease-in-out;
-                        }
-                        .testimonial-card:hover {
-                            transform: translateY(-5px);
-                        }
-                    </style>
-                <div class="star-rating" aria-label="Avaliação 4.8 de 5 estrelas">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-sta"></i><i class="fas fa-star-half-alt"></i>(4.1/5)
-                </div>
-                
-
-
-                <div class="p-4">
-                    <div class="mb-3">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="text-lg font-bold text-blue-600">R$ 45,90</span>
-                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
-                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
-                        </div>
-                    </div>
-                    <div class="flex gap-2">
-                        <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold"> <a href="Brincadeiras de Socialização/login.html">Para Assinantes</a></button>
-                        <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"><a href="https://pay.kiwify.com.br/7yKzYdN">Comprar</a></button>
-                    </div>
-                </div>
+    <div class="p-4">
+        <div class="mb-3">
+            <div class="flex items-center justify-between mb-1">
+                <span class="text-lg font-bold text-blue-600">R$ 45,90</span>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
             </div>
+            <div class="flex items-center justify-between">
+                <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
+            </div>
+        </div>
+        <div class="flex gap-2">
+            <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold"> <a href="Brincadeiras de Socialização/login.html">Para Assinantes</a></button>
+            <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"><a href="https://pay.kiwify.com.br/7yKzYdN">Comprar</a></button>
+        </div>
+    </div>
+</div>
 
             <!-- Book 2 -->
             <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer">
-                
-                <div class="h-80 overflow-hidden flex items-center justify-center bg-gray-100">
-                    <img src="Brincadeiras Motoras/1.png" alt="Capa do Ebook" class="w-full h-full object-cover">
-                    
-                </div>
-                 <p class="tt text-gray-600 text-lg "><strong> Brincadeiras Motoras</strong></p>
 
-                  <script src="https://cdn.tailwindcss.com"></script>
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-                <style>
-                        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-                        body { font-family: 'Inter', sans-serif; }
-                        
-                        .book-cover:hover {
-                            transform: translateY(-8px);
-                            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-                        }
-                        .gradient-bg {
-                            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-                        }
-                        .tt {
-                            text-align: center;
-                            padding: 3px;
-                        }
-                        .star-rating {
-                            display: flex;
-                            justify-content: center;
-                            color: #FFD700; /* Gold color for stars */
-                            margin-bottom: 8px;
-                        }
-                        .star-rating .fas {
-                            margin: 0 2px;
-                        }
-                        .testimonial-card {
-                            background-color: #ffffff;
-                            border-radius: 0.75rem;
-                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                            padding: 1.5rem;
-                            margin-bottom: 1.5rem;
-                            transition: transform 0.2s ease-in-out;
-                        }
-                        .testimonial-card:hover {
-                            transform: translateY(-5px);
-                        }
-                    </style>
-                <div class="star-rating" aria-label="Avaliação 4.8 de 5 estrelas">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-sta"></i><i class="fas fa-sta"></i>(4.7/5)
-                </div>
-                
+    <div class="h-80 overflow-hidden flex items-center justify-center bg-gray-100">
+        <img src="Brincadeiras Motoras/1.png" alt="Capa do Ebook" class="w-full h-full object-cover">
+    </div>
+    <p class="tt text-gray-600 text-lg "><strong> Brincadeiras Motoras</strong></p>
+
+    <div class="learning-checklist-box">
+        <h4>O que você vai aprender:</h4>
+        <ul class="checklist">
+            <li><i class="fas fa-check-circle"></i> <strong>A importância do desenvolvimento motor na infância.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Brincadeiras que estimulam a coordenação motora grossa e fina.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Atividades para melhorar o equilíbrio e a agilidade.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Jogos que promovem a consciência corporal e o ritmo.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Dicas para tornar o aprendizado motor divertido e engajador.</strong></li>
+        </ul>
+    </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .book-cover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .tt {
+            text-align: center;
+            padding: 3px;
+        }
+
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            color: #FFD700;
+            /* Gold color for stars */
+            margin-bottom: 8px;
+        }
+
+        .star-rating .fas {
+            margin: 0 2px;
+        }
+
+        .testimonial-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* CSS para o checklist (adicionado) */
+        .learning-checklist-box {
+            background-color: #e0f7fa;
+            /* Um tom suave de azul claro */
+            padding: 1rem;
+            margin: 0.5rem 1rem;
+            /* Margem para não colar nas bordas */
+            border-radius: 0.5rem;
+            border: 1px solid #b2ebf2;
+            /* Borda sutil */
+        }
+
+        .learning-checklist-box h4 {
+            font-size: 1rem;
+            /* Título um pouco menor, mais elegante */
+            color: #004085;
+            /* Azul mais escuro para o título */
+            margin-bottom: 0.8rem;
+            /* Ajuste do espaçamento */
+            text-align: center;
+            /* Centraliza o título */
+            font-weight: bold;
+            /* Título em negrito */
+        }
+
+        .learning-checklist-box .checklist {
+            list-style: none;
+            /* Remove os marcadores padrão da lista */
+            padding: 0;
+            margin: 0;
+        }
+
+        .learning-checklist-box .checklist li {
+            display: flex;
+            /* Para alinhar o ícone com o texto */
+            align-items: flex-start;
+            /* Alinha o início do texto com o ícone */
+            margin-bottom: 0.4rem;
+            /* Espaçamento reduzido entre os itens */
+            font-size: 0.85rem;
+            /* Tamanho da fonte menor */
+            color: #333;
+            line-height: 1.3;
+            /* Espaçamento entre linhas para melhor leitura */
+        }
+
+        .learning-checklist-box .checklist li strong {
+            font-weight: 600;
+            /* Garante que o texto dentro do strong seja negrito */
+        }
+
+        .learning-checklist-box .checklist li .fas {
+            color: #28a744;
+            /* Verde para o ícone de check */
+            margin-right: 0.6rem;
+            /* Espaço maior entre ícone e texto */
+            font-size: 0.95rem;
+            /* Ícone um pouco menor para acompanhar o texto */
+            flex-shrink: 0;
+            /* Previne que o ícone encolha em telas pequenas */
+            padding-top: 2px;
+            /* Pequeno ajuste para alinhamento vertical do ícone */
+        }
+    </style>
+    <div class="star-rating" aria-label="Avaliação 4.8 de 5 estrelas">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>(4.7/5)
+    </div>
 
 
-                <div class="p-4">
-                    <div class="mb-3">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="text-lg font-bold text-green-600">R$ 38,90</span>
-                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
-                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
-                        </div>
-                    </div>
-                    <div class="flex gap-2">
-                                                <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold"> <a href="Brincadeiras Motoras/login.html">Para Assinantes</a></button>
-                        <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"><a href="https://pay.kiwify.com.br/p5m4Dsj">Comprar</a></button>
-                    </div>
-                </div>
+    <div class="p-4">
+        <div class="mb-3">
+            <div class="flex items-center justify-between mb-1">
+                <span class="text-lg font-bold text-green-600">R$ 38,90</span>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
             </div>
+            <div class="flex items-center justify-between">
+                <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
+            </div>
+        </div>
+        <div class="flex gap-2">
+            <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold"> <a href="Brincadeiras Motoras/login.html">Para Assinantes</a></button>
+            <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"><a href="https://pay.kiwify.com.br/p5m4Dsj">Comprar</a></button>
+        </div>
+    </div>
+</div>
 
             <!-- Book 3 -->
-            <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer">
-                
-                
-                <div class="h-80 overflow-hidden flex items-center justify-center bg-gray-100">
-                    <img src="Brincadeiras na Natureza/1.png" alt="Capa do Ebook" class="w-full h-full object-cover">
-                    
-                </div>
-                 <p class="tt text-gray-600 text-lg "><strong> Brincadeiras na Natureza</strong></p>
+           <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer">
 
-                     <script src="https://cdn.tailwindcss.com"></script>
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-                <style>
-                        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-                        body { font-family: 'Inter', sans-serif; }
-                        
-                        .book-cover:hover {
-                            transform: translateY(-8px);
-                            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-                        }
-                        .gradient-bg {
-                            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-                        }
-                        .tt {
-                            text-align: center;
-                            padding: 3px;
-                        }
-                        .star-rating {
-                            display: flex;
-                            justify-content: center;
-                            color: #FFD700; /* Gold color for stars */
-                            margin-bottom: 8px;
-                        }
-                        .star-rating .fas {
-                            margin: 0 2px;
-                        }
-                        .testimonial-card {
-                            background-color: #ffffff;
-                            border-radius: 0.75rem;
-                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                            padding: 1.5rem;
-                            margin-bottom: 1.5rem;
-                            transition: transform 0.2s ease-in-out;
-                        }
-                        .testimonial-card:hover {
-                            transform: translateY(-5px);
-                        }
-                    </style>
-                <div class="star-rating" aria-label="Avaliação 4.8 de 5 estrelas">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-sta"></i><i class="fas fa-sta"></i>(4.9/5)
-                </div>
-                
+    <div class="h-80 overflow-hidden flex items-center justify-center bg-gray-100">
+        <img src="Brincadeiras na Natureza/1.png" alt="Capa do Ebook" class="w-full h-full object-cover">
+    </div>
+    <p class="tt text-gray-600 text-lg "><strong> Brincadeiras na Natureza</strong></p>
+
+    <div class="learning-checklist-box">
+        <h4>O que você vai aprender:</h4>
+        <ul class="checklist">
+            <li><i class="fas fa-check-circle"></i> <strong>Benefícios de brincar ao ar livre para o desenvolvimento infantil.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Sugestões de brincadeiras com elementos naturais (água, terra, folhas).</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Como estimular a criatividade e a exploração na natureza.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Dicas para garantir a segurança e o respeito ao meio ambiente.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Brincadeiras que conectam crianças à flora e fauna local.</strong></li>
+        </ul>
+    </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .book-cover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .tt {
+            text-align: center;
+            padding: 3px;
+        }
+
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            color: #FFD700;
+            /* Gold color for stars */
+            margin-bottom: 8px;
+        }
+
+        .star-rating .fas {
+            margin: 0 2px;
+        }
+
+        .testimonial-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* CSS para o checklist (adicionado) */
+        .learning-checklist-box {
+            background-color: #e0f7fa;
+            /* Um tom suave de azul claro */
+            padding: 1rem;
+            margin: 0.5rem 1rem;
+            /* Margem para não colar nas bordas */
+            border-radius: 0.5rem;
+            border: 1px solid #b2ebf2;
+            /* Borda sutil */
+        }
+
+        .learning-checklist-box h4 {
+            font-size: 1rem;
+            /* Título um pouco menor, mais elegante */
+            color: #004085;
+            /* Azul mais escuro para o título */
+            margin-bottom: 0.8rem;
+            /* Ajuste do espaçamento */
+            text-align: center;
+            /* Centraliza o título */
+            font-weight: bold;
+            /* Título em negrito */
+        }
+
+        .learning-checklist-box .checklist {
+            list-style: none;
+            /* Remove os marcadores padrão da lista */
+            padding: 0;
+            margin: 0;
+        }
+
+        .learning-checklist-box .checklist li {
+            display: flex;
+            /* Para alinhar o ícone com o texto */
+            align-items: flex-start;
+            /* Alinha o início do texto com o ícone */
+            margin-bottom: 0.4rem;
+            /* Espaçamento reduzido entre os itens */
+            font-size: 0.85rem;
+            /* Tamanho da fonte menor */
+            color: #333;
+            line-height: 1.3;
+            /* Espaçamento entre linhas para melhor leitura */
+        }
+
+        .learning-checklist-box .checklist li strong {
+            font-weight: 600;
+            /* Garante que o texto dentro do strong seja negrito */
+        }
+
+        .learning-checklist-box .checklist li .fas {
+            color: #28a744;
+            /* Verde para o ícone de check */
+            margin-right: 0.6rem;
+            /* Espaço maior entre ícone e texto */
+            font-size: 0.95rem;
+            /* Ícone um pouco menor para acompanhar o texto */
+            flex-shrink: 0;
+            /* Previne que o ícone encolha em telas pequenas */
+            padding-top: 2px;
+            /* Pequeno ajuste para alinhamento vertical do ícone */
+        }
+    </style>
+    <div class="star-rating" aria-label="Avaliação 4.8 de 5 estrelas">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>(4.9/5)
+    </div>
 
 
-                <div class="p-4">
-                    <div class="mb-3">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="text-lg font-bold text-purple-600">R$ 36,90</span>
-                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
-                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
-                        </div>
-                    </div>
-                    <div class="flex gap-2">
-                        <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold"> <a href="Brincadeiras na Natureza/login.html">Para Assinantes</a></button>
-                        <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"><a href="https://pay.kiwify.com.br/IjmXfso">Comprar</a></button>
-                    </div>
-                </div>
+    <div class="p-4">
+        <div class="mb-3">
+            <div class="flex items-center justify-between mb-1">
+                <span class="text-lg font-bold text-purple-600">R$ 36,90</span>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
             </div>
+            <div class="flex items-center justify-between">
+                <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
+            </div>
+        </div>
+        <div class="flex gap-2">
+            <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold"> <a href="Brincadeiras na Natureza/login.html">Para Assinantes</a></button>
+            <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"><a href="https://pay.kiwify.com.br/IjmXfso">Comprar</a></button>
+        </div>
+    </div>
+</div>
 
             <!-- Book 4 -->
-            <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer">
-                
-                
-                <div class="h-80 overflow-hidden flex items-center justify-center bg-gray-100">
-                    <img src="Brincadeiras Sensoriais/1.png" alt="Capa do Ebook" class="w-full h-full object-cover">
-                    
-                </div>
-                 <p class="tt text-gray-600 text-lg "><strong> Brincadeiras Sensoriais</strong></p>
-
-                 <script src="https://cdn.tailwindcss.com"></script>
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-                <style>
-                        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-                        body { font-family: 'Inter', sans-serif; }
-                        
-                        .book-cover:hover {
-                            transform: translateY(-8px);
-                            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-                        }
-                        .gradient-bg {
-                            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-                        }
-                        .tt {
-                            text-align: center;
-                            padding: 3px;
-                        }
-                        .star-rating {
-                            display: flex;
-                            justify-content: center;
-                            color: #FFD700; /* Gold color for stars */
-                            margin-bottom: 8px;
-                        }
-                        .star-rating .fas {
-                            margin: 0 2px;
-                        }
-                        .testimonial-card {
-                            background-color: #ffffff;
-                            border-radius: 0.75rem;
-                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                            padding: 1.5rem;
-                            margin-bottom: 1.5rem;
-                            transition: transform 0.2s ease-in-out;
-                        }
-                        .testimonial-card:hover {
-                            transform: translateY(-5px);
-                        }
-                    </style>
-                <div class="star-rating" aria-label="Avaliação 4.8 de 5 estrelas">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-sta"></i><i class="fas fa-star-half-alt"></i>(4.1/5)
-                </div>
-                
+           <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer">
 
 
-                <div class="p-4">
-                    <div class="mb-3">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="text-lg font-bold text-orange-600">R$ 41,90</span>
-                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
-                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
-                        </div>
-                    </div>
-                    <div class="flex gap-2">
-                        <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold"> <a href="Brincadeiras Sensoriais/login.html">Para Assinantes</a></button>
-                        <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"><a href="https://pay.kiwify.com.br/VZqYLi1">Comprar</a></button>
-                    </div>
-                </div>
+    <div class="h-80 overflow-hidden flex items-center justify-center bg-gray-100">
+        <img src="Brincadeiras Sensoriais/1.png" alt="Capa do Ebook" class="w-full h-full object-cover">
+
+    </div>
+    <p class="tt text-gray-600 text-lg "><strong> Brincadeiras Sensoriais</strong></p>
+
+    <div class="learning-checklist-box">
+        <h4>O que você vai aprender:</h4>
+        <ul class="checklist">
+            <li><i class="fas fa-check-circle"></i> <strong>A importância da exploração sensorial para o desenvolvimento infantil.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Brincadeiras que estimulam os 5 sentidos (visão, audição, tato, olfato, paladar).</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Atividades para desenvolver a percepção e o processamento sensorial.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Como criar ambientes sensoriais seguros e estimulantes.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Ideias de materiais simples e acessíveis para brincadeiras sensoriais.</strong></li>
+        </ul>
+    </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .book-cover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .tt {
+            text-align: center;
+            padding: 3px;
+        }
+
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            color: #FFD700;
+            /* Gold color for stars */
+            margin-bottom: 8px;
+        }
+
+        .star-rating .fas {
+            margin: 0 2px;
+        }
+
+        .testimonial-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* CSS para o checklist (adicionado) */
+        .learning-checklist-box {
+            background-color: #e0f7fa;
+            /* Um tom suave de azul claro */
+            padding: 1rem;
+            margin: 0.5rem 1rem;
+            /* Margem para não colar nas bordas */
+            border-radius: 0.5rem;
+            border: 1px solid #b2ebf2;
+            /* Borda sutil */
+        }
+
+        .learning-checklist-box h4 {
+            font-size: 1rem;
+            /* Título um pouco menor, mais elegante */
+            color: #004085;
+            /* Azul mais escuro para o título */
+            margin-bottom: 0.8rem;
+            /* Ajuste do espaçamento */
+            text-align: center;
+            /* Centraliza o título */
+            font-weight: bold;
+            /* Título em negrito */
+        }
+
+        .learning-checklist-box .checklist {
+            list-style: none;
+            /* Remove os marcadores padrão da lista */
+            padding: 0;
+            margin: 0;
+        }
+
+        .learning-checklist-box .checklist li {
+            display: flex;
+            /* Para alinhar o ícone com o texto */
+            align-items: flex-start;
+            /* Alinha o início do texto com o ícone */
+            margin-bottom: 0.4rem;
+            /* Espaçamento reduzido entre os itens */
+            font-size: 0.85rem;
+            /* Tamanho da fonte menor */
+            color: #333;
+            line-height: 1.3;
+            /* Espaçamento entre linhas para melhor leitura */
+        }
+
+        .learning-checklist-box .checklist li strong {
+            font-weight: 600;
+            /* Garante que o texto dentro do strong seja negrito */
+        }
+
+        .learning-checklist-box .checklist li .fas {
+            color: #28a744;
+            /* Verde para o ícone de check */
+            margin-right: 0.6rem;
+            /* Espaço maior entre ícone e texto */
+            font-size: 0.95rem;
+            /* Ícone um pouco menor para acompanhar o texto */
+            flex-shrink: 0;
+            /* Previne que o ícone encolha em telas pequenas */
+            padding-top: 2px;
+            /* Pequeno ajuste para alinhamento vertical do ícone */
+        }
+    </style>
+    <div class="star-rating" aria-label="Avaliação 4.8 de 5 estrelas">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>(4.1/5)
+    </div>
+
+
+    <div class="p-4">
+        <div class="mb-3">
+            <div class="flex items-center justify-between mb-1">
+                <span class="text-lg font-bold text-orange-600">R$ 41,90</span>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
             </div>
-
+            <div class="flex items-center justify-between">
+                <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
+            </div>
+        </div>
+        <div class="flex gap-2">
+            <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold"> <a href="Brincadeiras Sensoriais/login.html">Para Assinantes</a></button>
+            <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"><a href="https://pay.kiwify.com.br/VZqYLi1">Comprar</a></button>
+        </div>
+    </div>
+</div>
             <!-- Book 5 -->
             <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer">
-                
-                
-                <div class="h-80 overflow-hidden flex items-center justify-center bg-gray-100">
-                    <img src="Expressão Criativa/1.png" alt="Capa do Ebook" class="w-full h-full object-cover">
-                    
-                </div>
-                 <p class="tt text-gray-600 text-lg "><strong> Expressão Criativa</strong></p>
 
-                
-                  <script src="https://cdn.tailwindcss.com"></script>
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-                <style>
-                        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-                        body { font-family: 'Inter', sans-serif; }
-                        
-                        .book-cover:hover {
-                            transform: translateY(-8px);
-                            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-                        }
-                        .gradient-bg {
-                            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-                        }
-                        .tt {
-                            text-align: center;
-                            padding: 3px;
-                        }
-                        .star-rating {
-                            display: flex;
-                            justify-content: center;
-                            color: #FFD700; /* Gold color for stars */
-                            margin-bottom: 8px;
-                        }
-                        .star-rating .fas {
-                            margin: 0 2px;
-                        }
-                        .testimonial-card {
-                            background-color: #ffffff;
-                            border-radius: 0.75rem;
-                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                            padding: 1.5rem;
-                            margin-bottom: 1.5rem;
-                            transition: transform 0.2s ease-in-out;
-                        }
-                        .testimonial-card:hover {
-                            transform: translateY(-5px);
-                        }
-                    </style>
-                <div class="star-rating" aria-label="Avaliação 4.8 de 5 estrelas">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-sta"></i><i class="fas fa-star-half-alt"></i>(4.3/5)
-                </div>
-                
 
-                <div class="p-4">
-                    <div class="mb-3">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="text-lg font-bold text-teal-600">R$ 33,90</span>
-                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
-                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
-                        </div>
-                    </div>
-                    <div class="flex gap-2">
-                        <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold"> <a href="Expressão Criativa/login.html">Para Assinantes</a></button>
-                        <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"><a href="https://pay.kiwify.com.br/QB0q11q">Comprar</a></button>
-                    </div>
-                </div>
+    <div class="h-80 overflow-hidden flex items-center justify-center bg-gray-100">
+        <img src="Expressão Criativa/1.png" alt="Capa do Ebook" class="w-full h-full object-cover">
+
+    </div>
+    <p class="tt text-gray-600 text-lg "><strong> Expressão Criativa</strong></p>
+
+    <div class="learning-checklist-box">
+        <h4>O que você vai aprender:</h4>
+        <ul class="checklist">
+            <li><i class="fas fa-check-circle"></i> <strong>A importância da criatividade no desenvolvimento infantil.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Atividades artísticas e lúdicas para estimular a expressão.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Técnicas para encorajar a imaginação e a originalidade.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Como valorizar e apoiar as criações das crianças.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Ideias para criar um ambiente que inspire a criatividade.</strong></li>
+        </ul>
+    </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .book-cover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .tt {
+            text-align: center;
+            padding: 3px;
+        }
+
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            color: #FFD700;
+            /* Gold color for stars */
+            margin-bottom: 8px;
+        }
+
+        .star-rating .fas {
+            margin: 0 2px;
+        }
+
+        .testimonial-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* CSS para o checklist (adicionado) */
+        .learning-checklist-box {
+            background-color: #e0f7fa;
+            /* Um tom suave de azul claro */
+            padding: 1rem;
+            margin: 0.5rem 1rem;
+            /* Margem para não colar nas bordas */
+            border-radius: 0.5rem;
+            border: 1px solid #b2ebf2;
+            /* Borda sutil */
+        }
+
+        .learning-checklist-box h4 {
+            font-size: 1rem;
+            /* Título um pouco menor, mais elegante */
+            color: #004085;
+            /* Azul mais escuro para o título */
+            margin-bottom: 0.8rem;
+            /* Ajuste do espaçamento */
+            text-align: center;
+            /* Centraliza o título */
+            font-weight: bold;
+            /* Título em negrito */
+        }
+
+        .learning-checklist-box .checklist {
+            list-style: none;
+            /* Remove os marcadores padrão da lista */
+            padding: 0;
+            margin: 0;
+        }
+
+        .learning-checklist-box .checklist li {
+            display: flex;
+            /* Para alinhar o ícone com o texto */
+            align-items: flex-start;
+            /* Alinha o início do texto com o ícone */
+            margin-bottom: 0.4rem;
+            /* Espaçamento reduzido entre os itens */
+            font-size: 0.85rem;
+            /* Tamanho da fonte menor */
+            color: #333;
+            line-height: 1.3;
+            /* Espaçamento entre linhas para melhor leitura */
+        }
+
+        .learning-checklist-box .checklist li strong {
+            font-weight: 600;
+            /* Garante que o texto dentro do strong seja negrito */
+        }
+
+        .learning-checklist-box .checklist li .fas {
+            color: #28a744;
+            /* Verde para o ícone de check */
+            margin-right: 0.6rem;
+            /* Espaço maior entre ícone e texto */
+            font-size: 0.95rem;
+            /* Ícone um pouco menor para acompanhar o texto */
+            flex-shrink: 0;
+            /* Previne que o ícone encolha em telas pequenas */
+            padding-top: 2px;
+            /* Pequeno ajuste para alinhamento vertical do ícone */
+        }
+    </style>
+    <div class="star-rating" aria-label="Avaliação 4.8 de 5 estrelas">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>(4.3/5)
+    </div>
+
+
+    <div class="p-4">
+        <div class="mb-3">
+            <div class="flex items-center justify-between mb-1">
+                <span class="text-lg font-bold text-teal-600">R$ 33,90</span>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
             </div>
-
+            <div class="flex items-center justify-between">
+                <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
+            </div>
+        </div>
+        <div class="flex gap-2">
+            <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold"> <a href="Expressão Criativa/login.html">Para Assinantes</a></button>
+            <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"><a href="https://pay.kiwify.com.br/QB0q11q">Comprar</a></button>
+        </div>
+    </div>
+</div>
             
 
             <!-- Book 7 -->
             <div class="book-cover bg-white rounded-lg overflow-hidden cursor-pointer">
-                
-                <div class="h-80 overflow-hidden flex items-center justify-center bg-gray-100">
-                    <img src="Jogos Cooperativos/1.png" alt="Capa do Ebook" class="w-full h-full object-cover">
-                    
-                </div>
-                 <p class="tt text-gray-600 text-lg "><strong> Jogos Cooperativos</strong></p>
 
-                 
-                  <script src="https://cdn.tailwindcss.com"></script>
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-                <style>
-                        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-                        body { font-family: 'Inter', sans-serif; }
-                        
-                        .book-cover:hover {
-                            transform: translateY(-8px);
-                            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-                        }
-                        .gradient-bg {
-                            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-                        }
-                        .tt {
-                            text-align: center;
-                            padding: 3px;
-                        }
-                        .star-rating {
-                            display: flex;
-                            justify-content: center;
-                            color: #FFD700; /* Gold color for stars */
-                            margin-bottom: 8px;
-                        }
-                        .star-rating .fas {
-                            margin: 0 2px;
-                        }
-                        .testimonial-card {
-                            background-color: #ffffff;
-                            border-radius: 0.75rem;
-                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                            padding: 1.5rem;
-                            margin-bottom: 1.5rem;
-                            transition: transform 0.2s ease-in-out;
-                        }
-                        .testimonial-card:hover {
-                            transform: translateY(-5px);
-                        }
-                    </style>
-                <div class="star-rating" aria-label="Avaliação 4.8 de 5 estrelas">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="fas fa-star-half-alt"></i>(3.2/5)
-                </div>
-                
+    <div class="h-80 overflow-hidden flex items-center justify-center bg-gray-100">
+        <img src="Jogos Cooperativos/1.png" alt="Capa do Ebook" class="w-full h-full object-cover">
+    </div>
+    <p class="tt text-gray-600 text-lg "><strong> Jogos Cooperativos</strong></p>
+
+    <div class="learning-checklist-box">
+        <h4>O que você vai aprender:</h4>
+        <ul class="checklist">
+            <li><i class="fas fa-check-circle"></i> <strong>A importância da cooperação e do trabalho em equipe.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Jogos que promovem a colaboração e a resolução de problemas em grupo.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Estratégias para desenvolver habilidades sociais e empatia.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Como aplicar jogos cooperativos em diferentes faixas etárias.</strong></li>
+            <li><i class="fas fa-check-circle"></i> <strong>Dicas para criar um ambiente de inclusão e respeito mútuo.</strong></li>
+        </ul>
+    </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .book-cover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .tt {
+            text-align: center;
+            padding: 3px;
+        }
+
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            color: #FFD700;
+            /* Gold color for stars */
+            margin-bottom: 8px;
+        }
+
+        .star-rating .fas {
+            margin: 0 2px;
+        }
+
+        .testimonial-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* CSS para o checklist (adicionado) */
+        .learning-checklist-box {
+            background-color: #e0f7fa;
+            /* Um tone suave de azul claro */
+            padding: 1rem;
+            margin: 0.5rem 1rem;
+            /* Margem para não colar nas bordas */
+            border-radius: 0.5rem;
+            border: 1px solid #b2ebf2;
+            /* Borda sutil */
+        }
+
+        .learning-checklist-box h4 {
+            font-size: 1rem;
+            /* Título um pouco menor, mais elegante */
+            color: #004085;
+            /* Azul mais escuro para o título */
+            margin-bottom: 0.8rem;
+            /* Ajuste do espaçamento */
+            text-align: center;
+            /* Centraliza o título */
+            font-weight: bold;
+            /* Título em negrito */
+        }
+
+        .learning-checklist-box .checklist {
+            list-style: none;
+            /* Remove os marcadores padrão da lista */
+            padding: 0;
+            margin: 0;
+        }
+
+        .learning-checklist-box .checklist li {
+            display: flex;
+            /* Para alinhar o ícone com o texto */
+            align-items: flex-start;
+            /* Alinha o início do texto com o ícone */
+            margin-bottom: 0.4rem;
+            /* Espaçamento reduzido entre os itens */
+            font-size: 0.85rem;
+            /* Tamanho da fonte menor */
+            color: #333;
+            line-height: 1.3;
+            /* Espaçamento entre linhas para melhor leitura */
+        }
+
+        .learning-checklist-box .checklist li strong {
+            font-weight: 600;
+            /* Garante que o texto dentro do strong seja negrito */
+        }
+
+        .learning-checklist-box .checklist li .fas {
+            color: #28a744;
+            /* Verde para o ícone de check */
+            margin-right: 0.6rem;
+            /* Espaço maior entre ícone e texto */
+            font-size: 0.95rem;
+            /* Ícone um pouco menor para acompanhar o texto */
+            flex-shrink: 0;
+            /* Previne que o ícone encolha em telas pequenas */
+            padding-top: 2px;
+            /* Pequeno ajuste para alinhamento vertical do ícone */
+        }
+    </style>
+    <div class="star-rating" aria-label="Avaliação 3.2 de 5 estrelas">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>(3.2/5)
+    </div>
 
 
-                <div class="p-4">
-                    <div class="mb-3">
-                        <div class="flex items-center justify-between mb-1">
-                            <span class="text-lg font-bold text-red-600">R$ 35,90</span>
-                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
-                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
-                        </div>
-                    </div>
-                    <div class="flex gap-2">
-                        <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold"> <a href="Jogos Cooperativos/login.html">Para Assinantes</a></button>
-                        <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"><a href="https://pay.kiwify.com.br/hyCHx6m">Comprar</a></button>
-                    </div>
-                </div>
+    <div class="p-4">
+        <div class="mb-3">
+            <div class="flex items-center justify-between mb-1">
+                <span class="text-lg font-bold text-red-600">R$ 35,90</span>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Avulso</span>
             </div>
-
-         </div>   
+            <div class="flex items-center justify-between">
+                <span class="text-2xl font-bold text-green-600">GRÁTIS</span>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Assinantes</span>
+            </div>
+        </div>
+        <div class="flex gap-2">
+            <button class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-semibold"> <a href="Jogos Cooperativos/login.html">Para Assinantes</a></button>
+            <button class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"><a href="https://pay.kiwify.com.br/hyCHx6m">Comprar</a></button>
+        </div>
+    </div>
+</div>
 
         <!-- Call to Action 
         <div class="text-center mt-16">
