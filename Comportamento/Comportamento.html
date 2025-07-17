@@ -1,37 +1,66 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ebooks - Comportamento</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Ebooks - Comportamento</title> <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Fredoka+One&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .book-cover {
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #F8FBFD; /* Um azul/cinza muito clarinho para o fundo da página, que combina bem */
         }
-        .book-cover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        h1 {
+            font-family: 'Fredoka One', cursive;
         }
-        .gradient-bg {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        h2, p {
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .gradient-bg-professional-child {
+            /* O degradê azul que você pediu para ser o padrão */
+            background: linear-gradient(135deg, #667eea 0%, #00ccff 100%);
+            background-size: 100% 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .text-strong-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Sombra para alta legibilidade em fundo colorido */
+        }
+
+        .header-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            /* A cor da onda deve corresponder ao background-color do body para uma transição suave */
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 50C240 100 480 0 720 50C960 100 1200 0 1440 50V100H0V50Z" fill="%23F8FBFD"/></svg>') no-repeat center bottom;
+            background-size: cover;
+            z-index: 1;
         }
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Header -->
-    <header class="gradient-bg text-white py-16">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Comportamento</h1>
-            <p class="text-xl md:text-2xl font-light mb-2">Guias completos para desenvolvimento emocional e comportamental</p>
-            <p class="text-lg opacity-90">Métodos comprovados por psicólogos e especialistas</p>
+
+    <header class="gradient-bg-professional-child text-white py-16 md:py-24 relative">
+        <div class="container mx-auto px-6 text-center z-10 relative">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white text-strong-shadow">
+                Comportamento
+            </h1>
+            <p class="text-xl md:text-2xl font-semibold mb-2 text-white text-strong-shadow">
+                Guias completos para desenvolvimento emocional e comportamental
+            </p>
+            <p class="text-lg md:text-xl text-white opacity-90 text-strong-shadow">
+                Métodos comprovados por psicólogos e especialistas
+            </p>
         </div>
+        <div class="header-wave"></div>
     </header>
+
+</body>
+</html>
 
     <!-- Main Content -->
     <main class="container mx-auto px-6 py-12">
