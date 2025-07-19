@@ -1374,3 +1374,267 @@
     <i class="fas fa-home"></i>
 </a>
 
+
+<!------------------------------------------------------->
+<style>
+    :root {
+        /* Cores */
+        --primary-color: #007bff;
+        --success-color: #28a745;
+        --text-color: #333;
+        --light-text-color: #555;
+        --background-light: #fff;
+        --background-subscriber: #e6f7ff; /* Fundo para assinante */
+        --border-subscriber: #0056b3; /* Borda mais escura para assinante */
+        --shadow-color: rgba(0, 0, 0, 0.1);
+        --accent-glow-subscriber: rgba(0, 123, 255, 0.4); /* Brilho para assinante */
+
+        /* Espaçamento */
+        --spacing-xs: 5px;
+        --spacing-sm: 10px;
+        --spacing-md: 15px;
+        --spacing-lg: 20px;
+
+        /* Tamanhos */
+        --notification-max-width: 320px; /* Levemente mais largo para o texto adicional */
+        --icon-size: 24px;
+        --font-size-sm: 14px;
+        --font-size-xs: 12px;
+
+        /* Transições */
+        --transition-duration: 0.5s;
+    }
+
+    #notification-container {
+        position: fixed;
+        top: var(--spacing-lg);
+        right: var(--spacing-lg);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        pointer-events: none; /* Permite clicar através do contêiner vazio */
+    }
+
+    .notification {
+        background-color: var(--background-light);
+        color: var(--text-color);
+        padding: var(--spacing-md) var(--spacing-lg);
+        border-radius: 8px;
+        box-shadow: 0 4px 12px var(--shadow-color);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        max-width: var(--notification-max-width);
+        opacity: 0;
+        transform: translateX(100%);
+        transition: opacity var(--transition-duration) ease-out, transform var(--transition-duration) ease-out;
+        pointer-events: auto; /* Permite interagir com a notificação */
+        position: relative; /* Para o pseudo-elemento de brilho */
+        overflow: hidden; /* Para garantir que o brilho não vaze */
+    }
+
+    .notification.is-visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .notification.is-hidden {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    .notification--subscriber {
+        background-color: var(--background-subscriber);
+        border-left: var(--spacing-xs) solid var(--border-subscriber);
+        box-shadow: 0 4px 15px var(--accent-glow-subscriber); /* Brilho sutil */
+        animation: pulseBorder 1.5s infinite alternate; /* Animação de borda */
+    }
+
+    /* Animação de pulso para assinantes */
+    @keyframes pulseBorder {
+        from {
+            border-color: var(--border-subscriber);
+        }
+        to {
+            border-color: var(--primary-color);
+        }
+    }
+
+    .notification__icon {
+        font-size: var(--icon-size);
+        color: var(--success-color); /* Cor padrão para ícone de compra */
+    }
+
+    .notification--subscriber .notification__icon {
+        color: var(--primary-color); /* Cor para ícone de assinante */
+    }
+
+    .notification__content {
+        flex-grow: 1; /* Permite que o conteúdo ocupe o espaço restante */
+    }
+
+    .notification__content p {
+        margin: 0;
+        line-height: 1.4;
+        font-size: var(--font-size-sm);
+    }
+
+    .notification__content strong {
+        color: var(--primary-color);
+    }
+
+    .notification__content .area {
+        font-weight: bold;
+        color: var(--light-text-color);
+    }
+
+    .notification__meta {
+        font-size: var(--font-size-xs);
+        color: var(--light-text-color);
+        margin-top: var(--spacing-xs); /* Pequeno espaçamento acima do meta */
+        display: block; /* Garante que fique em uma nova linha */
+    }
+</style>
+
+<div id="notification-container" aria-live="polite" aria-atomic="true"></div>
+
+<script>
+    const areas = [
+        "Autismo & TEA", "Nutrição Infantil", "Desenvolvimento Motor",
+        "Fala & Linguagem", "Comportamento", "Aprendizagem",
+        "Sono & Rotina", "Socialização", "Necessidades Especiais",
+        "Ansiedade Infantil", "Coordenação Motora Fina",
+        "Estimulação Sensorial", "Disciplina Positiva",
+        "Inteligência Emocional", "Brincadeiras Terapêuticas",
+        "Preparação Escolar", "Tecnologia Saudável",
+        "Autoestima & Confiança"
+    ];
+
+   const names = [
+    "Ana C.", "João P.", "Maria S.", "Pedro L.", "Laura M.",
+    "Lucas G.", "Beatriz R.", "Felipe A.", "Juliana B.", "Rafael V.",
+    "Camila D.", "Guilherme F.", "Isabela H.", "Daniel K.", "Sofia N.",
+    "Bruno O.", "Carolina Q.", "Thiago W.", "Manuela Z.", "Vinicius E.",
+    "Helena J.", "Gabriel X.", "Larissa Y.", "Diego T.", "Fernanda U.",
+    "Andréa C.", "Roberto P.", "Patrícia S.", "Ricardo L.", "Monique M.",
+    "Gustavo G.", "Vitória R.", "Sergio A.", "Clara B.", "Eduardo V.",
+    "Mariana F.", "Alexandre M.", "Lívia P.", "Marcelo S.", "Aline D.",
+    "Leonardo H.", "Priscila K.", "Rodrigo N.", "Amanda O.", "Bruno R.",
+    "Evelyn Q.", "Paulo W.", "Vanessa Z.", "César E.", "Natália J.",
+    "Marcos X.", "Renata Y.", "Sérgio T.", "Elisa U.", "Humberto V.",
+    "Daniele A.", "Rogério B.", "Valéria C.", "Silvio D.", "Lúcia F.",
+    "Márcio G.", "Tatiana H.", "José I.", "Cristina J.", "Flávio L.",
+    "Denise M.", "Renan N.", "Michele P.", "Júlio Q.", "Carla R."
+];
+
+   const cities = [
+    "São Paulo, SP", "Rio de Janeiro, RJ", "Belo Horizonte, MG", "Porto Alegre, RS",
+    "Curitiba, PR", "Salvador, BA", "Fortaleza, CE", "Recife, PE",
+    "Brasília, DF", "Goiânia, GO", "Manaus, AM", "Belém, PA",
+    "Florianópolis, SC", "Vitória, ES", "Campo Grande, MS", "Cuiabá, MT",
+    "João Pessoa, PB", "Natal, RN", "Aracaju, SE", "Maceió, AL",
+    "Teresina, PI", "Palmas, TO", "Rio Branco, AC", "Porto Velho, RO",
+    "Macapá, AP", "Boa Vista, RR",
+    "Campinas, SP", "São Luís, MA", "Osasco, SP", "Guarulhos, SP",
+    "Uberlândia, MG", "São Bernardo do Campo, SP", "Santo André, SP", "Contagem, MG",
+    "São José dos Campos, SP", "Ribeirão Preto, SP", "Sorocaba, SP", "Niterói, RJ",
+    "Caxias do Sul, RS", "Londrina, PR", "Joinville, SC", "Santos, SP",
+    "Jundiaí, SP", "Feira de Santana, BA", "Anápolis, GO", "Petrolina, PE",
+    "Serra, ES", "Maringá, PR", "Piracicaba, SP", "Vila Velha, ES",
+    "Blumenau, SC", "Volta Redonda, RJ", "Rio Claro, SP", "Juiz de Fora, MG",
+    "Cascavel, PR", "Pelotas, RS", "Bauru, SP", "Itajaí, SC",
+    "Caruaru, PE", "Mogi das Cruzes, SP", "Suzano, SP", "Barueri, SP",
+    "Franca, SP", "Montes Claros, MG", "São Gonçalo, RJ", "Olinda, PE",
+    "Taboão da Serra, SP", "Limeira, SP", "Sete Lagoas, MG", "Colombo, PR",
+    "Diadema, SP", "Sumaré, SP", "Presidente Prudente, SP", "Santa Maria, RS"
+];
+
+    const notificationContainer = document.getElementById('notification-container');
+    const NOTIFICATION_DISPLAY_TIME = 4500; // Tempo em milissegundos que a notificação fica visível
+    const NOTIFICATION_FADE_OUT_DURATION = 500; // Duração da animação de saída (deve ser igual ao transition-duration no CSS)
+
+    function getRandomElement(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function getCurrentDateTime() {
+        const now = new Date();
+        const options = {
+            day: '2-digit',
+            month: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false // Formato 24h
+        };
+        // Para garantir que a data seja do Brasil, você pode especificar o locale
+        return now.toLocaleString('pt-BR', options);
+    }
+
+    function createNotificationElement(message, iconClass, metaText, isSubscriber) {
+        const notificationDiv = document.createElement('div');
+        notificationDiv.classList.add('notification');
+        if (isSubscriber) {
+            notificationDiv.classList.add('notification--subscriber');
+        }
+
+        notificationDiv.innerHTML = `
+            <div class="notification__icon"><i class="${iconClass}"></i></div>
+            <div class="notification__content">
+                <p>${message}</p>
+                <span class="notification__meta">${metaText}</span>
+            </div>
+        `;
+        return notificationDiv;
+    }
+
+    function showNotification() {
+        const isSubscriber = Math.random() < 0.25; // 25% de chance de ser assinante
+        const name = getRandomElement(names);
+        const city = getRandomElement(cities);
+        const dateTime = getCurrentDateTime(); // Pega a hora e data atuais
+        let message;
+        let iconClass;
+        let metaText;
+
+        if (isSubscriber) {
+            message = `<strong>${name}</strong> acabou de se tornar assinante e tem acesso livre a todos os Ebooks!`;
+            iconClass = 'fas fa-star';
+            metaText = `De ${city} - ${dateTime}`;
+        } else {
+            const area = getRandomElement(areas);
+            message = `<strong>${name}</strong> comprou Ebooks da área de <span class="area">${area}</span>.`;
+            iconClass = 'fas fa-shopping-cart';
+            metaText = `De ${city} - ${dateTime}`;
+        }
+
+        const notificationElement = createNotificationElement(message, iconClass, metaText, isSubscriber);
+        notificationContainer.prepend(notificationElement);
+
+        // Força o reflow para garantir a animação de entrada
+        void notificationElement.offsetWidth;
+        notificationElement.classList.add('is-visible');
+
+        // Define o tempo para a notificação desaparecer
+        setTimeout(() => {
+            notificationElement.classList.remove('is-visible');
+            notificationElement.classList.add('is-hidden');
+            notificationElement.addEventListener('transitionend', () => {
+                notificationElement.remove();
+            }, { once: true });
+        }, NOTIFICATION_DISPLAY_TIME);
+    }
+
+    function startNotificationCycle() {
+        showNotification();
+        const randomTime = Math.random() * (12000 - 4000) + 4000; // Intervalo entre 4 e 12 segundos
+        setTimeout(startNotificationCycle, randomTime);
+    }
+
+    // Inicia o ciclo de notificações após um pequeno atraso inicial
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(startNotificationCycle, 2000); // Primeira notificação após 2 segundos
+    });
+</script>
+
+<!------------------------------------------------------->
