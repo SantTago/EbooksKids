@@ -1,0 +1,944 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎁 RIFA DOS EBOOKS - Ganhe 5 Ebooks da Sua Escolha!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .shine {
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+            background-size: 200% 200%;
+            animation: shine 2s linear infinite;
+        }
+        
+        @keyframes shine {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        .firework {
+            position: absolute;
+            font-size: 2rem;
+            animation: firework-animation 2s infinite;
+        }
+        
+        .firework-1 { top: 10%; left: 10%; animation-delay: 0s; }
+        .firework-2 { top: 20%; right: 15%; animation-delay: 0.3s; }
+        .firework-3 { top: 60%; left: 20%; animation-delay: 0.6s; }
+        .firework-4 { bottom: 20%; right: 10%; animation-delay: 0.9s; }
+        .firework-5 { bottom: 30%; left: 15%; animation-delay: 1.2s; }
+        .firework-6 { top: 40%; right: 20%; animation-delay: 1.5s; }
+        
+        @keyframes firework-animation {
+            0% { 
+                transform: scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            50% { 
+                transform: scale(1.5) rotate(180deg);
+                opacity: 1;
+            }
+            100% { 
+                transform: scale(0) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    <!-- Header com Urgência -->
+    
+    <!-- Timer de Urgência -->
+    <div class="bg-black text-white text-center py-2 text-xs">
+        ⏰ Tempo restante para participar: <span id="countdown" class="font-bold text-yellow-400">23:45:12</span>
+    </div>
+
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Título Principal -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl md:text-6xl font-black text-white mb-4 floating">
+                🎁 RIFA DOS EBOOKS
+            </h1>
+            <div class="shine text-2xl md:text-3xl font-bold text-transparent bg-clip-text mb-4">
+                GANHE 5 EBOOKS DA SUA ESCOLHA!
+            </div>
+            <p class="text-xl text-white/90 font-medium mb-4">
+                Por apenas R$ 5,99 você concorre a uma biblioteca completa! 📚
+            </p>
+            
+            <!-- Toast de Notificação Profissional -->
+            <div id="notification-toast" class="fixed top-4 right-4 bg-white border-l-4 border-green-500 rounded-lg shadow-xl p-4 max-w-sm transform translate-x-full transition-transform duration-500 z-50">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                    </div>
+                    <div class="ml-3 flex-1">
+                        <div class="text-sm font-medium text-gray-900" id="notification-name">
+                            Carlos Silva
+                        </div>
+                        <div class="text-xs text-gray-500" id="notification-location">
+                            São Paulo, SP
+                        </div>
+                        <div class="text-xs text-green-600 font-semibold mt-1">
+                            ✅ Acabou de participar da rifa
+                        </div>
+                    </div>
+                    <div class="ml-2 text-xs text-gray-400" id="notification-time">
+                        agora
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Principal -->
+        <div class="bg-white rounded-3xl shadow-2xl p-8 mb-8">
+            <!-- Prêmio -->
+            <div class="text-center mb-8">
+                <div class="text-6xl mb-4">🏆</div>
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">O QUE VOCÊ GANHA:</h2>
+                <div class="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-6 rounded-2xl mb-6 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-2 right-2 bg-yellow-400 text-black px-2 py-1 rounded-full text-xs font-bold animate-bounce">
+                        LIMITADO!
+                    </div>
+                    <div class="text-2xl font-bold mb-3">🎯 5 EBOOKS DA SUA ESCOLHA</div>
+                    <div class="text-lg mb-2">📚 Escolha entre mais de 500 títulos disponíveis</div>
+                    <div class="text-lg mb-2">⚡ Entrega IMEDIATA após o sorteio</div>
+                    <div class="text-lg mb-2">🎁 + Guia exclusivo de como aproveitar melhor seus ebooks</div>
+                    <div class="text-lg mb-2">📞 + Lista de 100 sites para baixar ebooks gratuitos</div>
+                    <div class="text-lg font-bold bg-white/20 p-2 rounded-lg mt-3">
+                        💎 BÔNUS EXCLUSIVO: Certificado de participação digital!
+                    </div>
+                </div>
+                
+                <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 rounded-lg mb-4">
+                    <div class="text-lg font-semibold text-yellow-800 mb-2">
+                        📱 COMO FUNCIONA A ESCOLHA DOS SEUS EBOOKS:
+                    </div>
+                    <div class="text-yellow-700">
+                        Assim que você ganhar, entraremos em contato via <strong>WhatsApp</strong> para você escolher seus 5 ebooks favoritos do nosso catálogo premium!
+                    </div>
+                </div>
+                <div class="text-lg text-gray-600">
+                    <strong>Valor total do prêmio:</strong> <span class="text-green-600 font-bold text-2xl">R$ 299,00 em ebooks</span>
+                    <div class="text-sm text-green-600 font-semibold mt-1">Seu investimento: apenas R$ 5,99 (ROI de 4.900%!)</div>
+                </div>
+                
+                <!-- Alerta de Escassez -->
+                <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg mt-4">
+                    <div class="flex items-center">
+                        <div class="text-red-600 text-2xl mr-3">⚠️</div>
+                        <div>
+                            <div class="text-red-800 font-bold text-sm">ATENÇÃO: ÚLTIMAS VAGAS!</div>
+                            <div class="text-red-700 text-xs">
+                                Nas últimas 3 rifas, as vagas esgotaram em menos de 6 horas. Não perca sua chance!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estatísticas -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div class="text-center bg-blue-50 p-4 rounded-xl border-2 border-blue-200">
+                    <div class="text-2xl font-bold text-blue-600" id="participants">77</div>
+                    <div class="text-gray-600 text-sm">Participantes</div>
+                </div>
+                <div class="text-center bg-green-50 p-4 rounded-xl border-2 border-green-200">
+                    <div class="text-2xl font-bold text-green-600">100</div>
+                    <div class="text-gray-600 text-sm">Total de Números</div>
+                </div>
+                <div class="text-center bg-red-50 p-4 rounded-xl border-2 border-red-200">
+                    <div class="text-2xl font-bold text-red-600" id="remaining">23</div>
+                    <div class="text-gray-600 text-sm">Restantes</div>
+                </div>
+                <div class="text-center bg-yellow-50 p-4 rounded-xl border-2 border-yellow-200">
+                    <div class="text-2xl font-bold text-yellow-600" id="chances">77%</div>
+                    <div class="text-gray-600 text-sm">Suas Chances</div>
+                </div>
+            </div>
+            
+            <!-- Prova Social Adicional -->
+            <div class="bg-gradient-to-r from-green-100 to-blue-100 p-4 rounded-xl mb-6">
+                <div class="text-center">
+                    <div class="text-lg font-bold text-gray-800 mb-2">🔥 NÚMEROS QUE IMPRESSIONAM:</div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                        <div><strong id="rifas-realizadas">1.247</strong><br>Rifas realizadas</div>
+                        <div><strong>98.3%</strong><br>Satisfação</div>
+                        <div><strong>10 min</strong><br>Tempo médio de entrega</div>
+                        <div><strong>R$ 374.100</strong><br>Em prêmios entregues</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Barra de Progresso 
+            <div class="mb-8">
+                <div class="flex justify-between text-sm text-gray-600 mb-2">
+                    <span>Progresso da Rifa</span>
+                    <span id="progress-percent">77%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-4">
+                    <div class="bg-gradient-to-r from-green-400 to-blue-500 h-4 rounded-full transition-all duration-500" style="width: 77%" id="progress-bar"></div>
+                </div>
+            </div>
+-->
+            <!-- Preço e CTA -->
+            <div class="text-center mb-8">
+                <div class="bg-red-100 border border-red-300 rounded-lg p-3 mb-4">
+                    <div class="text-red-700 font-bold text-sm">🚨 OFERTA RELÂMPAGO - ÚLTIMAS HORAS!</div>
+                    <div class="text-red-600 text-xs mt-1">Preço volta para R$ 9,99 quando esgotar!</div>
+                </div>
+                
+                <div class="mb-4 relative">
+                    <div class="absolute -top-2 -right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold animate-bounce">
+                        40% OFF
+                    </div>
+                    <span class="text-gray-500 line-through text-2xl">R$ 9,99</span>
+                    <span class="text-6xl font-black text-green-600 ml-2">R$ 5,99</span>
+                </div>
+                
+                <div class="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-4 mb-4">
+                    <div class="text-green-700 font-bold text-lg mb-2">
+                        💰 ANÁLISE DE INVESTIMENTO:
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <strong>Seu investimento:</strong> R$ 5,99<br>
+                            <strong>Valor se ganhar:</strong> R$ 299,00 em ebooks<br>
+                            <strong>ROI potencial:</strong> <span class="text-green-600 font-bold">4.900%</span>
+                        </div>
+                        <div>
+                            <strong>Custo por ebook:</strong> R$ 1,20<br>
+                            <strong>Economia total:</strong> R$ 293,01<br>
+                            <strong>Suas chances:</strong> <span class="text-blue-600 font-bold">1 em 23!</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-sm text-gray-600 mb-6">
+                    💳 Pagamento 100% seguro via PIX ou cartão<br>
+                    📱 Confirmação instantânea no WhatsApp<br>
+                    🔒 Garantia de reembolso em caso de problemas técnicos
+                </div>
+                
+                <div class="relative mb-4">
+                   <a href="https://pay.kiwify.com.br/8EXy5qc"> <button onclick="participar()" class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-6 px-12 rounded-2xl text-2xl shadow-2xl transform hover:scale-105 transition-all duration-200">
+                        🎯 GARANTIR MINHA VAGA AGORA!
+                    </button></a>
+                </div>
+                
+                <div class="bg-yellow-100 border border-yellow-300 rounded-lg p-3 mb-3">
+                    <div class="text-yellow-800 font-bold text-sm">
+                        ⚡ ÚLTIMAS <span id="time-left" class="text-red-600">23</span> VAGAS DISPONÍVEIS!
+                    </div>
+                    <div class="text-yellow-700 text-xs">
+                        <span id="people-viewing">47</span> pessoas visualizando esta página agora
+                    </div>
+                </div>
+                
+                <div class="text-xs text-gray-500">
+                    ⏰ Não perca! Esta oportunidade não voltará tão cedo
+                </div>
+            </div>
+
+            <!-- Garantias -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center text-sm text-gray-600 mb-6">
+                <div class="flex items-center justify-center">
+                    <span class="text-green-500 mr-2">✅</span>
+                    Sorteio regulamentado
+                </div>
+                <div class="flex items-center justify-center">
+                    <span class="text-green-500 mr-2">✅</span>
+                    Pagamento seguro
+                </div>
+                <div class="flex items-center justify-center">
+                    <span class="text-green-500 mr-2">✅</span>
+                    Entrega imediata
+                </div>
+            </div>
+
+            <!-- Informações sobre Regulamentação -->
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                <div class="text-center mb-4">
+                    <div class="text-2xl font-bold text-blue-800 mb-2">🏛️ SORTEIO 100% REGULAMENTADO</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div class="bg-white p-4 rounded-lg">
+                        <div class="font-semibold text-blue-700 mb-2">🎲 SORTEIO ALEATÓRIO:</div>
+                        <div class="text-gray-700">
+                            • Sistema automatizado de sorteio<br>
+                            • Números gerados aleatoriamente<br>
+                            • Impossível manipulação ou fraude<br>
+                            • Todos os participantes têm chances iguais
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg">
+                        <div class="font-semibold text-blue-700 mb-2">⚖️ ÓRGÃOS REGULADORES:</div>
+                        <div class="text-gray-700">
+                            • Fiscalizado por órgãos competentes<br>
+                            • Conforme legislação brasileira<br>
+                            • Processo transparente e auditável<br>
+                            • Certificado de conformidade
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <div class="bg-green-100 text-green-800 px-4 py-2 rounded-full inline-block font-semibold text-sm">
+                        🔒 SORTEIO CERTIFICADO E TRANSPARENTE
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Últimos Ganhadores -->
+        <div class="bg-white rounded-3xl shadow-2xl p-8 mb-8">
+            <div class="text-center mb-6">
+                <h3 class="text-3xl font-bold text-gray-800 mb-2">🏆 ÚLTIMOS GANHADORES</h3>
+                <p class="text-gray-600">Veja quem ganhou nas últimas rifas realizadas!</p>
+                <div class="bg-green-100 text-green-800 px-4 py-2 rounded-full inline-block font-semibold text-sm mt-3">
+                    ✅ TODOS OS PRÊMIOS FORAM ENTREGUES EM ATÉ 10 MINUTOS!
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                <div class="bg-gradient-to-r from-green-50 to-green-100 border border-green-200 p-4 rounded-xl">
+                    <div class="flex items-center mb-2">
+                        <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                        <div class="font-bold text-green-800">Marina L.</div>
+                    </div>
+                    <div class="text-sm text-gray-700 mb-1">📍 São Paulo, SP</div>
+                    <div class="text-xs text-green-600 font-semibold">🎯 Rifa #1247 - Há 2 dias</div>
+                    <div class="text-xs text-gray-600 mt-1">🧩 Áreas escolhidas: Autismo & TEA, Nutrição Infantil, Desenvolvimento Motor, Fala & Linguagem, Comportamento</div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 p-4 rounded-xl">
+                    <div class="flex items-center mb-2">
+                        <div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+                        <div class="font-bold text-blue-800">Carlos R.</div>
+                    </div>
+                    <div class="text-sm text-gray-700 mb-1">📍 Rio de Janeiro, RJ</div>
+                    <div class="text-xs text-blue-600 font-semibold">🎯 Rifa #1246 - Há 3 dias</div>
+                    <div class="text-xs text-gray-600 mt-1">📚 Áreas escolhidas: Aprendizagem, Sono & Rotina, Socialização, Necessidades Especiais, Ansiedade Infantil</div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-purple-50 to-purple-100 border border-purple-200 p-4 rounded-xl">
+                    <div class="flex items-center mb-2">
+                        <div class="w-3 h-3 bg-purple-500 rounded-full mr-2"></div>
+                        <div class="font-bold text-purple-800">Ana P.</div>
+                    </div>
+                    <div class="text-sm text-gray-700 mb-1">📍 Belo Horizonte, MG</div>
+                    <div class="text-xs text-purple-600 font-semibold">🎯 Rifa #1245 - Há 4 dias</div>
+                    <div class="text-xs text-gray-600 mt-1">🎯 Áreas escolhidas: Coordenação Motora Fina, Estimulação Sensorial, Disciplina Positiva, Inteligência Emocional, Brincadeiras Terapêuticas</div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-orange-50 to-orange-100 border border-orange-200 p-4 rounded-xl">
+                    <div class="flex items-center mb-2">
+                        <div class="w-3 h-3 bg-orange-500 rounded-full mr-2"></div>
+                        <div class="font-bold text-orange-800">Roberto S.</div>
+                    </div>
+                    <div class="text-sm text-gray-700 mb-1">📍 Salvador, BA</div>
+                    <div class="text-xs text-orange-600 font-semibold">🎯 Rifa #1244 - Há 5 dias</div>
+                    <div class="text-xs text-gray-600 mt-1">🎓 Áreas escolhidas: Preparação Escolar, Tecnologia Saudável, Autoestima & Confiança, Fala & Linguagem, Comportamento</div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-pink-50 to-pink-100 border border-pink-200 p-4 rounded-xl">
+                    <div class="flex items-center mb-2">
+                        <div class="w-3 h-3 bg-pink-500 rounded-full mr-2"></div>
+                        <div class="font-bold text-pink-800">Juliana M.</div>
+                    </div>
+                    <div class="text-sm text-gray-700 mb-1">📍 Fortaleza, CE</div>
+                    <div class="text-xs text-pink-600 font-semibold">🎯 Rifa #1243 - Há 6 dias</div>
+                    <div class="text-xs text-gray-600 mt-1">💝 Áreas escolhidas: Autismo & TEA, Desenvolvimento Motor, Estimulação Sensorial, Socialização, Ansiedade Infantil</div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-teal-50 to-teal-100 border border-teal-200 p-4 rounded-xl">
+                    <div class="flex items-center mb-2">
+                        <div class="w-3 h-3 bg-teal-500 rounded-full mr-2"></div>
+                        <div class="font-bold text-teal-800">Fernando L.</div>
+                    </div>
+                    <div class="text-sm text-gray-700 mb-1">📍 Brasília, DF</div>
+                    <div class="text-xs text-teal-600 font-semibold">🎯 Rifa #1242 - Há 1 semana</div>
+                    <div class="text-xs text-gray-600 mt-1">🧠 Áreas escolhidas: Inteligência Emocional, Disciplina Positiva, Brincadeiras Terapêuticas, Coordenação Motora Fina, Aprendizagem</div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-indigo-50 to-indigo-100 border border-indigo-200 p-4 rounded-xl">
+                    <div class="flex items-center mb-2">
+                        <div class="w-3 h-3 bg-indigo-500 rounded-full mr-2"></div>
+                        <div class="font-bold text-indigo-800">Camila F.</div>
+                    </div>
+                    <div class="text-sm text-gray-700 mb-1">📍 Curitiba, PR</div>
+                    <div class="text-xs text-indigo-600 font-semibold">🎯 Rifa #1241 - Há 1 semana</div>
+                    <div class="text-xs text-gray-600 mt-1">👩‍🏫 Áreas escolhidas: Preparação Escolar, Nutrição Infantil, Sono & Rotina, Tecnologia Saudável, Autoestima & Confiança</div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-red-50 to-red-100 border border-red-200 p-4 rounded-xl">
+                    <div class="flex items-center mb-2">
+                        <div class="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+                        <div class="font-bold text-red-800">Lucas O.</div>
+                    </div>
+                    <div class="text-sm text-gray-700 mb-1">📍 Porto Alegre, RS</div>
+                    <div class="text-xs text-red-600 font-semibold">🎯 Rifa #1240 - Há 1 semana</div>
+                    <div class="text-xs text-gray-600 mt-1">🏃 Áreas escolhidas: Desenvolvimento Motor, Coordenação Motora Fina, Estimulação Sensorial, Brincadeiras Terapêuticas, Socialização</div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-yellow-50 to-yellow-100 border border-yellow-200 p-4 rounded-xl">
+                    <div class="flex items-center mb-2">
+                        <div class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                        <div class="font-bold text-yellow-800">Beatriz C.</div>
+                    </div>
+                    <div class="text-sm text-gray-700 mb-1">📍 Recife, PE</div>
+                    <div class="text-xs text-yellow-600 font-semibold">🎯 Rifa #1239 - Há 1 semana</div>
+                    <div class="text-xs text-gray-600 mt-1">🗣️ Áreas escolhidas: Fala & Linguagem, Comportamento, Ansiedade Infantil, Disciplina Positiva, Inteligência Emocional</div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-cyan-50 to-cyan-100 border border-cyan-200 p-4 rounded-xl">
+                    <div class="flex items-center mb-2">
+                        <div class="w-3 h-3 bg-cyan-500 rounded-full mr-2"></div>
+                        <div class="font-bold text-cyan-800">Diego A.</div>
+                    </div>
+                    <div class="text-sm text-gray-700 mb-1">📍 Goiânia, GO</div>
+                    <div class="text-xs text-cyan-600 font-semibold">🎯 Rifa #1238 - Há 2 semanas</div>
+                    <div class="text-xs text-gray-600 mt-1">🍎 Áreas escolhidas: Nutrição Infantil, Sono & Rotina, Necessidades Especiais, Autismo & TEA, Aprendizagem</div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-lime-50 to-lime-100 border border-lime-200 p-4 rounded-xl">
+                    <div class="flex items-center mb-2">
+                        <div class="w-3 h-3 bg-lime-500 rounded-full mr-2"></div>
+                        <div class="font-bold text-lime-800">Larissa T.</div>
+                    </div>
+                    <div class="text-sm text-gray-700 mb-1">📍 Manaus, AM</div>
+                    <div class="text-xs text-lime-600 font-semibold">🎯 Rifa #1237 - Há 2 semanas</div>
+                    <div class="text-xs text-gray-600 mt-1">🌟 Áreas escolhidas: Autoestima & Confiança, Socialização, Brincadeiras Terapêuticas, Preparação Escolar, Tecnologia Saudável</div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-emerald-50 to-emerald-100 border border-emerald-200 p-4 rounded-xl">
+                    <div class="flex items-center mb-2">
+                        <div class="w-3 h-3 bg-emerald-500 rounded-full mr-2"></div>
+                        <div class="font-bold text-emerald-800">Gabriel N.</div>
+                    </div>
+                    <div class="text-sm text-gray-700 mb-1">📍 Belém, PA</div>
+                    <div class="text-xs text-emerald-600 font-semibold">🎯 Rifa #1236 - Há 2 semanas</div>
+                    <div class="text-xs text-gray-600 mt-1">🤝 Áreas escolhidas: Necessidades Especiais, Autismo & TEA, Estimulação Sensorial, Coordenação Motora Fina, Desenvolvimento Motor</div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-violet-50 to-violet-100 border border-violet-200 p-4 rounded-xl">
+                    <div class="flex items-center mb-2">
+                        <div class="w-3 h-3 bg-violet-500 rounded-full mr-2"></div>
+                        <div class="font-bold text-violet-800">Patrícia V.</div>
+                    </div>
+                    <div class="text-sm text-gray-700 mb-1">📍 Vitória, ES</div>
+                    <div class="text-xs text-violet-600 font-semibold">🎯 Rifa #1235 - Há 2 semanas</div>
+                    <div class="text-xs text-gray-600 mt-1">😴 Áreas escolhidas: Sono & Rotina, Ansiedade Infantil, Disciplina Positiva, Comportamento, Inteligência Emocional</div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-rose-50 to-rose-100 border border-rose-200 p-4 rounded-xl">
+                    <div class="flex items-center mb-2">
+                        <div class="w-3 h-3 bg-rose-500 rounded-full mr-2"></div>
+                        <div class="font-bold text-rose-800">Rodrigo B.</div>
+                    </div>
+                    <div class="text-sm text-gray-700 mb-1">📍 Florianópolis, SC</div>
+                    <div class="text-xs text-rose-600 font-semibold">🎯 Rifa #1234 - Há 3 semanas</div>
+                    <div class="text-xs text-gray-600 mt-1">🎮 Áreas escolhidas: Tecnologia Saudável, Aprendizagem, Preparação Escolar, Brincadeiras Terapêuticas, Autoestima & Confiança</div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-amber-50 to-amber-100 border border-amber-200 p-4 rounded-xl">
+                    <div class="flex items-center mb-2">
+                        <div class="w-3 h-3 bg-amber-500 rounded-full mr-2"></div>
+                        <div class="font-bold text-amber-800">Vanessa K.</div>
+                    </div>
+                    <div class="text-sm text-gray-700 mb-1">📍 Campo Grande, MS</div>
+                    <div class="text-xs text-amber-600 font-semibold">🎯 Rifa #1233 - Há 3 semanas</div>
+                    <div class="text-xs text-gray-600 mt-1">👶 Áreas escolhidas: Nutrição Infantil, Desenvolvimento Motor, Fala & Linguagem, Sono & Rotina, Socialização</div>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-green-100 to-blue-100 p-4 rounded-xl text-center">
+                <div class="text-lg font-bold text-gray-800 mb-2">📊 ESTATÍSTICAS DOS GANHADORES:</div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                    <div><strong>100%</strong><br>Receberam os prêmios</div>
+                    <div><strong>8.3 min</strong><br>Tempo médio de entrega</div>
+                    <div><strong>15 estados</strong><br>Ganhadores de todo Brasil</div>
+                    <div><strong>R$ 4.485</strong><br>Valor total entregue (últimas 15 rifas)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Depoimentos -->
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8">
+            <h3 class="text-2xl font-bold text-white text-center mb-6">💬 O que dizem nossos ganhadores:</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white/20 p-4 rounded-xl">
+                    <div class="text-white mb-2 text-sm">"Ganhei ontem! Eles me chamaram no WhatsApp e escolhi 5 ebooks de marketing. Incrível!"</div>
+                    <div class="text-white/70 text-xs">- Marina L. ⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="bg-white/20 p-4 rounded-xl">
+                    <div class="text-white mb-2 text-sm">"Por R$ 5,99 foi o melhor investimento! O atendimento no WhatsApp foi super rápido."</div>
+                    <div class="text-white/70 text-xs">- Carlos R. ⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="bg-white/20 p-4 rounded-xl">
+                    <div class="text-white mb-2 text-sm">"Recebi meus ebooks em 10 minutos! Escolhi sobre finanças e já estou aplicando."</div>
+                    <div class="text-white/70 text-xs">- Ana P. ⭐⭐⭐⭐⭐</div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-6">
+                <div class="bg-yellow-400 text-black px-4 py-2 rounded-full inline-block font-bold text-sm">
+                    🏆 MAIS DE 1.200 GANHADORES SATISFEITOS!
+                </div>
+            </div>
+        </div>
+
+        <!-- Urgência Final -->
+        <div class="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-2xl p-6 text-center shadow-2xl">
+            <div class="text-3xl font-bold mb-3">⏰ ÚLTIMAS VAGAS!</div>
+            <div class="text-xl mb-4 font-semibold">Quando atingirmos 100 participantes, o sorteio acontece AUTOMATICAMENTE!</div>
+            <div class="bg-white/20 p-4 rounded-lg mb-4">
+                <div class="text-lg font-bold mb-2">📱 PROCESSO APÓS O SORTEIO:</div>
+                <div class="text-sm mb-3">
+                    1️⃣ Sorteio aleatório ao vivo no Instagram<br>
+                    2️⃣ Número sorteado por sistema regulamentado<br>
+                    3️⃣ Contato imediato via WhatsApp<br>
+                    4️⃣ Você escolhe seus 5 ebooks favoritos<br>
+                    5️⃣ Recebe tudo em até 10 minutos!
+                </div>
+                <div class="bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold inline-block">
+                    ⚖️ PROCESSO CERTIFICADO E AUDITÁVEL
+                </div>
+            </div>
+            <div class="text-lg font-bold">
+                💸 Não perca sua chance de ganhar R$ 299,00 em ebooks por apenas R$ 5,99!
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center text-white/70 text-sm mt-8">
+            <p>🔒 Seus dados estão seguros conosco | 📞 Suporte 24h via WhatsApp</p>
+            <p class="mt-2">📺 Sorteio aleatório realizado via Instagram Live às 20h quando atingir 100 participantes</p>
+            <p class="mt-1">📱 Ganhador será contatado imediatamente via WhatsApp para escolher os ebooks</p>
+            <p class="mt-1">⚖️ Sorteio regulamentado e fiscalizado por órgãos competentes conforme legislação brasileira</p>
+        </div>
+    </div>
+
+ 
+
+    <!-- Modal de Celebração -->
+    <div id="celebration-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50">
+        <div class="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 rounded-3xl p-8 max-w-lg mx-4 text-center relative overflow-hidden">
+            <!-- Fogos de artifício animados -->
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="firework firework-1">🎆</div>
+                <div class="firework firework-2">🎇</div>
+                <div class="firework firework-3">✨</div>
+                <div class="firework firework-4">🎆</div>
+                <div class="firework firework-5">🎇</div>
+                <div class="firework firework-6">✨</div>
+            </div>
+            
+            <div class="relative z-10">
+                <div class="text-6xl mb-4 animate-bounce">🏆</div>
+                <h2 class="text-3xl font-black text-white mb-4">RIFA FINALIZADA!</h2>
+                <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-6 mb-6">
+                    <div class="text-xl font-bold text-white mb-2">🎯 SORTEIO REALIZADO!</div>
+                    <div class="text-lg text-white/90 mb-3">Entrando em contato com o ganhador...</div>
+                    <div class="bg-green-500 text-white px-4 py-2 rounded-full font-bold text-sm inline-block animate-pulse">
+                        📱 GANHADOR SENDO CONTATADO VIA WHATSAPP
+                    </div>
+                </div>
+                
+                <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-4 mb-6">
+                    <div class="text-lg font-bold text-white mb-2">🚀 NOVA RIFA LANÇADA!</div>
+                    <div class="text-white/90 text-sm">A próxima rifa já está disponível com novas oportunidades!</div>
+                </div>
+                
+                <button onclick="voltarParaNovaRifa()" class="fixed bottom-8 right-8 bg-white text-orange-600 font-bold py-4 px-8 rounded-full text-xl shadow-2xl hover:bg-gray-100 transition-all duration-200 transform hover:scale-110 animate-bounce z-50">
+                    🔄 VOLTAR
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sistema de salvamento no navegador
+        function salvarDados() {
+            const dados = {
+                participantes,
+                restantes,
+                pessoasVisualizando,
+                recentParticipants,
+                timeLeft,
+                rifasRealizadas,
+                timestamp: Date.now()
+            };
+            localStorage.setItem('rifaEbooks', JSON.stringify(dados));
+        }
+        
+        function carregarDados() {
+            const dadosSalvos = localStorage.getItem('rifaEbooks');
+            if (dadosSalvos) {
+                const dados = JSON.parse(dadosSalvos);
+                const agora = Date.now();
+                const tempoDecorrido = Math.floor((agora - dados.timestamp) / 1000);
+                
+                // Se passou menos de 2 horas, carrega os dados salvos
+                if (tempoDecorrido < 7200) {
+                    participantes = dados.participantes;
+                    restantes = dados.restantes;
+                    pessoasVisualizando = dados.pessoasVisualizando;
+                    recentParticipants = dados.recentParticipants;
+                    timeLeft = Math.max(0, dados.timeLeft - tempoDecorrido);
+                    rifasRealizadas = dados.rifasRealizadas || 1247;
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        // Carrega dados salvos ou inicia novos
+        let participantes, restantes, pessoasVisualizando, recentParticipants, timeLeft, rifasRealizadas;
+        let tempoInicioRifa = Date.now();
+        
+        if (!carregarDados()) {
+            // Valores iniciais se não há dados salvos
+            participantes = 77;
+            restantes = 23;
+            pessoasVisualizando = 47;
+            recentParticipants = 3;
+            timeLeft = 23 * 3600 + 45 * 60 + 12; // 23:45:12
+            rifasRealizadas = 1247;
+        }
+        
+        function updateCountdown() {
+            const hours = Math.floor(timeLeft / 3600);
+            const minutes = Math.floor((timeLeft % 3600) / 60);
+            const seconds = timeLeft % 60;
+            
+            const display = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            document.getElementById('countdown').textContent = display;
+            
+            timeLeft--;
+            if (timeLeft < 0) timeLeft = 0;
+        }
+        
+        // Atualiza countdown a cada segundo
+        setInterval(updateCountdown, 1000);
+        
+        // Dados para notificações profissionais
+        const participantes_dados = [
+            { nome: 'Carlos Silva', cidade: 'São Paulo, SP' },
+            { nome: 'Maria Santos', cidade: 'Rio de Janeiro, RJ' },
+            { nome: 'João Oliveira', cidade: 'Belo Horizonte, MG' },
+            { nome: 'Ana Costa', cidade: 'Salvador, BA' },
+            { nome: 'Pedro Lima', cidade: 'Fortaleza, CE' },
+            { nome: 'Julia Ferreira', cidade: 'Brasília, DF' },
+            { nome: 'Lucas Almeida', cidade: 'Curitiba, PR' },
+            { nome: 'Camila Rocha', cidade: 'Porto Alegre, RS' },
+            { nome: 'Rafael Souza', cidade: 'Recife, PE' },
+            { nome: 'Beatriz Martins', cidade: 'Goiânia, GO' },
+            { nome: 'Diego Pereira', cidade: 'Manaus, AM' },
+            { nome: 'Larissa Silva', cidade: 'Belém, PA' },
+            { nome: 'Fernando Costa', cidade: 'Vitória, ES' },
+            { nome: 'Gabriela Lima', cidade: 'Florianópolis, SC' },
+            { nome: 'Ricardo Santos', cidade: 'Campo Grande, MS' }
+        ];
+        
+        function mostrarNotificacao() {
+            const participante = participantes_dados[Math.floor(Math.random() * participantes_dados.length)];
+            const toast = document.getElementById('notification-toast');
+            
+            // Atualiza os dados da notificação
+            document.getElementById('notification-name').textContent = participante.nome;
+            document.getElementById('notification-location').textContent = participante.cidade;
+            document.getElementById('notification-time').textContent = 'agora';
+            
+            // Mostra a notificação deslizando da direita
+            toast.classList.remove('translate-x-full');
+            toast.classList.add('translate-x-0');
+            
+            // Esconde após 4 segundos
+            setTimeout(() => {
+                toast.classList.remove('translate-x-0');
+                toast.classList.add('translate-x-full');
+            }, 4000);
+        }
+        
+        function atualizarContadores() {
+            const tempoDecorrido = (Date.now() - tempoInicioRifa) / 1000;
+            let probabilidade = 0.1; // Probabilidade base baixa
+            
+            // Sistema de velocidade progressiva
+            if (tempoDecorrido > 30 && tempoDecorrido <= 90) {
+                // Após 30 segundos, aumenta para 1 por minuto
+                probabilidade = 0.3;
+            } else if (tempoDecorrido > 90 && tempoDecorrido <= 1200) {
+                // Após 1:30min até 20min, acelera gradualmente
+                probabilidade = Math.min(0.8, 0.3 + (tempoDecorrido - 90) / 1110 * 0.5);
+            } else if (tempoDecorrido > 1200) {
+                // Após 20min, velocidade máxima
+                probabilidade = 0.8;
+            }
+            
+            // Só atualiza se ainda há vagas e não deixa chegar a zero (para em 3)
+            if (Math.random() < probabilidade && restantes > 3) {
+                participantes++;
+                restantes--;
+                recentParticipants = Math.min(recentParticipants + 1, 15);
+                
+                document.getElementById('participants').textContent = participantes;
+                document.getElementById('remaining').textContent = restantes;
+                document.getElementById('remaining-spots').textContent = restantes;
+                document.getElementById('time-left').textContent = restantes;
+                document.getElementById('recent-participants').textContent = recentParticipants;
+                
+                const progress = (participantes / 100) * 100;
+                document.getElementById('progress-percent').textContent = Math.round(progress) + '%';
+                document.getElementById('progress-bar').style.width = progress + '%';
+                
+                // Atualiza as chances dinamicamente
+                const chances = restantes > 0 ? Math.round((1 / restantes) * 100) : 100;
+                document.getElementById('chances').textContent = Math.min(chances, 100) + '%';
+                
+                // Salva os dados atualizados
+                salvarDados();
+                
+                // Mostra notificação SEMPRE que alguém participa (mais convincente)
+                mostrarNotificacao();
+                
+                // Verifica se chegou ao limite para finalizar rifa
+                if (participantes >= 97) {
+                    finalizarRifa();
+                }
+            }
+            
+            // Simula pessoas visualizando
+            pessoasVisualizando += Math.floor(Math.random() * 3) - 1;
+            pessoasVisualizando = Math.max(35, Math.min(pessoasVisualizando, 67));
+            document.getElementById('people-viewing').textContent = pessoasVisualizando;
+            
+            // Salva dados periodicamente
+            salvarDados();
+        }
+        
+        // Atualiza contadores a cada 3 segundos para sistema progressivo
+        window.updateInterval = setInterval(atualizarContadores, 3000);
+        
+        // Notificações aparecem apenas quando há nova participação (mais realista)
+        
+        // Atualiza a tela com os dados carregados
+        function atualizarTela() {
+            document.getElementById('participants').textContent = participantes;
+            document.getElementById('remaining').textContent = restantes;
+            document.getElementById('remaining-spots').textContent = restantes;
+            document.getElementById('time-left').textContent = restantes;
+            document.getElementById('recent-participants').textContent = recentParticipants;
+            document.getElementById('people-viewing').textContent = pessoasVisualizando;
+            
+            // Corrige a barra de progresso para acompanhar os participantes
+            const progress = (participantes / 100) * 100;
+            document.getElementById('progress-percent').textContent = Math.round(progress) + '%';
+            document.getElementById('progress-bar').style.width = progress + '%';
+            
+            // Calcula e atualiza as chances (quanto menos restantes, maiores as chances)
+            const chances = restantes > 0 ? Math.round((1 / restantes) * 100) : 100;
+            document.getElementById('chances').textContent = Math.min(chances, 100) + '%';
+            
+            // Atualiza número de rifas realizadas na tela
+            const rifasElement = document.getElementById('rifas-realizadas');
+            if (rifasElement) {
+                rifasElement.textContent = rifasRealizadas.toLocaleString('pt-BR');
+            }
+        }
+        
+        // Atualiza a tela na inicialização
+        atualizarTela();
+        
+        // Mostra primeira notificação após 8 segundos
+        setTimeout(mostrarNotificacao, 8000);
+        
+        function participar() {
+            document.getElementById('modal').classList.remove('hidden');
+            document.getElementById('modal').classList.add('flex');
+        }
+        
+        function fecharModal() {
+            document.getElementById('modal').classList.add('hidden');
+            document.getElementById('modal').classList.remove('flex');
+        }
+        
+        document.getElementById('participationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simula processamento
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            submitBtn.textContent = 'Processando...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('🎉 Parabéns! Sua participação foi confirmada!\n\n📱 Você receberá seu número da sorte por WhatsApp\n🎯 Acompanhe o sorteio no nosso Instagram\n\n✨ Boa sorte!');
+                fecharModal();
+                
+                // Adiciona o participante
+                participantes++;
+                restantes = Math.max(0, restantes - 1);
+                recentParticipants++;
+                
+                // Atualiza tela usando função centralizada
+                atualizarTela();
+                
+                submitBtn.textContent = 'Finalizar 🎯';
+                submitBtn.disabled = false;
+                
+                // Reset form
+                e.target.reset();
+            }, 2000);
+        });
+        
+        // Fecha modal clicando fora
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                fecharModal();
+            }
+        });
+        
+        // Função para finalizar a rifa e mostrar celebração
+        function finalizarRifa() {
+            // Para todas as atualizações
+            clearInterval(window.updateInterval);
+            
+            // Mostra modal de celebração
+            document.getElementById('celebration-modal').classList.remove('hidden');
+            document.getElementById('celebration-modal').classList.add('flex');
+            
+            // Muda as cores da página para indicar que acabou
+            document.body.style.background = 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)';
+            
+            // Atualiza header para mostrar que acabou
+            document.querySelector('.bg-red-600').innerHTML = `
+                <div class="text-white text-center py-3 font-bold text-sm">
+                    🎉 RIFA FINALIZADA! Sorteio realizado com sucesso! 🎉
+                </div>
+            `;
+            
+            // AUTOMATICAMENTE inicia nova rifa após 5 segundos
+            setTimeout(() => {
+                iniciarNovaRifaAutomatica();
+            }, 5000);
+        }
+        
+        // Função para iniciar nova rifa automaticamente (loop infinito)
+        function iniciarNovaRifaAutomatica() {
+            // Esconde modal de celebração
+            document.getElementById('celebration-modal').classList.add('hidden');
+            document.getElementById('celebration-modal').classList.remove('flex');
+            
+            // Restaura cores originais
+            document.body.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            
+            // ZERA TUDO e começa do zero
+            participantes = 0;
+            restantes = 100;
+            recentParticipants = 0;
+            pessoasVisualizando = Math.floor(Math.random() * 20) + 35;
+            timeLeft = Math.floor(Math.random() * 10800) + 18000; // Entre 5-8 horas
+            rifasRealizadas++; // Incrementa o número de rifas realizadas
+            tempoInicioRifa = Date.now(); // Reseta o tempo de início
+            
+            // Atualiza todos os elementos na tela usando a função atualizarTela
+            atualizarTela();
+            
+            // Restaura header original - precisa recriar os IDs
+            document.querySelector('.bg-red-600').innerHTML = `
+                🚨 ALERTA: Apenas <span id="remaining-spots">${restantes}</span> vagas restantes! <span id="recent-participants">${recentParticipants}</span> pessoas participaram nas últimas 2 horas!
+            `;
+            
+            // Salva os novos dados zerados
+            salvarDados();
+            
+            // Reinicia as atualizações automáticas
+            clearInterval(window.updateInterval);
+            window.updateInterval = setInterval(atualizarContadores, 3000);
+            
+            // Força uma primeira atualização imediata para começar o movimento
+            setTimeout(() => {
+                if (participantes < 97) {
+                    participantes = 1;
+                    restantes = 99;
+                    atualizarTela();
+                    // Atualiza header novamente com novos valores
+                    document.getElementById('remaining-spots').textContent = restantes;
+                    document.getElementById('recent-participants').textContent = recentParticipants;
+                }
+            }, 2000);
+            
+            // Mostra notificação de nova rifa
+            setTimeout(() => {
+                const toast = document.getElementById('notification-toast');
+                document.getElementById('notification-name').textContent = '🚀 NOVA RIFA';
+                document.getElementById('notification-location').textContent = 'Disponível agora!';
+                document.getElementById('notification-time').textContent = 'novo';
+                
+                toast.classList.remove('translate-x-full');
+                toast.classList.add('translate-x-0');
+                
+                setTimeout(() => {
+                    toast.classList.remove('translate-x-0');
+                    toast.classList.add('translate-x-full');
+                }, 5000);
+            }, 1000);
+        }
+        
+        // Função para voltar para nova rifa (mantida para compatibilidade com o botão)
+        function voltarParaNovaRifa() {
+            iniciarNovaRifaAutomatica();
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9616ddb36074ba13',t:'MTc1Mjg5Mjk1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+ <style>
+       
+        .botao-flutuante {
+            position: fixed; /* Fixa o botão na tela */
+            bottom: 20px;    /* 20px do fundo da tela */
+            right: 20px;     /* 20px da direita da tela */
+            background-color: #007bff; /* Cor de fundo do botão */
+            color: white;    /* Cor do texto */
+            padding: 15px 20px; /* Espaçamento interno */
+            border-radius: 50px; /* Borda arredondada para parecer um círculo/pílula */
+            text-decoration: none; /* Remove sublinhado do link */
+            font-size: 18px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacardesc */
+            z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+            transition: background-color 0.3s ease; /* Transição suave na cor de fundo */
+        }
+
+        .botao-flutuante:hover {
+            background-color: #0056b3; /* Altera a cor ao passar o mouse */
+        }
+    </style>
+
+
+    <h1>Conteúdo da Página</h1>
+    <p>Role a página para baixo para ver o botão flutuante no canto inferior direito.</p>
+    <a href="index.html" class="botao-flutuante">Voltar</a>
