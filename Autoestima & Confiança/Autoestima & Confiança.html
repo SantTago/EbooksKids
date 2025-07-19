@@ -858,29 +858,36 @@
     </footer>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'95704dcb21ffba13',t:'MTc1MTE0NjQyMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
  <style>
        
         .botao-flutuante {
-            position: fixed; /* Fixa o botão na tela */
-            bottom: 20px;    /* 20px do fundo da tela */
-            right: 20px;     /* 20px da direita da tela */
-            background-color: #007bff; /* Cor de fundo do botão */
-            color: white;    /* Cor do texto */
-            padding: 15px 20px; /* Espaçamento interno */
-            border-radius: 50px; /* Borda arredondada para parecer um círculo/pílula */
-            text-decoration: none; /* Remove sublinhado do link */
-            font-size: 18px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacardesc */
-            z-index: 1000; /* Garante que o botão fique acima de outros elementos */
-            transition: background-color 0.3s ease; /* Transição suave na cor de fundo */
-        }
+    position: fixed; /* Fixa o botão na tela */
+    bottom: 20px;    /* 20px do fundo da tela */
+    right: 20px;     /* 20px da direita da tela */
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: white;    /* Cor do texto */
+    padding: 15px 20px; /* Espaçamento interno */
+    border-radius: 50px; /* Borda arredondada para parecer um círculo/pílula */
+    text-decoration: none; /* Remove sublinhado do link */
+    font-size: 24px; /* Aumentei o tamanho para o ícone ficar visível */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacardesc */
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+    transition: background-color 0.3s ease; /* Transição suave na cor de fundo */
+    display: flex; /* Para centralizar o ícone se precisar de texto junto */
+    align-items: center; /* Para centralizar o ícone verticalmente */
+    justify-content: center; /* Para centralizar o ícone horizontalmente */
+    width: 50px; /* Ajuste para o botão ficar mais redondo com apenas o ícone */
+    height: 50px; /* Ajuste para o botão ficar mais redondo com apenas o ícone */
+}
 
-        .botao-flutuante:hover {
-            background-color: #0056b3; /* Altera a cor ao passar o mouse */
-        }
+.botao-flutuante:hover {
+    background-color: #0056b3; /* Altera a cor ao passar o mouse */
+}
     </style>
 
 
-    <h1>Conteúdo da Página</h1>
-    <p>Role a página para baixo para ver o botão flutuante no canto inferior direito.</p>
-    <a href="/index.html" class="botao-flutuante">Voltar</a>
+    <a href="/index.html" class="botao-flutuante" aria-label="Voltar para a página inicial">
+    <i class="fas fa-home"></i>
+</a>
+
