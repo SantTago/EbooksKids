@@ -22,325 +22,327 @@
 </head>
 <!------------------------------------------------------------------------------------------------------------------>
    <style>
-    
-        #welcome-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(100, 149, 237, 0.9); /* Azul mais vibrante com transparência */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            backdrop-filter: blur(8px); /* Desfoque inicial mais forte */
-            transition: opacity 0.6s ease-in-out, backdrop-filter 0.6s ease-in-out; /* Adiciona transição para o backdrop-filter */
-        }
 
-        #welcome-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-            backdrop-filter: blur(0px); /* Remove o desfoque quando o overlay está oculto */
-        }
 
-        .welcome-content {
-            display: flex;
-            background-color: #ffffff; /* Fundo branco para o conteúdo do modal */
-            border-radius: 25px; /* Bordas mais arredondadas */
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); /* Sombra mais marcante */
-            position: relative;
-            border: 5px solid #ffcc00; /* Borda colorida */
-            /* Padrão para mobile: vamos ajustar para não ser tela cheia */
-            width: 90%; /* Largura padrão para o modal em mobile */
-            max-width: 500px; /* Largura máxima para garantir que não fique muito grande em tablets */
-            height: auto; /* Altura ajustável ao conteúdo */
-            padding-bottom: 20px; /* Adiciona um padding inferior para o botão "Explorar" */
-            flex-direction: column; /* Conteúdo em coluna no mobile */
-            justify-content: center;
-            align-items: center;
-        }
+#welcome-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(100, 149, 237, 0.9); /* Azul mais vibrante com transparência */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ajustado para um valor bem alto para ficar acima de outros elementos flutuantes */
+    backdrop-filter: blur(8px); /* Desfoque inicial mais forte */
+    transition: opacity 0.6s ease-in-out, backdrop-filter 0.6s ease-in-out; /* Adiciona transição para o backdrop-filter */
+}
 
-        /* Área para celular (vídeo e controles, sem texto) */
-        .video-area-mobile {
-            display: flex; /* Visível por padrão no mobile */
-            flex-direction: column;
-            width: 100%; /* Ocupa a largura total do welcome-content */
-            align-items: center; /* Centraliza o vídeo horizontalmente */
-            padding-top: 20px; /* Adiciona um padding superior para o vídeo */
-        }
+#welcome-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+    backdrop-filter: blur(0px); /* Remove o desfoque quando o overlay está oculto */
+}
 
-        .video-area-mobile .video-container {
-            position: relative;
-            width: 80%; /* **VÍDEO AINDA MENOR PARA CELULAR** */
-            max-width: 300px; /* Garante que o vídeo não fique gigante em telas maiores que mobile */
-            padding-top: 130%; /* Proporção do vídeo (ajuste aqui para mais ou menos) */
-            margin: 10px 0; /* Margem vertical, sem margem lateral para manter centralizado */
-            border-radius: 15px; /* Bordas arredondadas para o vídeo */
-            background-color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para o vídeo */
-        }
+.welcome-content {
+    display: flex;
+    background-color: #ffffff; /* Fundo branco para o conteúdo do modal */
+    border-radius: 25px; /* Bordas mais arredondadas */
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); /* Sombra mais marcante */
+    position: relative;
+    border: 5px solid #ffcc00; /* Borda colorida */
+    /* Padrão para mobile: vamos ajustar para não ser tela cheia */
+    width: 90%; /* Largura padrão para o modal em mobile */
+    max-width: 500px; /* Largura máxima para garantir que não fique muito grande em tablets */
+    height: auto; /* Altura ajustável ao conteúdo */
+    padding-bottom: 20px; /* Adiciona um padding inferior para o botão "Explorar" */
+    flex-direction: column; /* Conteúdo em coluna no mobile */
+    justify-content: center;
+    align-items: center;
+}
 
-        /* Botão Explorar para Mobile */
-        #close-overlay-mobile {
-            background-color: #ff0040; /* Verde limão vibrante */
-            color: #ffffff; /* Texto escuro para contraste */
-            padding: 12px 25px; /* Tamanho do botão */
-            border: none;
-            border-radius: 10px; /* Bordas arredondadas */
-            font-size: 1.1em; /* Tamanho da fonte */
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            outline: none;
-            margin-top: 25px; /* Espaçamento acima do botão */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            /* Removendo position absolute para que o botão fique abaixo do vídeo no fluxo normal */
-            position: static;
-            bottom: auto;
-        }
+/* Área para celular (vídeo e controles, sem texto) */
+.video-area-mobile {
+    display: flex; /* Visível por padrão no mobile */
+    flex-direction: column;
+    width: 100%; /* Ocupa a largura total do welcome-content */
+    align-items: center; /* Centraliza o vídeo horizontalmente */
+    padding-top: 20px; /* Adiciona um padding superior para o vídeo */
+}
 
-        #close-overlay-mobile:hover {
-            background-color: #aaff00; /* Tom de verde mais escuro no hover */
-            transform: translateY(-3px); /* Efeito de "pulo" */
-        }
+.video-area-mobile .video-container {
+    position: relative;
+    width: 80%; /* **VÍDEO AINDA MENOR PARA CELULAR** */
+    max-width: 300px; /* Garante que o vídeo não fique gigante em telas maiores que mobile */
+    padding-top: 130%; /* Proporção do vídeo (ajuste aqui para mais ou menos) */
+    margin: 10px 0; /* Margem vertical, sem margem lateral para manter centralizado */
+    border-radius: 15px; /* Bordas arredondadas para o vídeo */
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para o vídeo */
+}
 
-        /* Área para desktop (vídeo e controles E texto) */
-        .desktop-area {
-            display: none; /* Oculto por padrão no mobile */
-            flex-direction: row; /* Layout lado a lado no desktop */
-            width: 100%;
-            height: 100%;
-        }
+/* Botão Explorar para Mobile */
+#close-overlay-mobile {
+    background-color: #ff0040; /* Verde limão vibrante */
+    color: #ffffff; /* Texto escuro para contraste */
+    padding: 12px 25px; /* Tamanho do botão */
+    border: none;
+    border-radius: 10px; /* Bordas arredondadas */
+    font-size: 1.1em; /* Tamanho da fonte */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    outline: none;
+    margin-top: 25px; /* Espaçamento acima do botão */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* Removendo position absolute para que o botão fique abaixo do vídeo no fluxo normal */
+    position: static;
+    bottom: auto;
+}
 
-        /* Estilo base para os containers de vídeo (ambos mobile e desktop) */
-        .desktop-area .video-container {
-            position: relative;
-            background-color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
+#close-overlay-mobile:hover {
+    background-color: #aaff00; /* Tom de verde mais escuro no hover */
+    transform: translateY(-3px); /* Efeito de "pulo" */
+}
 
-        #welcome-video-mobile, #welcome-video-desktop {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+/* Área para desktop (vídeo e controles E texto) */
+.desktop-area {
+    display: none; /* Oculto por padrão no mobile */
+    flex-direction: row; /* Layout lado a lado no desktop */
+    width: 100%;
+    height: 100%;
+}
 
-        /* Estilo para o botão de Play/Pause centralizado */
-        .play-pause-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #ff0040; /* Rosa vibrante com mais opacidade */
-            border: none;
-            border-radius: 50%; /* Botão circular */
-            width: 90px; /* Tamanho do botão */
-            height: 90px; /* Tamanho do botão */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
-            z-index: 20;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra mais forte */
-            opacity: 1; /* Inicia visível */
-        }
+/* Estilo base para os containers de vídeo (ambos mobile e desktop) */
+.desktop-area .video-container {
+    position: relative;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
 
-        .play-pause-overlay:hover {
-            background-color: #ff45a5;
-            transform: translate(-50%, -50%) scale(1.08);
-        }
+#welcome-video-mobile, #welcome-video-desktop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-        .play-pause-overlay.hidden {
-            opacity: 0;
-            pointer-events: none; /* Não captura cliques quando oculto */
-        }
+/* Estilo para o botão de Play/Pause centralizado */
+.play-pause-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ff0040; /* Rosa vibrante com mais opacidade */
+    border: none;
+    border-radius: 50%; /* Botão circular */
+    width: 90px; /* Tamanho do botão */
+    height: 90px; /* Tamanho do botão */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
+    z-index: 20;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra mais forte */
+    opacity: 1; /* Inicia visível */
+}
 
-        /* Estilo para o ícone de Play (triângulo) dentro do botão de overlay */
-        .play-pause-overlay.play-icon::before {
-            content: '';
-            width: 0;
-            height: 0;
-            border-top: 20px solid transparent; /* Tamanho do triângulo */
-            border-bottom: 20px solid transparent;
-            border-left: 35px solid white; /* Cor do triângulo */
-            margin-left: 5px; /* Ajusta a posição do triângulo para centralizar visualmente */
-        }
+.play-pause-overlay:hover {
+    background-color: #ff45a5;
+    transform: translate(-50%, -50%) scale(1.08);
+}
 
-        /* Estilo para o ícone de Pause (duas barras) dentro do botão de overlay */
-        .play-pause-overlay.pause-icon::before {
-            content: '';
-            width: 15px; /* Largura das barras */
-            height: 30px; /* Altura das barras */
-            background-color: white; /* Cor branca para as barras de pause */
-            box-shadow: 15px 0 0 white; /* Cria a segunda barra */
-            margin-left: -7.5px; /* Metade da largura da barra para centralizar */
-        }
+.play-pause-overlay.hidden {
+    opacity: 0;
+    pointer-events: none; /* Não captura cliques quando oculto */
+}
 
-        .welcome-text-desktop {
-            padding: 30px;
-            text-align: left; /* Alinha o texto à esquerda no desktop */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start; /* Alinha ao início */
-            flex-grow: 1;
-        }
+/* Estilo para o ícone de Play (triângulo) dentro do botão de overlay */
+.play-pause-overlay.play-icon::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent; /* Tamanho do triângulo */
+    border-bottom: 20px solid transparent;
+    border-left: 35px solid white; /* Cor do triângulo */
+    margin-left: 5px; /* Ajusta a posição do triângulo para centralizar visualmente */
+}
 
-        .welcome-text-desktop h1 {
-            color: #4682b4;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
+/* Estilo para o ícone de Pause (duas barras) dentro do botão de overlay */
+.play-pause-overlay.pause-icon::before {
+    content: '';
+    width: 15px; /* Largura das barras */
+    height: 30px; /* Altura das barras */
+    background-color: white; /* Cor branca para as barras de pause */
+    box-shadow: 15px 0 0 white; /* Cria a segunda barra */
+    margin-left: -7.5px; /* Metade da largura da barra para centralizar */
+}
 
-        .welcome-text-desktop p {
-            color: #6a5acd;
-            font-size: 1.3em;
-            line-height: 1.7;
-            margin-bottom: 25px;
-        }
+.welcome-text-desktop {
+    padding: 30px;
+    text-align: left; /* Alinha o texto à esquerda no desktop */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Alinha ao início */
+    flex-grow: 1;
+}
 
-        /* Botão fechar para Desktop */
-        #close-overlay-desktop {
-            background-color: #ffcc00;
-            color: #333;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.3em;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            outline: none;
-            margin-top: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
+.welcome-text-desktop h1 {
+    color: #4682b4;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-        #close-overlay-desktop:hover {
-            background-color: #e6b800;
-            transform: translateY(-3px);
-        }
+.welcome-text-desktop p {
+    color: #6a5acd;
+    font-size: 1.3em;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
 
-        /* --- MEDIA QUERIES --- */
+/* Botão fechar para Desktop */
+#close-overlay-desktop {
+    background-color: #ffcc00;
+    color: #333;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    outline: none;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
 
-        /* Estilos para Mobile (até 767px de largura) */
-        @media (max-width: 767px) {
-            #welcome-overlay {
-                /* No mobile, o desfoque inicial deve cobrir toda a tela */
-                background-color: rgba(100, 159, 237, 0.708);
-                backdrop-filter: blur(8px);
-            }
+#close-overlay-desktop:hover {
+    background-color: #e6b800;
+    transform: translateY(-3px);
+}
 
-            .welcome-content {
-                width: 90%; /* O modal ocupa 90% da largura da tela */
-                max-width: 400px; /* Limite máximo para o modal em mobile */
-                height: auto; /* Altura se ajusta ao conteúdo */
-                border-radius: 25px; /* Bordas arredondadas para o modal */
-                border: 5px solid #ffcc0000; /* Borda colorida mantida */
-                background-color: #ffffff00; /* Fundo branco do modal */
-                box-shadow: 0 15px 40px rgba(0, 0, 0, 0);
-                padding-bottom: 20px; /* Espaço para o botão inferior */
-            }
 
-            .video-area-mobile {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                justify-content: center;
-                align-items: center;
-            }
 
-            .video-area-mobile .video-container {
-                width: 80%; /* **Vídeo menor em mobile** */
-                padding-top: 130%; /* Proporção 16:9 ajustada para um vídeo mais "quadrado" no mobile */
-                margin: 20px 0 0 0; /* Margem superior para separar do topo do modal */
-                border-radius: 15px;
-            }
 
-            #close-overlay-mobile {
-                position: static; /* Volta ao fluxo normal do documento */
-                margin-top: 30px; /* Mais espaço entre o vídeo e o botão */
-            }
+/* Estilos para Mobile (até 767px de largura) */
+@media (max-width: 767px) {
+    #welcome-overlay {
+        /* No mobile, o desfoque inicial deve cobrir toda a tela */
+        background-color: rgba(100, 148, 237, 0.63);
+        backdrop-filter: blur(8px);
+    }
 
-            .desktop-area {
-                display: none; /* Garante que a área de desktop esteja oculta */
-            }
-        }
+    .welcome-content {
+        width: 90%; /* O modal ocupa 90% da largura da tela */
+        max-width: 400px; /* Limite máximo para o modal em mobile */
+        height: auto; /* Altura se ajusta ao conteúdo */
+        border-radius: 25px; /* Bordas arredondadas para o modal */
+        border: 5px solid #ffcc0000; /* Borda colorida mantida */
+        background-color: #ffffff00; /* Fundo branco do modal */
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0);
+        padding-bottom: 20px; /* Espaço para o botão inferior */
+    }
 
-        /* Estilos para Desktop (a partir de 768px de largura) */
-        @media (min-width: 768px) {
-            .welcome-content {
-                flex-direction: row; /* Vídeo e texto lado a lado */
-                max-width: 950px; /* Largura máxima para o contêiner */
-                min-height: 550px; /* Altura mínima para o contêiner */
-                border-radius: 25px; /* Bordas arredondadas novamente */
-                width: auto; /* Deixa a largura ser definida pelo max-width */
-                height: auto; /* Deixa a altura ser definida pelo min-height */
-            }
+    .video-area-mobile {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
 
-            .video-area-mobile {
-                display: none; /* OCULTA A ÁREA DE VÍDEO DO CELULAR */
-            }
+    .video-area-mobile .video-container {
+        width: 80%; /* **Vídeo menor em mobile** */
+        padding-top: 130%; /* Proporção 16:9 ajustada para um vídeo mais "quadrado" no mobile */
+        margin: 20px 0 0 0; /* Margem superior para separar do topo do modal */
+        border-radius: 15px;
+    }
 
-            .desktop-area {
-                display: flex; /* MOSTRA A ÁREA DE VÍDEO E TEXTO DO DESKTOP */
-            }
+    #close-overlay-mobile {
+        position: static; /* Volta ao fluxo normal do documento */
+        margin-top: 30px; /* Mais espaço entre o vídeo e o botão */
+    }
 
-            .desktop-area .video-container {
-                width: 380px; /* Largura fixa para o vídeo em desktop */
-                flex-shrink: 0;
-                padding-top: 0; /* Remove o padding-top de proporção */
-                height: 100%; /* Altura 100% para o vídeo */
-                margin: 0; /* Remove a margem para desktop */
-                border-radius: 0; /* Remove o border-radius para desktop */
-            }
+    .desktop-area {
+        display: none; /* Garante que a área de desktop esteja oculta */
+    }
+}
 
-            #welcome-video-desktop {
-                position: static; /* Volta a ser estático para ocupar o espaço do container */
-                height: 100%;
-                width: 100%;
-            }
+/* Estilos para Desktop (a partir de 768px de largura) */
+@media (min-width: 768px) {
+    .welcome-content {
+        flex-direction: row; /* Vídeo e texto lado a lado */
+        max-width: 950px; /* Largura máxima para o contêiner */
+        min-height: 550px; /* Altura mínima para o contêiner */
+        border-radius: 25px; /* Bordas arredondadas novamente */
+        width: auto; /* Deixa a largura ser definida pelo max-width */
+        height: auto; /* Deixa a altura ser definida pelo min-height */
+    }
 
-            .welcome-text-desktop {
-                display: flex;
-            }
+    .video-area-mobile {
+        display: none; /* OCULTA A ÁREA DE VÍDEO DO CELULAR */
+    }
 
-            /* Oculta o botão mobile no desktop */
-            #close-overlay-mobile {
-                display: none;
-            }
-        }
+    .desktop-area {
+        display: flex; /* MOSTRA A ÁREA DE VÍDEO E TEXTO DO DESKTOP */
+    }
 
-        @media (min-width: 1024px) {
-            .welcome-content {
-                max-width: 1100px;
-                min-height: 650px;
-            }
-            .desktop-area .video-container {
-                width: 450px;
-            }
-            .welcome-text-desktop h1 {
-                font-size: 3em;
-            }
-            .welcome-text-desktop p {
-                font-size: 1.4em;
-            }
-        }
+    .desktop-area .video-container {
+        width: 380px; /* Largura fixa para o vídeo em desktop */
+        flex-shrink: 0;
+        padding-top: 0; /* Remove o padding-top de proporção */
+        height: 100%; /* Altura 100% para o vídeo */
+        margin: 0; /* Remove a margem para desktop */
+        border-radius: 0; /* Remove o border-radius para desktop */
+    }
+
+    #welcome-video-desktop {
+        position: static; /* Volta a ser estático para ocupar o espaço do container */
+        height: 100%;
+        width: 100%;
+    }
+
+    .welcome-text-desktop {
+        display: flex;
+    }
+
+    /* Oculta o botão mobile no desktop */
+    #close-overlay-mobile {
+        display: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .welcome-content {
+        max-width: 1100px;
+        min-height: 650px;
+    }
+    .desktop-area .video-container {
+        width: 450px;
+    }
+    .welcome-text-desktop h1 {
+        font-size: 3em;
+    }
+    .welcome-text-desktop p {
+        font-size: 1.4em;
+    }
+}
     </style>
 </head>
-  <div id="welcome-overlay">
+   <div id="welcome-overlay">
         <div class="welcome-content">
             <div class="video-area-mobile">
                 <div class="video-container">
@@ -364,8 +366,6 @@
             </div>
         </div>
     </div>
-
- 
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -393,6 +393,29 @@
                 }
             ];
 
+            // Chave para armazenar a última vez que o vídeo foi mostrado
+            const LAST_SHOWN_KEY = 'lastVideoShownTime';
+            // Intervalo em milissegundos (5 minutos = 5 * 60 * 1000)
+            const MIN_INTERVAL = 5 * 60 * 1000; 
+
+            // Função para verificar se o vídeo deve ser mostrado
+            const shouldShowVideo = () => {
+                const lastShownTime = localStorage.getItem(LAST_SHOWN_KEY);
+                if (!lastShownTime) {
+                    // Nunca foi mostrado, então deve mostrar
+                    return true;
+                }
+
+                const currentTime = new Date().getTime();
+                // Se o tempo atual for maior que o último tempo mostrado + o intervalo mínimo
+                return (currentTime - parseInt(lastShownTime)) > MIN_INTERVAL;
+            };
+
+            // Função para registrar que o vídeo foi mostrado
+            const recordVideoShown = () => {
+                localStorage.setItem(LAST_SHOWN_KEY, new Date().getTime());
+            };
+
             // Função para configurar os controles de cada vídeo
             function setupVideoControls(videoObj) {
                 const { video, playPauseOverlay } = videoObj;
@@ -407,7 +430,7 @@
                 playPauseOverlay.classList.add('play-icon');
                 playPauseOverlay.classList.remove('hidden');
 
-                // Listener para o botão de overlay de Play/Pause e para o próprio vídeo
+                // Listener para o botão de overlay de Play/Pause
                 const handleVideoInteraction = () => {
                     if (video.paused) {
                         video.muted = false; // Desmuta o vídeo
@@ -425,9 +448,6 @@
 
                 playPauseOverlay.addEventListener('click', handleVideoInteraction);
 
-                // IMPORTANTE: Removido o event listener 'click' do próprio vídeo para evitar fullscreen automático em mobile
-                // video.addEventListener('click', handleVideoInteraction); // Clicar no vídeo também alterna
-
                 // Garante que o overlay reapareça se o vídeo terminar
                 video.addEventListener('ended', () => {
                     video.currentTime = 0; // Volta para o início
@@ -439,8 +459,15 @@
                 });
             }
 
-            // Configura os controles para ambos os vídeos (mobile e desktop)
-            videoElements.forEach(setupVideoControls);
+            // Lógica principal: decide se mostra o vídeo ou não
+            if (shouldShowVideo()) {
+                // Se deve mostrar, configura os controles e registra que foi mostrado
+                videoElements.forEach(setupVideoControls);
+                recordVideoShown(); // Marca o tempo que o vídeo foi exibido
+            } else {
+                // Se não deve mostrar, oculta o overlay imediatamente
+                welcomeOverlay.style.display = 'none';
+            }
 
             // Função para fechar o overlay e remover o desfoque
             const closeOverlayAndRemoveBlur = () => {
