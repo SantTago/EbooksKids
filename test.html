@@ -237,9 +237,9 @@
                 max-width: 400px; /* Limite máximo para o modal em mobile */
                 height: auto; /* Altura se ajusta ao conteúdo */
                 border-radius: 25px; /* Bordas arredondadas para o modal */
-                border: 5px solid #00ccff; /* Borda colorida mantida */
-                background-color: #00a6ff; /* Fundo branco do modal */
-                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+                border: 5px solid #00ccff00; /* Borda colorida mantida */
+                background-color: #00a6ff00; /* Fundo branco do modal */
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0);
                 padding-bottom: 20px; /* Espaço para o botão inferior */
             }
 
@@ -334,7 +334,7 @@
         <div class="welcome-content">
             <div class="video-area-mobile">
                 <div class="video-container">
-                    <video id="welcome-video-mobile" src="Videos/video-homer.mp4"></video>
+                    <video id="welcome-video-mobile" src="Videos/video-homer.mp4" playsinline></video>
                     <button id="play-pause-overlay-mobile" class="play-pause-overlay play-icon"></button>
                 </div>
                 <button id="close-overlay-mobile">Explorar o Site! ✨</button>
@@ -342,7 +342,7 @@
 
             <div class="desktop-area">
                 <div class="video-container">
-                    <video id="welcome-video-desktop" src="Videos/video-homer.mp4"></video>
+                    <video id="welcome-video-desktop" src="Videos/video-homer.mp4" playsinline></video>
                     <button id="play-pause-overlay-desktop" class="play-pause-overlay play-icon"></button>
                 </div>
                 <div class="welcome-text-desktop">
@@ -419,7 +419,9 @@
                 };
 
                 playPauseOverlay.addEventListener('click', handleVideoInteraction);
-                video.addEventListener('click', handleVideoInteraction); // Clicar no vídeo também alterna
+
+                // IMPORTANTE: Removido o event listener 'click' do próprio vídeo para evitar fullscreen automático em mobile
+                // video.addEventListener('click', handleVideoInteraction); // Clicar no vídeo também alterna
 
                 // Garante que o overlay reapareça se o vídeo terminar
                 video.addEventListener('ended', () => {
