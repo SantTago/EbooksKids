@@ -22,8 +22,8 @@
 </head>
 <!------------------------------------------------------------------------------------------------------------------>
    <style>
-        /* Estilos CSS para o Nosso Cantinho Mágico */
- #welcome-overlay {
+    
+        #welcome-overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -34,13 +34,14 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            backdrop-filter: blur(8px); /* Desfoque um pouco mais forte */
-            transition: opacity 0.6s ease-in-out;
+            backdrop-filter: blur(8px); /* Desfoque inicial mais forte */
+            transition: opacity 0.6s ease-in-out, backdrop-filter 0.6s ease-in-out; /* Adiciona transição para o backdrop-filter */
         }
 
         #welcome-overlay.hidden {
             opacity: 0;
             pointer-events: none;
+            backdrop-filter: blur(0px); /* Remove o desfoque quando o overlay está oculto */
         }
 
         .welcome-content {
@@ -237,8 +238,9 @@
         /* Estilos para Mobile (até 767px de largura) */
         @media (max-width: 767px) {
             #welcome-overlay {
-                /* Mantém o fundo desfocado, mas centraliza o modal de forma mais contida */
-                background-color: rgba(100, 148, 237, 0);
+                /* No mobile, o desfoque inicial deve cobrir toda a tela */
+                background-color: rgba(100, 148, 237, 0.338);
+                backdrop-filter: blur(8px);
             }
 
             .welcome-content {
@@ -246,8 +248,8 @@
                 max-width: 400px; /* Limite máximo para o modal em mobile */
                 height: auto; /* Altura se ajusta ao conteúdo */
                 border-radius: 25px; /* Bordas arredondadas para o modal */
-                border: 5px solid #00ccff00; /* Borda colorida mantida */
-                background-color: #00a6ff00; /* Fundo branco do modal */
+                border: 5px solid #ffcc0000; /* Borda colorida mantida */
+                background-color: #ffffff00; /* Fundo branco do modal */
                 box-shadow: 0 15px 40px rgba(0, 0, 0, 0);
                 padding-bottom: 20px; /* Espaço para o botão inferior */
             }
@@ -338,7 +340,7 @@
         }
     </style>
 </head>
-   <div id="welcome-overlay">
+  <div id="welcome-overlay">
         <div class="welcome-content">
             <div class="video-area-mobile">
                 <div class="video-container">
@@ -363,7 +365,7 @@
         </div>
     </div>
 
-   
+ 
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -440,23 +442,23 @@
             // Configura os controles para ambos os vídeos (mobile e desktop)
             videoElements.forEach(setupVideoControls);
 
-            // Lógica para fechar o overlay (botão desktop)
-            closeOverlayDesktopButton.addEventListener('click', () => {
-                if (welcomeVideoDesktop) welcomeVideoDesktop.pause(); // Pausa o vídeo desktop
-                welcomeOverlay.classList.add('hidden');
+            // Função para fechar o overlay e remover o desfoque
+            const closeOverlayAndRemoveBlur = () => {
+                // Pausa os vídeos quando o overlay é fechado
+                if (welcomeVideoDesktop) welcomeVideoDesktop.pause();
+                if (welcomeVideoMobile) welcomeVideoMobile.pause();
+
+                welcomeOverlay.classList.add('hidden'); // Adiciona a classe para ocultar e remover o desfoque
                 setTimeout(() => {
-                    welcomeOverlay.style.display = 'none';
-                }, 600);
-            });
+                    welcomeOverlay.style.display = 'none'; // Esconde completamente após a transição
+                }, 600); // Deve ser igual ou maior que a duração da transição no CSS
+            };
+
+            // Lógica para fechar o overlay (botão desktop)
+            closeOverlayDesktopButton.addEventListener('click', closeOverlayAndRemoveBlur);
 
             // Lógica para fechar o overlay (botão mobile)
-            closeOverlayMobileButton.addEventListener('click', () => {
-                if (welcomeVideoMobile) welcomeVideoMobile.pause(); // Pausa o vídeo mobile
-                welcomeOverlay.classList.add('hidden');
-                setTimeout(() => {
-                    welcomeOverlay.style.display = 'none';
-                }, 600);
-            });
+            closeOverlayMobileButton.addEventListener('click', closeOverlayAndRemoveBlur);
         });
     </script>
 <!------------------------------------------------------------------------------------------------------------------>
