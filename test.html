@@ -7,14 +7,20 @@
     <style>
         /* Estilos CSS para o Nosso Cantinho Mágico */
 
-       
+        body {
+            margin: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Fonte mais infantil */
+            overflow-x: hidden;
+            background-color: #f0f8ff; /* Fundo azul claro para um toque suave */
+        }
+
         #welcome-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(100, 148, 237, 0); /* Azul mais vibrante com transparência */
+            background-color: rgba(100, 149, 237, 0.9); /* Azul mais vibrante com transparência */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -30,47 +36,50 @@
 
         .welcome-content {
             display: flex;
-            background-color: #ffffff;
+            background-color: #ffffff; /* Fundo branco para o conteúdo do modal */
             border-radius: 25px; /* Bordas mais arredondadas */
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); /* Sombra mais marcante */
             position: relative;
             border: 5px solid #ffcc00; /* Borda colorida */
-            /* Padrão para mobile: ocupa a largura e altura totais da tela */
-            width: 100%;
-            height: 100%;
-            max-width: none;
-            max-height: none;
-            border-radius: 0; /* Bordas retas em tela cheia no celular */
+            /* Padrão para mobile: vamos ajustar para não ser tela cheia */
+            width: 90%; /* Largura padrão para o modal em mobile */
+            max-width: 500px; /* Largura máxima para garantir que não fique muito grande em tablets */
+            height: auto; /* Altura ajustável ao conteúdo */
+            padding-bottom: 20px; /* Adiciona um padding inferior para o botão "Explorar" */
+            flex-direction: column; /* Conteúdo em coluna no mobile */
+            justify-content: center;
+            align-items: center;
         }
 
         /* Área para celular (vídeo e controles, sem texto) */
         .video-area-mobile {
             display: flex; /* Visível por padrão no mobile */
             flex-direction: column;
-            width: 100%;
-            height: 100%;
-            justify-content: center; /* Centraliza o vídeo verticalmente */
+            width: 100%; /* Ocupa a largura total do welcome-content */
             align-items: center; /* Centraliza o vídeo horizontalmente */
+            padding-top: 20px; /* Adiciona um padding superior para o vídeo */
         }
 
         .video-area-mobile .video-container {
-            position: relative; /* Para posicionar o botão de unmute */
-            width: 90%; /* Largura do vídeo como estava antes */
-            padding-top: 150%; /* Altura do vídeo menor (ajuste aqui para mais ou menos) */
-            margin: 20px; /* Borda de 20px em volta */
+            position: relative;
+            width: 80%; /* **VÍDEO AINDA MENOR PARA CELULAR** */
+            max-width: 300px; /* Garante que o vídeo não fique gigante em telas maiores que mobile */
+            padding-top: 130%; /* Proporção do vídeo (ajuste aqui para mais ou menos) */
+            margin: 10px 0; /* Margem vertical, sem margem lateral para manter centralizado */
             border-radius: 15px; /* Bordas arredondadas para o vídeo */
             background-color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para o vídeo */
         }
 
         /* Botão Explorar para Mobile */
         #close-overlay-mobile {
-            background-color: #7FFF00; /* Verde limão vibrante */
-            color: #333; /* Texto escuro para contraste */
+            background-color: #ff0040; /* Verde limão vibrante */
+            color: #ffffff; /* Texto escuro para contraste */
             padding: 12px 25px; /* Tamanho do botão */
             border: none;
             border-radius: 10px; /* Bordas arredondadas */
@@ -79,15 +88,15 @@
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
             outline: none;
-            margin-top: 20px; /* Espaçamento acima do botão */
+            margin-top: 25px; /* Espaçamento acima do botão */
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            position: absolute; /* Posição absoluta para ficar abaixo do vídeo */
-            bottom: 40px; /* Ajusta a distância da parte inferior */
-            z-index: 10;
+            /* Removendo position absolute para que o botão fique abaixo do vídeo no fluxo normal */
+            position: static;
+            bottom: auto;
         }
 
         #close-overlay-mobile:hover {
-            background-color: #6B8E23; /* Tom de verde mais escuro no hover */
+            background-color: #aaff00; /* Tom de verde mais escuro no hover */
             transform: translateY(-3px); /* Efeito de "pulo" */
         }
 
@@ -124,7 +133,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgba(255, 105, 180, 0.9); /* Rosa vibrante com mais opacidade */
+            background-color: #ff0040; /* Rosa vibrante com mais opacidade */
             border: none;
             border-radius: 50%; /* Botão circular */
             width: 90px; /* Tamanho do botão */
@@ -134,7 +143,7 @@
             align-items: center;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
-            z-index: 20; /* Fica acima dos controles */
+            z-index: 20;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra mais forte */
             opacity: 1; /* Inicia visível */
         }
@@ -165,12 +174,10 @@
             content: '';
             width: 15px; /* Largura das barras */
             height: 30px; /* Altura das barras */
-            background-color: rgba(255, 255, 255, 0);
+            background-color: white; /* Cor branca para as barras de pause */
             box-shadow: 15px 0 0 white; /* Cria a segunda barra */
-            /* Ajuste para centralizar visualmente */
             margin-left: -7.5px; /* Metade da largura da barra para centralizar */
         }
-
 
         .welcome-text-desktop {
             padding: 30px;
@@ -197,7 +204,7 @@
         }
 
         /* Botão fechar para Desktop */
-        #close-overlay-desktop { /* Renomeado para evitar conflito com mobile */
+        #close-overlay-desktop {
             background-color: #ffcc00;
             color: #333;
             padding: 15px 30px;
@@ -216,25 +223,52 @@
             transform: translateY(-3px);
         }
 
-        /* MEDIA QUERIES PARA DESKTOP */
-        @media (max-width: 768px) {
-         .welcome-content {
-            display: flex;
-            background-color: #ffffff00;
-            border-radius: 25px; /* Bordas mais arredondadas */
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); /* Sombra mais marcante */
-            position: relative;
-            border: 5px solid #ffcc00; /* Borda colorida */
-            /* Padrão para mobile: ocupa a largura e altura totais da tela */
-            width: 100%;
-            height: 100%;
-            max-width: none;
-            max-height: none;
-            border-radius: 0; /* Bordas retas em tela cheia no celular */
-        }
-         }
+        /* --- MEDIA QUERIES --- */
 
+        /* Estilos para Mobile (até 767px de largura) */
+        @media (max-width: 767px) {
+            #welcome-overlay {
+                /* Mantém o fundo desfocado, mas centraliza o modal de forma mais contida */
+                background-color: rgba(100, 148, 237, 0);
+            }
+
+            .welcome-content {
+                width: 90%; /* O modal ocupa 90% da largura da tela */
+                max-width: 400px; /* Limite máximo para o modal em mobile */
+                height: auto; /* Altura se ajusta ao conteúdo */
+                border-radius: 25px; /* Bordas arredondadas para o modal */
+                border: 5px solid #00ccff; /* Borda colorida mantida */
+                background-color: #00a6ff; /* Fundo branco do modal */
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+                padding-bottom: 20px; /* Espaço para o botão inferior */
+            }
+
+            .video-area-mobile {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .video-area-mobile .video-container {
+                width: 80%; /* **Vídeo menor em mobile** */
+                padding-top: 130%; /* Proporção 16:9 ajustada para um vídeo mais "quadrado" no mobile */
+                margin: 20px 0 0 0; /* Margem superior para separar do topo do modal */
+                border-radius: 15px;
+            }
+
+            #close-overlay-mobile {
+                position: static; /* Volta ao fluxo normal do documento */
+                margin-top: 30px; /* Mais espaço entre o vídeo e o botão */
+            }
+
+            .desktop-area {
+                display: none; /* Garante que a área de desktop esteja oculta */
+            }
+        }
+
+        /* Estilos para Desktop (a partir de 768px de largura) */
         @media (min-width: 768px) {
             .welcome-content {
                 flex-direction: row; /* Vídeo e texto lado a lado */
@@ -276,8 +310,6 @@
             #close-overlay-mobile {
                 display: none;
             }
-
-            
         }
 
         @media (min-width: 1024px) {
