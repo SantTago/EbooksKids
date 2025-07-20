@@ -21,17 +21,17 @@
     </style>
 </head>
 <!------------------------------------------------------------------------------------------------------------------>
-  <style>
+    <style>
         /* Estilos CSS para o Nosso Cantinho Mágico */
 
-
+       
         #welcome-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(100, 148, 237, 0.524); /* Azul mais vibrante com transparência */
+            background-color: rgba(100, 148, 237, 0); /* Azul mais vibrante com transparência */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -47,7 +47,7 @@
 
         .welcome-content {
             display: flex;
-            background-color: #ffffff66;
+            background-color: #ffffff;
             border-radius: 25px; /* Bordas mais arredondadas */
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); /* Sombra mais marcante */
@@ -72,10 +72,16 @@
         }
 
         .video-area-mobile .video-container {
-            width: 90%; /* Largura do vídeo menor, deixando 5% de cada lado */
-            padding-top: 177.77%; /* Proporção de vídeo 9:16 (vertical) */
-            margin: 20px; /* Adiciona a borda de 20px em volta */
+            position: relative; /* Para posicionar o botão de unmute */
+            width: 90%; /* Largura do vídeo como estava antes */
+            padding-top: 150%; /* Altura do vídeo menor (ajuste aqui para mais ou menos) */
+            margin: 20px; /* Borda de 20px em volta */
             border-radius: 15px; /* Bordas arredondadas para o vídeo */
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
 
         /* Botão Explorar para Mobile */
@@ -102,8 +108,7 @@
             transform: translateY(-3px); /* Efeito de "pulo" */
         }
 
-
-        /* Área para desktop (vídeo, controles E texto) */
+        /* Área para desktop (vídeo e controles E texto) */
         .desktop-area {
             display: none; /* Oculto por padrão no mobile */
             flex-direction: row; /* Layout lado a lado no desktop */
@@ -112,7 +117,7 @@
         }
 
         /* Estilo base para os containers de vídeo (ambos mobile e desktop) */
-        .video-container {
+        .desktop-area .video-container {
             position: relative;
             background-color: #333;
             display: flex;
@@ -130,217 +135,57 @@
             object-fit: cover;
         }
 
-        /* Controles de vídeo para MOBILE */
-        .video-controls-mobile {
+        /* Estilo para o botão de Play/Pause centralizado */
+        .play-pause-overlay {
             position: absolute;
-            bottom: 5px;
-            left: 5px;
-            right: 5px;
-            display: flex;
-            flex-direction: row; /* Botões lado a lado */
-            justify-content: space-between;
-            align-items: center;
-            gap: 5px;
-            padding: 8px; /* Padding menor */
-            background-color: rgba(0, 0, 0, 0.36);
-            border-radius: 15px;
-            z-index: 10;
-        }
-
-        .video-controls-mobile #toggle-play-pause-mobile,
-        .video-controls-mobile #mute-button-mobile {
-            width: 45px; /* Botão menor no celular */
-            height: 45px; /* Botão menor no celular */
-            font-size: 20px; /* Ícone menor */
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-            background-color: #ff69b4; /* Rosa vibrante */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 105, 180, 0.9); /* Rosa vibrante com mais opacidade */
             border: none;
-            border-radius: 50%;
-            cursor: pointer;
+            border-radius: 50%; /* Botão circular */
+            width: 90px; /* Tamanho do botão */
+            height: 90px; /* Tamanho do botão */
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: transform 0.3s ease, background-color 0.3s;
-            outline: none;
-            flex-shrink: 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
+            z-index: 20; /* Fica acima dos controles */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra mais forte */
+            opacity: 1; /* Inicia visível */
         }
 
-        .video-controls-mobile #toggle-play-pause-mobile:hover,
-        .video-controls-mobile #mute-button-mobile:hover {
+        .play-pause-overlay:hover {
             background-color: #ff45a5;
-            transform: scale(1.1);
+            transform: translate(-50%, -50%) scale(1.08);
         }
 
-        /* Ícone de Play (triângulo) para mobile */
-        .video-controls-mobile #toggle-play-pause-mobile.play-button::before {
+        .play-pause-overlay.hidden {
+            opacity: 0;
+            pointer-events: none; /* Não captura cliques quando oculto */
+        }
+
+        /* Estilo para o ícone de Play (triângulo) dentro do botão de overlay */
+        .play-pause-overlay.play-icon::before {
             content: '';
             width: 0;
             height: 0;
-            border-top: 10px solid transparent; /* Triângulo menor */
-            border-bottom: 10px solid transparent;
-            border-left: 16px solid white;
-            margin-left: 4px;
+            border-top: 20px solid transparent; /* Tamanho do triângulo */
+            border-bottom: 20px solid transparent;
+            border-left: 35px solid white; /* Cor do triângulo */
+            margin-left: 5px; /* Ajusta a posição do triângulo para centralizar visualmente */
         }
 
-        /* Ícone de Pause (duas barras) para mobile */
-        .video-controls-mobile #toggle-play-pause-mobile.pause-button::before {
+        /* Estilo para o ícone de Pause (duas barras) dentro do botão de overlay */
+        .play-pause-overlay.pause-icon::before {
             content: '';
-            width: 8px; /* Barras menores */
-            height: 16px;
-            background-color: white;
-            box-shadow: 8px 0 0 white;
-        }
-
-        .video-controls-mobile .volume-controls {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-grow: 1;
-            justify-content: flex-end;
-        }
-
-        .video-controls-mobile #volume-slider-mobile {
-            -webkit-appearance: none;
-            width: 70px; /* Slider menor no celular */
-            height: 7px;
-            background: #90ee90; /* Verde claro */
-            border-radius: 4px;
-            outline: none;
-            opacity: 0.95;
-            transition: opacity .2s;
-        }
-
-        .video-controls-mobile #volume-slider-mobile::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 18px; /* Thumb menor */
-            height: 18px;
-            background: #ff69b4; /* Rosa vibrante */
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .video-controls-mobile #volume-slider-mobile::-moz-range-thumb {
-            width: 18px;
-            height: 18px;
-            background: #ff69b4;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Controles de vídeo para DESKTOP */
-        .video-controls-desktop {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            padding: 15px;
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 15px;
-            z-index: 10;
-        }
-
-        .video-controls-desktop #toggle-play-pause-desktop,
-        .video-controls-desktop #mute-button-desktop {
-            width: 70px; /* Botão maior no desktop */
-            height: 70px; /* Botão maior no desktop */
-            background-color: #ff69b4;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: transform 0.3s ease, background-color 0.3s;
-            outline: none;
-            flex-shrink: 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .video-controls-desktop #toggle-play-pause-desktop:hover,
-        .video-controls-desktop #mute-button-desktop:hover {
-            background-color: #ff45a5;
-            transform: scale(1.15);
-        }
-
-        /* Ícone de Play (triângulo) para desktop */
-        .video-controls-desktop #toggle-play-pause-desktop.play-button::before {
-            content: '';
-            width: 0;
-            height: 0;
-            border-top: 18px solid transparent;
-            border-bottom: 18px solid transparent;
-            border-left: 30px solid white;
-            margin-left: 8px;
-        }
-
-        /* Ícone de Pause (duas barras) para desktop */
-        .video-controls-desktop #toggle-play-pause-desktop.pause-button::before {
-            content: '';
-            width: 15px;
-            height: 25px;
-            background-color: rgba(255, 255, 255, 0.472);
-            box-shadow: 15px 0 0 white;
-        }
-
-        .video-controls-desktop .volume-controls {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-grow: 1;
-            justify-content: flex-start;
-            margin-left: 25px;
-        }
-
-        .video-controls-desktop #volume-slider-desktop {
-            -webkit-appearance: none;
-            width: 150px; /* Largura maior para o slider em desktop */
-            height: 12px;
-            background: #90ee90;
-            border-radius: 6px;
-            outline: none;
-            opacity: 0.95;
-            transition: opacity .2s;
-        }
-
-        .video-controls-desktop #volume-slider-desktop::-webkit-slider-thumb {
-            width: 28px;
-            height: 28px;
-            background: #ff69b4;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .video-controls-desktop #volume-slider-desktop::-moz-range-thumb {
-            width: 28px;
-            height: 28px;
-            background: #ff69b4;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .video-controls-desktop #mute-button-desktop {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 32px; /* Ícone maior */
-            cursor: pointer;
-            outline: none;
-            flex-shrink: 0;
-            transition: transform 0.2s ease;
-        }
-
-        .video-controls-desktop #mute-button-desktop:hover {
-            transform: scale(1.1);
+            width: 15px; /* Largura das barras */
+            height: 30px; /* Altura das barras */
+            background-color: rgba(255, 255, 255, 0);
+            box-shadow: 15px 0 0 white; /* Cria a segunda barra */
+            /* Ajuste para centralizar visualmente */
+            margin-left: -7.5px; /* Metade da largura da barra para centralizar */
         }
 
 
@@ -389,6 +234,24 @@
         }
 
         /* MEDIA QUERIES PARA DESKTOP */
+        @media (max-width: 768px) {
+         .welcome-content {
+            display: flex;
+            background-color: #ffffff00;
+            border-radius: 25px; /* Bordas mais arredondadas */
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); /* Sombra mais marcante */
+            position: relative;
+            border: 5px solid #ffcc00; /* Borda colorida */
+            /* Padrão para mobile: ocupa a largura e altura totais da tela */
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            max-height: none;
+            border-radius: 0; /* Bordas retas em tela cheia no celular */
+        }
+         }
+
         @media (min-width: 768px) {
             .welcome-content {
                 flex-direction: row; /* Vídeo e texto lado a lado */
@@ -411,13 +274,13 @@
                 width: 380px; /* Largura fixa para o vídeo em desktop */
                 flex-shrink: 0;
                 padding-top: 0; /* Remove o padding-top de proporção */
-                height: auto; /* Altura automática para o vídeo */
+                height: 100%; /* Altura 100% para o vídeo */
                 margin: 0; /* Remove a margem para desktop */
                 border-radius: 0; /* Remove o border-radius para desktop */
             }
 
             #welcome-video-desktop {
-                position: static;
+                position: static; /* Volta a ser estático para ocupar o espaço do container */
                 height: 100%;
                 width: 100%;
             }
@@ -430,6 +293,8 @@
             #close-overlay-mobile {
                 display: none;
             }
+
+            
         }
 
         @media (min-width: 1024px) {
@@ -448,33 +313,21 @@
             }
         }
     </style>
-
-       <div id="welcome-overlay">
+</head>
+ <div id="welcome-overlay">
         <div class="welcome-content">
             <div class="video-area-mobile">
                 <div class="video-container">
-                    <video id="welcome-video-mobile" src="Videos/video-homer.mp4" autoplay playsinline loop></video>
-                    <div class="video-controls-mobile">
-                        <button id="toggle-play-pause-mobile" class="play-button"></button>
-                        <div class="volume-controls">
-                            <button id="mute-button-mobile"><span id="mute-icon-mobile">🔊</span></button>
-                            <input type="range" id="volume-slider-mobile" min="0" max="1" step="0.01" value="0.5">
-                        </div>
-                    </div>
+                    <video id="welcome-video-mobile" src="Videos/video-homer.mp4"></video>
+                    <button id="play-pause-overlay-mobile" class="play-pause-overlay play-icon"></button>
                 </div>
                 <button id="close-overlay-mobile">Explorar o Site! ✨</button>
             </div>
 
             <div class="desktop-area">
                 <div class="video-container">
-                    <video id="welcome-video-desktop" src="Videos/video-homer.mp4" autoplay playsinline loop></video>
-                    <div class="video-controls-desktop">
-                        <button id="toggle-play-pause-desktop" class="play-button"></button>
-                        <div class="volume-controls">
-                            <button id="mute-button-desktop"><span id="mute-icon-desktop">🔊</span></button>
-                            <input type="range" id="volume-slider-desktop" min="0" max="1" step="0.01" value="0.5">
-                        </div>
-                    </div>
+                    <video id="welcome-video-desktop" src="Videos/video-homer.mp4"></video>
+                    <button id="play-pause-overlay-desktop" class="play-pause-overlay play-icon"></button>
                 </div>
                 <div class="welcome-text-desktop">
                     <h1>🎉 Bem-vindo(a) ao Nosso Cantinho Mágico da Leitura! 📚</h1>
@@ -486,139 +339,89 @@
         </div>
     </div>
 
+    <main>
+        <section style="padding: 40px; text-align: center; background-color: #fff; margin-top: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <h2>🌈 Mais E-books Incríveis Esperam por Você! 📖</h2>
+            <p style="font-size: 1.2em; color: #555;">Este é o lugar onde a magia da leitura acontece! Volte sempre para novas descobertas!</p>
+        </section>
+    </main>
 
-
-  <script>
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
             const welcomeOverlay = document.getElementById('welcome-overlay');
 
             // REFERÊNCIAS PARA MOBILE
             const welcomeVideoMobile = document.getElementById('welcome-video-mobile');
-            const togglePlayPauseMobile = document.getElementById('toggle-play-pause-mobile');
-            const volumeSliderMobile = document.getElementById('volume-slider-mobile');
-            const muteButtonMobile = document.getElementById('mute-button-mobile');
-            const muteIconMobile = document.getElementById('mute-icon-mobile');
-            const closeOverlayMobileButton = document.getElementById('close-overlay-mobile'); // Novo botão mobile
+            const playPauseOverlayMobile = document.getElementById('play-pause-overlay-mobile');
+            const closeOverlayMobileButton = document.getElementById('close-overlay-mobile');
 
             // REFERÊNCIAS PARA DESKTOP
             const welcomeVideoDesktop = document.getElementById('welcome-video-desktop');
-            const togglePlayPauseDesktop = document.getElementById('toggle-play-pause-desktop');
-            const volumeSliderDesktop = document.getElementById('volume-slider-desktop');
-            const muteButtonDesktop = document.getElementById('mute-button-desktop');
-            const muteIconDesktop = document.getElementById('mute-icon-desktop');
-            const closeOverlayDesktopButton = document.getElementById('close-overlay-desktop'); // Botão desktop
+            const playPauseOverlayDesktop = document.getElementById('play-pause-overlay-desktop');
+            const closeOverlayDesktopButton = document.getElementById('close-overlay-desktop');
 
             // Array para gerenciar ambos os vídeos e seus controles
             const videoElements = [
                 {
                     video: welcomeVideoMobile,
-                    playPauseButton: togglePlayPauseMobile,
-                    volumeSlider: volumeSliderMobile,
-                    muteButton: muteButtonMobile,
-                    muteIcon: muteIconMobile
+                    playPauseOverlay: playPauseOverlayMobile
                 },
                 {
                     video: welcomeVideoDesktop,
-                    playPauseButton: togglePlayPauseDesktop,
-                    volumeSlider: volumeSliderDesktop,
-                    muteButton: muteButtonDesktop,
-                    muteIcon: muteIconDesktop
+                    playPauseOverlay: playPauseOverlayDesktop
                 }
             ];
 
             // Função para configurar os controles de cada vídeo
             function setupVideoControls(videoObj) {
-                const { video, playPauseButton, volumeSlider, muteButton, muteIcon } = videoObj;
+                const { video, playPauseOverlay } = videoObj;
 
-                // Define o volume inicial
-                video.volume = 0.5;
-                volumeSlider.value = 0.5;
-                video.muted = false; // Garante que não comece mutado pelo JS
+                // Define o volume inicial no máximo e mutado
+                video.volume = 1; // Volume no máximo, para quando for desmutado
+                video.muted = true; // SEMPRE COMEÇA MUTADO
+                video.pause(); // Garante que o vídeo esteja pausado no início
 
-                // Tenta reproduzir o vídeo automaticamente
-                video.play().catch(error => {
-                    console.warn("Autoplay falhou para:", video.id, "Erro:", error);
-                    video.pause(); // Garante que esteja pausado se não puder dar play
-                    playPauseButton.classList.remove('pause-button');
-                    playPauseButton.classList.add('play-button');
-                });
+                // Garante que o ícone de Play esteja visível no início
+                playPauseOverlay.classList.remove('pause-icon');
+                playPauseOverlay.classList.add('play-icon');
+                playPauseOverlay.classList.remove('hidden');
 
-                // Event listener para play/pause
-                playPauseButton.addEventListener('click', () => {
+                // Listener para o botão de overlay de Play/Pause e para o próprio vídeo
+                const handleVideoInteraction = () => {
                     if (video.paused) {
-                        video.play();
+                        video.muted = false; // Desmuta o vídeo
+                        video.play(); // Inicia a reprodução
+                        playPauseOverlay.classList.remove('play-icon');
+                        playPauseOverlay.classList.add('pause-icon');
+                        playPauseOverlay.classList.add('hidden'); // Oculta o botão de overlay
                     } else {
-                        video.pause();
+                        video.pause(); // Pausa o vídeo
+                        playPauseOverlay.classList.remove('pause-icon');
+                        playPauseOverlay.classList.add('play-icon');
+                        playPauseOverlay.classList.remove('hidden'); // Mostra o botão de overlay (ícone de play)
                     }
-                });
+                };
 
-                // Atualiza o ícone do botão play/pause
-                video.addEventListener('play', () => {
-                    playPauseButton.classList.remove('play-button');
-                    playPauseButton.classList.add('pause-button');
-                });
+                playPauseOverlay.addEventListener('click', handleVideoInteraction);
+                video.addEventListener('click', handleVideoInteraction); // Clicar no vídeo também alterna
 
-                video.addEventListener('pause', () => {
-                    playPauseButton.classList.remove('pause-button');
-                    playPauseButton.classList.add('play-button');
-                });
-
-                // Sincroniza o ícone de play/pause com o estado inicial
-                if (!video.paused) {
-                    playPauseButton.classList.remove('play-button');
-                    playPauseButton.classList.add('pause-button');
-                } else {
-                    playPauseButton.classList.remove('pause-button');
-                    playPauseButton.classList.add('play-button');
-                }
-
-                // Controle de volume via slider
-                volumeSlider.addEventListener('input', () => {
-                    video.volume = volumeSlider.value;
-                    if (video.volume === 0) {
-                        muteIcon.textContent = '🔇';
-                        video.muted = true;
-                    } else {
-                        muteIcon.textContent = '🔊';
-                        video.muted = false;
-                    }
-                });
-
-                // Controle de mudo/desmudo
-                let lastVolume = video.volume > 0 ? video.volume : 0.5;
-                muteButton.addEventListener('click', () => {
-                    if (video.muted) {
-                        video.muted = false;
-                        video.volume = lastVolume;
-                        muteIcon.textContent = '🔊';
-                        volumeSlider.value = video.volume;
-                    } else {
-                        lastVolume = video.volume;
-                        video.muted = true;
-                        muteIcon.textContent = '🔇';
-                        volumeSlider.value = 0;
-                    }
-                });
-
-                // Sincroniza slider e ícone de mudo se o volume mudar por outros meios
-                video.addEventListener('volumechange', () => {
-                    if (video.muted || video.volume === 0) {
-                        muteIcon.textContent = '🔇';
-                    } else {
-                        muteIcon.textContent = '🔊';
-                    }
-                    if (!video.muted && volumeSlider.value != video.volume) {
-                        volumeSlider.value = video.volume;
-                    }
+                // Garante que o overlay reapareça se o vídeo terminar
+                video.addEventListener('ended', () => {
+                    video.currentTime = 0; // Volta para o início
+                    video.pause();
+                    playPauseOverlay.classList.remove('pause-icon');
+                    playPauseOverlay.classList.add('play-icon');
+                    playPauseOverlay.classList.remove('hidden');
+                    video.muted = true; // Mutado novamente ao final
                 });
             }
 
-            // Configura os controles para ambos os vídeos
+            // Configura os controles para ambos os vídeos (mobile e desktop)
             videoElements.forEach(setupVideoControls);
 
             // Lógica para fechar o overlay (botão desktop)
             closeOverlayDesktopButton.addEventListener('click', () => {
-                welcomeVideoDesktop.pause(); // Pausa o vídeo desktop
+                if (welcomeVideoDesktop) welcomeVideoDesktop.pause(); // Pausa o vídeo desktop
                 welcomeOverlay.classList.add('hidden');
                 setTimeout(() => {
                     welcomeOverlay.style.display = 'none';
@@ -627,7 +430,7 @@
 
             // Lógica para fechar o overlay (botão mobile)
             closeOverlayMobileButton.addEventListener('click', () => {
-                welcomeVideoMobile.pause(); // Pausa o vídeo mobile
+                if (welcomeVideoMobile) welcomeVideoMobile.pause(); // Pausa o vídeo mobile
                 welcomeOverlay.classList.add('hidden');
                 setTimeout(() => {
                     welcomeOverlay.style.display = 'none';
