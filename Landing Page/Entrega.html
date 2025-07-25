@@ -418,7 +418,7 @@
             // Se o e-mail for válido, envia para o backend (Google Apps Script)
             try {
                 // ****** IMPORTANTE: SUBSTITUA 'YOUR_WEB_APP_URL' PELA URL DO SEU GOOGLE APPS SCRIPT WEB APP ******
-                const response = await fetch('YOUR_WEB_APP_URL', { 
+                const response = await fetch('https://script.google.com/macros/s/AKfycbzClFZEfwtSAtpAQgFjGm9oJMqPTrHSu0gFn5slQQsGrzEsEPnIq7FgbaHEF3r50zOV/exec', { 
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json' // É crucial que o Content-Type seja application/json
