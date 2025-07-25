@@ -275,6 +275,7 @@
                 </p>
             </div>
 
+<!------------------------------------------------------------------------------------------>
 
 <form id="leadForm" class="flex flex-col items-center gap-4">
     <div>
@@ -336,7 +337,7 @@
     });
 
     // A função que será chamada ao clicar no botão de download
-    function baixarConteudo() {
+    async function baixarConteudo() { // Adicionado 'async' aqui
         const email = emailInput.value.trim();
 
         // Valida o e-mail ANTES de abrir o modal
@@ -345,7 +346,32 @@
             return; // Impede a abertura do modal
         }
 
-        // Se o e-mail for válido, abre o modal de downloads
+        // Se o e-mail for válido, envia para o backend
+        try {
+            const response = await fetch('/api/capture-lead', { // URL do seu endpoint de backend
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email })
+            });
+
+            if (response.ok) {
+                console.log('E-mail enviado com sucesso para o backend!');
+                // Opcional: Mostrar uma mensagem de sucesso para o usuário
+                // showValidationMessage("E-mail registrado com sucesso!", false); 
+            } else {
+                console.error('Erro ao enviar o e-mail para o backend:', response.statusText);
+                showValidationMessage("Ocorreu um erro ao registrar seu e-mail. Tente novamente.", true);
+                return; // Impede a abertura do modal se o envio falhar
+            }
+        } catch (error) {
+            console.error('Erro de rede ou outra falha:', error);
+            showValidationMessage("Não foi possível conectar ao servidor. Verifique sua conexão.", true);
+            return; // Impede a abertura do modal se houver erro
+        }
+
+        // Se o e-mail for válido e enviado para o backend (ou se você não quiser esperar a resposta do backend), abre o modal de downloads
         hideValidationMessage(); // Oculta qualquer mensagem anterior
         abrirModal();
     }
