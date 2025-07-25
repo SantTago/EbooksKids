@@ -275,11 +275,22 @@
                 </p>
             </div>
 
-<!------------------------------------------------------------------------------------------>
-
+<!--
+<form id="leadForm" class="flex flex-col items-center gap-4">
+    <div>
+        <input 
+            type="email" 
+            id="vipEmail" 
+            required
+            class="w-full px-8 py-5 border-3 border-yellow-400 border-opacity-60 rounded-2xl bg-black bg-opacity-40 backdrop-blur-lg text-white placeholder-yellow-200 placeholder-opacity-80 focus:border-yellow-300 focus:bg-opacity-60 focus:outline-none focus:ring-4 focus:ring-yellow-300 focus:ring-opacity-30 transition-all duration-300 text-xl text-center font-semibold shadow-xl"
+            placeholder="✉️ Confirme seu e-mail"
+        >
+        <span id="emailValidationMessage" class="text-sm mt-2 text-red-400 opacity-0 transition-opacity duration-300 block text-center"></span>
+    </div>
+</form>
+-->
 <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         /* Estilos personalizados para o botão principal 'vip-button' */
         .vip-button {
@@ -293,37 +304,12 @@
         .vip-button:active {
             transform: scale(0.95);
         }
-
-        /* Ajuste para o body para centralizar o botão na tela */
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            background-color: #f3f4f6; /* bg-gray-100 */
-            padding: 1rem; /* p-4 */
-        }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen bg-gray-100 p-4">
 
-    <form id="leadForm" class="flex flex-col items-center gap-4">
-        <div>
-            <input 
-                type="email" 
-                id="vipEmail" 
-                required
-                class="w-full px-8 py-5 border-3 border-yellow-400 border-opacity-60 rounded-2xl bg-black bg-opacity-40 backdrop-blur-lg text-white placeholder-yellow-200 placeholder-opacity-80 focus:border-yellow-300 focus:bg-opacity-60 focus:outline-none focus:ring-4 focus:ring-yellow-300 focus:ring-opacity-30 transition-all duration-300 text-xl text-center font-semibold shadow-xl"
-                placeholder="✉️ Confirme seu e-mail"
-            >
-            <span id="emailValidationMessage" class="text-sm mt-2 text-red-400 opacity-0 transition-opacity duration-300 block text-center"></span>
-        </div>
-    </form>
-
-    <br>
-
     <button 
-        onclick="baixarConteudo()"
+        onclick="abrirModal()" 
         class="vip-button w-full font-black py-6 px-10 rounded-2xl text-2xl shadow-2xl border-2 border-yellow-600 transform hover:scale-105 active:scale-95 relative overflow-hidden max-w-sm"
     >
         <div class="flex items-center justify-center space-x-4 relative z-10">
@@ -362,109 +348,19 @@
     </div>
 
     <script>
-        const form = document.getElementById('leadForm');
-        const emailInput = document.getElementById('vipEmail');
-        const emailValidationMessage = document.getElementById('emailValidationMessage');
-
-        // Função para validar o formato do e-mail
-        function isValidEmail(email) {
-            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            return emailRegex.test(email);
-        }
-
-        // Função para exibir a mensagem de validação
-        function showValidationMessage(message, isError = true) {
-            emailValidationMessage.textContent = message;
-            if (isError) {
-                emailValidationMessage.classList.remove('text-green-400');
-                emailValidationMessage.classList.add('text-red-400');
-            } else {
-                emailValidationMessage.classList.remove('text-red-400');
-                emailValidationMessage.classList.add('text-green-400');
-            }
-            emailValidationMessage.classList.remove('opacity-0');
-            emailValidationMessage.classList.add('opacity-100');
-        }
-
-        // Função para ocultar a mensagem de validação
-        function hideValidationMessage() {
-            emailValidationMessage.classList.remove('opacity-100');
-            emailValidationMessage.classList.add('opacity-0');
-            setTimeout(() => {
-                emailValidationMessage.textContent = '';
-            }, 300);
-        }
-
-        // Event listener para o input de e-mail para validação em tempo real
-        emailInput.addEventListener('input', function() {
-            const email = emailInput.value.trim();
-            if (email === "") {
-                hideValidationMessage();
-            } else if (!isValidEmail(email)) {
-                showValidationMessage("Por favor, insira um e-mail válido.", true);
-            } else {
-                hideValidationMessage();
-            }
-        });
-
-        // A função que será chamada ao clicar no botão de download
-        async function baixarConteudo() { 
-            const email = emailInput.value.trim();
-
-            // Valida o e-mail ANTES de abrir o modal
-            if (!email || !isValidEmail(email)) {
-                showValidationMessage("Por favor, insira um e-mail válido para baixar o conteúdo.", true);
-                return; // Impede a abertura do modal
-            }
-
-            // Se o e-mail for válido, envia para o backend (Google Apps Script)
-            try {
-                // ****** ESTA É A URL DO SEU GOOGLE APPS SCRIPT WEB APP ******
-              const appsScriptURL = 'https://script.google.com/macros/s/AKfycbzClFZEfwtSAtpAQgFjGm9oJMqPTrHSu0gFn5slQQsGrzEsEPnIq7FgbaHEF3r50zOV/exec';
-
-                const response = await fetch(appsScriptURL, { 
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json' // ISTO É FUNDAMENTAL!
-                    },
-                    body: JSON.stringify({ email: email }) 
-                });
-
-                // Espera a resposta JSON do Apps Script
-                const data = await response.json(); 
-
-                if (response.ok && data.status === "success") {
-                    console.log('E-mail enviado e registrado com sucesso!', data.message);
-                    // Opcional: Você pode querer exibir uma mensagem temporária de sucesso aqui antes de abrir o modal
-                } else {
-                    console.error('Erro ao registrar o e-mail:', data.message || response.statusText);
-                    showValidationMessage("Ocorreu um erro ao registrar seu e-mail. " + (data.message || "Tente novamente."), true);
-                    return; // Impede a abertura do modal se o registro falhar no Apps Script
-                }
-            } catch (error) {
-                console.error('Erro de rede ou outra falha ao enviar o e-mail:', error);
-                showValidationMessage("Não foi possível conectar ao servidor para registrar seu e-mail. Verifique sua conexão.", true);
-                return; // Impede a abertura do modal se houver erro de rede
-            }
-
-            // Se o e-mail for válido e enviado para o backend, abre o modal de downloads
-            hideValidationMessage(); // Oculta qualquer mensagem anterior
-            abrirModal();
-        }
-
-        // Função para abrir o modal
+        // Função para abrir o modal de downloads
         function abrirModal() {
             document.getElementById("modalDownloads").classList.remove("hidden");
-            document.body.style.overflow = "hidden"; // Desabilita o scroll da página
+            document.body.style.overflow = "hidden"; // Impede a rolagem do corpo enquanto o modal está aberto
         }
 
-        // Função para fechar o modal
+        // Função para fechar o modal de downloads
         function fecharModal() {
             document.getElementById("modalDownloads").classList.add("hidden");
-            document.body.style.overflow = "auto"; // Habilita o scroll da página
+            document.body.style.overflow = "auto"; // Restaura a rolagem do corpo
         }
 
-        // Fecha o modal se o usuário clicar fora do conteúdo do modal
+        // Fecha o modal se o usuário clicar na área escura fora do conteúdo do modal
         window.onclick = function(event) {
             const modal = document.getElementById("modalDownloads");
             if (event.target == modal) {
@@ -473,73 +369,6 @@
         }
     </script>
 
-<br>
-
-<style>
-    /* Estilos personalizados para o botão principal 'vip-button' */
-    .vip-button {
-        background-image: linear-gradient(to right, #facc15, #f59e0b, #d97706); 
-        color: white;
-        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    }
-    .vip-button:hover {
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    }
-    .vip-button:active {
-        transform: scale(0.95);
-    }
-</style>
-
-
-    <div id="modalDownloads" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-        <div class="bg-white p-8 rounded-2xl max-w-md w-full shadow-2xl text-center relative">
-            <button onclick="fecharModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl font-bold">&times;</button>
-            
-            <h2 class="text-2xl font-bold mb-6 text-gray-800">Escolha o que deseja baixar</h2>
-
-            <div class="space-y-4">
-
-                <div class="flex flex-col sm:flex-row justify-between items-center bg-gray-100 p-4 rounded-lg shadow-sm">
-                    <span class="text-lg font-medium text-gray-700 mb-2 sm:mb-0">🎲 Brincadeiras Que Acalmam</span>
-                    <a href="Passo 1 O Produto Isca Magnético/O Segredo da Calma no Mundo Agitado.pdf" download="Brincadeiras_Que_Acalmam.pdf" class="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 transition duration-200 ease-in-out w-full sm:w-auto text-center">
-                        Baixar
-                    </a>
-                </div>
-
-                <div class="flex flex-col sm:flex-row justify-between items-center bg-gray-100 p-4 rounded-lg shadow-sm">
-                    <span class="text-lg font-medium text-gray-700 mb-2 sm:mb-0">🖍️ Meu Primeiro Diário de Emoções</span>
-                    <a href="Passo 1 O Produto Isca Magnético/Meu Primeiro Diário de Emoções Coloridas - Para Pintar e Sentir.pdf" download="Meu_Primeiro_Diario.pdf" class="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 transition duration-200 ease-in-out w-full sm:w-auto text-center">
-                        Baixar
-                    </a>
-                </div>
-                
-            </div>
-
-            <button onclick="fecharModal()" class="mt-8 text-base text-gray-600 hover:text-gray-800 hover:underline transition duration-200 ease-in-out">Fechar</button>
-        </div>
-    </div>
-
-    <script>
-        // Função para abrir o modal
-        function abrirModal() {
-            document.getElementById("modalDownloads").classList.remove("hidden");
-            document.body.style.overflow = "hidden";
-        }
-
-        // Função para fechar o modal
-        function fecharModal() {
-            document.getElementById("modalDownloads").classList.add("hidden");
-            document.body.style.overflow = "auto";
-        }
-
-        // Fecha o modal se o usuário clicar fora do conteúdo do modal
-        window.onclick = function(event) {
-            const modal = document.getElementById("modalDownloads");
-            if (event.target == modal) {
-                fecharModal();
-            }
-        }
-    </script>
 
 <!----------------------------------------------------------------------------->                   
                 <div class="mt-6 text-center">
