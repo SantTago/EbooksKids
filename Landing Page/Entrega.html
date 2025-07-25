@@ -420,14 +420,14 @@
             // Se o e-mail for válido, envia para o backend (Google Apps Script)
             try {
                 // ****** ESTA É A URL DO SEU GOOGLE APPS SCRIPT WEB APP ******
-                const appsScriptURL = 'https://script.google.com/macros/s/AKfycbzClFZEfwtSAtpAQgFjGm9oJMqPTrHSu0gFn5slQQsGrzEsEPnIq7FgbaHEF3r50zOV/exec';
-                
+               const appsScriptURL = 'https://script.google.com/macros/s/AKfycbyoz1KmGm3-j6111GKRmflEhtNKnFvroj7zNogItA5E52S7oK8a8pXHCXlC7A2hOTvY9A/exec'; // Sua URL
+
                 const response = await fetch(appsScriptURL, { 
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json' // É crucial que o Content-Type seja application/json
+                        'Content-Type': 'application/json' // ISSO É CRÍTICO para o Apps Script esperar JSON
                     },
-                    body: JSON.stringify({ email: email }) // Envia o e-mail como um objeto JSON
+                    body: JSON.stringify({ email: email }) // Enviando o e-mail como JSON
                 });
 
                 // Espera a resposta JSON do Apps Script
