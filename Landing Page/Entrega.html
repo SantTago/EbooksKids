@@ -295,6 +295,47 @@
     const emailInput = document.getElementById('vipEmail');
     const emailValidationMessage = document.getElementById('emailValidationMessage');
 
+    function doPost(e) {
+  // Garante que a requisição é um POST e tem dados
+  if (e && e.postData && e.postData.contents) {
+    try {
+      // Parseia o conteúdo JSON enviado do frontend
+      var requestBody = JSON.parse(e.postData.contents);
+      var email = requestBody.email; // Acessa o email da requisição
+
+      if (email) {
+        var ss = SpreadsheetApp.getActiveSpreadsheet();
+        // Substitua 'NomeDaSuaPlanilha' pelo nome exato da aba da sua planilha onde quer salvar os emails
+        var sheet = ss.getSheetByName("Emails"); 
+
+        if (sheet) {
+          // Adiciona o e-mail e a data/hora atual na planilha
+          sheet.appendRow([email, new Date()]); 
+          
+          return ContentService.createTextOutput(JSON.stringify({ status: "success", message: "Email registrado com sucesso!" }))
+                               .setMimeType(ContentService.MimeType.JSON);
+        } else {
+          return ContentService.createTextOutput(JSON.stringify({ status: "error", message: "Planilha 'Emails' não encontrada." }))
+                               .setMimeType(ContentService.MimeType.JSON);
+        }
+      } else {
+        return ContentService.createTextOutput(JSON.stringify({ status: "error", message: "Email não fornecido." }))
+                             .setMimeType(ContentService.MimeType.JSON);
+      }
+
+    } catch (error) {
+      // Loga o erro para depuração
+      Logger.log("Erro ao parsear JSON ou processar requisição: " + error.message);
+      return ContentService.createTextOutput(JSON.stringify({ status: "error", message: "Erro ao processar a requisição: " + error.message }))
+                           .setMimeType(ContentService.MimeType.JSON);
+    }
+  } else {
+    // Para requisições GET ou POST sem dados
+    return ContentService.createTextOutput(JSON.stringify({ status: "error", message: "Requisição inválida. Use POST com dados JSON." }))
+                         .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
     // Função para validar o formato do e-mail
     function isValidEmail(email) {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
