@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 ACESSO EXCLUSIVO CONCEDIDO | Mente Calma VIP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Outfit', sans-serif; }
+        
+        .exclusive-gradient {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #7209b7 100%);
+        }
+        
+        .diamond-glow {
+            box-shadow: 
+                0 0 30px rgba(255, 215, 0, 0.6),
+                0 0 60px rgba(255, 215, 0, 0.4),
+                0 0 90px rgba(255, 215, 0, 0.2);
+            animation: diamondPulse 2s infinite alternate;
+        }
+        
+        @keyframes diamondPulse {
+            from { 
+                box-shadow: 
+                    0 0 30px rgba(255, 215, 0, 0.6),
+                    0 0 60px rgba(255, 215, 0, 0.4),
+                    0 0 90px rgba(255, 215, 0, 0.2);
+            }
+            to { 
+                box-shadow: 
+                    0 0 50px rgba(255, 215, 0, 0.8),
+                    0 0 100px rgba(255, 215, 0, 0.6),
+                    0 0 150px rgba(255, 215, 0, 0.4);
+            }
+        }
+        
+        .vip-button {
+            background: linear-gradient(135deg, #ffd700, #ffed4e, #ffa502);
+            color: #1a1a2e;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vip-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            animation: shine 2s infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .vip-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.5);
+        }
+        
+        .timer-urgent {
+            background: linear-gradient(135deg, #ff4757, #ff3838);
+            animation: timerPulse 1s infinite;
+        }
+        
+        @keyframes timerPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .certificate-border {
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #ffa502, #ffd700);
+            background-size: 400% 400%;
+            animation: borderGlow 3s ease infinite;
+        }
+        
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .floating-sparkles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .sparkle {
+            position: absolute;
+            color: #ffd700;
+            animation: sparkleFloat 4s infinite linear;
+            opacity: 0;
+        }
+        
+        @keyframes sparkleFloat {
+            0% { 
+                transform: translateY(100vh) rotate(0deg); 
+                opacity: 0; 
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { 
+                transform: translateY(-100px) rotate(360deg); 
+                opacity: 0; 
+            }
+        }
+    </style>
+</head>
+
+
+ <script>
+        // Script do vídeo do topo (adaptado do Código 1)
+        document.addEventListener('DOMContentLoaded', () => {
+            const pageMainVideoTop = document.getElementById('page-main-video-top');
+            const playPauseOverlayPageTop = document.getElementById('play-pause-overlay-page-top');
+            const pageVideoThumbnailTop = document.getElementById('page-video-thumbnail-top');
+
+            function setupMainVideoControlsTop() {
+                pageMainVideoTop.volume = 1; // Volume SEMPRE no máximo
+                pageMainVideoTop.muted = true; // SEMPRE COMEÇA MUTADO
+                pageMainVideoTop.pause(); // Garante que o vídeo esteja pausado no início
+
+                playPauseOverlayPageTop.classList.remove('pause-icon');
+                playPauseOverlayPageTop.classList.add('play-icon');
+                playPauseOverlayPageTop.classList.remove('hidden');
+                pageVideoThumbnailTop.classList.remove('hidden');
+
+                const handleVideoInteractionTop = () => {
+                    if (pageMainVideoTop.paused) {
+                        pageMainVideoTop.muted = false; // DESMUTA o vídeo ao dar play
+                        pageMainVideoTop.play(); // Inicia a reprodução
+                        playPauseOverlayPageTop.classList.remove('play-icon');
+                        playPauseOverlayPageTop.classList.add('pause-icon');
+                        playPauseOverlayPageTop.classList.add('hidden'); // Oculta o botão de overlay
+                        pageVideoThumbnailTop.classList.add('hidden'); // Oculta a thumbnail
+                    } else {
+                        pageMainVideoTop.pause(); // Pausa o vídeo
+                        pageMainVideoTop.muted = true; // MUTA o vídeo ao pausar
+                        playPauseOverlayPageTop.classList.remove('pause-icon');
+                        playPauseOverlayPageTop.classList.add('play-icon');
+                        playPauseOverlayPageTop.classList.remove('hidden'); // Mostra o botão de overlay (ícone de play)
+                        pageVideoThumbnailTop.classList.remove('hidden'); // Mostra a thumbnail
+                    }
+                };
+
+                playPauseOverlayPageTop.addEventListener('click', handleVideoInteractionTop);
+
+                pageMainVideoTop.addEventListener('ended', () => {
+                    pageMainVideoTop.currentTime = 0; // Volta para o início
+                    pageMainVideoTop.pause();
+                    playPauseOverlayPageTop.classList.remove('pause-icon');
+                    playPauseOverlayPageTop.classList.add('play-icon');
+                    playPauseOverlayPageTop.classList.remove('hidden');
+                    pageVideoThumbnailTop.classList.remove('hidden'); // Mostra a thumbnail
+                    pageMainVideoTop.muted = true; // Mutado novamente ao final
+                });
+
+                pageMainVideoTop.addEventListener('click', (event) => {
+                    if (document.fullscreenElement) {
+                        document.exitFullscreen();
+                    } else if (pageMainVideoTop.requestFullscreen) {
+                        event.preventDefault(); // Evita a ação padrão de ir para tela cheia
+                    }
+                });
+
+                pageMainVideoTop.addEventListener('webkitbeginfullscreen', (event) => {
+                    event.preventDefault();
+                });
+                pageMainVideoTop.addEventListener('mozbeginfullscreen', (event) => {
+                    event.preventDefault();
+                });
+                pageMainVideoTop.addEventListener('msbeginfullscreen', (event) => {
+                    event.preventDefault();
+                });
+            }
+
+            setupMainVideoControlsTop();
+        });
+
+        // Script do contador regressivo (do Código 2)
+        function updateCountdown() {
+            const now = new Date();
+            const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+            const timeLeft = endOfDay - now;
+
+            if (timeLeft < 0) {
+                document.getElementById('countdown').textContent = "OFERTA EXPIRADA!";
+                return;
+            }
+
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').textContent = 
+                `OFERTA EXPIRA EM: ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+
+        // Função para rolar até o formulário (se houver um no Código 2 mais abaixo, ou adicione um id='form-section' ao seu formulário)
+        function scrollToForm() {
+            // Adapte este ID para o ID real da seção do formulário no seu Código 2
+            const formSection = document.getElementById('form-section'); 
+            if (formSection) {
+                formSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                console.warn("Elemento com ID 'form-section' não encontrado. Adicione este ID à sua seção de formulário.");
+            }
+        }
+    </script>
+
+
+
+
+
+
+
+
+<body class="exclusive-gradient min-h-screen relative">
+    <div class="floating-sparkles">
+        <div class="sparkle text-2xl" style="left: 10%; animation-delay: 0s;">✨</div>
+        <div class="sparkle text-xl" style="left: 20%; animation-delay: 1s;">💎</div>
+        <div class="sparkle text-2xl" style="left: 30%; animation-delay: 2s;">⭐</div>
+        <div class="sparkle text-xl" style="left: 40%; animation-delay: 3s;">✨</div>
+        <div class="sparkle text-2xl" style="left: 50%; animation-delay: 0.5s;">💎</div>
+        <div class="sparkle text-xl" style="left: 60%; animation-delay: 1.5s;">⭐</div>
+        <div class="sparkle text-2xl" style="left: 70%; animation-delay: 2.5s;">✨</div>
+        <div class="sparkle text-xl" style="left: 80%; animation-delay: 3.5s;">💎</div>
+        <div class="sparkle text-2xl" style="left: 90%; animation-delay: 4s;">⭐</div>
+    </div>
+
+    <div class="container mx-auto px-4 py-6 sm:py-8 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-block mb-8">
+                <div class="certificate-border p-1 rounded-full">
+                    <div class="bg-gradient-to-r from-gray-900 to-black rounded-full px-8 py-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center">
+                                <i class="fas fa-gem text-white text-sm"></i>
+                            </div>
+                            <span class="text-yellow-300 font-black text-lg">ACESSO DIAMANTE CONCEDIDO</span>
+                            <div class="w-8 h-8 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center">
+                                <i class="fas fa-gem text-white text-sm"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-10">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
+                    🎉 PARABÉNS! 🎉
+                </h1>
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-yellow-300 mb-4">
+                    VOCÊ FOI SELECIONADO(A)
+                </h2>
+                <p class="text-lg sm:text-xl text-white opacity-90 font-medium max-w-2xl mx-auto">
+                    Você faz parte de um <span class="text-yellow-300 font-bold">seleto grupo de apenas 200 pessoas</span> que terão acesso exclusivo ao nosso material mais valioso
+                </p>
+            </div>
+
+             <div class="mb-12 max-w-md mx-auto"> 
+                <form id="vipForm" class="space-y-6">
+                    <!--
+                    <div>
+                        <input 
+                            type="email" 
+                            id="vipEmail" 
+                            required
+                            class="w-full px-8 py-5 border-3 border-yellow-400 border-opacity-60 rounded-2xl bg-black bg-opacity-40 backdrop-blur-lg text-white placeholder-yellow-200 placeholder-opacity-80 focus:border-yellow-300 focus:bg-opacity-60 focus:outline-none focus:ring-4 focus:ring-yellow-300 focus:ring-opacity-30 transition-all duration-300 text-xl text-center font-semibold shadow-xl"
+                            placeholder="✉️ Confirme seu e-mail VIP"
+                        >
+                    </div>
+                    -->
+                    <button 
+                        type="submit" 
+                        class="vip-button w-full font-black py-6 px-10 rounded-2xl text-2xl shadow-2xl border-2 border-yellow-600 transform hover:scale-105 active:scale-95 relative overflow-hidden"
+                    >
+                        <div class="flex items-center justify-center space-x-4 relative z-10">
+                            <i class="fas fa-crown text-3xl"></i>
+                            <span>BAIXAR CONTEÚDO VIP</span>
+                            <i class="fas fa-gem text-3xl"></i>
+                        </div>
+                    </button>
+                </form>
+                
+                <div class="mt-6 text-center">
+                    <p class="text-white opacity-90 text-sm flex items-center justify-center mb-2">
+                        <i class="fas fa-shield-alt mr-2 text-green-400"></i>
+                        Acesso Seguro • Entrega Imediata 
+                    </p>
+                </div>
+            </div>
+
+
+
+<!--
+            <div class="mb-10">
+                <div class="timer-urgent text-white px-6 py-4 rounded-2xl text-lg font-bold shadow-2xl border-2 border-white border-opacity-30 inline-block">
+                    <div class="flex items-center justify-center space-x-3">
+                        <i class="fas fa-clock text-yellow-300 text-xl"></i>
+                        <span>Seu acesso expira em: <span id="timer" class="text-yellow-300 font-black text-xl">15:00</span></span>
+                        <i class="fas fa-hourglass-half text-yellow-300 text-xl"></i>
+                    </div>
+                </div>
+                <p class="text-white opacity-90 mt-3 text-base font-medium">
+                    ⚠️ Este link é único e pessoal - não pode ser compartilhado
+                </p>
+            </div>
+
+        -->
+ <div class="mb-6"> 
+                <div class="bg-gradient-to-r from-green-600 to-green-700 text-white rounded-3xl shadow-2xl border-2 border-green-500 mx-auto max-w-2xl py-4 px-4 sm:px-8">
+                    <div class="flex items-center justify-center space-x-3">
+                        <i class="fas fa-gift text-yellow-300 text-2xl sm:text-3xl"></i>
+                        <span class="text-xl sm:text-2xl font-black leading-tight">100% GRATUITO - SEM CUSTOS OCULTOS</span>
+                        <i class="fas fa-heart text-yellow-300 text-2xl sm:text-3xl"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-12">
+                
+                <div class="certificate-border p-1 rounded-3xl max-w-2xl mx-auto">
+                    <div class="bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl p-8 text-white">
+                        <div class="text-center">
+                            <div class="text-6xl mb-4">🏆</div>
+                            <h3 class="text-2xl font-black text-yellow-300 mb-4">
+                                CERTIFICADO DE ACESSO VIP
+                            </h3>
+                            <div class="bg-white bg-opacity-10 rounded-2xl p-6 mb-6">
+                                <p class="text-lg font-semibold mb-2">
+                                    Este documento certifica que você possui
+                                </p>
+                                <p class="text-2xl font-black text-yellow-300 mb-2">
+                                    ACESSO EXCLUSIVO
+                                </p>
+                                <p class="text-lg font-semibold">
+                                    ao E-book "Mente Calma" - Edição Limitada
+                                </p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--
+            <div class="mb-8">
+                <div class="bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-4 rounded-2xl text-xl font-bold shadow-2xl border-2 border-white border-opacity-30 inline-block">
+                    <div class="flex items-center justify-center space-x-3">
+                        <i class="fas fa-users text-yellow-300 text-2xl"></i>
+                        <span>Restam apenas <span id="remainingCopies" class="text-yellow-300 font-black text-2xl">47</span> cópias disponíveis</span>
+                        <i class="fas fa-exclamation-triangle text-yellow-300 text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+-->
+           
+
+            <div class="mb-16"> <p class="text-white opacity-90 text-base sm:text-lg font-medium max-w-xl mx-auto px-4">
+                    🎁 Este material é completamente gratuito para os 200 primeiras pessoas do grupo!
+                </p>
+            </div>
+           
+<!---
+            <div class="bg-gradient-to-r from-black/40 via-black/60 to-black/40 backdrop-blur-lg rounded-3xl p-8 text-white max-w-4xl mx-auto border-2 border-yellow-400 border-opacity-30 shadow-2xl">
+                <h3 class="text-2xl font-black mb-8 text-center text-yellow-300">
+                    💎 SEU PACOTE VIP EXCLUSIVO INCLUI:
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-base mb-8">
+                    <div class="flex items-center space-x-4 bg-gradient-to-r from-yellow-400/10 to-yellow-600/10 p-4 rounded-xl border border-yellow-400 border-opacity-30">
+                        <div class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <i class="fas fa-book-open text-black text-lg font-bold"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-yellow-300">E-book Exclusivo VIP</p>
+                            <p class="text-sm opacity-90">67 páginas com conteúdo inédito</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 bg-gradient-to-r from-yellow-400/10 to-yellow-600/10 p-4 rounded-xl border border-yellow-400 border-opacity-30">
+                        <div class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <i class="fas fa-magic text-black text-lg font-bold"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-yellow-300">5 Técnicas Secretas</p>
+                            <p class="text-sm opacity-90">Métodos avançados exclusivos</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 bg-gradient-to-r from-yellow-400/10 to-yellow-600/10 p-4 rounded-xl border border-yellow-400 border-opacity-30">
+                        <div class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <i class="fas fa-headset text-black text-lg font-bold"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-yellow-300">Suporte VIP Direto</p>
+                            <p class="text-sm opacity-90">Atendimento prioritário 24h</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 bg-gradient-to-r from-yellow-400/10 to-yellow-600/10 p-4 rounded-xl border border-yellow-400 border-opacity-30">
+                        <div class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+                            <i class="fas fa-users-crown text-black text-lg font-bold"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-yellow-300">Grupo Elite Privado</p>
+                            <p class="text-sm opacity-90">Apenas para os 200 selecionados</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-6 bg-gradient-to-r from-red-500/20 to-red-600/20 rounded-2xl border-2 border-red-400 border-opacity-50 shadow-xl">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🚨</div>
+                        <p class="text-red-200 font-bold text-lg mb-2">
+                            ATENÇÃO: ACESSO ÚNICO E INTRANSFERÍVEL
+                        </p>
+                        <p class="text-white opacity-90 text-sm">
+                            Este material nunca será disponibilizado publicamente.<br>
+                            Após as 200 cópias, o acesso será permanentemente bloqueado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        -->
+        </div>
+    </div>
+
+    <div id="vipModal" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50 p-4">
+        <div class="bg-gradient-to-br from-gray-900 to-black rounded-3xl p-8 max-w-lg w-full text-center shadow-2xl border-2 border-yellow-400">
+            <div class="text-6xl mb-4">🎉</div>
+            <h3 class="text-3xl font-bold text-yellow-300 mb-4">
+                ACESSO VIP CONFIRMADO!
+            </h3>
+            <p class="text-white mb-6">
+                Parabéns! Seu material exclusivo foi enviado para 
+                <strong id="confirmedVipEmail" class="text-yellow-300"></strong>
+            </p>
+            
+            <div class="bg-yellow-400/10 border border-yellow-400 border-opacity-50 rounded-2xl p-6 mb-6">
+                <h4 class="text-yellow-300 font-bold mb-3">
+                    🏆 Você agora tem acesso a:
+                </h4>
+                <ul class="text-white text-sm text-left space-y-2">
+                    <li>✅ E-book "Mente Calma" - Edição VIP (67 páginas)</li>
+                    <li>✅ 5 Técnicas Secretas Exclusivas</li>
+                    <li>✅ Grupo Elite Privado no WhatsApp</li>
+                    <li>✅ Suporte VIP Prioritário 24h</li>
+                    <li>✅ Certificado de Membro Elite</li>
+                </ul>
+            </div>
+
+            <a 
+                href="https://wa.me/5511999999999?text=Olá! Sou um dos 200 selecionados VIP e quero acessar o Grupo Elite!" 
+                target="_blank"
+                class="inline-flex items-center justify-center bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 px-6 rounded-2xl mb-6 transition-all duration-300 w-full shadow-lg"
+            >
+                <i class="fab fa-whatsapp mr-3 text-2xl"></i>
+                ACESSAR GRUPO ELITE AGORA
+            </a>
+            
+            <button 
+                onclick="closeVipModal()" 
+                class="text-yellow-300 hover:text-yellow-400 transition-colors text-sm font-medium block w-full py-2"
+            >
+                Fechar
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Timer countdown (15 minutes)
+        let timeLeft = 15 * 60; // 15 minutes in seconds
+        
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft > 0) {
+                timeLeft--;
+            } else {
+                // Timer expired - could redirect or show message
+                document.getElementById('timer').textContent = "EXPIRADO";
+                document.getElementById('timer').style.color = "#ff4757";
+            }
+        }
+        
+        // Update timer every second
+        setInterval(updateTimer, 1000);
+        updateTimer(); // Initial call
+
+        // Remaining copies counter
+        let remainingCopies = 47; // Example value, adjust as needed
+        
+        function updateCopiesCounter() {
+            // Simulate random decrease, but stop if below a certain threshold
+            if (remainingCopies > 20) {
+                remainingCopies -= Math.floor(Math.random() * 2) + 1; // Decrease by 1 or 2
+                if (remainingCopies < 20) remainingCopies = 20; // Don't go too low
+                document.getElementById('remainingCopies').textContent = remainingCopies;
+            }
+        }
+        
+        // Update copies counter every 8-15 seconds
+        setInterval(updateCopiesCounter, Math.random() * 7000 + 8000);
+
+        // Set copy number and expiry date
+        document.getElementById('copyNumber').textContent = Math.floor(Math.random() * 47) + 153; // Random from 153 to 199
+        
+        const expiryDate = new Date();
+        expiryDate.setMinutes(expiryDate.getMinutes() + 15);
+        document.getElementById('expiryDate').textContent = expiryDate.toLocaleTimeString('pt-BR', {
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+
+        // VIP form submission
+        document.getElementById('vipForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('vipEmail').value;
+            
+            if (email) {
+                // Log the VIP email capture
+                console.log('VIP Email captured:', email);
+                
+                // Update remaining copies
+                if (remainingCopies > 0) {
+                    remainingCopies--;
+                    document.getElementById('remainingCopies').textContent = remainingCopies;
+                }
+                
+                // Show email in confirmation modal
+                document.getElementById('confirmedVipEmail').textContent = email;
+                
+                // Show success modal
+                document.getElementById('vipModal').classList.remove('hidden');
+                document.getElementById('vipModal').classList.add('flex');
+                
+                // Reset form
+                this.reset();
+            }
+        });
+
+        function closeVipModal() {
+            document.getElementById('vipModal').classList.add('hidden');
+            document.getElementById('vipModal').classList.remove('flex');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('vipModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVipModal();
+            }
+        });
+
+        // Create floating sparkles dynamically
+        function createSparkle() {
+            const sparkles = ['✨', '💎', '⭐', '🌟'];
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.fontSize = Math.random() * 10 + 15 + 'px';
+            sparkle.style.animationDuration = Math.random() * 2 + 3 + 's';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            
+            document.querySelector('.floating-sparkles').appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 5000);
+        }
+
+        // Create sparkles periodically
+        setInterval(createSparkle, 1000);
+
+        // Page load animation
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 1s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
