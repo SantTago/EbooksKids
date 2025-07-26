@@ -1,0 +1,1227 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Módulo 0: Boas-Vindas - Guia Coração Valente Anti-Ansiedade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 25%, #7c3aed 50%, #c026d3 75%, #ec4899 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .magnata-gradient {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 25%, #d97706 50%, #b45309 75%, #92400e 100%);
+        }
+        
+        .courage-gradient-1 {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        }
+        
+        .courage-gradient-2 {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        }
+        
+        .courage-gradient-3 {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        }
+        
+        .courage-gradient-4 {
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+        }
+        
+        .floating-crown {
+            animation: floatingCrown 6s ease-in-out infinite;
+        }
+        
+        @keyframes floatingCrown {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            25% { transform: translateY(-8px) rotate(2deg) scale(1.05); }
+            50% { transform: translateY(-4px) rotate(-1deg) scale(0.98); }
+            75% { transform: translateY(-12px) rotate(1deg) scale(1.02); }
+        }
+        
+        .heart-pulse {
+            animation: heartPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes heartPulse {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% { 
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+        
+        .magnata-glow {
+            animation: magnataGlow 4s ease-in-out infinite;
+        }
+        
+        @keyframes magnataGlow {
+            0%, 100% { 
+                box-shadow: 0 0 30px rgba(251, 191, 36, 0.4);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 50px rgba(251, 191, 36, 0.7);
+                transform: scale(1.02);
+            }
+        }
+        
+        .guide-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .guide-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s;
+        }
+        
+        .guide-card:hover::before {
+            left: 100%;
+        }
+        
+        .guide-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .guide-card.active {
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(251, 191, 36, 0.3);
+            border: 3px solid #fbbf24;
+        }
+        
+        .content-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .content-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 2px;
+            background: linear-gradient(145deg, #fbbf24, #f59e0b, #d97706);
+            border-radius: inherit;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .content-card:hover::before {
+            opacity: 1;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(251, 191, 36, 0.2);
+        }
+        
+        .progress-orb {
+            background: linear-gradient(145deg, #fbbf24 0%, #f59e0b 100%);
+            box-shadow: 0 8px 32px rgba(251, 191, 36, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .progress-orb.active {
+            animation: orbPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes orbPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 8px 32px rgba(251, 191, 36, 0.3);
+            }
+            50% { 
+                transform: scale(1.1);
+                box-shadow: 0 12px 48px rgba(251, 191, 36, 0.5);
+            }
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+        }
+        
+        .sparkle {
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.4; transform: scale(0.8) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+        }
+        
+        .mobile-btn {
+            min-height: 60px;
+            font-weight: 700;
+            font-size: 16px;
+            padding: 16px 24px;
+            transition: all 0.3s ease;
+            touch-action: manipulation;
+        }
+        
+        .mobile-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .popup-overlay {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+        }
+        
+        .popup-content {
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: popupSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes popupSlideIn {
+            0% { transform: scale(0.9) translateY(20px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        
+        .anxiety-indicator {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 4px solid #ef4444;
+        }
+        
+        .solution-indicator {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            border-left: 4px solid #22c55e;
+        }
+        
+        .tip-indicator {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .magnata-quote {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .magnata-quote::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="30" r="1.5" fill="white" opacity="0.15"/><circle cx="60" cy="70" r="1" fill="white" opacity="0.2"/><circle cx="30" cy="80" r="2.5" fill="white" opacity="0.1"/></svg>');
+            animation: twinkle 4s ease-in-out infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        .checklist-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .checklist-item:hover {
+            transform: translateX(5px);
+            background: rgba(251, 191, 36, 0.1);
+        }
+        
+        .checklist-item.completed {
+            background: rgba(34, 197, 94, 0.1);
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+        
+        .wave-animation {
+            animation: wave 2s ease-in-out infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen">
+    <!-- Hero Header -->
+    <header class="hero-gradient text-white py-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-10 left-10 text-6xl floating-crown">👑</div>
+            <div class="absolute top-20 right-20 text-5xl sparkle">✨</div>
+            <div class="absolute bottom-10 left-1/4 text-7xl heart-pulse">❤️</div>
+            <div class="absolute bottom-20 right-10 text-4xl sparkle">🌟</div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-8xl opacity-10 floating-crown">🛡️</div>
+        </div>
+        
+        <div class="container mx-auto px-3 sm:px-6 relative z-10">
+            <div class="text-center">
+                <div class="text-9xl mb-8 floating-crown">👑</div>
+                <h1 class="text-2xl sm:text-3xl md:text-6xl font-black mb-6 neon-text leading-tight">BEM-VINDOS, PAPAIS E MAMÃES CORUJAS!</h1>
+                <p class="text-lg sm:text-xl md:text-3xl mb-4 font-bold">Guia Coração Valente Anti-Ansiedade</p>
+                <p class="text-sm sm:text-base md:text-xl mb-8 opacity-90 px-2">Módulo 0: Fundamentos para Transformar a Vida Emocional do seu Filho</p>
+                
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mt-8 px-2">
+                    <div class="glass-effect px-3 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-semibold">
+                        <span class="mr-1 sm:mr-2">🛡️</span> Coração Valente
+                    </div>
+                    <div class="glass-effect px-3 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-semibold">
+                        <span class="mr-1 sm:mr-2">🦉</span> Papais e Mamães Corujas
+                    </div>
+                    <div class="glass-effect px-3 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-semibold">
+                        <span class="mr-1 sm:mr-2">❤️</span> Anti-Ansiedade
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Welcome Message from Magnata -->
+    <section class="py-16">
+        <div class="container mx-auto px-3 sm:px-6">
+            <div class="magnata-quote rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-8 lg:p-12 mb-12 relative">
+                <div class="absolute top-0 right-0 text-8xl opacity-10 floating-crown">👑</div>
+                
+                <div class="text-center mb-8 relative z-10">
+                    <div class="text-8xl mb-6 magnata-glow">👑</div>
+                    <h2 class="text-xl sm:text-3xl lg:text-4xl font-black mb-6">Mensagem da Coruja Sábia</h2>
+                </div>
+                
+                <div class="glass-effect rounded-xl sm:rounded-2xl p-4 sm:p-8 relative z-10">
+                    <div class="text-sm sm:text-lg lg:text-xl leading-relaxed space-y-4 sm:space-y-6">
+                        <p class="font-semibold">
+                            "É com imensa alegria e gratidão que a <span class="text-yellow-300 font-black">Kidsbaby.shop</span> 
+                            dá as boas-vindas a você, papai ou mamãe coruja, que decidiu investir no bem mais precioso: 
+                            <span class="text-yellow-300 font-black">a vida emocional do seu filho</span>."
+                        </p>
+                        
+                        <p>
+                            "Eu, o <span class="text-yellow-300 font-black">Coruja Sábia</span>, estou aqui para guiá-los nesta jornada. 
+                            Sei que a vida moderna nos impõe desafios, e a educação emocional de nossos filhos é, 
+                            sem dúvida, um dos maiores e mais gratificantes."
+                        </p>
+                        
+                        <p>
+                            "Acredite, você está prestes a descobrir um universo de possibilidades para fortalecer 
+                            a conexão com seu filho e prepará-lo para lidar com os altos e baixos da vida com 
+                            <span class="text-yellow-300 font-black">resiliência e autoconfiança</span>."
+                        </p>
+                        
+                        <div class="bg-white/20 backdrop-blur-sm rounded-lg sm:rounded-xl p-4 sm:p-6 mt-6 sm:mt-8">
+                            <h3 class="text-lg sm:text-2xl font-black text-yellow-300 mb-3 sm:mb-4 text-center">🎯 NOSSO PROPÓSITO</h3>
+                            <p class="text-center text-sm sm:text-lg font-semibold">
+                                Transformar a vida emocional do seu filho, tornando-o um 
+                                <span class="text-yellow-300 font-black">"Coração Valente"</span> 
+                                capaz de navegar por suas emoções com sabedoria e coragem.
+                            </p>
+                        </div>
+                        
+                        <p class="text-center text-sm sm:text-xl font-bold mt-6 sm:mt-8">
+                            "Prepare-se para uma experiência que irá redefinir a dinâmica familiar 
+                            e criar laços ainda mais profundos."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Understanding Child Anxiety -->
+    <section class="py-8">
+        <div class="container mx-auto px-3 sm:px-4">
+            <div class="bg-white rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-6">
+                <h3 class="text-lg sm:text-2xl lg:text-3xl font-black text-center text-gray-800 mb-3 leading-tight">
+                    🧠 Entendendo a Ansiedade Infantil
+                </h3>
+                <p class="text-center text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base px-2">Conhecimento é o primeiro passo para a transformação</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
+                    <div class="guide-card courage-gradient-1 rounded-lg sm:rounded-xl p-4 sm:p-6 border-4 border-transparent" data-guide="sinais">
+                        <div class="text-center">
+                            <div class="text-4xl sm:text-6xl mb-2 sm:mb-3 wave-animation">🚨</div>
+                            <h4 class="text-sm sm:text-lg font-bold text-blue-800">SINAIS DE ALERTA</h4>
+                            <p class="text-blue-600 mt-1 sm:mt-2 text-xs sm:text-sm">Como identificar ansiedade no seu filho</p>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-card courage-gradient-2 rounded-lg sm:rounded-xl p-4 sm:p-6 border-4 border-transparent" data-guide="causas">
+                        <div class="text-center">
+                            <div class="text-4xl sm:text-6xl mb-2 sm:mb-3 sparkle">🔍</div>
+                            <h4 class="text-sm sm:text-lg font-bold text-yellow-800">PRINCIPAIS CAUSAS</h4>
+                            <p class="text-yellow-600 mt-1 sm:mt-2 text-xs sm:text-sm">O que pode estar gerando ansiedade</p>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-card courage-gradient-3 rounded-lg sm:rounded-xl p-4 sm:p-6 border-4 border-transparent" data-guide="impactos">
+                        <div class="text-center">
+                            <div class="text-4xl sm:text-6xl mb-2 sm:mb-3 heart-pulse">💔</div>
+                            <h4 class="text-sm sm:text-lg font-bold text-green-800">IMPACTOS NA VIDA</h4>
+                            <p class="text-green-600 mt-1 sm:mt-2 text-xs sm:text-sm">Como a ansiedade afeta o desenvolvimento</p>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-card courage-gradient-4 rounded-lg sm:rounded-xl p-4 sm:p-6 border-4 border-transparent" data-guide="solucoes">
+                        <div class="text-center">
+                            <div class="text-4xl sm:text-6xl mb-2 sm:mb-3 magnata-glow">🛡️</div>
+                            <h4 class="text-sm sm:text-lg font-bold text-pink-800">SOLUÇÕES PRÁTICAS</h4>
+                            <p class="text-pink-600 mt-1 sm:mt-2 text-xs sm:text-sm">Estratégias eficazes para ajudar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guide Details Popup -->
+    <div id="guide-popup" class="fixed inset-0 popup-overlay hidden items-center justify-center z-50">
+        <div class="popup-content bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 max-w-2xl w-full mx-3 sm:mx-4 shadow-2xl">
+            <div class="text-center">
+                <button onclick="closeGuidePopup()" class="float-right text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
+                <div id="guide-emoji" class="text-8xl mb-4"></div>
+                <h4 id="guide-name" class="text-2xl font-bold mb-4 text-gray-800"></h4>
+                <div id="guide-content" class="text-left space-y-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Practical Content Guide -->
+    <section class="py-8">
+        <div class="container mx-auto px-4">
+            <h3 class="text-lg sm:text-2xl lg:text-3xl font-black text-center text-gray-800 mb-6 sm:mb-8 leading-tight px-2">
+                📚 Guia Prático para Papais e Mamães Corujas
+            </h3>
+            
+            <div class="space-y-8">
+                <!-- Daily Routine Guide -->
+                <div class="content-card rounded-2xl shadow-2xl p-8 relative overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+                    <div class="absolute top-0 right-0 text-9xl opacity-5 floating-crown">🦉</div>
+                    <div class="absolute bottom-0 left-0 text-8xl opacity-5 sparkle">✨</div>
+                    
+                    <div class="relative z-10">
+                        <div class="text-center mb-8">
+                            <div class="text-8xl mb-4 floating-crown">📅</div>
+                            <h4 class="text-2xl font-bold text-gray-800 mb-3">Rotina Anti-Ansiedade Diária</h4>
+                            <p class="text-gray-600 mb-6">Estruture o dia do seu filho para reduzir ansiedade</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                            <!-- Morning Routine -->
+                            <div class="bg-gradient-to-br from-blue-100 to-blue-200 p-6 rounded-2xl shadow-lg">
+                                <div class="text-center mb-4">
+                                    <div class="text-5xl mb-2">🌅</div>
+                                    <h5 class="font-bold text-blue-800 text-lg">ROTINA MATINAL</h5>
+                                    <p class="text-blue-600 text-sm">(7h-9h)</p>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="checklist-item bg-white/50 p-3 rounded-xl border-2 border-blue-200 hover:border-blue-400 transition-all" onclick="toggleCheck(this)">
+                                        <span class="mr-3 text-lg">☐</span> 
+                                        <span class="text-sm font-medium">Acordar no mesmo horário todos os dias</span>
+                                    </div>
+                                    <div class="checklist-item bg-white/50 p-3 rounded-xl border-2 border-blue-200 hover:border-blue-400 transition-all" onclick="toggleCheck(this)">
+                                        <span class="mr-3 text-lg">☐</span> 
+                                        <span class="text-sm font-medium">5 minutos de respiração profunda juntos</span>
+                                    </div>
+                                    <div class="checklist-item bg-white/50 p-3 rounded-xl border-2 border-blue-200 hover:border-blue-400 transition-all" onclick="toggleCheck(this)">
+                                        <span class="mr-3 text-lg">☐</span> 
+                                        <span class="text-sm font-medium">Café da manhã sem pressa, conversando</span>
+                                    </div>
+                                    <div class="checklist-item bg-white/50 p-3 rounded-xl border-2 border-blue-200 hover:border-blue-400 transition-all" onclick="toggleCheck(this)">
+                                        <span class="mr-3 text-lg">☐</span> 
+                                        <span class="text-sm font-medium">Revisar o que vai acontecer no dia</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Daytime Routine -->
+                            <div class="bg-gradient-to-br from-yellow-100 to-orange-200 p-6 rounded-2xl shadow-lg">
+                                <div class="text-center mb-4">
+                                    <div class="text-5xl mb-2">🌞</div>
+                                    <h5 class="font-bold text-orange-800 text-lg">DURANTE O DIA</h5>
+                                    <p class="text-orange-600 text-sm">(9h-18h)</p>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="checklist-item bg-white/50 p-3 rounded-xl border-2 border-orange-200 hover:border-orange-400 transition-all" onclick="toggleCheck(this)">
+                                        <span class="mr-3 text-lg">☐</span> 
+                                        <span class="text-sm font-medium">Check-ins emocionais a cada 2 horas</span>
+                                    </div>
+                                    <div class="checklist-item bg-white/50 p-3 rounded-xl border-2 border-orange-200 hover:border-orange-400 transition-all" onclick="toggleCheck(this)">
+                                        <span class="mr-3 text-lg">☐</span> 
+                                        <span class="text-sm font-medium">Pausas para respiração quando necessário</span>
+                                    </div>
+                                    <div class="checklist-item bg-white/50 p-3 rounded-xl border-2 border-orange-200 hover:border-orange-400 transition-all" onclick="toggleCheck(this)">
+                                        <span class="mr-3 text-lg">☐</span> 
+                                        <span class="text-sm font-medium">Atividade física leve (caminhada, dança)</span>
+                                    </div>
+                                    <div class="checklist-item bg-white/50 p-3 rounded-xl border-2 border-orange-200 hover:border-orange-400 transition-all" onclick="toggleCheck(this)">
+                                        <span class="mr-3 text-lg">☐</span> 
+                                        <span class="text-sm font-medium">Momentos de brincadeira livre</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Evening Routine -->
+                            <div class="bg-gradient-to-br from-purple-100 to-indigo-200 p-6 rounded-2xl shadow-lg">
+                                <div class="text-center mb-4">
+                                    <div class="text-5xl mb-2">🌙</div>
+                                    <h5 class="font-bold text-indigo-800 text-lg">ROTINA NOTURNA</h5>
+                                    <p class="text-indigo-600 text-sm">(19h-21h)</p>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="checklist-item bg-white/50 p-3 rounded-xl border-2 border-indigo-200 hover:border-indigo-400 transition-all" onclick="toggleCheck(this)">
+                                        <span class="mr-3 text-lg">☐</span> 
+                                        <span class="text-sm font-medium">Jantar em família, sem telas</span>
+                                    </div>
+                                    <div class="checklist-item bg-white/50 p-3 rounded-xl border-2 border-indigo-200 hover:border-indigo-400 transition-all" onclick="toggleCheck(this)">
+                                        <span class="mr-3 text-lg">☐</span> 
+                                        <span class="text-sm font-medium">Conversa sobre o dia: 3 coisas boas</span>
+                                    </div>
+                                    <div class="checklist-item bg-white/50 p-3 rounded-xl border-2 border-indigo-200 hover:border-indigo-400 transition-all" onclick="toggleCheck(this)">
+                                        <span class="mr-3 text-lg">☐</span> 
+                                        <span class="text-sm font-medium">Banho relaxante com música suave</span>
+                                    </div>
+                                    <div class="checklist-item bg-white/50 p-3 rounded-xl border-2 border-indigo-200 hover:border-indigo-400 transition-all" onclick="toggleCheck(this)">
+                                        <span class="mr-3 text-lg">☐</span> 
+                                        <span class="text-sm font-medium">História ou meditação antes de dormir</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Communication Guide -->
+                <div class="content-card rounded-2xl shadow-2xl p-8 relative overflow-hidden bg-gradient-to-br from-green-50 via-teal-50 to-cyan-50">
+                    <div class="absolute top-0 right-0 text-9xl opacity-5 heart-pulse">💬</div>
+                    <div class="absolute bottom-0 left-0 text-8xl opacity-5 sparkle">🦉</div>
+                    
+                    <div class="relative z-10">
+                        <div class="text-center mb-8">
+                            <div class="text-8xl mb-4 heart-pulse">💬</div>
+                            <h4 class="text-2xl font-bold text-gray-800 mb-3">Como Conversar sobre Ansiedade</h4>
+                            <p class="text-gray-600 mb-6">Frases que ajudam vs. frases que prejudicam</p>
+                        </div>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                                <div class="solution-indicator p-4 rounded-xl">
+                                    <h5 class="font-bold text-green-800 mb-3 text-sm">✅ FRASES QUE AJUDAM:</h5>
+                                    <div class="space-y-2 text-xs text-green-700">
+                                        <p>"Eu entendo que você está se sentindo assim"</p>
+                                        <p>"Vamos respirar juntos para se acalmar"</p>
+                                        <p>"É normal sentir medo às vezes"</p>
+                                        <p>"Você é corajoso e vai conseguir"</p>
+                                        <p>"Estou aqui para te ajudar sempre"</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="anxiety-indicator p-4 rounded-xl">
+                                    <h5 class="font-bold text-red-800 mb-3 text-sm">❌ EVITE DIZER:</h5>
+                                    <div class="space-y-2 text-xs text-red-700">
+                                        <p>"Não é nada demais"</p>
+                                        <p>"Você está exagerando"</p>
+                                        <p>"Pare de ser dramático"</p>
+                                        <p>"Não tem motivo para ter medo"</p>
+                                        <p>"Você precisa ser mais forte"</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tip-indicator p-4 rounded-xl mt-4">
+                                <h5 class="font-bold text-yellow-800 mb-3 text-sm">🦉 DICA DA CORUJA SÁBIA:</h5>
+                                <p class="text-xs text-yellow-700">
+                                    "Validar os sentimentos da criança é o primeiro passo para ajudá-la. 
+                                    Quando ela se sente compreendida, fica mais aberta para receber ajuda e aprender estratégias de enfrentamento."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emergency Strategies -->
+                <div class="content-card rounded-2xl shadow-2xl p-8 relative overflow-hidden bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50">
+                    <div class="absolute top-0 right-0 text-9xl opacity-5 magnata-glow">🚨</div>
+                    <div class="absolute bottom-0 left-0 text-8xl opacity-5 floating-crown">🦉</div>
+                    
+                    <div class="relative z-10">
+                        <div class="text-center mb-8">
+                            <div class="text-8xl mb-4 magnata-glow">🚨</div>
+                            <h4 class="text-2xl font-bold text-gray-800 mb-3">Kit de Emergência Anti-Ansiedade</h4>
+                            <p class="text-gray-600 mb-6">Estratégias rápidas para momentos de crise</p>
+                        </div>
+                            
+                            <div class="bg-gradient-to-r from-red-50 to-orange-50 p-4 rounded-xl">
+                                <h5 class="font-bold text-red-800 mb-3 text-sm">🆘 QUANDO A ANSIEDADE ATACA:</h5>
+                                
+                                <div class="space-y-4">
+                                    <div class="bg-white p-3 rounded-lg">
+                                        <h6 class="font-bold text-red-700 text-xs mb-2">1️⃣ TÉCNICA 5-4-3-2-1:</h6>
+                                        <div class="text-xs text-red-600 space-y-1">
+                                            <p>• 5 coisas que pode VER</p>
+                                            <p>• 4 coisas que pode TOCAR</p>
+                                            <p>• 3 coisas que pode OUVIR</p>
+                                            <p>• 2 coisas que pode CHEIRAR</p>
+                                            <p>• 1 coisa que pode SABOREAR</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-white p-3 rounded-lg">
+                                        <h6 class="font-bold text-orange-700 text-xs mb-2">2️⃣ RESPIRAÇÃO DE EMERGÊNCIA:</h6>
+                                        <div class="text-xs text-orange-600 space-y-1">
+                                            <p>• Inspire por 4 segundos</p>
+                                            <p>• Segure por 4 segundos</p>
+                                            <p>• Expire por 6 segundos</p>
+                                            <p>• Repita até se acalmar</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-white p-3 rounded-lg">
+                                        <h6 class="font-bold text-yellow-700 text-xs mb-2">3️⃣ ABRAÇO TERAPÊUTICO:</h6>
+                                        <p class="text-xs text-yellow-600">
+                                            Abrace seu filho firmemente por 20 segundos. O contato físico libera oxitocina, 
+                                            hormônio que reduz cortisol (estresse) e promove calma.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brave Heart Journey Progress -->
+    <section class="py-8 sm:py-12">
+        <div class="container mx-auto px-3 sm:px-4">
+            <div class="bg-gradient-to-br from-white via-yellow-50 to-orange-50 rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-8 relative overflow-hidden">
+                <!-- Background decorations -->
+                <div class="absolute top-0 right-0 text-6xl sm:text-9xl opacity-5 floating-crown">🏆</div>
+                <div class="absolute bottom-0 left-0 text-5xl sm:text-8xl opacity-5 sparkle">✨</div>
+                
+                <div class="relative z-10">
+                    <div class="text-center mb-6 sm:mb-12">
+                        <div class="text-6xl sm:text-7xl mb-4 heart-pulse">❤️</div>
+                        <h3 class="text-xl sm:text-2xl lg:text-3xl font-black text-gray-800 mb-3 leading-tight px-2">Jornada Coração Valente</h3>
+                        <p class="text-gray-600 text-sm sm:text-base px-4">Transformando ansiedade em coragem, passo a passo</p>
+                    </div>
+                    
+                    <!-- Progress Path - Mobile Optimized -->
+                    <div class="relative mb-6 sm:mb-12">
+                        <!-- Progress Line - Responsive -->
+                        <div class="absolute top-6 sm:top-8 left-4 right-4 sm:left-0 sm:right-0 h-1 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded-full"></div>
+                        <div class="absolute top-6 sm:top-8 left-4 sm:left-0 h-1 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full transition-all duration-1000" style="width: 20%;"></div>
+                        
+                        <!-- Progress Steps - Mobile Optimized -->
+                        <div class="flex justify-between items-center relative z-10 px-1 sm:px-2">
+                            <!-- Step 0 - Active -->
+                            <div class="text-center flex-1 mx-1">
+                                <div class="progress-orb active w-10 h-10 sm:w-16 sm:h-16 rounded-full flex items-center justify-center text-white font-black text-sm mb-1 sm:mb-3 shadow-lg mx-auto">
+                                    <span class="text-lg sm:text-2xl">👑</span>
+                                </div>
+                                <div class="bg-white rounded-md p-1 shadow-md mx-auto" style="max-width: 50px;">
+                                    <span class="text-xs text-yellow-600 font-bold block leading-tight">M0</span>
+                                    <span class="text-xs text-gray-600 leading-tight">Ativo</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 1 -->
+                            <div class="text-center flex-1 mx-1">
+                                <div class="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full flex items-center justify-center text-gray-500 font-black text-sm mb-1 sm:mb-3 shadow-md transition-all duration-300 hover:scale-105 mx-auto">
+                                    <span class="text-lg sm:text-2xl">🧠</span>
+                                </div>
+                                <div class="bg-white rounded-md p-1 shadow-md opacity-60 mx-auto" style="max-width: 50px;">
+                                    <span class="text-xs text-gray-500 font-bold block leading-tight">M1</span>
+                                    <span class="text-xs text-gray-400 leading-tight">Bloq</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="text-center flex-1 mx-1">
+                                <div class="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full flex items-center justify-center text-gray-500 font-black text-sm mb-1 sm:mb-3 shadow-md transition-all duration-300 hover:scale-105 mx-auto">
+                                    <span class="text-lg sm:text-2xl">⚡</span>
+                                </div>
+                                <div class="bg-white rounded-md p-1 shadow-md opacity-60 mx-auto" style="max-width: 50px;">
+                                    <span class="text-xs text-gray-500 font-bold block leading-tight">M2</span>
+                                    <span class="text-xs text-gray-400 leading-tight">Bloq</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="text-center flex-1 mx-1">
+                                <div class="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full flex items-center justify-center text-gray-500 font-black text-sm mb-1 sm:mb-3 shadow-md transition-all duration-300 hover:scale-105 mx-auto">
+                                    <span class="text-lg sm:text-2xl">🛡️</span>
+                                </div>
+                                <div class="bg-white rounded-md p-1 shadow-md opacity-60 mx-auto" style="max-width: 50px;">
+                                    <span class="text-xs text-gray-500 font-bold block leading-tight">M3</span>
+                                    <span class="text-xs text-gray-400 leading-tight">Bloq</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 4 -->
+                            <div class="text-center flex-1 mx-1">
+                                <div class="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full flex items-center justify-center text-gray-500 font-black text-sm mb-1 sm:mb-3 shadow-md transition-all duration-300 hover:scale-105 mx-auto">
+                                    <span class="text-lg sm:text-2xl">💪</span>
+                                </div>
+                                <div class="bg-white rounded-md p-1 shadow-md opacity-60 mx-auto" style="max-width: 50px;">
+                                    <span class="text-xs text-gray-500 font-bold block leading-tight">M4</span>
+                                    <span class="text-xs text-gray-400 leading-tight">Bloq</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Current Module Highlight - Mobile Optimized -->
+                    <div class="magnata-gradient rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center text-white shadow-xl">
+                        <div class="glass-effect rounded-lg sm:rounded-xl p-4 sm:p-6">
+                            <!-- Mobile: Stack vertically, Desktop: Side by side -->
+                            <div class="flex flex-col sm:flex-row items-center justify-center mb-4 space-y-2 sm:space-y-0 sm:space-x-4">
+                                <div class="text-5xl sm:text-6xl floating-crown">👑</div>
+                                <div class="text-center sm:text-left">
+                                    <h4 class="text-lg sm:text-xl font-bold">Fundamentos Ativados!</h4>
+                                    <p class="text-sm opacity-90">Módulo 0 - Base para Papais e Mamães Corujas</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white/20 backdrop-blur-sm rounded-lg p-3 sm:p-4 mb-4">
+                                <h5 class="font-bold mb-3 text-sm">🎯 Objetivos do Módulo:</h5>
+                                <!-- Mobile: 1 column, Tablet+: 2 columns -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 text-xs">
+                                    <div class="flex items-center justify-center sm:justify-start bg-white/10 rounded-lg p-2">
+                                        <span class="mr-2 text-base">🧠</span>
+                                        <span>Entender Ansiedade</span>
+                                    </div>
+                                    <div class="flex items-center justify-center sm:justify-start bg-white/10 rounded-lg p-2">
+                                        <span class="mr-2 text-base">💬</span>
+                                        <span>Comunicação Eficaz</span>
+                                    </div>
+                                    <div class="flex items-center justify-center sm:justify-start bg-white/10 rounded-lg p-2">
+                                        <span class="mr-2 text-base">📅</span>
+                                        <span>Rotina Anti-Ansiedade</span>
+                                    </div>
+                                    <div class="flex items-center justify-center sm:justify-start bg-white/10 rounded-lg p-2">
+                                        <span class="mr-2 text-base">🚨</span>
+                                        <span>Kit de Emergência</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p class="text-sm leading-relaxed opacity-95 px-2">
+                                Vocês estão construindo as <span class="font-bold">bases sólidas</span> para transformar 
+                                a vida emocional do seu filho! Cada estratégia aprendida é um tijolo na construção 
+                                do <span class="font-bold">Coração Valente</span>.
+                            </p>
+                            
+                            <!-- Mobile: Stack badges vertically -->
+                            <div class="mt-4 flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                                <div class="bg-white/20 px-3 py-2 rounded-full text-xs font-semibold">
+                                    <span class="mr-1">🦉</span> Nível: Papais e Mamães Corujas
+                                </div>
+                                <div class="bg-white/20 px-3 py-2 rounded-full text-xs font-semibold">
+                                    <span class="mr-1">🏆</span> XP: +100 Pontos
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Guide data with detailed information
+        const guides = {
+            'sinais': {
+                emoji: '🚨',
+                name: 'SINAIS DE ALERTA DA ANSIEDADE INFANTIL',
+                content: `
+                    <div class="space-y-6">
+                        <div class="anxiety-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-red-800 mb-3">🔴 SINAIS FÍSICOS:</h5>
+                            <div class="text-sm text-red-700 space-y-2">
+                                <p>• Dores de cabeça ou barriga frequentes sem causa médica</p>
+                                <p>• Dificuldade para dormir ou pesadelos constantes</p>
+                                <p>• Perda de apetite ou comer demais por ansiedade</p>
+                                <p>• Tensão muscular, ombros contraídos</p>
+                                <p>• Respiração acelerada ou superficial</p>
+                                <p>• Sudorese excessiva, especialmente nas mãos</p>
+                            </div>
+                        </div>
+                        
+                        <div class="anxiety-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-red-800 mb-3">🧠 SINAIS EMOCIONAIS:</h5>
+                            <div class="text-sm text-red-700 space-y-2">
+                                <p>• Medos excessivos ou irracionais</p>
+                                <p>• Preocupação constante com o futuro</p>
+                                <p>• Irritabilidade ou explosões de raiva</p>
+                                <p>• Choro frequente sem motivo aparente</p>
+                                <p>• Baixa autoestima, sentimentos de inadequação</p>
+                                <p>• Dificuldade para se concentrar</p>
+                            </div>
+                        </div>
+                        
+                        <div class="anxiety-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-red-800 mb-3">👥 SINAIS COMPORTAMENTAIS:</h5>
+                            <div class="text-sm text-red-700 space-y-2">
+                                <p>• Evitar situações sociais ou atividades</p>
+                                <p>• Buscar aprovação constante dos adultos</p>
+                                <p>• Comportamentos regressivos (voltar a fazer xixi na cama)</p>
+                                <p>• Dificuldade para se separar dos pais</p>
+                                <p>• Perfeccionismo excessivo</p>
+                                <p>• Procrastinação ou evitar responsabilidades</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-yellow-800 mb-3">💡 IMPORTANTE LEMBRAR:</h5>
+                            <p class="text-sm text-yellow-700">
+                                Nem todos os sinais precisam estar presentes. Se você observar 3 ou mais sinais 
+                                persistindo por mais de 2 semanas, é recomendável buscar orientação profissional 
+                                e começar a aplicar as estratégias deste guia.
+                            </p>
+                        </div>
+                    </div>
+                `
+            },
+            'causas': {
+                emoji: '🔍',
+                name: 'PRINCIPAIS CAUSAS DA ANSIEDADE INFANTIL',
+                content: `
+                    <div class="space-y-6">
+                        <div class="tip-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-yellow-800 mb-3">🏠 FATORES FAMILIARES:</h5>
+                            <div class="text-sm text-yellow-700 space-y-2">
+                                <p>• Pais ansiosos (ansiedade é "contagiosa")</p>
+                                <p>• Conflitos familiares constantes</p>
+                                <p>• Superproteção ou controle excessivo</p>
+                                <p>• Expectativas muito altas</p>
+                                <p>• Mudanças familiares (divórcio, mudança, novo bebê)</p>
+                                <p>• Falta de rotina ou estrutura</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-yellow-800 mb-3">🏫 FATORES ESCOLARES:</h5>
+                            <div class="text-sm text-yellow-700 space-y-2">
+                                <p>• Pressão acadêmica excessiva</p>
+                                <p>• Bullying ou dificuldades sociais</p>
+                                <p>• Mudança de escola</p>
+                                <p>• Professores muito rígidos</p>
+                                <p>• Dificuldades de aprendizagem não identificadas</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-yellow-800 mb-3">🌍 FATORES SOCIAIS:</h5>
+                            <div class="text-sm text-yellow-700 space-y-2">
+                                <p>• Exposição excessiva a notícias negativas</p>
+                                <p>• Uso excessivo de redes sociais/telas</p>
+                                <p>• Falta de tempo para brincar livremente</p>
+                                <p>• Agenda sobrecarregada de atividades</p>
+                                <p>• Isolamento social</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-yellow-800 mb-3">🧬 FATORES BIOLÓGICOS:</h5>
+                            <div class="text-sm text-yellow-700 space-y-2">
+                                <p>• Predisposição genética</p>
+                                <p>• Desequilíbrios hormonais</p>
+                                <p>• Problemas de sono</p>
+                                <p>• Alimentação inadequada</p>
+                                <p>• Falta de atividade física</p>
+                            </div>
+                        </div>
+                        
+                        <div class="solution-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-green-800 mb-3">✅ A BOA NOTÍCIA:</h5>
+                            <p class="text-sm text-green-700">
+                                A maioria dessas causas pode ser modificada! Com as estratégias certas, 
+                                você pode criar um ambiente que promove calma e segurança emocional 
+                                para seu filho.
+                            </p>
+                        </div>
+                    </div>
+                `
+            },
+            'impactos': {
+                emoji: '💔',
+                name: 'IMPACTOS DA ANSIEDADE NO DESENVOLVIMENTO',
+                content: `
+                    <div class="space-y-6">
+                        <div class="anxiety-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-red-800 mb-3">🧠 IMPACTOS COGNITIVOS:</h5>
+                            <div class="text-sm text-red-700 space-y-2">
+                                <p>• Dificuldade de concentração e memória</p>
+                                <p>• Pensamentos negativos repetitivos</p>
+                                <p>• Dificuldade para tomar decisões</p>
+                                <p>• Baixo rendimento escolar</p>
+                                <p>• Problemas de criatividade e imaginação</p>
+                            </div>
+                        </div>
+                        
+                        <div class="anxiety-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-red-800 mb-3">❤️ IMPACTOS EMOCIONAIS:</h5>
+                            <div class="text-sm text-red-700 space-y-2">
+                                <p>• Baixa autoestima e autoconfiança</p>
+                                <p>• Medo de tentar coisas novas</p>
+                                <p>• Dificuldade para regular emoções</p>
+                                <p>• Sentimentos de inadequação</p>
+                                <p>• Risco de depressão na adolescência</p>
+                            </div>
+                        </div>
+                        
+                        <div class="anxiety-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-red-800 mb-3">👥 IMPACTOS SOCIAIS:</h5>
+                            <div class="text-sm text-red-700 space-y-2">
+                                <p>• Isolamento e evitação social</p>
+                                <p>• Dificuldade para fazer amigos</p>
+                                <p>• Problemas de comunicação</p>
+                                <p>• Dependência excessiva dos pais</p>
+                                <p>• Dificuldade em atividades em grupo</p>
+                            </div>
+                        </div>
+                        
+                        <div class="anxiety-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-red-800 mb-3">🏃‍♂️ IMPACTOS FÍSICOS:</h5>
+                            <div class="text-sm text-red-700 space-y-2">
+                                <p>• Sistema imunológico enfraquecido</p>
+                                <p>• Problemas digestivos crônicos</p>
+                                <p>• Tensão muscular e dores</p>
+                                <p>• Distúrbios do sono</p>
+                                <p>• Fadiga constante</p>
+                            </div>
+                        </div>
+                        
+                        <div class="solution-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-green-800 mb-3">🌟 MAS HÁ ESPERANÇA:</h5>
+                            <p class="text-sm text-green-700">
+                                O cérebro infantil é extremamente plástico! Com intervenção adequada, 
+                                as crianças podem desenvolver resiliência, autoconfiança e habilidades 
+                                emocionais que as beneficiarão por toda a vida. Quanto mais cedo 
+                                começarmos, melhores os resultados!
+                            </p>
+                        </div>
+                    </div>
+                `
+            },
+            'solucoes': {
+                emoji: '🛡️',
+                name: 'SOLUÇÕES PRÁTICAS PARA PAIS MAGNATAS',
+                content: `
+                    <div class="space-y-6">
+                        <div class="solution-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-green-800 mb-3">🏠 AMBIENTE FAMILIAR TERAPÊUTICO:</h5>
+                            <div class="text-sm text-green-700 space-y-2">
+                                <p>• Crie rotinas previsíveis e reconfortantes</p>
+                                <p>• Estabeleça um "cantinho da calma" em casa</p>
+                                <p>• Pratique a escuta ativa e validação emocional</p>
+                                <p>• Modele comportamentos calmos</p>
+                                <p>• Limite exposição a estímulos estressantes</p>
+                            </div>
+                        </div>
+                        
+                        <div class="solution-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-green-800 mb-3">🧘‍♀️ TÉCNICAS DE AUTORREGULAÇÃO:</h5>
+                            <div class="text-sm text-green-700 space-y-2">
+                                <p>• Ensine respiração profunda e consciente</p>
+                                <p>• Pratique mindfulness adaptado para crianças</p>
+                                <p>• Use visualizações guiadas relaxantes</p>
+                                <p>• Implemente exercícios de relaxamento muscular</p>
+                                <p>• Crie rituais de transição entre atividades</p>
+                            </div>
+                        </div>
+                        
+                        <div class="solution-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-green-800 mb-3">💪 FORTALECIMENTO EMOCIONAL:</h5>
+                            <div class="text-sm text-green-700 space-y-2">
+                                <p>• Celebre pequenas conquistas diariamente</p>
+                                <p>• Ensine identificação e nomeação de emoções</p>
+                                <p>• Desenvolva um vocabulário emocional rico</p>
+                                <p>• Pratique resolução de problemas em conjunto</p>
+                                <p>• Incentive expressão através de arte/música</p>
+                            </div>
+                        </div>
+                        
+                        <div class="solution-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-green-800 mb-3">🎯 ESTRATÉGIAS ESPECÍFICAS:</h5>
+                            <div class="text-sm text-green-700 space-y-2">
+                                <p>• Use a técnica "E se...?" para enfrentar medos</p>
+                                <p>• Implemente o "diário de gratidão" familiar</p>
+                                <p>• Crie histórias onde a criança é o herói corajoso</p>
+                                <p>• Pratique exposição gradual a situações temidas</p>
+                                <p>• Estabeleça sinais secretos para pedir ajuda</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-indicator p-4 rounded-xl">
+                            <h5 class="font-bold text-yellow-800 mb-3">🦉 LEMBRE-SE, PAPAI/MAMÃE CORUJA:</h5>
+                            <p class="text-sm text-yellow-700">
+                                Você não precisa ser perfeito! O importante é estar presente, 
+                                ser consistente e mostrar que está aprendendo junto com seu filho. 
+                                Sua calma e confiança são contagiosas e fundamentais para o 
+                                desenvolvimento do "Coração Valente" do seu pequeno.
+                            </p>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        // Guide interactions with popup
+        document.querySelectorAll('.guide-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const guide = this.dataset.guide;
+                const guideData = guides[guide];
+                
+                // Show popup with guide details
+                document.getElementById('guide-emoji').textContent = guideData.emoji;
+                document.getElementById('guide-name').textContent = guideData.name;
+                document.getElementById('guide-content').innerHTML = guideData.content;
+                
+                document.getElementById('guide-popup').classList.remove('hidden');
+                document.getElementById('guide-popup').classList.add('flex');
+            });
+        });
+
+        function closeGuidePopup() {
+            document.getElementById('guide-popup').classList.add('hidden');
+            document.getElementById('guide-popup').classList.remove('flex');
+        }
+
+        // Close popup when clicking outside
+        document.getElementById('guide-popup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeGuidePopup();
+            }
+        });
+
+        // Checklist functionality
+        function toggleCheck(item) {
+            const checkbox = item.querySelector('span');
+            if (checkbox.textContent === '☐') {
+                checkbox.textContent = '✅';
+                item.classList.add('completed');
+            } else {
+                checkbox.textContent = '☐';
+                item.classList.remove('completed');
+            }
+        }
+
+        // Add floating animations with random delays
+        setInterval(() => {
+            const floatingElements = document.querySelectorAll('.floating-crown, .sparkle, .heart-pulse');
+            floatingElements.forEach(el => {
+                el.style.animationDelay = Math.random() * 6 + 's';
+            });
+        }, 8000);
+
+        // Add interactive hover effects to guide cards
+        document.querySelectorAll('.guide-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.classList.add('active');
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.classList.remove('active');
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'964f9cece5d0ba1a',t:'MTc1MzQ4Nzk4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+<!-------------------------------------------------------------->
+
+   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Press+Start+2P&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    /* Bloqueia a rolagem lateral e centraliza o conteúdo principal */
+    body {
+        overflow-x: hidden; /* Impede a rolagem horizontal */
+        margin: 0; /* Garante que não haja margem padrão no body */
+        padding: 0; /* Garante que não haja padding padrão no body */
+        display: flex; /* Habilita Flexbox no body */
+        flex-direction: column; /* Coloca os itens em coluna (topo para baixo) */
+        justify-content: center; /* Centraliza os itens verticalmente */
+        align-items: center; /* Centraliza os itens horizontalmente */
+        min-height: 100vh; /* Garante que o body ocupe no mínimo 100% da altura da viewport */
+        box-sizing: border-box; /* Inclui padding e borda na largura/altura total */
+    }
+
+    /* O restante do seu CSS para o container e botões permanece praticamente o mesmo */
+    .button-container {
+        display: flex;
+        flex-wrap: wrap; /* Permite que os botões quebrem a linha se necessário */
+        justify-content: center; /* Centraliza os botões horizontalmente */
+        align-items: center; /* Centraliza os botões verticalmente (se houver variação de altura) */
+        width: 100%; /* Ocupa toda a largura disponível */
+        padding: 20px; /* Pequeno padding geral para o container */
+        /* Removido: min-height: 100vh; - O body já está cuidando da altura mínima e centralização */
+        box-sizing: border-box; /* Inclui padding e borda na largura/altura total */
+    }
+
+    .button-link {
+        text-decoration: none;
+        display: block; /* Para o link ocupar seu próprio espaço */
+        flex: 0 0 auto;
+        min-width: 180px; /* Largura mínima para os botões ajustada */
+        max-width: 280px; /* Largura máxima para os botões ajustada */
+        margin: 15px; /* Define um espaçamento uniforme de 15px ao redor de cada botão */
+        box-sizing: border-box;
+    }
+
+    button {
+        width: 100%; /* O botão ocupa 100% da largura do seu link pai */
+        padding: 20px 30px; /* Botões mais robustos */
+        font-size: 2em; /* Texto bem grande nos botões */
+        cursor: pointer;
+        border: none;
+        border-radius: 40px; /* Bordas super arredondadas */
+        color: white;
+        transition: all 0.3s ease-in-out; /* Transição suave para todas as propriedades */
+        box-shadow: 0 12px 25px rgba(0,0,0,0.4); /* Sombra mais forte e com mais profundidade */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        letter-spacing: 1.5px; /* Aumenta o espaçamento entre as letras */
+        position: relative;
+        overflow: hidden;
+        text-transform: uppercase; /* Texto em maiúsculas */
+        font-family: 'Press Start 2P', cursive; /* Aplica uma das suas fontes de game */
+    }
+
+    button:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255,255,255,0.5); /* Efeito de brilho mais intenso */
+        transition: all 0.4s ease-in-out;
+        transform: skewX(-20deg);
+    }
+
+    button:hover:before {
+        left: 120%; /* Move o brilho para fora da tela */
+    }
+
+    button:hover {
+        transform: translateY(-12px) rotate(-4deg); /* Efeito de "pular" e leve rotação mais pronunciado */
+        box-shadow: 0 18px 30px rgba(0,0,0,0.5); /* Sombra maior no hover */
+    }
+
+    button:active { /* Efeito ao clicar */
+        transform: translateY(-5px) rotate(0deg);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    }
+
+    .back-button {
+        background: linear-gradient(45deg, #FFD700 0%, #FFA500 100%); /* Amarelo ouro para Laranja forte */
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Sombra para o texto */
+    }
+
+    .forward-button {
+        background: linear-gradient(45deg, #32CD32 0%, #228B22 100%); /* Verde limão para Verde floresta */
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Sombra para o texto */
+    }
+
+    .emoji {
+        margin-right: 15px; /* Mais espaço para o emoji */
+        font-size: 1.5em; /* Emoji um pouco maior */
+        filter: drop-shadow(3px 3px 4px rgba(0,0,0,0.4)); /* Sombra mais forte para o emoji */
+    }
+
+    /* Media Queries para Responsividade */
+    @media (max-width: 768px) {
+        .button-link {
+            margin: 10px; /* Reduz a margem em telas menores */
+        }
+        button {
+            padding: 18px 25px;
+            font-size: 1.8em;
+            border-radius: 35px;
+        }
+        .emoji {
+            margin-right: 10px;
+            font-size: 1.3em;
+        }
+    }
+
+    @media (max-width: 500px) { /* Para celulares menores */
+        .button-container {
+            flex-direction: column; /* Empilha os botões em telas muito pequenas */
+            padding: 20px; /* Aumenta o padding para melhor visualização */
+        }
+        .button-link {
+            width: 90%; /* Ocupa a maior parte da largura da tela */
+            max-width: 300px; /* Limita a largura máxima em celulares */
+            margin: 10px auto; /* Centraliza os links quando empilhados e mantém espaçamento vertical */
+        }
+        button {
+            padding: 15px 20px;
+            font-size: 1.5em;
+            border-radius: 30px;
+        }
+        .emoji {
+            margin-right: 8px;
+            font-size: 1.1em;
+        }
+    }
+
+</style>
+
+<div class="button-container">
+  
+
+    <a href="Modulo1.html" class="button-link">
+        <button class="forward-button">
+            Avançar <span class="emoji">⏩</span>
+        </button>
+    </a>
+</div>
+
+
+
+<!------------------------------------------------------->
+
+</html>
