@@ -4,1256 +4,1115 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Módulo 3: A Magia de Compartilhar e Brincar - Guia Coração Valente</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 3 - Compartilhando Tesouros Emocionais</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
         body {
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
         }
         
-        .hero-gradient {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 25%, #dc2626 50%, #7c3aed 75%, #3b82f6 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 8s ease infinite;
+        .gradient-bg {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 25%, #c084fc 50%, #e879f9 75%, #f0abfc 100%);
         }
         
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .card-hover {
+            transition: all 0.3s ease;
         }
         
-        .empathy-gradient {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 25%, #f59e0b 50%, #d97706 75%, #92400e 100%);
+        .card-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
         
-        .connection-gradient {
-            background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 25%, #8b5cf6 50%, #7c3aed 75%, #5b21b6 100%);
+        .floating-animation {
+            animation: float 3s ease-in-out infinite;
         }
         
-        .adventure-gradient {
-            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 25%, #34d399 50%, #059669 75%, #047857 100%);
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
         
-        .story-card {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
+        .heart-pulse {
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .empathy-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ec4899, #f97316);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
             position: relative;
             overflow: hidden;
         }
         
-        .story-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        .empathy-circle::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shine 3s ease-in-out infinite;
         }
         
-        .story-card.active {
-            transform: translateY(-12px) scale(1.05);
-            box-shadow: 0 25px 50px rgba(251, 191, 36, 0.3);
-            border: 3px solid #fbbf24;
+        @keyframes shine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
-        .floating-heart {
-            animation: floatingHeart 3s ease-in-out infinite;
+        .story-book {
+            width: 100px;
+            height: 120px;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            border-radius: 8px;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         
-        @keyframes floatingHeart {
-            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
-            25% { transform: translateY(-15px) rotate(10deg) scale(1.1); }
-            50% { transform: translateY(-8px) rotate(-5deg) scale(0.95); }
-            75% { transform: translateY(-20px) rotate(8deg) scale(1.05); }
+        .story-book::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: white;
+            border-radius: 4px;
         }
         
-        .floating-adventure {
-            animation: floatingAdventure 4s ease-in-out infinite;
+        .story-book::after {
+            content: '📖';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            z-index: 1;
         }
         
-        @keyframes floatingAdventure {
-            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.7; }
-            25% { transform: translateY(-10px) scale(1.1); opacity: 1; }
-            50% { transform: translateY(-15px) scale(0.9); opacity: 0.8; }
-            75% { transform: translateY(-5px) scale(1.05); opacity: 0.9; }
+        .magic-hug {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #f472b6, #ec4899);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            animation: hug-glow 2s ease-in-out infinite;
         }
         
-        .sharing-animation {
-            animation: sharing 4s ease-in-out infinite;
+        @keyframes hug-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(236, 72, 153, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(236, 72, 153, 0.8); }
         }
         
-        @keyframes sharing {
-            0%, 100% { 
-                transform: scale(1);
-                opacity: 0.8;
-            }
-            50% { 
-                transform: scale(1.3);
-                opacity: 1;
-            }
-        }
-        
-        .empathy-pulse {
-            animation: empathyPulse 3s ease-in-out infinite;
-        }
-        
-        @keyframes empathyPulse {
-            0%, 100% { 
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7);
-            }
-            50% { 
-                transform: scale(1.1);
-                box-shadow: 0 0 0 20px rgba(251, 191, 36, 0);
-            }
-        }
-        
-        .video-card {
+        .emotion-face {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto;
             transition: all 0.3s ease;
             cursor: pointer;
+        }
+        
+        .emotion-face:hover {
+            transform: scale(1.2);
+        }
+        
+        .happy { background: linear-gradient(45deg, #fbbf24, #f59e0b); }
+        .sad { background: linear-gradient(45deg, #3b82f6, #1d4ed8); }
+        .angry { background: linear-gradient(45deg, #ef4444, #dc2626); }
+        .scared { background: linear-gradient(45deg, #8b5cf6, #7c3aed); }
+        .surprised { background: linear-gradient(45deg, #10b981, #059669); }
+        
+        .section-full {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+        
+        .mobile-padding {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-padding {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+        
+        .interactive-story {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .interactive-story:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .bridge-animation {
             position: relative;
             overflow: hidden;
         }
         
-        .video-card::before {
+        .bridge-animation::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.6s;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: bridge-shine 3s ease-in-out infinite;
         }
         
-        .video-card:hover::before {
-            left: 100%;
-        }
-        
-        .video-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        
-        .progress-orb {
-            background: linear-gradient(145deg, #f59e0b 0%, #d97706 100%);
-            box-shadow: 0 8px 32px rgba(245, 158, 11, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .progress-orb.active {
-            animation: orbPulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes orbPulse {
-            0%, 100% { 
-                transform: scale(1);
-                box-shadow: 0 8px 32px rgba(245, 158, 11, 0.3);
-            }
-            50% { 
-                transform: scale(1.1);
-                box-shadow: 0 12px 48px rgba(245, 158, 11, 0.5);
-            }
-        }
-        
-        .popup-overlay {
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-        }
-        
-        .popup-content {
-            max-height: 90vh;
-            overflow-y: auto;
-            animation: popupSlideIn 0.3s ease-out;
-        }
-        
-        @keyframes popupSlideIn {
-            0% { transform: scale(0.9) translateY(20px); opacity: 0; }
-            100% { transform: scale(1) translateY(0); opacity: 1; }
-        }
-        
-        .mobile-btn {
-            min-height: 60px;
-            font-weight: 700;
-            font-size: 16px;
-            padding: 16px 24px;
-            transition: all 0.3s ease;
-            touch-action: manipulation;
-        }
-        
-        .mobile-btn:active {
-            transform: scale(0.95);
-        }
-        
-        .wave-animation {
-            animation: wave 2s ease-in-out infinite;
-        }
-        
-        @keyframes wave {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .bounce-gentle {
-            animation: bounceGentle 3s ease-in-out infinite;
-        }
-        
-        @keyframes bounceGentle {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-        
-        .rotate-slow {
-            animation: rotateSlow 8s linear infinite;
-        }
-        
-        @keyframes rotateSlow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .shake-gentle {
-            animation: shakeGentle 2s ease-in-out infinite;
-        }
-        
-        @keyframes shakeGentle {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
-        
-        .glow-effect {
-            animation: glowEffect 3s ease-in-out infinite;
-        }
-        
-        @keyframes glowEffect {
-            0%, 100% { 
-                box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
-            }
-            50% { 
-                box-shadow: 0 0 40px rgba(245, 158, 11, 0.6);
-            }
-        }
-        
-        .activity-demo {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border: 2px dashed #f59e0b;
-            transition: all 0.3s ease;
-        }
-        
-        .activity-demo:hover {
-            background: linear-gradient(135deg, #fde68a 0%, #fcd34d 100%);
-            border-color: #d97706;
-            transform: scale(1.02);
-        }
-        
-        .empathy-zone {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border: 2px solid #f59e0b;
-        }
-        
-        .connection-zone {
-            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
-            border: 2px solid #8b5cf6;
-        }
-        
-        .adventure-zone {
-            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
-            border: 2px solid #34d399;
-        }
-        
-        .video-thumbnail {
-            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
-            position: relative;
-        }
-        
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        
-        .play-button:hover {
-            background: white;
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-        
-        .play-icon {
-            width: 0;
-            height: 0;
-            border-left: 20px solid #374151;
-            border-top: 12px solid transparent;
-            border-bottom: 12px solid transparent;
-            margin-left: 4px;
+        @keyframes bridge-shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 min-h-screen">
-    <!-- Hero Header -->
-    <header class="hero-gradient text-white py-16 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-20">
-            <div class="absolute top-10 left-10 text-6xl floating-heart">💝</div>
-            <div class="absolute top-20 right-20 text-5xl floating-adventure">🌟</div>
-            <div class="absolute bottom-10 left-1/4 text-7xl sharing-animation">🤝</div>
-            <div class="absolute bottom-20 right-10 text-4xl empathy-pulse">🎭</div>
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-8xl opacity-10 rotate-slow">🎪</div>
-        </div>
-        
-        <div class="container mx-auto px-3 sm:px-6 relative z-10">
-            <div class="text-center">
-                <div class="text-9xl mb-8 bounce-gentle">🎪</div>
-                <h1 class="text-2xl sm:text-3xl md:text-6xl font-black mb-6 leading-tight">MÓDULO 3: A MAGIA DE COMPARTILHAR!</h1>
-                <p class="text-lg sm:text-xl md:text-3xl mb-4 font-bold">Empatia e Desconexão Saudável</p>
-                <p class="text-sm sm:text-base md:text-xl mb-8 opacity-90 px-2">Ensine seu filho a compartilhar sentimentos e descobrir aventuras no mundo real</p>
-                
-                <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mt-8 px-2">
-                    <div class="bg-white/20 backdrop-blur-sm px-3 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-semibold border border-white/30">
-                        <span class="mr-1 sm:mr-2">💝</span> Histórias de Empatia
-                    </div>
-                    <div class="bg-white/20 backdrop-blur-sm px-3 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-semibold border border-white/30">
-                        <span class="mr-1 sm:mr-2">🌟</span> Aventuras Desconectadas
-                    </div>
-                    <div class="bg-white/20 backdrop-blur-sm px-3 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-semibold border border-white/30">
-                        <span class="mr-1 sm:mr-2">🤝</span> Missões de Carinho
-                    </div>
-                </div>
+<body class="bg-gray-50">
+    <!-- Header do Módulo -->
+    <header class="gradient-bg text-white section-full">
+        <div class="mobile-padding py-8 md:py-12">
+            <div class="text-center px-4 md:px-0">
+                <div class="floating-animation text-4xl md:text-5xl mb-4">💎</div>
+                <h1 class="text-2xl md:text-4xl font-bold mb-2 leading-tight">
+                    MÓDULO 3
+                </h1>
+                <h2 class="text-xl md:text-3xl font-semibold mb-4 text-yellow-300">
+                    COMPARTILHANDO TESOUROS EMOCIONAIS
+                </h2>
+                <p class="text-base md:text-xl opacity-90">
+                    Empatia e Conexão
+                </p>
             </div>
         </div>
     </header>
 
-    <!-- Brave Heart Journey Progress -->
-    <section class="py-8 sm:py-12">
-        <div class="container mx-auto px-3 sm:px-4">
-            <div class="bg-gradient-to-br from-white via-amber-50 to-orange-50 rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-8 relative overflow-hidden">
-                <div class="absolute top-0 right-0 text-6xl sm:text-9xl opacity-5 sharing-animation">🏆</div>
-                <div class="absolute bottom-0 left-0 text-5xl sm:text-8xl opacity-5 empathy-pulse">✨</div>
-                
-                <div class="relative z-10">
-                    <div class="text-center mb-6 sm:mb-12">
-                        <div class="text-6xl sm:text-7xl mb-4 sharing-animation">❤️</div>
-                        <h3 class="text-xl sm:text-2xl lg:text-3xl font-black text-gray-800 mb-3 leading-tight px-2">Jornada Coração Valente</h3>
-                        <p class="text-gray-600 text-sm sm:text-base px-4">Ajude seu filho a conectar-se com outros e descobrir o mundo real</p>
+     <!-- Navegação -->
+    <nav class="section-full bg-white shadow-md">
+        <div class="mobile-padding py-3">
+            <div class="flex justify-between items-center px-4 md:px-0 md:max-w-4xl md:mx-auto">
+
+               <a href="Modulo2.html"> <button class="bg-gray-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-600 transition-colors">
+                    ← Módulo Anterior
+                </button>
+                </a>
+                <span class="text-gray-600 font-medium text-sm">Módulo 3 de 4</span>
+               <a href="Modulo4.html"> <button class="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-600 transition-colors">
+                    Próximo Módulo →
+                </button></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="section-full bg-gradient-to-b from-white to-purple-50">
+        <div class="mobile-padding py-8 md:py-12">
+            <!-- Seção para Pais -->
+            <section class="mx-0 md:mx-auto md:max-w-4xl mb-12">
+                <div class="bg-white rounded-none md:rounded-3xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-pink-600 to-rose-600 text-white p-6 md:p-8 bridge-animation">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-3 flex items-center">
+                            <span class="text-3xl mr-3">🌉</span>
+                            Para os Pais: Construindo Pontes
+                        </h3>
+                        <p class="text-base md:text-lg opacity-90">
+                            O poder da empatia e conexão familiar
+                        </p>
                     </div>
-                    
-                    <!-- Progress Path - Mobile Optimized -->
-                    <div class="relative mb-6 sm:mb-12">
-                        <div class="absolute top-6 sm:top-8 left-4 right-4 sm:left-0 sm:right-0 h-1 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded-full"></div>
-                        <div class="absolute top-6 sm:top-8 left-4 sm:left-0 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full transition-all duration-1000" style="width: 80%;"></div>
-                        
-                        <div class="flex justify-between items-center relative z-10 px-1 sm:px-2">
-                            <!-- Step 0 - Completed -->
-                            <div class="text-center flex-1 mx-1">
-                                <div class="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-black text-sm mb-1 sm:mb-3 shadow-lg mx-auto">
-                                    <span class="text-lg sm:text-2xl">✅</span>
+
+                    <div class="p-6 md:p-8 space-y-8">
+                        <!-- O que é Empatia -->
+                        <div class="bg-gradient-to-r from-pink-50 to-rose-50 rounded-2xl p-6">
+                            <h4 class="text-xl md:text-2xl font-bold text-rose-800 mb-4 flex items-center">
+                                <span class="text-2xl mr-3">❤️</span>
+                                O que é Empatia e Por que é Tão Importante?
+                            </h4>
+                            <div class="text-gray-700 space-y-4">
+                                <p class="leading-relaxed">
+                                    A empatia é a <strong>capacidade de sentir e compreender as emoções dos outros</strong>. 
+                                    É como se a criança pudesse "calçar os sapatos" de outra pessoa e entender como ela se sente. 
+                                    Esta habilidade é fundamental para relacionamentos saudáveis e sucesso social.
+                                </p>
+                                
+                                <div class="text-center mb-6">
+                                    <div class="empathy-circle">
+                                        <span class="text-3xl relative z-10">🤝</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mt-2">A empatia conecta corações</p>
                                 </div>
-                                <div class="bg-white rounded-md p-1 shadow-md mx-auto" style="max-width: 50px;">
-                                    <span class="text-xs text-green-600 font-bold block leading-tight">M0</span>
-                                    <span class="text-xs text-gray-600 leading-tight">OK</span>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="bg-white rounded-xl p-4 shadow-sm border-l-4 border-green-400">
+                                        <h5 class="font-bold text-green-600 mb-3 flex items-center">
+                                            <span class="text-xl mr-2">🌟</span>
+                                            Benefícios da Empatia:
+                                        </h5>
+                                        <ul class="space-y-2 text-sm text-gray-600">
+                                            <li class="flex items-start">
+                                                <span class="text-green-500 mr-2">•</span>
+                                                Melhores amizades e relacionamentos
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-green-500 mr-2">•</span>
+                                                Menos conflitos e brigas
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-green-500 mr-2">•</span>
+                                                Maior inteligência emocional
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-green-500 mr-2">•</span>
+                                                Desenvolvimento da compaixão
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-green-500 mr-2">•</span>
+                                                Melhor comunicação
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-4 shadow-sm border-l-4 border-blue-400">
+                                        <h5 class="font-bold text-blue-600 mb-3 flex items-center">
+                                            <span class="text-xl mr-2">🧠</span>
+                                            Como se Desenvolve:
+                                        </h5>
+                                        <ul class="space-y-2 text-sm text-gray-600">
+                                            <li class="flex items-start">
+                                                <span class="text-blue-500 mr-2">•</span>
+                                                Observando expressões faciais
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-blue-500 mr-2">•</span>
+                                                Ouvindo histórias e experiências
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-blue-500 mr-2">•</span>
+                                                Praticando a escuta ativa
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-blue-500 mr-2">•</span>
+                                                Vendo modelos empáticos (pais)
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-blue-500 mr-2">•</span>
+                                                Experiências de cuidado e ajuda
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            
-                            <!-- Step 1 - Completed -->
-                            <div class="text-center flex-1 mx-1">
-                                <div class="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-black text-sm mb-1 sm:mb-3 shadow-lg mx-auto">
-                                    <span class="text-lg sm:text-2xl">✅</span>
-                                </div>
-                                <div class="bg-white rounded-md p-1 shadow-md mx-auto" style="max-width: 50px;">
-                                    <span class="text-xs text-green-600 font-bold block leading-tight">M1</span>
-                                    <span class="text-xs text-gray-600 leading-tight">OK</span>
+                        </div>
+
+                        <!-- Como Modelar Empatia -->
+                        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6">
+                            <h4 class="text-xl md:text-2xl font-bold text-blue-800 mb-4 flex items-center">
+                                <span class="text-2xl mr-3">👨‍👩‍👧‍👦</span>
+                                Como os Pais Podem Modelar Empatia em Casa
+                            </h4>
+                            <div class="space-y-6">
+                                <p class="text-gray-700 leading-relaxed">
+                                    As crianças aprendem empatia principalmente através do <strong>exemplo dos pais</strong>. 
+                                    Quando você demonstra compreensão e cuidado pelos sentimentos dos outros, 
+                                    seu filho internaliza esses comportamentos.
+                                </p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="bg-white rounded-xl p-4 shadow-sm">
+                                        <h5 class="font-bold text-blue-700 mb-3 flex items-center">
+                                            <span class="text-xl mr-2">💬</span>
+                                            Frases Empáticas para Usar:
+                                        </h5>
+                                        <div class="space-y-2 text-sm text-gray-700">
+                                            <div class="bg-blue-50 rounded-lg p-2">
+                                                <p class="italic">"Vejo que você está triste. Quer me contar o que aconteceu?"</p>
+                                            </div>
+                                            <div class="bg-blue-50 rounded-lg p-2">
+                                                <p class="italic">"Deve ter sido difícil para você quando isso aconteceu."</p>
+                                            </div>
+                                            <div class="bg-blue-50 rounded-lg p-2">
+                                                <p class="italic">"Como você acha que seu irmão se sentiu quando você fez isso?"</p>
+                                            </div>
+                                            <div class="bg-blue-50 rounded-lg p-2">
+                                                <p class="italic">"Vamos pensar em como podemos ajudar a vovó a se sentir melhor."</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-4 shadow-sm">
+                                        <h5 class="font-bold text-blue-700 mb-3 flex items-center">
+                                            <span class="text-xl mr-2">🎭</span>
+                                            Ações Empáticas para Demonstrar:
+                                        </h5>
+                                        <ul class="space-y-2 text-sm text-gray-700">
+                                            <li class="flex items-start">
+                                                <span class="text-blue-500 mr-2">•</span>
+                                                Consoler quando alguém está triste
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-blue-500 mr-2">•</span>
+                                                Celebrar as alegrias dos outros
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-blue-500 mr-2">•</span>
+                                                Oferecer ajuda sem ser pedido
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-blue-500 mr-2">•</span>
+                                                Escutar atentamente sem julgar
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-blue-500 mr-2">•</span>
+                                                Pedir desculpas quando necessário
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            
-                            <!-- Step 2 - Completed -->
-                            <div class="text-center flex-1 mx-1">
-                                <div class="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-black text-sm mb-1 sm:mb-3 shadow-lg mx-auto">
-                                    <span class="text-lg sm:text-2xl">✅</span>
+                        </div>
+
+                        <!-- Desenvolvendo Empatia por Idade -->
+                        <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6">
+                            <h4 class="text-xl md:text-2xl font-bold text-purple-800 mb-4 flex items-center">
+                                <span class="text-2xl mr-3">📈</span>
+                                Desenvolvimento da Empatia por Idade
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-white rounded-xl p-4 shadow-sm text-center">
+                                    <div class="text-2xl mb-2">👶</div>
+                                    <h5 class="font-bold text-purple-700 mb-2">2-3 anos</h5>
+                                    <ul class="text-xs text-gray-600 space-y-1">
+                                        <li>• Imita emoções dos outros</li>
+                                        <li>• Oferece objetos de conforto</li>
+                                        <li>• Reage ao choro de outras crianças</li>
+                                    </ul>
                                 </div>
-                                <div class="bg-white rounded-md p-1 shadow-md mx-auto" style="max-width: 50px;">
-                                    <span class="text-xs text-green-600 font-bold block leading-tight">M2</span>
-                                    <span class="text-xs text-gray-600 leading-tight">OK</span>
+                                <div class="bg-white rounded-xl p-4 shadow-sm text-center">
+                                    <div class="text-2xl mb-2">🧒</div>
+                                    <h5 class="font-bold text-purple-700 mb-2">4-5 anos</h5>
+                                    <ul class="text-xs text-gray-600 space-y-1">
+                                        <li>• Identifica emoções básicas</li>
+                                        <li>• Compreende causa e efeito</li>
+                                        <li>• Oferece ajuda espontaneamente</li>
+                                    </ul>
                                 </div>
-                            </div>
-                            
-                            <!-- Step 3 - Active -->
-                            <div class="text-center flex-1 mx-1">
-                                <div class="progress-orb active w-10 h-10 sm:w-16 sm:h-16 rounded-full flex items-center justify-center text-white font-black text-sm mb-1 sm:mb-3 shadow-lg mx-auto">
-                                    <span class="text-lg sm:text-2xl">🎪</span>
-                                </div>
-                                <div class="bg-white rounded-md p-1 shadow-md mx-auto" style="max-width: 50px;">
-                                    <span class="text-xs text-amber-600 font-bold block leading-tight">M3</span>
-                                    <span class="text-xs text-gray-600 leading-tight">Ativo</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Step 4 -->
-                            <div class="text-center flex-1 mx-1">
-                                <div class="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full flex items-center justify-center text-gray-500 font-black text-sm mb-1 sm:mb-3 shadow-md transition-all duration-300 hover:scale-105 mx-auto">
-                                    <span class="text-lg sm:text-2xl">💪</span>
-                                </div>
-                                <div class="bg-white rounded-md p-1 shadow-md opacity-60 mx-auto" style="max-width: 50px;">
-                                    <span class="text-xs text-gray-500 font-bold block leading-tight">M4</span>
-                                    <span class="text-xs text-gray-400 leading-tight">Bloq</span>
+                                <div class="bg-white rounded-xl p-4 shadow-sm text-center">
+                                    <div class="text-2xl mb-2">👦</div>
+                                    <h5 class="font-bold text-purple-700 mb-2">6+ anos</h5>
+                                    <ul class="text-xs text-gray-600 space-y-1">
+                                        <li>• Entende perspectivas diferentes</li>
+                                        <li>• Demonstra compaixão complexa</li>
+                                        <li>• Resolve conflitos com empatia</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Current Module Highlight -->
-                    <div class="bg-gradient-to-r from-amber-600 to-orange-600 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center text-white shadow-xl">
-                        <div class="bg-white/20 backdrop-blur-sm rounded-lg sm:rounded-xl p-4 sm:p-6">
-                            <div class="flex flex-col sm:flex-row items-center justify-center mb-4 space-y-2 sm:space-y-0 sm:space-x-4">
-                                <div class="text-5xl sm:text-6xl sharing-animation">🎪</div>
-                                <div class="text-center sm:text-left">
-                                    <h4 class="text-lg sm:text-xl font-bold">A Magia de Compartilhar Ativada!</h4>
-                                    <p class="text-sm opacity-90">Módulo 3 - Empatia e Desconexão Saudável</p>
-                                </div>
-                            </div>
-                            
-                            <div class="bg-white/20 backdrop-blur-sm rounded-lg p-3 sm:p-4 mb-4">
-                                <h5 class="font-bold mb-3 text-sm">🎯 O que você vai ensinar ao seu filho:</h5>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 text-xs">
-                                    <div class="flex items-center justify-center sm:justify-start bg-white/10 rounded-lg p-2">
-                                        <span class="mr-2 text-base">💝</span>
-                                        <span>Compartilhar sentimentos</span>
-                                    </div>
-                                    <div class="flex items-center justify-center sm:justify-start bg-white/10 rounded-lg p-2">
-                                        <span class="mr-2 text-base">🎭</span>
-                                        <span>Entender outros corações</span>
-                                    </div>
-                                    <div class="flex items-center justify-center sm:justify-start bg-white/10 rounded-lg p-2">
-                                        <span class="mr-2 text-base">🌟</span>
-                                        <span>Aventuras sem telas</span>
-                                    </div>
-                                    <div class="flex items-center justify-center sm:justify-start bg-white/10 rounded-lg p-2">
-                                        <span class="mr-2 text-base">🤝</span>
-                                        <span>Gestos de carinho</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <p class="text-sm leading-relaxed opacity-95 px-2">
-                                Prepare seu filho para descobrir a <span class="font-bold">magia de conectar-se</span> com outros! 
-                                Ele aprenderá que compartilhar sentimentos é um superpoder e que o mundo real 
-                                está cheio de <span class="font-bold">aventuras incríveis</span>.
+                </div>
+            </section>
+
+            <!-- Atividade 3.1 -->
+            <section class="mx-0 md:mx-auto md:max-w-4xl mb-12">
+                <div class="bg-white rounded-none md:rounded-3xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white p-6 md:p-8">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-3 flex items-center">
+                            <span class="text-3xl mr-3">📚</span>
+                            Atividade 3.1: As Histórias dos Sentimentos Escondidos
+                        </h3>
+                        <p class="text-base md:text-lg opacity-90">
+                            Identificando emoções em outras pessoas e situações
+                        </p>
+                    </div>
+
+                    <div class="p-6 md:p-8">
+                        <!-- Objetivo -->
+                        <div class="bg-gradient-to-r from-amber-100 to-orange-100 rounded-2xl p-6 mb-8">
+                            <h4 class="text-xl font-bold text-orange-800 mb-3 flex items-center">
+                                <span class="text-2xl mr-2">🎯</span>
+                                Objetivo para a Criança
+                            </h4>
+                            <p class="text-gray-700 leading-relaxed">
+                                Aprender a <strong>identificar e compreender as emoções</strong> de outras pessoas através de histórias, 
+                                desenvolvendo a capacidade de "ler" sentimentos e se colocar no lugar do outro.
                             </p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Stories Section -->
-    <section class="py-8">
-        <div class="container mx-auto px-3 sm:px-4">
-            <div class="text-center mb-8">
-                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-800 mb-4">📚 Histórias para Ler Juntos</h2>
-                <p class="text-gray-600 text-sm sm:text-base px-4">Histórias mágicas para você e seu filho aprenderem sobre empatia e aventuras</p>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                <!-- Story 1: Empathy Stories -->
-                <div class="video-card empathy-gradient rounded-xl p-6 shadow-lg glow-effect" data-story="empathy">
-                    <div class="text-center">
-                        <div class="bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg mb-4 h-32 flex items-center justify-center">
-                            <div class="text-6xl">💝</div>
-                        </div>
-                        <h4 class="text-lg font-bold text-amber-800 mb-3">Histórias de Outros Corações</h4>
-                        <p class="text-amber-700 text-sm mb-4">
-                            Leia com seu filho histórias de personagens que aprendem a entender 
-                            os sentimentos dos outros e a compartilhar os próprios.
-                        </p>
-                        
-                        <div class="bg-white/50 rounded-lg p-3 mb-4">
-                            <div class="text-xs text-amber-800 space-y-1">
-                                <p>📖 3 histórias completas</p>
-                                <p>💝 Personagens empáticos</p>
-                                <p>🗣️ Momentos para conversar</p>
-                                <p>⏱️ 10 minutos de leitura cada</p>
-                            </div>
-                        </div>
-                        
-                        <button class="mobile-btn bg-amber-600 hover:bg-amber-700 text-white rounded-lg w-full" onclick="openStoryReader('empathy')">
-                            📖 Ver História
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Story 2: Sharing Feelings -->
-                <div class="video-card connection-gradient rounded-xl p-6 shadow-lg glow-effect" data-story="sharing">
-                    <div class="text-center">
-                        <div class="bg-gradient-to-br from-purple-400 to-indigo-500 rounded-lg mb-4 h-32 flex items-center justify-center">
-                            <div class="text-6xl">🤝</div>
-                        </div>
-                        <h4 class="text-lg font-bold text-purple-800 mb-3">A Arte de Compartilhar</h4>
-                        <p class="text-purple-700 text-sm mb-4">
-                            Uma história que ensina seu filho como expressar sentimentos de forma saudável 
-                            e como ouvir quando outros compartilham com ele.
-                        </p>
-                        
-                        <div class="bg-white/50 rounded-lg p-3 mb-4">
-                            <div class="text-xs text-purple-800 space-y-1">
-                                <p>💬 Diálogos sobre sentimentos</p>
-                                <p>👂 Personagens que ouvem</p>
-                                <p>🎨 Momentos de reflexão</p>
-                                <p>⏱️ 8 minutos de leitura</p>
-                            </div>
-                        </div>
-                        
-                        <button class="mobile-btn bg-purple-600 hover:bg-purple-700 text-white rounded-lg w-full" onclick="openStoryReader('sharing')">
-                            📖 Ver História
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Story 3: Real World Adventures -->
-                <div class="video-card adventure-gradient rounded-xl p-6 shadow-lg glow-effect" data-story="adventure">
-                    <div class="text-center">
-                        <div class="bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg mb-4 h-32 flex items-center justify-center">
-                            <div class="text-6xl">🌟</div>
-                        </div>
-                        <h4 class="text-lg font-bold text-green-800 mb-3">Aventuras Desconectadas</h4>
-                        <p class="text-green-700 text-sm mb-4">
-                            Uma história que mostra ao seu filho as maravilhas do mundo real e como 
-                            se divertir longe das telas, explorando e criando.
-                        </p>
-                        
-                        <div class="bg-white/50 rounded-lg p-3 mb-4">
-                            <div class="text-xs text-green-800 space-y-1">
-                                <p>🌍 Personagens exploradores</p>
-                                <p>🎨 Aventuras criativas</p>
-                                <p>🌱 Descobertas na natureza</p>
-                                <p>⏱️ 12 minutos de leitura</p>
-                            </div>
-                        </div>
-                        
-                        <button class="mobile-btn bg-green-600 hover:bg-green-700 text-white rounded-lg w-full" onclick="openStoryReader('adventure')">
-                            📖 Ver História
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Activities Section -->
-    <section class="py-8">
-        <div class="container mx-auto px-3 sm:px-4">
-            <div class="text-center mb-8">
-                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-800 mb-4">🎨 Atividades para Fazer em Família</h2>
-                <p class="text-gray-600 text-sm sm:text-base px-4">Materiais práticos para você aplicar os ensinamentos com seu filho</p>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                <!-- Heart Stories Book -->
-                <div class="video-card bg-gradient-to-br from-red-50 to-pink-100 rounded-xl p-6 shadow-lg" data-activity="stories">
-                    <div class="text-center">
-                        <div class="text-6xl mb-4 floating-heart">📚</div>
-                        <h4 class="text-lg font-bold text-red-800 mb-3">Livro das Histórias de Outros Corações</h4>
-                        <p class="text-red-700 text-sm mb-4">
-                            Pequenas histórias ilustradas para você ler com seu filho e 
-                            conversar sobre os sentimentos dos personagens.
-                        </p>
-                        
-                        <div class="bg-white/50 rounded-lg p-3 mb-4">
-                            <div class="text-xs text-red-800 space-y-1">
-                                <p>📖 8 histórias ilustradas</p>
-                                <p>💭 Perguntas para reflexão</p>
-                                <p>🎭 Personagens diversos</p>
-                                <p>💡 Guia para pais</p>
-                            </div>
-                        </div>
-                        
-                        <button class="mobile-btn bg-red-600 hover:bg-red-700 text-white rounded-lg w-full" onclick="openActivityPopup('stories')">
-                            📖 Abrir Guia
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Adventure Bingo -->
-                <div class="video-card bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl p-6 shadow-lg" data-activity="bingo">
-                    <div class="text-center">
-                        <div class="text-6xl mb-4 bounce-gentle">🎯</div>
-                        <h4 class="text-lg font-bold text-blue-800 mb-3">Bingo da Aventura Desconectada</h4>
-                        <p class="text-blue-700 text-sm mb-4">
-                            Cartões de bingo com atividades divertidas para seu filho 
-                            fazer longe das telas, explorando o mundo real.
-                        </p>
-                        
-                        <div class="bg-white/50 rounded-lg p-3 mb-4">
-                            <div class="text-xs text-blue-800 space-y-1">
-                                <p>🎯 6 cartões diferentes</p>
-                                <p>🌱 Atividades na natureza</p>
-                                <p>🎨 Brincadeiras criativas</p>
-                                <p>🏆 Sistema de recompensas</p>
-                            </div>
-                        </div>
-                        
-                        <button class="mobile-btn bg-blue-600 hover:bg-blue-700 text-white rounded-lg w-full" onclick="openActivityPopup('bingo')">
-                            📥 Baixar Bingo
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Hug Mission -->
-                <div class="video-card bg-gradient-to-br from-yellow-50 to-amber-100 rounded-xl p-6 shadow-lg" data-activity="hug">
-                    <div class="text-center">
-                        <div class="text-6xl mb-4 wave-animation">🤗</div>
-                        <h4 class="text-lg font-bold text-yellow-800 mb-3">Missão do Abraço Amigo</h4>
-                        <p class="text-yellow-700 text-sm mb-4">
-                            Desenhos e atividades para seu filho praticar gestos de 
-                            carinho e ajudar pessoas que precisam de um sorriso.
-                        </p>
-                        
-                        <div class="bg-white/50 rounded-lg p-3 mb-4">
-                            <div class="text-xs text-yellow-800 space-y-1">
-                                <p>🤗 Cartões de abraço</p>
-                                <p>🎨 Desenhos para colorir</p>
-                                <p>💌 Mensagens de carinho</p>
-                                <p>📋 Missões diárias</p>
-                            </div>
-                        </div>
-                        
-                        <button class="mobile-btn bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg w-full" onclick="openActivityPopup('hug')">
-                            📥 Baixar Missão
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Parent Guide Section -->
-    <section class="py-8">
-        <div class="container mx-auto px-3 sm:px-4">
-            <div class="bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 relative overflow-hidden">
-                <div class="absolute top-0 right-0 text-6xl sm:text-8xl opacity-10 sharing-animation">🧠</div>
-                <div class="absolute bottom-0 left-0 text-5xl sm:text-7xl opacity-10 empathy-pulse">💡</div>
-                
-                <div class="relative z-10">
-                    <div class="text-center mb-8">
-                        <div class="text-6xl sm:text-7xl mb-4 floating-heart">👨‍👩‍👧‍👦</div>
-                        <h3 class="text-xl sm:text-2xl lg:text-3xl font-black text-gray-800 mb-4">Guia Especial para Pais</h3>
-                        <p class="text-gray-600 text-sm sm:text-base px-4">Como aplicar os ensinamentos de empatia no dia a dia</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-                        <!-- Empathy Tips -->
-                        <div class="empathy-zone rounded-xl p-6">
-                            <h4 class="text-lg font-bold text-amber-800 mb-4 flex items-center">
-                                <span class="mr-3 text-2xl">💝</span>
-                                Desenvolvendo Empatia
+                        <!-- Como Funciona -->
+                        <div class="bg-gradient-to-r from-blue-100 to-cyan-100 rounded-2xl p-6 mb-8">
+                            <h4 class="text-xl font-bold text-blue-800 mb-4 flex items-center">
+                                <span class="text-2xl mr-2">🧠</span>
+                                Por que Histórias Desenvolvem Empatia?
                             </h4>
-                            <div class="space-y-3 text-sm text-amber-700">
-                                <div class="bg-white/50 rounded-lg p-3">
-                                    <p class="font-semibold mb-1">🎭 Nomeie as emoções dos outros:</p>
-                                    <p>"Veja, o João está triste porque perdeu o brinquedo. Como você acha que ele se sente?"</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <h5 class="font-bold text-blue-700 mb-3">Benefícios Neurológicos:</h5>
+                                    <ul class="space-y-2 text-sm text-gray-700">
+                                        <li class="flex items-start">
+                                            <span class="text-blue-500 mr-2">•</span>
+                                            Ativam neurônios-espelho
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-blue-500 mr-2">•</span>
+                                            Simulam experiências emocionais
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-blue-500 mr-2">•</span>
+                                            Desenvolvem teoria da mente
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-blue-500 mr-2">•</span>
+                                            Expandem vocabulário emocional
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="bg-white/50 rounded-lg p-3">
-                                    <p class="font-semibold mb-1">📚 Use histórias como ferramenta:</p>
-                                    <p>"O que você faria se fosse o personagem? Como ele deve estar se sentindo?"</p>
-                                </div>
-                                <div class="bg-white/50 rounded-lg p-3">
-                                    <p class="font-semibold mb-1">🤝 Modele comportamentos empáticos:</p>
-                                    <p>Demonstre cuidado e compreensão nas suas próprias interações diárias.</p>
+                                <div>
+                                    <h5 class="font-bold text-blue-700 mb-3">Habilidades Desenvolvidas:</h5>
+                                    <ul class="space-y-2 text-sm text-gray-700">
+                                        <li class="flex items-start">
+                                            <span class="text-blue-500 mr-2">•</span>
+                                            Leitura de expressões faciais
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-blue-500 mr-2">•</span>
+                                            Compreensão de contextos
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-blue-500 mr-2">•</span>
+                                            Predição de comportamentos
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-blue-500 mr-2">•</span>
+                                            Resolução de problemas sociais
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- Digital Detox Tips -->
-                        <div class="adventure-zone rounded-xl p-6">
-                            <h4 class="text-lg font-bold text-green-800 mb-4 flex items-center">
-                                <span class="mr-3 text-2xl">🌟</span>
-                                Desconexão Saudável
+
+                        <!-- Método 1: Livros de História -->
+                        <div class="space-y-6">
+                            <h4 class="text-xl font-bold text-gray-800 mb-4">Método 1: Explorando Livros de História</h4>
+                            
+                            <div class="bg-gradient-to-r from-green-100 to-emerald-100 rounded-2xl p-6">
+                                <h5 class="text-lg font-bold text-green-800 mb-4 flex items-center">
+                                    <span class="text-2xl mr-2">📖</span>
+                                    Como Usar Livros Infantis
+                                </h5>
+                                
+                                <div class="text-center mb-6">
+                                    <div class="story-book"></div>
+                                    <p class="text-sm text-gray-600 mt-2">Transforme a leitura em descoberta emocional</p>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="bg-white rounded-xl p-4 shadow-sm">
+                                        <h6 class="font-bold text-green-700 mb-3">Antes da Leitura:</h6>
+                                        <ul class="space-y-2 text-sm text-gray-700">
+                                            <li class="flex items-start">
+                                                <span class="text-green-500 mr-2">•</span>
+                                                Observe a capa: "Como você acha que os personagens estão se sentindo?"
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-green-500 mr-2">•</span>
+                                                Crie expectativas: "O que você acha que vai acontecer?"
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-green-500 mr-2">•</span>
+                                                Conecte com experiências: "Isso já aconteceu com você?"
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-4 shadow-sm">
+                                        <h6 class="font-bold text-green-700 mb-3">Durante a Leitura:</h6>
+                                        <ul class="space-y-2 text-sm text-gray-700">
+                                            <li class="flex items-start">
+                                                <span class="text-green-500 mr-2">•</span>
+                                                Pause frequentemente para perguntar sobre sentimentos
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-green-500 mr-2">•</span>
+                                                Aponte expressões faciais nas ilustrações
+                                            </li>
+                                            <li class="flex items-start">
+                                                <span class="text-green-500 mr-2">•</span>
+                                                Faça previsões sobre o que vai acontecer
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Perguntas Mágicas -->
+                            <div class="bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl p-6">
+                                <h5 class="text-lg font-bold text-purple-800 mb-4 flex items-center">
+                                    <span class="text-2xl mr-2">❓</span>
+                                    Perguntas Mágicas para Fazer
+                                </h5>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="bg-white rounded-xl p-4 shadow-sm">
+                                        <h6 class="font-bold text-purple-700 mb-2 text-center">Identificação</h6>
+                                        <ul class="space-y-1 text-xs text-gray-700">
+                                            <li>• "Como o [personagem] está se sentindo?"</li>
+                                            <li>• "O que no rosto dele te faz pensar isso?"</li>
+                                            <li>• "Que outras pistas você vê?"</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-4 shadow-sm">
+                                        <h6 class="font-bold text-purple-700 mb-2 text-center">Compreensão</h6>
+                                        <ul class="space-y-1 text-xs text-gray-700">
+                                            <li>• "Por que ele está se sentindo assim?"</li>
+                                            <li>• "O que aconteceu para ele ficar assim?"</li>
+                                            <li>• "Você já se sentiu assim também?"</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-4 shadow-sm">
+                                        <h6 class="font-bold text-purple-700 mb-2 text-center">Ação</h6>
+                                        <ul class="space-y-1 text-xs text-gray-700">
+                                            <li>• "O que você faria se fosse ele?"</li>
+                                            <li>• "Como podemos ajudar?"</li>
+                                            <li>• "O que faria ele se sentir melhor?"</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Método 2: Mini-Histórias com Brinquedos -->
+                        <div class="space-y-6 mt-8">
+                            <h4 class="text-xl font-bold text-gray-800 mb-4">Método 2: Mini-Histórias com Brinquedos</h4>
+                            
+                            <div class="bg-gradient-to-r from-yellow-100 to-amber-100 rounded-2xl p-6">
+                                <h5 class="text-lg font-bold text-amber-800 mb-4 flex items-center">
+                                    <span class="text-2xl mr-2">🧸</span>
+                                    Dramatizando com Bonecos e Bichos de Pelúcia
+                                </h5>
+                                
+                                <div class="space-y-4">
+                                    <p class="text-gray-700 leading-relaxed">
+                                        Use brinquedos para criar situações do dia a dia e explore as emoções dos "personagens". 
+                                        Esta técnica é especialmente eficaz porque a criança pode manipular os brinquedos e 
+                                        se sentir no controle da história.
+                                    </p>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div class="bg-white rounded-xl p-4 shadow-sm">
+                                            <h6 class="font-bold text-amber-700 mb-3">Cenários Sugeridos:</h6>
+                                            <div class="space-y-2 text-sm text-gray-700">
+                                                <div class="bg-amber-50 rounded-lg p-2">
+                                                    <p><strong>Cenário 1:</strong> O ursinho perdeu seu brinquedo favorito</p>
+                                                </div>
+                                                <div class="bg-amber-50 rounded-lg p-2">
+                                                    <p><strong>Cenário 2:</strong> A boneca não foi convidada para a festa</p>
+                                                </div>
+                                                <div class="bg-amber-50 rounded-lg p-2">
+                                                    <p><strong>Cenário 3:</strong> O carrinho quebrou na hora de brincar</p>
+                                                </div>
+                                                <div class="bg-amber-50 rounded-lg p-2">
+                                                    <p><strong>Cenário 4:</strong> O dinossauro está com medo do escuro</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bg-white rounded-xl p-4 shadow-sm">
+                                            <h6 class="font-bold text-amber-700 mb-3">Como Conduzir:</h6>
+                                            <ul class="space-y-2 text-sm text-gray-700">
+                                                <li class="flex items-start">
+                                                    <span class="text-amber-500 mr-2">•</span>
+                                                    Deixe a criança escolher os personagens
+                                                </li>
+                                                <li class="flex items-start">
+                                                    <span class="text-amber-500 mr-2">•</span>
+                                                    Crie vozes diferentes para cada brinquedo
+                                                </li>
+                                                <li class="flex items-start">
+                                                    <span class="text-amber-500 mr-2">•</span>
+                                                    Pause para fazer as perguntas mágicas
+                                                </li>
+                                                <li class="flex items-start">
+                                                    <span class="text-amber-500 mr-2">•</span>
+                                                    Deixe a criança resolver o problema
+                                                </li>
+                                                <li class="flex items-start">
+                                                    <span class="text-amber-500 mr-2">•</span>
+                                                    Celebre as soluções empáticas
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dicas Avançadas -->
+                        <div class="bg-gradient-to-r from-red-100 to-pink-100 rounded-2xl p-6 mt-8">
+                            <h5 class="text-lg font-bold text-red-800 mb-4 flex items-center">
+                                <span class="text-2xl mr-2">💡</span>
+                                Dicas Avançadas para Pais
+                            </h5>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <h6 class="font-bold text-red-700 mb-2">Para Potencializar o Aprendizado:</h6>
+                                    <ul class="space-y-1 text-sm text-gray-700">
+                                        <li>• Conecte as histórias com situações reais da criança</li>
+                                        <li>• Use espelhos para a criança imitar expressões</li>
+                                        <li>• Crie um "diário de sentimentos" dos personagens</li>
+                                        <li>• Desenhem juntos as emoções dos personagens</li>
+                                        <li>• Inventem finais alternativos para as histórias</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h6 class="font-bold text-red-700 mb-2">Sinais de Progresso:</h6>
+                                    <ul class="space-y-1 text-sm text-gray-700">
+                                        <li>• A criança identifica emoções espontaneamente</li>
+                                        <li>• Faz conexões com suas próprias experiências</li>
+                                        <li>• Sugere soluções para ajudar os personagens</li>
+                                        <li>• Demonstra preocupação genuína</li>
+                                        <li>• Aplica o aprendizado em situações reais</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Atividade 3.2 -->
+            <section class="mx-0 md:mx-auto md:max-w-4xl mb-12">
+                <div class="bg-white rounded-none md:rounded-3xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-pink-500 to-rose-500 text-white p-6 md:p-8">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-3 flex items-center">
+                            <span class="text-3xl mr-3">🤗</span>
+                            Atividade 3.2: O Desafio do Abraço Mágico
+                        </h3>
+                        <p class="text-base md:text-lg opacity-90">
+                            Expressando afeto e compreendendo as necessidades dos outros
+                        </p>
+                    </div>
+
+                    <div class="p-6 md:p-8">
+                        <!-- Objetivo -->
+                        <div class="bg-gradient-to-r from-pink-100 to-rose-100 rounded-2xl p-6 mb-8">
+                            <h4 class="text-xl font-bold text-rose-800 mb-3 flex items-center">
+                                <span class="text-2xl mr-2">🎯</span>
+                                Objetivo para a Criança
                             </h4>
-                            <div class="space-y-3 text-sm text-green-700">
-                                <div class="bg-white/50 rounded-lg p-3">
-                                    <p class="font-semibold mb-1">⏰ Estabeleça horários sem telas:</p>
-                                    <p>Crie momentos sagrados para brincadeiras reais e conversas em família.</p>
+                            <p class="text-gray-700 leading-relaxed">
+                                Aprender a <strong>reconhecer quando alguém precisa de carinho</strong> e desenvolver a 
+                                capacidade de oferecer conforto e apoio emocional de forma espontânea e genuína.
+                            </p>
+                        </div>
+
+                        <!-- O Poder do Toque Afetivo -->
+                        <div class="bg-gradient-to-r from-blue-100 to-cyan-100 rounded-2xl p-6 mb-8">
+                            <h4 class="text-xl font-bold text-blue-800 mb-4 flex items-center">
+                                <span class="text-2xl mr-2">🧬</span>
+                                A Ciência por Trás do Abraço Mágico
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <h5 class="font-bold text-blue-700 mb-3">O que Acontece no Corpo:</h5>
+                                    <ul class="space-y-2 text-sm text-gray-700">
+                                        <li class="flex items-start">
+                                            <span class="text-blue-500 mr-2">•</span>
+                                            Libera oxitocina (hormônio do amor)
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-blue-500 mr-2">•</span>
+                                            Reduz cortisol (hormônio do estresse)
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-blue-500 mr-2">•</span>
+                                            Diminui a pressão arterial
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-blue-500 mr-2">•</span>
+                                            Fortalece o sistema imunológico
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="bg-white/50 rounded-lg p-3">
-                                    <p class="font-semibold mb-1">🌱 Explore a natureza juntos:</p>
-                                    <p>Parques, jardins, praias - o mundo real tem aventuras incríveis esperando!</p>
+                                <div>
+                                    <h5 class="font-bold text-blue-700 mb-3">Benefícios Emocionais:</h5>
+                                    <ul class="space-y-2 text-sm text-gray-700">
+                                        <li class="flex items-start">
+                                            <span class="text-blue-500 mr-2">•</span>
+                                            Aumenta sensação de segurança
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-blue-500 mr-2">•</span>
+                                            Fortalece vínculos afetivos
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-blue-500 mr-2">•</span>
+                                            Melhora autoestima
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-blue-500 mr-2">•</span>
+                                            Desenvolve compaixão
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="bg-white/50 rounded-lg p-3">
-                                    <p class="font-semibold mb-1">🎨 Incentive criatividade manual:</p>
-                                    <p>Desenho, massinha, construção - atividades que desenvolvem habilidades reais.</p>
+                            </div>
+                            
+                            <div class="text-center mt-6">
+                                <div class="magic-hug">
+                                    <span class="text-3xl">🤗</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-2">Um abraço pode curar corações</p>
+                            </div>
+                        </div>
+
+                        <!-- Como Implementar -->
+                        <div class="space-y-6">
+                            <h4 class="text-xl font-bold text-gray-800 mb-4">Como Implementar o Desafio do Abraço Mágico:</h4>
+                            
+                            <!-- Passo 1: Introdução -->
+                            <div class="bg-gradient-to-r from-green-100 to-emerald-100 rounded-2xl p-6">
+                                <h5 class="text-lg font-bold text-green-800 mb-4 flex items-center">
+                                    <span class="bg-green-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">1</span>
+                                    Introduzindo o Conceito
+                                </h5>
+                                
+                                <div class="bg-white rounded-xl p-4 shadow-sm mb-4">
+                                    <h6 class="font-bold text-green-700 mb-2">Script Sugerido:</h6>
+                                    <p class="text-sm text-gray-700 italic">
+                                        "Você sabia que existe uma magia muito especial que pode curar a tristeza e deixar 
+                                        o coração quentinho? É o abraço mágico! Quando alguém está triste, bravo ou precisando 
+                                        de carinho, um abraço mágico pode fazer toda a diferença. Vamos descobrir quem na nossa 
+                                        casa precisa de um abraço mágico hoje?"
+                                    </p>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-white rounded-xl p-4 shadow-sm">
+                                        <h6 class="font-bold text-green-700 mb-2">Sinais para Ensinar a Criança Observar:</h6>
+                                        <ul class="space-y-1 text-sm text-gray-700">
+                                            <li>• Rosto triste ou preocupado</li>
+                                            <li>• Ombros caídos</li>
+                                            <li>• Voz baixa ou silêncio</li>
+                                            <li>• Lágrimas ou suspiros</li>
+                                            <li>• Isolamento ou afastamento</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-4 shadow-sm">
+                                        <h6 class="font-bold text-green-700 mb-2">Tipos de "Abraços Mágicos":</h6>
+                                        <ul class="space-y-1 text-sm text-gray-700">
+                                            <li>• Abraço físico (se a pessoa quiser)</li>
+                                            <li>• Abraço de ursinho de pelúcia</li>
+                                            <li>• Desenho carinhoso</li>
+                                            <li>• Palavra gentil</li>
+                                            <li>• Gesto de cuidado</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Passo 2: Identificação -->
+                            <div class="bg-gradient-to-r from-yellow-100 to-amber-100 rounded-2xl p-6">
+                                <h5 class="text-lg font-bold text-amber-800 mb-4 flex items-center">
+                                    <span class="bg-amber-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">2</span>
+                                    Identificando Quem Precisa de Carinho
+                                </h5>
+                                
+                                <div class="space-y-4">
+                                    <p class="text-gray-700 leading-relaxed">
+                                        Transforme a identificação de necessidades emocionais em um jogo divertido. 
+                                        A criança se torna um "detetive do coração" que procura pistas de quem precisa de carinho.
+                                    </p>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+                                        <div class="text-center">
+                                            <div class="emotion-face happy">😊</div>
+                                            <p class="text-xs mt-1 text-gray-600">Feliz</p>
+                                            <p class="text-xs text-green-600">Não precisa</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="emotion-face sad">😢</div>
+                                            <p class="text-xs mt-1 text-gray-600">Triste</p>
+                                            <p class="text-xs text-red-600">Precisa muito!</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="emotion-face angry">😠</div>
+                                            <p class="text-xs mt-1 text-gray-600">Bravo</p>
+                                            <p class="text-xs text-orange-600">Precisa sim</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="emotion-face scared">😰</div>
+                                            <p class="text-xs mt-1 text-gray-600">Com medo</p>
+                                            <p class="text-xs text-purple-600">Precisa muito!</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="emotion-face surprised">😲</div>
+                                            <p class="text-xs mt-1 text-gray-600">Surpreso</p>
+                                            <p class="text-xs text-blue-600">Talvez</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Passo 3: Ação -->
+                            <div class="bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl p-6">
+                                <h5 class="text-lg font-bold text-purple-800 mb-4 flex items-center">
+                                    <span class="bg-purple-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">3</span>
+                                    Oferecendo o Abraço Mágico
+                                </h5>
+                                
+                                <div class="space-y-4">
+                                    <div class="bg-white rounded-xl p-4 shadow-sm">
+                                        <h6 class="font-bold text-purple-700 mb-3">Ensine a Criança a Perguntar Primeiro:</h6>
+                                        <div class="space-y-2 text-sm text-gray-700">
+                                            <div class="bg-purple-50 rounded-lg p-2">
+                                                <p class="italic">"Você quer um abraço mágico?"</p>
+                                            </div>
+                                            <div class="bg-purple-50 rounded-lg p-2">
+                                                <p class="italic">"Posso te dar um carinho?"</p>
+                                            </div>
+                                            <div class="bg-purple-50 rounded-lg p-2">
+                                                <p class="italic">"O que faria você se sentir melhor?"</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div class="bg-white rounded-xl p-4 shadow-sm text-center">
+                                            <div class="text-2xl mb-2">🤗</div>
+                                            <h6 class="font-bold text-purple-700 mb-2">Abraço Físico</h6>
+                                            <p class="text-xs text-gray-600">Quando a pessoa aceita contato físico</p>
+                                        </div>
+                                        <div class="bg-white rounded-xl p-4 shadow-sm text-center">
+                                            <div class="text-2xl mb-2">🎨</div>
+                                            <h6 class="font-bold text-purple-700 mb-2">Desenho Carinhoso</h6>
+                                            <p class="text-xs text-gray-600">Para expressar amor através da arte</p>
+                                        </div>
+                                        <div class="bg-white rounded-xl p-4 shadow-sm text-center">
+                                            <div class="text-2xl mb-2">💝</div>
+                                            <h6 class="font-bold text-purple-700 mb-2">Gesto Especial</h6>
+                                            <p class="text-xs text-gray-600">Pequenos atos de cuidado e atenção</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Passo 4: Reflexão -->
+                            <div class="bg-gradient-to-r from-blue-100 to-indigo-100 rounded-2xl p-6">
+                                <h5 class="text-lg font-bold text-blue-800 mb-4 flex items-center">
+                                    <span class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">4</span>
+                                    Conversando Sobre o Impacto
+                                </h5>
+                                
+                                <div class="space-y-4">
+                                    <p class="text-gray-700 leading-relaxed">
+                                        Após cada "abraço mágico", converse com a criança sobre o que aconteceu. 
+                                        Esta reflexão é crucial para consolidar o aprendizado empático.
+                                    </p>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="bg-white rounded-xl p-4 shadow-sm">
+                                            <h6 class="font-bold text-blue-700 mb-2">Perguntas para Reflexão:</h6>
+                                            <ul class="space-y-1 text-sm text-gray-700">
+                                                <li>• "Como a pessoa ficou depois do abraço mágico?"</li>
+                                                <li>• "O que mudou no rosto dela?"</li>
+                                                <li>• "Como você se sentiu ajudando?"</li>
+                                                <li>• "O que mais poderíamos fazer?"</li>
+                                                <li>• "Como é bom fazer alguém se sentir melhor?"</li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-white rounded-xl p-4 shadow-sm">
+                                            <h6 class="font-bold text-blue-700 mb-2">Celebre os Gestos:</h6>
+                                            <ul class="space-y-1 text-sm text-gray-700">
+                                                <li>• Elogie a sensibilidade da criança</li>
+                                                <li>• Destaque como ela ajudou</li>
+                                                <li>• Conte para outros familiares</li>
+                                                <li>• Registre em um "diário de gentileza"</li>
+                                                <li>• Incentive a repetir o comportamento</li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Quick Action Tips -->
-                    <div class="mt-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl p-6 text-white text-center">
-                        <h4 class="text-lg font-bold mb-4">🚀 Ações Práticas para Hoje</h4>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
-                            <div class="bg-white/20 backdrop-blur-sm rounded-lg p-3">
-                                <div class="text-2xl mb-2">📱</div>
-                                <p class="font-semibold mb-1">Hora da Desconexão</p>
-                                <p>30 minutos sem telas para brincar juntos</p>
-                            </div>
-                            <div class="bg-white/20 backdrop-blur-sm rounded-lg p-3">
-                                <div class="text-2xl mb-2">💬</div>
-                                <p class="font-semibold mb-1">Conversa do Coração</p>
-                                <p>Pergunte: "Como foi seu dia? O que sentiu?"</p>
-                            </div>
-                            <div class="bg-white/20 backdrop-blur-sm rounded-lg p-3">
-                                <div class="text-2xl mb-2">🤗</div>
-                                <p class="font-semibold mb-1">Gesto de Carinho</p>
-                                <p>Façam juntos algo gentil por alguém</p>
+
+                        <!-- Ideias Criativas -->
+                        <div class="bg-gradient-to-r from-orange-100 to-red-100 rounded-2xl p-6 mt-8">
+                            <h4 class="text-xl font-bold text-orange-800 mb-4 flex items-center">
+                                <span class="text-2xl mr-2">💡</span>
+                                Ideias Criativas para Abraços Mágicos
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <h5 class="font-bold text-orange-700 mb-3">Para Diferentes Situações:</h5>
+                                    <div class="space-y-2 text-sm text-gray-700">
+                                        <div class="bg-white rounded-lg p-2">
+                                            <p><strong>Quando alguém está doente:</strong> Fazer um chá, trazer um cobertor</p>
+                                        </div>
+                                        <div class="bg-white rounded-lg p-2">
+                                            <p><strong>Quando alguém está estressado:</strong> Oferecer ajuda com tarefas</p>
+                                        </div>
+                                        <div class="bg-white rounded-lg p-2">
+                                            <p><strong>Quando alguém está triste:</strong> Contar uma piada, cantar uma música</p>
+                                        </div>
+                                        <div class="bg-white rounded-lg p-2">
+                                            <p><strong>Quando alguém está com medo:</strong> Ficar por perto, segurar a mão</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-orange-700 mb-3">Expandindo para Fora de Casa:</h5>
+                                    <ul class="space-y-2 text-sm text-gray-700">
+                                        <li class="flex items-start">
+                                            <span class="text-orange-500 mr-2">•</span>
+                                            Consoler um amigo na escola
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-orange-500 mr-2">•</span>
+                                            Ajudar uma criança que caiu
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-orange-500 mr-2">•</span>
+                                            Incluir alguém que está sozinho
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-orange-500 mr-2">•</span>
+                                            Compartilhar brinquedos
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-orange-500 mr-2">•</span>
+                                            Ser gentil com animais
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Story Reader Popup -->
-    <div id="story-popup" class="fixed inset-0 popup-overlay hidden items-center justify-center z-50">
-        <div class="popup-content bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 max-w-4xl w-full mx-3 sm:mx-4 shadow-2xl">
-            <div class="text-center">
-                <button onclick="closeStoryPopup()" class="float-right text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
-                <div id="story-emoji" class="text-8xl mb-4"></div>
-                <h4 id="story-name" class="text-2xl font-bold mb-4 text-gray-800"></h4>
-                
-                <div id="story-content" class="text-left space-y-4"></div>
-            </div>
-        </div>
-    </div>
+            <!-- Resumo e Próximos Passos -->
+            <section class="mx-0 md:mx-auto md:max-w-4xl mb-12">
+                <div class="bg-white rounded-none md:rounded-3xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white p-6 md:p-8">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-3 flex items-center">
+                            <span class="text-3xl mr-3">🏆</span>
+                            Consolidando os Tesouros Emocionais
+                        </h3>
+                        <p class="text-base md:text-lg opacity-90">
+                            Integrando empatia no dia a dia
+                        </p>
+                    </div>
 
-    <!-- Activity Popup -->
-    <div id="activity-popup" class="fixed inset-0 popup-overlay hidden items-center justify-center z-50">
-        <div class="popup-content bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 max-w-2xl w-full mx-3 sm:mx-4 shadow-2xl">
-            <div class="text-center">
-                <button onclick="closeActivityPopup()" class="float-right text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
-                <div id="activity-emoji" class="text-8xl mb-4"></div>
-                <h4 id="activity-name" class="text-2xl font-bold mb-4 text-gray-800"></h4>
-                <div id="activity-content" class="text-left space-y-4"></div>
-                <div class="mt-6 text-center">
-                    <button id="activity-action-btn" class="mobile-btn bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-8 py-3">
-                        📥 Baixar Agora
-                    </button>
+                    <div class="p-6 md:p-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <!-- O que Aprendemos -->
+                            <div class="space-y-4">
+                                <h4 class="text-xl font-bold text-gray-800 mb-4">O que Desenvolvemos Neste Módulo:</h4>
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <div class="heart-pulse text-2xl mr-3">❤️</div>
+                                        <div>
+                                            <h5 class="font-bold text-gray-700">Identificação Emocional</h5>
+                                            <p class="text-sm text-gray-600">Reconhecer emoções em outras pessoas</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="heart-pulse text-2xl mr-3">🤝</div>
+                                        <div>
+                                            <h5 class="font-bold text-gray-700">Compreensão Empática</h5>
+                                            <p class="text-sm text-gray-600">Entender as causas dos sentimentos</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="heart-pulse text-2xl mr-3">🤗</div>
+                                        <div>
+                                            <h5 class="font-bold text-gray-700">Ação Compassiva</h5>
+                                            <p class="text-sm text-gray-600">Oferecer conforto e apoio</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Próximos Passos -->
+                            <div class="space-y-4">
+                                <h4 class="text-xl font-bold text-gray-800 mb-4">Continue Praticando:</h4>
+                                <div class="bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl p-4">
+                                    <ul class="space-y-2 text-sm text-gray-700">
+                                        <li class="flex items-start">
+                                            <span class="text-purple-500 mr-2">•</span>
+                                            Leia histórias diariamente com foco nas emoções
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-purple-500 mr-2">•</span>
+                                            Pratique o "Desafio do Abraço Mágico" semanalmente
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-purple-500 mr-2">•</span>
+                                            Crie um "Diário de Gentileza" familiar
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-purple-500 mr-2">•</span>
+                                            Modele empatia em suas próprias interações
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-purple-500 mr-2">•</span>
+                                            Celebre cada gesto empático da criança
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </section>
+        </div>
+    </main>
+
+      <!-- Navegação -->
+    <nav class="section-full bg-white shadow-md">
+        <div class="mobile-padding py-3">
+            <div class="flex justify-between items-center px-4 md:px-0 md:max-w-4xl md:mx-auto">
+
+               <a href="Modulo2.html"> <button class="bg-gray-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-600 transition-colors">
+                    ← Módulo Anterior
+                </button>
+                </a>
+                <span class="text-gray-600 font-medium text-sm">Módulo 3 de 4</span>
+               <a href="Modulo4.html"> <button class="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-600 transition-colors">
+                    Próximo Módulo →
+                </button></a>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <script>
-        // Story data
-        const stories = {
-            'empathy': {
-                emoji: '💝',
-                name: 'HISTÓRIAS DE OUTROS CORAÇÕES',
-                content: `
-                    <div class="space-y-6">
-                        <div class="empathy-zone p-4 rounded-xl">
-                            <h5 class="font-bold text-amber-800 mb-3">📖 História 1: O Coelho Que Aprendeu a Ouvir</h5>
-                            <div class="bg-white/70 p-4 rounded-lg text-sm text-amber-800 leading-relaxed mb-4">
-                                <p class="mb-3">Era uma vez um coelhinho chamado Bento que adorava falar, falar e falar! Ele contava sobre suas cenouras favoritas, suas corridas no campo e suas aventuras na floresta.</p>
-                                
-                                <p class="mb-3">Um dia, sua amiga Lila, a borboletinha, chegou muito triste. "Bento, eu preciso te contar algo importante..." começou ela.</p>
-                                
-                                <p class="mb-3">Mas Bento nem deixou ela terminar: "Ah, Lila! Você não vai acreditar no que aconteceu comigo hoje! Encontrei a cenoura mais doce do mundo e..."</p>
-                                
-                                <p class="mb-3">Lila suspirou e voou para longe, ainda mais triste. Bento ficou confuso. Por que sua amiga tinha ido embora?</p>
-                                
-                                <p class="mb-3">A sábia coruja Olivia viu tudo e se aproximou: "Bento, você percebeu que Lila estava triste? Ela queria compartilhar algo importante com você."</p>
-                                
-                                <p class="mb-3">"Mas eu estava contando sobre minha cenoura..." disse Bento.</p>
-                                
-                                <p class="mb-3">"Às vezes, meu querido, nossos amigos precisam que a gente pare de falar e comece a ouvir com o coração", explicou Olivia.</p>
-                                
-                                <p class="mb-3">Bento correu atrás de Lila e disse: "Desculpa, amiga. Agora eu quero ouvir você. O que aconteceu?"</p>
-                                
-                                <p class="mb-3">Lila sorriu: "Obrigada, Bento. Eu estava triste porque perdi minha flor favorita no vento. Só precisava de um amigo para me ouvir."</p>
-                                
-                                <p>Bento deu um abraço carinhoso em Lila e aprendeu que ouvir é um dos maiores presentes que podemos dar a alguém.</p>
-                            </div>
-                            
-                            <div class="bg-gradient-to-r from-orange-100 to-red-100 p-4 rounded-xl">
-                                <h6 class="font-bold text-red-800 mb-2">💭 Perguntas para conversar:</h6>
-                                <div class="text-xs text-red-700 space-y-1">
-                                    <p>• Como você acha que Lila se sentiu quando Bento não a ouviu?</p>
-                                    <p>• Você já se sentiu como Lila alguma vez?</p>
-                                    <p>• O que Bento poderia ter feito diferente?</p>
-                                    <p>• Como podemos mostrar aos outros que estamos ouvindo?</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `
-            },
-            'sharing': {
-                emoji: '🤝',
-                name: 'A ARTE DE COMPARTILHAR',
-                content: `
-                    <div class="space-y-6">
-                        <div class="connection-zone p-4 rounded-xl">
-                            <h5 class="font-bold text-purple-800 mb-3">📖 História 2: O Urso Que Guardava Tudo</h5>
-                            <div class="bg-white/70 p-4 rounded-lg text-sm text-purple-800 leading-relaxed mb-4">
-                                <p class="mb-3">No coração da floresta vivia Bruno, um ursinho muito especial. Ele tinha o coração cheio de sentimentos, mas sempre os guardava só para ele.</p>
-                                
-                                <p class="mb-3">Quando Bruno ficava feliz, sorria sozinho. Quando ficava triste, chorava escondido atrás das árvores. Quando sentia medo, fingia que era corajoso.</p>
-                                
-                                <p class="mb-3">Um dia, Bruno viu seu amigo Pedrinho, o esquilo, chorando perto do riacho. "O que houve, Pedrinho?" perguntou Bruno.</p>
-                                
-                                <p class="mb-3">"Ah, Bruno... eu me sinto muito sozinho. Às vezes tenho medo do escuro e não sei com quem conversar", disse Pedrinho.</p>
-                                
-                                <p class="mb-3">Bruno quase disse "Eu também!", mas se segurou. Em vez disso, apenas deu um tapinha no ombro do amigo e foi embora.</p>
-                                
-                                <p class="mb-3">Naquela noite, Bruno não conseguiu dormir. Ele também tinha medo do escuro! Por que não tinha contado isso para Pedrinho?</p>
-                                
-                                <p class="mb-3">No dia seguinte, Bruno procurou Pedrinho: "Sabe, amigo... ontem você disse que tinha medo do escuro. Eu também tenho! Que tal dormirmos na mesma árvore hoje?"</p>
-                                
-                                <p class="mb-3">Os olhos de Pedrinho brilharam: "Sério, Bruno? Eu pensei que eu era o único! Que bom saber que não estou sozinho!"</p>
-                                
-                                <p class="mb-3">Naquela noite, os dois amigos dormiram juntinhos e descobriram que compartilhar sentimentos os fazia se sentir menos sozinhos e mais corajosos.</p>
-                                
-                                <p>Bruno aprendeu que guardar sentimentos só para si é como guardar tesouros em uma caixa trancada - eles ficam sem brilho. Mas quando compartilhamos, eles se multiplicam e nos conectam com quem amamos.</p>
-                            </div>
-                            
-                            <div class="bg-gradient-to-r from-blue-100 to-indigo-100 p-4 rounded-xl">
-                                <h6 class="font-bold text-indigo-800 mb-2">💭 Perguntas para conversar:</h6>
-                                <div class="text-xs text-indigo-700 space-y-1">
-                                    <p>• Por que Bruno guardava seus sentimentos só para ele?</p>
-                                    <p>• Como Pedrinho se sentiu quando soube que não estava sozinho?</p>
-                                    <p>• Você já se sentiu como Bruno ou Pedrinho?</p>
-                                    <p>• Com quem você gosta de compartilhar seus sentimentos?</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `
-            },
-            'adventure': {
-                emoji: '🌟',
-                name: 'AVENTURAS DESCONECTADAS',
-                content: `
-                    <div class="space-y-6">
-                        <div class="adventure-zone p-4 rounded-xl">
-                            <h5 class="font-bold text-green-800 mb-3">📖 História 3: A Borboleta Que Descobriu o Mundo</h5>
-                            <div class="bg-white/70 p-4 rounded-lg text-sm text-green-800 leading-relaxed mb-4">
-                                <p class="mb-3">Era uma vez uma borboletinha chamada Luna que vivia sempre grudada em uma flor mágica que mostrava imagens brilhantes. Ela passava o dia todo olhando para aquelas luzes coloridas.</p>
-                                
-                                <p class="mb-3">"Luna, vamos brincar lá fora!" chamavam seus amigos. Mas ela sempre respondia: "Depois... estou vendo algo muito interessante aqui!"</p>
-                                
-                                <p class="mb-3">Um dia, a flor mágica murchou e parou de brilhar. Luna ficou desesperada! "E agora? O que vou fazer sem minha flor?"</p>
-                                
-                                <p class="mb-3">Sua amiga Mel, a abelha, se aproximou: "Luna, que tal descobrirmos o que tem além desta flor? Eu conheço lugares incríveis!"</p>
-                                
-                                <p class="mb-3">Relutante, Luna seguiu Mel. Primeiro, elas encontraram um riacho cristalino onde podiam ver peixinhos dourados nadando. "Uau! Nunca tinha visto algo tão bonito!" exclamou Luna.</p>
-                                
-                                <p class="mb-3">Depois, descobriram uma árvore cheia de frutas doces que podiam tocar e saborear. "Na minha flor eu só podia ver, mas aqui posso sentir o gosto!" disse Luna, maravilhada.</p>
-                                
-                                <p class="mb-3">Em seguida, encontraram um campo de flores onde podiam dançar, rolar na grama e sentir o vento nas asas. "Que sensação gostosa! Minha flor nunca me deu essa alegria no corpo todo!"</p>
-                                
-                                <p class="mb-3">Quando o sol começou a se pôr, Luna percebeu que tinha passado o dia inteiro brincando e explorando sem nem lembrar da flor mágica.</p>
-                                
-                                <p class="mb-3">"Mel, obrigada por me mostrar que o mundo real é muito mais emocionante que qualquer imagem! Aqui posso tocar, sentir, cheirar e viver de verdade!"</p>
-                                
-                                <p>A partir daquele dia, Luna ainda olhava sua flor mágica às vezes, mas sempre reservava tempo para suas aventuras reais, onde podia usar todos os seus sentidos e criar memórias verdadeiras com seus amigos.</p>
-                            </div>
-                            
-                            <div class="bg-gradient-to-r from-teal-100 to-green-100 p-4 rounded-xl">
-                                <h6 class="font-bold text-teal-800 mb-2">💭 Perguntas para conversar:</h6>
-                                <div class="text-xs text-teal-700 space-y-1">
-                                    <p>• O que Luna descobriu quando saiu da flor mágica?</p>
-                                    <p>• Qual a diferença entre ver algo numa tela e viver de verdade?</p>
-                                    <p>• Que aventuras você gosta de fazer no mundo real?</p>
-                                    <p>• Como podemos equilibrar tempo de tela e tempo de aventura?</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `
-            }
-        };
-
-        // Activity data
-        const activities = {
-            'stories': {
-                emoji: '📚',
-                name: 'LIVRO DAS HISTÓRIAS DE OUTROS CORAÇÕES',
-                content: `
-                    <div class="space-y-6">
-                        <div class="bg-gradient-to-br from-red-50 to-pink-100 p-4 rounded-xl border-2 border-red-200">
-                            <h5 class="font-bold text-red-800 mb-3">📚 O que você vai encontrar:</h5>
-                            <div class="text-sm text-red-700 space-y-2">
-                                <p>• <strong>8 histórias ilustradas</strong> com personagens diversos</p>
-                                <p>• <strong>Perguntas para reflexão</strong> após cada história</p>
-                                <p>• <strong>Atividades complementares</strong> para fazer juntos</p>
-                                <p>• <strong>Guia para pais</strong> sobre como conduzir as conversas</p>
-                                <p>• <strong>Páginas para colorir</strong> dos personagens</p>
-                                <p>• <strong>Certificado de leitor empático</strong> para a criança</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-gradient-to-r from-yellow-100 to-orange-100 p-4 rounded-xl">
-                            <h6 class="font-bold text-orange-800 mb-2">📖 Histórias incluídas:</h6>
-                            <div class="text-xs text-orange-700 space-y-1">
-                                <p>🐰 O Coelho Que Aprendeu a Ouvir</p>
-                                <p>🦋 A Borboleta Corajosa</p>
-                                <p>🐻 O Urso Que Compartilhava Sorrisos</p>
-                                <p>🐸 O Sapo Que Ajudava Amigos</p>
-                                <p>🦊 A Raposa Gentil</p>
-                                <p>🐱 O Gato Que Entendia Corações</p>
-                                <p>🐶 O Cachorro Companheiro</p>
-                                <p>🐦 O Pássaro Mensageiro</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-gradient-to-r from-green-100 to-teal-100 p-4 rounded-xl">
-                            <h6 class="font-bold text-teal-800 mb-2">🦉 Como usar o livro:</h6>
-                            <div class="text-xs text-teal-700 space-y-1">
-                                <p>1. Leiam uma história por vez, sem pressa</p>
-                                <p>2. Façam as perguntas de reflexão juntos</p>
-                                <p>3. Relacionem com situações da vida real</p>
-                                <p>4. Deixem a criança colorir os personagens</p>
-                                <p>5. Criem suas próprias histórias similares</p>
-                            </div>
-                        </div>
-                    </div>
-                `,
-                buttonText: '📥 Baixar Livro Completo',
-                buttonColor: 'bg-red-600 hover:bg-red-700'
-            },
-            'bingo': {
-                emoji: '🎯',
-                name: 'BINGO DA AVENTURA DESCONECTADA',
-                content: `
-                    <div class="space-y-6">
-                        <div class="bg-gradient-to-br from-blue-50 to-indigo-100 p-4 rounded-xl border-2 border-blue-200">
-                            <h5 class="font-bold text-blue-800 mb-3">🎯 O que você vai encontrar:</h5>
-                            <div class="text-sm text-blue-700 space-y-2">
-                                <p>• <strong>6 cartões de bingo</strong> com atividades diferentes</p>
-                                <p>• <strong>36 atividades únicas</strong> para fazer sem telas</p>
-                                <p>• <strong>Sistema de recompensas</strong> com adesivos</p>
-                                <p>• <strong>Certificados de aventureiro</strong> para completar</p>
-                                <p>• <strong>Guia de atividades</strong> com instruções detalhadas</p>
-                                <p>• <strong>Diário de aventuras</strong> para registrar descobertas</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-gradient-to-r from-yellow-100 to-orange-100 p-4 rounded-xl">
-                            <h6 class="font-bold text-orange-800 mb-2">🌟 Exemplos de atividades:</h6>
-                            <div class="text-xs text-orange-700 space-y-1">
-                                <p>🌱 Plantar uma semente e cuidar dela</p>
-                                <p>🎨 Desenhar o céu em diferentes momentos</p>
-                                <p>🏗️ Construir uma torre com blocos</p>
-                                <p>🔍 Fazer uma caça ao tesouro no quintal</p>
-                                <p>🎭 Criar uma peça de teatro com bonecos</p>
-                                <p>🍳 Ajudar a preparar uma receita simples</p>
-                                <p>📚 Inventar uma história e contá-la</p>
-                                <p>🎵 Criar instrumentos com materiais recicláveis</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-gradient-to-r from-purple-100 to-pink-100 p-4 rounded-xl">
-                            <h6 class="font-bold text-purple-800 mb-2">🦉 Como jogar:</h6>
-                            <div class="text-xs text-purple-700 space-y-1">
-                                <p>1. Escolha um cartão de bingo para a semana</p>
-                                <p>2. Complete uma atividade por dia</p>
-                                <p>3. Marque com adesivo ou desenho</p>
-                                <p>4. Celebre cada linha completada</p>
-                                <p>5. Ganhe certificado ao completar o cartão</p>
-                            </div>
-                        </div>
-                    </div>
-                `,
-                buttonText: '📥 Baixar Cartões de Bingo',
-                buttonColor: 'bg-blue-600 hover:bg-blue-700'
-            },
-            'hug': {
-                emoji: '🤗',
-                name: 'MISSÃO DO ABRAÇO AMIGO',
-                content: `
-                    <div class="space-y-6">
-                        <div class="bg-gradient-to-br from-yellow-50 to-amber-100 p-4 rounded-xl border-2 border-yellow-200">
-                            <h5 class="font-bold text-yellow-800 mb-3">🤗 O que você vai encontrar:</h5>
-                            <div class="text-sm text-yellow-700 space-y-2">
-                                <p>• <strong>20 cartões de abraço</strong> para distribuir</p>
-                                <p>• <strong>Desenhos para colorir</strong> com gestos de carinho</p>
-                                <p>• <strong>Mensagens de carinho</strong> prontas para usar</p>
-                                <p>• <strong>Missões diárias</strong> de gentileza</p>
-                                <p>• <strong>Diário de boas ações</strong> para registrar</p>
-                                <p>• <strong>Medalhas de herói do carinho</strong> para conquistar</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-gradient-to-r from-pink-100 to-rose-100 p-4 rounded-xl">
-                            <h6 class="font-bold text-rose-800 mb-2">💝 Tipos de missões:</h6>
-                            <div class="text-xs text-rose-700 space-y-1">
-                                <p>🤗 Dar um abraço em alguém especial</p>
-                                <p>😊 Fazer alguém sorrir com uma piada</p>
-                                <p>🎨 Desenhar algo bonito para alguém</p>
-                                <p>🌸 Colher uma flor para a mamãe</p>
-                                <p>📝 Escrever um bilhete carinhoso</p>
-                                <p>🍪 Compartilhar um lanche com amigo</p>
-                                <p>🎵 Cantar uma música para alegrar</p>
-                                <p>🧸 Emprestar um brinquedo querido</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-gradient-to-r from-green-100 to-emerald-100 p-4 rounded-xl">
-                            <h6 class="font-bold text-emerald-800 mb-2">🦉 Como usar as missões:</h6>
-                            <div class="text-xs text-emerald-700 space-y-1">
-                                <p>1. Escolha uma missão por dia com seu filho</p>
-                                <p>2. Planejem juntos como executar</p>
-                                <p>3. Acompanhe e incentive durante a ação</p>
-                                <p>4. Conversem sobre como a pessoa se sentiu</p>
-                                <p>5. Registrem no diário de boas ações</p>
-                                <p>6. Celebrem cada gesto de carinho realizado</p>
-                            </div>
-                        </div>
-                    </div>
-                `,
-                buttonText: '📥 Baixar Kit Completo',
-                buttonColor: 'bg-yellow-600 hover:bg-yellow-700'
-            }
-        };
-
-        // Story interactions
-        function openStoryReader(story) {
-            const storyData = stories[story];
-            
-            document.getElementById('story-emoji').textContent = storyData.emoji;
-            document.getElementById('story-name').textContent = storyData.name;
-            document.getElementById('story-content').innerHTML = storyData.content;
-            
-            document.getElementById('story-popup').classList.remove('hidden');
-            document.getElementById('story-popup').classList.add('flex');
-        }
-
-        function closeStoryPopup() {
-            document.getElementById('story-popup').classList.add('hidden');
-            document.getElementById('story-popup').classList.remove('flex');
-        }
-
-        // Activity interactions
-        function openActivityPopup(activity) {
-            const activityData = activities[activity];
-            
-            document.getElementById('activity-emoji').textContent = activityData.emoji;
-            document.getElementById('activity-name').textContent = activityData.name;
-            document.getElementById('activity-content').innerHTML = activityData.content;
-            
-            const actionBtn = document.getElementById('activity-action-btn');
-            actionBtn.textContent = activityData.buttonText;
-            actionBtn.className = `mobile-btn ${activityData.buttonColor} text-white rounded-lg px-8 py-3`;
-            actionBtn.onclick = () => downloadActivity(activity);
-            
-            document.getElementById('activity-popup').classList.remove('hidden');
-            document.getElementById('activity-popup').classList.add('flex');
-        }
-
-        function closeActivityPopup() {
-            document.getElementById('activity-popup').classList.add('hidden');
-            document.getElementById('activity-popup').classList.remove('flex');
-        }
-
-        function downloadActivity(activity) {
-            const messages = {
-                'stories': '📚 Preparando download do Livro das Histórias de Outros Corações...\n\nEm breve você receberá o PDF com todas as 8 histórias ilustradas!',
-                'bingo': '🎯 Preparando download do Bingo da Aventura Desconectada...\n\nOs 6 cartões de bingo com 36 atividades estão sendo preparados!',
-                'hug': '🤗 Preparando download da Missão do Abraço Amigo...\n\nO kit completo com cartões, desenhos e missões está sendo preparado!'
-            };
-            
-            alert(messages[activity]);
-            closeActivityPopup();
-        }
-
-        // Close popups when clicking outside
-        document.getElementById('story-popup').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeStoryPopup();
-            }
-        });
-
-        document.getElementById('activity-popup').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeActivityPopup();
-            }
-        });
-
-        // Add floating animations with random delays
-        setInterval(() => {
-            const floatingElements = document.querySelectorAll('.floating-heart, .floating-adventure, .sharing-animation, .empathy-pulse');
-            floatingElements.forEach(el => {
-                el.style.animationDelay = Math.random() * 4 + 's';
-            });
-        }, 6000);
-
-        // Add interactive hover effects
-        document.querySelectorAll('.story-card, .video-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.classList.add('active');
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.classList.remove('active');
-            });
-        });
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'964fda2cd364ba11',t:'MTc1MzQ5MDQ5NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-
-
-<!-------------------------------------------------------------->
-
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Press+Start+2P&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-<style>
-    /* Bloqueia a rolagem lateral e centraliza o conteúdo principal */
-    body {
-        overflow-x: hidden; /* Impede a rolagem horizontal */
-        
-    }
-
-    /* O restante do seu CSS para o container e botões permanece praticamente o mesmo */
-    .button-container {
-        display: flex;
-        flex-wrap: wrap; /* Permite que os botões quebrem a linha se necessário */
-        justify-content: center; /* Centraliza os botões horizontalmente */
-        align-items: center; /* Centraliza os botões verticalmente (se houver variação de altura) */
-        width: 100%; /* Ocupa toda a largura disponível */
-        padding: 20px; /* Pequeno padding geral para o container */
-        /* Removido: min-height: 100vh; - O body já está cuidando da altura mínima e centralização */
-        box-sizing: border-box; /* Inclui padding e borda na largura/altura total */
-    }
-
-    .button-link {
-        text-decoration: none;
-        display: block; /* Para o link ocupar seu próprio espaço */
-        flex: 0 0 auto;
-        min-width: 180px; /* Largura mínima para os botões ajustada */
-        max-width: 280px; /* Largura máxima para os botões ajustada */
-        margin: 15px; /* Define um espaçamento uniforme de 15px ao redor de cada botão */
-        box-sizing: border-box;
-    }
-
-    button {
-        width: 100%; /* O botão ocupa 100% da largura do seu link pai */
-        padding: 20px 30px; /* Botões mais robustos */
-        font-size: 2em; /* Texto bem grande nos botões */
-        cursor: pointer;
-        border: none;
-        border-radius: 40px; /* Bordas super arredondadas */
-        color: white;
-        transition: all 0.3s ease-in-out; /* Transição suave para todas as propriedades */
-        box-shadow: 0 12px 25px rgba(0,0,0,0.4); /* Sombra mais forte e com mais profundidade */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        letter-spacing: 1.5px; /* Aumenta o espaçamento entre as letras */
-        position: relative;
-        overflow: hidden;
-        text-transform: uppercase; /* Texto em maiúsculas */
-        font-family: 'Press Start 2P', cursive; /* Aplica uma das suas fontes de game */
-    }
-
-    button:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: rgba(255,255,255,0.5); /* Efeito de brilho mais intenso */
-        transition: all 0.4s ease-in-out;
-        transform: skewX(-20deg);
-    }
-
-    button:hover:before {
-        left: 120%; /* Move o brilho para fora da tela */
-    }
-
-    button:hover {
-        transform: translateY(-12px) rotate(-4deg); /* Efeito de "pular" e leve rotação mais pronunciado */
-        box-shadow: 0 18px 30px rgba(0,0,0,0.5); /* Sombra maior no hover */
-    }
-
-    button:active { /* Efeito ao clicar */
-        transform: translateY(-5px) rotate(0deg);
-        box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-    }
-
-    .back-button {
-        background: linear-gradient(45deg, #FFD700 0%, #FFA500 100%); /* Amarelo ouro para Laranja forte */
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Sombra para o texto */
-    }
-
-    .forward-button {
-        background: linear-gradient(45deg, #32CD32 0%, #228B22 100%); /* Verde limão para Verde floresta */
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Sombra para o texto */
-    }
-
-    .emoji {
-        margin-right: 15px; /* Mais espaço para o emoji */
-        font-size: 1.5em; /* Emoji um pouco maior */
-        filter: drop-shadow(3px 3px 4px rgba(0,0,0,0.4)); /* Sombra mais forte para o emoji */
-    }
-
-    /* Media Queries para Responsividade */
-    @media (max-width: 768px) {
-        .button-link {
-            margin: 10px; /* Reduz a margem em telas menores */
-        }
-        button {
-            padding: 18px 25px;
-            font-size: 1.8em;
-            border-radius: 35px;
-        }
-        .emoji {
-            margin-right: 10px;
-            font-size: 1.3em;
-        }
-    }
-
-    @media (max-width: 500px) { /* Para celulares menores */
-        .button-container {
-            flex-direction: column; /* Empilha os botões em telas muito pequenas */
-            padding: 20px; /* Aumenta o padding para melhor visualização */
-        }
-        .button-link {
-            width: 90%; /* Ocupa a maior parte da largura da tela */
-            max-width: 300px; /* Limita a largura máxima em celulares */
-            margin: 10px auto; /* Centraliza os links quando empilhados e mantém espaçamento vertical */
-        }
-        button {
-            padding: 15px 20px;
-            font-size: 1.5em;
-            border-radius: 30px;
-        }
-        .emoji {
-            margin-right: 8px;
-            font-size: 1.1em;
-        }
-    }
-
-</style>
-
-<div class="button-container">
-    <a href="Modulo2.html" class="button-link">
-        <button class="back-button">
-            <span class="emoji"></span> Voltar
-        </button>
-    </a>
-
-    <a href="Modulo4.html" class="button-link">
-        <button class="forward-button">
-            Avançar <span class="emoji"></span>
-        </button>
-    </a>
-</div>
-<!-------------------------------------------------------------->
-
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9655733c576cba13',t:'MTc1MzU0OTE5My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
