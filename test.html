@@ -1,457 +1,335 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo ao Nosso Cantinho Mágico!</title>
+ <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Estilos CSS para o Nosso Cantinho Mágico */
-
-        body {
-            margin: 0;
-            font-family: 'Comic Sans MS', cursive, sans-serif; /* Fonte mais infantil */
-            overflow-x: hidden;
-            background-color: #f0f8ff; /* Fundo azul claro para um toque suave */
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap');
+        
+        
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 25%, #7c3aed 50%, #c026d3 75%, #ec4899 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
         }
-
-        #welcome-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(100, 149, 237, 0.9); /* Azul mais vibrante com transparência */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            backdrop-filter: blur(8px); /* Desfoque inicial mais forte */
-            transition: opacity 0.6s ease-in-out, backdrop-filter 0.6s ease-in-out; /* Adiciona transição para o backdrop-filter */
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-
-        #welcome-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-            backdrop-filter: blur(0px); /* Remove o desfoque quando o overlay está oculto */
+        
+        .joy-gradient {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 25%, #f59e0b 50%, #d97706 75%, #b45309 100%);
         }
-
-        .welcome-content {
-            display: flex;
-            background-color: #ffffff; /* Fundo branco para o conteúdo do modal */
-            border-radius: 25px; /* Bordas mais arredondadas */
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); /* Sombra mais marcante */
-            position: relative;
-            border: 5px solid #ffcc00; /* Borda colorida */
-            /* Padrão para mobile: vamos ajustar para não ser tela cheia */
-            width: 90%; /* Largura padrão para o modal em mobile */
-            max-width: 500px; /* Largura máxima para garantir que não fique muito grande em tablets */
-            height: auto; /* Altura ajustável ao conteúdo */
-            padding-bottom: 20px; /* Adiciona um padding inferior para o botão "Explorar" */
-            flex-direction: column; /* Conteúdo em coluna no mobile */
-            justify-content: center;
-            align-items: center;
+        
+        .sadness-gradient {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 25%, #3b82f6 50%, #1d4ed8 75%, #1e40af 100%);
         }
-
-        /* Área para celular (vídeo e controles, sem texto) */
-        .video-area-mobile {
-            display: flex; /* Visível por padrão no mobile */
-            flex-direction: column;
-            width: 100%; /* Ocupa a largura total do welcome-content */
-            align-items: center; /* Centraliza o vídeo horizontalmente */
-            padding-top: 20px; /* Adiciona um padding superior para o vídeo */
-        }
-
-        .video-area-mobile .video-container {
-            position: relative;
-            width: 80%; /* **VÍDEO AINDA MENOR PARA CELULAR** */
-            max-width: 300px; /* Garante que o vídeo não fique gigante em telas maiores que mobile */
-            padding-top: 130%; /* Proporção do vídeo (ajuste aqui para mais ou menos) */
-            margin: 10px 0; /* Margem vertical, sem margem lateral para manter centralizado */
-            border-radius: 15px; /* Bordas arredondadas para o vídeo */
-            background-color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para o vídeo */
-        }
-
-        /* Botão Explorar para Mobile */
-        #close-overlay-mobile {
-            background-color: #ff0040; /* Verde limão vibrante */
-            color: #ffffff; /* Texto escuro para contraste */
-            padding: 12px 25px; /* Tamanho do botão */
-            border: none;
-            border-radius: 10px; /* Bordas arredondadas */
-            font-size: 1.1em; /* Tamanho da fonte */
-            font-weight: bold;
+        
+        .guardian-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            outline: none;
-            margin-top: 25px; /* Espaçamento acima do botão */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            /* Removendo position absolute para que o botão fique abaixo do vídeo no fluxo normal */
-            position: static;
-            bottom: auto;
-        }
-
-        #close-overlay-mobile:hover {
-            background-color: #aaff00; /* Tom de verde mais escuro no hover */
-            transform: translateY(-3px); /* Efeito de "pulo" */
-        }
-
-        /* Área para desktop (vídeo e controles E texto) */
-        .desktop-area {
-            display: none; /* Oculto por padrão no mobile */
-            flex-direction: row; /* Layout lado a lado no desktop */
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Estilo base para os containers de vídeo (ambos mobile e desktop) */
-        .desktop-area .video-container {
             position: relative;
-            background-color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             overflow: hidden;
         }
-
-        #welcome-video-mobile, #welcome-video-desktop {
+        
+        .guardian-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .guardian-card.active {
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(251, 191, 36, 0.3);
+            border: 3px solid #fbbf24;
+        }
+        
+        .floating-joy {
+            animation: floatingJoy 4s ease-in-out infinite;
+        }
+        
+        @keyframes floatingJoy {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            25% { transform: translateY(-10px) rotate(5deg) scale(1.1); }
+            50% { transform: translateY(-5px) rotate(-3deg) scale(0.95); }
+            75% { transform: translateY(-15px) rotate(3deg) scale(1.05); }
+        }
+        
+        .floating-sadness {
+            animation: floatingSadness 5s ease-in-out infinite;
+        }
+        
+        @keyframes floatingSadness {
+            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.8; }
+            25% { transform: translateY(-8px) scale(1.05); opacity: 1; }
+            50% { transform: translateY(-12px) scale(0.98); opacity: 0.9; }
+            75% { transform: translateY(-6px) scale(1.02); opacity: 0.95; }
+        }
+        
+        .heart-pulse {
+            animation: heartPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes heartPulse {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% { 
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+        
+        .sparkle {
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.4; transform: scale(0.8) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+        }
+        
+        .video-container {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border: 3px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+        
+        .video-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 3px;
+            background: linear-gradient(145deg, #fbbf24, #f59e0b, #d97706);
+            border-radius: inherit;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+        }
+        
+        .activity-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .activity-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s;
+        }
+        
+        .activity-card:hover::before {
+            left: 100%;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .progress-orb {
+            background: linear-gradient(145deg, #fbbf24 0%, #f59e0b 100%);
+            box-shadow: 0 8px 32px rgba(251, 191, 36, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .progress-orb.active {
+            animation: orbPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes orbPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 8px 32px rgba(251, 191, 36, 0.3);
+            }
+            50% { 
+                transform: scale(1.1);
+                box-shadow: 0 12px 48px rgba(251, 191, 36, 0.5);
+            }
+        }
+        
+        .emotion-detector {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px dashed #0ea5e9;
+            transition: all 0.3s ease;
+        }
+        
+        .emotion-detector:hover {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            border-color: #0284c7;
+            transform: scale(1.02);
+        }
+        
+        .joy-zone {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+        }
+        
+        .sadness-zone {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border: 2px solid #3b82f6;
+        }
+        
+        .popup-overlay {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+        }
+        
+        .popup-content {
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: popupSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes popupSlideIn {
+            0% { transform: scale(0.9) translateY(20px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        
+        .guardian-intro {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .guardian-intro::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="30" r="1.5" fill="white" opacity="0.15"/><circle cx="60" cy="70" r="1" fill="white" opacity="0.2"/><circle cx="30" cy="80" r="2.5" fill="white" opacity="0.1"/></svg>');
+            animation: twinkle 4s ease-in-out infinite;
         }
-
-        /* Estilo para o botão de Play/Pause centralizado */
-        .play-pause-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #ff0040; /* Rosa vibrante com mais opacidade */
-            border: none;
-            border-radius: 50%; /* Botão circular */
-            width: 90px; /* Tamanho do botão */
-            height: 90px; /* Tamanho do botão */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
-            z-index: 20;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra mais forte */
-            opacity: 1; /* Inicia visível */
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
         }
-
-        .play-pause-overlay:hover {
-            background-color: #ff45a5;
-            transform: translate(-50%, -50%) scale(1.08);
+        
+        .mobile-btn {
+            min-height: 60px;
+            font-weight: 700;
+            font-size: 16px;
+            padding: 16px 24px;
+            transition: all 0.3s ease;
+            touch-action: manipulation;
         }
-
-        .play-pause-overlay.hidden {
-            opacity: 0;
-            pointer-events: none; /* Não captura cliques quando oculto */
+        
+        .mobile-btn:active {
+            transform: scale(0.95);
         }
-
-        /* Estilo para o ícone de Play (triângulo) dentro do botão de overlay */
-        .play-pause-overlay.play-icon::before {
-            content: '';
-            width: 0;
-            height: 0;
-            border-top: 20px solid transparent; /* Tamanho do triângulo */
-            border-bottom: 20px solid transparent;
-            border-left: 35px solid white; /* Cor do triângulo */
-            margin-left: 5px; /* Ajusta a posição do triângulo para centralizar visualmente */
+        
+        .wave-animation {
+            animation: wave 2s ease-in-out infinite;
         }
-
-        /* Estilo para o ícone de Pause (duas barras) dentro do botão de overlay */
-        .play-pause-overlay.pause-icon::before {
-            content: '';
-            width: 15px; /* Largura das barras */
-            height: 30px; /* Altura das barras */
-            background-color: white; /* Cor branca para as barras de pause */
-            box-shadow: 15px 0 0 white; /* Cria a segunda barra */
-            margin-left: -7.5px; /* Metade da largura da barra para centralizar */
+        
+        @keyframes wave {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
-
-        .welcome-text-desktop {
-            padding: 30px;
-            text-align: left; /* Alinha o texto à esquerda no desktop */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start; /* Alinha ao início */
-            flex-grow: 1;
+        
+        .bounce-gentle {
+            animation: bounceGentle 3s ease-in-out infinite;
         }
-
-        .welcome-text-desktop h1 {
-            color: #4682b4;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        
+        @keyframes bounceGentle {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
         }
-
-        .welcome-text-desktop p {
-            color: #6a5acd;
-            font-size: 1.3em;
-            line-height: 1.7;
-            margin-bottom: 25px;
+        
+        .rotate-slow {
+            animation: rotateSlow 8s linear infinite;
         }
-
-        /* Botão fechar para Desktop */
-        #close-overlay-desktop {
-            background-color: #ffcc00;
-            color: #333;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.3em;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            outline: none;
-            margin-top: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        #close-overlay-desktop:hover {
-            background-color: #e6b800;
-            transform: translateY(-3px);
-        }
-
-        /* --- MEDIA QUERIES --- */
-
-        /* Estilos para Mobile (até 767px de largura) */
-        @media (max-width: 767px) {
-            #welcome-overlay {
-                /* No mobile, o desfoque inicial deve cobrir toda a tela */
-                background-color: rgba(100, 148, 237, 0.63);
-                backdrop-filter: blur(8px);
-            }
-
-            .welcome-content {
-                width: 90%; /* O modal ocupa 90% da largura da tela */
-                max-width: 400px; /* Limite máximo para o modal em mobile */
-                height: auto; /* Altura se ajusta ao conteúdo */
-                border-radius: 25px; /* Bordas arredondadas para o modal */
-                border: 5px solid #ffcc0000; /* Borda colorida mantida */
-                background-color: #ffffff00; /* Fundo branco do modal */
-                box-shadow: 0 15px 40px rgba(0, 0, 0, 0);
-                padding-bottom: 20px; /* Espaço para o botão inferior */
-            }
-
-            .video-area-mobile {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .video-area-mobile .video-container {
-                width: 80%; /* **Vídeo menor em mobile** */
-                padding-top: 130%; /* Proporção 16:9 ajustada para um vídeo mais "quadrado" no mobile */
-                margin: 20px 0 0 0; /* Margem superior para separar do topo do modal */
-                border-radius: 15px;
-            }
-
-            #close-overlay-mobile {
-                position: static; /* Volta ao fluxo normal do documento */
-                margin-top: 30px; /* Mais espaço entre o vídeo e o botão */
-            }
-
-            .desktop-area {
-                display: none; /* Garante que a área de desktop esteja oculta */
-            }
-        }
-
-        /* Estilos para Desktop (a partir de 768px de largura) */
-        @media (min-width: 768px) {
-            .welcome-content {
-                flex-direction: row; /* Vídeo e texto lado a lado */
-                max-width: 950px; /* Largura máxima para o contêiner */
-                min-height: 550px; /* Altura mínima para o contêiner */
-                border-radius: 25px; /* Bordas arredondadas novamente */
-                width: auto; /* Deixa a largura ser definida pelo max-width */
-                height: auto; /* Deixa a altura ser definida pelo min-height */
-            }
-
-            .video-area-mobile {
-                display: none; /* OCULTA A ÁREA DE VÍDEO DO CELULAR */
-            }
-
-            .desktop-area {
-                display: flex; /* MOSTRA A ÁREA DE VÍDEO E TEXTO DO DESKTOP */
-            }
-
-            .desktop-area .video-container {
-                width: 380px; /* Largura fixa para o vídeo em desktop */
-                flex-shrink: 0;
-                padding-top: 0; /* Remove o padding-top de proporção */
-                height: 100%; /* Altura 100% para o vídeo */
-                margin: 0; /* Remove a margem para desktop */
-                border-radius: 0; /* Remove o border-radius para desktop */
-            }
-
-            #welcome-video-desktop {
-                position: static; /* Volta a ser estático para ocupar o espaço do container */
-                height: 100%;
-                width: 100%;
-            }
-
-            .welcome-text-desktop {
-                display: flex;
-            }
-
-            /* Oculta o botão mobile no desktop */
-            #close-overlay-mobile {
-                display: none;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .welcome-content {
-                max-width: 1100px;
-                min-height: 650px;
-            }
-            .desktop-area .video-container {
-                width: 450px;
-            }
-            .welcome-text-desktop h1 {
-                font-size: 3em;
-            }
-            .welcome-text-desktop p {
-                font-size: 1.4em;
-            }
+        
+        @keyframes rotateSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
     </style>
-</head>
-<body>
-    <div id="welcome-overlay">
-        <div class="welcome-content">
-            <div class="video-area-mobile">
-                <div class="video-container">
-                    <video id="welcome-video-mobile" src="Videos/video-homer.mp4" playsinline></video>
-                    <button id="play-pause-overlay-mobile" class="play-pause-overlay play-icon"></button>
-                </div>
-                <button id="close-overlay-mobile">Explorar o Site! ✨</button>
-            </div>
-
-            <div class="desktop-area">
-                <div class="video-container">
-                    <video id="welcome-video-desktop" src="Videos/video-homer.mp4" playsinline></video>
-                    <button id="play-pause-overlay-desktop" class="play-pause-overlay play-icon"></button>
-                </div>
-                <div class="welcome-text-desktop">
-                    <h1>🎉 Bem-vindo(a) ao Nosso Cantinho Mágico da Leitura! 📚</h1>
-                    <p>Aqui, cada página é uma aventura! Descubra e-books super divertidos que vão ajudar a molecada a aprender brincando e a sonhar acordada.</p>
-                    <p>Prepare-se para histórias incríveis que ensinam, inspiram e fazem a imaginação voar! 🚀</p>
-                    <button id="close-overlay-desktop">Vamos Começar a Explorar! ✨</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
  
+ <div class="relative z-10">
+                    <div class="text-center mb-6 sm:mb-12">
+                        <div class="text-6xl sm:text-7xl mb-4 heart-pulse">❤️</div>
+                        <h3 class="text-xl sm:text-2xl lg:text-3xl font-black text-gray-800 mb-3 leading-tight px-2">Jornada Coração Valente</h3>
+                        <p class="text-gray-600 text-sm sm:text-base px-4">Transformando ansiedade em coragem, passo a passo</p>
+                    </div>
+                    
+                    <!-- Progress Path - Mobile Optimized -->
+                    <div class="relative mb-6 sm:mb-12">
+                        <div class="absolute top-6 sm:top-8 left-4 right-4 sm:left-0 sm:right-0 h-1 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 rounded-full"></div>
+                        <div class="absolute top-6 sm:top-8 left-4 sm:left-0 h-1 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full transition-all duration-1000" style="width: 40%;"></div>
+                        
+                        <div class="flex justify-between items-center relative z-10 px-1 sm:px-2">
+                            <!-- Step 0 - Completed -->
+                             <div class="text-center flex-1 mx-1">
+                                <div class="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-black text-sm mb-1 sm:mb-3 shadow-lg mx-auto">
+                                    <span class="text-lg sm:text-2xl">✅</span>
+                                </div>
+                                <div class="bg-white rounded-md p-1 shadow-md mx-auto" style="max-width: 50px;">
+                                    <span class="text-xs text-green-600 font-bold block leading-tight">INI</span>
+                                    <span class="text-xs text-gray-600 leading-tight">OK</span>
+                                </div>
+                            </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const welcomeOverlay = document.getElementById('welcome-overlay');
-
-            // REFERÊNCIAS PARA MOBILE
-            const welcomeVideoMobile = document.getElementById('welcome-video-mobile');
-            const playPauseOverlayMobile = document.getElementById('play-pause-overlay-mobile');
-            const closeOverlayMobileButton = document.getElementById('close-overlay-mobile');
-
-            // REFERÊNCIAS PARA DESKTOP
-            const welcomeVideoDesktop = document.getElementById('welcome-video-desktop');
-            const playPauseOverlayDesktop = document.getElementById('play-pause-overlay-desktop');
-            const closeOverlayDesktopButton = document.getElementById('close-overlay-desktop');
-
-            // Array para gerenciar ambos os vídeos e seus controles
-            const videoElements = [
-                {
-                    video: welcomeVideoMobile,
-                    playPauseOverlay: playPauseOverlayMobile
-                },
-                {
-                    video: welcomeVideoDesktop,
-                    playPauseOverlay: playPauseOverlayDesktop
-                }
-            ];
-
-            // Função para configurar os controles de cada vídeo
-            function setupVideoControls(videoObj) {
-                const { video, playPauseOverlay } = videoObj;
-
-                // Define o volume inicial no máximo e mutado
-                video.volume = 1; // Volume no máximo, para quando for desmutado
-                video.muted = true; // SEMPRE COMEÇA MUTADO
-                video.pause(); // Garante que o vídeo esteja pausado no início
-
-                // Garante que o ícone de Play esteja visível no início
-                playPauseOverlay.classList.remove('pause-icon');
-                playPauseOverlay.classList.add('play-icon');
-                playPauseOverlay.classList.remove('hidden');
-
-                // Listener para o botão de overlay de Play/Pause e para o próprio vídeo
-                const handleVideoInteraction = () => {
-                    if (video.paused) {
-                        video.muted = false; // Desmuta o vídeo
-                        video.play(); // Inicia a reprodução
-                        playPauseOverlay.classList.remove('play-icon');
-                        playPauseOverlay.classList.add('pause-icon');
-                        playPauseOverlay.classList.add('hidden'); // Oculta o botão de overlay
-                    } else {
-                        video.pause(); // Pausa o vídeo
-                        playPauseOverlay.classList.remove('pause-icon');
-                        playPauseOverlay.classList.add('play-icon');
-                        playPauseOverlay.classList.remove('hidden'); // Mostra o botão de overlay (ícone de play)
-                    }
-                };
-
-                playPauseOverlay.addEventListener('click', handleVideoInteraction);
-
-                // IMPORTANTE: Removido o event listener 'click' do próprio vídeo para evitar fullscreen automático em mobile
-                // video.addEventListener('click', handleVideoInteraction); // Clicar no vídeo também alterna
-
-                // Garante que o overlay reapareça se o vídeo terminar
-                video.addEventListener('ended', () => {
-                    video.currentTime = 0; // Volta para o início
-                    video.pause();
-                    playPauseOverlay.classList.remove('pause-icon');
-                    playPauseOverlay.classList.add('play-icon');
-                    playPauseOverlay.classList.remove('hidden');
-                    video.muted = true; // Mutado novamente ao final
-                });
-            }
-
-            // Configura os controles para ambos os vídeos (mobile e desktop)
-            videoElements.forEach(setupVideoControls);
-
-            // Função para fechar o overlay e remover o desfoque
-            const closeOverlayAndRemoveBlur = () => {
-                // Pausa os vídeos quando o overlay é fechado
-                if (welcomeVideoDesktop) welcomeVideoDesktop.pause();
-                if (welcomeVideoMobile) welcomeVideoMobile.pause();
-
-                welcomeOverlay.classList.add('hidden'); // Adiciona a classe para ocultar e remover o desfoque
-                setTimeout(() => {
-                    welcomeOverlay.style.display = 'none'; // Esconde completamente após a transição
-                }, 600); // Deve ser igual ou maior que a duração da transição no CSS
-            };
-
-            // Lógica para fechar o overlay (botão desktop)
-            closeOverlayDesktopButton.addEventListener('click', closeOverlayAndRemoveBlur);
-
-            // Lógica para fechar o overlay (botão mobile)
-            closeOverlayMobileButton.addEventListener('click', closeOverlayAndRemoveBlur);
-        });
-    </script>
-</body>
-</html>
+                            <div class="text-center flex-1 mx-1">
+                                <div class="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-black text-sm mb-1 sm:mb-3 shadow-lg mx-auto">
+                                    <span class="text-lg sm:text-2xl">🤗</span>
+                                </div>
+                                <div class="bg-white rounded-md p-1 shadow-md mx-auto" style="max-width: 50px;">
+                                    <span class="text-xs text-green-600 font-bold block leading-tight">M0</span>
+                                    <span class="text-xs text-gray-600 leading-tight">Bloq</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 1 - Active -->
+                            <div class="text-center flex-1 mx-1">
+                                <div class="progress-orb active w-10 h-10 sm:w-16 sm:h-16 rounded-full flex items-center justify-center text-white font-black text-sm mb-1 sm:mb-3 shadow-lg mx-auto">
+                                    <span class="text-lg sm:text-2xl">🧠</span>
+                                </div>
+                                <div class="bg-white rounded-md p-1 shadow-md mx-auto" style="max-width: 50px;">
+                                    <span class="text-xs text-yellow-600 font-bold block leading-tight">M1</span>
+                                    <span class="text-xs text-gray-600 leading-tight">Bloq</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="text-center flex-1 mx-1">
+                                <div class="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full flex items-center justify-center text-gray-500 font-black text-sm mb-1 sm:mb-3 shadow-md transition-all duration-300 hover:scale-105 mx-auto">
+                                    <span class="text-lg sm:text-2xl">⚡</span>
+                                </div>
+                                <div class="bg-white rounded-md p-1 shadow-md opacity-60 mx-auto" style="max-width: 50px;">
+                                    <span class="text-xs text-gray-500 font-bold block leading-tight">M2</span>
+                                    <span class="text-xs text-gray-400 leading-tight">Bloq</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="text-center flex-1 mx-1">
+                                <div class="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full flex items-center justify-center text-gray-500 font-black text-sm mb-1 sm:mb-3 shadow-md transition-all duration-300 hover:scale-105 mx-auto">
+                                    <span class="text-lg sm:text-2xl">🛡️</span>
+                                </div>
+                                <div class="bg-white rounded-md p-1 shadow-md opacity-60 mx-auto" style="max-width: 50px;">
+                                    <span class="text-xs text-gray-500 font-bold block leading-tight">M3</span>
+                                    <span class="text-xs text-gray-400 leading-tight">Bloq</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 4 -->
+                            <div class="text-center flex-1 mx-1">
+                                <div class="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full flex items-center justify-center text-gray-500 font-black text-sm mb-1 sm:mb-3 shadow-md transition-all duration-300 hover:scale-105 mx-auto">
+                                    <span class="text-lg sm:text-2xl">💪</span>
+                                </div>
+                                <div class="bg-white rounded-md p-1 shadow-md opacity-60 mx-auto" style="max-width: 50px;">
+                                    <span class="text-xs text-gray-500 font-bold block leading-tight">M4</span>
+                                    <span class="text-xs text-gray-400 leading-tight">Bloq</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
