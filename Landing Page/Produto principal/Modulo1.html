@@ -507,93 +507,6 @@
 
 
 
-    <!-- Activities Section -->
-    <section class="py-8">
-        <div class="container mx-auto px-3 sm:px-4">
-            <div class="text-center mb-8">
-                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-800 mb-4">🎨 Atividades Complementares</h2>
-                <p class="text-gray-600 text-sm sm:text-base px-4">PDFs para imprimir e atividades práticas para fortalecer o aprendizado</p>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                <!-- Discovery Notebook -->
-                <div class="activity-card bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl p-6 shadow-lg" data-activity="notebook">
-                    <div class="text-center">
-                        <div class="text-6xl mb-4 bounce-gentle">📖</div>
-                        <h4 class="text-lg font-bold text-green-800 mb-3">Caderno de Descobertas</h4>
-                        <p class="text-green-700 text-sm mb-4">
-                            Páginas especiais para desenhar o que te deixa alegre e triste, 
-                            e onde você sente isso no corpo.
-                        </p>
-                        
-                        <div class="bg-white/50 rounded-lg p-3 mb-4">
-                            <div class="text-xs text-green-800 space-y-1">
-                                <p>📝 10 páginas ilustradas</p>
-                                <p>🎨 Espaços para desenhar</p>
-                                <p>🗺️ Mapa do corpo emocional</p>
-                                <p>📋 Guia para os pais</p>
-                            </div>
-                        </div>
-                        
-                        <button class="mobile-btn bg-green-600 hover:bg-green-700 text-white rounded-lg w-full" onclick="openActivityPopup('notebook')">
-                            📥 Baixar PDF
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Emotion Traffic Light Game -->
-                <div class="activity-card bg-gradient-to-br from-red-50 to-orange-100 rounded-xl p-6 shadow-lg" data-activity="traffic">
-                    <div class="text-center">
-                        <div class="text-6xl mb-4 wave-animation">🚦</div>
-                        <h4 class="text-lg font-bold text-red-800 mb-3">Jogo do Semáforo</h4>
-                        <p class="text-red-700 text-sm mb-4">
-                            Tabuleiro divertido onde você avança identificando emoções 
-                            em diferentes situações do dia a dia.
-                        </p>
-                        
-                        <div class="bg-white/50 rounded-lg p-3 mb-4">
-                            <div class="text-xs text-red-800 space-y-1">
-                                <p>🎲 Tabuleiro para imprimir</p>
-                                <p>🃏 30 cartas de situações</p>
-                                <p>🏆 Sistema de pontuação</p>
-                                <p>👨‍👩‍👧‍👦 Para toda família</p>
-                            </div>
-                        </div>
-                        
-                        <button class="mobile-btn bg-red-600 hover:bg-red-700 text-white rounded-lg w-full" onclick="openActivityPopup('traffic')">
-                            📥 Baixar Jogo
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Music Mission -->
-                <div class="activity-card bg-gradient-to-br from-purple-50 to-indigo-100 rounded-xl p-6 shadow-lg" data-activity="music">
-                    <div class="text-center">
-                        <div class="text-6xl mb-4 sparkle">🎵</div>
-                        <h4 class="text-lg font-bold text-purple-800 mb-3">Missão Musical</h4>
-                        <p class="text-purple-700 text-sm mb-4">
-                            Playlist especial com músicas alegres e tristes para 
-                            identificar e sentir diferentes emoções.
-                        </p>
-                        
-                        <div class="bg-white/50 rounded-lg p-3 mb-4">
-                            <div class="text-xs text-purple-800 space-y-1">
-                                <p>🎶 20 músicas selecionadas</p>
-                                <p>😊 10 músicas alegres</p>
-                                <p>😢 10 músicas melancólicas</p>
-                                <p>📋 Guia de atividades</p>
-                            </div>
-                        </div>
-                        
-                        <button class="mobile-btn bg-purple-600 hover:bg-purple-700 text-white rounded-lg w-full" onclick="openActivityPopup('music')">
-                            🎧 Acessar Playlist
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Emotion Detector Interactive -->
     <section class="py-8">
         <div class="container mx-auto px-3 sm:px-4">
@@ -708,93 +621,93 @@
 
     <script>
         // Guardian data
-        const guardians = {
-            'joy': {
-                emoji: '😊',
-                name: 'GUARDIÃO ALEGRIA',
-                content: `
-                    <div class="space-y-6">
-                        <div class="joy-zone p-4 rounded-xl">
-                            <h5 class="font-bold text-yellow-800 mb-3">🌟 Sobre o Guardião Alegria:</h5>
-                            <p class="text-sm text-yellow-700 mb-4">
-                                O Guardião Alegria é como um raio de sol que vive no seu coração! 
-                                Ele aparece quando você está feliz, animado, ou quando algo bom acontece. 
-                                Sua missão é te lembrar de todas as coisas maravilhosas da vida.
-                            </p>
-                            
-                            <h6 class="font-bold text-yellow-800 mb-2">✨ Quando ele aparece:</h6>
-                            <div class="text-xs text-yellow-700 space-y-1 mb-4">
-                                <p>• Quando você ganha um presente</p>
-                                <p>• Ao brincar com amigos</p>
-                                <p>• Quando consegue fazer algo novo</p>
-                                <p>• Ao ouvir uma música que gosta</p>
-                                <p>• Durante abraços e carinhos</p>
-                            </div>
-                            
-                            <h6 class="font-bold text-yellow-800 mb-2">🎯 Como ele te ajuda:</h6>
-                            <div class="text-xs text-yellow-700 space-y-1">
-                                <p>• Te dá energia para tentar coisas novas</p>
-                                <p>• Faz você querer compartilhar momentos bons</p>
-                                <p>• Ajuda a ver o lado positivo das situações</p>
-                                <p>• Te motiva a continuar tentando</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-gradient-to-r from-yellow-100 to-orange-100 p-4 rounded-xl">
-                            <h6 class="font-bold text-orange-800 mb-2">🦉 Dica da Coruja Sábia:</h6>
-                            <p class="text-xs text-orange-700">
-                                "Quando o Guardião Alegria aparecer, aproveite! Dance, cante, 
-                                sorria e compartilhe essa energia boa com quem você ama. 
-                                A alegria cresce quando é dividida!"
-                            </p>
-                        </div>
+       const guardians = {
+    'joy': {
+        emoji: '😊',
+        name: 'GUARDIÃO ALEGRIA',
+        content: `
+            <div class="space-y-6">
+                <div class="joy-zone p-4 rounded-xl">
+                    <h5 class="font-bold text-yellow-800 mb-3">🌟 Entendendo o Guardião Alegria no seu filho:</h5>
+                    <p class="text-sm text-yellow-700 mb-4">
+                        O Guardião Alegria se manifesta no seu filho como um raio de sol! 
+                        Ele aparece quando a criança está feliz, animada, ou quando algo bom acontece. 
+                        Sua presença indica momentos de plenitude e descobertas.
+                    </p>
+                    
+                    <h6 class="font-bold text-yellow-800 mb-2">✨ Quando ele se manifesta:</h6>
+                    <div class="text-xs text-yellow-700 space-y-1 mb-4">
+                        <p>• Quando seu filho ganha um presente ou uma surpresa</p>
+                        <p>• Ao brincar com amigos ou familiares</p>
+                        <p>• Quando consegue realizar algo novo ou superar um desafio</p>
+                        <p>• Ao ouvir músicas ou histórias que ama</p>
+                        <p>• Durante momentos de carinho e afeto com a família</p>
                     </div>
-                `
-            },
-            'sadness': {
-                emoji: '😢',
-                name: 'GUARDIÃO TRISTEZA',
-                content: `
-                    <div class="space-y-6">
-                        <div class="sadness-zone p-4 rounded-xl">
-                            <h5 class="font-bold text-blue-800 mb-3">💙 Sobre o Guardião Tristeza:</h5>
-                            <p class="text-sm text-blue-700 mb-4">
-                                O Guardião Tristeza é como uma chuva suave que também é necessária! 
-                                Ele aparece quando você está triste, com saudade, ou quando algo não está bem. 
-                                Sua missão é te ajudar a cuidar do que é importante para você.
-                            </p>
-                            
-                            <h6 class="font-bold text-blue-800 mb-2">🌧️ Quando ele aparece:</h6>
-                            <div class="text-xs text-blue-700 space-y-1 mb-4">
-                                <p>• Quando você perde algo importante</p>
-                                <p>• Ao se despedir de alguém querido</p>
-                                <p>• Quando algo não sai como esperado</p>
-                                <p>• Ao ver alguém sofrendo</p>
-                                <p>• Durante mudanças difíceis</p>
-                            </div>
-                            
-                            <h6 class="font-bold text-blue-800 mb-2">💝 Como ele te ajuda:</h6>
-                            <div class="text-xs text-blue-700 space-y-1">
-                                <p>• Te faz pedir ajuda quando precisa</p>
-                                <p>• Mostra o que realmente importa para você</p>
-                                <p>• Te ajuda a processar mudanças</p>
-                                <p>• Desenvolve sua empatia pelos outros</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-gradient-to-r from-blue-100 to-indigo-100 p-4 rounded-xl">
-                            <h6 class="font-bold text-indigo-800 mb-2">🦉 Dica da Coruja Sábia:</h6>
-                            <p class="text-xs text-indigo-700">
-                                "Quando o Guardião Tristeza aparecer, não tenha medo! 
-                                Ele está te mostrando que você se importa com algo. 
-                                É hora de pedir um abraço, conversar com alguém ou 
-                                simplesmente deixar a lágrima sair. Isso também é importante!"
-                            </p>
-                        </div>
+                    
+                    <h6 class="font-bold text-yellow-800 mb-2">🎯 Como pais podem acolher a Alegria:</h6>
+                    <div class="text-xs text-yellow-700 space-y-1">
+                        <p>• Incentivem a criança a explorar e tentar coisas novas, reforçando a confiança.</p>
+                        <p>• Participem de atividades que a criança gosta, criando memórias felizes.</p>
+                        <p>• Ajude-a a reconhecer e valorizar os momentos positivos, desenvolvendo a gratidão.</p>
+                        <p>• Criem um ambiente de apoio onde a alegria possa ser expressa livremente.</p>
                     </div>
-                `
-            }
-        };
+                </div>
+                
+                <div class="bg-gradient-to-r from-yellow-100 to-orange-100 p-4 rounded-xl">
+                    <h6 class="font-bold text-orange-800 mb-2">🦉 Dica da Coruja Sábia para os pais:</h6>
+                    <p class="text-xs text-orange-700">
+                        "Quando o Guardião Alegria estiver presente em seu filho, celebrem juntos! 
+                        Dance, cante, sorria e compartilhem essa energia positiva. 
+                        A alegria cresce e se fortalece quando é vivida e compartilhada em família!"
+                    </p>
+                </div>
+            </div>
+        `
+    },
+    'sadness': {
+        emoji: '😢',
+        name: 'GUARDIÃO TRISTEZA',
+        content: `
+            <div class="space-y-6">
+                <div class="sadness-zone p-4 rounded-xl">
+                    <h5 class="font-bold text-blue-800 mb-3">💙 Entendendo o Guardião Tristeza no seu filho:</h5>
+                    <p class="text-sm text-blue-700 mb-4">
+                        O Guardião Tristeza pode parecer uma chuva, mas é essencial para o crescimento! 
+                        Ele aparece quando seu filho está triste, sente falta de algo ou alguém, ou quando algo não sai como esperado. 
+                        Sua presença indica que algo importante para a criança precisa ser cuidado.
+                    </p>
+                    
+                    <h6 class="font-bold text-blue-800 mb-2">🌧️ Quando ele se manifesta:</h6>
+                    <div class="text-xs text-blue-700 space-y-1 mb-4">
+                        <p>• Quando a criança perde algo importante (um brinquedo, um amigo por mudança, etc.)</p>
+                        <p>• Ao se despedir de alguém querido ou sentir saudade</p>
+                        <p>• Quando expectativas não são atendidas ou há frustrações</p>
+                        <p>• Ao perceber o sofrimento de outros ou lidar com injustiças</p>
+                        <p>• Durante momentos de transição ou mudanças difíceis na rotina</p>
+                    </div>
+                    
+                    <h6 class="font-bold text-blue-800 mb-2">💝 Como pais podem acolher a Tristeza:</h6>
+                    <div class="text-xs text-blue-700 space-y-1">
+                        <p>• Ensinem a criança a pedir ajuda e expressar o que sente com palavras ou desenhos.</p>
+                        <p>• Validem os sentimentos dela, mostrando que é normal sentir tristeza.</p>
+                        <p>• Ajude-a a compreender que a tristeza pode ensinar sobre o que é importante para ela.</p>
+                        <p>• Estimulem a empatia, mostrando que todos sentem tristeza às vezes.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-blue-100 to-indigo-100 p-4 rounded-xl">
+                    <h6 class="font-bold text-indigo-800 mb-2">🦉 Dica da Coruja Sábia para os pais:</h6>
+                    <p class="text-xs text-indigo-700">
+                        "Quando o Guardião Tristeza surgir em seu filho, não o ignore! 
+                        Ele está mostrando que algo valioso precisa de atenção e cuidado. 
+                        É o momento de oferecer um abraço, ouvir sem julgamentos ou apenas estar presente. 
+                        Permitir que a tristeza seja sentida é um passo importante para o crescimento emocional."
+                    </p>
+                </div>
+            </div>
+        `
+    }
+};
 
         // Activity data
         const activities = {
@@ -1053,14 +966,7 @@
     /* Bloqueia a rolagem lateral e centraliza o conteúdo principal */
     body {
         overflow-x: hidden; /* Impede a rolagem horizontal */
-        margin: 0; /* Garante que não haja margem padrão no body */
-        padding: 0; /* Garante que não haja padding padrão no body */
-        display: flex; /* Habilita Flexbox no body */
-        flex-direction: column; /* Coloca os itens em coluna (topo para baixo) */
-        justify-content: center; /* Centraliza os itens verticalmente */
-        align-items: center; /* Centraliza os itens horizontalmente */
-        min-height: 100vh; /* Garante que o body ocupe no mínimo 100% da altura da viewport */
-        box-sizing: border-box; /* Inclui padding e borda na largura/altura total */
+        
     }
 
     /* O restante do seu CSS para o container e botões permanece praticamente o mesmo */
