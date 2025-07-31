@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário das Emoções - Crianças</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #FF6B6B; /* Vermelho vibrante */
+            --cor-secundaria: #4ECDC4; /* Azul esverdeado */
+            --cor-terciaria: #FFE66D; /* Amarelo */
+            --cor-fundo: #F7FFF7; /* Branco suave */
+            --cor-texto: #333;
+            --cor-borda: #DDD;
+            --cor-selecionada: #A2D5AB; /* Verde claro */
+            --cor-sombra: rgba(0, 0, 0, 0.1);
+            --cor-hover: #F0F0F0;
+            --cor-dia-desabilitado: #E0E0E0; /* Cor para dias passados e futuros */
+            --cor-alerta: #FF4B4B; /* Vermelho para alertas */
+            --cor-sugestao: #4CAF50; /* Verde para sugestões */
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--cor-sombra);
+            padding: 30px;
+            width: 100%;
+            max-width: 900px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            border: 2px solid var(--cor-primaria);
+        }
+
+        h1 {
+            color: var(--cor-primaria);
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 2.5em;
+            text-shadow: 1px 1px 2px var(--cor-sombra);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+
+        .calendar-header button {
+            background-color: var(--cor-secundaria);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px var(--cor-sombra);
+        }
+
+        .calendar-header button:hover {
+            background-color: #3BB8AF;
+            transform: translateY(-2px);
+        }
+
+        .calendar-header h2 {
+            color: var(--cor-texto);
+            font-size: 1.8em;
+            margin: 0;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+
+        .calendar-day-name {
+            font-weight: bold;
+            color: var(--cor-secundaria);
+            padding: 10px 0;
+            font-size: 1.1em;
+        }
+
+        .day-cell {
+            background-color: var(--cor-fundo);
+            border: 1px solid var(--cor-borda);
+            border-radius: 10px;
+            padding: 10px 5px;
+            cursor: pointer;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+            position: relative;
+            box-shadow: 0 2px 5px var(--cor-sombra);
+        }
+
+        .day-cell.empty {
+            background-color: #f8f8f8;
+            border: 1px dashed var(--cor-borda);
+            cursor: default;
+            box-shadow: none;
+        }
+
+        .day-cell:not(.empty):hover {
+            background-color: var(--cor-hover);
+            transform: translateY(-3px);
+            border-color: var(--cor-secundaria);
+        }
+
+        /* Estilo para dias desabilitados (passados e futuros) */
+        .day-cell.disabled-day {
+            background-color: var(--cor-dia-desabilitado);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        .day-cell.disabled-day:hover {
+            background-color: var(--cor-dia-desabilitado); /* Não mudar ao hover */
+            transform: none; /* Não animar */
+            border-color: var(--cor-borda); /* Não mudar borda */
+        }
+
+        .day-number {
+            font-weight: bold;
+            font-size: 1.3em;
+            color: var(--cor-primaria);
+            margin-bottom: 5px;
+        }
+
+        .day-emotion-display {
+            font-size: 2.5em;
+            line-height: 1;
+            transition: transform 0.2s ease;
+        }
+
+        .day-emotion-display:hover {
+            transform: scale(1.1);
+        }
+        .day-cell.disabled-day .day-emotion-display:hover {
+            transform: none; /* Não animar emoji em dia desabilitado */
+        }
+
+
+        /* Pop-up de Seleção de Emoção */
+        .emotion-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .emotion-popup-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px var(--cor-sombra);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            border: 3px solid var(--cor-secundaria);
+            position: relative;
+        }
+
+        .emotion-popup-content h3 {
+            color: var(--cor-primaria);
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .emotion-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px; /* Para scrollbar */
+        }
+
+        .emotion-option {
+            background-color: var(--cor-fundo);
+            border: 2px solid var(--cor-borda);
+            border-radius: 10px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px var(--cor-sombra);
+        }
+
+        .emotion-option:hover {
+            background-color: var(--cor-hover);
+            border-color: var(--cor-secundaria);
+            transform: translateY(-3px);
+        }
+
+        .emotion-option.selected {
+            background-color: var(--cor-selecionada);
+            border-color: var(--cor-secundaria);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(162, 213, 171, 0.5);
+        }
+
+        .emotion-option span {
+            font-size: 3em;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+
+        .emotion-option p {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: var(--cor-texto);
+            margin: 0;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.8em;
+            color: var(--cor-texto);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-popup:hover {
+            color: var(--cor-primaria);
+        }
+
+        /* Seção para Pais */
+        .parent-section {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--cor-sombra);
+            padding: 30px;
+            width: 100%;
+            max-width: 900px;
+            box-sizing: border-box;
+            border: 2px solid var(--cor-secundaria);
+            margin-top: 20px;
+        }
+
+        .parent-section h2 {
+            color: var(--cor-secundaria);
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 2em;
+        }
+
+        .parent-section button {
+            background-color: var(--cor-terciaria);
+            color: var(--cor-texto);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px var(--cor-sombra);
+            margin: 10px;
+            font-weight: bold;
+        }
+
+        .parent-section button:hover {
+            background-color: #FFD200;
+            transform: translateY(-2px);
+        }
+
+        .parent-section #report-output,
+        .parent-section #analysis-output {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid var(--cor-borda);
+            padding: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap; /* Para manter quebras de linha */
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 0.9em;
+            text-align: left; /* Alinhar o texto da análise à esquerda */
+        }
+
+        .parent-section #analysis-output {
+            border-color: var(--cor-secundaria); /* Borda diferente para análise */
+            background-color: #eaf7f7; /* Fundo mais claro para análise */
+            font-family: 'Quicksand', sans-serif; /* Fonte normal para análise */
+            font-size: 1em;
+            color: var(--cor-texto);
+        }
+
+        .parent-section .analysis-title {
+            font-weight: bold;
+            color: var(--cor-primaria);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .parent-section .analysis-alert {
+            color: var(--cor-alerta);
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .parent-section .analysis-suggestion {
+            color: var(--cor-sugestao);
+            margin-top: 5px;
+        }
+
+        .parent-section label {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .parent-section input[type="month"] {
+            padding: 8px;
+            border: 1px solid var(--cor-borda);
+            border-radius: 5px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1em;
+            margin-right: 15px;
+        }
+
+        .parent-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container, .parent-section {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .calendar-header h2 {
+                font-size: 1.5em;
+            }
+            .calendar-day-name {
+                font-size: 0.9em;
+            }
+            .day-number {
+                font-size: 1.1em;
+            }
+            .day-emotion-display {
+                font-size: 2em;
+            }
+            .emotion-popup-content {
+                padding: 20px;
+            }
+            .emotion-option span {
+                font-size: 2.5em;
+            }
+            .emotion-option p {
+                font-size: 0.8em;
+            }
+            .parent-section h2 {
+                font-size: 1.7em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container, .parent-section {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            .calendar-header button {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+            .calendar-header h2 {
+                font-size: 1.3em;
+            }
+            .calendar-grid {
+                gap: 5px;
+            }
+            .day-cell {
+                min-height: 70px;
+                padding: 5px;
+            }
+            .day-number {
+                font-size: 1em;
+            }
+            .day-emotion-display {
+                font-size: 1.8em;
+            }
+            .emotion-options {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+                gap: 10px;
+            }
+            .emotion-option span {
+                font-size: 2em;
+            }
+            .parent-section button {
+                padding: 10px 15px;
+                font-size: 1em;
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Diário das Emoções</h1>
+        <p style="text-align: center; margin-bottom: 20px; color: var(--cor-secundaria); font-weight: bold;">
+            Olá, pequeno(a) aventureiro(a)! Escolha a carinha que mostra como você está se sentindo hoje! 😊
+        </p>
+        <div class="calendar-header">
+            <button id="prevMonth">Mês Anterior</button>
+            <h2 id="currentMonthYear"></h2>
+            <button id="nextMonth">Próximo Mês</button>
+        </div>
+        <div class="calendar-grid" id="calendarGrid">
+            </div>
+    </div>
+
+    <div class="emotion-popup" id="emotionPopup">
+        <div class="emotion-popup-content">
+            <span class="close-popup" id="closePopup">&times;</span>
+            <h3 id="popupTitle">Como você está se sentindo em <span id="selectedDayDate"></span>?</h3>
+            <div class="emotion-options" id="emotionOptions">
+                </div>
+            <p style="margin-top: 20px; font-size: 0.9em; color: gray;">
+                Clique na carinha para selecioná-la! Você pode mudar a qualquer momento.
+            </p>
+        </div>
+    </div>
+
+    <div class="parent-section">
+        <h2>Área dos Papais 👨‍👩‍👧‍👦</h2>
+        <p style="text-align: center; margin-bottom: 20px; color: gray;">
+            Aqui você pode acompanhar as emoções do seu filho(a) ao longo do tempo.
+        </p>
+        <div style="text-align: center; margin-bottom: 20px;">
+            <label for="reportMonth">Gerar Relatório/Análise para o Mês:</label>
+            <input type="month" id="reportMonth">
+        </div>
+        <div class="parent-actions">
+            <button id="generateReportBtn">Gerar Relatório de Emoções</button>
+            <button id="generateAnalysisBtn">Gerar Análise Detalhada</button>
+            <button id="downloadReportBtn">Baixar Relatório (TXT)</button>
+            <button id="clearDataBtn" style="background-color: #FFABAB;">Apagar Todos os Dados</button>
+        </div>
+        <div id="report-output">
+            Seu relatório de emojis aparecerá aqui.
+        </div>
+        <div id="analysis-output" style="display: none;">
+            Sua análise detalhada aparecerá aqui.
+        </div>
+    </div>
+
+    <script>
+        const calendarGrid = document.getElementById('calendarGrid');
+        const currentMonthYear = document.getElementById('currentMonthYear');
+        const prevMonthBtn = document.getElementById('prevMonth');
+        const nextMonthBtn = document.getElementById('nextMonth');
+        const emotionPopup = document.getElementById('emotionPopup');
+        const closePopup = document.getElementById('closePopup');
+        const emotionOptions = document.getElementById('emotionOptions');
+        const selectedDayDate = document.getElementById('selectedDayDate');
+        const popupTitle = document.getElementById('popupTitle');
+
+        const generateReportBtn = document.getElementById('generateReportBtn');
+        const generateAnalysisBtn = document.getElementById('generateAnalysisBtn'); // Novo botão
+        const downloadReportBtn = document.getElementById('downloadReportBtn');
+        const clearDataBtn = document.getElementById('clearDataBtn');
+        const reportOutput = document.getElementById('report-output');
+        const analysisOutput = document.getElementById('analysis-output'); // Novo elemento de saída
+        const reportMonthInput = document.getElementById('reportMonth');
+
+        const today = new Date();
+        let currentMonth = today.getMonth();
+        let currentYear = today.getFullYear();
+        const currentDay = today.getDate();
+
+        let selectedDayCell = null;
+
+        const emotions = [
+            { name: "Alegria", emoji: "😄", type: "positive" },
+            { name: "Felicidade", emoji: "😊", type: "positive" },
+            { name: "Amor", emoji: "❤️", type: "positive" },
+            { name: "Gratidão", emoji: "🙏", type: "positive" },
+            { name: "Esperança", emoji: "🌟", type: "positive" },
+            { name: "Orgulho", emoji: "💪", type: "positive" },
+            { name: "Confiança", emoji: "✨", type: "positive" },
+            { name: "Segurança", emoji: "🛡️", type: "positive" },
+            { name: "Alívio", emoji: "😌", type: "positive" },
+            { name: "Satisfação", emoji: "😁", type: "positive" },
+            { name: "Interesse", emoji: "🤔", type: "neutral" }, // Pode ser neutro/positivo, dependendo do contexto
+            { name: "Cuidado", emoji: "🤗", type: "positive" },
+            { name: "Afeição", emoji: "🥰", type: "positive" },
+            { name: "Compaixão", emoji: "🥺", type: "positive" },
+            { name: "Saudade", emoji: "😥", type: "negative" },
+            { name: "Tédio", emoji: "😑", type: "negative" },
+            { name: "Confusão", emoji: "😕", type: "negative" },
+            { name: "Tristeza", emoji: "😢", type: "negative" },
+            { name: "Medo", emoji: "😨", type: "negative" },
+            { name: "Raiva", emoji: "😡", type: "negative" },
+            { name: "Irritação", emoji: "😠", type: "negative" },
+            { name: "Frustração", emoji: "😤", type: "negative" },
+            { name: "Culpa", emoji: "😔", type: "negative" },
+            { name: "Vergonha", emoji: "😳", type: "negative" },
+            { name: "Ansiedade", emoji: "😬", type: "negative" },
+            { name: "Desânimo", emoji: "😞", type: "negative" },
+            { name: "Ressentimento", emoji: "😒", type: "negative" },
+            { name: "Arrependimento", emoji: "😓", type: "negative" },
+            { name: "Insegurança", emoji: "😟", type: "negative" },
+            { name: "Desespero", emoji: "😩", type: "negative" },
+            { name: "Luto", emoji: "🖤", type: "negative" }
+        ];
+
+        const dayNames = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+
+        function getMonthName(monthIndex) {
+            const date = new Date(currentYear, monthIndex, 1);
+            return date.toLocaleString('pt-BR', { month: 'long' });
+        }
+
+        function loadSavedEmotions() {
+            try {
+                const savedData = localStorage.getItem('emotionDiary');
+                return savedData ? JSON.parse(savedData) : {};
+            } catch (e) {
+                console.error("Erro ao carregar dados do localStorage:", e);
+                return {};
+            }
+        }
+
+        function saveEmotion(dateKey, emotionEmoji) {
+            const data = loadSavedEmotions();
+            data[dateKey] = emotionEmoji;
+            localStorage.setItem('emotionDiary', JSON.stringify(data));
+        }
+
+        function removeEmotion(dateKey) {
+            const data = loadSavedEmotions();
+            delete data[dateKey];
+            localStorage.setItem('emotionDiary', JSON.stringify(data));
+        }
+
+        function renderCalendar() {
+            calendarGrid.innerHTML = '';
+            currentMonthYear.textContent = `${getMonthName(currentMonth)} de ${currentYear}`;
+
+            dayNames.forEach(day => {
+                const dayNameDiv = document.createElement('div');
+                dayNameDiv.classList.add('calendar-day-name');
+                dayNameDiv.textContent = day;
+                calendarGrid.appendChild(dayNameDiv);
+            });
+
+            const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+            const savedEmotions = loadSavedEmotions();
+
+            for (let i = 0; i < firstDayOfMonth; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.classList.add('day-cell', 'empty');
+                calendarGrid.appendChild(emptyCell);
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateKey = `${currentYear}-${currentMonth + 1}-${day}`;
+                const dayCell = document.createElement('div');
+                dayCell.classList.add('day-cell');
+                dayCell.dataset.date = dateKey;
+
+                const dayNumberSpan = document.createElement('span');
+                dayNumberSpan.classList.add('day-number');
+                dayNumberSpan.textContent = day;
+                dayCell.appendChild(dayNumberSpan);
+
+                const emotionDisplay = document.createElement('span');
+                emotionDisplay.classList.add('day-emotion-display');
+                if (savedEmotions[dateKey]) {
+                    emotionDisplay.textContent = savedEmotions[dateKey];
+                }
+                dayCell.appendChild(emotionDisplay);
+
+                const isToday = (currentYear === today.getFullYear() && currentMonth === today.getMonth() && day === currentDay);
+                
+                if (!isToday) {
+                    dayCell.classList.add('disabled-day');
+                } else {
+                    dayCell.addEventListener('click', () => openEmotionPopup(dayCell, day, currentMonth, currentYear));
+                }
+                
+                calendarGrid.appendChild(dayCell);
+            }
+        }
+
+        function openEmotionPopup(cell, day, month, year) {
+            const clickedDate = new Date(year, month, day);
+            const todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+            if (clickedDate.getTime() !== todayDate.getTime()) {
+                alert("Você só pode registrar emoções para o dia de hoje!");
+                return; 
+            }
+
+            selectedDayCell = cell;
+            const dateKey = `${year}-${month + 1}-${day}`;
+            selectedDayDate.textContent = `${day} de ${getMonthName(month)}`; // Removido ano para ficar mais limpo
+            popupTitle.innerHTML = `Como você está se sentindo em <span style="color: var(--cor-secundaria);">${day} de ${getMonthName(month)} de ${year}</span>?`;
+
+            emotionOptions.innerHTML = '';
+
+            const currentEmotion = loadSavedEmotions()[dateKey];
+
+            emotions.forEach(emotion => {
+                const optionDiv = document.createElement('div');
+                optionDiv.classList.add('emotion-option');
+                optionDiv.dataset.emotion = emotion.emoji;
+
+                const emojiSpan = document.createElement('span');
+                emojiSpan.textContent = emotion.emoji;
+                optionDiv.appendChild(emojiSpan);
+
+                const nameP = document.createElement('p');
+                nameP.textContent = emotion.name;
+                optionDiv.appendChild(nameP);
+
+                if (currentEmotion === emotion.emoji) {
+                    optionDiv.classList.add('selected');
+                }
+
+                optionDiv.addEventListener('click', () => selectEmotion(dateKey, emotion.emoji));
+                emotionOptions.appendChild(optionDiv);
+            });
+
+            emotionPopup.style.display = 'flex';
+        }
+
+        function selectEmotion(dateKey, emotionEmoji) {
+            document.querySelectorAll('.emotion-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+
+            const clickedOption = emotionOptions.querySelector(`[data-emotion="${emotionEmoji}"]`);
+            if (clickedOption) {
+                clickedOption.classList.add('selected');
+            }
+
+            if (selectedDayCell) {
+                selectedDayCell.querySelector('.day-emotion-display').textContent = emotionEmoji;
+            }
+
+            saveEmotion(dateKey, emotionEmoji);
+
+            setTimeout(() => {
+                emotionPopup.style.display = 'none';
+            }, 300);
+        }
+
+        prevMonthBtn.addEventListener('click', () => {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            renderCalendar();
+        });
+
+        nextMonthBtn.addEventListener('click', () => {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            renderCalendar();
+        });
+
+        closePopup.addEventListener('click', () => {
+            emotionPopup.style.display = 'none';
+        });
+
+        emotionPopup.addEventListener('click', (event) => {
+            if (event.target === emotionPopup) {
+                emotionPopup.style.display = 'none';
+            }
+        });
+
+        // --- Funcionalidades para os Pais ---
+
+        const currentMonthFormatted = (today.getMonth() + 1).toString().padStart(2, '0');
+        const currentYearFormatted = today.getFullYear();
+        reportMonthInput.value = `${currentYearFormatted}-${currentMonthFormatted}`;
+
+        // Função para gerar o relatório de emojis
+        generateReportBtn.addEventListener('click', () => {
+            // Esconde a análise detalhada e mostra o relatório de emojis
+            analysisOutput.style.display = 'none';
+            reportOutput.style.display = 'block';
+
+            const selectedMonthYear = reportMonthInput.value;
+            if (!selectedMonthYear) {
+                reportOutput.textContent = "Por favor, selecione um mês e ano para gerar o relatório.";
+                return;
+            }
+            const [reportYear, reportMonth] = selectedMonthYear.split('-').map(Number);
+            
+            const savedData = loadSavedEmotions();
+            let reportContent = `Relatório de Emoções para ${getMonthName(reportMonth - 1)} de ${reportYear}:\n\n`;
+            let foundEntries = false;
+
+            for (let day = 1; day <= 31; day++) {
+                const dateKey = `${reportYear}-${reportMonth}-${day}`;
+                if (savedData[dateKey]) {
+                    const emotionName = emotions.find(e => e.emoji === savedData[dateKey])?.name || 'Emoção Desconhecida';
+                    reportContent += `Dia ${day.toString().padStart(2, '0')}: ${savedData[dateKey]} - ${emotionName}\n`;
+                    foundEntries = true;
+                }
+            }
+
+            if (!foundEntries) {
+                reportContent = `Nenhuma emoção registrada para ${getMonthName(reportMonth - 1)} de ${reportYear}.`;
+            }
+            reportOutput.textContent = reportContent;
+        });
+
+        // NOVO: Função para gerar análise detalhada
+        generateAnalysisBtn.addEventListener('click', () => {
+            // Esconde o relatório de emojis e mostra a análise detalhada
+            reportOutput.style.display = 'none';
+            analysisOutput.style.display = 'block';
+
+            const selectedMonthYear = reportMonthInput.value;
+            if (!selectedMonthYear) {
+                analysisOutput.innerHTML = "<p>Por favor, selecione um mês e ano para gerar a análise.</p>";
+                return;
+            }
+            const [analysisYear, analysisMonth] = selectedMonthYear.split('-').map(Number);
+            
+            const savedData = loadSavedEmotions();
+            const emotionsCount = {}; // { emoji: count, ... }
+            const emotionsByType = { positive: 0, negative: 0, neutral: 0 };
+            let totalEntries = 0;
+            let daysWithEmotion = []; // Para verificar variação
+
+            for (let day = 1; day <= new Date(analysisYear, analysisMonth, 0).getDate(); day++) { // Iterar apenas pelos dias reais do mês
+                const dateKey = `${analysisYear}-${analysisMonth}-${day}`;
+                if (savedData[dateKey]) {
+                    totalEntries++;
+                    const emotionEmoji = savedData[dateKey];
+                    const emotionDetail = emotions.find(e => e.emoji === emotionEmoji);
+
+                    emotionsCount[emotionEmoji] = (emotionsCount[emotionEmoji] || 0) + 1;
+                    if (emotionDetail) {
+                        emotionsByType[emotionDetail.type]++;
+                        daysWithEmotion.push({ day, emotion: emotionDetail.name, type: emotionDetail.type });
+                    }
+                }
+            }
+
+            let analysisContent = `<div class="analysis-title">Análise de Emoções para ${getMonthName(analysisMonth - 1)} de ${analysisYear}</div><br>`;
+
+            if (totalEntries === 0) {
+                analysisContent += "<p>Nenhuma emoção registrada para este mês. Incentive seu filho(a) a usar o diário diariamente!</p>";
+                analysisOutput.innerHTML = analysisContent;
+                return;
+            }
+
+            // Converter contagens para porcentagens
+            const positivePercent = ((emotionsByType.positive / totalEntries) * 100).toFixed(1);
+            const negativePercent = ((emotionsByType.negative / totalEntries) * 100).toFixed(1);
+            const neutralPercent = ((emotionsByType.neutral / totalEntries) * 100).toFixed(1);
+
+            analysisContent += `<p>Total de dias registrados com emoções: <strong>${totalEntries}</strong></p>`;
+            analysisContent += `<p>Emoções Positivas: <strong>${positivePercent}%</strong></p>`;
+            analysisContent += `<p>Emoções Negativas: <strong>${negativePercent}%</strong></p>`;
+            if (emotionsByType.neutral > 0) {
+                 analysisContent += `<p>Emoções Neutras: <strong>${neutralPercent}%</strong></p>`;
+            }
+           
+            analysisContent += "<br><div class='analysis-title'>Padrões Observados:</div>";
+
+            // 1. Predominância de emoções negativas
+            if (emotionsByType.negative > emotionsByType.positive * 1.5 && totalEntries > 5) { // Se negativos são 1.5x mais que positivos e há registros suficientes
+                analysisContent += `<p class="analysis-alert">⚠️ **Alerta:** Seu filho(a) registrou uma predominância de emoções negativas (${negativePercent}%). Isso pode indicar que ele(a) está passando por um período de desafios ou desconforto.</p>`;
+                analysisContent += `<p class="analysis-suggestion">💡 **Sugestão:** Observe o comportamento do seu filho(a) fora do diário. Converse abertamente sobre o que pode estar causando essas emoções. Ofereça mais carinho, apoio e valide os sentimentos dele(a). Se o padrão persistir ou se intensificar, considere procurar o apoio de um(a) psicólogo(a infantil) ou profissional de saúde mental.</p>`;
+            } else if (emotionsByType.positive > emotionsByType.negative * 1.5 && totalEntries > 5) {
+                analysisContent += `<p>😀 Seu filho(a) registrou uma maioria de emoções positivas (${positivePercent}%). Parece estar em um período de bem-estar e felicidade!</p>`;
+                analysisContent += `<p class="analysis-suggestion">💡 **Sugestão:** Continue promovendo um ambiente positivo e incentivando atividades que ele(a goste. Mantenha o diálogo aberto e celebre as pequenas vitórias.</p>`;
+            } else if (totalEntries > 5) {
+                analysisContent += `<p>⚖️ As emoções positivas e negativas estão mais equilibradas neste mês. Isso é comum e faz parte do desenvolvimento emocional.</p>`;
+                analysisContent += `<p class="analysis-suggestion">💡 **Sugestão:** Continue incentivando o reconhecimento de todas as emoções, mostrando que é normal sentir alegria, mas também tristeza ou raiva, e que todas são importantes.</p>`;
+            }
+
+            // 2. Emoções específicas de alerta
+            const specificNegativeEmotions = {};
+            emotions.filter(e => e.type === 'negative').forEach(e => {
+                if (emotionsCount[e.emoji] && emotionsCount[e.emoji] > (totalEntries * 0.15) && emotionsCount[e.emoji] >= 3) { // Mais de 15% dos dias, e pelo menos 3 dias
+                    specificNegativeEmotions[e.name] = emotionsCount[e.emoji];
+                }
+            });
+
+            if (Object.keys(specificNegativeEmotions).length > 0) {
+                analysisContent += `<br><div class="analysis-title">Emoções Negativas Recorrentes:</div>`;
+                for (const [name, count] of Object.entries(specificNegativeEmotions)) {
+                    analysisContent += `<p class="analysis-alert">💔 Emoção de "${name}" apareceu ${count} vez(es). </p>`;
+                    if (name === "Tristeza" || name === "Desânimo" || name === "Luto") {
+                        analysisContent += `<p class="analysis-suggestion">💡 **Sugestão:** A tristeza persistente merece atenção. Tente entender o que pode estar causando essa emoção. Ofereça um ombro amigo, converse sobre perdas ou mudanças recentes na rotina (ex: mudança de escola, perda de um animal de estimação, etc.).</p>`;
+                    } else if (name === "Medo" || name === "Ansiedade" || name === "Insegurança") {
+                        analysisContent += `<p class="analysis-suggestion">💡 **Sugestão:** O medo ou a ansiedade frequente podem ser exaustivos. Identifique possíveis fontes de preocupação (escola, amigos, eventos futuros). Crie um ambiente seguro e previsível. Técnicas de respiração ou relaxamento podem ajudar. Se a ansiedade for incapacitante, procure ajuda profissional.</p>`;
+                    } else if (name === "Raiva" || name === "Irritação" || name === "Frustração") {
+                        analysisContent += `<p class="analysis-suggestion">💡 **Sugestão:** A raiva e a frustração são emoções normais, mas a frequência pode indicar dificuldades em lidar com limites ou expressar necessidades. Ajude seu filho(a) a nomear a raiva e a encontrar formas saudáveis de expressá-la (desenhar, apertar almofadas, conversar).</p>`;
+                    } else if (name === "Culpa" || name === "Vergonha" || name === "Arrependimento") {
+                        analysisContent += `<p class="analysis-suggestion">💡 **Sugestão:** Essas emoções podem estar ligadas a situações específicas ou a uma autoexigência elevada. Reforce que errar faz parte do aprendizado e que todos cometem erros. Incentive a auto-compaixão e o perdão, tanto para si quanto para os outros.</p>`;
+                    } else if (name === "Tédio" || name === "Confusão") {
+                        analysisContent += `<p class="analysis-suggestion">💡 **Sugestão:** O tédio persistente pode ser um sinal de falta de estímulos ou dificuldade em encontrar propósitos. Ofereça novas atividades, estimule a criatividade e o autoconhecimento. A confusão pode indicar que há algo não claro na vida da criança; tente simplificar e explicar situações.</p>`;
+                    }
+                }
+            }
+            
+            // 3. Variações bruscas de humor (Ex: Dia 1 Feliz, Dia 2 Raiva, Dia 3 Tristeza)
+            if (totalEntries > 3) { // Precisa de pelo menos 3 dias para analisar variação
+                let moodSwingsDetected = false;
+                for (let i = 0; i < daysWithEmotion.length - 1; i++) {
+                    const currentEmotion = daysWithEmotion[i];
+                    const nextEmotion = daysWithEmotion[i + 1];
+
+                    // Verifica se há uma mudança drástica entre emoções opostas em dias consecutivos
+                    if (currentEmotion.type === "positive" && nextEmotion.type === "negative" ||
+                        currentEmotion.type === "negative" && nextEmotion.type === "positive") {
+                        moodSwingsDetected = true;
+                        break;
+                    }
+                }
+                if (moodSwingsDetected) {
+                    analysisContent += `<br><p class="analysis-alert">🔄 **Padrão de Variação de Humor:** Foram observadas mudanças bruscas entre emoções positivas e negativas. Isso pode ser normal em alguns dias, mas a recorrência pode ser um sinal a observar.</p>`;
+                    analysisContent += `<p class="analysis-suggestion">💡 **Sugestão:** Preste atenção ao que precede essas mudanças de humor. Há gatilhos específicos? Ajude seu filho(a) a desenvolver estratégias para regular suas emoções e a transitar entre elas de forma mais suave.</p>`;
+                }
+            }
+
+            // 4. Ausência de emoções positivas (se houver muitos registros)
+            if (totalEntries > 10 && emotionsByType.positive === 0) {
+                analysisContent += `<br><p class="analysis-alert">😔 **Preocupação:** Embora haja registros, nenhuma emoção positiva foi marcada neste mês. Isso é um forte indicador de que algo pode não estar bem.</p>`;
+                analysisContent += `<p class="analysis-suggestion">💡 **Sugestão:** Este é um sinal de alerta significativo. É crucial buscar o quanto antes o apoio de um(a) psicólogo(a) infantil ou psiquiatra. Eles poderão ajudar a investigar as causas e a oferecer o suporte necessário para o bem-estar emocional do seu filho(a).</p>`;
+            }
+
+
+            // Conclusão e recomendação geral
+            if (totalEntries > 0) {
+                 analysisContent += `<br><div class="analysis-title">Recomendação Geral:</div>`;
+                 analysisContent += `<p>O Diário das Emoções é uma ferramenta de apoio. Lembre-se que cada criança é única e as emoções são complexas. O mais importante é o diálogo e a observação atenta.</p>`;
+                 analysisContent += `<p class="analysis-suggestion">Se você sentir que as dificuldades emocionais do seu filho(a) persistem, são intensas ou o(a) impedem de realizar suas atividades diárias e se relacionar, <strong>não hesite em procurar a orientação de um(a) psicólogo(a) infantil ou outro profissional de saúde mental especializado.</strong> Eles podem oferecer um suporte profissional e personalizado.</p>`;
+                 analysisContent += `<p>Mantenha sempre um canal aberto para que seu filho(a) se sinta seguro(a) para expressar o que sente, sem julgamentos.</p>`;
+            }
+
+
+            analysisOutput.innerHTML = analysisContent;
+        });
+
+
+        downloadReportBtn.addEventListener('click', () => {
+            let contentToDownload = "";
+            let filenamePrefix = "";
+
+            if (reportOutput.style.display === 'block' && !reportOutput.textContent.includes("Seu relatório de emojis aparecerá aqui.")) {
+                contentToDownload = reportOutput.textContent;
+                filenamePrefix = "Relatorio_Emocoes";
+            } else if (analysisOutput.style.display === 'block' && !analysisOutput.textContent.includes("Sua análise detalhada aparecerá aqui.")) {
+                 // Remove tags HTML da análise para o TXT
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = analysisOutput.innerHTML.replace(/<br>/g, '\n').replace(/<\/p>/g, '\n\n').replace(/<\/?(div|span|strong|em|b|i)>/g, '');
+                contentToDownload = tempDiv.textContent.replace(/\n\n\n/g, '\n\n').trim(); // Limpa múltiplos enters
+                filenamePrefix = "Analise_Emocoes";
+            } else {
+                alert("Por favor, gere um relatório ou análise antes de tentar baixar.");
+                return;
+            }
+
+            const selectedMonthYear = reportMonthInput.value;
+            const [reportYear, reportMonth] = selectedMonthYear.split('-');
+            const filename = `${filenamePrefix}_${getMonthName(parseInt(reportMonth) - 1).toLowerCase()}_${reportYear}.txt`;
+
+            const blob = new Blob([contentToDownload], { type: 'text/plain;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(link.href);
+        });
+
+        clearDataBtn.addEventListener('click', () => {
+            if (confirm("ATENÇÃO: Isso apagará TODAS as emoções salvas no diário. Tem certeza que deseja continuar?")) {
+                localStorage.removeItem('emotionDiary');
+                renderCalendar(); // Renderiza o calendário novamente para refletir a limpeza
+                reportOutput.textContent = "Todos os dados foram apagados com sucesso.";
+                analysisOutput.style.display = 'none'; // Esconde a análise se estiver visível
+                reportOutput.style.display = 'block'; // Mostra o relatório padrão vazio
+                analysisOutput.innerHTML = "Sua análise detalhada aparecerá aqui.";
+                alert("Dados apagados!");
+            }
+        });
+
+        // Inicializar o calendário
+        renderCalendar();
+    </script>
+</body>
+</html>
