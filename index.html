@@ -1126,62 +1126,263 @@ html {
 
 
 <!----------------------------------------------------------------------->
+<style>
+    /* Estilo para o botão do foguete */
+    .rocket-button-container {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 1000;
+    }
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    .rocket-button {
+        background-color: #00aaff;
+        color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 32px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        animation: float 2s ease-in-out infinite;
+    }
 
+    .rocket-button:hover {
+        background-color: #00eaff;
+        transform: scale(1.1);
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+
+    /* Estilo para o Pop-up (melhorado) */
+    .popup-container {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        z-index: 1001;
+        backdrop-filter: blur(5px);
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .popup-container.active {
+        display: flex;
+        opacity: 1;
+    }
+
+    .popup-content {
+        background: linear-gradient(135deg, #f0f9ff, #cbebff);
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        position: relative;
+        max-width: 450px;
+        width: 90%;
+        transform: scale(0.85) translateY(20px);
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .popup-container.active .popup-content {
+        transform: scale(1) translateY(0);
+    }
+
+    .popup-content h2 {
+        color: #0077b6;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .popup-content p {
+        color: #444;
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 25px;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 30px;
+        color: #999;
+        cursor: pointer;
+        line-height: 1;
+        transition: color 0.2s, transform 0.3s;
+    }
+
+    .close-btn:hover {
+        color: #555;
+        transform: rotate(90deg);
+    }
+
+    .join-btn {
+        display: inline-block;
+        background-color: #0088cc;
+        color: #fff;
+        padding: 15px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 18px;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 10px rgba(0, 136, 204, 0.4);
+        transition: all 0.3s ease;
+    }
+
+    .join-btn:hover {
+        background-color: #006b99;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 136, 204, 0.5);
+    }
+
+    .gift-icon {
+        color: #ff4500;
+        font-size: 50px;
+        margin-bottom: 15px;
+        animation: pulse 1.5s infinite;
+    }
     
- <style>
-         .rocket-button-container {
-            position: fixed; /* Fixa o botão na tela */
-            bottom: 30px; /* Distância do fundo */
-            right: 30px; /* Distância da direita */
-            z-index: 1000; /* Garante que o botão fique acima de outros elementos */
-        }
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+    
+    /* Estilo para os confetes estourando */
+    .confetti {
+        position: fixed;
+        background-color: var(--confetti-color);
+        opacity: 0;
+        z-index: 1002;
+    }
+    
+    .confetti.animate {
+        animation: confetti-explosion var(--duration) ease-out forwards;
+    }
 
-        .rocket-button {
-            background-color: #00aaff; /* Laranja vibrante para o botão */
-            color: rgb(255, 255, 255);
-            border: none;
-            border-radius: 50%; /* Torna o botão redondo */
-            width: 70px; /* Largura do botão */
-            height: 70px; /* Altura do botão */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 32px; /* Tamanho do ícone */
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            animation: float 2s ease-in-out infinite; /* Animação de flutuação */
+    @keyframes confetti-explosion {
+        0% {
+            transform: translate(0, 0) scale(1) rotate(0deg);
+            opacity: 1;
         }
-
-        .rocket-button:hover {
-            background-color: #00eaff; /* Cor mais escura ao passar o mouse */
-            transform: scale(1.1); /* Aumenta um pouco o botão ao passar o mouse */
+        50% {
+            transform: translate(var(--x), var(--y)) scale(1.2) rotate(var(--deg));
+            opacity: 0.8;
         }
-
-        
-
-        /* Animação de flutuação */
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px); /* Move para cima */
-            }
-            100% {
-                transform: translateY(0px);
-            }
+        100% {
+            transform: translate(var(--x), var(--y)) scale(0.2) rotate(var(--deg));
+            opacity: 0;
         }
-    </style>
-    <a href="Landing Page/boasvindas.html"> <div class="rocket-button-container">
-        <button class="rocket-button">
-            <i class="fas fa-rocket"></i>
-        </button></a>
+    }
+</style>
+
+<div id="telegram-popup" class="popup-container">
+    <div class="popup-content">
+        <button class="close-btn" onclick="closePopup()">×</button>
+        <div class="gift-icon">🎁</div>
+        <h2>Material Gratuito Exclusivo!</h2>
+        <p>Apenas para as <strong>200 primeiras pessoas</strong> que entrarem no nosso grupo. Ensinamentos que de fato funcionam para você!</p>
+        <a href="https://t.me/+7HuwqzrAd8FkZTIx" target="_blank" class="join-btn">Seja VIP no Telegram</a>
     </div>
+</div>
 
+<div class="rocket-button-container">
+    <button class="rocket-button" onclick="showPopup()">
+        <i class="fas fa-rocket"></i>
+    </button>
+</div>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script>
+    function createConfetti() {
+        const colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107', '#ff9800', '#ff5722'];
+        
+        const popupContent = document.querySelector('.popup-content');
+        const rect = popupContent.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        for (let i = 0; i < 120; i++) {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            
+            // Define o formato (círculo ou quadrado)
+            if (Math.random() > 0.5) {
+                confetti.style.borderRadius = '50%';
+            }
+
+            // Define o tamanho e a cor
+            const size = Math.random() * 10 + 5;
+            confetti.style.width = size + 'px';
+            confetti.style.height = size + 'px';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Posição inicial no centro do pop-up
+            confetti.style.left = centerX + 'px';
+            confetti.style.top = centerY + 'px';
+
+            // Posição final aleatória
+            const x = (Math.random() - 0.5) * 600;
+            const y = (Math.random() - 0.5) * 600;
+            const duration = Math.random() * 1.5 + 1.5;
+            const rotation = Math.random() * 1080 + 360;
+
+            confetti.style.setProperty('--x', x + 'px');
+            confetti.style.setProperty('--y', y + 'px');
+            confetti.style.setProperty('--duration', duration + 's');
+            confetti.style.setProperty('--deg', rotation + 'deg');
+            
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => {
+                confetti.classList.add('animate');
+            }, 10);
+            
+            setTimeout(() => confetti.remove(), duration * 1000);
+        }
+    }
+
+    function showPopup() {
+        const popup = document.getElementById('telegram-popup');
+        popup.classList.add('active');
+        createConfetti();
+    }
+
+    function closePopup() {
+        const popup = document.getElementById('telegram-popup');
+        popup.classList.remove('active');
+    }
+
+    window.onload = function() {
+        setTimeout(showPopup, 2000);
+    };
+
+    document.getElementById('telegram-popup').addEventListener('click', function(event) {
+        if (event.target === this) {
+            closePopup();
+        }
+    });
+</script>
 
 
 <!------------------------------------------------------->
